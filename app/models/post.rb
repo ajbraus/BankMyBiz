@@ -29,7 +29,7 @@ class Post < ActiveRecord::Base
     set_property :field_weights => {
       :post_title => 5,
       :description => 1,
-      :tag_name => 30
+      :tag_name => 10
     }
   end
 

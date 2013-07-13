@@ -2,6 +2,12 @@
     add published? column and published_on column and filter out not-published mocs
     add validations to server and client
 
+  tabbable not working on posts#index
+
+  make publish button - 
+    pass in post
+    publish
+    add published date
   filter out non-published
   order by published date
 
@@ -22,7 +28,7 @@
   add public_activity gem
     log getting more karma
     only log views of a post once per session
-    
+
   make follow/favorite MOCs ('commitments_controller') 
     make sure last_touched is upated after followered
     add filter of # Followers (sorted on # of committed)

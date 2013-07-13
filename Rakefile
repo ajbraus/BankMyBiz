@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Mocs::Application.load_tasks
+BankMyBiz::Application.load_tasks

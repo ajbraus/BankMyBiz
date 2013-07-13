@@ -1,4 +1,4 @@
-Mocs::Application.routes.draw do
+BankMyBiz::Application.routes.draw do
 
   resources :posts
 

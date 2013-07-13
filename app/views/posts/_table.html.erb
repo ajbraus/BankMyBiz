@@ -1,7 +1,5 @@
 <tr>
-  <td width='20%'><%= image_tag post.img_url, class:"img-polaroid" %></td>
-  <td width="15%"><%= link_to post_path(post) do %> <strong><%= post.title %></strong></td>
-  <td class="muted" width="45%"><%= post.short_desc %> <%= link_to "(more)", post_path(post) %></td>
-  <% end %>
+  <td width='20%'><%= link_to "#{post.user.name}", user_path(post.user) %></td>
+  <td class="muted" width="45%"><%= post.content %></td>
   <td width="20%"><%= render partial: "shared/tags", locals: { tags: post.tags }  %></td>
 </tr>

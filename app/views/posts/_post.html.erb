@@ -1,18 +1,15 @@
 <div class="media">
   <a class="pull-left" href="project.html">
-    <%= image_tag post.img_url, class:"img-polaroid moc-pic" %>
+    <%= image_tag "/assets/default_profile_pic.png", class:"img-polaroid moc-pic" %>
   </a>
   <div class="media-body">
     <h4 class="media-heading">
-      <%= link_to post_path(post) do %>
-        <%= post.title %>
-      <% end %>
+      <%= post.short_content %> <%= link_to '(more)', post_path(post) %>
     </h4>
-    <h6 class="pull-left">Project Lead: <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></h6>
+    <h6 class="pull-left">Author: <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></h6>
     <div class="pull-right"><%= render partial: "shared/tags", locals: { tags: post.tags }  %></div>
-    <div class="clear-both"><%= post.short_desc %> <%= link_to '(more)', post_path(post) %></div>
     <div class="muted">
-        Impressions: <em><%= post.impressions_count %> State: <em><%= post.state %></em> Published: <em><%= post.nice_created_at_date %></em> Participants: <em>25</em> 
+Published: <em><%= post.nice_created_at_date %></em> Bucks: <em>25</em> 
     </div>
   </div>
 </div>

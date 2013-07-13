@@ -1,45 +1,78 @@
 <div class="row">
-  <div class="span8">
-  <h3><%= @user.name %></h3>
-  <em></em>
-  reputation:
-  <h4>About Me</h4>
+  <div class="span3">
+    <h5>Your profile is 20% complete</h5>
+    <div class="progress progress-info progress-striped">
+      <div class="bar" style="width: 20%"></div>
+    </div>          
+    <div class="btn-group">
+      <a href="edit_profile.html" class="btn btn-primary">Improve Your Profile</a>
+      <button class="btn dropdown-toggle btn-primary" data-toggle="dropdown">
+        <span class="caret"></span>
+      </button>
+      <ul class="dropdown-menu">
+        <li><a tabindex="-1" href="#">Regular link</a></li>
+        <li><a tabindex="-1" href="#">Link</a></li>
+        <li><a tabindex="-1" href="#">Another link</a></li>
+      </ul>
+    </div>          
 
-    <div class="btn btn-primary">
-      Contact 
-    </div>
 
-  </div>
-
-  <div class="span4">
+    <br />
+    <br />
+    
     <div class="well">
-      <h4>Top Interests</h4>
-      <%= render partial: "shared/tags", locals: { tags: @tags }  %>
+      <h4>Tips</h4>
+      <strong>Your BMB Profile</strong>
+      <p>
+        BMB uses matching algorithms to match you with bankers or businesses that are suitable to you. The more complete, the better the matches we can give you.
+      </p>
+      <strong>The BMB Newsfeed</strong>
+      <p>
+        Post engaging or helpful content to the newsfeed to interact with more potential customers
+      </p>          
     </div>
   </div>
-</div>
-<div class="row">
-  <div class="span4">
-    <h4>MOCs Viewed</h4>
-    <% @mocs.each do |m| %>
-      <%= render partial: "shared/mini_moc", locals: { m: m }  %>
-    <% end %>
-  </div>
-  <div class="span4">
-    <h4>MOCs Following</h4>
-    <% @mocs.each do |m| %>
-      <%= render partial: "shared/mini_moc", locals: { m: m }  %>
-    <% end %>
-  </div>
-  <div class="span4">
-    <div class="well">
-      <h4>Recent Activity</h4>
-      <% @activities.each do |activity| %>
-        <div class="activity">
-        <%= link_to activity.owner.name, activity.owner if activity.owner %>
-        <%= render_activity activity %>
-        </div>
+
+  <div class="span6">
+    <h5>Newsfeed</h5>
+    <div class="comment-form clearfix">
+      <img src="/assets/default_profile_pic.png" width="50" class="pull-left" />
+      <%= form_for @post do |f| %>
+        <%= f.text_area :content %>
+        <%= f.text_field :tag_list, placeholder:"tags (separated by commas)" %>
+        <%= f.submit "Post", class:"btn btn-primary pull-right" %>
       <% end %>
+    </div>
+    <%= render partial: 'posts/post', collection: @posts, as: :post %>
+    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+  </div>
+
+  <div class="span3">
+    <div class="well">
+      <h5 class="matches">Businesses you May Like</h5>
+      <div class="muted">3 More tomorrow</div>
+      <br />
+      <section class="match">
+        <img src="/assets/default_profile_pic.png" class="pull-left" width="40px" />
+        <strong>Name: Lorem Ipsum</strong>
+        <span class="muted">
+          Special Contractor
+        </span>
+      </section>
+      <section class="match">
+        <img src="/assets/default_profile_pic.png" class="pull-left" width="40px" />
+          <strong>Name: Lorem Ipsum</strong>
+          <p class="muted">
+            Special Contractor
+          </p>
+      </section>
+      <section class="match">
+        <img src="/assets/default_profile_pic.png" class="pull-left" width="40px" />
+          <strong>Name: Lorem Ipsum</strong>
+          <p class="muted">
+            Special Contractor
+          </p>
+      </section>
     </div>
   </div>
 </div>

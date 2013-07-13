@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130712200726) do
+ActiveRecord::Schema.define(:version => 20130708173459) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -77,20 +77,10 @@ ActiveRecord::Schema.define(:version => 20130712200726) do
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
   create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "desc"
-    t.string   "img_url"
-    t.string   "video_url"
-    t.string   "state"
-    t.date     "happening_on"
-    t.datetime "starts_at"
+    t.string   "content"
     t.integer  "user_id"
-    t.datetime "created_at",                           :null => false
-    t.datetime "updated_at",                           :null => false
-    t.integer  "impressions_count", :default => 0
-    t.datetime "last_touched"
-    t.boolean  "published",         :default => false
-    t.datetime "published_on"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "posts_tags", :id => false, :force => true do |t|
@@ -123,7 +113,7 @@ ActiveRecord::Schema.define(:version => 20130712200726) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.string   "state"
+    t.integer  "impressions_count",      :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

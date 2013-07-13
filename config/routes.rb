@@ -2,7 +2,11 @@ BankMyBiz::Application.routes.draw do
 
   resources :posts
 
-  root :to => 'posts#index'
+  authenticated :user do
+    root :to => 'users#show'
+  end
+
+  root :to => 'welcome#index'
   match '/how', :to => 'welcome#how', :as => "how"
   match '/about', :to => 'welcome#about', :as => "about"
   match '/survey', to: 'welcome#survey', as: "survey"

@@ -6,10 +6,6 @@ gem 'heroku'
 gem 'pg'
 gem 'thin'
 
-gem 'mysql2',          '0.3.12b4'
-gem 'thinking-sphinx', '2.0.11'
-gem 'flying-sphinx',   '0.8.4'
-
 gem 'devise'
 gem 'lazy_high_charts'
 gem 'thumbs_up'

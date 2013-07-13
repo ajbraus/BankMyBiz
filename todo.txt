@@ -1,3 +1,18 @@
+format newsfeed
+  add bucks
+
+add matching profiles - banks, businesses
+  add kind to user - bank, business
+
+add businesses you may like
+
+add profile avatar
+
+lock down newsfeed unless profile pic added
+
+add linkedin login
+
+
   post#new form
     add published? column and published_on column and filter out not-published mocs
     add validations to server and client

@@ -8,6 +8,7 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
+  $('.alert').delay(2000).fadeOut();
   // var a = [$('#trendingTags').data("tags")];
   // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
   // a.forEach(function(entry) {
@@ -19,10 +20,6 @@ $(document).ready(function() {
   // $('#closeJumbotron').click(function(){
   //   $('#overview').slideUp();
   // });
-
-  $('#register').click(function(){
-    $('#overview').slideUp();
-  });
 
   // $('.label').click(function(){
   //  $(this).appendTo('#searchTags');

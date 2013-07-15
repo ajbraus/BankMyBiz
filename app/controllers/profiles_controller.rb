@@ -3,7 +3,7 @@ class ProfilesController < ApplicationController
 
   def new
     @user = current_user
-    @profile = @user.build_profile
+    @profile = @user.profiles.build
 
     respond_to do |format|
       format.html # new.html.erb

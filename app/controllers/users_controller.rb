@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
   def show
-  	if user_signed_in?
-  		@user = current_user
-  	else
-    	@user = User.find(params[:id])
+    @user = User.find(params[:id])
+    if user_signed_in?
+      if @user == current_user
+        @post = Post.new
+      end
     end
-    @post = Post.new
-    @posts = Post.paginate(:page => params[:page], :per_page => 10)
-    @tags = Tag.first(5)
-    @recommended_mocs = Post.first(5)
-    @mocs = Post.first(5)
+    @posts = @user.posts.paginate(:page => params[:page], :per_page => 20)
     @activities = PublicActivity::Activity.order("created_at desc") #.where(owner_id: current_user.friend_ids, owner_type: "User")
+    @recommended_users = User.first(3)
   end
 end

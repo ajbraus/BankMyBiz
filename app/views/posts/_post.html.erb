@@ -1,15 +1,17 @@
-<div class="media">
-  <a class="pull-left" href="project.html">
-    <%= image_tag "/assets/default_profile_pic.png", class:"img-polaroid moc-pic" %>
-  </a>
-  <div class="media-body">
-    <h4 class="media-heading">
-      <%= post.short_content %> <%= link_to '(more)', post_path(post) %>
-    </h4>
-    <h6 class="pull-left">Author: <em><%= link_to "#{post.user.name}", user_path(post.user) %></em></h6>
-    <div class="pull-right"><%= render partial: "shared/tags", locals: { tags: post.tags }  %></div>
-    <div class="muted">
-Published: <em><%= post.nice_created_at_date %></em> Bucks: <em>25</em> 
-    </div>
+<section class="newsfeed-item">
+  <div class="pull-left clear-left dollar">
+  $
   </div>
-</div>
+  <%= link_to user_path(post.user) do %>
+    <%= image_tag "/assets/default_profile_pic.png", class:"img-polaroid pull-left", width:50 %>
+  <% end %>
+  <div class="span4">
+    <p>
+      <%= post.short_content %> <%= link_to '(more)', post_path(post) %>
+    </p>
+    <div class="pull-right"><%= render partial: "shared/tags", locals: { tags: post.tags }  %></div>
+    <p class="pull-right muted small">
+      <%= post.nice_created_at_date %> ago by <%= link_to "#{post.user.name}", user_path(post.user) %>
+    </p>
+  </div>
+</section>

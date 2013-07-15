@@ -1,78 +1,38 @@
-<div class="row">
-  <div class="span3">
-    <h5>Your profile is 20% complete</h5>
-    <div class="progress progress-info progress-striped">
-      <div class="bar" style="width: 20%"></div>
-    </div>          
-    <div class="btn-group">
-      <a href="edit_profile.html" class="btn btn-primary">Improve Your Profile</a>
-      <button class="btn dropdown-toggle btn-primary" data-toggle="dropdown">
-        <span class="caret"></span>
-      </button>
-      <ul class="dropdown-menu">
-        <li><a tabindex="-1" href="#">Regular link</a></li>
-        <li><a tabindex="-1" href="#">Link</a></li>
-        <li><a tabindex="-1" href="#">Another link</a></li>
-      </ul>
-    </div>          
-
-
-    <br />
-    <br />
-    
-    <div class="well">
-      <h4>Tips</h4>
-      <strong>Your BMB Profile</strong>
-      <p>
-        BMB uses matching algorithms to match you with bankers or businesses that are suitable to you. The more complete, the better the matches we can give you.
-      </p>
-      <strong>The BMB Newsfeed</strong>
-      <p>
-        Post engaging or helpful content to the newsfeed to interact with more potential customers
-      </p>          
-    </div>
-  </div>
-
-  <div class="span6">
-    <h5>Newsfeed</h5>
-    <div class="comment-form clearfix">
-      <img src="/assets/default_profile_pic.png" width="50" class="pull-left" />
-      <%= form_for @post do |f| %>
-        <%= f.text_area :content %>
-        <%= f.text_field :tag_list, placeholder:"tags (separated by commas)" %>
-        <%= f.submit "Post", class:"btn btn-primary pull-right" %>
-      <% end %>
-    </div>
-    <%= render partial: 'posts/post', collection: @posts, as: :post %>
-    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-  </div>
-
-  <div class="span3">
-    <div class="well">
-      <h5 class="matches">Businesses you May Like</h5>
-      <div class="muted">3 More tomorrow</div>
-      <br />
-      <section class="match">
-        <img src="/assets/default_profile_pic.png" class="pull-left" width="40px" />
-        <strong>Name: Lorem Ipsum</strong>
-        <span class="muted">
-          Special Contractor
-        </span>
-      </section>
-      <section class="match">
-        <img src="/assets/default_profile_pic.png" class="pull-left" width="40px" />
-          <strong>Name: Lorem Ipsum</strong>
-          <p class="muted">
-            Special Contractor
-          </p>
-      </section>
-      <section class="match">
-        <img src="/assets/default_profile_pic.png" class="pull-left" width="40px" />
-          <strong>Name: Lorem Ipsum</strong>
-          <p class="muted">
-            Special Contractor
-          </p>
-      </section>
-    </div>
-  </div>
+<div class="span3">
+  <img src="./default_profile_pic.png" />
 </div>
+<div class="span7">
+  <div>
+    <strong>Name</strong>
+  </div>
+  <div>
+    <strong>Bio</strong>
+    <div class="muted">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam <a href="#">more</a>
+    </div>
+  </div>
+  <div>
+    <strong>Business</strong>
+    <div class="muted">
+      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam <a href="#">more</a>
+    </div>
+  </div>
+
+</div>
+</div>
+<div class="row">
+<div class="span8">
+<h4>Posts</h4>
+<% if user_signed_in? && current_user == @user %>
+
+<% end %>
+  <%= render partial: "posts/post", collection: @posts, as: :post %>
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
+<div class="span4">
+<div class="well">
+  <h5 class="matches">Businesses You May Like</h5>
+  <div class="muted">3 More tomorrow</div>
+  <br />
+  <%= render partial: "users/user", collection: @recommended_users, as: :user %>                                  
+</div>      

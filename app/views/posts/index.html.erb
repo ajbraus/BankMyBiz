@@ -1,24 +1,54 @@
-<div class="container">
-
-<div class="row">
-  <div>
-    <%= render partial: "posts/post", collection: @posts, as: :post %>
-    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+<div class="span3">
+  <h5>Your profile is 20% complete</h5>
+  <div class="progress progress-info progress-striped">
+    <div class="bar" style="width: 20%"></div>
+  </div>          
+  <div class="btn-group">
+    <%= link_to "Improve Your Profile", edit_user_registration_path, class:"btn btn-primary" %>
+    <button class="btn dropdown-toggle btn-primary" data-toggle="dropdown">
+      <span class="caret"></span>
+    </button>
+    <ul class="dropdown-menu">
+      <li><a tabindex="-1" href="#">Regular link</a></li>
+      <li><a tabindex="-1" href="#">Link</a></li>
+      <li><a tabindex="-1" href="#">Another link</a></li>
+    </ul>
+  </div>          
+  
+  <div class="well">
+    <h4>Tips</h4>
+    <strong>Your BMB Profile</strong>
+    <p>
+      BMB uses matching algorithms to match you with bankers or businesses that are suitable to you. The more complete, the better the matches we can give you.
+    </p>
+    <strong>The BMB Newsfeed</strong>
+    <p>
+      Post engaging or helpful content to the newsfeed to interact with more potential customers
+    </p>          
   </div>
-</div><!-- /row -->
+</div>
+<div class="span6">
+  <h5>Newsfeed</h5>
+  <div class="comment-form clearfix">
+    <img src="assets/default_profile_pic.png" width="50" class="pull-left" />
+    <%= form_for @post do |f| %>
+      <%= f.text_area :content %>
+      <%= f.submit "Post", class:"btn btn-primary pull-right" %>
+    <% end %>
+  </div>
+  <%= render partial: "posts/post", collection: @posts, as: :post %>
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+</div>
 
-  <div class="span4">
-    <div class="well dark">
-      <p class="muted">Trending Tags</p>
-      <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
-    </div>
-      <div class="well dark">
-        <p class="muted">Trending Projects</p>
-        <ul>
-          <% @trending_mocs.each do |tm| %>
-            <%= render partial: "shared/mini_moc", locals: { m: tm }  %>
-          <% end %>
-        </ul>
-      </div>
+<div class="span3">
+  <div class="well dark">
+    <p class="muted">Trending Tags</p>
+    <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
+  </div>
+  <div class="well">
+    <h5 class="matches">Businesses you May Like</h5>
+    <div class="muted">3 More tomorrow</div>
+    <br />
+    <%= render partial: "users/user", collection: @recommended_users, as: :user %>
   </div>
 </div>

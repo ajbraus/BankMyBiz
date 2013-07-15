@@ -41,9 +41,9 @@
       <div class="navbar">
        <div class="navbar-inner">
         <ul class="nav pull-left" id="main-menu-left">
-          <li>           
+          <li>
             <%= link_to root_path, class:"brand" do %>
-              BankMyBiz
+              <%= image_tag "logo.jpg" %>
             <% end %>
           </li>
           <li><%= link_to 'How it Works', how_path %></li>
@@ -64,7 +64,7 @@
               <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><div class="pull-right"><b class="caret"></b></div></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", user_path(current_user) %></a></li>
-                <li><%= link_to "Settings", edit_user_registration_path %></li>
+                <li><%= link_to "Settings", edit_user_registration_path  %></li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
                 <li class="divider"></li>
                 <li>
@@ -79,9 +79,12 @@
          </div>
        </div>
         <%= bootstrap_flash %>
-        <%= yield %>
+        <div class="row">
+          <%= yield %>
+        </div>
       </div> <!-- /container -->
     </div>
+  </div>
 
 
     <footer id="footer">

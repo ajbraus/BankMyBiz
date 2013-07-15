@@ -1,40 +1,27 @@
-format newsfeed
-  add bucks
+
+make user#show profile (with newsfeed, activity, and stats and profile)
+fix karma
 
 add matching profiles - banks, businesses
   add kind to user - bank, business
-
-add businesses you may like
-
-add profile avatar
-
+  add recommended_users you may like
+  add profile avatar
+  setup tracking impressions on users
+  tags?
+  setup activity
+  
 lock down newsfeed unless profile pic added
 
+follow user
+make adding bucks
 add linkedin login
 
+filter newsfeed to opposite type a
 
-  post#new form
-    add published? column and published_on column and filter out not-published mocs
-    add validations to server and client
+Setup users messaging each other
 
-  tabbable not working on posts#index
+Setup email
 
-  make publish button - 
-    pass in post
-    publish
-    add published date
-  filter out non-published
-  order by published date
-
-  Setup users messaging each other
-
-  branding for email
-
-  bugs:
-    @post.impressions_count not incrementing
-  
-  
-  make related projects - projects with tags from the viewed project sorted by highest impressions * followers
   make trending tags - tags on projects with most followers * most impressions
   make trending projects - average of most followers * most impressions 
 

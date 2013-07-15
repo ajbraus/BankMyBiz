@@ -2,23 +2,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    if params[:search].present?
-      if user_signed_in?
-        @posts_by_state = Post.search(params[:search], with: { state: current_user.state }, :page => params[:page], :per_page => 10)
-      end
-      @posts = Post.search(params[:search], :page => params[:page], :per_page => 10)
-      @posts_by_activity = Post.search(params[:search], order: 'last_touched asc', :page => params[:page], :per_page => 10)
-      #@posts_by_followers = @mocs.sort_by { |m| m.followers.count }
-    else 
-      if user_signed_in?
-        @posts_by_state = Post.where(state: current_user.state).order('created_at desc').paginate(:page => params[:page], :per_page => 10)
-      end
-      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
-      @posts_by_activity = Post.order( "last_touched asc" ).paginate(:page => params[:page], :per_page => 10)
-      #@posts_by_followers = Post.sort_by { |m| m.followers.count }
-    end
-    @trending_mocs = Post.first(3)
+    @post = Post.new
+    @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 20)
     @trending_tags = Tag.first(30)
+    @recommended_users = User.first(3)
 
     respond_to do |format|
       format.html # new.html.erb

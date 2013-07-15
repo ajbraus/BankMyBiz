@@ -12,6 +12,8 @@ BankMyBiz::Application.routes.draw do
   match '/survey', to: 'welcome#survey', as: "survey"
   match '/submit_survey', to: 'welcome#submit_survey', as: "survey"
 
+  resources :profiles
+
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :tags, only: [:create, :destroy, :show]
   

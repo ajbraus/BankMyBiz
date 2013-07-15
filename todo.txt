@@ -1,8 +1,10 @@
+refresh db and push to production
+
 make user#show profile (with newsfeed, activity, and stats and profile)
 fix karma
 
 add matching profiles - banks, businesses
-  add kind to user - bank, business
+  DONE add kind to user - bank, business
   add recommended_users you may like
   add profile avatar
   setup tracking impressions on users
@@ -15,7 +17,7 @@ follow user
 make adding bucks
 add linkedin login
 
-filter newsfeed to opposite type a
+DONE filter newsfeed to opposite type a
 
 Setup users messaging each other
 

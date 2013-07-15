@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130708173459) do
+ActiveRecord::Schema.define(:version => 20130715184822) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(:version => 20130708173459) do
   create_table "posts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
+    t.boolean  "bank"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -90,6 +91,29 @@ ActiveRecord::Schema.define(:version => 20130708173459) do
 
   add_index "posts_tags", ["post_id", "tag_id"], :name => "index_posts_tags_on_post_id_and_tag_id"
   add_index "posts_tags", ["tag_id", "post_id"], :name => "index_posts_tags_on_tag_id_and_post_id"
+
+  create_table "profiles", :force => true do |t|
+    t.string   "name"
+    t.string   "owner"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "city"
+    t.string   "state"
+    t.string   "bank_type"
+    t.string   "business_type"
+    t.text     "industries"
+    t.string   "years_old"
+    t.string   "size_cash"
+    t.string   "size_employees"
+    t.boolean  "existing_loans"
+    t.integer  "owners_count"
+    t.text     "bio"
+    t.integer  "user_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "tags", :force => true do |t|
     t.string   "name"
@@ -103,6 +127,8 @@ ActiveRecord::Schema.define(:version => 20130708173459) do
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "name",                   :default => "", :null => false
+    t.text     "bio",                    :default => "", :null => false
+    t.boolean  "bank"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

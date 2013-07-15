@@ -3,9 +3,14 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @post = Post.new
-    @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 20)
     @trending_tags = Tag.first(30)
-    @recommended_users = User.first(3)
+    if current_user.bank?
+      @posts = Post.where(bank: false).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
+      @recommended_users = User.where(bank: false).first(3)
+    else
+      @posts = Post.where(bank: true).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
+      @recommended_users = User.where(bank: true).first(3)
+    end
 
     respond_to do |format|
       format.html # new.html.erb
@@ -49,6 +54,11 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = @user.posts.build(params[:post])
+    if @user.bank?
+      @post.bank = true
+    else
+      @post.bank = false
+    end
 
     respond_to do |format|
       if @post.save

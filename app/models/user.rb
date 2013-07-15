@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :state
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :bank
   # attr_accessible :title, :body
 
   has_many :posts
@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :committed_tos, through: :commitments, source: "commitment"
 
   has_many :comments, as: :commentable
+
+  has_many :profiles
 
   acts_as_voter
   has_karma(:comments)

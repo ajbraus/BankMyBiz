@@ -6,7 +6,9 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :encrypted_password, :null => false, :default => ""
 
       t.string :name,               :null => false, :default => ""
-
+      t.text :bio,               :null => false, :default => ""
+      t.boolean :bank
+      
       ## Recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at

@@ -1,29 +1,47 @@
 
-    <div class="container-narrow">
-
-      <div class="jumbotron">
-        <h1>Financing was never fun</h1>
-        <p class="lead">Until now . . .</p>
-        <div class="row">
-          <div class="span3">
-            <h2>Bankers</h2>
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <a class="btn btn-large btn-primary" href="./home.html">Enter</a>
-          </div>
-          <div class="span3">
+        <div class="row-fluid">
+          <div class="span5 offset1">
             <h2>Businesses</h2>
-            <input type="text" placeholder="Email">
-            <input type="password" placeholder="Password">
-            <a class="btn btn-large btn-success" href="./home.html">Enter</a>
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div><%= f.label :name, "Your Name" %>
+              <%= f.text_field :name %></div>
+
+              <div><%= f.label :email, "Your Email" %>
+              <%= f.email_field :email %></div>
+
+              <div><%= f.label :password, "Password (min 6 characters)" %>
+              <%= f.password_field :password %></div>
+
+              <%= f.hidden_field :bank, value: false %>
+
+              <div><%= f.submit "Sign up", class:"btn btn-success" %></div>
+            <% end %>
+          </div>
+          <div class="span5 offset1">
+            <h2>Bankers</h2>
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+              <%= devise_error_messages! %>
+
+              <div><%= f.label :name, "Your Name" %>
+              <%= f.text_field :name %></div>
+
+              <div><%= f.label :email, "Your Email" %>
+              <%= f.email_field :email %></div>
+
+              <div><%= f.label :password, "Password (min 6 characters)" %>
+              <%= f.password_field :password %></div>
+
+              <%= f.hidden_field :bank, value: true %>
+
+              <div><%= f.submit "Sign up", class:"btn btn-warning" %></div>
+            <% end %>
           </div>
         </div>
-      </div>
-
-      <hr>
 
       <div class="row-fluid marketing">
-        <div class="span6">
+        <div class="span5 offset1">
           <h4>Subheading</h4>
           <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 
@@ -34,7 +52,7 @@
           <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
         </div>
 
-        <div class="span6">
+        <div class="span5 offset1">
           <h4>Subheading</h4>
           <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
 

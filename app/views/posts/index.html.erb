@@ -4,7 +4,11 @@
     <div class="bar" style="width: 20%"></div>
   </div>          
   <div class="btn-group">
-    <%= link_to "Improve Your Profile", edit_user_registration_path, class:"btn btn-primary" %>
+    <% if current_user.profiles.any? %>
+      <%= link_to "Improve Your Profile", edit_profile_path(current_user.profiles.first), class:"btn btn-primary" %>
+    <% else %>
+      <%= link_to "Build Your Profile", new_profile_path, class:"btn btn-primary" %>
+    <% end %>
     <button class="btn dropdown-toggle btn-primary" data-toggle="dropdown">
       <span class="caret"></span>
     </button>
@@ -46,7 +50,7 @@
     <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
   </div>
   <div class="well">
-    <h5 class="matches">Businesses you May Like</h5>
+    <h5 class="matches"><%= current_user.bank? ? "Businesses" : "Banks" %> you May Like</h5>
     <div class="muted">3 More tomorrow</div>
     <br />
     <%= render partial: "users/user", collection: @recommended_users, as: :user %>

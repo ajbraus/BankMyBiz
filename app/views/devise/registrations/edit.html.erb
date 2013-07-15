@@ -1,10 +1,13 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<h2>Settings</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div><%= f.label :name %>
+  <%= f.text_field :name %></div>
+
+  <div><%= f.label :email %>
+  <%= f.email_field :email %></div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -13,7 +16,7 @@
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%= f.label :password_confirmation %><br />
+  <div><%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %></div>
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
@@ -25,185 +28,3 @@
 <h3>Cancel my account</h3>
 
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete %>.</p>
-
-        <div class="span6">
-          <h5>Personal Profile</h5>
-          <label>Name</label>
-          <input type="text" class="span3">
-
-          <label>Username</label>
-          <input type="text" class="span3">
-
-          <label>Email</label>
-          <input type="text" class="span3">          
-
-          <h5>Organization Profile</h5>
-
-          <label>Organization Name</label>
-          <input type="text" class="span3">
-
-          <label>Organization Owner's Name</label>
-          <input type="text" class="span3">
-
-          <label>Organization Contact Phone</label>
-          <input type="text" class="span3">
-
-          <label>Organization Contact Email</label>
-          <input type="text" class="span3">
-
-          <label>City</label>
-          <select class="span3">blah</select>
-
-          <label>State</label>
-          <select class="span1">blah</select>          
-
-
-          <h5>Bank Profile</h5>
-
-          <label>Financial Institution Type</label>
-          <select class="span3">
-          <option>Bank</option>
-          <option>Credit Union</option> 
-          <option>Factoring Company</option>
-          <option>Private Equity</option>
-          <option>Non-Profit Investment</option>
-          <option>Angel Investment</option>
-          </select>
-
-          <label>Industries of Interest</label>
-          <div class="row">
-            <div class='span3'>
-              <label class="checkbox"><input type="checkbox"> Service</label>
-              <label class="checkbox"><input type="checkbox"> Retail</label>
-              <label class="checkbox"><input type="checkbox"> Manufacturing </label>
-              <label class="checkbox"><input type="checkbox"> Distribution</label>
-              <label class="checkbox"><input type="checkbox"> Construction</label>
-              <label class="checkbox"><input type="checkbox"> Consulting</label>
-              <label class="checkbox"><input type="checkbox"> Restaurant</label>
-              <label class="checkbox"><input type="checkbox"> Entertainment</label>
-            </div>
-            <div class="span3">
-              <label class="checkbox"><input type="checkbox"> CRE</label>
-              <label class="checkbox"><input type="checkbox">Residential Real Estate</label>
-              <label class="checkbox"><input type="checkbox"> Nonprofit</label>
-              <label class="checkbox"><input type="checkbox">Healthcare</label>
-              <label class="checkbox"><input type="checkbox">IT</label>
-              <label class="checkbox"><input type="checkbox">Startup </label>
-              <label class="checkbox"><input type="checkbox">Other</label>
-            </div>
-          </div>
-
-          <label>Years of Operation Interest</label>
-          <select class="span3">
-          <option>0-1</option>
-          <option>2-5</optino>
-          <option>5+</option>
-          </select>
-
-          <label>Size of Operation Interest</label>
-          <label class="checkbox"><input type="checkbox">$0-$100,000 </label>
-          <label class="checkbox"><input type="checkbox">$100,000-$1M</label>
-          <label class="checkbox"><input type="checkbox">$1M-$5-M</label>
-          <label class="checkbox"><input type="checkbox">$5M-10M</label>
-          <label class="checkbox"><input type="checkbox">$10M and Above</label>
-          
-          <label>Size by # of Employee</label>
-          <label class="checkbox"><input type="checkbox">0-6 </label>
-          <label class="checkbox"><input type="checkbox">7-24</label>
-          <label class="checkbox"><input type="checkbox">25-99</label>
-          <label class="checkbox"><input type="checkbox">100-499</label>
-          <label class="checkbox"><input type="checkbox">500-999</label>
-          <label class="checkbox"><input type="checkbox">999-2999</label>
-          <label class="checkbox"><input type="checkbox">3000+</label>
-
-          <label>Type Of Organization Interest</label>
-          <label class="checkbox"><input type="checkbox">LLC</label>
-          <label class="checkbox"><input type="checkbox">C-Corp</label>
-          <label class="checkbox"><input type="checkbox">SP</label>
-          <label class="checkbox"><input type="checkbox">LLP</label>
-
-
-          <h5>Biz Profile</h5>
-
-          <label>Industry</label>
-          <select class="span3">
-            <option>Service</option>
-            <option>Retail</option>
-            <option>Manufacturing</option>
-            <option>Distribution</option>
-            <option>Construction</option>
-            <option>Consulting</option>
-            <option>Restaurant</option>
-            <option>Entertainment</option>
-            <option>CRE</option>
-            <option>Residential Real Estate</option>
-            <option>Nonprofit</option>
-            <option>Healthcare</option>
-            <option>IT</option>
-            <option>Startup</option>
-            <option>Other</option>
-          </select>
-
-          <label>Years in Bizness</label>
-          <select class="span1">
-            <option>0</option>
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            <option>6</option>
-            <option>7</option>
-            <option>8</option>
-            <option>9</option>
-            <option>10</option>
-            <option>10+</option>
-          </select>
-
-          <label>Annual Sales Amount</label>
-          <select class="span3">
-            <option>$0-$100,000 </option>
-            <option>$100,000-$1M</option>
-            <option>$1M-$5-M</option>
-            <option>$5M-10M</option>
-            <option>$10M and Above</option>
-          </select>
-
-          <label>Existing Business Loans</label>
-          <select class="span1">
-            <option>Yes</option>
-            <option>No</option>
-          </select>
-
-          <label>Type Of Organization</label>
-          <input type="text" class="span3">
-          LLC, C-Corp, SP, LLP…etc.
-
-          <label>Number of people who own over 15% of the company</label>
-          <select class="span1">
-
-          <label>Number of Employees</label>
-          <select class="span1">
-
-          <label>Tell us about your business… what do you sell… what makes you GREAT?</label>
-          <textarea class="textarea-profile"></textarea>
-
-          <label>Tell us about your business’s cash outflows… where does the money you spend go?</label>
-          <textarea class="textarea-profile"></textarea>
-
-          <label>Tell us about your business’s cash inflows… how and when does your income come in?</label>
-          <textarea class="textarea-profile"></textarea>
-
-          <label>Tell us about how well your business did the past 2 years… is the business looking to grow?</label>
-          <textarea class="textarea-profile"></textarea>
-
-          <label>Tell us what you need financing for</label>
-          <textarea class="textarea-profile"></textarea>
-
-          <label>Tell us about any existing business loans</label>
-          <textarea class="textarea-profile"></textarea>
-
-          <label>Tell us what else we should know</label>
-          <textarea class="textarea-profile"></textarea>
-
-          

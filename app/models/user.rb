@@ -22,6 +22,15 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
+  # has_attached_file :avatar, :styles => { :original => "150x150#",
+  #                                         :raster => "50x50#" },
+  #                            :convert_options => { :raster => '-quality 30' },
+  #                            :storage => :s3,
+  #                            :s3_credentials => S3_CREDENTIALS,
+  #                            :path => "user/:attachment/:style/:id.:extension",
+  #                            :default_url => "https://s3.amazonaws.com/bmb-production/user/avatars/original/default_profile_pic.png"
+
+
   def committed_to?(post)
     return commitments.find_by_commitment_id(post.id).present?
   end

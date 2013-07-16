@@ -21,18 +21,31 @@
 </div>
 </div>
 <div class="row">
-<div class="span8">
-<h4>Posts</h4>
-<% if user_signed_in? && current_user == @user %>
+<div class="span3">
+  <h4>Activity</h4>
+  <% @activities.each do |activity| %>
+    <div class="activity">
+    <%= link_to activity.owner.name, activity.owner if activity.owner %>
+    <%= render_activity activity %>
+    </div>
+  <% end %>
+</div>
 
-<% end %>
+<div class="span6">
+<h4>Posts</h4>
   <%= render partial: "posts/post", collection: @posts, as: :post %>
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
-<div class="span4">
-<div class="well">
-  <h5 class="matches">Businesses You May Like</h5>
-  <div class="muted">3 More tomorrow</div>
-  <br />
-  <%= render partial: "users/user", collection: @recommended_users, as: :user %>                                  
-</div>      
+<div class="span3">
+  <div class="well dark">
+    <p class="muted">Trending Tags</p>
+    <%= render partial: "shared/tags", locals: { tags: @tags }  %>
+  </div>
+
+  <div class="well">
+    <h5 class="matches">Businesses You May Like</h5>
+    <div class="muted">3 More tomorrow</div>
+    <br />
+    <%= render partial: "users/user", collection: @recommended_users, as: :user %>
+  </div>      
+</div>

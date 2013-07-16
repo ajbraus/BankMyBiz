@@ -67,7 +67,7 @@ module UsersHelper
     ]
   end
 
-  def business_type
+  def business_types
     [
       ['LLC'],
       ['C-Corp'],

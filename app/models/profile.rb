@@ -18,4 +18,8 @@ class Profile < ActiveRecord::Base
 
   serialize :industries
   #Profile.new(:industries => ["Blah", "Blerg", "Derk"])
+
+  def per_cent_complete
+    
+  end
 end

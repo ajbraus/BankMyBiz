@@ -4,6 +4,11 @@
   <div><%= f.label :name, "#{current_user.bank? ? 'Bank' : 'Business'} Name" %>
   <%= f.text_field :name %></div>
 
+  <% if current_user.bank? %>
+    <div><%= f.label :bank_type %>
+    <%= f.select :bank_type, bank_type, class:"" %></div>
+  <% end %>
+
   <div><%= f.label :email, "Contact Email" %>
   <%= f.email_field :email %></div>
 
@@ -16,20 +21,46 @@
   <div><%= f.label :state %>
   <%= f.select :state, us_states, class:"state" %></div>
 
-  <h5><%= current_user.bank? ? "Bank " : "Biz " %>Profile</h5>
+  <h5><%= current_user.bank? ? "Your Clients" : "Biz Profile" %></h5>
 
   <% if current_user.bank? %>
-    <div><%= f.label :bank_type %>
-    <%= f.select :bank_type, bank_type, class:"" %></div>
+    <div>
+      <label>Business Types</label>
+      <% business_types.each do |i| %>
+        <%= f.check_box :business_type, value: i %> <%= i %></br>
+      <% end %>
+    </div>
+    <div>
+      <label>Industries</label>
+      <% industries.each do |i| %>
+        <%= f.check_box :industries, value: i %> <%= i %></br>
+      <% end %>
+    </div>
+    <div>
+      <label>Years Of Operation</label>
+      <% years_of_operation.each do |i| %>
+        <%= f.check_box :years_old, value: i %> <%= i %></br>
+      <% end %>
+    </div>
+    <div>
+      <label>Size Cash</label>
+      <% size_cash.each do |i| %>
+        <%= f.check_box :size_cash, value: i %> <%= i %></br>
+      <% end %>
+    </div>
+    <div>
+      <label>Size Employee</label>
+      <% size_employees.each do |i| %>
+        <%= f.check_box :size_employees, value: i %> <%= i %></br>
+      <% end %>
+    </div>
   <% else %>
     <div><%= f.label :business_type %>
-    <%= f.select :business_type, business_type, class:"" %></div>
-  <% end %>
+    <%= f.select :business_type, business_types, class:"" %></div>
 
-  <div><%= f.label :industries %>
-  <%= f.select :industries, industries, class:"" %></div>
+    <div><%= f.label :industries %>
+    <%= f.select :industries, industries, class:"" %></div>
 
-  <% unless current_user.bank? %>
     <div><%= f.label :years_old, "Years of Operation" %>
     <%= f.select :years_old, years_of_operation, class:"" %></div>
 

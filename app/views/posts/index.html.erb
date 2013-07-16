@@ -32,11 +32,18 @@
   </div>
 </div>
 <div class="span6">
+  <%= form_tag root_path, :method => :get, class:"form-search" do %>
+    <div class="input-append">
+      <%= text_field_tag :search, params[:search], class:"span4 search-query", placeholder:"Search Actions and Tags" %>
+      <%= button_tag "Search", name: nil, class:"btn" %>
+    </div>
+  <% end %>
   <h5>Newsfeed</h5>
   <div class="comment-form clearfix">
     <img src="assets/default_profile_pic.png" width="50" class="pull-left" />
     <%= form_for @post do |f| %>
-      <%= f.text_area :content %>
+      <%= f.text_area :content, placeholder:"Share your status and your expertise . . ." %>
+      <%= f.text_field :tag_list, placeholder:"Tags (separated by comma)" %>
       <%= f.submit "Post", class:"btn btn-primary pull-right" %>
     <% end %>
   </div>

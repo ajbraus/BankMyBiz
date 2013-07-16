@@ -2,15 +2,16 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    is_bank = !current_user.bank?
+    if params[:search].present?
+      @posts = Post.search(params[:search], with: { bank: is_bank }, :page => params[:page], :per_page => 20)
+    else
+      @posts = Post.where(bank: is_bank).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
+    end
+    
     @post = Post.new
     @trending_tags = Tag.first(30)
-    if current_user.bank?
-      @posts = Post.where(bank: false).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
-      @recommended_users = User.where(bank: false).first(3)
-    else
-      @posts = Post.where(bank: true).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
-      @recommended_users = User.where(bank: true).first(3)
-    end
+    @recommended_users = User.where(bank: is_bank).first(3)
 
     respond_to do |format|
       format.html # new.html.erb

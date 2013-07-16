@@ -1,23 +1,69 @@
-refresh db and push to production
-
-make user#show profile (with newsfeed, activity, and stats and profile)
 fix karma
 
-add matching profiles - banks, businesses
-  DONE add kind to user - bank, business
-  add recommended_users you may like
-  add profile avatar
-  setup tracking impressions on users
-  tags?
-  setup activity
-  
-lock down newsfeed unless profile pic added
+add profile is % complete
 
+add search
+  with: bank not working
+  add lookup posts by author
+
+setup users
+  Bank wants to choose many (checkboxes), Business wants to select 1, then I want to see who includes
+  which. 
+  What does the form data look like when it comes through now?
+    Associations? 
+      business_types
+      industries
+      cash_sizes
+      employee_sizes
+      years_of_operation
+    Columns
+      BankProfile - serialized text columns
+      BizProfile - string columns with .includes? checks
+
+    def matches?(user)
+      if bank?
+        profile = profiles.where(bank: true).first
+        profile
+      else
+
+      end
+    end
+
+    def matches
+      if bank?
+        profile = self.bank_profile
+        business_profiles = BizProfile.where("years_of_operation IN #{profile.years_of_operation}")
+        businesses = business_profiles.map { |p| p.user }
+        retun businesses
+      else
+        profile = self.biz_profile
+        bank_profiles = BankProfile.where("#{profile.years_of_operation} IN years_of_operation")
+        banks = bank_profiles.map { |p| p.user }
+        return banks
+      end
+    end
+
+    def matches
+      if bank?
+
+      else
+
+      end
+    end
+
+  filter users by matching criteria
+  add profile avatar
+    create Amazon bucket
+    add variables to heroku config
+    add variables to s3.yml 
+    lock down newsfeed unless profile pic added
+  setup tracking impressions on users
+  add user tags to users#show
+  
+setup comments
 follow user
 make adding bucks
 add linkedin login
-
-DONE filter newsfeed to opposite type a
 
 Setup users messaging each other
 
@@ -133,3 +179,9 @@ welcome#index
     DONE State (filtered to your state), 
     DONE Activity (sorted on last_touched column of posts table),
     
+
+DONE filter newsfeed to opposite type a
+DONE setup activity
+  DONE add matching profiles - banks, businesses
+  DONE add kind to user - bank, business
+  DONE add recommended_users you may like

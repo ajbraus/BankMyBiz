@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
 
   def create
     @user = current_user
-    @profile = @user.build_profile(params[:profile])
+    @profile = @user.profiles.build(params[:profile])
 
     respond_to do |format|
       if @profile.save

@@ -47,7 +47,7 @@
             <% end %>
           </li>
           <li><%= link_to 'How it Works', how_path %></li>
-          <li><%= link_to 'About MOCs', about_path %></li>
+          <li><%= link_to 'About Us', about_path %></li>
           <% if !user_signed_in? %>
           </ul> 
             <div class="pull-right">
@@ -71,14 +71,8 @@
               <ul class="dropdown-menu">
                 <li><%= link_to "Profile", user_path(current_user) %></a></li>
                 <li><%= link_to "Settings", edit_user_registration_path  %></li>
-                <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
                 <li class="divider"></li>
-                <li>
-                  <a href="#" data-toggle="tab"><i class="icon-user icon-white"></i>Improve Profile</a>
-                </li>
-                <li><a href="#" data-toggle="tab"><div class="progress progress-danger progress-striped active">
-                  <div class="bar" style="width: 45%"></div>
-                  </div></a></li>
+                <li><%= link_to "Logout", destroy_user_session_path, method: "delete" %></li>
               </ul>
             </div>
           <% end %>   

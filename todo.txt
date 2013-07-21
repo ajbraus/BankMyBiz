@@ -1,100 +1,60 @@
-fix karma
+setup comments on posts
+  attribute comment to post and user
+  hide comment until click to comment
+  show last 3 comments with (3 more) link to show others
+  allow votes on comments
 
-add profile is % complete
+search is not indexing filter attribute bank
+put search in header
 
-add search
+tweet/fb_share/linkedin share post
+
+filter users by matching criteria
+  lock down recommended users until matching elements of are complete, more if 100% complete
+  wire up querying of suggested banks/businesses
+
+create post#show page with comments (make public for robots)
+
+Setup users messaging each other
+Setup email
+
+fix search
   with: bank not working
-  add lookup posts by author
 
 setup users
-  Bank wants to choose many (checkboxes), Business wants to select 1, then I want to see who includes
-  which. 
-  What does the form data look like when it comes through now?
-    Associations? 
-      business_types
-      industries
-      cash_sizes
-      employee_sizes
-      years_of_operation
-    Columns
-      BankProfile - serialized text columns
-      BizProfile - string columns with .includes? checks
+  setup tracking impressions on users
+  add user tags to users#show
+  
+follow user
+add linkedin login
 
-    def matches?(user)
-      if bank?
-        profile = profiles.where(bank: true).first
-        profile
-      else
+give bucks to posts and comments - track who gives it to whom
+remove thumbs up
 
-      end
-    end
 
-    def matches
-      if bank?
-        profile = self.bank_profile
-        business_profiles = BizProfile.where("years_of_operation IN #{profile.years_of_operation}")
-        businesses = business_profiles.map { |p| p.user }
-        retun businesses
-      else
-        profile = self.biz_profile
-        bank_profiles = BankProfile.where("#{profile.years_of_operation} IN years_of_operation")
-        banks = bank_profiles.map { |p| p.user }
-        return banks
-      end
-    end
+trending tags - most posts with those tags
 
-    def matches
-      if bank?
+  ------
 
-      else
+  search by aurthor's name
 
-      end
-    end
-
-  filter users by matching criteria
   add profile avatar
     create Amazon bucket
     add variables to heroku config
     add variables to s3.yml 
     lock down newsfeed unless profile pic added
-  setup tracking impressions on users
-  add user tags to users#show
-  
-setup comments
-follow user
-make adding bucks
-add linkedin login
 
-Setup users messaging each other
-
-Setup email
-
-  make trending tags - tags on projects with most followers * most impressions
-  make trending projects - average of most followers * most impressions 
+  <%= link_to user_path(post.user) do %>
+    <%= image_tag "/assets/default_profile_pic.png", class:"img-polaroid pull-left", width:50 %>
+  <% end %>
 
   ------
 
-  add public_activity gem
-    log getting more karma
-    only log views of a post once per session
-
-  make follow/favorite MOCs ('commitments_controller') 
-    make sure last_touched is upated after followered
-    add filter of # Followers (sorted on # of committed)
-
-  setup comments on comments
-
-  search by aurthor's name
-  search by certifying institution
-
-  ------
-  make rating MOCs (if completed)
-  
   Tweet button working
-
+  
   ---------------------------------
 
-  add friendly_id for posts and user profiles
+  add friendly_id for user profiles
 
 ------------------------------------------------------------------
 
@@ -185,3 +145,58 @@ DONE setup activity
   DONE add matching profiles - banks, businesses
   DONE add kind to user - bank, business
   DONE add recommended_users you may like
+
+
+
+    Bank wants to choose many (checkboxes), Business wants to select 1, then I want to see who includes
+  which. 
+  What does the form data look like when it comes through now?
+    Associations? 
+      business_types
+      industries
+      cash_sizes
+      employee_sizes
+      years_of_operation
+    Columns
+      BankProfile - serialized text columns
+      BizProfile - string columns with .includes? checks
+
+    def matches?(user)
+      if bank?
+        profile = profiles.where(bank: true).first
+        profile
+      else
+
+      end
+    end
+
+    def matches
+      if bank?
+        profile = self.bank_profile
+        business_profiles = BizProfile.where("years_of_operation IN #{profile.years_of_operation}")
+        businesses = business_profiles.map { |p| p.user }
+        retun businesses
+      else
+        profile = self.biz_profile
+        bank_profiles = BankProfile.where("#{profile.years_of_operation} IN years_of_operation")
+        banks = bank_profiles.map { |p| p.user }
+        return banks
+      end
+    end
+
+    def matches
+      if bank?
+
+      else
+
+      end
+    end
+
+
+    filter users by matching criteria
+      DONE setup three tables, properties, user_properties, and property_kinds
+      DONE wire up profile form for businesses (select field creates associations)
+      DONE wire up profile form for banks (checkboxes create associations)
+      MEH add profile is % complete
+      DONE add bio to profile#edit
+      DONE display contents of profile in users#show

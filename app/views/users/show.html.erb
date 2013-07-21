@@ -1,23 +1,40 @@
 <div class="span3">
   <img src="/assets/default_profile_pic.png" />
 </div>
-<div class="span7">
+<div class="span6">
   <div>
-    <strong>Name</strong>
+    <strong>Name</strong>: <%= @user.name %>
   </div>
   <div>
     <strong>Bio</strong>
     <div class="muted">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam <a href="#">more</a>
+      <%= @user.bio %>
     </div>
+  </div>
+</div>
+<div class="span3">
+  <div>
+    <strong class='small'>Business Type:</strong>
+    <div class="muted small"><%= @user.business_types.map(&:description).join(", ") %></div>
   </div>
   <div>
-    <strong>Business</strong>
-    <div class="muted">
-      Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt lectus quis dui viverra vestibulum. Suspendisse vulputate aliquam <a href="#">more</a>
-    </div>
+    <strong class='small'>Revenue Size:</strong>
+    <div class="muted small"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
   </div>
-
+  <div>
+    <strong class='small'>Years of Operation</strong>
+    <div class="muted small"><%= @user.ages.map(&:description).join(", ") %></div>
+  </div>
+  <div>
+    <strong class='small'>Industry</strong>
+    <div class="muted small"><%= @user.industries.map(&:description).join(", ") %></div>
+  </div>
+  <div>
+    <strong class='small'>Employees</strong>
+    <div class="muted small"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
+  </div>
+  <%= link_to "#{@user.started_profile? ? 'Improve Your Profile' : 'Build Your Profile'}", edit_profile_path(@user), class:"btn btn-primary" %>
+  <div class='muted small'>for more and better matches</div>
 </div>
 </div>
 <div class="row">

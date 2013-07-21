@@ -6,7 +6,18 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :bank
+  attr_accessible :email, 
+                  :password, 
+                  :password_confirmation, 
+                  :remember_me, 
+                  :name, 
+                  :bank, 
+                  :employee_size_ids,
+                  :revenue_size_ids,
+                  :age_ids,
+                  :business_type_ids,
+                  :industry_ids,
+                  :bio
   # attr_accessible :title, :body
 
   has_many :posts
@@ -16,6 +27,12 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable
 
   has_many :profiles
+
+  has_and_belongs_to_many :employee_sizes
+  has_and_belongs_to_many :industries
+  has_and_belongs_to_many :business_types
+  has_and_belongs_to_many :revenue_sizes
+  has_and_belongs_to_many :ages
 
   acts_as_voter
   has_karma(:comments)
@@ -43,4 +60,17 @@ class User < ActiveRecord::Base
   def reneg!(commitment)
     commitments.find(commitment.id).destroy
   end
+
+  def started_profile?
+    if self.employee_sizes.any?
+      return true
+    end
+  end
+
+    #maybe needed to create virtual attributes to accept the form and create associations?
+      #   t.string :business_type
+      # t.text :industries
+      # t.string :years_old
+      # t.string :size_revenue
+      # t.string :size_employees
 end

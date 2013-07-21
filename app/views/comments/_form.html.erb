@@ -1,25 +1,5 @@
-<%= form_for(@comment = @post.comments.build) do |f| %>
-  <% if @comment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
-
-      <ul>
-      <% @comment.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
+<%= form_for post.comments.build do |f| %>
+    <%= f.hidden_field :id, value: post.id %>
     <%= f.text_area :content %>
-  </div>
-
-  <% if @post.present? %>
-    <%= f.hidden_field :post_id, value: "#{@post.id}" %>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "comment", class:"btn" %>
-  </div>
+    <%= f.submit "add", class:"btn" %>
 <% end %>

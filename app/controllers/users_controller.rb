@@ -7,7 +7,7 @@ class UsersController < ApplicationController
       end
     end
     @posts = @user.posts.paginate(:page => params[:page], :per_page => 20)
-    @activities = PublicActivity::Activity.order("created_at desc") #.where(owner_id: current_user.friend_ids, owner_type: "User")
+    @activities = PublicActivity::Activity.where(owner_id: current_user.id).order("created_at desc") #.where(owner_id: current_user.friend_ids, owner_type: "User")
     @recommended_users = User.first(3)
     @tags = Tag.first(20)
   end

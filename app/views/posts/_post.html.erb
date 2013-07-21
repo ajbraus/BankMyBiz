@@ -2,9 +2,6 @@
   <div class="pull-left clear-left dollar">
   $
   </div>
-  <%= link_to user_path(post.user) do %>
-    <%= image_tag "/assets/default_profile_pic.png", class:"img-polaroid pull-left", width:50 %>
-  <% end %>
   <div class="span4">
     <p>
       <%= post.short_content %>
@@ -15,3 +12,7 @@
     </p>
   </div>
 </section>
+<% unless params[:action] == "show" %>
+  <%= render partial: 'comments/form', locals: { post: @post } %>
+<% end %>
+<%= render partial: 'comments/comment', collection: post.comments, as: :comment %>

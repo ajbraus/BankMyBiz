@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130715184822) do
+ActiveRecord::Schema.define(:version => 20130721162020) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -29,6 +29,34 @@ ActiveRecord::Schema.define(:version => 20130715184822) do
   add_index "activities", ["owner_id", "owner_type"], :name => "index_activities_on_owner_id_and_owner_type"
   add_index "activities", ["recipient_id", "recipient_type"], :name => "index_activities_on_recipient_id_and_recipient_type"
   add_index "activities", ["trackable_id", "trackable_type"], :name => "index_activities_on_trackable_id_and_trackable_type"
+
+  create_table "ages", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "ages_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "age_id"
+  end
+
+  add_index "ages_users", ["age_id", "user_id"], :name => "index_ages_users_on_age_id_and_user_id"
+  add_index "ages_users", ["user_id", "age_id"], :name => "index_ages_users_on_user_id_and_age_id"
+
+  create_table "business_types", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "business_types_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "business_type_id"
+  end
+
+  add_index "business_types_users", ["business_type_id", "user_id"], :name => "index_business_types_users_on_business_type_id_and_user_id"
+  add_index "business_types_users", ["user_id", "business_type_id"], :name => "index_business_types_users_on_user_id_and_business_type_id"
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -50,6 +78,20 @@ ActiveRecord::Schema.define(:version => 20130715184822) do
   add_index "commitments", ["commitment_id"], :name => "index_commitments_on_commitment_id"
   add_index "commitments", ["committed_user_id", "commitment_id"], :name => "index_commitments_on_committed_user_id_and_commitment_id", :unique => true
   add_index "commitments", ["committed_user_id"], :name => "index_commitments_on_committed_user_id"
+
+  create_table "employee_sizes", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "employee_sizes_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "employee_size_id"
+  end
+
+  add_index "employee_sizes_users", ["employee_size_id", "user_id"], :name => "index_employee_sizes_users_on_employee_size_id_and_user_id"
+  add_index "employee_sizes_users", ["user_id", "employee_size_id"], :name => "index_employee_sizes_users_on_user_id_and_employee_size_id"
 
   create_table "impressions", :force => true do |t|
     t.string   "impressionable_type"
@@ -76,6 +118,20 @@ ActiveRecord::Schema.define(:version => 20130715184822) do
   add_index "impressions", ["impressionable_type", "message", "impressionable_id"], :name => "impressionable_type_message_index"
   add_index "impressions", ["user_id"], :name => "index_impressions_on_user_id"
 
+  create_table "industries", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "industries_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "industry_id"
+  end
+
+  add_index "industries_users", ["industry_id", "user_id"], :name => "index_industries_users_on_industry_id_and_user_id"
+  add_index "industries_users", ["user_id", "industry_id"], :name => "index_industries_users_on_user_id_and_industry_id"
+
   create_table "posts", :force => true do |t|
     t.string   "content"
     t.integer  "user_id"
@@ -92,28 +148,19 @@ ActiveRecord::Schema.define(:version => 20130715184822) do
   add_index "posts_tags", ["post_id", "tag_id"], :name => "index_posts_tags_on_post_id_and_tag_id"
   add_index "posts_tags", ["tag_id", "post_id"], :name => "index_posts_tags_on_tag_id_and_post_id"
 
-  create_table "profiles", :force => true do |t|
-    t.string   "name"
-    t.string   "owner"
-    t.string   "phone"
-    t.string   "email"
-    t.string   "city"
-    t.string   "state"
-    t.string   "bank_type"
-    t.string   "business_type"
-    t.text     "industries"
-    t.string   "years_old"
-    t.string   "size_cash"
-    t.string   "size_employees"
-    t.boolean  "existing_loans"
-    t.integer  "owners_count"
-    t.text     "bio"
-    t.integer  "user_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+  create_table "revenue_sizes", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
-  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+  create_table "revenue_sizes_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "revenue_size_id"
+  end
+
+  add_index "revenue_sizes_users", ["revenue_size_id", "user_id"], :name => "index_revenue_sizes_users_on_revenue_size_id_and_user_id"
+  add_index "revenue_sizes_users", ["user_id", "revenue_size_id"], :name => "index_revenue_sizes_users_on_user_id_and_revenue_size_id"
 
   create_table "tags", :force => true do |t|
     t.string   "name"

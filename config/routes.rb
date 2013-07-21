@@ -12,8 +12,6 @@ BankMyBiz::Application.routes.draw do
   match '/survey', to: 'welcome#survey', as: "survey"
   match '/submit_survey', to: 'welcome#submit_survey', as: "survey"
 
-  resources :profiles
-
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :tags, only: [:create, :destroy, :show]
   
@@ -26,6 +24,8 @@ BankMyBiz::Application.routes.draw do
 
   resources :users, :only => [:show]
   match 'users/:id' => 'users#show'
+  match 'users/:id/profile/edit' => 'profiles#edit', as: 'edit_profile'
+  match 'users/:id/profiles' => 'profiles#update', as: 'update_profile'
 
   resources :commitments, only: [:create, :destroy]
 

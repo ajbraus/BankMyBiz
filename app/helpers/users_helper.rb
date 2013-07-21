@@ -106,7 +106,7 @@ module UsersHelper
     ]
   end
 
-  def size_cash
+  def size_revenue
     [
       ['$0-$100k'],
       ['$100k-$1m'],

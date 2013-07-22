@@ -4,8 +4,7 @@ setup comments on posts
   show last 3 comments with (3 more) link to show others
   allow votes on comments
 
-search is not indexing filter attribute bank
-put search in header
+setup whenever to reindex every 12 hours
 
 tweet/fb_share/linkedin share post
 
@@ -18,21 +17,21 @@ create post#show page with comments (make public for robots)
 Setup users messaging each other
 Setup email
 
-fix search
-  with: bank not working
-
 setup users
   setup tracking impressions on users
   add user tags to users#show
   
 follow user
+
 add linkedin login
 
 give bucks to posts and comments - track who gives it to whom
 remove thumbs up
 
-
 trending tags - most posts with those tags
+
+
+setup auto backup for PG
 
   ------
 
@@ -200,3 +199,6 @@ DONE setup activity
       MEH add profile is % complete
       DONE add bio to profile#edit
       DONE display contents of profile in users#show
+
+
+      DONE setup autolink

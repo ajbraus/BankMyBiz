@@ -1,6 +1,13 @@
 BankMyBiz::Application.routes.draw do
 
-  resources :posts
+  resources :posts do 
+    resources :comments do
+      member do
+        get :vote_up
+        get :vote_down
+      end
+    end
+  end
 
   authenticated :user do
     root :to => 'posts#index'
@@ -14,13 +21,6 @@ BankMyBiz::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "registrations" }
   resources :tags, only: [:create, :destroy, :show]
-  
-  resources :comments do
-    member do
-      get :vote_up
-      get :vote_down
-    end
-  end
 
   resources :users, :only => [:show]
   match 'users/:id' => 'users#show'

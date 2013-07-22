@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :load_commentable
+
   def vote_up
     begin
       current_user.vote_exclusively_for(@comment = Comment.find(params[:id]))
@@ -58,8 +59,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @post = Post.find(params[:id])
-    @comment = @post.comments.build(content: params[:comment][:content])
+    @comment = @commentable.comments.new(params[:comment])
 
     respond_to do |format|
       if @comment.save
@@ -102,6 +102,11 @@ class CommentsController < ApplicationController
   end
 
   private
+
+  def load_commentable
+    resource, id = request.path.split('/')[1, 2]
+    @commentable = resource.singularize.classify.constantize.find(id)
+  end
 
   def find_commentable
     params.each do |name, value|

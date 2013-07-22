@@ -1,5 +1,8 @@
-<%= form_for post.comments.build do |f| %>
-    <%= f.hidden_field :id, value: post.id %>
-    <%= f.text_area :content %>
-    <%= f.submit "add", class:"btn" %>
+<%= form_for [post, post.comments.new] do |f| %>
+  <div class="input-append">
+    <%= f.text_field :content, class:'span4', id:"appendedInputButton" %>
+    <button name="commit" type="submit" value="Create Comment" class="btn">
+      <i class="icon-comment"></i>
+    </button>
+  </div>
 <% end %>

@@ -1,10 +1,34 @@
-setup comments on posts
-  attribute comment to post and user
-  hide comment until click to comment
-  show last 3 comments with (3 more) link to show others
-  allow votes on comments
+remove avatar
 
-setup whenever to reindex every 12 hours
+first name and industry
+
+add wins to landing page - business owners/bankers
+
+bankers vs lenders
+
+rss feeds to create newsfeeds
+
+bizbucks
+
+add improve profile to index
+
+how to link up to URL bankmybiz.com - with forwards
+
+setup users
+  setup tracking impressions on users
+  add user tags to users#show
+  track who you viewed/messaged
+  don't track if you go to the same user/post twice in the same three days
+
+format post#show page with comments (make public for robots)
+
+give bucks to posts and comments - track who gives it to whom
+remove thumbs up
+
+setup comments on posts
+  hide comment until click to comment
+  show last 3 comments with (3 more) link to show others  
+  format comments
 
 tweet/fb_share/linkedin share post
 
@@ -12,28 +36,19 @@ filter users by matching criteria
   lock down recommended users until matching elements of are complete, more if 100% complete
   wire up querying of suggested banks/businesses
 
-create post#show page with comments (make public for robots)
-
 Setup users messaging each other
 Setup email
-
-setup users
-  setup tracking impressions on users
-  add user tags to users#show
   
 follow user
 
-add linkedin login
-
-give bucks to posts and comments - track who gives it to whom
-remove thumbs up
-
 trending tags - most posts with those tags
 
-
-setup auto backup for PG
-
   ------
+  add linkedin login
+  add avatar 
+
+  setup whenever to reindex every 12 hours
+  setup auto backup for PG
 
   search by aurthor's name
 
@@ -202,3 +217,6 @@ DONE setup activity
 
 
       DONE setup autolink
+
+        DONE attribute comment to post and user
+  DONE allow votes on comments

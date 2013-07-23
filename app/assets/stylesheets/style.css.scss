@@ -384,6 +384,11 @@ body {
 
 .newsfeed-item {
   min-height: 80px;
+  margin-left:auto;
+  margin-right:auto;
+  width:95%;
+  border-bottom:1px solid lightgrey;
+  margin-bottom:10px;
 }
 
 h3.matches {
@@ -442,8 +447,22 @@ height: 90px;
 
   }
 }
+
+.comment {
+  padding:3px;
+  margin:5px 0;
+}
+
 .small {
   font-size:80%;
+}
+
+.smaller {
+  font-size:65%;
+}
+
+.smallest {
+  font-size:50%;
 }
 
 .field {
@@ -452,4 +471,22 @@ height: 90px;
 
 .profile-name {
   margin-top:8px;
+}
+
+.comment-show {
+  clear:left;
+  color:grey;
+  cursor:pointer;
+}
+
+.input-append {
+  margin:0;
+}
+
+.margin-left {
+  margin-left: 36px;
+}
+
+.post-textarea {
+  height:50px;
 }

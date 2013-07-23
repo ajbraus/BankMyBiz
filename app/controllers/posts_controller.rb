@@ -26,8 +26,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-    @mocs = Post.first(5)
-    @post.create_activity :show, owner: current_user
+    # @post.create_activity :show, owner: current_user
 
     respond_to do |format|
       format.html # show.html.erb

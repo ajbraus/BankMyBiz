@@ -1,22 +1,17 @@
-<li class="media">
-  <div class="pull-left">
+<li class="comment">
+  <div class="pull-left small">
     <% if user_signed_in? %>
       <%= link_to vote_up_post_comment_path(post.id, comment) do %>
-        <p><i class="icon-chevron-up <%= current_user.voted_for?(comment) ? 'voted' : 'not-voted' %>"></i></p>
+        <i class="icon-chevron-up <%= current_user.voted_for?(comment) ? 'voted' : 'not-voted' %>"></i>
       <% end %>
-      <div class="vote-count">
-        <%= comment.plusminus %>
-      </div>
-      <%= link_to vote_down_post_comment_path(post.id, comment) do %>
-        <p><i class="icon-chevron-down <%= current_user.voted_against?(comment) ? 'voted' : 'not-voted' %>"></i></p>
-      <% end %>
+      <%= comment.plusminus %>
     <% end %>
   </div>        
-  <a class="pull-left" href="#">
-    <%= image_tag 'default_profile_pic.png', class:"media-object comment-pic" %>
-  </a>
-  <div class="media-body">
-    <div class="media-heading"><%= link_to comment.commentable.user do %><%= comment.commentable.user.name %> <% end %></div>
-    <div><%= comment.content %></div>
-  </div>
+  <% if false %>
+    <%= image_tag 'default_profile_pic.png', class:"comment-pic" %>
+  <% end %>
+  <div class="small margin-left"><%= comment.content %></div>
+  <% if false %>
+  <div class="muted smallest text-right"><%= time_ago_in_words(comment.created_at) %> ago by <%= link_to "#{comment.commentable.user.name}", user_path(post.user) %></div>
+  <% end %>
 </li>

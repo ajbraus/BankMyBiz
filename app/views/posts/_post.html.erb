@@ -1,19 +1,14 @@
-<section class="newsfeed-item">
-  <div class="pull-left clear-left dollar">
+<section class="newsfeed-item clearfix">
+<!--   <div class="pull-left clear-left dollar">
   $
-  </div>
-  <div class="span5">
-    <p>
-      <%= auto_link(post.short_content) %>
-    </p>
+  </div> -->
+  <div>
+    <div><%= auto_link(post.short_content) %></div>
     <div class="pull-right"><%= render partial: "shared/tags", locals: { tags: post.tags }  %></div>
-    <p class="pull-right muted small">
+    <p class="text-right muted smaller">
       <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.name}", user_path(post.user) %>
     </p>
   </div>
-
-<% unless params[:action] == "show" %>
-  <%= render partial: 'comments/form', locals: { post: post } %>
-<% end %>
 <%= render partial: 'comments/comment', collection: post.comments.where('content is not null'), as: :comment, locals: { post: post } %>
+<%= render partial: 'comments/form', locals: { post: post } %>
 </section>

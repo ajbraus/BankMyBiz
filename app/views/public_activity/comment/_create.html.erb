@@ -1,7 +1,6 @@
-added comment to MOC:
+added comment to newsfeed post
 <% if activity.trackable %>
-  <%= link_to activity.trackable.commentable.short_title, activity.trackable.commentable %>
-  <p><%= activity.trackable.content %></p>
+  <p><%= link_to activity.trackable.commentable.content, activity.trackable.commentable %></p>
 <% else %>
   which has since been removed 
 <% end %>

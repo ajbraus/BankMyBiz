@@ -1,9 +1,7 @@
 <div class="span3">
-  <img src="/assets/default_profile_pic.png" />
-</div>
-<div class="span6">
-  <div>
-    <strong>Name</strong>: <%= @user.name %>
+  <img src="/assets/default_profile_pic.png" class="span2 clear-both" />
+  <div class="clear-both">
+    <strong>Name</strong> <%= @user.name %>
   </div>
   <div>
     <strong>Bio</strong>
@@ -11,8 +9,6 @@
       <%= @user.bio %>
     </div>
   </div>
-</div>
-<div class="span3">
   <div>
     <strong class='small'>Business Type:</strong>
     <div class="muted small"><%= @user.business_types.map(&:description).join(", ") %></div>
@@ -33,12 +29,17 @@
     <strong class='small'>Employees</strong>
     <div class="muted small"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
   </div>
-  <%= link_to "#{@user.started_profile? ? 'Improve Your Profile' : 'Build Your Profile'}", edit_profile_path(@user), class:"btn btn-primary" %>
-  <div class='muted small'>for more and better matches</div>
+  <% if @user == current_user %>
+    <%= link_to "#{@user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(@user) %>
+  <% else %>
+    <div class='text-right'>
+      <strong>Message</strong>
+      <textarea class="span3"></textarea>
+      <a href="#" class="btn-primary btn">Send</a>
+    </div>
+  <% end %>
 </div>
-</div>
-<div class="row">
-<div class="span3">
+<div class="span6">
   <h4>Activity</h4>
   <% @activities.each do |activity| %>
     <div class="activity">
@@ -46,14 +47,13 @@
     <%= render_activity activity %>
     </div>
   <% end %>
-</div>
-
-<div class="span6">
-<h4>Posts</h4>
+  <hr>  
+  <h4>Posts</h4>
   <%= render partial: "posts/post", collection: @posts, as: :post %>
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
-<div class="span3">
+
+<div class='span3'>
   <div class="well dark">
     <p class="muted">Trending Tags</p>
     <%= render partial: "shared/tags", locals: { tags: @tags }  %>
@@ -64,5 +64,9 @@
     <div class="muted">3 More tomorrow</div>
     <br />
     <%= render partial: "users/user", collection: @recommended_users, as: :user %>
-  </div>      
+    <% if @user == current_user %>
+      <%= link_to "#{@user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(@user) %>
+      <div class='muted small'>for more and better matches</div>
+    <% end %>
+  </div>  
 </div>

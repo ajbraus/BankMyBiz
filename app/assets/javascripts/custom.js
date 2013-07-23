@@ -9,6 +9,9 @@ String.prototype.supplant = function (o) {
 
 $(document).ready(function() {
   $('.alert').delay(2000).fadeOut();
+  $('.comment-show').click(function() {
+    $(this).next('.comment-form').toggle();
+  });
   // var a = [$('#trendingTags').data("tags")];
   // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
   // a.forEach(function(entry) {

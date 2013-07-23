@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     if user_signed_in?
       if @user == current_user
         @post = Post.new
+      else
+        @user.create_activity :create, owner: current_user
       end
     end
     @posts = @user.posts.paginate(:page => params[:page], :per_page => 20)

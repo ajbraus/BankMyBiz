@@ -21,11 +21,10 @@
   </div>
 </div>
 <div class="span6">
-  <strong>Newsfeed</strong>
   <div class="clearfix">
     <%= form_for @post do |f| %>
-      <%= f.text_area :content, placeholder:"Share your status and your expertise . . ." %>
-      <%= f.text_field :tag_list, placeholder:"Tags (separated by comma)" %>
+      <%= f.text_area :content, class:"span6 post-textarea", placeholder:"Share your status and your expertise . . ." %>
+      <%= f.text_field :tag_list, class:"span5", placeholder:"Tags (separated by comma)" %>
       <%= f.submit "Post", class:"btn pull-right" %>
     <% end %>
     <%= render partial: "posts/post", collection: @posts, as: :post %>
@@ -41,8 +40,10 @@
   <div class="well">
     <h5 class="matches"><%= current_user.bank? ? "Businesses" : "Banks" %> you May Like</h5>
     <%= render partial: "users/user", collection: @recommended_users, as: :user %>
-    <%= link_to "#{current_user.started_profile? ? 'Improve Your Profile' : 'Build Your Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
-    <div class='muted small'>for more and better matches</div>
+    <% if @user == current_user %>
+      <%= link_to "#{@user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(@user) %>
+      <div class='muted small'>for more and better matches</div>
+    <% end %>
   </div>
   <div class="well hidden-phone">
     <h5>Your BMB Profile</h5>

@@ -5,7 +5,7 @@
     <% if current_user.bank? %>
         Post engaging or helpful content to the newsfeed to interact with more potential customers and improve your reputation.
     <% else %>
-        Peruse the newsfeed for content that interests you from our network of helpful bankers. You may also create and share content to improve your reputation.
+        Peruse the newsfeed for content that interests you from our network of helpful lenders. You may also create and share content to improve your reputation.
     <% end %>
     </p>          
   </div>
@@ -38,17 +38,15 @@
     <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
   </div>
   <div class="well">
-    <h5 class="matches"><%= current_user.bank? ? "Businesses" : "Banks" %> you May Like</h5>
+    <h5 class="matches"><%= current_user.bank? ? "Owners" : "Lenders" %> you May Like</h5>
     <%= render partial: "users/user", collection: @recommended_users, as: :user %>
-    <% if @user == current_user %>
-      <%= link_to "#{@user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(@user) %>
-      <div class='muted small'>for more and better matches</div>
-    <% end %>
+    <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary small" %>
+    <div class='muted small'>for more and better matches</div>
   </div>
   <div class="well hidden-phone">
     <h5>Your BMB Profile</h5>
     <p>
-      The BankMyBiz newtork uses matching algorithms to match you with <%= current_user.bank? ? "businesses" : "banks" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
+      The BankMyBiz newtork uses matching algorithms to match you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
     </p>
   </div>
 </div>

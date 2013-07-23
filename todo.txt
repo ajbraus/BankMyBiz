@@ -1,10 +1,6 @@
-remove avatar
-
-first name and industry
-
 add wins to landing page - business owners/bankers
 
-bankers vs lenders
+
 
 rss feeds to create newsfeeds
 
@@ -220,3 +216,7 @@ DONE setup activity
 
         DONE attribute comment to post and user
   DONE allow votes on comments
+
+DONE bankers vs lenders
+
+DONE first name and industry

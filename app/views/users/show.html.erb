@@ -1,5 +1,5 @@
 <div class="span3">
-  <img src="/assets/default_profile_pic.png" class="span2 clear-both" />
+<!--   <img src="/assets/default_profile_pic.png" class="span2 clear-both" /> -->
   <div class="clear-both">
     <strong>Name</strong> <%= @user.name %>
   </div>
@@ -30,7 +30,7 @@
     <div class="muted small"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
   </div>
   <% if @user == current_user %>
-    <%= link_to "#{@user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(@user) %>
+    <%= link_to "edit profile", edit_profile_path(@user) %>
   <% else %>
     <div class='text-right'>
       <strong>Message</strong>
@@ -60,12 +60,12 @@
   </div>
 
   <div class="well">
-    <h5 class="matches">Businesses You May Like</h5>
+    <h5 class="matches"><%= current_user.bank? ? "Owners" : "Lenders" %> you May Like</h5>
     <div class="muted">3 More tomorrow</div>
     <br />
     <%= render partial: "users/user", collection: @recommended_users, as: :user %>
     <% if @user == current_user %>
-      <%= link_to "#{@user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(@user) %>
+      <%= link_to "#{@user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(@user), class:"btn btn-primary small" %>
       <div class='muted small'>for more and better matches</div>
     <% end %>
   </div>  

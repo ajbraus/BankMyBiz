@@ -62,9 +62,14 @@ class User < ActiveRecord::Base
   end
 
   def started_profile?
-    if self.employee_sizes.any?
+    if employee_sizes.any? || business_types.any? || industries.any? || revenue_sizes.any? || ages.any?
       return true
     end
+  end
+
+  def first_name
+    @name_array = self.name.split(' ')
+    @name_array[0].capitalize
   end
 
     #maybe needed to create virtual attributes to accept the form and create associations?

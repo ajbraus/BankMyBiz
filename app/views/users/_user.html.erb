@@ -1,8 +1,6 @@
-<%= link_to user_path(user) do %>
 <section class="match">
-    <strong><%= user.name %></strong>
-    <p class="muted">
-      Special Contractor
-    </p>
-</section>
+<%= link_to user_path(user) do %>
+  <strong><%= user.first_name %></strong>
 <% end %>
+, <%= user.industries.map(&:description).join(", ") %>
+</section>

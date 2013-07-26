@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include PublicActivity::Common
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -19,6 +20,8 @@ class User < ActiveRecord::Base
                   :industry_ids,
                   :bio
   # attr_accessible :title, :body
+
+  is_impressionable
 
   has_many :posts
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  impressionist
   def show
     is_bank = !current_user.bank?
     @user = User.find(params[:id])
@@ -6,7 +7,7 @@ class UsersController < ApplicationController
       if @user == current_user
         @post = Post.new
       else
-        @user.create_activity :create, owner: current_user
+        @user.create_activity :show, owner: current_user
       end
     end
     @posts = @user.posts.paginate(:page => params[:page], :per_page => 20)

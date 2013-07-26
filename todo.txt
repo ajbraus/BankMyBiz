@@ -1,13 +1,3 @@
-add wins to landing page - business owners/bankers
-
-
-
-rss feeds to create newsfeeds
-
-bizbucks
-
-add improve profile to index
-
 how to link up to URL bankmybiz.com - with forwards
 
 setup users
@@ -22,10 +12,8 @@ give bucks to posts and comments - track who gives it to whom
 remove thumbs up
 
 setup comments on posts
-  hide comment until click to comment
   show last 3 comments with (3 more) link to show others  
-  format comments
-
+  
 tweet/fb_share/linkedin share post
 
 filter users by matching criteria
@@ -34,17 +22,17 @@ filter users by matching criteria
 
 Setup users messaging each other
 Setup email
-  
-follow user
 
 trending tags - most posts with those tags
 
+  setup whenever to reindex every 12 hours
+  setup auto backup for PG
+  
   ------
   add linkedin login
   add avatar 
 
-  setup whenever to reindex every 12 hours
-  setup auto backup for PG
+  follow user
 
   search by aurthor's name
 
@@ -220,3 +208,7 @@ DONE setup activity
 DONE bankers vs lenders
 
 DONE first name and industry
+
+DONE add wins to landing page - business owners/bankers
+  DONE hide comment until click to comment
+  DONE format comments

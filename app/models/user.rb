@@ -45,9 +45,6 @@ class User < ActiveRecord::Base
                                     dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
-  acts_as_voter
-  has_karma(:comments)
-
   validates :name, presence: true
 
   # has_attached_file :avatar, :styles => { :original => "150x150#",

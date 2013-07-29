@@ -1,11 +1,5 @@
 <li class="comment">
   <div class="pull-left small">
-    <% if user_signed_in? %>
-      <%= link_to vote_up_post_comment_path(post.id, comment) do %>
-        <i class="icon-chevron-up <%= current_user.voted_for?(comment) ? 'voted' : 'not-voted' %>"></i>
-      <% end %>
-      <%= comment.plusminus %>
-    <% end %>
   </div>        
   <% if false %>
     <%= image_tag 'default_profile_pic.png', class:"comment-pic" %>

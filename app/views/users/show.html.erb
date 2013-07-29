@@ -1,5 +1,6 @@
 <div class="span3">
 <!--   <img src="/assets/default_profile_pic.png" class="span2 clear-both" /> -->
+  <%= render 'follow_form' if signed_in? %>
   <div class="clear-both">
     <strong>Name</strong> <%= @user.name %>
   </div>
@@ -11,23 +12,23 @@
   </div>
   <div>
     <strong class='small'>Business Type:</strong>
-    <div class="muted small"><%= @user.business_types.map(&:description).join(", ") %></div>
+    <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
   </div>
   <div>
     <strong class='small'>Revenue Size:</strong>
-    <div class="muted small"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
+    <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
   </div>
   <div>
     <strong class='small'>Years of Operation</strong>
-    <div class="muted small"><%= @user.ages.map(&:description).join(", ") %></div>
+    <div class="muted"><%= @user.ages.map(&:description).join(", ") %></div>
   </div>
   <div>
     <strong class='small'>Industry</strong>
-    <div class="muted small"><%= @user.industries.map(&:description).join(", ") %></div>
+    <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
   </div>
   <div>
     <strong class='small'>Employees</strong>
-    <div class="muted small"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
+    <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
   </div>
   <% if @user == current_user %>
     <%= link_to "edit profile", edit_profile_path(@user) %>
@@ -38,6 +39,7 @@
       <a href="#" class="btn-primary btn">Send</a>
     </div>
   <% end %>
+  <%= render 'shared/profile_views' %>
 </div>
 <div class="span6">
   <h4>Activity</h4>
@@ -54,19 +56,7 @@
 </div>
 
 <div class='span3'>
-  <div class="well dark">
-    <p class="muted">Trending Tags</p>
-    <%= render partial: "shared/tags", locals: { tags: @tags }  %>
-  </div>
-
-  <div class="well">
-    <h5 class="matches"><%= current_user.bank? ? "Owners" : "Lenders" %> you May Like</h5>
-    <div class="muted">3 More tomorrow</div>
-    <br />
-    <%= render partial: "users/user", collection: @recommended_users, as: :user %>
-    <% if @user == current_user %>
-      <%= link_to "#{@user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(@user), class:"btn btn-primary small" %>
-      <div class='muted small'>for more and better matches</div>
-    <% end %>
-  </div>  
+  <%= render 'shared/trending_tags' %>
+  <%= render 'shared/improve_profile' %>
+  <%= render 'shared/bmb_profile' %>
 </div>

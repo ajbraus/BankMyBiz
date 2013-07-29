@@ -28,6 +28,13 @@ namespace :db do
     Post.all.each do |post|
       5.times { post.tags << Tag.create(:name => Populator.words(1)) } 
     end
+    
+    users = User.all
+    user  = users.first
+    followed_users = users[2..50]
+    followers      = users[3..40]
+    followed_users.each { |followed| user.follow!(followed) }
+    followers.each      { |follower| follower.follow!(user) }
 
     #rake ts:index
     

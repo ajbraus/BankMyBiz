@@ -1,12 +1,35 @@
+improve how and about page
+
+add edit/delete to posts in newsfeed
+
+public_actionify following people
+display who you follow
+
+format post#show page with comments (make public for robots)
+
+better "improve profile section" include matched businesses
+
+search in production
+
+make tags prettier
+make buttons flat
+
+Setup users messaging each other - copy James
+Setup email
+
+filter users by matching criteria
+  give more matches if 100% complete
+  wire up querying of suggested banks/businesses
+
 how to link up to URL bankmybiz.com - with forwards
+
+
 
 setup users
   setup tracking impressions on users
   add user tags to users#show
   track who you viewed/messaged
   don't track if you go to the same user/post twice in the same three days
-
-format post#show page with comments (make public for robots)
 
 give bucks to posts and comments - track who gives it to whom
 remove thumbs up
@@ -16,23 +39,20 @@ setup comments on posts
   
 tweet/fb_share/linkedin share post
 
-filter users by matching criteria
-  lock down recommended users until matching elements of are complete, more if 100% complete
-  wire up querying of suggested banks/businesses
-
-Setup users messaging each other
-Setup email
-
 trending tags - most posts with those tags
 
-  setup whenever to reindex every 12 hours
-  setup auto backup for PG
-  
+setup whenever to reindex every 12 hours
+Moved my rake code to the appropriate models
+Added controller/routing code for calling models methods from the browser
+Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
+
+send welcome comment in
+
+script/delayed_job start in production
+
   ------
   add linkedin login
   add avatar 
-
-  follow user
 
   search by aurthor's name
 
@@ -47,6 +67,8 @@ trending tags - most posts with those tags
   <% end %>
 
   ------
+
+  Make "Updates" that the project leader can write and emails everyone following of committed.
 
   Tweet button working
   
@@ -212,3 +234,8 @@ DONE first name and industry
 DONE add wins to landing page - business owners/bankers
   DONE hide comment until click to comment
   DONE format comments
+
+
+DONE  setup auto backup for PG
+DONE follow user
+DONE lock down recommended users until matching elements of are complete, 

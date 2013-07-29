@@ -4,7 +4,9 @@
   </div> -->
   <div>
     <div><%= auto_link(post.short_content) %></div>
-    <div class="pull-right"><%= render partial: "shared/tags", locals: { tags: post.tags }  %></div>
+    <div class="pull-right">
+      <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"label" }.join(' ') %>
+    </div>
     <p class="text-right muted smaller">
       <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.name}", user_path(post.user) %>
     </p>

@@ -1,6 +1,6 @@
-viewed user profile
+viewed 
 <% if activity.trackable %>
-  <%= link_to activity.trackable.content, activity.trackable %> (by <%= link_to activity.trackable.user.name, activity.trackable.user %>)
+  <%= link_to activity.trackable.first_name, activity.trackable %>'s profile
 <% else %>
-  which has since been removed 
+  a profile which has since been removed 
 <% end %>

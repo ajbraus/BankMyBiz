@@ -3,22 +3,13 @@
     <h5>The Newsfeed</h5>
     <p>
     <% if current_user.bank? %>
-        Post engaging or helpful content to the newsfeed to interact with more potential customers and improve your reputation.
+        Post engaging or helpful content to the newsfeed to interact with more potential clients and improve your reputation.
     <% else %>
-        Peruse the newsfeed for content that interests you from our network of helpful lenders. You may also create and share content to improve your reputation.
+        Find and post information in our network of helpful owners and lenders.
     <% end %>
     </p>          
   </div>
-  <div class="well">
-    <h3>24 Bucks</h3>
-    <div>were added to your posts</div>
-    <h3><%= current_user.impressions_count %> Users</h3>
-    <div>viewed your profile</div>
-    </br>
-    <div class="text-center"> 
-      <a href="#" class="btn btn-success">Upgrade to Learn Who</a> 
-    </div>
-  </div>
+  <%= render 'shared/profile_views' %>
 </div>
 <div class="span6">
   <div class="clearfix">
@@ -33,20 +24,7 @@
 </div>
 
 <div class="span3">
-  <div class="well dark">
-    <p class="muted">Trending Tags</p>
-    <%= render partial: "shared/tags", locals: { tags: @trending_tags }  %>
-  </div>
-  <div class="well">
-    <h5 class="matches"><%= current_user.bank? ? "Owners" : "Lenders" %> you May Like</h5>
-    <%= render partial: "users/user", collection: @recommended_users, as: :user %>
-    <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary small" %>
-    <div class='muted small'>for more and better matches</div>
-  </div>
-  <div class="well hidden-phone">
-    <h5>Your BMB Profile</h5>
-    <p>
-      The BankMyBiz newtork uses matching algorithms to match you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
-    </p>
-  </div>
+  <%= render 'shared/trending_tags' %>
+  <%= render 'shared/improve_profile' %>
+  <%= render 'shared/bmb_profile' %>
 </div>

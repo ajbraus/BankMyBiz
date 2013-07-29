@@ -37,6 +37,14 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :revenue_sizes
   has_and_belongs_to_many :ages
 
+  has_many :relationships, foreign_key: "follower_id", dependent: :destroy
+  has_many :followed_users, through: :relationships, source: :followed
+
+  has_many :reverse_relationships, foreign_key: "followed_id",
+                                    class_name:  "Relationship",
+                                    dependent:   :destroy
+  has_many :followers, through: :reverse_relationships, source: :follower
+
   acts_as_voter
   has_karma(:comments)
 
@@ -49,7 +57,12 @@ class User < ActiveRecord::Base
   #                            :s3_credentials => S3_CREDENTIALS,
   #                            :path => "user/:attachment/:style/:id.:extension",
   #                            :default_url => "https://s3.amazonaws.com/bmb-production/user/avatars/original/default_profile_pic.png"
+  
+  # after_create :send_welcome
 
+  def send_welcome
+    Notifier.welcome(self).deliver
+  end
 
   def committed_to?(post)
     return commitments.find_by_commitment_id(post.id).present?
@@ -75,6 +88,17 @@ class User < ActiveRecord::Base
     @name_array[0].capitalize
   end
 
+  def following?(other_user)
+    relationships.find_by_followed_id(other_user.id)
+  end
+
+  def follow!(other_user)
+    relationships.create!(followed_id: other_user.id)
+  end
+
+  def unfollow!(other_user)
+    relationships.find_by_followed_id(other_user.id).destroy
+  end
     #maybe needed to create virtual attributes to accept the form and create associations?
       #   t.string :business_type
       # t.text :industries

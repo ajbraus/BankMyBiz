@@ -8,7 +8,6 @@ gem 'thin'
 
 gem 'devise'
 gem 'lazy_high_charts'
-gem 'thumbs_up'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'public_activity'
@@ -22,6 +21,9 @@ gem "rails_autolink", "~> 1.0.9"
 gem "paperclip", "~> 3.0"
 gem 'aws-sdk', '~> 1.3.4'
 gem 'coffeebeans'
+
+gem 'daemons'
+gem 'delayed_job_active_record'
 
 gem 'whenever', require: false
 

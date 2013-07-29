@@ -1,13 +1,10 @@
 BankMyBiz::Application.routes.draw do
 
   resources :posts do 
-    resources :comments do
-      member do
-        get :vote_up
-        get :vote_down
-      end
-    end
+    resources :comments
   end
+
+  resources :relationships, only: [:create, :destroy]
 
   authenticated :user do
     root :to => 'posts#index'

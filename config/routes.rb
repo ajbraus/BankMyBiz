@@ -1,5 +1,6 @@
 BankMyBiz::Application.routes.draw do
 
+  resources :messages
   resources :posts do 
     resources :comments
   end

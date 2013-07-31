@@ -2,5 +2,5 @@
 <%= link_to user_path(user) do %>
   <strong><%= user.first_name %></strong>
 <% end %>
-, <%= user.industries.map(&:description).join(", ") %>
+ <%= user.industries.map(&:description).join(", ") %>
 </section>

@@ -10,9 +10,9 @@ class UsersController < ApplicationController
         @user.create_activity :show, owner: current_user
       end
     end
-    @posts = @user.posts.paginate(:page => params[:page], :per_page => 20)
+    @posts = @user.posts.paginate(:page => params[:page], :per_page => 7)
     @activities = PublicActivity::Activity.where(owner_id: current_user.id).order("created_at desc") #.where(owner_id: current_user.friend_ids, owner_type: "User")
     @recommended_users = User.where(bank: is_bank).first(3)
-    @trending_tags = Tag.first(20)
+    @trending_tags = Tag.first(10)
   end
 end

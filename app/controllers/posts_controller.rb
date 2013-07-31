@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     end
     
     @post = Post.new
-    @trending_tags = Tag.first(30)
+    @trending_tags = Tag.order('created_at desc').first(10)
     @recommended_users = User.where(bank: is_bank).first(3)
 
     respond_to do |format|

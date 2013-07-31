@@ -1,20 +1,13 @@
 <div class="span3">       
-  <div class="well hidden-phone">
-    <h5>The Newsfeed</h5>
-    <p>
-    <% if current_user.bank? %>
-        Post engaging or helpful content to the newsfeed to interact with more potential clients and improve your reputation.
-    <% else %>
-        Find and post information in our network of helpful owners and lenders.
-    <% end %>
-    </p>          
-  </div>
-  <%= render 'shared/profile_views' %>
+  <%= render 'shared/improve_profile' %>
+  <%= render 'shared/bmb_profile' %>
 </div>
 <div class="span6">
   <div class="clearfix">
+    <strong class="big">The Newsfeed</strong>
+    </br>
     <%= form_for @post do |f| %>
-      <%= f.text_area :content, class:"span6 post-textarea", placeholder:"Share your status and your expertise . . ." %>
+      <%= f.text_area :content, class:"span6 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
       <%= f.text_field :tag_list, class:"span5", placeholder:"Tags (separated by comma)" %>
       <%= f.submit "Post", class:"btn pull-right" %>
     <% end %>
@@ -25,6 +18,5 @@
 
 <div class="span3">
   <%= render 'shared/trending_tags' %>
-  <%= render 'shared/improve_profile' %>
-  <%= render 'shared/bmb_profile' %>
+  <%= render 'shared/profile_views' %>
 </div>

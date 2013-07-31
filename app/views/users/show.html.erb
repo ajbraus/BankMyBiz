@@ -1,3 +1,26 @@
+  <div id="contact-modal" class="modal hide fade in" style="display: none; ">  
+    <%= form_for @user.messages.new, remote:true do |f| %>
+      <div class="modal-header">  
+        <a class="close" data-dismiss="modal">×</a>  
+        <h3>Contact <%= @user.name %></h3>  
+      </div>  
+      <div class="modal-body">  
+        <div class=" message-subject">
+          <%= f.text_field :subject , :placeholder => "Subject",  :class => "span5 message-subject-input"%>
+        </div>
+        <div class=" message-body ">
+          <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span5 message-subject-input"%>
+        </div>               
+        <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
+        <%= f.hidden_field :receiver_id, value: "#{@user.id}" %>
+      </div>  
+      <div class="modal-footer">  
+        <%= f.submit "Send Message", :class => "btn btn-primary" %>
+        <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
+      </div>  
+    </div>
+  <% end %>
+
 <div class="span3">
 <!--   <img src="/assets/default_profile_pic.png" class="span2 clear-both" /> -->
   <%= render 'follow_form' if signed_in? %>
@@ -33,10 +56,8 @@
   <% if @user == current_user %>
     <%= link_to "edit profile", edit_profile_path(@user) %>
   <% else %>
-    <div class='text-right'>
-      <strong>Message</strong>
-      <textarea class="span3"></textarea>
-      <a href="#" class="btn-primary btn">Send</a>
+    <div class="text-center well">
+      <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Message <%= @user.first_name %></a>
     </div>
   <% end %>
   <%= render 'shared/profile_views' %>

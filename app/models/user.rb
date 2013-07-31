@@ -45,6 +45,11 @@ class User < ActiveRecord::Base
                                     dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
+  has_many :messages, class_name: "Message", foreign_key: "receiver_id"
+  has_many :read_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: true }
+  has_many :unread_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: false }
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+
   validates :name, presence: true
 
   # has_attached_file :avatar, :styles => { :original => "150x150#",
@@ -59,6 +64,30 @@ class User < ActiveRecord::Base
 
   def send_welcome
     Notifier.welcome(self).deliver
+  end
+
+  def nice_name
+    @name_array = self.name.split(' ')
+    @name_array.each { |n| n.capitalize }
+  end
+
+  def first_name
+    @name_array = self.name.split(' ')
+    @name_array[0].capitalize
+  end
+
+  def first_name_with_last_initial
+    @name_array = self.name.split(' ')
+    @name_array[0].capitalize + " " + @name_array.last.capitalize.slice(0) + "."
+  end
+
+  def last_name
+    @name_array = self.name.split(' ')
+    @name_array.last
+  end
+
+  def middle_name
+    self.name.split.count > 3 ? self.name.split(' ')[1] : nil
   end
 
   def committed_to?(post)
@@ -76,6 +105,12 @@ class User < ActiveRecord::Base
 
   def started_profile?
     if employee_sizes.any? || business_types.any? || industries.any? || revenue_sizes.any? || ages.any?
+      return true
+    end
+  end
+
+  def finished_profile?
+    if employee_sizes.any? && business_types.any? && industries.any? && revenue_sizes.any? && ages.any?
       return true
     end
   end

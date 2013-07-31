@@ -22,6 +22,9 @@ gem "paperclip", "~> 3.0"
 gem 'aws-sdk', '~> 1.3.4'
 gem 'coffeebeans'
 
+gem 'airbrake'
+gem 'newrelic_rpm'
+
 gem 'daemons'
 gem 'delayed_job_active_record'
 

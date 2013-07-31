@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tab1" data-toggle="tab">Inbox(<%= current_user.unread_messages.count %>)</a></li>
+      <li><a href="#tab2" data-toggle="tab">Sent</a></li>
+    </ul>
+    <div class="tab-content">
+      <div class="tab-pane active" id="tab1">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th width="3%"></th>
+              <th width="60%">Subject</th>
+              <th width="15%">From</th>
+              <th width="20%">Recieved</th>
+            </tr>
+          </thead>
+          <tbody class="table-bordered">
+            <% @messages.each do |m| %>
+              <tr data-link="<%= message_path(m) %>" class="<%= m.is_read? ? '' : 'unread' %>">
+                <td></td>
+                <td><%= m.subject %></td>
+                <td><%= m.sender.name %></td>
+                <td><%= m.nice_created_at %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @messages, renderer: BootstrapPagination::Rails %>
+      </div>
+      <div class="tab-pane" id="tab2">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th width="3%"></th>
+              <th width="60%">Subject</th>
+              <th width="15%">To</th>
+              <th width="20%">Sent</th>
+            </tr>
+          </thead>
+          <tbody class="table-bordered">
+            <% @sent_messages.each do |m| %>
+              <tr>
+                <%= link_to message_path(m) do %>
+                <td></td>
+                <td><%= m.subject %></td>
+                <td><%= m.receiver.name %></td>
+                <td><%= m.nice_created_at %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+        <%= will_paginate @sent_messages, renderer: BootstrapPagination::Rails %>
+      </div>
+    </div>
+  </div>
+</div>

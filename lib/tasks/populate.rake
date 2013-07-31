@@ -4,24 +4,33 @@ namespace :db do
     require 'populator'
     require 'faker'
     
-    [User, Post, Comment, Tag].each(&:delete_all)
+    [User, Post, Comment, Tag, Message].each(&:delete_all)
     
     User.populate 20 do |user|
       user.name    = Faker::Name.name
       user.email   = Faker::Internet.email
       user.encrypted_password = "password"
+      user.bio = ""
     end
-    User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password")
+    User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", bank: false)
+    User.create(name:"Test Bank", email:"test@bank.com", password:"password", bank: true)
+
     User.all.each do |user|
       Post.populate 10..30 do |post|
-        post.content = Populator.words(7..18).titleize
+        post.content = Populator.words(7..18).capitalize
         post.user_id = user.id
         post.created_at = 4.months.ago..Time.now
-        post.last_touched = 4.months.ago..Time.now
-        Comment.populate 3..30 do |comment|
+        Comment.populate 0..5 do |comment|
           comment.commentable_type = "Post"
           comment.commentable_id = post.id
           comment.content = Populator.words(3..14)
+        end
+        Message.populate 1..6 do |message|
+          message.subject = Populator.words(7..18).titleize
+          message.body = Populator.words(50..120)
+          message.sender_id = user.id
+          message.receiver_id = user.id   #TODO - stop messaging yourself
+          message.is_read = [true,false]
         end
       end
     end

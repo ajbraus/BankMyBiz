@@ -1,3 +1,7 @@
+if profile is complete then say "profile complete!"
+
+add bucks polymorphic for comments & posts
+
 improve how and about page
 
 add edit/delete to posts in newsfeed

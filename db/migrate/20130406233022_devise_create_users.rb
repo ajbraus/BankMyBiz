@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :name,               :null => false, :default => ""
       t.text :bio,               :null => false, :default => ""
-      t.boolean :bank
+      t.boolean :bank, default: false
       
       ## Recoverable
       t.string   :reset_password_token

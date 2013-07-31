@@ -1,11 +1,13 @@
 <div class="well text-center">
-  <% if current_user.started_profile? %>
-    <h5 class="matches"><%= current_user.bank? ? "Owners" : "Lenders" %> you May Like</h5>
-    <%= render partial: "users/user", collection: @recommended_users, as: :user %>
-    <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
-    <div class='muted'>for better matches</div>
-  <% else %>
+  <% if !current_user.started_profile? %>
     <h5 class="matches">Unlock <%= current_user.bank? ? "Owners" : "Lenders" %> You May Like</h5>
     <%= link_to "Build Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>
+  <% else %>
+    <h5 class="matches"><%= current_user.bank? ? "Owners" : "Lenders" %> you May Like</h5>
+    <%= render partial: "users/user", collection: @recommended_users, as: :user %>
+    <% unless current_user.finished_profile? %>      
+      <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
+      <div class='muted'>for better matches</div>
+    <% end %>
   <% end %>
 </div>

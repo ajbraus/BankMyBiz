@@ -3,7 +3,7 @@
   $
   </div> -->
   <div>
-    <div><%= auto_link(post.short_content) %></div>
+    <div><%= auto_link(post.content) %></div>
     <div class="text-right">
       <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"label small" }.join(' ') %>
     </div>

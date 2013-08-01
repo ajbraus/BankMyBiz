@@ -29,8 +29,8 @@ class Post < ActiveRecord::Base
   end
 
   def short_content
-    if self.content.size >= 50
-      self.content.slice(0..50) + "..."
+    if self.content.size >= 140
+      self.content.slice(0..140) + "..."
     else
       self.content
     end

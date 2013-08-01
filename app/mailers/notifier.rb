@@ -9,14 +9,10 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "Welcome to Mocs for Docs"
   end
 
-  def new_moc(moc)
-    @moc = moc
-    mail to: "ajbraus@gmail.com, andrewscottconnely@gmail.com", subject: "Woot! New MOC by #{@moc.user.name} - #{@moc.title}"
-  end
-
-  def moc_update(moc, user)
-    @user = user
-    @moc = moc
-    mail bcc: @user.email, subject: "MOC Update: #{@moc.title}"
+  def send_message(message)
+    @message = message
+    @receiver = @message.receiver
+    @sender = @message.sender
+    mail to: @receiver.email, subject: "BankmyBiz Message from #{@sender.first_name}"
   end
 end

@@ -6,9 +6,9 @@
 development:
   adapter: postgresql
   encoding: unicode
-  database: mocs_development
+  database: bmb_development
   pool: 5
-  username: mocs
+  username: bmb
   password:
 
 # Warning: The database defined as "test" will be erased and
@@ -17,15 +17,15 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: mocs_test
+  database: bmb_test
   pool: 5
-  username: mocs
+  username: bmb
   password:
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: mocs_production
+  database: bmb_production
   pool: 5
-  username: mocs
+  username: bmb
   password:

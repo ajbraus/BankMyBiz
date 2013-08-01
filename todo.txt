@@ -1,14 +1,14 @@
-if profile is complete then say "profile complete!"
-
 add bucks polymorphic for comments & posts
-
-improve how and about page
-
 add edit/delete to posts in newsfeed
 
 public_actionify following people
 display who you follow
 
+improve how page
+
+Security
+  confirmable
+  
 format post#show page with comments (make public for robots)
 
 better "improve profile section" include matched businesses

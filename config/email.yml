@@ -2,13 +2,13 @@ development:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :user_name: bankmybiz@gmail.com
-  :password: "Change!23"
+  :user_name: team@bankmybiz.com
+  :password: "B@nkMyB!z987"
   :enable_starttls_auto: true
 production:
   :address: smtp.gmail.com
   :port: 587
   :authentication: plain
-  :user_name: bankmybiz@gmail.com
-  :password: "Change!23"
+  :user_name: team@bankmybiz.com
+  :password: "B@nkMyB!z987"
   :enable_starttls_auto: true

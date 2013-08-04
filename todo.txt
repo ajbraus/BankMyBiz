@@ -1,3 +1,9 @@
+tripple check pushing linkedin authentication to production
+  set it up with linked in
+  check that native users can add authentication
+  make sure pic_url is being set
+
+  
 add bucks polymorphic for comments & posts
 add edit/delete to posts in newsfeed
 

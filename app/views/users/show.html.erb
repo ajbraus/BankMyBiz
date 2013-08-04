@@ -24,6 +24,10 @@
 <div class="span3">
 <!--   <img src="/assets/default_profile_pic.png" class="span2 clear-both" /> -->
   <%= render 'follow_form' if signed_in? %>
+  <div class="text-center">
+    <%= large_profile_picture(current_user) %>
+  </div>
+  <hr>
   <div class="clear-both">
     <p><strong>Name</strong> <%= @user.name %></p>
   </div>
@@ -72,7 +76,8 @@
       <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Message <%= @user.first_name %></a>
     </div>
   <% end %>
-  <%= render 'shared/improve_profile' %>
+  <hr>
+  <%= render 'shared/trending_tags' %>
 </div>
 <div class="span6">
   <h4>Activity</h4>
@@ -89,6 +94,6 @@
 </div>
 
 <div class='span3'>
-  <%= render 'shared/trending_tags' %>
+  <%= render 'shared/improve_profile' %>
   <%= render 'shared/profile_views' %>
 </div>

@@ -3,6 +3,8 @@ class Comment < ActiveRecord::Base
   # tracked owner: ->(controller, model) { controller && controller.current_user }
   
   belongs_to :commentable, polymorphic: true
+  has_many :likes, as: :likeable
+  
   attr_accessible :content
   
   def nice_created_at

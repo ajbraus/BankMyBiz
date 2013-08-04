@@ -25,33 +25,45 @@
 <!--   <img src="/assets/default_profile_pic.png" class="span2 clear-both" /> -->
   <%= render 'follow_form' if signed_in? %>
   <div class="clear-both">
-    <strong>Name</strong> <%= @user.name %>
+    <p><strong>Name</strong> <%= @user.name %></p>
   </div>
   <div>
-    <strong>Bio</strong>
-    <div class="muted">
-      <%= @user.bio %>
-    </div>
+    <p>
+      <strong>Bio</strong>
+      <div class="muted">
+        <%= @user.bio %>
+      </div>
+    </p>
   </div>
   <div>
-    <strong class='small'>Business Type:</strong>
-    <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
+    <p>
+      <strong class=''>Business Type:</strong>
+      <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
+    </p>
   </div>
   <div>
-    <strong class='small'>Revenue Size:</strong>
-    <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
+    <p>
+      <strong class=''>Revenue Size:</strong>
+      <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
+    </p>
   </div>
   <div>
-    <strong class='small'>Years of Operation</strong>
-    <div class="muted"><%= @user.ages.map(&:description).join(", ") %></div>
+    <p>
+      <strong class=''>Years of Operation</strong>
+      <div class="muted"><%= @user.ages.map(&:description).join(", ") %></div>
+    </p>
   </div>
   <div>
-    <strong class='small'>Industry</strong>
-    <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
+    <p>
+      <strong class=''>Industry</strong>
+      <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
+    </p>
   </div>
   <div>
-    <strong class='small'>Employees</strong>
-    <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
+    <p>
+      <strong class=''>Employees</strong>
+      <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
+    </p>
   </div>
   <% if @user == current_user %>
     <%= link_to "edit profile", edit_profile_path(@user) %>
@@ -60,7 +72,7 @@
       <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Message <%= @user.first_name %></a>
     </div>
   <% end %>
-  <%= render 'shared/profile_views' %>
+  <%= render 'shared/improve_profile' %>
 </div>
 <div class="span6">
   <h4>Activity</h4>
@@ -78,6 +90,5 @@
 
 <div class='span3'>
   <%= render 'shared/trending_tags' %>
-  <%= render 'shared/improve_profile' %>
-  <%= render 'shared/bmb_profile' %>
+  <%= render 'shared/profile_views' %>
 </div>

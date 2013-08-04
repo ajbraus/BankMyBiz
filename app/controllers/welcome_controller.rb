@@ -6,6 +6,7 @@ class WelcomeController < ApplicationController
   end
   def how
   end
-  def survey
+  def subscribe
+    
   end
 end

@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   has_many :committed_tos, through: :commitments, source: "commitment"
 
   has_many :comments, as: :commentable
+  has_many :likes, as: :likeable
 
   has_many :profiles
 

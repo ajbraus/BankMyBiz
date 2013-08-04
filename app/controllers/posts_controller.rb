@@ -3,6 +3,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
+    if params[:oofta] == 'true'
+      flash.now[:warning] = "We're sorry, an error occured."
+    end
+
     is_bank = !current_user.bank?
     if params[:search].present?
       #@posts = Post.search(params[:search], with: { bank: is_bank }, :page => params[:page], :per_page => 20)

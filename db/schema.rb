@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731182240) do
+ActiveRecord::Schema.define(:version => 20130804224600) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -43,6 +43,17 @@ ActiveRecord::Schema.define(:version => 20130731182240) do
 
   add_index "ages_users", ["age_id", "user_id"], :name => "index_ages_users_on_age_id_and_user_id"
   add_index "ages_users", ["user_id", "age_id"], :name => "index_ages_users_on_user_id_and_age_id"
+
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "authentications", ["uid"], :name => "index_authentications_on_uid"
+  add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
 
   create_table "business_types", :force => true do |t|
     t.string   "description"
@@ -148,6 +159,13 @@ ActiveRecord::Schema.define(:version => 20130731182240) do
   add_index "industries_users", ["industry_id", "user_id"], :name => "index_industries_users_on_industry_id_and_user_id"
   add_index "industries_users", ["user_id", "industry_id"], :name => "index_industries_users_on_user_id_and_industry_id"
 
+  create_table "likes", :force => true do |t|
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "messages", :force => true do |t|
     t.string   "subject"
     t.text     "body"
@@ -215,7 +233,7 @@ ActiveRecord::Schema.define(:version => 20130731182240) do
     t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "name",                   :default => "",    :null => false
     t.text     "bio",                    :default => "",    :null => false
-    t.boolean  "bank",                   :default => false
+    t.boolean  "bank"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -227,6 +245,10 @@ ActiveRecord::Schema.define(:version => 20130731182240) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.integer  "impressions_count",      :default => 0
+    t.string   "pic_url"
+    t.string   "linked_in_url"
+    t.string   "location"
+    t.boolean  "terms",                  :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

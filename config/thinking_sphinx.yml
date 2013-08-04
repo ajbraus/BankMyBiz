@@ -1,22 +1,18 @@
 development:
-  version: 2.0.6
-  port: 9110
+  mysql41: 9110
   morphology: stem_en
   enable_star: true
   html_strip: 1
   min_infix_len: 2
   bin_path: "/usr/local/bin"
-  searchd_binary_name: searchd
-  indexer_binary_name: indexer
+  host: 127.0.0.1
 test:
-  version: 2.0.6
-  port: 9111
+  mysql41: 9111
   morphology: stem_en
   enable_star: true
   html_strip: 1
   min_infix_len: 2
 production:
-  port: 9112
   morphology: stem_en
   enable_star: true
   html_strip: 1

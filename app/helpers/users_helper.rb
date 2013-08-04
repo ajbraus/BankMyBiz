@@ -126,6 +126,33 @@ module UsersHelper
       ['3000+']
     ]
   end
+
+  def large_profile_picture(user)
+    # if user.avatar.present?
+    #   image_tag user.avatar.url(:original)
+    # els
+    if user.authentications.where(:provider == "linkedin").any?
+      image_tag user.pic_url, class:"small-thumbnail"
+    else
+      image_tag "https://s3.amazonaws.com/bankmybiz-production/user/avatars/original/default_profile_pic.png"
+    end
+  end
+
+  def small_profile_picture(user)
+    if user.authentications.where(:provider == "Facebook").any?
+      facebook_url = "#{user.authentications.find_by_provider("Facebook").pic_url}"
+      image_tag(facebook_url, alt: user.name, class: "profile_picture small_pic" )
+    elsif user.authentications.where(:provider == "Twitter").any?
+      twitter_picture(user, type: "normal") 
+    else
+      if user.avatar.url.nil?
+        image_tag "https://s3.amazonaws.com/hoosin-production/user/avatars/raster/default_profile_pic.png",
+         class: "profile_picture small_pic"
+      else
+        image_tag user.avatar.url(:raster), class: "profile_picture small_pic"
+      end
+    end
+  end 
 end
 
 

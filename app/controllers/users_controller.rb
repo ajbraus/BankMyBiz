@@ -15,4 +15,26 @@ class UsersController < ApplicationController
     @recommended_users = User.where(bank: is_bank).first(3)
     @trending_tags = Tag.first(10)
   end
+
+  def set_bank
+    @user = User.find(params[:id])
+    @user.update_attributes(bank: true)
+
+    respond_to do |format|
+      format.html { redirect_to edit_profile_path(@user) }
+      format.js
+      format.json { render json: @user }
+    end  
+  end
+
+  def set_business
+    @user = User.find(params[:id])
+    @user.update_attributes(bank: false)
+
+    respond_to do |format|
+      format.html { redirect_to edit_profile_path(@user) }
+      format.js
+      format.json { render json: @user }
+    end  
+  end
 end

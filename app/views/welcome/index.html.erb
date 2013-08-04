@@ -1,48 +1,15 @@
 
         <div class="row-fluid">
-          <div class="span5 offset1">
-            <h2>Businesses</h2>
-            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
-
-              <div><%= f.label :name, "Your Name" %>
-              <%= f.text_field :name %></div>
-
-              <div><%= f.label :email, "Your Email" %>
-              <%= f.email_field :email %></div>
-
-              <div><%= f.label :password, "Password (min 6 characters)" %>
-              <%= f.password_field :password %></div>
-
-              <%= f.hidden_field :bank, value: false %>
-
-              <div><%= f.submit "Sign up", class:"btn btn-success btn-large" %></div>
-            <% end %>
+          <div class="jumbotron">
+            <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">          
+                <i class="icon-linkedin"></i> Login with LinkedIn
+            </a><br>
+            <span class="small">or,  <%= link_to "signup w/ email", new_registration_path(resource_name) %></span>
           </div>
-          <div class="span5 offset1">
-            <h2>Lenders</h2>
-            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-              <%= devise_error_messages! %>
-
-              <div><%= f.label :name, "Your Name" %>
-              <%= f.text_field :name %></div>
-
-              <div><%= f.label :email, "Your Email" %>
-              <%= f.email_field :email %></div>
-
-              <div><%= f.label :password, "Password (min 6 characters)" %>
-              <%= f.password_field :password %></div>
-
-              <%= f.hidden_field :bank, value: true %>
-
-              <div><%= f.submit "Sign up", class:"btn btn-warning btn-large" %></div>
-            <% end %>
-          </div>
-        </div>
-
       <div class="row-fluid marketing">
         <div class="span5 offset1">
-          <h4>Free</h4>
+          <h2>For Businesses</h2>
+          <h4>Free to Browse and Connect</h4>
           <p>Join to browse and connect with lenders targeted to lending to your industry and size, all for free.</p>
 
           <h4>A Large Two-sided Network</h4>
@@ -53,7 +20,8 @@
         </div>
 
         <div class="span5 offset1">
-          <h4>Free</h4>
+          <h2>For Bankers</h2>
+          <h4>Free to Browse and Connect</h4>
           <p>Join to promote your products and services directly to businesses bankable to you for free.</p>
 
           <h4>Bankable Businesses</h4>

@@ -1,9 +1,16 @@
 BankMyBiz::Application.routes.draw do
 
+  resources :authentications
+
   resources :messages
   resources :posts do 
     resources :comments
   end
+
+  match '/auth/:provider/callback' => 'authentications#create'
+
+  match 'user/:id/bank', to: "users#set_bank", as: 'set_bank'
+  match 'user/:id/biz', to: "users#set_business", as: 'set_business'
 
   resources :relationships, only: [:create, :destroy]
 

@@ -13,19 +13,6 @@ class Post < ActiveRecord::Base
 
   validates :content, presence: true
 
-  define_index do
-    indexes :content, as: :post_content
-    indexes tags(:name), as: :tag_name
-    #indexes happening_on, sortable: true
-    #has author_id, published_at
-    has created_at
-    has bank
-    set_property :field_weights => {
-      :post_title => 5,
-      :tag_name => 7
-    }
-  end
-
   def nice_created_at_date
     created_at.strftime("%b %e, %Y") #May 21, 2010
   end

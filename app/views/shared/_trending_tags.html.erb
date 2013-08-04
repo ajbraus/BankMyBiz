@@ -1,4 +1,5 @@
-<div class="well dark">
+<div class="">
   <p class="muted">Trending Tags</p>
   <%= raw @trending_tags.map(&:name).map { |t| link_to t, tag_path(t), class:"label" }.join(' ') %>
 </div>
+<hr>

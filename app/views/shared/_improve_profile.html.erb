@@ -1,7 +1,14 @@
-<div class="matches">
+<div class="text-center">
+<% if current_user.bank == nil %>
+    <p>Which one best describes you?</p>
+    <%= link_to "Bank", set_bank_path(current_user), class:"btn btn-warning btn-large" %>
+    <%= link_to "Biz", set_business_path(current_user), class:"btn btn-success btn-large" %>
+<% else %>
   <% if !current_user.started_profile? %>
-    <h5 class="matches">Unlock <%= current_user.bank? ? "Owners" : "Lenders" %> You May Like</h5>
-    <%= link_to "Build Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>
+    <%= link_to "Start Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>
+    <div class="muted">
+      to unlock <%= current_user.bank? ? "owners" : "lenders" %>
+    </div>
   <% else %>
     <h5><%= current_user.bank? ? "Owner" : "Lender" %> Matches</h5>
     <%= render partial: "users/user", collection: @recommended_users, as: :user %>
@@ -10,6 +17,10 @@
       <div class='muted'>for better matches</div>
     <% end %>
   <% end %>
-  <hr>
+<% end %>
+</div>
+<hr>
+<div class="matches">
   The <strong>BankMyBiz Newtork</strong> matchs you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
+<hr>
 </div>

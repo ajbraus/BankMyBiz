@@ -1,5 +1,5 @@
   <div class="row">
-    <div class="span9">
+    <div class="span9 offset3">
     <%= form_for @user, url: update_profile_path(@user) do |f| %>
       <div class="container-narrow">
         <h4>Improve Your Profile</h4>
@@ -72,9 +72,5 @@
       <div><%= submit_tag "Update Profile", class:"btn btn-success" %></div>
     <% end %>
     </div>    
-  </div>
-  <div class="span3">
-    <%= render 'shared/trending_tags' %>
-    <%= render 'shared/profile_views' %>
   </div>
 </div>

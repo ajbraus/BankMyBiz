@@ -18,17 +18,22 @@ class User < ActiveRecord::Base
                   :age_ids,
                   :business_type_ids,
                   :industry_ids,
-                  :bio
+                  :bio,
+                  :linked_in_url, 
+                  :pic_url, 
+                  :location,
+                  :terms
+                  
   # attr_accessible :title, :body
 
   is_impressionable
 
-  has_many :posts
+  has_many :posts, dependent: :destroy
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy
   has_many :committed_tos, through: :commitments, source: "commitment"
 
-  has_many :comments, as: :commentable
-  has_many :likes, as: :likeable
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :likes
 
   has_many :profiles
 
@@ -50,6 +55,8 @@ class User < ActiveRecord::Base
   has_many :read_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: true }
   has_many :unread_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: false }
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+
+  has_many :authentications
 
   validates :name, presence: true
 

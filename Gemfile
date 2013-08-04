@@ -5,17 +5,18 @@ gem 'rails', '3.2.6'
 gem 'heroku'
 gem 'pg'
 gem 'thin'
+gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'devise'
-gem 'lazy_high_charts'
+gem 'omniauth-linkedin'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'public_activity'
 gem 'impressionist'
 
-gem 'mysql2',          '0.3.12b4'
-gem 'thinking-sphinx', '2.0.11'
-gem 'flying-sphinx',   '0.8.4'
+gem 'mysql2',          '0.3.12b5'
+gem 'thinking-sphinx', '3.0.3' #'2.0.11'
+gem 'flying-sphinx',   '1.0.0' #'0.8.4'
 
 gem "rails_autolink", "~> 1.0.9"
 gem "paperclip", "~> 3.0"

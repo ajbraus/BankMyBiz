@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   include PublicActivity::Common
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable,
+  # :token_authenticatable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, 
@@ -134,6 +134,7 @@ class User < ActiveRecord::Base
 
   def follow!(other_user)
     relationships.create!(followed_id: other_user.id)
+    other_user.create_activity :follow, owner: self
   end
 
   def unfollow!(other_user)

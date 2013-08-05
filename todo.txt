@@ -1,14 +1,6 @@
-tripple check pushing linkedin authentication to production
-  set it up with linked in
-  check that native users can add authentication
-  make sure pic_url is being set
-
-fix search
-  
 add bucks polymorphic for comments & posts
 add edit/delete to posts in newsfeed
 
-public_actionify following people
 display who you follow
 
 improve how page
@@ -240,3 +232,4 @@ DONE follow user
 DONE lock down recommended users until matching elements of are complete, 
 DONE add linkedin login
 
+DONE public_actionify following people

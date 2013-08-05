@@ -22,7 +22,8 @@ class User < ActiveRecord::Base
                   :linked_in_url, 
                   :pic_url, 
                   :location,
-                  :terms
+                  :terms,
+                  :admin
                   
   # attr_accessible :title, :body
 

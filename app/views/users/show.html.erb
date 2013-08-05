@@ -25,7 +25,7 @@
 <!--   <img src="/assets/default_profile_pic.png" class="span2 clear-both" /> -->
   <%= render 'follow_form' if signed_in? %>
   <div class="text-center">
-    <%= large_profile_picture(current_user) %>
+    <%= large_profile_picture(@user) %>
   </div>
   <hr>
   <div class="clear-both">

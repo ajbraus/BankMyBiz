@@ -143,9 +143,9 @@ module UsersHelper
     #   image_tag user.avatar.url(:original)
     # els
     if user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:""
+      image_tag user.pic_url, class:"img-polaroid medium-thumbnail"
     else
-      image_tag "default_profile_pic.png", class:""
+      image_tag "default_profile_pic.png", class:"img-polaroid medium-thumbnail"
     end
   end
 end

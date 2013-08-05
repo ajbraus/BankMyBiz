@@ -1,0 +1,6 @@
+<p><strong>Message from:</strong> <%= @sender.name.titleize %></p>
+<div class="big"><strong>Subject:</strong> <%= @message.subject %></div>
+<p><%= @message.body %></p>
+<p>
+  <a href="http://www.bankmybiz.com/messages/<%= @message.id %>">reply</a>
+</p>

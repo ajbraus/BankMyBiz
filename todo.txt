@@ -10,13 +10,8 @@ Security
 
 format post#show page with comments (make public for robots)
 
-better "improve profile section" include matched businesses
-
-make tags prettier w/ count?
-make buttons flat and square
-
-Setup email and all emails
-  when comment creates send email to post.user
+better "improve profile section"
+  includ organization name
 
 filter users by matching criteria
   give more matches if 100% complete
@@ -24,8 +19,8 @@ filter users by matching criteria
   Limit number of messages a day
 
 setup users
-  setup tracking impressions on users
   add user tags to users#show
+  setup tracking impressions on users
   track who you viewed/messaged
   don't track if you go to the same user/post twice in the same three days
   

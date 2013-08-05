@@ -1,10 +1,8 @@
 <section class="newsfeed-item clearfix">
-<!--   <div class="pull-left clear-left dollar">
-  $
-  </div> -->
-  <div>
-    
-    <div>
+  <div class="pull-right dollar">
+  <i class="icon-money"></i>
+  </div>
+    <div class="clearfix">
       <div class="post-profile-pic"><%= profile_picture(current_user) %></div>
       <%= auto_link(post.short_content) %>
     </div>
@@ -14,7 +12,23 @@
     <p class="text-right muted smaller">
       <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.name}", user_path(post.user) if post.user %>
     </p>
-  </div>
+
+  <script src="//platform.linkedin.com/in.js" type="text/javascript">
+   lang: en_US
+  </script>
+  <script type="IN/Share" data-url="<%= post_url(post) %>" data-counter="right"></script>
+  <a href="#" 
+    onclick="
+      window.open(
+        'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(<%= post_url(post) %>), 
+        'facebook-share-dialog', 
+        'width=626,height=436'); 
+      return false;">
+    <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i> facebook</span>
+  </a>
+  <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= post_url(post) %>" data-text="<%= post.short_content %> " data-via="bankmybiz" data-hashtags="financing">Tweet</a>
+
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 <%= render partial: 'comments/comment', collection: post.comments.where('content is not null').order('created_at asc'), as: :comment, locals: { post: post } %>
 <%= render partial: 'comments/form', locals: { post: post } %>
 </section>

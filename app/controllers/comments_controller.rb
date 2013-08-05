@@ -47,6 +47,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @comment.create_activity :create, owner: current_user
+        Notifier.delay.new_comment(@comment)
         format.html { redirect_to root_path, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else

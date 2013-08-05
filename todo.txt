@@ -3,6 +3,7 @@ tripple check pushing linkedin authentication to production
   check that native users can add authentication
   make sure pic_url is being set
 
+fix search
   
 add bucks polymorphic for comments & posts
 add edit/delete to posts in newsfeed
@@ -13,6 +14,7 @@ display who you follow
 improve how page
 
 Security
+  add admin user
   confirmable
   don't destroy users
   
@@ -20,33 +22,21 @@ format post#show page with comments (make public for robots)
 
 better "improve profile section" include matched businesses
 
-search in production
+make tags prettier w/ count?
+make buttons flat and square
 
-make tags prettier
-make buttons flat
-
-Setup users messaging each other - copy James
-Setup email
+Setup email and all emails
+  when comment creates send email to post.user
 
 filter users by matching criteria
   give more matches if 100% complete
   wire up querying of suggested banks/businesses
-
-how to link up to URL bankmybiz.com - with forwards
-
-
 
 setup users
   setup tracking impressions on users
   add user tags to users#show
   track who you viewed/messaged
   don't track if you go to the same user/post twice in the same three days
-
-give bucks to posts and comments - track who gives it to whom
-remove thumbs up
-
-setup comments on posts
-  show last 3 comments with (3 more) link to show others  
   
 tweet/fb_share/linkedin share post
 
@@ -56,8 +46,6 @@ setup whenever to reindex every 12 hours
 Moved my rake code to the appropriate models
 Added controller/routing code for calling models methods from the browser
 Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
-
-send welcome comment in
 
 script/delayed_job start in production
 

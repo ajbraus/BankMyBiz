@@ -1,5 +1,7 @@
 <div class="span3">       
-  <%= render 'shared/trending_tags' %>
+  <div class="border-right">
+    <%= render 'shared/trending_tags' %>
+  </div>
 </div>
 <div class="span6">
   <div class="clearfix">
@@ -10,7 +12,7 @@
         <%= profile_picture(current_user) %>
         <%= f.text_area :content, class:"span5 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
         <%= f.text_field :tag_list, class:"span5", placeholder:"Tags (separated by comma)" %>
-        <%= f.submit "Post", class:"btn pull-right" %>
+        <%= f.submit "Post", class:"btn pull-right btn-success" %>
       <% end %>
     <% else %>
 
@@ -21,6 +23,8 @@
 </div>
 
 <div class="span3">  
-  <%= render 'shared/improve_profile' %>
-  <%= render 'shared/profile_views' %>
+  <div class="border-left">
+    <%= render 'shared/improve_profile' %>
+    <%= render 'shared/profile_views' %>
+  </div>
 </div>

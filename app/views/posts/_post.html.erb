@@ -9,7 +9,7 @@
       <%= auto_link(post.short_content) %>
     </div>
     <div class="text-right">
-      <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"label small" }.join(' ') %>
+      <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
     </div>
     <p class="text-right muted smaller">
       <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.name}", user_path(post.user) if post.user %>

@@ -1,14 +1,13 @@
-<div class="span3">
+<section class="match">
   <h4>0 Bucks</h4>
   <div class="muted small up">Were Added to your Posts</div>
   <h4><%= current_user.impressions_count %> Users</h4>
   <div class="muted small up">Viewed your Profile</div>
   <h4><%= pluralize(current_user.followers.count, 'Person', 'Users') %></h4>
   <div class="muted small up">Following your Profile</div>
-  </br>  
+</section> 
   <div class="text-center"> 
     <%= link_to "Upgrade Profile", subscribe_path, class: "btn btn-success" %>
     <div class="muted">To Learn More</div>
   </div>
-</div>
 <hr>

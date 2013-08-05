@@ -7,7 +7,7 @@ improve how page
 
 Security
   don't destroy users
-  
+
 format post#show page with comments (make public for robots)
 
 better "improve profile section" include matched businesses
@@ -21,6 +21,7 @@ Setup email and all emails
 filter users by matching criteria
   give more matches if 100% complete
   wire up querying of suggested banks/businesses
+  Limit number of messages a day
 
 setup users
   setup tracking impressions on users

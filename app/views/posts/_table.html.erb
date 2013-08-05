@@ -1,7 +1,7 @@
 <tr>
   <td width='20%'><%= link_to "#{post.user.first_name}", user_path(post.user) %></td>
   <td width='20%'><%= post.user.industries.map(&:description).join(", ") %></td>
-  <td class="muted" width="45%"><%= post.content %></td>
+  <td class="muted" width="45%"><%= auto_link(post.short_content) %></td>
   <td width="20%">
   <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
   </td>

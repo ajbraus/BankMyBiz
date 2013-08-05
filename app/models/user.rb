@@ -72,7 +72,7 @@ class User < ActiveRecord::Base
   # after_create :send_welcome
 
   def send_welcome
-    Notifier.welcome(self).deliver
+    Notifier.delay.welcome(self).deliver
   end
 
   def nice_name

@@ -1,3 +1,5 @@
+script/delayed_job start in production
+
 add bucks polymorphic for comments & posts
 add edit/delete to posts in newsfeed
 
@@ -7,8 +9,6 @@ improve how page
 
 Security
   don't destroy users
-
-format post#show page with comments (make public for robots)
 
 better "improve profile section"
   includ organization name
@@ -23,8 +23,6 @@ setup users
   setup tracking impressions on users
   track who you viewed/messaged
   don't track if you go to the same user/post twice in the same three days
-  
-tweet/fb_share/linkedin share post
 
 trending tags - most posts with those tags
 
@@ -32,8 +30,6 @@ setup whenever to reindex every 12 hours
 Moved my rake code to the appropriate models
 Added controller/routing code for calling models methods from the browser
 Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
-
-script/delayed_job start in production
 
   ------
   
@@ -229,3 +225,6 @@ DONE add linkedin login
 DONE public_actionify following people
   DONE add admin user
   DONE confirmable
+
+DONE tweet/fb_share/linkedin share post
+DONE format post#show page with comments (make public for robots)

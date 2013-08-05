@@ -18,7 +18,7 @@ class MessagesController < ApplicationController
         format.html
         format.js
       end
-      Notifier.send_message(@message).deliver
+      Notifier.delay.send_message(@message).deliver
     end
   end
 

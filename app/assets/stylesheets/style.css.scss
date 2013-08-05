@@ -717,3 +717,15 @@ height: 90px;
 .span3 {
   height:100%;
 }
+
+.hidden-posts {
+  a {
+    color:white;
+    font-size:1px;
+    &:hover {
+      color:white;
+      text-decoration: none;
+      cursor:default;
+    }
+  }
+}

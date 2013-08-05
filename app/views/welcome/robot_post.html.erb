@@ -19,3 +19,4 @@
 <%= render partial: 'comments/comment', collection: @post.comments.where('content is not null'), as: :comment, locals: { post: @post } %>
 </section>
 </div>
+<%= link_to "next post", robot_post_path(@next_post) if @next_post %>

@@ -47,4 +47,8 @@ class Post < ActiveRecord::Base
   def is_committed_to_by?(user)
     return self.committed_user.find_by_committed_user_id(user.id).present?
   end
+
+  def next_post
+    self.class.first(:conditions => ["id > ?", id])
+  end
 end

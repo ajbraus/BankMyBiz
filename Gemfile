@@ -13,6 +13,8 @@ gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'public_activity'
 gem 'impressionist'
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 
 gem 'mysql2',          '0.3.12b5'
 gem 'thinking-sphinx', '3.0.3' #'2.0.11'

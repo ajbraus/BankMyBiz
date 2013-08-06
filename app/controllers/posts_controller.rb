@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
     end
     
-    @post = Post.new
+    @new_post = Post.new
     @trending_tags = Tag.order('created_at desc').first(10)
     @recommended_users = User.where(bank: is_bank).first(3)
 

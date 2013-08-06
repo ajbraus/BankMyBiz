@@ -8,7 +8,7 @@
     <strong class="big">The Newsfeed</strong>
     </br>
     <% unless current_user.pic_url.nil? %>
-      <%= form_for @post do |f| %>
+      <%= form_for @new_post do |f| %>
         <%= profile_picture(current_user) %>
         <%= f.text_area :content, class:"span5 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
         <%= f.text_field :tag_list, class:"span5", placeholder:"Tags (separated by comma)" %>

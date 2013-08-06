@@ -36,8 +36,6 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes
 
-  has_many :profiles
-
   has_and_belongs_to_many :employee_sizes
   has_and_belongs_to_many :industries
   has_and_belongs_to_many :business_types
@@ -57,7 +55,7 @@ class User < ActiveRecord::Base
   has_many :unread_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: false }
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
 
-  has_many :authentications
+  has_many :authentications, dependent: :destroy
 
   validates :name, presence: true
 

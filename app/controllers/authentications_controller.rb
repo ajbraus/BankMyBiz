@@ -10,7 +10,7 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => access_token.provider
       sign_in_and_redirect @user, :event => :authentication
     else
-      redirect_to :back, notice: 'There was an error with Facebook. Check your Facebook account status.'
+      redirect_to :back, notice: 'There was an error with LinkedIn. Check your LinkedIn account status.'
     end
   end
 
@@ -24,23 +24,25 @@ class AuthenticationsController < ApplicationController
   private
 
   def find_for_oauth(access_token)
+    # FIND AUTH BY UID
     uid = access_token.uid
-    email = access_token.info.email
-
     auth = Authentication.find_by_uid(uid.to_s)
     if auth.present?
       auth.update_attributes(uid: auth.uid)
       user = auth.user
-      user.update_attributes(:linked_in_url => auth.info.urls.public_profile, 
+      user.update_attributes(:linked_in_url => access_token.info.urls.public_profile, 
                              :pic_url => access_token.info.image, 
                              :location => access_token.info.location)
       return user
     end
-    
+    # NO AUTH SO FIND USER BY EMAIL
+    email = access_token.info.email
     user = User.find_by_email(email)
-    if user.present?
+    if user.present? 
+      # IF USER PRESENT CREATE AUTH AND UPDATE USER
       provider = access_token.provider
-      authentication = user.authentications.build(:provider => provider)
+      uid = access_token.uid
+      authentication = user.authentications.build(provider: provider, uid: uid)
       user.authentications << authentication
       user.update_attributes(email: access_token.info.email, 
                              name: access_token.info.name, 
@@ -48,7 +50,8 @@ class AuthenticationsController < ApplicationController
                              :pic_url => access_token.info.image, 
                              :location => access_token.info.location)
     else
-      user = User.create(:email => access_token.info.email, 
+      #IF NO USER CREATE USER AND AUTH
+      user = User.new(:email => access_token.info.email, 
                 :name => access_token.info.name,
                 :terms => true,
                 :remember_me => true,
@@ -57,6 +60,12 @@ class AuthenticationsController < ApplicationController
                 :pic_url => access_token.info.image, 
                 :location => access_token.info.location
               )
+      user.skip_confirmation! 
+      user.save
+      provider = access_token.provider
+      uid = access_token.uid
+      authentication = user.authentications.create(provider: provider, uid: uid)
+      user.authentications << authentication
     end
     return user
   end

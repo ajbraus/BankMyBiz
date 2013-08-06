@@ -74,19 +74,23 @@
               <a  class="dropdown-toggle" href="#" data-toggle="dropdown" id="swatch-link"><div class="pull-right little"><%= current_user.name %> <b class="caret"></b></div></a>
               <ul class="dropdown-menu">
                 <li><%= link_to messages_path do %>
-                  <i class="icon-envelope-alt"></i> Messages
+                  <i class="icon-envelope-alt"></i> My Messages
                   <% end %>
                 </li>
                 <li><%= link_to user_path(current_user) do %>
-                  <i class="icon-user"></i> Profile
+                  <i class="icon-user"></i> My Profile
                   <% end %>
                 </li>
-                <li></i> <%= link_to edit_user_registration_path do %>
-                  <i class="icon-cog"></i> Settings
+                <li><%= link_to edit_profile_path(current_user) do %>
+                  <i class="icon-wrench"></i> Edit Profile
                     <% end %>
                 </li>
                 <li class="divider"></li>
-                <li></i> <%= link_to destroy_user_session_path, method: "delete" do %>
+                <li><%= link_to edit_user_registration_path do %>
+                  <i class="icon-cog"></i> Settings
+                    <% end %>
+                </li>
+                <li><%= link_to destroy_user_session_path, method: "delete" do %>
                   <i class="icon-off"></i> Logout
                     <% end %>
                 </li>

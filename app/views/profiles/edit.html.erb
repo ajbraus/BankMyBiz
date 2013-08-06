@@ -5,7 +5,7 @@
         <h4>Improve Your Profile</h4>
         <% if current_user.bank? %> 
         <div class="row">
-          <div class="span4 offset1"> 
+          <div class="span4"> 
             <div class="field">
               <%= f.label :revenue_size_ids, "Revenue" %>
               <% for revenue_size in RevenueSize.find(:all) %>

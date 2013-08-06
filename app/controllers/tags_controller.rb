@@ -5,7 +5,7 @@ class TagsController < ApplicationController
     post_ids = @posts.pluck(:id)
 
 
-    @start_date = @posts.first.created_at.utc.to_i * 1000
+    #@start_date = @posts.first.created_at.utc.to_i * 1000
     # @t = LazyHighCharts::HighChart.new('graph') do |f|
     #   f.options[:chart][:defaultSeriesType] = "line"
     #   f.options[:title][:text] = "Tag Engagement"

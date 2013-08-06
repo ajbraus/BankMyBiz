@@ -7,7 +7,7 @@
   <div class="clearfix">
     <strong class="big">The Newsfeed</strong>
     </br>
-    <% if current_user.pic_url.present? %>
+    <% unless current_user.pic_url.nil? %>
       <%= form_for @post do |f| %>
         <%= profile_picture(current_user) %>
         <%= f.text_area :content, class:"span5 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
@@ -15,7 +15,9 @@
         <%= f.submit "Post", class:"btn pull-right btn-success" %>
       <% end %>
     <% else %>
-
+      <div class="alert alert-info">
+        Add your profile picture, or <a href="/auth/linkedin" class="auth_provider">login through LinkedIn</a>  to post to the Newsfeed
+      </div>
     <% end %>
     <%= render partial: "posts/post", collection: @posts, as: :post %>
     <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>

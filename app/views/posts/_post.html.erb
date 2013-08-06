@@ -3,7 +3,9 @@
   <i class="icon-money"></i>
   </div>
     <div class="clearfix">
-      <div class="post-profile-pic"><%= profile_picture(post.user) %></div>
+      <div class="post-profile-pic">
+        <%= profile_picture(post.user) %>
+      </div>
       <%= auto_link(post.short_content) %>
     </div>
     <div class="text-right">

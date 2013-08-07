@@ -2,6 +2,15 @@ Last name still showing, with last initial
 After profile update go to to root if first time signed in
 make pictures links to profile
 
+lock down 1 match
+lock down 1 message
+
+manually confirm (for linkedin too)
+  fix message after logging in through linkedin
+
+make facebook button grey
+
+add avatar photo uploading
 
 setup whenever to reindex every 12 hours
 Moved my rake code to the appropriate models

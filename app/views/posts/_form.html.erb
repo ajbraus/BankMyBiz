@@ -1,45 +1,10 @@
+<div class="span6 offset3">
 <%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
+  <%= link_to current_user do %>
+    <%= profile_picture(current_user) %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :tag_list, "Topics (separated by commas)" %><br />
-    <%= f.text_field :tag_list %>
-  </div>  
-  <div class="field">
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  </div>
-  <div class="field">
-    <%= f.label :img_url %>
-    <%= f.text_field :img_url %>
-  </div>
-  <div class="field">
-    <%= f.label :video_url %>
-    <%= f.text_field :video_url %>
-  </div>
-  <div class="field">
-    <%= f.label :happening_on %>
-    <%= f.text_field :happening_on %>
-  </div>
-  <div class="field">
-    <%= f.label :starts_at %>
-    <%= f.text_field :starts_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit class:'btn btn-primary'  %>
-  </div>
+  <%= f.text_area :content, class:"span5 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
+  <%= f.text_field :tag_list, class:"span4", placeholder:"Tags (separated by comma)" %>
+  <%= f.submit "Post", class:"btn pull-right btn-success" %>
 <% end %>
+</div>

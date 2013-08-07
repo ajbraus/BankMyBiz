@@ -71,7 +71,7 @@
   </div>
   <% if @user == current_user %>
     <%= link_to "edit profile", edit_profile_path(@user) %>
-  <% else %>
+  <% elsif current_user.messages_left? %>
     <div class="text-center well">
       <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Message <%= @user.first_name_with_last_initial %></a>
     </div>

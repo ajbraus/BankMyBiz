@@ -1,9 +1,6 @@
 add edit/delete to posts in newsfeed
 make admin work
 After profile update go to to root if first time signed in
-make pictures links to profile
-lock down 1 match
-lock down 1 message
 manually confirm (for linkedin too)
   fix message after logging in through linkedin
 make facebook button grey
@@ -266,3 +263,6 @@ DONE format post#show page with comments (make public for robots)
 DONE Last name still showing, with last initial
 DONE add 5-10, 10-20, 20+
 DONE add S-Corp
+DONE make pictures links to profile
+DONE lock down 1 match
+DONE lock down 1 message

@@ -9,7 +9,9 @@
     </br>
     <% unless current_user.pic_url.nil? %>
       <%= form_for @new_post do |f| %>
-        <%= profile_picture(current_user) %>
+        <%= link_to current_user do %>
+          <%= profile_picture(current_user) %>
+        <% end %>
         <%= f.text_area :content, class:"span5 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
         <%= f.text_field :tag_list, class:"span4", placeholder:"Tags (separated by comma)" %>
         <%= f.submit "Post", class:"btn pull-right btn-success" %>

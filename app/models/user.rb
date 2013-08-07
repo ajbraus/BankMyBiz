@@ -141,6 +141,17 @@ class User < ActiveRecord::Base
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end
+
+  def messages_left?
+    if messages.any?
+      if messages.last.created_at < 1.day.ago
+        return true
+      end
+    else
+      return true
+    end
+    return false
+  end
     #maybe needed to create virtual attributes to accept the form and create associations?
       #   t.string :business_type
       # t.text :industries

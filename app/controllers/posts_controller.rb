@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     
     @new_post = Post.new
     @trending_tags = Tag.order('created_at desc').first(10)
-    @recommended_users = User.where(bank: is_bank).first(3)
+    @recommended_users = User.where(bank: is_bank).last
 
     respond_to do |format|
       format.html # new.html.erb

@@ -1,7 +1,6 @@
-<h1>Editing post</h1>
-  
-  <%= render 'form' %>
-
-
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>
+<%= render 'form' %>
+<div class="row">
+  <div class="span7 offset3">
+<%= render partial: 'comments/comment', collection: @post.comments.where('content is not null').order('created_at asc'), as: :comment, locals: { post: @post } %>
+  </div>
+</div>

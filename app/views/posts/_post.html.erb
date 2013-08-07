@@ -8,7 +8,9 @@
   <% end %>
     <div class="clearfix">
       <div class="post-profile-pic">
-        <%= profile_picture(post.user) %>
+        <%= link_to post.user do %>
+          <%= profile_picture(post.user) %>
+        <% end %>
       </div>
       <%= auto_link(post.content) %>
     </div>
@@ -30,11 +32,19 @@
         'facebook-share-dialog', 
         'width=626,height=436'); 
       return false;">
-    <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i> facebook</span>
+    <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i></span><span class="btn btn-mini push-up-a-bit">facebook</span>
   </a>
   <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= post_url(post) %>" data-text="<%= post.short_content %> " data-via="bankmybiz" data-hashtags="financing">Tweet</a>
 
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<% if user_signed_in? && post.user == current_user || current_user.admin? %>
+<div class="text-right">
+<%= link_to "Edit", edit_post_path(post), class:"smaller btn btn-mini" %>
+<%= link_to 'Delete', post, class:"smaller btn btn-mini", method: :delete, data: { confirm: 'Are you sure you would like to delete this post?' } %>
+</div>
+<% end %>
+
 <%= render partial: 'comments/comment', collection: post.comments.where('content is not null').order('created_at asc'), as: :comment, locals: { post: post } %>
 <%= render partial: 'comments/form', locals: { post: post } %>
 </section>

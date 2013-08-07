@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :comments
-  
+
   has_many :likes
 
   has_and_belongs_to_many :employee_sizes
@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
 
   has_many :authentications, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, :bank, presence: true
 
   # has_attached_file :avatar, :styles => { :original => "150x150#",
   #                                         :raster => "50x50#" },

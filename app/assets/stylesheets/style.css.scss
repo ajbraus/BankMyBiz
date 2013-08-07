@@ -663,6 +663,9 @@ height: 90px;
 }
 
 .post-profile-pic {
+  position: relative;
+  top: 8px;
+  right: 6px;
   img {
     margin:3px;
     float:left;

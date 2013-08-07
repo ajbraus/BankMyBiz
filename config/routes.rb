@@ -7,6 +7,8 @@ BankMyBiz::Application.routes.draw do
     resources :comments
   end
 
+  resources :likes, only: [:create, :destroy]
+
   match '/auth/:provider/callback' => 'authentications#create'
 
   match 'user/:id/bank', to: "users#set_bank", as: 'set_bank'

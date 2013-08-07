@@ -1,17 +1,34 @@
-script/delayed_job start in production
 
-add bucks polymorphic for comments & posts
+
+setup whenever to reindex every 12 hours
+Moved my rake code to the appropriate models
+Added controller/routing code for calling models methods from the browser
+Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
+
 add edit/delete to posts in newsfeed
+
+remove people who haven't started a profile from recommended users
 
 display who you follow
 
 improve how page
 
+add bucks polymorphic for comments & posts
+
+user has_many posts
+users has_many likes through posts
+user has_many like_post_users through likes
+
+user has_many comments
+users has_many likes through comments
+user has_many like_comment_users through likes
+
+
 Security
   don't destroy users
 
 better "improve profile section"
-  includ organization name
+  include organization name
 
 filter users by matching criteria
   give more matches if 100% complete
@@ -26,10 +43,6 @@ setup users
 
 trending tags - most posts with those tags
 
-setup whenever to reindex every 12 hours
-Moved my rake code to the appropriate models
-Added controller/routing code for calling models methods from the browser
-Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
 
   ------
   

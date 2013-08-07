@@ -51,7 +51,7 @@ class AuthenticationsController < ApplicationController
                              :location => access_token.info.location)
     else
       #IF NO USER CREATE USER AND AUTH
-      user = User.new(:email => access_token.info.email, 
+      user = User.create(:email => access_token.info.email, 
                 :name => access_token.info.name,
                 :terms => true,
                 :remember_me => true,
@@ -60,8 +60,6 @@ class AuthenticationsController < ApplicationController
                 :pic_url => access_token.info.image, 
                 :location => access_token.info.location
               )
-      user.skip_confirmation! 
-      user.save
       provider = access_token.provider
       uid = access_token.uid
       authentication = user.authentications.create(provider: provider, uid: uid)

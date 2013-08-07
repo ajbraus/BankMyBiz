@@ -33,7 +33,10 @@ BankMyBiz::Application.routes.draw do
 
   resources :tags, only: [:create, :destroy, :show]
 
-  resources :users, :only => [:show]
+  resources :users, :only => [:show, :index, :confirm, :reject] do
+    get :reject
+    get :confirm
+  end
   match 'users/:id' => 'users#show'
   match 'users/:id/profile/edit' => 'profiles#edit', as: 'edit_profile'
   match 'users/:id/profiles' => 'profiles#update', as: 'update_profile'

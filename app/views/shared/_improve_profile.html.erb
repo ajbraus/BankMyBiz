@@ -3,7 +3,7 @@
     <p>Which one best describes you?</p>
     <%= link_to "Bank", set_bank_path(current_user), class:"btn btn-warning btn-large" %>
     <%= link_to "Biz", set_business_path(current_user), class:"btn btn-success btn-large" %>
-    <p class="muted">Answer to unlock matches</p>
+    <p class="muted">Answer to unlock matches, and be matched</p>
 <% else %>
   <% if !current_user.started_profile? %>
     <%= link_to "Start Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>

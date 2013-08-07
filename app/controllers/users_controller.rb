@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
   impressionist
+
+  before_filter :authenticate_user!
+
   def show
     @user = User.find(params[:id])
     if user_signed_in?
@@ -14,6 +17,42 @@ class UsersController < ApplicationController
     @activities = PublicActivity::Activity.where(owner_id: @user.id).order("created_at desc").paginate(:page => params[:page], :per_page => 10) #.where(owner_id: current_user.friend_ids, owner_type: "User")
     @recommended_users = User.where(bank: is_bank).last
     @trending_tags = Tag.first(10)
+  end
+
+  def index
+    if current_user.admin?
+      @unconfirmed_users = User.where("confirmed_at IS NULL").paginate(:page => params[:page], :per_page => 10)
+      @confirmed_users = User.where("confirmed_at IS NOT NULL").paginate(:page => params[:page], :per_page => 10)
+      @rejected_users = User.where("rejected_at IS NOT NULL").paginate(:page => params[:page], :per_page => 10)
+    else 
+      redirect_to root_path, notice: "Oops, here you go!"
+    end
+  end
+
+  def confirm
+    @user = User.find(params[:user_id])
+    @user.confirmed_at = Time.now
+    @user.rejected_at = nil
+    @user.save
+
+    respond_to do |format|
+      format.html { redirect_to users_path, notice:"User successufly confirmed" }
+      format.js
+      format.json { render json: @user }
+    end  
+  end
+
+  def reject
+    @user = User.find(params[:user_id])
+    @user.rejected_at = Time.now
+    @user.confirmed_at = nil
+    @user.save
+
+    respond_to do |format|
+      format.html { redirect_to users_path, notice:"User successufly rejected" }
+      format.js
+      format.json { render json: @user }
+    end  
   end
 
   def set_bank
@@ -36,9 +75,5 @@ class UsersController < ApplicationController
       format.js
       format.json { render json: @user }
     end  
-  end
-
-  def add_avatar
-
   end
 end

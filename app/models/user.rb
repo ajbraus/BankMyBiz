@@ -84,10 +84,14 @@ class User < ActiveRecord::Base
   #                            :path => "user/:attachment/:style/:id.:extension",
   #                            :default_url => "https://s3.amazonaws.com/bmb-production/user/avatars/original/default_profile_pic.png"
   
-  # after_create :send_welcome
+  after_create :request_confirmation
 
-  def send_welcome
-    Notifier.delay.welcome(self)
+  # def send_welcome
+  #   Notifier.delay.welcome(self)
+  # end
+
+  def request_confirmation
+    Notifier.delay.request_confirmation(self)
   end
 
   def nice_name
@@ -114,6 +118,10 @@ class User < ActiveRecord::Base
     self.name.split.count > 3 ? self.name.split(' ')[1] : nil
   end
 
+  def nice_created_at
+    created_at.strftime("%b %e, %Y") #May 21, 2010
+  end
+  
   def committed_to?(post)
     return commitments.find_by_commitment_id(post.id).present?
   end

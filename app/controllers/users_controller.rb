@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   impressionist
   def show
-    is_bank = !current_user.bank?
     @user = User.find(params[:id])
     if user_signed_in?
+      is_bank = !current_user.bank?
       if @user == current_user
         @post = Post.new
       else

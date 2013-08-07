@@ -4,8 +4,11 @@ class Comment < ActiveRecord::Base
   
   belongs_to :commentable, polymorphic: true
   has_many :likes, as: :likeable
+  belongs_to :user
   
   attr_accessible :content
+
+  validates :commentable_id, :commentable_type, :content, presence: true
   
   def nice_created_at
     self.created_at.strftime "%b %e, %l:%M%P"

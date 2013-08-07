@@ -34,6 +34,8 @@ class User < ActiveRecord::Base
   has_many :committed_tos, through: :commitments, source: "commitment"
 
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :comments
+  
   has_many :likes
 
   has_and_belongs_to_many :employee_sizes
@@ -70,7 +72,7 @@ class User < ActiveRecord::Base
   # after_create :send_welcome
 
   def send_welcome
-    Notifier.delay.welcome(self).deliver
+    Notifier.delay.welcome(self)
   end
 
   def nice_name

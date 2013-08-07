@@ -27,7 +27,10 @@ BankMyBiz::Application.routes.draw do
 
   match '/posts/:id/robot_post', to: 'welcome#robot_post', as: "robot_post"
 
-  devise_for :users, :controllers => { :registrations => "registrations" }
+  devise_for :users, :controllers => { :registrations => "registrations" } do
+    match 'users/add_avatar' => 'registrations#add_avatar', as: "add_avatar"
+  end
+
   resources :tags, only: [:create, :destroy, :show]
 
   resources :users, :only => [:show]

@@ -7,7 +7,7 @@
   <div class="clearfix">
     <strong class="big">The Newsfeed</strong>
     </br>
-    <% unless current_user.pic_url.nil? %>
+    <% if current_user.has_image? %>
       <%= form_for @new_post do |f| %>
         <%= link_to current_user do %>
           <%= profile_picture(current_user) %>
@@ -18,7 +18,7 @@
       <% end %>
     <% else %>
       <div class="well alert-info" id="fadeInAlert">
-        Add your profile picture, or <a href="/auth/linkedin" class="auth_provider">login through LinkedIn</a>  to post to the Newsfeed
+        <%= link_to "Add your profile picture", add_avatar_path %>, or <a href="/auth/linkedin" class="auth_provider">login through LinkedIn</a>  to post to the Newsfeed
       </div>
     <% end %>
     <%= render partial: "posts/post", collection: @posts, as: :post %>

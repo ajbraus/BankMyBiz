@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
                   :pic_url, 
                   :location,
                   :terms,
-                  :admin
+                  :admin,
+                  :avatar
                   
   # attr_accessible :title, :body
 
@@ -162,6 +163,13 @@ class User < ActiveRecord::Base
         return true
       end
     else
+      return true
+    end
+    return false
+  end
+
+  def has_image?
+    if avatar.present? || pic_url.present?
       return true
     end
     return false

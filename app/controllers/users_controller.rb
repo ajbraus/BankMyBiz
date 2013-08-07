@@ -37,4 +37,8 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end  
   end
+
+  def add_avatar
+
+  end
 end

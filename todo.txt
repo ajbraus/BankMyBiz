@@ -1,9 +1,6 @@
-add edit/delete to posts in newsfeed
-make admin work
 After profile update go to to root if first time signed in
 manually confirm (for linkedin too)
   fix message after logging in through linkedin
-make facebook button grey
 add avatar photo uploading
 if no searches - state "no results found"
 message sent is obvious
@@ -11,7 +8,8 @@ bring messages to the homepage
 
 remove people who haven't started a profile from recommended users
 add profile avatar
-  create Amazon bucket
+  DONE create Amazon bucket
+  use petpass code as baseline
   add variables to heroku config
   add variables to s3.yml 
   lock down newsfeed unless profile pic added
@@ -266,3 +264,7 @@ DONE add S-Corp
 DONE make pictures links to profile
 DONE lock down 1 match
 DONE lock down 1 message
+DONE add edit/delete to posts in newsfeed
+
+DONE make admin work
+DONE make facebook button grey

@@ -59,7 +59,21 @@ class User < ActiveRecord::Base
 
   has_many :authentications, dependent: :destroy
 
-  validates :name, :bank, presence: true
+  has_attached_file :avatar,
+         :styles => { 
+            :medium => "200x200",
+            :thumb => "100x100#" 
+            },
+         :convert_options => { 
+            :thumb => '-quality 60 -strip' 
+            },
+         :storage => :s3,
+         :s3_credentials => { :access_key_id => ENV['S3_ACCESS_KEY'], :secret_access_key => ENV['S3_SECRET_KEY'], :bucket => "bankmybiz"},
+         :path => "user_avatars/:id/avatar.:extension",
+         :default_url => "https://s3.amazonaws.com/bankmybiz/default_avatar.png"
+
+
+  validates :name, presence: true
 
   # has_attached_file :avatar, :styles => { :original => "150x150#",
   #                                         :raster => "50x50#" },

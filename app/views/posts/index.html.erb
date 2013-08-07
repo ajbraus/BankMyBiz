@@ -11,7 +11,7 @@
       <%= form_for @new_post do |f| %>
         <%= profile_picture(current_user) %>
         <%= f.text_area :content, class:"span5 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
-        <%= f.text_field :tag_list, class:"span5", placeholder:"Tags (separated by comma)" %>
+        <%= f.text_field :tag_list, class:"span4", placeholder:"Tags (separated by comma)" %>
         <%= f.submit "Post", class:"btn pull-right btn-success" %>
       <% end %>
     <% else %>

@@ -16,7 +16,7 @@
       <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
     </div>
     <p class="text-right muted smaller">
-      <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.name}", user_path(post.user) if post.user %>
+      <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.first_name_with_last_initial}", user_path(post.user) if post.user %>
     </p>
 
   <script src="//platform.linkedin.com/in.js" type="text/javascript">

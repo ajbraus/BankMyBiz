@@ -1,6 +1,6 @@
 <section class="match">
 <%= link_to user_path(user) do %>
-  <%= profile_picture(user) %> <strong><%= user.first_name %></strong>
+  <%= profile_picture(user) %> <strong><%= user.first_name_with_last_initial %></strong>
 <% end %>
  <%= user.industries.map(&:description).join(", ") %>
 </section>

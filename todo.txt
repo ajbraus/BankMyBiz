@@ -1,3 +1,6 @@
+Last name still showing, with last initial
+After profile update go to to root if first time signed in
+make pictures links to profile
 
 
 setup whenever to reindex every 12 hours
@@ -6,6 +9,9 @@ Added controller/routing code for calling models methods from the browser
 Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
 
 add edit/delete to posts in newsfeed
+make admin work
+
+fix impressionist
 
 remove people who haven't started a profile from recommended users
 

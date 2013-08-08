@@ -2,18 +2,23 @@ display who you follow
 put messages on homepage
 improve how page
 add bucks polymorphic for comments & posts
-  user :bucks increment and decrement
-  buck create
-  increment
-user has_many posts
-users has_many likes through posts
-user has_many like_post_users through likes
 
-user has_many comments
-users has_many likes through comments
-user has_many like_comment_users through likes
+add 'home' link
+make landing page prettier
 
+add webfont
 
+better "improve profile section"
+  include organization name
+
+fix impressionist
+
+setup email notifications
+  s/o following you
+  new comment on your post
+  new matches
+
+---------------
 
 After profile update go to to root if first time signed in
 message sent is obvious
@@ -25,14 +30,11 @@ lock down access to profiles of the opposite type
   search posts returns only the opposite type posts
   comments
   url surfing
-
-fix impressionist
+    add friendly_id for user profiles
+  remove people who haven't started a profile from recommended users
 
 Security
   don't destroy users
-
-better "improve profile section"
-  include organization name
 
 filter users by matching criteria
   give more matches if 100% complete
@@ -45,9 +47,7 @@ setup users
   track who you viewed/messaged
   don't track if you go to the same user/post twice in the same three days
 
-  ------
-
-  remove people who haven't started a profile from recommended users
+  setup nearby owners/lenders - require location
 
   if no searches - state "no results found"
 
@@ -57,59 +57,10 @@ setup users
 
   search by aurthor's name
 
-  <%= link_to user_path(post.user) do %>
-    <%= image_tag "/assets/default_profile_pic.png", class:"img-polaroid pull-left", width:50 %>
-  <% end %>
-
-  ------
-
   trending tags - most posts with those tags
 
   Make "Updates" that the project leader can write and emails everyone following of committed.
-
-  Tweet button working
   
-  ---------------------------------
-
-  add friendly_id for user profiles
-
-------------------------------------------------------------------
-
-  
-  Actions
-    # views
-    # favorites
-    # taken
-
-  Tags
-    # actions
-
-  People
-    # votes up on comments and checkins
-    # actions created
-    # tags created
-    # actions joined
-    # actions taken
-
-profile page
-  reputation
-    unlocked permissions
-    how to get points
-  activity (public activity)
-    actions created
-    commitments
-    taken
-    comments created
-
-setup nearby actions - require location
-
-setup email notifications
-	welcome
-	s/o has joined your action
-  action comments digest (over 10 votes?)
-  someone commented on your comment
-  someone voted up your comment
-  unlocked new permission
 
 ---------------------------------------
 

@@ -64,6 +64,7 @@ class AuthenticationsController < ApplicationController
                 :pic_url => access_token.info.image, 
                 :location => access_token.info.location
               )
+      user.save
       provider = access_token.provider
       uid = access_token.uid
       authentication = user.authentications.create(provider: provider, uid: uid)

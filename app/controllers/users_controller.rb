@@ -21,9 +21,9 @@ class UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      @unconfirmed_users = User.where("confirmed_at IS NULL").paginate(:page => params[:page], :per_page => 10)
-      @confirmed_users = User.where("confirmed_at IS NOT NULL").paginate(:page => params[:page], :per_page => 10)
-      @rejected_users = User.where("rejected_at IS NOT NULL").paginate(:page => params[:page], :per_page => 10)
+      @unconfirmed_users = User.where("confirmed_at IS NULL").paginate(:page => params[:page], :per_page => 20)
+      @confirmed_users = User.where("confirmed_at IS NOT NULL").paginate(:page => params[:page], :per_page => 20)
+      @rejected_users = User.where("rejected_at IS NOT NULL").paginate(:page => params[:page], :per_page => 20)
     else 
       redirect_to root_path, notice: "Oops, here you go!"
     end

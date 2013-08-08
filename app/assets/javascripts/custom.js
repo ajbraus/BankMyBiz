@@ -8,7 +8,7 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
-  $('.alert').delay(2000).fadeOut();
+  $('.alert').delay(3000).fadeOut();
   $('.fadeInAlert').fadeIn();
   $('.comment-show').click(function() {
     $(this).next('.comment-form').toggle();

@@ -1,5 +1,5 @@
 class RegistrationsController < Devise::RegistrationsController
-
+  
   def add_avatar
 
   end

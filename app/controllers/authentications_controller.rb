@@ -7,8 +7,12 @@ class AuthenticationsController < ApplicationController
     access_token = request.env["omniauth.auth"]
     @user = find_for_oauth(access_token)
     if @user.present?
-      flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => access_token.provider
-      sign_in_and_redirect @user, :event => :authentication
+      if @user.confirmed?
+        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => access_token.provider
+        sign_in_and_redirect @user, :event => :authentication
+      else
+        redirect_to root_path, notice: "Thanks for signing up! We will confirm your profile soon."
+      end
     else
       redirect_to :back, notice: 'There was an error with LinkedIn. Check your LinkedIn account status.'
     end

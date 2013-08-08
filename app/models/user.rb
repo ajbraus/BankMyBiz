@@ -84,6 +84,7 @@ class User < ActiveRecord::Base
   #                            :path => "user/:attachment/:style/:id.:extension",
   #                            :default_url => "https://s3.amazonaws.com/bmb-production/user/avatars/original/default_profile_pic.png"
   
+  before_create :skip_confirmation_notification
   after_create :request_confirmation
 
   # def send_welcome
@@ -182,10 +183,8 @@ class User < ActiveRecord::Base
     end
     return false
   end
-    #maybe needed to create virtual attributes to accept the form and create associations?
-      #   t.string :business_type
-      # t.text :industries
-      # t.string :years_old
-      # t.string :size_revenue
-      # t.string :size_employees
+
+  def skip_confirmation_notification
+    skip_confirmation_notification!
+  end
 end

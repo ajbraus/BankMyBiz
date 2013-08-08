@@ -1,17 +1,14 @@
-setup whenever to reindex every 12 hours
+test confirming
+  add it to mocs
+
+Setup whenever to reindex every 12 hours
 Moved my rake code to the appropriate models
 Added controller/routing code for calling models methods from the browser
 Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
 
-manually confirm (for linkedin too)
-  fix message after logging in through linkedin
-if no searches - state "no results found"
-
 After profile update go to to root if first time signed in
 message sent is obvious
 bring messages to the homepage
-
-remove people who haven't started a profile from recommended users
 
 lock down access to profiles of the opposite type
   shortening the number of posts on homepage
@@ -23,7 +20,7 @@ lock down access to profiles of the opposite type
 fix impressionist
 display who you follow
 improve how page
-  add bucks
+
 add bucks polymorphic for comments & posts
   user :bucks increment and decrement
   buck create
@@ -36,7 +33,6 @@ user has_many like_post_users through likes
 user has_many comments
 users has_many likes through comments
 user has_many like_comment_users through likes
-
 
 Security
   don't destroy users
@@ -55,11 +51,12 @@ setup users
   track who you viewed/messaged
   don't track if you go to the same user/post twice in the same three days
 
-trending tags - most posts with those tags
-
-
   ------
-  
+
+  remove people who haven't started a profile from recommended users
+
+  if no searches - state "no results found"
+
   Position Owner/CFO
   
   Chat
@@ -71,6 +68,8 @@ trending tags - most posts with those tags
   <% end %>
 
   ------
+
+  trending tags - most posts with those tags
 
   Make "Updates" that the project leader can write and emails everyone following of committed.
 
@@ -267,3 +266,6 @@ DONE add profile avatar
   DONE use petpass code as baseline
   Done add variables to heroku config
   DONE lock down newsfeed unless profile pic added
+
+  DONE manually confirm (for linkedin too)
+    fix message after logging in through linkedin

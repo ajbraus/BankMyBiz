@@ -6,7 +6,7 @@ class Notifier < ActionMailer::Base
 
   def request_confirmation(user)
     @user = user
-    mail to: "ajbraus@gmail.com, michaelantonadam@me.com", subject: "New User to Confirm or Reject"
+    mail to: "team@bankmybiz.com", subject: "New User to Confirm or Reject"
   end
 
   def welcome(user)

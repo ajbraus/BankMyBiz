@@ -1,10 +1,19 @@
-test confirming
-  add it to mocs
+display who you follow
+put messages on homepage
+improve how page
+add bucks polymorphic for comments & posts
+  user :bucks increment and decrement
+  buck create
+  increment
+user has_many posts
+users has_many likes through posts
+user has_many like_post_users through likes
 
-Setup whenever to reindex every 12 hours
-Moved my rake code to the appropriate models
-Added controller/routing code for calling models methods from the browser
-Configured cronjobs using the whenever gem to run command 'curl mywebsite.com/model#method'
+user has_many comments
+users has_many likes through comments
+user has_many like_comment_users through likes
+
+
 
 After profile update go to to root if first time signed in
 message sent is obvious
@@ -18,21 +27,6 @@ lock down access to profiles of the opposite type
   url surfing
 
 fix impressionist
-display who you follow
-improve how page
-
-add bucks polymorphic for comments & posts
-  user :bucks increment and decrement
-  buck create
-  increment
-
-user has_many posts
-users has_many likes through posts
-user has_many like_post_users through likes
-
-user has_many comments
-users has_many likes through comments
-user has_many like_comment_users through likes
 
 Security
   don't destroy users
@@ -269,3 +263,6 @@ DONE add profile avatar
 
   DONE manually confirm (for linkedin too)
     fix message after logging in through linkedin
+
+DONE test confirming
+DONE Setup whenever to reindex every 12 hours

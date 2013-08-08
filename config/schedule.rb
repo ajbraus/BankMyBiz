@@ -6,8 +6,17 @@
 set :output, "#{path}/log/cron.log"
 job_type :script, "'#{path}/script/:task' :output"
 
-every 6.hours do
-  rake "ts:reindex"
+case @environment
+when 'production'
+  every 2.hours do
+    "rake fs:rebuild"
+  end
+end
+
+when 'development'
+  every 2.hours do
+    "rake ts:rebuild"
+  end
 end
 
 # every 15.minutes do

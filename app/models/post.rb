@@ -52,4 +52,8 @@ class Post < ActiveRecord::Base
   def next_post
     self.class.first(:conditions => ["id > ?", id])
   end
+
+  def rebuild_index
+    rake fs:rebuild
+  end
 end

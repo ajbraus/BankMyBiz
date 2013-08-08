@@ -1,5 +1,6 @@
-display who you follow
-put messages on homepage
+Optimize for managing virtual relationships
+  display who you follow
+  put messages on homepage
 improve how page
 add bucks polymorphic for comments & posts
 
@@ -16,7 +17,8 @@ fix impressionist
 setup email notifications
   s/o following you
   new comment on your post
-  new matches
+  new matches teaser
+  newsletter (manual)
 
 ---------------
 

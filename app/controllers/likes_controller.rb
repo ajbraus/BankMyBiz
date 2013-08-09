@@ -2,7 +2,6 @@ class LikesController < ApplicationController
   before_filter :authenticate_user!
 
   def create
-    binding.pry
     @likeable = find_likeable
     @like = @likeable.likes.build(params[:like])
     @like.user = current_user

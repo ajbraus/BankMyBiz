@@ -1,9 +1,8 @@
+<div class="matches">
+  The <strong>BankMyBiz Network</strong> matches you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
+</div>
+<hr>
 <div class="">
   <p class="muted">Trending Tags</p>
   <%= raw @trending_tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
-</div>
-<hr>
-<div class="matches">
-  The <strong>BankMyBiz Network</strong> matches you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
-<hr>
 </div>

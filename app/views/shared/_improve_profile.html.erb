@@ -7,17 +7,16 @@
 <% else %>
   <% if !current_user.started_profile? %>
     <%= link_to "Start Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>
-    <div class="muted">
+    <div class="">
       to unlock <%= current_user.bank? ? "owners" : "lenders" %>
     </div>
   <% else %>
-    <h5>Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</h5>
+    <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
     <%= render partial: "users/user", collection: @recommended_users, as: :user %>
     <% unless current_user.finished_profile? %>      
       <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
-      <div class='muted'>for better matches</div>
+      <div class=''>for better matches</div>
     <% end %>
   <% end %>
 <% end %>
 </div>
-<hr>

@@ -1,9 +1,7 @@
 index users by name and return in searches
 
 add bucks polymorphic for comments & posts
-
-Fix navigation
-add 'home' link
+Fix navigation (add green carets on active pages)
 make landing page prettier
 
 add webfont

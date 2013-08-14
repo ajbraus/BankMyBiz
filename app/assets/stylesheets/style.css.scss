@@ -1,9 +1,6 @@
-@font-face {
-  font-family: gurmukhi;
-  src: url('gurmukhi_sangam_mn.ttf') format("truetype");
-  font-weight: normal;
-  font-style: normal;
- }
+.green {
+  color:#009E3B;
+}
 
 hr {
 	clear:both;
@@ -113,8 +110,25 @@ background: white;
 z-index: 100;
 }
 
+.under {
+  position: relative;
+bottom: 17px;
+}
+
+.navbar .nav > li > a {
+padding: 10px 10px 10px;
+}
+
+.email-signin {
+  margin:15px 0px 0 5px;
+}
+
 .nav {
   top: 10px;
+}
+
+.nav-list {
+  padding-left: 64px;
 }
 
 .nav-border {
@@ -331,7 +345,7 @@ hr {
 }
 
 .medium-thumbnail {
-  height:120px;
+  height:90px;
 }
 
 .clear-both {
@@ -785,3 +799,4 @@ height: 90px;
     text-decoration:none;
   }
 }
+

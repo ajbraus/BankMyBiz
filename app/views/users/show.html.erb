@@ -24,51 +24,38 @@
 <div class="span3">
 <!--   <img src="/assets/default_profile_pic.png" class="span2 clear-both" /> -->
   <%= render 'follow_form' if signed_in? %>
-  <div class="text-center">
-    <%= large_profile_picture(@user) %>
-  </div>
-  <hr>
-  <div class="clear-both">
+  <ul>
+  <li>
+    <p><%= large_profile_picture(@user) %></p>
+  </li> 
+  <li>
     <p><strong>Name</strong> <%= @user.name %></p>
-  </div>
-  <div>
-    <p>
-      <strong>Bio</strong>
-      <div class="muted">
-        <%= @user.bio %>
-      </div>
-    </p>
-  </div>
-  <div>
-    <p>
-      <strong class=''>Business Type:</strong>
-      <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
-    </p>
-  </div>
-  <div>
-    <p>
-      <strong class=''>Revenue Size:</strong>
-      <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
-    </p>
-  </div>
-  <div>
-    <p>
-      <strong class=''>Years of Operation</strong>
-      <div class="muted"><%= @user.ages.map(&:description).join(", ") %></div>
-    </p>
-  </div>
-  <div>
-    <p>
-      <strong class=''>Industry</strong>
-      <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
-    </p>
-  </div>
-  <div>
-    <p>
-      <strong class=''>Employees</strong>
-      <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
-    </p>
-  </div>
+  </li>
+  <li>
+    <strong>Bio</strong>
+    <p class="muted"><%= @user.bio %></p>
+  </li>
+  <li>
+    <strong class=''>Business Type:</strong>
+    <p class="muted"><%= @user.business_types.map(&:description).join(", ") %></p>
+  </li>
+  <li>
+    <strong class=''>Revenue Size:</strong>
+    <p class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></p>
+  </li>
+  <li>
+    <strong class=''>Years of Operation</strong>
+    <p class="muted"><%= @user.ages.map(&:description).join(", ") %></p>
+  </li>
+  <li>
+    <strong class=''>Industry</strong>
+    <p class="muted"><%= @user.industries.map(&:description).join(", ") %></p>
+  </li>
+  <li>
+    <strong class=''>Employees</strong>
+    <p class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></p>
+  </li>
+</ul>
   <% if @user == current_user %>
     <%= link_to "edit profile", edit_profile_path(@user) %>
   <% elsif current_user.messages_left? %>

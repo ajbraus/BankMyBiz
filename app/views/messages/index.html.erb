@@ -1,4 +1,4 @@
-<div class="span12">
+<div class="span9">
   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
       <li class="active"><a href="#tab1" data-toggle="tab">Inbox(<%= current_user.unread_messages.count %>)</a></li>
@@ -55,4 +55,9 @@
       </div>
     </div>
   </div>
+</div>
+<div class="span3">
+  <%= render 'shared/improve_profile' %>
+  <hr>
+  <%= render 'shared/profile_views' %>
 </div>

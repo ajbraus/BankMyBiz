@@ -80,20 +80,27 @@
   <%= render 'shared/trending_tags' %>
 </div>
 <div class="span6">
-  <h4>Activity</h4>
-  <% @activities.each do |activity| %>
-    <div class="activity">
-    <%= link_to activity.owner.name, activity.owner if activity.owner %>
-    <%= render_activity activity %>
-    </div>
+  <% if @user == current_user %>
+    <h4>Your Activity</h4>
+    <% @activities.each do |activity| %>
+      <div class="activity">
+      <%= link_to activity.owner.name, activity.owner if activity.owner %>
+      <%= render_activity activity %>
+      </div>
+    <% end %>
+    <hr>  
   <% end %>
-  <hr>  
-  <h4>Posts</h4>
+  <% if @user == current_user %>
+    <h4>Your Posts</h4>
+  <% else %>
+    <h4><%= @user.first_name %>'s Recent Posts</h4>
+  <% end %>
   <%= render partial: "posts/post", collection: @posts, as: :post %>
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
 
 <div class='span3'>
   <%= render 'shared/improve_profile' %>
+  <hr>
   <%= render 'shared/profile_views' %>
 </div>

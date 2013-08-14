@@ -1,9 +1,8 @@
-Optimize for managing virtual relationships
-  display who you follow
-  put messages on homepage
-improve how page
+index users by name and return in searches
+
 add bucks polymorphic for comments & posts
 
+Fix navigation
 add 'home' link
 make landing page prettier
 
@@ -219,3 +218,8 @@ DONE add profile avatar
 
 DONE test confirming
 DONE Setup whenever to reindex every 12 hours
+DONE Optimize for managing virtual relationships
+  DONE display who you follow
+  DONE put messages on homepage
+
+DONE improve how page

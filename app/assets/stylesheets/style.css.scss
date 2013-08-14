@@ -68,7 +68,7 @@ border-radius: 0px;
 
 .tag {
   background:#009E3B;
-  padding:2px 4px;
+  padding:3px 7px;
   color:white;
   &:hover {
     text-decoration:none;
@@ -76,9 +76,14 @@ border-radius: 0px;
     opacity:.8;
   }
 }
+
+.tag-cloud {
+  line-height: 30px;
+}
+
 .brand {
 	img {
-		height:40px;
+		height:50px;
 		bottom: 7px;
 		position: relative;
 	}
@@ -98,15 +103,18 @@ border-radius: 4px;
 }
 
 .border-bottom {
-	border-bottom:1px solid lightgrey;
+	border-bottom:1px solid #eee;
 }
 
 .navbar {
-	border-bottom: 1px solid lightgrey;
+	border-bottom: 1px solid #eee;
 width: 100%;
 background: white;
 z-index: 100;
-height: 65px;
+}
+
+.nav {
+  top: 10px;
 }
 
 .nav-border {
@@ -145,9 +153,19 @@ width: 47px;
 }
 
 .form-search {
-	margin-top:5px;
-  margin-bottom:0px;
+  float:left;
+  position: relative;
+  top: 15px;
 }
+
+.nav {
+  text-align: right;
+}
+
+.nav-collapse {
+  background: white;
+}
+
 .label {
 padding: 5px;
 font-size: 12px;
@@ -356,7 +374,15 @@ left: 2px;
   float:left;
 }
 .dropdown {
+  text-align: right;
+}
+
+.dropdown-menu {
   text-align: left;
+}
+
+.btn-navbar {
+  margin-top: 12px;
 }
 
 body {
@@ -659,7 +685,7 @@ height: 90px;
 }
 
 .matches {
-  
+  padding-right: 15px;
 }
 
 .post-profile-pic {
@@ -751,4 +777,11 @@ height: 90px;
 .push-up-a-bit {
   position: relative;
   bottom:6px;
+}
+
+.no-text-decoration {
+  text-decoration: none;
+  &:hover {
+    text-decoration:none;
+  }
 }

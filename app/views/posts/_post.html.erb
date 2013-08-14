@@ -6,7 +6,7 @@
   <% end %>
   </div>
   <% end %>
-    <div class="clearfix">
+    <div class="clearfix margin-bottom">
       <div class="post-profile-pic">
         <%= link_to post.user do %>
           <%= profile_picture(post.user) %>
@@ -31,7 +31,7 @@
         'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
         'facebook-share-dialog', 
         'width=626,height=436'); 
-      return false;">
+      return false;" class="no-text-decoration">
     <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i></span><span class="btn btn-mini push-up-a-bit">facebook</span>
   </a>
   <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= post_url(post) %>" data-text="<%= post.short_content %> " data-via="bankmybiz" data-hashtags="financing">Tweet</a>

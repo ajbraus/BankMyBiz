@@ -8,6 +8,7 @@ gem 'thin'
 gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'devise', '2.2.4'
+gem "devise_mailchimp"
 gem 'omniauth-linkedin'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

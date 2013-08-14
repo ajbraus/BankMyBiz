@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable, :mailchimp
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
                   :location,
                   :terms,
                   :admin,
-                  :avatar
+                  :avatar,
+                  :join_mailing_list #for devise_mailchimp
                   
   # attr_accessible :title, :body
 

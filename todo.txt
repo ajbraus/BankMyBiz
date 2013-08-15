@@ -1,8 +1,7 @@
-index users by name and return in searches
-
-add bucks polymorphic for comments & posts
-Fix navigation (add green carets on active pages)
 make landing page prettier
+add bucks polymorphic for comments & posts
+
+index users by name and return in searches
 
 add webfont
 
@@ -221,3 +220,4 @@ DONE Optimize for managing virtual relationships
   DONE put messages on homepage
 
 DONE improve how page
+DONE Fix navigation (add green carets on active pages)

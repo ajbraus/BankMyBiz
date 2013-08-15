@@ -7,7 +7,15 @@ hr {
 }
 
 body {
-	font-family: gurmukhi, "lucida grande", arial;
+  padding-top:20px;
+}
+
+h1,h2,h3,h4,h5 {
+  font-family: 'Montserrat', sans-serif;
+}
+
+strong {
+  font-family: 'Montserrat', sans-serif;
 }
 
 ul, li {
@@ -15,8 +23,9 @@ ul, li {
 }
 
 footer {
+  background: black;
+  color:white;
 clear: both;
-border-top: 1px solid #eee;
 height: 160px;
 margin-top: 2px;
 padding: 0 50px;
@@ -108,6 +117,8 @@ border-radius: 4px;
 width: 100%;
 background: white;
 z-index: 100;
+font-family: 'Montserrat', sans-serif;
+
 }
 
 .under {
@@ -399,11 +410,6 @@ left: 2px;
   margin-top: 12px;
 }
 
-body {
-  padding-top: 20px;
-  padding-bottom: 40px;
-}
-
 /* Custom container */
 .container-narrow {
   margin: 0 auto;
@@ -414,9 +420,22 @@ body {
 }
 
 /* Main marketing message and sign up button */
+.message {
+  background: rgba(255,255,255,0.8);
+  padding: 30px;
+  border-radius: 7px;
+  position: relative;
+  top: 0px;
+  .h3 {
+    font-family: 'Montserrat', sans-serif;
+  }
+}
+
 .jumbotron {
-  margin: 60px 0;
+  margin: 0 0 30px 0;
   text-align: center;
+  padding: 170px 50px 50px 50px;
+  background: url("hero_original.jpeg");
 }
 .jumbotron h1 {
   font-size: 72px;
@@ -426,10 +445,6 @@ body {
   font-size: 21px;
   padding: 14px 24px;
 }
-
-      body {
-        padding-bottom: 40px;
-      }
 
       /* Custom container */
       .container-narrow {
@@ -441,18 +456,6 @@ body {
       }
 
       /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
 
       .navbar-inner {
         -webkit-border-radius: 0px;
@@ -799,4 +802,3 @@ height: 90px;
     text-decoration:none;
   }
 }
-

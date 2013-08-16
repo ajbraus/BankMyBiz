@@ -1,15 +1,8 @@
-make landing page prettier
 add bucks polymorphic for comments & posts
-
 index users by name and return in searches
-
-add webfont
-
 better "improve profile section"
   include organization name
-
 fix impressionist
-
 setup email notifications
   s/o following you
   new comment on your post
@@ -221,3 +214,5 @@ DONE Optimize for managing virtual relationships
 
 DONE improve how page
 DONE Fix navigation (add green carets on active pages)
+DONE make landing page prettier
+DONE add webfont

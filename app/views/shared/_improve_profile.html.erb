@@ -15,7 +15,7 @@
     <%= render partial: "users/user", collection: @recommended_users, as: :user %>
     <% unless current_user.finished_profile? %>      
       <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
-      <div class=''>for better matches</div>
+      <div class=''>For Better Matches</div>
     <% end %>
   <% end %>
 <% end %>

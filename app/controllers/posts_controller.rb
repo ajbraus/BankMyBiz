@@ -1,5 +1,24 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:show]
+
+  def vote_up
+    begin
+      current_user.vote_exclusively_for(@post = Post.find(params[:id]))
+      redirect_to :back
+    rescue ActiveRecord::RecordInvalid
+      redirect_to :back
+    end
+  end
+
+  def vote_down
+    begin
+      current_user.vote_exclusively_against(@post = Post.find(params[:id]))
+      redirect_to :back
+    rescue ActiveRecord::RecordInvalid
+      redirect_to :back
+    end
+  end
+
   # GET /posts
   # GET /posts.json
   def index

@@ -5,6 +5,8 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, polymorphic: true
   has_many :likes, as: :likeable
   belongs_to :user
+
+  acts_as_voteable
   
   attr_accessible :content
 

@@ -1,18 +1,26 @@
 <section class="newsfeed-item clearfix">
-  <% if false %>
-  <div class="pull-right dollar">
-  <%= link_to likes_path(post: post.id), method: :post do %>
-    <i class="icon-money"></i>
-  <% end %>
-  </div>
-  <% end %>
     <div class="clearfix margin-bottom">
-      <div class="post-profile-pic">
-        <%= link_to post.user do %>
-          <%= profile_picture(post.user) %>
-        <% end %>
+      <div class="row">
+        <div class="span1">
+          <%= link_to post.user, class:"post-profile-pic" do %>
+            <%= profile_picture(post.user) %>
+          <% end %>
+          <div class="pull-left grey large" style="margin-left: -8px;">
+            <%= post.plusminus %> <i class="icon-money"></i>
+          </div>
+          <div>
+            <%= link_to vote_up_post_path(post), class:"pull-left fade-in-green" do %>
+              <p><i class="icon-circle-arrow-up <%= current_user.voted_for?(post) ? 'green' : '' %>"></i></p>
+            <% end %>
+            <%= link_to vote_down_post_path(post), class:"pull-left fade-in-red" do %>
+              <i class="icon-circle-arrow-down <%= current_user.voted_against?(post) ? 'red' : '' %>"></i>
+            <% end %>
+          </div>
+        </div>
+        <div class="pull-left">
+          <%= auto_link(post.content) %>
+        </div>
       </div>
-      <%= auto_link(post.content) %>
     </div>
     <div class="text-right">
       <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>

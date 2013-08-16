@@ -9,6 +9,8 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :likes, as: :likeable
 
+  acts_as_voteable
+  
   attr_accessible :content,
                   :tag_list
 

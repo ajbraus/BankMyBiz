@@ -1,6 +1,24 @@
 class CommentsController < ApplicationController
   before_filter :authenticate_user!, :load_commentable
   
+  def vote_up
+    begin
+      current_user.vote_exclusively_for(@post = Comment.find(params[:id]))
+      redirect_to :back
+    rescue ActiveRecord::RecordInvalid
+      redirect_to :back
+    end
+  end
+
+  def vote_down
+    begin
+      current_user.vote_exclusively_against(@post = Comment.find(params[:id]))
+      redirect_to :back
+    rescue ActiveRecord::RecordInvalid
+      redirect_to :back
+    end
+  end
+
   # GET /comments
   # GET /comments.json
   def index

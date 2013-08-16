@@ -6,5 +6,5 @@
     <%= image_tag 'default_profile_pic.png', class:"comment-pic" %>
   <% end %>
   <div class="small"><%= comment.content %></div>
-  <div class="muted smallest text-right"><%= time_ago_in_words(comment.created_at) %> ago by <%= link_to "#{comment.user.first_name_with_last_initial}", user_path(post.user) if comment.commentable.user %></div>
+  <div class="muted smaller text-right"><%= time_ago_in_words(comment.created_at) %> ago by <%= link_to "#{comment.user.first_name_with_last_initial}", user_path(post.user) if comment.commentable.user %></div>
 </li>

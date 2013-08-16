@@ -31,6 +31,8 @@ class User < ActiveRecord::Base
 
   is_impressionable
 
+  acts_as_voter
+
   has_many :posts, dependent: :destroy
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy
   has_many :committed_tos, through: :commitments, source: "commitment"

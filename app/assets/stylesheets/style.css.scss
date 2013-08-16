@@ -204,7 +204,7 @@ margin: 2px;
 }
 
 .margin-bottom {
-  margin-bottom: 50px;
+  margin-bottom: 20px;
 }
 
 hr {
@@ -239,14 +239,6 @@ margin-bottom: 0;
 }
 
 .gold {
-  color:gold;
-}
-
-.grey {
-  color:lightgrey;
-}
-
-.grey:hover {
   color:gold;
 }
 
@@ -368,10 +360,10 @@ hr {
 }
 
 .vote-count {
-  font-size: 19px;
-position: relative;
-bottom: 6px;
-left: 2px;
+  font-size: 16px;
+  position: relative;
+  bottom: 0px;
+  left: -5px;
 }
 
 .activity {
@@ -498,6 +490,10 @@ height:60px;
 
 .clear-left {
   clear:left;
+}
+
+.clear-right {
+  clear:right;
 } 
 
 .dollar {
@@ -801,4 +797,34 @@ height: 90px;
   &:hover {
     text-decoration:none;
   }
+}
+
+.grey {
+  color:#D1CDCD;
+}
+
+.fade-in-red {
+  margin: 0 1px;
+  color:#D1CDCD;
+  &:hover{
+    text-decoration:none;
+    color:#CD0000;
+    -webkit-transition: color .25s linear .1s;
+    transition: color .25s linear .1s;
+  }
+}
+
+.fade-in-green {
+  margin: 0 1px;
+  color:#D1CDCD;
+  &:hover{
+    text-decoration:none;
+    color:#009E3B;
+    -webkit-transition: color .25s linear .1s;
+    transition: color .25s linear .1s;
+  }
+}
+
+.red {
+  color:#CD0000;
 }

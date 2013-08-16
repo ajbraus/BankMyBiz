@@ -4,8 +4,18 @@ BankMyBiz::Application.routes.draw do
 
   resources :messages
   resources :posts do 
-    resources :comments
+    member do
+      get :vote_up
+      get :vote_down
+    end
+    resources :comments do
+      member do
+        get :vote_up
+        get :vote_down
+      end
+    end
   end
+
 
   resources :likes, only: [:create, :destroy]
 

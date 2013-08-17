@@ -1,6 +1,6 @@
 <section class="match">
-  <h4>0 Bucks</h4>
-  <div class="muted small up">Were Added to your Posts</div>
+  <h4><%= pluralize(current_user.karma, "Buck", "Bucks") %> </h4>
+  <div class="muted small up">Were Added to your Posts & Comments</div>
   <h4><%= pluralize(current_user.impressions_count, 'User', 'Users') %></h4>
   <div class="muted small up">Viewed your Profile</div>
   <h4><%= pluralize(current_user.followers.count, 'Follower', 'Followers') %></h4>

@@ -1,15 +1,24 @@
-add karma
-ajaxify voting
-add public activity for voting
-index users by name and return in searches
-better "improve profile section"
-  include organization name
-fix impressionist
 setup email notifications
   s/o following you
   new comment on your post
   new matches teaser
   newsletter (manual)
+
+fix impressionist
+
+ajaxify voting
+
+add karma
+  recently added karma (last week's votes)
+  start out with 25 reputation points
+  "buy" a match with 25 reputation points
+
+who voted for you?
+  voters_who_voted
+
+index users by name and return in searches
+better "improve profile section"
+  include organization name
 
 ---------------
 
@@ -219,3 +228,5 @@ DONE Fix navigation (add green carets on active pages)
 DONE make landing page prettier
 DONE add webfont
 DONE add bucks polymorphic for comments & posts
+
+DONE add public activity for voting

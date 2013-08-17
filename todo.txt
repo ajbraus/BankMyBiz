@@ -1,4 +1,6 @@
-add bucks polymorphic for comments & posts
+add karma
+ajaxify voting
+add public activity for voting
 index users by name and return in searches
 better "improve profile section"
   include organization name
@@ -216,3 +218,4 @@ DONE improve how page
 DONE Fix navigation (add green carets on active pages)
 DONE make landing page prettier
 DONE add webfont
+DONE add bucks polymorphic for comments & posts

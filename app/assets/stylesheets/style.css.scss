@@ -803,8 +803,11 @@ height: 90px;
   color:#D1CDCD;
 }
 
-.fade-in-red {
+.breathing-room {
   margin: 0 1px;
+}
+
+.fade-in-red {
   color:#D1CDCD;
   &:hover{
     text-decoration:none;
@@ -815,7 +818,6 @@ height: 90px;
 }
 
 .fade-in-green {
-  margin: 0 1px;
   color:#D1CDCD;
   &:hover{
     text-decoration:none;
@@ -827,4 +829,8 @@ height: 90px;
 
 .red {
   color:#CD0000;
+}
+
+.post-content {
+  width: 80%;
 }

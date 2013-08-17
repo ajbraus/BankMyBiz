@@ -1,0 +1,6 @@
+gave a buck to 
+<% if activity.trackable %>
+  <p><%= link_to activity.trackable.user.first_name_with_last_initial, activity.trackable.user %> because of their post: <%= link_to activity.trackable.content, activity.trackable %></p>
+<% else %>
+  a post which has since been removed 
+<% end %>

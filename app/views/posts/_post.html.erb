@@ -6,18 +6,18 @@
             <%= profile_picture(post.user) %>
           <% end %>
           <div class="pull-left grey large" style="margin-left: -8px;">
-            <%= post.plusminus %> <i class="icon-money"></i>
+            <%= post.plusminus %><i class="icon-money"></i>
           </div>
           <div>
-            <%= link_to vote_up_post_path(post), class:"pull-left fade-in-green" do %>
-              <p><i class="icon-circle-arrow-up <%= current_user.voted_for?(post) ? 'green' : '' %>"></i></p>
+            <%= link_to vote_up_post_path(post), class:"pull-left breathing-room fade-in-green" do %>
+              <p><i class="icon-circle-arrow-up <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"></i></p>
             <% end %>
             <%= link_to vote_down_post_path(post), class:"pull-left fade-in-red" do %>
-              <i class="icon-circle-arrow-down <%= current_user.voted_against?(post) ? 'red' : '' %>"></i>
+              <i class="icon-circle-arrow-down <%= user_signed_in? && current_user.voted_against?(post) ? 'red' : '' %>"></i>
             <% end %>
           </div>
         </div>
-        <div class="pull-left">
+        <div class="pull-left post-content">
           <%= auto_link(post.content) %>
         </div>
       </div>
@@ -46,7 +46,7 @@
 
   <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
 
-<% if user_signed_in? && post.user == current_user || current_user.admin? %>
+<% if user_signed_in? && (post.user == current_user || current_user.admin?) %>
 <div class="text-right">
 <%= link_to "Edit", edit_post_path(post), class:"smaller btn btn-mini" %>
 <%= link_to 'Delete', post, class:"smaller btn btn-mini", method: :delete, data: { confirm: 'Are you sure you would like to delete this post?' } %>

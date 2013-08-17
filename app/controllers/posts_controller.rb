@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   def vote_up
     begin
       current_user.vote_exclusively_for(@post = Post.find(params[:id]))
+      @post.create_activity :voted_up, owner: current_user
       redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
@@ -13,6 +14,7 @@ class PostsController < ApplicationController
   def vote_down
     begin
       current_user.vote_exclusively_against(@post = Post.find(params[:id]))
+      @post.create_activity :voted_down, owner: current_user
       redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
@@ -29,10 +31,10 @@ class PostsController < ApplicationController
     is_bank = !current_user.bank?
     if params[:search].present?
       #@posts = Post.search(params[:search], with: { bank: is_bank }, :page => params[:page], :per_page => 20)
-      @posts = Post.search(params[:search], :page => params[:page], :per_page => 10)
+      @posts = Post.search(params[:search], :page => params[:page], :per_page => 6)
     else
       #@posts = Post.where(bank: is_bank).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
-      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 6)
     end
     
     @new_post = Post.new
@@ -52,7 +54,15 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-    # @post.create_activity :show, owner: current_user
+
+    if user_signed_in?
+      is_bank = !current_user.bank?
+      @new_post = Post.new
+      @trending_tags = Tag.order('created_at desc').first(10)
+      @recommended_users = User.where(bank: is_bank).last
+      @recent_messages = current_user.messages.first(3)
+      @following_users = current_user.followed_users
+    end
 
     respond_to do |format|
       format.html # show.html.erb

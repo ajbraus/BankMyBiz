@@ -1,21 +1,44 @@
-<div class="span5 offset3">
-<section class="newsfeed-item">
-  <div class="pull-left clear-left dollar">
-  $
-  </div>
-  <div class="span5">
-    <p>
-      <%= auto_link(@post.short_content) %>
-    </p>
-    <div class="pull-right">
-      <%= raw @post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"label" }.join(' ') %>
+<div class="span3">       
+  <div class="border-right">
+    <%= render 'shared/trending_tags' %>
+    <hr>
+    <% if @recent_messages.any? %>
+      <div class="home-messages">
+        <p class="muted">Your Messages</p>
+        <table>
+          <% @recent_messages.each do |rm| %>
+            <tr>
+              <td><%= rm.sender.first_name_with_last_initial %></td>
+              <td><%= rm.subject %></td>
+              <td><%= rm.nice_created_at %></td>
+            </tr>
+          <% end %>
+        </table>
+        <%= link_to "more", messages_path, class:"text-right" %>
+      </div>
+      <hr>
+    <% end %>
+    <div class="home-messages">
+      <p class="muted">Who you Follow</p>
+      <ul>
+        <% @following_users.each do |fu| %>
+          <li>
+            <%= profile_picture(fu) %>
+            <%= link_to fu.first_name_with_last_initial, fu %>
+          </li>
+        <% end %>
+      </ul> 
     </div>
-    <p class="pull-right muted small">
-      <%= time_ago_in_words(@post.created_at) %> ago by <%= link_to "#{@post.user.name}", user_path(@post.user) %>
-    </p>
   </div>
+</div>
+<div class="span6">
+  <%= render partial: 'posts/post', locals: { post: @post } %>
+</div>
 
-<%= render partial: 'comments/form', locals: { post: @post } %>
-<%= render partial: 'comments/comment', collection: @post.comments.where('content is not null'), as: :comment, locals: { post: @post } %>
-</section>
+<div class="span3">  
+  <div class="border-left">
+    <%= render 'shared/improve_profile' %>
+    <hr>
+    <%= render 'shared/profile_views' %>
+  </div>
 </div>

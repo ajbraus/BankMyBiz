@@ -32,6 +32,7 @@ class User < ActiveRecord::Base
   is_impressionable
 
   acts_as_voter
+  #has_karma(:posts)
 
   has_many :posts, dependent: :destroy
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy

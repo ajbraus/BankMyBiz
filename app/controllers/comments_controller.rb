@@ -3,7 +3,8 @@ class CommentsController < ApplicationController
   
   def vote_up
     begin
-      current_user.vote_exclusively_for(@post = Comment.find(params[:id]))
+      current_user.vote_exclusively_for(@comment = Comment.find(params[:id]))
+      @comment.create_activity :voted_up, owner: current_user
       redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
@@ -12,7 +13,8 @@ class CommentsController < ApplicationController
 
   def vote_down
     begin
-      current_user.vote_exclusively_against(@post = Comment.find(params[:id]))
+      current_user.vote_exclusively_against(@comment = Comment.find(params[:id]))
+      @comment.create_activity :voted_down, owner: current_user
       redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back

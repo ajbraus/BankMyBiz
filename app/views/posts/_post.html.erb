@@ -1,28 +1,28 @@
 <section class="newsfeed-item clearfix">
   <div class="clearfix margin-bottom">
-      <div class="pull-left">
-        <%= link_to post.user, class:"post-profile-pic" do %>
-          <%= profile_picture(post.user) %>
-        <% end %>
-        <br>
-        <div class="pull-left grey large voting">
-          <%= post.plusminus %><i class="icon-money"></i>
-        </div>
+    <div class="pull-left">
+      <%= link_to post.user, class:"post-profile-pic" do %>
+        <%= profile_picture(post.user) %>
+      <% end %>
+    </div>
+    <div class="pull-right grey large">
+      <%= post.plusminus %>
+      <% if user_signed_in? %>
         <% unless current_user == post.user%>
-          <%= link_to vote_up_post_path(post), class:"pull-left breathing-room fade-in-green" do %>
-            <p><i class="icon-money <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"></i></p>
+          <%= link_to vote_up_post_path(post), class:"breathing-room fade-in-green" do %>
+            <i class="icon-money <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"></i>
           <% end %>
         <% end %>
-      </div>
-      <div class="pull-left post-content">
-        <%= auto_link(post.content) %>
-      </div>
+      <% end %>
     </div>
-    <div class="text-right">
+    <div class="post-content">
+      <%= auto_link(post.content) %>
+    </div>
+    <div class="text-right muted small">
+      posted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.first_name_with_last_initial}", user_path(post.user) if post.user %>
+    </div>
+    <p class="text-right">
       <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
-    </div>
-    <p class="text-right muted smaller">
-      <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.first_name_with_last_initial}", user_path(post.user) if post.user %>
     </p>
 
   <script src="//platform.linkedin.com/in.js" type="text/javascript">

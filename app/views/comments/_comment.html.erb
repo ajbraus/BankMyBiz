@@ -1,17 +1,14 @@
 <li class="comment">
   <div class="pull-left grey small" style="margin-left: -8px;">
-    <%= comment.plusminus %> <i class="icon-money"></i>
+    <div class="pull-left"><%= comment.plusminus %></div>
+    <% if user_signed_in? %>
+      <span class="breathing-room">
+        <%= link_to vote_up_post_comment_path(post, comment), class:"pull-left fade-in-green" do %>
+        <i class="icon-money <%= current_user.voted_for?(comment) ? 'green' : '' %>"></i>
+        <% end %>
+      </span>
+    <% end %>
   </div>
-  <% if user_signed_in? %>
-    <div class="pull-left small">
-      <%= link_to vote_up_post_comment_path(post, comment), class:"pull-left fade-in-green" do %>
-        <p><i class="icon-circle-arrow-up <%= current_user.voted_for?(comment) ? 'green' : '' %>"></i></p>
-      <% end %>
-      <%= link_to vote_down_post_comment_path(post, comment), class:"pull-left fade-in-red" do %>
-        <i class="icon-circle-arrow-down <%= current_user.voted_against?(comment) ? 'red' : '' %>"></i>
-      <% end %>
-    </div> 
-  <% end %>       
   <div class="small"><%= comment.content %></div>
   <div class="muted smaller text-right"><%= time_ago_in_words(comment.created_at) %> ago by <%= link_to "#{comment.user.first_name_with_last_initial}", user_path(post.user) if comment.commentable.user %></div>
 </li>

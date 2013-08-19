@@ -10,10 +10,7 @@
         </div>
         <% unless current_user == post.user%>
           <%= link_to vote_up_post_path(post), class:"pull-left breathing-room fade-in-green" do %>
-            <p><i class="icon-circle-arrow-up <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"></i></p>
-          <% end %>
-          <%= link_to vote_down_post_path(post), class:"pull-left fade-in-red" do %>
-            <i class="icon-circle-arrow-down <%= user_signed_in? && current_user.voted_against?(post) ? 'red' : '' %>"></i>
+            <p><i class="icon-money <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"></i></p>
           <% end %>
         <% end %>
       </div>

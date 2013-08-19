@@ -2,7 +2,7 @@
   <div class="border-right">
     <%= render 'shared/trending_tags' %>
     <hr>
-    <% if @recent_messages.any? %>
+    <% if @recent_messages.present? %>
       <div class="home-messages">
         <p class="muted">Your Messages</p>
         <table>
@@ -21,7 +21,7 @@
     <div class="home-messages">
       <p class="muted">Who you Follow</p>
       <ul>
-        <% @following_users.each do |fu| %>
+        <% @following_users.try(:each) do |fu| %>
           <li>
             <%= profile_picture(fu) %>
             <%= link_to fu.first_name_with_last_initial, fu %>
@@ -37,8 +37,10 @@
 
 <div class="span3">  
   <div class="border-left">
+    <% if user_signed_in? %>
     <%= render 'shared/improve_profile' %>
     <hr>
     <%= render 'shared/profile_views' %>
+    <% end %>
   </div>
 </div>

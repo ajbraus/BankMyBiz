@@ -54,11 +54,11 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-
+    @trending_tags = Tag.order('created_at desc').first(10)
+    
     if user_signed_in?
       is_bank = !current_user.bank?
       @new_post = Post.new
-      @trending_tags = Tag.order('created_at desc').first(10)
       @recommended_users = User.where(bank: is_bank).last
       @recent_messages = current_user.messages.first(3)
       @following_users = current_user.followed_users

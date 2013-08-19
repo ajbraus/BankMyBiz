@@ -1,3 +1,21 @@
+hint
+
+give a buck
+
+Location?
+
+justify the wins
+
+SLL Cert
+
+Accolades
+
+finect carousel
+
+bank matches / biz matches
+
+remove pagination of posts
+
 setup email notifications
   s/o following you
   new comment on your post
@@ -19,8 +37,30 @@ who voted for you?
 index users by name and return in searches
 better "improve profile section"
   include organization name
+  include position
+
+Remove "facebook" "twitter" button names
+
+UX site
+
+staging / mirroring at bankmybiz.biz
 
 ---------------
+
+add qualification, "series three"
+
+Upgrade:
+  browse invisibly
+  special matches
+  see 24 people who like you
+  messages read recieptes
+  kill the adds
+  change your username
+  store upto 5,000
+
+  1/month package, 3/month package %25, 6/month package %50
+
+consulting
 
 After profile update go to to root if first time signed in
 message sent is obvious
@@ -65,6 +105,13 @@ setup users
   
 
 ---------------------------------------
+
+  Control / Moderation
+
+
+---------------------------------------
+
+
 
 DONE Setup tags
 

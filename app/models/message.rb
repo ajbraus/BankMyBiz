@@ -8,4 +8,12 @@ class Message < ActiveRecord::Base
     created_at.strftime("%l:%M%p %b %e, %y") #May 21, 10
   end
 
+  def short_subject
+    if self.subject.size >= 20
+      self.subject.slice(0..20) + "..."
+    else
+      self.subject
+    end
+  end
+
 end

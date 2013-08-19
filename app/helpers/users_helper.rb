@@ -132,20 +132,32 @@ module UsersHelper
     #   image_tag user.avatar.url(:original)
     # els
     if user.authentications.where(:provider == "linkedin").any?
+      image_tag user.pic_url, class:"medium-thumbnail img-rounded"
+    else
+      image_tag "default_profile_pic.png", class:"medium-thumbnail img-rounded"
+    end
+  end
+
+  def small_profile_picture(user)
+    # if user.avatar.present?
+    #   image_tag user.avatar.url(:original)
+    # els
+    if user.authentications.where(:provider == "linkedin").any?
       image_tag user.pic_url, class:"small-thumbnail img-rounded"
     else
       image_tag "default_profile_pic.png", class:"small-thumbnail img-rounded"
     end
   end
 
+
   def large_profile_picture(user)
     # if user.avatar.present?
     #   image_tag user.avatar.url(:original)
     # els
     if user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"img-polaroid medium-thumbnail img-rounded"
+      image_tag user.pic_url, class:"img-polaroid large-thumbnail img-rounded"
     else
-      image_tag "default_profile_pic.png", class:"img-polaroid medium-thumbnail img-rounded"
+      image_tag "default_profile_pic.png", class:"img-polaroid large-thumbnail img-rounded"
     end
   end
 end

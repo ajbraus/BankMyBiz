@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
                   :terms,
                   :admin,
                   :avatar,
-                  :join_mailing_list #for devise_mailchimp
+                  :confirmed_at
                   
   # attr_accessible :title, :body
 

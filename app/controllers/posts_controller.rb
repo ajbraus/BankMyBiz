@@ -39,9 +39,11 @@ class PostsController < ApplicationController
     
     @new_post = Post.new
     @trending_tags = Tag.order('created_at desc').first(10)
-    @recommended_users = User.where(bank: is_bank).last
     @recent_messages = current_user.messages.first(3)
     @following_users = current_user.followed_users
+
+    @matches = User.where(bank: !current_user.bank?).sample(1)
+    @peers = User.where(bank: current_user.bank?).sample(3)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -59,7 +61,8 @@ class PostsController < ApplicationController
     if user_signed_in?
       is_bank = !current_user.bank?
       @new_post = Post.new
-      @recommended_users = User.where(bank: is_bank).last
+      @matches = User.where(bank: !current_user.bank?).sample(1)
+      @peers = User.where(bank: current_user.bank?).sample(3)
       @recent_messages = current_user.messages.first(3)
       @following_users = current_user.followed_users
     end

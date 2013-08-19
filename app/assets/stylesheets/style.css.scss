@@ -340,13 +340,17 @@ hr {
 /*This is the Project Page*/
 
 .small-thumbnail {
-	height: 50px;
+	height: 30px;
+}
+
+.medium-thumbnail {
+  height:50px;
   position: relative;
   bottom:5px;
 }
 
-.medium-thumbnail {
-  height:90px;
+.large-thumbnail {
+  height:90px; 
 }
 
 .clear-both {

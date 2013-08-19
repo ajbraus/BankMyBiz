@@ -12,11 +12,14 @@
     </div>
   <% else %>
     <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
-    <%= render partial: "users/user", collection: @recommended_users, as: :user %>
+    <%= render partial: "users/user", collection: @matches, as: :user %>
     <% unless current_user.finished_profile? %>      
       <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
       <div class=''>For Better Matches</div>
     <% end %>
+    <hr>
+    <p class="muted">Today's <%= !current_user.bank? ? "Owner" : "Lender" %> Matches</p>
+    <%= render partial: "users/user", collection: @peers, as: :user %>
   <% end %>
 <% end %>
 </div>

@@ -5,16 +5,25 @@
     <% if @recent_messages.any? %>
       <div class="home-messages">
         <p class="muted">Your Messages</p>
-        <table>
-          <% @recent_messages.each do |rm| %>
+        <table class="table table-hover">
+          <thead>
             <tr>
-              <td><%= rm.sender.first_name_with_last_initial %></td>
-              <td><%= rm.subject %></td>
-              <td><%= rm.nice_created_at %></td>
+              <th width="20%">From</th>
+              <th width="40%">Subject</th>
+              <th width="10%">Received</th>
             </tr>
-          <% end %>
+          </thead>
+          <tbody class="table-bordered">
+            <% @recent_messages.each do |rm| %>
+              <tr data-link="<%= message_path(rm) %>" class="<%= rm.is_read? ? '' : 'unread' %>">
+                <td><%= rm.sender.first_name_with_last_initial %></td>
+                <td><%= rm.short_subject %></td>
+                <td class="small muted"><%= time_ago_in_words(rm.created_at) %> ago</td>
+              </tr>
+            <% end %>
+          </tbody>
         </table>
-        <%= link_to "more", messages_path, class:"text-right" %>
+        <div class="text-right"><%= link_to "to inbox", messages_path %></div>
       </div>
       <hr>
     <% end %>
@@ -23,8 +32,10 @@
       <ul>
         <% @following_users.each do |fu| %>
           <li>
-            <%= profile_picture(fu) %>
-            <%= link_to fu.first_name_with_last_initial, fu %>
+            <p>
+              <%= small_profile_picture(fu) %>
+              <%= link_to fu.first_name_with_last_initial, fu %>
+            </p>
           </li>
         <% end %>
       </ul> 

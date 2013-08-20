@@ -132,9 +132,9 @@ module UsersHelper
     #   image_tag user.avatar.url(:original)
     # els
     if user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"medium-thumbnail img-rounded"
+      image_tag user.pic_url, class:"medium-thumbnail img-circle"
     else
-      image_tag "default_profile_pic.png", class:"medium-thumbnail img-rounded"
+      image_tag "default_profile_pic.png", class:"medium-thumbnail img-circle"
     end
   end
 
@@ -143,9 +143,9 @@ module UsersHelper
     #   image_tag user.avatar.url(:original)
     # els
     if user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"small-thumbnail img-rounded"
+      image_tag user.pic_url, class:"small-thumbnail img-circle"
     else
-      image_tag "default_profile_pic.png", class:"small-thumbnail img-rounded"
+      image_tag "default_profile_pic.png", class:"small-thumbnail img-circle"
     end
   end
 
@@ -155,9 +155,9 @@ module UsersHelper
     #   image_tag user.avatar.url(:original)
     # els
     if user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"img-polaroid large-thumbnail img-rounded"
+      image_tag user.pic_url, class:"img-polaroid large-thumbnail img-circle"
     else
-      image_tag "default_profile_pic.png", class:"img-polaroid large-thumbnail img-rounded"
+      image_tag "default_profile_pic.png", class:"img-polaroid large-thumbnail img-circle"
     end
   end
 end

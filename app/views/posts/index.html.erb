@@ -10,15 +10,16 @@
             <tr>
               <th width="20%">From</th>
               <th width="40%">Subject</th>
-              <th width="10%">Received</th>
             </tr>
           </thead>
           <tbody class="table-bordered">
             <% @recent_messages.each do |rm| %>
               <tr data-link="<%= message_path(rm) %>" class="<%= rm.is_read? ? '' : 'unread' %>">
                 <td><%= rm.sender.first_name_with_last_initial %></td>
-                <td><%= rm.short_subject %></td>
-                <td class="small muted"><%= time_ago_in_words(rm.created_at) %> ago</td>
+                <td>
+                  <%= rm.short_subject %>
+                  <span class="small muted"><%= time_ago_in_words(rm.created_at) %> ago</span>
+                </td>
               </tr>
             <% end %>
           </tbody>

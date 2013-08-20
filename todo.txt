@@ -1,4 +1,18 @@
-Location?
+"We are coming this fall - request early access"
+
+Fix responsivity
+
+open new tab for links
+
+Email after registration
+
+banker vs. biz pie chart in admin dashboard
+
+  share = get a buck
+
+mailchimp_devise
+
+What location do you lend to?
 
 lender/owner matches per a day
   store it in the session? log out and back in for more matches
@@ -15,7 +29,7 @@ remove pagination of posts
 
 setup email notifications
   s/o following you
-  new comment on your post
+  new comment on your post or a post you commented on
   new matches teaser
   newsletter (manual)
 

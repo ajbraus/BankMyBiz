@@ -3,11 +3,23 @@
         </div>
       </div>
     </div>
-    <div class="jumbotron">
+    <div class="jumbotron visible-desktop visible-tablet hidden-phone">
       <div class='message'>
-        <h3>Financing Based On Trust</h3>
+        <h3>Financing Based On Relationships</h3>
         <div class="lead">
-          BankmyBiz.com matches Lenders and Owners & CFOs <br> Join for free today.
+          BankmyBiz.com matches Lenders and Business Owners <br> Coming this fall. Sign up for early access.
+        </div>
+        <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">          
+            <i class="icon-linkedin"></i> | Request Access
+        </a><br>
+        <span class="small">or,  <%= link_to "request w/ email", new_registration_path(resource_name) %></span>
+      </div>
+    </div>
+    <div class="responsive-jumbotron hidden-desktop hidden-tablet visible-phone">
+      <div class='message'>
+        <h3>Financing Based On Relationships</h3>
+        <div class="lead">
+          BankmyBiz.com matches Lenders and Business Owners <br> Coming this fall. Sign up for early access.
         </div>
         <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">          
             <i class="icon-linkedin"></i> | Request Access
@@ -18,22 +30,24 @@
     <hr>
     <div class="container">
       <div class="row-fluid marketing">
-        <div class="span3 offset2">
-          <h3>Owners & CFOs</h3>
+        <div class="span4 offset1">
+          <div class="green-background hint"></div>
+          <h3>Owners</h3>
           <h4>Free to Browse and Connect</h4>
-          <p>Join to browse and connect with lenders targeted to lending to your industry and size, all for free.</p>
+          <p>Join to browse and connect with lenders that specialize in your industry and size, all for free.</p>
 
           <h4>A Large Two-sided Network</h4>
-          <p>Interact with a newtork of lenders and business owners to learn, enhance your brand, and extend your business's reach.</p>
+          <p>Interact with a network of lenders and business owners to learn, enhance your brand, and extend your business’s reach.</p>
 
           <h4>Ready to Lend</h4>
           <p>Connect with lenders actively looking to lend.</p>
         </div>
 
-        <div class="span3 offset2">
+        <div class="span4 offset2">
+          <div class="orange-background hint"></div>
           <h3>Lenders</h3>
           <h4>Free to Browse and Connect</h4>
-          <p>Join to promote your products and services directly to businesses bankable to you for free.</p>
+          <p>Join for free and promote your products and services directly to business owners seeking financing.</p>
 
           <h4>Bankable Businesses</h4>
           <p>Find bankable businesses in less time than ever.</p>

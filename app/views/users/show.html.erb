@@ -75,6 +75,7 @@
       <%= render_activity activity %>
       </div>
     <% end %>
+    <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
     <hr>  
   <% end %>
   <% if @user == current_user %>

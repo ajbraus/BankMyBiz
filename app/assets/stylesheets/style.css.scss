@@ -409,17 +409,25 @@ hr {
   background: rgba(255, 255, 255, 0.8);
   padding: 10px;
   border-radius: 7px;
-  position: relative;
-  top: -160px;
   .h3 {
     font-family: 'Montserrat', sans-serif;
   }
 }
 
+.responsive-jumbotron {
+  margin: 0 0 30px 0;
+  text-align: center;
+  padding: 80px 50px 100px 50px;
+  background: url("hero_original.jpg");
+  background-size: 280%;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
 .jumbotron {
   margin: 0 0 30px 0;
   text-align: center;
-  padding: 200px 50px 120px 50px;
+  padding: 80px 50px 100px 50px;
   background: url("hero_original.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
@@ -825,8 +833,17 @@ height: 90px;
   margin-left:-5px;
 }
 
-.hint {
+
+.green-background {
   background: #009E3B;
+}
+
+.orange-background {
+  background: #f89406;
+}
+
+.hint {
+
   color:white;
   font-size: 18px;
   margin-bottom:10px;

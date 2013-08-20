@@ -78,17 +78,11 @@ class User < ActiveRecord::Base
          :path => "user_avatars/:id/avatar.:extension",
          :default_url => "https://s3.amazonaws.com/bankmybiz/default_avatar.png"
 
+  validates :avatar, # :attachment_presence => true,
+                     :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }
 
   validates :name, presence: true
 
-  # has_attached_file :avatar, :styles => { :original => "150x150#",
-  #                                         :raster => "50x50#" },
-  #                            :convert_options => { :raster => '-quality 30' },
-  #                            :storage => :s3,
-  #                            :s3_credentials => S3_CREDENTIALS,
-  #                            :path => "user/:attachment/:style/:id.:extension",
-  #                            :default_url => "https://s3.amazonaws.com/bmb-production/user/avatars/original/default_profile_pic.png"
-  
   before_create :skip_confirmation_notification
   after_create :request_confirmation
 

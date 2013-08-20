@@ -1,8 +1,8 @@
-<div class="matches">
-  <% if user_signed_in? %>
-  The <strong>BankMyBiz Network</strong> matches you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
-  <% end %>
-</div>
+<% if user_signed_in? %>
+  <div class="matches">
+    The <strong>BankMyBiz Network</strong> matches you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
+  </div>
+<% end %>
 <hr>
 <div class="tag-cloud">
   <p class="muted">Trending Tags</p>

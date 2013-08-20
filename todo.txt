@@ -1,14 +1,15 @@
-hint
-
 Location?
+
+lender/owner matches per a day
+  store it in the session? log out and back in for more matches
+  store it in a table? "matches" table user has_many "matches"
+  every night add more matches
 
 SLL Cert
 
-Accolades
+setup subscriptions
 
 finect carousel
-
-bank matches / biz matches
 
 remove pagination of posts
 
@@ -30,7 +31,6 @@ add karma
 who voted for you?
   voters_who_voted
 
-index users by name and return in searches
 better "improve profile section"
   include organization name
   include position
@@ -39,11 +39,10 @@ Remove "facebook" "twitter" button names
 
 UX site
 
-staging / mirroring at bankmybiz.biz
+add qualification, "series three"
 
 ---------------
 
-add qualification, "series three"
 
 Upgrade:
   browse invisibly
@@ -277,3 +276,8 @@ DONE add public activity for voting
 DONE give a buck
 
 DONE justify the wins
+DONE bank matches / biz matches
+
+
+hint
+<div class="hint"><i class="icon-lightbulb"></i> FYI</div>

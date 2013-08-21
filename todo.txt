@@ -1,32 +1,27 @@
-What location do you lend to?
-
-Email after registration
-
-  share = get a buck
-
-mailchimp_devise
-
-Security
-  don't destroy users
-
-lender/owner matches per a day
-  store it in the session? log out and back in for more matches
-  store it in a table? "matches" table user has_many "matches"
-  every night add more matches
-
-SLL Cert
+better "improve profile section"
+  include organization name
+  include position
 
 setup subscriptions
-
-finect carousel
-
-remove pagination of posts
+  submit credit card through js
+  create plan
+  destroy plan if user deleted
+  create "downgrade subscription" workflow
+  1/month package, 3/month package %25, 6/month package %50
 
 setup email notifications
   s/o following you
   new comment on your post or a post you commented on
   new matches teaser
+  Email after registration
   newsletter (manual)
+
+share = get a buck
+
+Security
+  don't destroy users
+
+SLL Cert
 
 fix impressionist
 
@@ -40,31 +35,11 @@ add karma
 who voted for you?
   voters_who_voted
 
-better "improve profile section"
-  include organization name
-  include position
-
 Remove "facebook" "twitter" button names
 
 UX site
 
-add qualification, "series three"
-
 ---------------
-
-
-Upgrade:
-  browse invisibly
-  special matches
-  see 24 people who like you
-  messages read recieptes
-  kill the adds
-  change your username
-  store upto 5,000
-
-  1/month package, 3/month package %25, 6/month package %50
-
-consulting
 
 After profile update go to to root if first time signed in
 message sent is obvious
@@ -293,3 +268,9 @@ hint
 
 
 DONE open new tab for links
+
+DONE What location do you lend to?
+
+DONE lender/owner matches per a day
+  DONE setup scheduler to run set_peers and set_matches every night
+  DONE setup some matches and peers upon login

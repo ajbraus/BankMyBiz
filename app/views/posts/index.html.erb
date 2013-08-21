@@ -61,7 +61,6 @@
       </div>
     <% end %>
     <%= render partial: "posts/post", collection: @posts, as: :post %>
-    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
   </div>
 </div>
 

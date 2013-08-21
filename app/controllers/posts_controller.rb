@@ -31,10 +31,10 @@ class PostsController < ApplicationController
     is_bank = !current_user.bank?
     if params[:search].present?
       #@posts = Post.search(params[:search], with: { bank: is_bank }, :page => params[:page], :per_page => 20)
-      @posts = Post.search(params[:search], :page => params[:page], :per_page => 6)
+      @posts = Post.search(params[:search], :page => params[:page], :per_page => 14)
     else
       #@posts = Post.where(bank: is_bank).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
-      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 6)
+      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 14)
     end
     
     @new_post = Post.new
@@ -42,8 +42,8 @@ class PostsController < ApplicationController
     @recent_messages = current_user.messages.first(3)
     @following_users = current_user.followed_users
 
-    @matches = User.where(bank: !current_user.bank?).sample(1)
-    @peers = User.where(bank: current_user.bank?).sample(3)
+    @matches = current_user.todays_matches
+    @peers = current_user.todays_peers
 
     respond_to do |format|
       format.html # new.html.erb

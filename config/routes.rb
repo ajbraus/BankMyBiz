@@ -16,7 +16,7 @@ BankMyBiz::Application.routes.draw do
     end
   end
 
-
+  resources :subscriptions
   resources :likes, only: [:create, :destroy]
 
   match '/auth/:provider/callback' => 'authentications#create'

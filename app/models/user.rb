@@ -26,22 +26,30 @@ class User < ActiveRecord::Base
                   :admin,
                   :avatar,
                   :confirmed_at,
-                  :location_ids
+                  :location_ids,
+                  :org_name,
+                  :position
                   
-  # attr_accessible :title, :body
-
   is_impressionable
 
   acts_as_voter
   has_karma(:posts)
   has_karma(:comments)
 
+  has_many :subscriptions
+
   has_many :posts, dependent: :destroy
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy
   has_many :committed_tos, through: :commitments, source: "commitment"
 
   has_many :comments, as: :commentable, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
+
+  has_many :matches, foreign_key: "match_id", dependent: :destroy
+  has_many :matched_users, through: :matches, source: :user
+
+  has_many :peers, foreign_key: "peer_id", dependent: :destroy
+  has_many :peered_users, through: :peers, source: :user
 
   has_many :likes
 
@@ -188,4 +196,108 @@ class User < ActiveRecord::Base
   def skip_confirmation_notification
     skip_confirmation_notification!
   end
+
+  def todays_matches
+    return matched_users.last
+  end
+
+  def todays_peers
+    return peered_users.last(3)
+  end
+
+  def self.set_peers_and_matches
+    User.all.each do |u|
+      #MATCHES
+      if u.matches.none? || u.matches.last.created_at < Date.yesterday
+        @available_users = User.all.reject { |r| r == u || r.bank == u.bank || r.in?(u.matched_users) }
+        @matches = @available_users.select do |s| 
+          if s.ages.any? && u.ages.any?
+            with_age = (s.age_ids & u.age_ids).present?
+          end
+          if s.industries && u.industries.any?
+            with_industry = (s.industry_ids & u.industry_ids).present?
+          end
+          if s.locations.any? && u.locations.any?
+            with_location = (s.location_ids & u.location_ids).present?
+          end
+          if s.employee_sizes.any? && u.employee_sizes.any?
+            with_employee_size = (s.employee_size_ids & u.employee_size_ids).present?
+          end
+          if s.revenue_sizes.any? && u.revenue_sizes.any?
+            with_revenue_size = (s.revenue_size_ids & u.revenue_size_ids).present?
+          end
+          if s.business_types.any? && u.business_types.any?
+            with_business_type = (s.business_type_ids & u.business_type_ids).present?
+          end
+
+          with_age == true ||
+          with_industry == true ||
+          with_location == true ||
+          with_employee_size == true ||
+          with_revenue_size == true ||
+          with_business_type == true
+        end
+        
+        u.matched_users << @matches.first if @matches.any?
+      end
+
+      #PEERS
+      if u.peers.none? || u.peers.last.created_at < Date.yesterday
+        @available_users = User.all.reject { |r| r == u || r.bank != u.bank || r.in?(u.peered_users) }
+        @peers = @available_users.select do |s| 
+          if s.ages.any? && u.ages.any?
+            with_age = (s.age_ids & u.age_ids).present?
+          end
+          if s.industries && u.industries.any?
+            with_industry = (s.industry_ids & u.industry_ids).present?
+          end
+          if s.locations.any? && u.locations.any?
+            with_location = (s.location_ids & u.location_ids).present?
+          end
+          if s.employee_sizes.any? && u.employee_sizes.any?
+            with_employee_size = (s.employee_size_ids & u.employee_size_ids).present?
+          end
+          if s.revenue_sizes.any? && u.revenue_sizes.any?
+            with_revenue_size = (s.revenue_size_ids & u.revenue_size_ids).present?
+          end
+          if s.business_types.any? && u.business_types.any?
+            with_business_type = (s.business_type_ids & u.business_type_ids).present?
+          end
+
+          with_age == true ||
+          with_industry == true ||
+          with_location == true ||
+          with_employee_size == true ||
+          with_revenue_size == true ||
+          with_business_type == true
+        end
+
+        if @peers.count >= 3
+          u.peered_users << @peers.first(3) 
+        elsif @peers.count == 2
+          u.peered_users << @peers.first(2) 
+        elsif @peers.count == 1
+          u.peered_users << @peers.first 
+        end
+      end
+    end
+  end
+
+  def self.clean_up_peers_and_matches
+    User.all.each do |u|
+      #MATCHES
+      u.matches.each do |m|
+        if m.created_at < 6.months.ago 
+          m.destroy
+        end
+      end
+      #PEERS
+      u.peers.each do |p|
+        if p.created_at < 6.months.ago
+          p.destroy
+        end
+      end
+    end
+  end
 end
+

@@ -1,12 +1,19 @@
 <%= form_for @user, url: update_profile_path(@user) do |f| %>
-  <div class="row">
-    <div class="span9 offset2">
-      <h4>Improve Your Profile</h4>
+    <div class="span8 offset2">
+      <h4>Your Profile</h4>
+      <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name (will not be public)" %>
+      <%= f.text_field :org_name %>
+
+      <%= f.label :position, "Your Position (will not be public)" %>
+      <%= f.text_field :position %>
+
       <%= f.label :bio, "Tell Us About You. What Makes You and Your #{current_user.bank? ? 'Bank' : 'Business'} Great?" %>
       <%= f.text_area :bio %>
     </div>
-  </div>
   <% if current_user.bank? %> 
+    <div class="span9 offset2">
+      <h4>Your Preferences for Businesses</h4>
+    </div>
     <div class="span3 offset2"> 
       <div class="field">
         <%= f.label :revenue_size_ids, "Revenue" %>
@@ -71,7 +78,7 @@
   </div>
   <div class="row">
     <div class="clearfix span8 offset2">
-      <%= f.label :location_ids, "Where you can lend:" %>
+      <h4>Where You Lend</h4>
       <% for location in Location.find(:all) %>
         <label class="pull-left wiggle-room">
           <%= check_box_tag "user[location_ids][]", location.id, @user.locations.include?(location) %>
@@ -82,6 +89,9 @@
   </div>
   <% else %>
   <div class="row">
+    <div class="span9 offset2">
+      <h4>About Your Business</h4>
+    </div>
     <div class="span5 offset2">
       <%= f.label :business_type_ids, "Entity Type" %>
       <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}), prompt:"select one" %>   

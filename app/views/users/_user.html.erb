@@ -3,5 +3,5 @@
   <div><%= profile_picture(user) %></div>
   <div><strong><%= user.first_name_with_last_initial %></strong></div>
 <% end %>
- <%= user.industries.map(&:description).join(", ") %>
+<div class="muted"><%= user.position %></div>
 </section>

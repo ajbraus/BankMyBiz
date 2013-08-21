@@ -11,15 +11,23 @@
       to unlock <%= current_user.bank? ? "owners" : "lenders" %>
     </div>
   <% else %>
-    <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
-    <%= render partial: "users/user", collection: @matches, as: :user %>
+    <% if @matches.present? %>
+      <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
+      <%= render partial: "users/user", collection: @matches, as: :user %>
+    <% else %>
+      <p class="muted">Processing Your <br> <%= current_user.bank? ? "Owner" : "Lender" %> Matches</p>
+    <% end %>
     <% unless current_user.finished_profile? %>      
       <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
       <div class=''>For Better Matches</div>
     <% end %>
     <hr>
-    <p class="muted">Today's <%= !current_user.bank? ? "Owner" : "Lender" %> Matches</p>
-    <%= render partial: "users/user", collection: @peers, as: :user %>
+    <% if @peers.present? %>
+      <p class="muted">Today's <%= !current_user.bank? ? "Owner" : "Lender" %> Matches</p>
+      <%= render partial: "users/user", collection: @peers, as: :user %>
+    <% else %>
+      <p class="muted">Processing Your <br> <%= !current_user.bank? ? "Owner" : "Lender" %> Matches</p>
+    <% end %>
   <% end %>
 <% end %>
 </div>

@@ -59,6 +59,7 @@ class UsersController < ApplicationController
   def set_bank
     @user = User.find(params[:id])
     @user.update_attributes(bank: true)
+    @user.locations << Location.first
 
     respond_to do |format|
       format.html { redirect_to edit_profile_path(@user) }

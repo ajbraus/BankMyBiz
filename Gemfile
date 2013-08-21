@@ -8,6 +8,7 @@ gem 'thin'
 gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'devise', '2.2.4'
+gem 'gibbon'
 gem 'omniauth-linkedin'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
@@ -15,6 +16,8 @@ gem 'public_activity'
 gem 'impressionist'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+
+gem 'stripe'
 
 gem "thumbs_up"
 

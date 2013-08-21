@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821154800) do
+ActiveRecord::Schema.define(:version => 20130821230448) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -174,6 +174,17 @@ ActiveRecord::Schema.define(:version => 20130821154800) do
   add_index "locations_users", ["location_id", "user_id"], :name => "index_locations_users_on_location_id_and_user_id"
   add_index "locations_users", ["user_id", "location_id"], :name => "index_locations_users_on_user_id_and_location_id"
 
+  create_table "matches", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "match_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "matches", ["match_id"], :name => "index_matches_on_match_id"
+  add_index "matches", ["user_id", "match_id"], :name => "index_matches_on_user_id_and_match_id", :unique => true
+  add_index "matches", ["user_id"], :name => "index_matches_on_user_id"
+
   create_table "messages", :force => true do |t|
     t.string   "subject"
     t.text     "body"
@@ -186,6 +197,17 @@ ActiveRecord::Schema.define(:version => 20130821154800) do
 
   add_index "messages", ["receiver_id"], :name => "index_messages_on_receiver_id"
   add_index "messages", ["sender_id"], :name => "index_messages_on_sender_id"
+
+  create_table "peers", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "peer_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "peers", ["peer_id"], :name => "index_peers_on_peer_id"
+  add_index "peers", ["user_id", "peer_id"], :name => "index_peers_on_user_id_and_peer_id", :unique => true
+  add_index "peers", ["user_id"], :name => "index_peers_on_user_id"
 
   create_table "posts", :force => true do |t|
     t.string   "content"
@@ -228,6 +250,12 @@ ActiveRecord::Schema.define(:version => 20130821154800) do
   add_index "revenue_sizes_users", ["revenue_size_id", "user_id"], :name => "index_revenue_sizes_users_on_revenue_size_id_and_user_id"
   add_index "revenue_sizes_users", ["user_id", "revenue_size_id"], :name => "index_revenue_sizes_users_on_user_id_and_revenue_size_id"
 
+  create_table "subscriptions", :force => true do |t|
+    t.integer "user_id"
+    t.integer "plan_id"
+    t.string  "stripe_customer_token"
+  end
+
   create_table "tags", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -267,6 +295,8 @@ ActiveRecord::Schema.define(:version => 20130821154800) do
     t.datetime "avatar_updated_at"
     t.datetime "rejected_at"
     t.boolean  "deleted",                :default => false
+    t.string   "org_name"
+    t.string   "position"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -25,7 +25,8 @@ class User < ActiveRecord::Base
                   :terms,
                   :admin,
                   :avatar,
-                  :confirmed_at
+                  :confirmed_at,
+                  :location_ids
                   
   # attr_accessible :title, :body
 
@@ -49,6 +50,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :business_types
   has_and_belongs_to_many :revenue_sizes
   has_and_belongs_to_many :ages
+  has_and_belongs_to_many :locations
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -142,7 +144,7 @@ class User < ActiveRecord::Base
   end
 
   def finished_profile?
-    if employee_sizes.any? && business_types.any? && industries.any? && revenue_sizes.any? && ages.any?
+    if employee_sizes.any? && business_types.any? && industries.any? && revenue_sizes.any? && ages.any? && bio.present?
       return true
     end
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130816184442) do
+ActiveRecord::Schema.define(:version => 20130821154800) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -159,6 +159,20 @@ ActiveRecord::Schema.define(:version => 20130816184442) do
 
   add_index "industries_users", ["industry_id", "user_id"], :name => "index_industries_users_on_industry_id_and_user_id"
   add_index "industries_users", ["user_id", "industry_id"], :name => "index_industries_users_on_user_id_and_industry_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "locations_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "location_id"
+  end
+
+  add_index "locations_users", ["location_id", "user_id"], :name => "index_locations_users_on_location_id_and_user_id"
+  add_index "locations_users", ["user_id", "location_id"], :name => "index_locations_users_on_user_id_and_location_id"
 
   create_table "messages", :force => true do |t|
     t.string   "subject"

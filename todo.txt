@@ -1,18 +1,13 @@
-"We are coming this fall - request early access"
-
-Fix responsivity
-
-open new tab for links
+What location do you lend to?
 
 Email after registration
-
-banker vs. biz pie chart in admin dashboard
 
   share = get a buck
 
 mailchimp_devise
 
-What location do you lend to?
+Security
+  don't destroy users
 
 lender/owner matches per a day
   store it in the session? log out and back in for more matches
@@ -84,8 +79,8 @@ lock down access to profiles of the opposite type
     add friendly_id for user profiles
   remove people who haven't started a profile from recommended users
 
-Security
-  don't destroy users
+banker vs. biz pie chart in admin dashboard
+
 
 filter users by matching criteria
   give more matches if 100% complete
@@ -295,3 +290,6 @@ DONE bank matches / biz matches
 
 hint
 <div class="hint"><i class="icon-lightbulb"></i> FYI</div>
+
+
+DONE open new tab for links

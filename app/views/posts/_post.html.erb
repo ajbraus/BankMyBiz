@@ -16,7 +16,7 @@
       <% end %>
     </div>
     <div class="post-content">
-      <%= auto_link(post.content) %>
+      <%= auto_link(post.content, html: { target: '_blank' }) %>
     </div>
     <div class="text-right muted small">
       posted <%= time_ago_in_words(post.created_at) %> ago by <%= link_to "#{post.user.first_name_with_last_initial}", user_path(post.user) if post.user %>

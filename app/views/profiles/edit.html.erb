@@ -1,10 +1,10 @@
 <%= form_for @user, url: update_profile_path(@user) do |f| %>
     <div class="span8 offset2">
       <h4>Your Profile</h4>
-      <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name (will not be public)" %>
+      <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name (private)" %>
       <%= f.text_field :org_name %>
 
-      <%= f.label :position, "Your Position (will not be public)" %>
+      <%= f.label :position, "Your Position" %>
       <%= f.text_field :position %>
 
       <%= f.label :bio, "Tell Us About You. What Makes You and Your #{current_user.bank? ? 'Bank' : 'Business'} Great?" %>

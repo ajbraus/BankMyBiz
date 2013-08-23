@@ -7,11 +7,10 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @subscription = @user.subscriptions.new(params[:subscription])
+    @subscription = current_user.subscriptions.new(params[:subscription])
 
     if @subscription.save_with_payment
-      redirect_to @subscription, :notice => "Thank you for subscribing!"
+      redirect_to root_path, :notice => "Your Account Was Successfully Upgraded"
     else
       render :new
     end

@@ -6,7 +6,11 @@ subscription =
   setupForm: ->
     $('#new_subscription').submit ->
       $('input[type=submit]').attr('disabled', true)
-      subscription.processCard()
+      if $('#card_number').length
+        subscription.processCard()
+        false
+      else
+        true
   
   processCard: ->
     card =
@@ -18,6 +22,9 @@ subscription =
   
   handleStripeResponse: (status, response) ->
     if status == 200
-      alert(response.id)
+      $('#subscription_stripe_card_token').val(response.id)
+      $('#new_subscription')[0].submit()
     else
-         alert(response.error.message)
+      $('#stripe_error').text(response.error.message).fadeIn();
+
+      $('input[type=submit]').attr('disabled', false)

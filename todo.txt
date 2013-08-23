@@ -1,10 +1,4 @@
-better "improve profile section"
-  include organization name
-  include position
-
 setup subscriptions
-  submit credit card through js
-  create plan
   destroy plan if user deleted
   create "downgrade subscription" workflow
   1/month package, 3/month package %25, 6/month package %50
@@ -274,3 +268,11 @@ DONE What location do you lend to?
 DONE lender/owner matches per a day
   DONE setup scheduler to run set_peers and set_matches every night
   DONE setup some matches and peers upon login
+
+
+better "improve profile section"
+  include organization name
+  include position
+
+    DONE submit credit card through js
+  DONE create plan

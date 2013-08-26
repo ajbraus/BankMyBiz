@@ -1,14 +1,24 @@
-setup subscriptions
-  destroy plan if user deleted
-  create "downgrade subscription" workflow
-  1/month package, 3/month package %25, 6/month package %50
+setup upgrades
+  Super user
+
+  Power User
+
+  Professional
 
 setup email notifications
   s/o following you
   new comment on your post or a post you commented on
   new matches teaser
-  Email after registration
-  newsletter (manual)
+  Email after requesting access
+  email upon confirm
+
+
+
+setup subscriptions
+  don't bill customers who are gone
+  create "downgrade subscription" workflow
+  1/month package, 3/month package %25, 6/month package %50
+
 
 share = get a buck
 
@@ -34,6 +44,8 @@ Remove "facebook" "twitter" button names
 UX site
 
 ---------------
+
+follow tags
 
 After profile update go to to root if first time signed in
 message sent is obvious

@@ -61,8 +61,8 @@ class PostsController < ApplicationController
     if user_signed_in?
       is_bank = !current_user.bank?
       @new_post = Post.new
-      @matches = User.where(bank: !current_user.bank?).sample(1)
-      @peers = User.where(bank: current_user.bank?).sample(3)
+      @matches = current_user.todays_matches
+      @peers = current_user.todays_peers
       @recent_messages = current_user.messages.first(3)
       @following_users = current_user.followed_users
     end

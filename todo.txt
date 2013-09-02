@@ -13,12 +13,12 @@ setup email notifications
   email upon confirm
 
 
-
 setup subscriptions
   don't bill customers who are gone
   create "downgrade subscription" workflow
   1/month package, 3/month package %25, 6/month package %50
 
+initiate with welcome message
 
 share = get a buck
 

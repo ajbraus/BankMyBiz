@@ -38,10 +38,9 @@ class PostsController < ApplicationController
     end
     
     @new_post = Post.new
-    @trending_tags = Tag.order('created_at desc').first(10)
     @recent_messages = current_user.messages.first(3)
     @following_users = current_user.followed_users
-
+    @trending_tags = Tag.first(10)
     @matches = current_user.todays_matches
     @peers = current_user.todays_peers
 
@@ -56,7 +55,6 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comments = @post.comments
-    @trending_tags = Tag.order('created_at desc').first(10)
     
     if user_signed_in?
       is_bank = !current_user.bank?
@@ -66,6 +64,8 @@ class PostsController < ApplicationController
       @recent_messages = current_user.messages.first(3)
       @following_users = current_user.followed_users
     end
+
+    @trending_tags = Tag.first(10)
 
     respond_to do |format|
       format.html # show.html.erb

@@ -4,9 +4,14 @@ class Notifier < ActionMailer::Base
   layout 'email' # use email.(html|text).erb as the layout for emails
   default from: "BankmyBiz.com team@bankmybiz.com"
 
-  def request_confirmation(user)
+  def internal_new_user(user)
     @user = user
     mail to: "team@bankmybiz.com", subject: "New User to Confirm or Reject"
+  end
+
+  def confirmation_of_request(user)
+    @user = user
+    mail to: @user.email, subject: "Request Received for BankmyBiz.com Access"
   end
 
   def welcome(user)

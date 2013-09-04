@@ -1,17 +1,47 @@
-setup upgrades
-  Super user
+default response
 
-  Power User
+"Wow, BankMyBiz.com is extraordinary. Easy to navigate, engaging interactions and spot-on connections. This will change everything".
 
-  Professional
+James C. 
+S.V.P. Business Banking
+
+
+1. sign in
+2. tell us your goals
+3. start connecting
+
+
 
 setup email notifications
+  DONE make image in email smaller
+  DONE make the signature smaller
+  
+  make reply a button in message send
   s/o following you
   new comment on your post or a post you commented on
   new matches teaser
   Email after requesting access
   email upon confirm
 
+# potential matches
+
+what are your goals? what are you looking for? text box
+
+default BMB lender match
+
+downgrade the number of permissions on linked in
+
+upgrade profile for bankers not businesses
+terms and use
+Pricing for biz vs banker
+
+who voted for you?
+  voters_who_voted
+
+setup upgrades
+  Super user
+  Power User
+  Professional
 
 setup subscriptions
   don't bill customers who are gone
@@ -19,6 +49,7 @@ setup subscriptions
   1/month package, 3/month package %25, 6/month package %50
 
 initiate with welcome message
+add more stuff to message#show
 
 share = get a buck
 
@@ -27,7 +58,7 @@ Security
 
 SLL Cert
 
-fix impressionist
+make reply from message in email actually reply as a message.
 
 ajaxify voting
 
@@ -36,12 +67,21 @@ add karma
   start out with 25 reputation points
   "buy" a match with 25 reputation points
 
-who voted for you?
-  voters_who_voted
-
 Remove "facebook" "twitter" button names
 
-UX site
+add google+
+I'd like you to link:
+http://www.bankmybiz.com
+
+to the BankMyBiz.com Google+ page:
+https://plus.google.com/111339007136871525117
+
+Do this by adding a link to your website's homepage, as in:
+<a href="https://plus.google.com/111339007136871525117" rel="publisher">Google+</a>
+
+For more information, visit http://www.google.com/support/plus/?p=link_page_to_website&hl=en&authuser=1
+
+Sincerely
 
 ---------------
 

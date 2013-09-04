@@ -418,7 +418,7 @@ hr {
   margin: 0 0 30px 0;
   text-align: center;
   padding: 80px 50px 100px 50px;
-  background: url("hero_original.jpg");
+  background: url("Business_NR_06.jpg");
   background-size: 280%;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -428,7 +428,7 @@ hr {
   margin: 0 0 30px 0;
   text-align: center;
   padding: 80px 50px 100px 50px;
-  background: url("hero_original.jpg");
+  background: url("Business_NR_06.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
@@ -436,10 +436,7 @@ hr {
   font-size: 72px;
   line-height: 1;
 }
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
-}
+
       /* Main marketing message and sign up button */
 
       .navbar-inner {
@@ -732,6 +729,12 @@ height: 90px;
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
   -webkit-font-smoothing: antialiased;
+}
+
+.splash-btn {
+  font-size: 18px;
+  padding: 12px 24px;
+  width: 166px;
 }
 
 .up {

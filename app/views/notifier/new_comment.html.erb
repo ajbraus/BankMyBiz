@@ -1,9 +1,11 @@
 <h4 class="h4"><%= @user.first_name.titleize %>, </h4>
-<strong>The Conversation Continues . . .</strong>
-<br />
-<br />
-<strong><%= @commenter.first_name_with_last_initial %></strong> says,
-<br />
-<br />
-<%= @comment.content %>
+<p>
+  <strong>The Conversation Continues . . .</strong>
+</p>
+<p>
+  <strong><%= @commenter.first_name_with_last_initial %></strong> says,
+</p>
+<p>
+  <%= @comment.content %>
+</p>
 

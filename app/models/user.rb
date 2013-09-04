@@ -101,7 +101,8 @@ class User < ActiveRecord::Base
   # end
 
   def request_confirmation
-    Notifier.delay.request_confirmation(self)
+    Notifier.delay.internal_new_user(self)
+    Notifier.delay.confirmation_of_request(self)
   end
 
   def nice_name

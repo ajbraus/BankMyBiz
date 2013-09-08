@@ -1,15 +1,5 @@
-DONE default response
-
-submit us to google, yahoo and bing
-
-"Wow, BankMyBiz.com is extraordinary. Easy to navigate, engaging interactions and spot-on connections. This will change everything".
-
-James C. 
-S.V.P. Business Banking
-
-1. sign in
-2. tell us your goals
-3. start connecting
+tag links not working
+what kind of banking do you do? 
 
 
 "private message" (with lock)
@@ -19,31 +9,13 @@ icon in "add photo to post to newsfeed"
 affix stuff to top
 comment button btn-primary
 
-nix trending tags
-
 have messages there even if no messages (with icon)
 
 when you complete your profile - get the initial match right away
 
-"How many years have you filed taxes" (instead of years of operation)
-
 remove startup -> tech/internet
 "commercial real estate"
 sole proprietor 
-
-promoted post
-buy matches
-
-how do we kick out people who just got a new bank through our site?
-
-start with matches and buy more
-start with a match a day, ping them if they aren't on the site for 5 days with a "new match" email
-
-factoring is the place
-
-who you sell to B2B, B2C - if B2C no factoring
-
-what kind of banking do you do? 
 
 
 setup email notifications
@@ -152,7 +124,7 @@ setup users
 
   if no searches - state "no results found"
 
-  Position Owner/CFO
+  
   
   Chat
 
@@ -166,6 +138,16 @@ setup users
 ---------------------------------------
 
   Control / Moderation
+
+
+
+promoted post
+buy matches
+
+how do we kick out people who just got a new bank through our site?
+
+start with matches and buy more
+start with a match a day, ping them if they aren't on the site for 5 days with a "new match" email
 
 
 ---------------------------------------
@@ -362,3 +344,7 @@ better "improve profile section"
 
     DONE submit credit card through js
   DONE create plan
+
+DONE "How many years have you filed taxes" (instead of years of operation)
+
+DONE Position Owner/CFO

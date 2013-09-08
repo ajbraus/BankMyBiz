@@ -13,4 +13,6 @@ class WelcomeController < ApplicationController
     @post = Post.find(params[:id])
     @next_post = @post.next_post
   end
+  def terms
+  end
 end

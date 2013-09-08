@@ -57,10 +57,9 @@ module UsersHelper
   end
 
   def profile_picture(user)
-    # if user.avatar.present?
-    #   image_tag user.avatar.url(:original)
-    # els
-    if user.authentications.where(:provider == "linkedin").any?
+    if user.avatar.present?
+      image_tag user.avatar.url(:original), class:"medium-thumbnail img-circle"
+    elsif user.authentications.where(:provider == "linkedin").any?
       image_tag user.pic_url, class:"medium-thumbnail img-circle"
     else
       image_tag "default_profile_pic.png", class:"medium-thumbnail img-circle"
@@ -68,10 +67,9 @@ module UsersHelper
   end
 
   def small_profile_picture(user)
-    # if user.avatar.present?
-    #   image_tag user.avatar.url(:original)
-    # els
-    if user.authentications.where(:provider == "linkedin").any?
+    if user.avatar.present?
+      image_tag user.avatar.url(:original), class:"small-thumbnail img-circle"
+    elsif user.authentications.where(:provider == "linkedin").any?
       image_tag user.pic_url, class:"small-thumbnail img-circle"
     else
       image_tag "default_profile_pic.png", class:"small-thumbnail img-circle"
@@ -80,10 +78,9 @@ module UsersHelper
 
 
   def large_profile_picture(user)
-    # if user.avatar.present?
-    #   image_tag user.avatar.url(:original)
-    # els
-    if user.authentications.where(:provider == "linkedin").any?
+    if user.avatar.present?
+      image_tag user.avatar.url(:original), class:"img-polaroid large-thumbnail img-circle"
+    elsif user.authentications.where(:provider == "linkedin").any?
       image_tag user.pic_url, class:"img-polaroid large-thumbnail img-circle"
     else
       image_tag "default_profile_pic.png", class:"img-polaroid large-thumbnail img-circle"

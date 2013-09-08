@@ -40,7 +40,7 @@
           </thead>
           <tbody class="table-bordered">
             <% @sent_messages.each do |m| %>
-              <tr>
+              <tr data-link="<%= message_path(m) %>">
                 <%= link_to message_path(m) do %>
                 <td></td>
                 <td><%= m.subject %></td>

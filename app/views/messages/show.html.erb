@@ -23,12 +23,21 @@
       <%= f.hidden_field :receiver_id, value: "#{@sender.id}" %>
     <% end %>
   </div>
-  <div class="span8 offset2">
-    <p><strong>From:</strong> <%= @message.sender.name %></p>
-    <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
-    <p><%= @message.body %></p>
-    <div class="text-right">
-      <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large">Reply</a>
+  <div class="span8">
+    <div class='span6 one-message'>
+      <p><strong>From:</strong> <%= @message.sender.name %></p>
+      <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
+      <p><%= @message.body %></p>
+      <div class="text-right btn-reply">
+        <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large">Reply</a>
+      </div>
+    </div>
+  </div>
+  <div class="span3 offset1">  
+    <div class="border-left">
+      <%= render 'shared/improve_profile' %>
+      <hr>
+      <%= render 'shared/profile_views' %>
     </div>
   </div>
 </div>

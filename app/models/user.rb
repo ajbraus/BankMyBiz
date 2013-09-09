@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   has_many :messages, class_name: "Message", foreign_key: "receiver_id"
   has_many :read_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: true }
   has_many :unread_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: false }
-  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id"
+  has_many :sent_messages, class_name: "Message", foreign_key: "sender_id", dependent: :destroy
 
   has_many :authentications, dependent: :destroy
 
@@ -103,6 +103,9 @@ class User < ActiveRecord::Base
   def request_confirmation
     Notifier.delay.internal_new_user(self)
     Notifier.delay.confirmation_of_request(self)
+    # if Rails.env.production?
+    #   Message.delay.create(sender_id: User.find_by_email("michael@bankmybiz.com").id, receiver_id: self.id, subject: 'Welcome to BankmyBiz.com', body: "")
+    # end
   end
 
   def nice_name

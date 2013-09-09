@@ -2,7 +2,6 @@
   <div class="border-right">
     <%= render 'shared/trending_tags' %>
     <hr>
-    <% if @recent_messages.any? %>
       <div class="home-messages">
         <p class="muted">Your Messages</p>
         <table class="table table-hover">
@@ -27,7 +26,6 @@
         <div class="text-right"><%= link_to "to inbox", messages_path %></div>
       </div>
       <hr>
-    <% end %>
     <div class="home-messages">
       <p class="muted">Who you Follow</p>
       <ul>

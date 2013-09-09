@@ -875,6 +875,15 @@ top: 12px;
 right: 10px;
 }
 
+table {
+  width:90%;
+}
+.table-hover {
+  tr {
+    cursor:pointer;
+  }
+}
+
 .btn-reply {
   margin-top: 60px;
   margin-bottom: 40px;

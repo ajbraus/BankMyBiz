@@ -17,7 +17,7 @@
               <tr data-link="<%= message_path(rm) %>" class="<%= rm.is_read? ? '' : 'unread' %>">
                 <td><%= rm.sender.first_name_with_last_initial %></td>
                 <td>
-                  <%= rm.short_subject %>
+                  <%= rm.short_subject %><br>
                   <span class="small muted"><%= time_ago_in_words(rm.created_at) %> ago</span>
                 </td>
               </tr>

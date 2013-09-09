@@ -202,7 +202,7 @@ class User < ActiveRecord::Base
     if matched_users.last
       return matched_users.last
     else
-      return User.find_by_email("team@bankmybiz.com")
+      return User.find_by_email("michael@bankmybiz.com")
     end 
   end
 
@@ -210,7 +210,7 @@ class User < ActiveRecord::Base
     if peered_users.last
       return peered_users.last(3)
     else
-      return User.find_by_email("team@bankmybiz.com")
+      return User.find_by_email("michael@bankmybiz.com")
     end 
   end
 

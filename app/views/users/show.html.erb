@@ -15,21 +15,22 @@
         <%= f.hidden_field :receiver_id, value: "#{@user.id}" %>
       </div>  
       <div class="modal-footer">  
-        <%= f.submit "Send Message", :class => "btn btn-primary" %>
+        <%= f.submit "Send Private Message", :class => "btn btn-primary" %>
         <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
       </div>  
     </div>
   <% end %>
 
-<div class="span3">
-  <%= render 'follow_form' if signed_in? %>
+<div class="span4">
+  <% if user_signed_in? %>
+    <%= render 'follow_form' %>
+  <% end %>
+   <p class='text-center'><%= large_profile_picture(@user) %></p>
   <ul>
-  <li>
-    <p><%= large_profile_picture(@user) %></p>
-  </li> 
   <li>
     <p><strong>Name</strong> <%= @user.name %></p>
   </li>
+  <li><p><strong>Bucks</strong> <span class="muted"> <%= @user.karma %></span></p></li>
   <li>
     <strong>Bio</strong>
     <p class="muted"><%= @user.bio %></p>
@@ -58,14 +59,12 @@
   <% if @user == current_user %>
     <%= link_to "edit profile", edit_profile_path(@user) %>
   <% elsif current_user.messages_left? %>
-    <div class="text-center well">
-      <a data-toggle="modal" href="#contact-modal" class="btn btn-primary">Message <%= @user.first_name_with_last_initial %></a>
-    </div>
+    <p class='text-center'>
+      <a data-toggle="modal" href="#contact-modal" class="btn btn-primary"><i class="icon-lock"></i> Message <%= @user.first_name_with_last_initial %></a>
+    </p>
   <% end %>
-  <hr>
-  <%= render 'shared/trending_tags' %>
 </div>
-<div class="span6">
+<div class="span5">
   <% if @user == current_user %>
     <h4>Your Activity</h4>
     <% @activities.each do |activity| %>

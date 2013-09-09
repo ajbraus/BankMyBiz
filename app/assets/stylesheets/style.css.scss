@@ -22,6 +22,12 @@ ul, li {
   list-style: none;
 }
 
+a.no-hover {
+  &:hover {
+    text-decoration:none;
+  }
+}
+
 footer {
   background: black;
   color:white;
@@ -215,6 +221,7 @@ hr {
 .searchHeader {
   color: #1F7A1F;
 }
+
 .margin-auto {
   margin:0 auto;
   width:50%;
@@ -862,10 +869,10 @@ height: 90px;
 }
 
 .video {
-  float: right;
-  position: relative;
-  top: 36px;
-  right: 15px;
+float: right;
+position: relative;
+top: 12px;
+right: 10px;
 }
 
 .btn-reply {
@@ -877,4 +884,8 @@ height: 90px;
   padding-right: 43px;
 border-bottom: 1px solid #eee;
 padding-left: 120px;
+}
+
+.min-height {
+  min-height: 500px;
 }

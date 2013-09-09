@@ -1,10 +1,4 @@
 <div class="span4 offset4">
-  <p>
-    <a href="/auth/linkedin" class="auth_provider btn btn-large btn-block btn-linkedin">
-      <i class="icon-linkedin"></i> | Login
-    </a>
-  </p>
-
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %>
   <%= f.email_field :email, :autofocus => true %></div>
@@ -23,5 +17,11 @@
 
   <div><%= f.submit "Sign in", class:"btn btn-primary btn-large btn-block" %></div>
 <% end %>
+<p>
+  <a href="/auth/linkedin" class="auth_provider btn btn-large btn-block btn-linkedin">
+    <i class="icon-linkedin"></i> | Login
+  </a>
+</p>
+
 <%= render "devise/shared/links" %>
 </div>

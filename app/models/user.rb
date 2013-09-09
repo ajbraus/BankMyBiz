@@ -200,7 +200,7 @@ class User < ActiveRecord::Base
 
   def todays_matches
     if matched_users.last
-      return matched_users.last
+      return matched_users.last(1)
     else
       return User.find_by_email("michael@bankmybiz.com")
     end 

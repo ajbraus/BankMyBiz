@@ -13,7 +13,7 @@
   <% else %>
     <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
     <%= render partial: "users/user", collection: current_user.todays_matches, as: :user %>
-    <% unless current_user.finished_profile? %>      
+    <% unless current_user.finished_profile? %>
       <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
       <div class=''>For Better Matches</div>
     <% end %>

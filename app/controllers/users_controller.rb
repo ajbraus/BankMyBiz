@@ -14,8 +14,6 @@ class UsersController < ApplicationController
     end
     @posts = @user.posts.paginate(:page => params[:page], :per_page => 7)
     @activities = PublicActivity::Activity.where(owner_id: @user.id).order("created_at desc").paginate(:page => params[:page], :per_page => 7) #.where(owner_id: current_user.friend_ids, owner_type: "User")
-    @matches = current_user.todays_matches
-    @peers = current_user.todays_peers
     @trending_tags = Tag.first(10)
   end
 

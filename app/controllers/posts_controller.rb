@@ -41,8 +41,6 @@ class PostsController < ApplicationController
     @recent_messages = current_user.messages.first(3)
     @following_users = current_user.followed_users
     @trending_tags = Tag.first(10)
-    @matches = current_user.todays_matches
-    @peers = current_user.todays_peers
 
     respond_to do |format|
       format.html # new.html.erb
@@ -59,8 +57,6 @@ class PostsController < ApplicationController
     if user_signed_in?
       is_bank = !current_user.bank?
       @new_post = Post.new
-      @matches = current_user.todays_matches
-      @peers = current_user.todays_peers
       @recent_messages = current_user.messages.first(3)
       @following_users = current_user.followed_users
     end

@@ -470,9 +470,12 @@ h3.matches {
   margin-bottom:0px;
 }
 
-.comment-form textarea {
-width: 96%;
-height:60px;
+.comment-form {
+  margin-top:15px;
+  textarea {
+    width: 96%;
+    height:60px;
+  }
 }
 
 .comment-form .btn {
@@ -566,7 +569,6 @@ height: 90px;
 
 .comment-show { 
   margin-right:3px;
-  color:grey;
   cursor:pointer;
 }
 
@@ -972,4 +974,5 @@ float: right;
 .margin-left {
   margin-left: 40px;
 }
+
 

@@ -1,9 +1,9 @@
-<div href="#" class="comment-show pull-right small btn btn-mini">comment</div>
+<div class="comment-show pull-right small btn btn-mini btn-warning"><i class="icon-comment"></i></div>
 <div class="comment-form" style="display:none;">
 <%= form_for [post, post.comments.new] do |f| %>
   <div class="input-append">
     <%= f.text_field :content, class:'span5', id:"appendedInputButton", placeholder:"comment to start a conversation . . ." %>
-    <button name="commit" type="submit" value="Create Comment" class="btn">
+    <button name="commit" type="submit" value="Create Comment" class="btn btn-warning">
       <i class="icon-comment"></i>
     </button>
   </div>

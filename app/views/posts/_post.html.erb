@@ -24,31 +24,30 @@
     <p class="text-right">
       <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
     </p>
+    <p class='text-right'>
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=BankmyBiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
+        <span class="btn btn-mini btn-linkedin push-up-a-bit"><i class="icon-linkedin"></i>
+      </a>
 
-  <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=BankmyBiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
-    <span class="btn btn-mini btn-linkedin push-up-a-bit"><i class="icon-linkedin"></i>
-  </a>
-
-  <a href="#" 
-    onclick="
-      window.open(
-        'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
-        'facebook-share-dialog', 
-        'width=626,height=436'); 
-      return false;" class="no-text-decoration">
-    <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i></span>
-  </a>
-  <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>" target='_blank'>
-    <span class="btn btn-mini btn-twitter push-up-a-bit"><i class="icon-twitter"></i>
-  </a>
-
+      <a href="#" 
+        onclick="
+          window.open(
+            'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+            'facebook-share-dialog', 
+            'width=626,height=436'); 
+          return false;" class="no-text-decoration">
+        <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i></span>
+      </a>
+      <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>" target='_blank'>
+        <span class="btn btn-mini btn-twitter push-up-a-bit"><i class="icon-twitter"></i>
+      </a>
+    </p>
 <% if user_signed_in? && (post.user == current_user || current_user.admin?) %>
 <div class="text-right">
 <%= link_to "Edit", edit_post_path(post), class:"smaller btn btn-mini" %>
 <%= link_to 'Delete', post, class:"smaller btn btn-mini", method: :delete, data: { confirm: 'Are you sure you would like to delete this post?' } %>
 </div>
 <% end %>
-
 <%= render partial: 'comments/comment', collection: post.comments.where('content is not null').order('created_at asc'), as: :comment, locals: { post: post } %>
 <%= render partial: 'comments/form', locals: { post: post } %>
 </section>

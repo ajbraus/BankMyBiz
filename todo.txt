@@ -3,7 +3,6 @@ tag links not working
 what kind of banking do you do? 
 
 "private message" (with lock)
-icon in "add photo to post to newsfeed"
 
 affix stuff to top
 comment button btn-primary
@@ -347,3 +346,4 @@ better "improve profile section"
 DONE "How many years have you filed taxes" (instead of years of operation)
 
 DONE Position Owner/CFO
+DONE icon in "add photo to post to newsfeed"

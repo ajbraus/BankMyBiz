@@ -11,6 +11,7 @@ $(document).ready(function() {
   $('.alert').delay(3000).fadeOut();
   $('.fadeInAlert').fadeIn();
   $('.comment-show').click(function() {
+    $(this).hide();
     $(this).next('.comment-form').toggle();
   });
   $("tr[data-link]").click(function() {

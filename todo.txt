@@ -40,7 +40,7 @@ setup subscriptions
   1/month package, 3/month package %25, 6/month package %50
 
 initiate with welcome message
-add more stuff to message#show
+
 
 share = get bucks
   uptick karma?
@@ -58,15 +58,12 @@ add karma
   recently added karma (last week's votes)
   start out with 25 reputation points
 
-Remove "facebook" "twitter" button names
-
-
 ---------------
 
 follow tags
 
 After profile update go to to root if first time signed in
-message sent is obvious
+message sent more obvious
 bring messages to the homepage
 
 lock down access to profiles of the opposite type
@@ -329,3 +326,5 @@ DONE what are your goals? what are you looking for? text box
 DONE default BMB lender match
 DONE downgrade the number of permissions on linked in
 DONE terms and use
+DONE Remove "facebook" "twitter" button names
+DONE add more stuff to message#show

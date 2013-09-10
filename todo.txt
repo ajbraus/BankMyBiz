@@ -1,14 +1,8 @@
-tag links not working
-
-what kind of banking do you do? 
-
-"private message" (with lock)
-
-affix stuff to top
-
-remove startup -> tech/internet
-"commercial real estate"
-sole proprietor 
+bugs:
+  tag links not working
+  remove startup -> tech/internet
+  "commercial real estate"
+  sole proprietor 
 
 setup email notifications
   DONE make image in email smaller
@@ -16,17 +10,30 @@ setup email notifications
   
   make reply a button in message send (avoid getting resonponses)
   business receives s/o following you message
-  new comment on your post or a post you commented on
+  new comment on a post you commented on
   new matches teaser
   Email after requesting access
   email upon confirm
 
-# potential matches
+lock down access to profiles of the opposite type
+  DONE shortening the number of posts on homepage
+  activity view don't show
+  search posts returns only the opposite type posts
+  comments
+  block url surfing
+    add friendly_id for user profiles
+    if user not in matches then fuzzy the page and offer them to buy the match for $49.99
+  remove people who haven't started a profile from recommended users
 
-upgrade profile for bankers not businesses
-Pricing for biz vs banker
+banker vs. biz pie chart in admin dashboard
 
-who voted for you?
+setup users
+  add user tags to users#show
+  setup tracking impressions on users
+  track who you viewed/messaged
+  don't track if you go to the same user/post twice in the same three days
+
+see who who voted for you, who viewd you, your followers
   voters_who_voted
 
 setup upgrades
@@ -38,9 +45,23 @@ setup subscriptions
   don't bill customers who are gone
   create "downgrade subscription" workflow
   1/month package, 3/month package %25, 6/month package %50
+  promoted posts
+
+------------------------------
+
+"private message" (with lock)
+
+what kind of banking do you do? 
+
+affix stuff to top
+
+# potential matches
+
+upgrade profile for bankers not businesses
+Pricing for biz vs banker
 
 initiate with welcome message
-
+send richtext messages
 
 share = get bucks
   uptick karma?
@@ -50,6 +71,8 @@ Security
 
 SLL Cert
 
+message sent more obvious - sent count
+
 make reply from message in email actually reply as a message.
 
 ajaxify voting
@@ -58,67 +81,24 @@ add karma
   recently added karma (last week's votes)
   start out with 25 reputation points
 
----------------
-
 follow tags
 
-After profile update go to to root if first time signed in
-message sent more obvious
-bring messages to the homepage
-
-lock down access to profiles of the opposite type
-  shortening the number of posts on homepage
-  activity view don't show
-  search posts returns only the opposite type posts
-  comments
-  url surfing
-    add friendly_id for user profiles
-  remove people who haven't started a profile from recommended users
-
-banker vs. biz pie chart in admin dashboard
-
-
-filter users by matching criteria
-  give more matches if 100% complete
-  wire up querying of suggested banks/businesses
-  Limit number of messages a day
-
-setup users
-  add user tags to users#show
-  setup tracking impressions on users
-  track who you viewed/messaged
-  don't track if you go to the same user/post twice in the same three days
-
-  setup nearby owners/lenders - require location
-
-  if no searches - state "no results found"
-
-  
-  
   Chat
 
-  search by aurthor's name
-
-  trending tags - most posts with those tags
-
-  Make "Updates" that the project leader can write and emails everyone following of committed.
+  trending tags - most posts with those tags - tags with counts
   
-
----------------------------------------
-
   Control / Moderation
 
+  buy matches
+
+  how do we kick out people who just got a new bank through our site?
+
+  start with matches and buy more
+  start with a match a day, ping them if they aren't on the site for 5 days with a "new match" email
 
 
-promoted post
-buy matches
 
-how do we kick out people who just got a new bank through our site?
-
-start with matches and buy more
-start with a match a day, ping them if they aren't on the site for 5 days with a "new match" email
-
-
+---------------------------------------
 ---------------------------------------
 
 

@@ -26,11 +26,11 @@ class Notifier < ActionMailer::Base
     mail to: @receiver.email, subject: "Message from #{@sender.first_name} - BankmyBiz.com"
   end
 
-  def new_comment(comment)
+  def new_comment(user, comment)
     @comment = comment
     @commenter = @comment.user
     @post = @comment.post
-    @user = @post.user
+    @user = user
     mail to: @user.email, subject: "New Comment on #{@post.title}"
   end
 end

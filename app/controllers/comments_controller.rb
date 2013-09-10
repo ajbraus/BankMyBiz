@@ -68,7 +68,13 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         @comment.create_activity :create, owner: current_user
-        Notifier.delay.new_comment(@comment)
+        @comment_users = (@comment.commentable.comments.map{ |c| c.user } + [@comment.commentable.user]).uniq
+        @comment_users.each do |u|
+          unless u == current_user
+            Notifier.delay.new_comment(u, @comment)
+          end
+        end
+      
         format.html { redirect_to root_path, notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130821230448) do
+ActiveRecord::Schema.define(:version => 20130910182737) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -297,6 +297,7 @@ ActiveRecord::Schema.define(:version => 20130821230448) do
     t.boolean  "deleted",                :default => false
     t.string   "org_name"
     t.string   "position"
+    t.text     "goals"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

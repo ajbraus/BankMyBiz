@@ -25,10 +25,10 @@
       <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
     </p>
 
-  <script src="//platform.linkedin.com/in.js" type="text/javascript">
-   lang: en_US
-  </script>
-  <script type="IN/Share" data-url="<%= post_url(post) %>" data-counter="right"></script>
+  <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=BankmyBiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
+    <span class="btn btn-mini btn-linkedin push-up-a-bit"><i class="icon-linkedin"></i>
+  </a>
+
   <a href="#" 
     onclick="
       window.open(
@@ -36,11 +36,11 @@
         'facebook-share-dialog', 
         'width=626,height=436'); 
       return false;" class="no-text-decoration">
-    <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i></span><span class="btn btn-mini push-up-a-bit">facebook</span>
+    <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i></span>
   </a>
-  <a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= post_url(post) %>" data-text="<%= post.short_content %> " data-via="bankmybiz" data-hashtags="financing">Tweet</a>
-
-  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>" target='_blank'>
+    <span class="btn btn-mini btn-twitter push-up-a-bit"><i class="icon-twitter"></i>
+  </a>
 
 <% if user_signed_in? && (post.user == current_user || current_user.admin?) %>
 <div class="text-right">

@@ -9,6 +9,9 @@
 
       <%= f.label :bio, "Tell Us About You. What Makes You and Your #{current_user.bank? ? 'Bank' : 'Business'} Great?" %>
       <%= f.text_area :bio %>
+      
+      <%= f.label :goals, "Tell Us About Your #{current_user.bank? ? 'Bank' : 'Business'}'s Goals" %>
+      <%= f.text_area :goals %>
     </div>
   <% if current_user.bank? %> 
     <div class="span9 offset2">

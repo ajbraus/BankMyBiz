@@ -7,13 +7,15 @@ bugs:
 setup email notifications
   DONE make image in email smaller
   DONE make the signature smaller
-  
+  DONE new comment on a post you commented on
+
   make reply a button in message send (avoid getting resonponses)
   business receives s/o following you message
-  new comment on a post you commented on
   new matches teaser
   Email after requesting access
   email upon confirm
+  receipt of profile upgrade (once)
+  receipt of payment (monthly!)
 
 lock down access to profiles of the opposite type
   DONE shortening the number of posts on homepage

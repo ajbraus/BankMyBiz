@@ -146,11 +146,13 @@
                 <ul class="nav pull-right">
                   <li>
                     <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">
-                      <i class="icon-linkedin"></i> | Login
+                      Login | <i class="icon-linkedin"></i>
                     </a>
                   </li>
                   <li class="email-signin">
-                    <span class="">or, <%= link_to "sign in", new_session_path(resource_name) %></span>
+                    <%= link_to new_session_path(resource_name) do %>
+                      Login | <i class="icon-envelope"></i>
+                    <% end %>
                   </li>
                 </ul>
               <% end %>

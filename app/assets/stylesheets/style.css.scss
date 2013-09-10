@@ -135,7 +135,7 @@ padding: 10px 10px 10px;
 }
 
 .email-signin {
-  margin:15px 0px 0 5px;
+  margin:7px 0px 0 0px;
 }
 
 .nav {
@@ -424,18 +424,12 @@ hr {
 .responsive-jumbotron {
   margin: 0 0 30px 0;
   text-align: center;
-  padding: 80px 50px 100px 50px;
-  background: url("Business_NR_06.jpg");
-  background-size: 280%;
-  background-repeat: no-repeat;
-  background-position: 50%;
 }
 
 .jumbotron {
   margin: 0 0 30px 0;
   text-align: center;
   padding: 40px 50px 50px 50px;
-  background: url("Business_NR_06.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
 }
@@ -906,4 +900,34 @@ padding-left: 120px;
 .banker-border {
   border-top:2px solid #f89406;
   padding-top:20px;
+}
+
+.hero-background {
+  background: url("Business_NR_09.JPG");
+  background-repeat:no-repeat;
+  height:340px;
+  background-size:100%;
+  background-position: 0 -110px;
+}
+
+.sign-up-buttons {
+position: relative;
+top: 150px;
+float: right;
+}
+
+.splash-quote {
+  width: 450px;
+  background: white;
+  height: 70px;
+  position: relative;
+  bottom: 5px;
+  font-style: italic;
+  .muted {
+    padding-right: 35px;
+  }
+}
+
+.margin-left {
+  margin-left: 40px;
 }

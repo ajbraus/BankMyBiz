@@ -3,7 +3,7 @@
     </div>
   </div>
 </div>
-<div class="jumbotron visible-desktop visible-tablet hidden-phone">
+<div class="jumbotron visible-desktop hidden-tablet hidden-phone">
   <div class='message clearfix'>
     <div class="span5">
       <h3>Financing Based On Relationships</h3>
@@ -12,29 +12,37 @@
       </div>
       <p>
         <a href="/auth/linkedin" class="auth_provider btn btn-linkedin splash-btn">          
-          <i class="icon-linkedin"></i> | Request Access
+          <i class="icon-linkedin"></i> | Request Free Access
         </a>
       </p>
       <p>
-        <%= link_to "request w/ email", new_registration_path(resource_name), class:'btn splash-btn' %>
+        <%= link_to new_registration_path(resource_name), class:'btn splash-btn' do %>
+        <i class="icon-envelope"></i> | Request Free Access
+        <% end %>
       </p>
     </div>
     <div class="text-right video">
-      <object width="480" height="360"><param name="movie" value="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0" type="application/x-shockwave-flash" width="490" height="275" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+      <object width="480" height="360"><param name="movie" value="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0" type="application/x-shockwave-flash" width="450" height="250" allowscriptaccess="always" allowfullscreen="true"></embed></object>
     </div>
   </div>
 </div>
-<div class="responsive-jumbotron hidden-desktop hidden-tablet visible-phone">
+<div class="responsive-jumbotron hidden-desktop visible-tablet visible-phone">
   <div class='message'>
-    <object width="480" height="360"><param name="movie" value="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0" type="application/x-shockwave-flash" width="260" height="145" allowscriptaccess="always" allowfullscreen="true"></embed></object>
+    <object width="480" height="360"><param name="movie" value="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0" type="application/x-shockwave-flash" width="256" height="145" allowscriptaccess="always" allowfullscreen="true"></embed></object>
     <h3>Financing Based On Relationships</h3>
     <div class="lead">
       BankmyBiz.com matches Lenders and Business Owners <br> Coming this fall. Sign up for FREE.
     </div>
-    <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">          
-        <i class="icon-linkedin"></i> | Request Access
-    </a><br>
-    <span class="small">or,  <%= link_to "request w/ email", new_registration_path(resource_name) %></span>
+    <p>
+      <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">          
+          <i class="icon-linkedin"></i> | Request Free Access
+      </a>
+    </p>
+    <p>
+      <%= link_to new_registration_path(resource_name), class:'btn' do %>
+      <i class="icon-envelope"></i> | Request Free Access
+      <% end %>
+    </p>
   </div>
 </div>
 <hr>
@@ -48,16 +56,12 @@
     </div>
   </div>
   <div class="row">
-    <div class="span5 offset1">
-      <blockquote class="lead pull-left">
-        "My banker wasn't taking the time to tell me all my options for financing. On BankmyBiz.com I found someone who was eager to give me a new deal."</br>
-        <div class="muted pull-left">Business Owner</div>
-      </blockquote>
+    <div class="span4">
     </div>
-    <div class="span5">
-      <blockquote class="lead pull-right text-right">
+    <div class="span6 offset1">
+      <blockquote class="large pull-right text-right">
         "Wow, BankMyBiz.com is extraordinary. Easy to navigate, engaging interactions and spot-on connections. This will change everything".</br>
-        <div class="muted pull-right">SVP Business Banker</div>
+        <div class="muted pull-right">James C. - SVP Business Banker</div>
       </blockquote>
     </div>
   </div>

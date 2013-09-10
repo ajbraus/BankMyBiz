@@ -57,23 +57,9 @@ ajaxify voting
 add karma
   recently added karma (last week's votes)
   start out with 25 reputation points
-  "buy" a match with 25 reputation points
 
 Remove "facebook" "twitter" button names
 
-add google+
-I'd like you to link:
-http://www.bankmybiz.com
-
-to the BankMyBiz.com Google+ page:
-https://plus.google.com/111339007136871525117
-
-Do this by adding a link to your website's homepage, as in:
-<a href="https://plus.google.com/111339007136871525117" rel="publisher">Google+</a>
-
-For more information, visit http://www.google.com/support/plus/?p=link_page_to_website&hl=en&authuser=1
-
-Sincerely
 
 ---------------
 

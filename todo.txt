@@ -5,23 +5,17 @@ what kind of banking do you do?
 "private message" (with lock)
 
 affix stuff to top
-comment button btn-primary
-
-have messages there even if no messages (with icon)
-
-when you complete your profile - get the initial match right away
 
 remove startup -> tech/internet
 "commercial real estate"
 sole proprietor 
-
 
 setup email notifications
   DONE make image in email smaller
   DONE make the signature smaller
   
   make reply a button in message send (avoid getting resonponses)
-  s/o following you
+  business receives s/o following you message
   new comment on your post or a post you commented on
   new matches teaser
   Email after requesting access
@@ -29,14 +23,7 @@ setup email notifications
 
 # potential matches
 
-what are your goals? what are you looking for? text box
-
-default BMB lender match
-
-downgrade the number of permissions on linked in
-
 upgrade profile for bankers not businesses
-terms and use
 Pricing for biz vs banker
 
 who voted for you?
@@ -55,7 +42,8 @@ setup subscriptions
 initiate with welcome message
 add more stuff to message#show
 
-share = get a buck
+share = get bucks
+  uptick karma?
 
 Security
   don't destroy users
@@ -347,3 +335,11 @@ DONE "How many years have you filed taxes" (instead of years of operation)
 
 DONE Position Owner/CFO
 DONE icon in "add photo to post to newsfeed"
+
+DONE comment button btn-primary
+DONE have messages there even if no messages (with icon)
+DONE when you complete your profile - get the initial match right away
+DONE what are your goals? what are you looking for? text box
+DONE default BMB lender match
+DONE downgrade the number of permissions on linked in
+DONE terms and use

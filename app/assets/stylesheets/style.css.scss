@@ -414,7 +414,7 @@ hr {
 /* Main marketing message and sign up button */
 .message {
   background: rgba(255, 255, 255, 0.8);
-  padding: 40px 5px;
+  padding: 20px 5px;
   border-radius: 7px;
   .h3 {
     font-family: 'Montserrat', sans-serif;
@@ -434,7 +434,7 @@ hr {
 .jumbotron {
   margin: 0 0 30px 0;
   text-align: center;
-  padding: 80px 50px 100px 50px;
+  padding: 40px 50px 50px 50px;
   background: url("Business_NR_06.jpg");
   background-size: 100%;
   background-repeat: no-repeat;
@@ -871,7 +871,6 @@ height: 90px;
 .video {
 float: right;
 position: relative;
-top: 12px;
 right: 4%;
 }
 
@@ -897,4 +896,14 @@ padding-left: 120px;
 
 .min-height {
   min-height: 500px;
+}
+
+.owner-border {
+  border-top:2px solid #009E3B;
+  padding-top:20px;
+}
+
+.banker-border {
+  border-top:2px solid #f89406;
+  padding-top:20px;
 }

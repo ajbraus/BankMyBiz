@@ -55,7 +55,12 @@
       <% end %>
     <% else %>
       <div class="well alert-info" id="fadeInAlert">
-        <%= link_to "Add your profile picture", user_path(current_user) %>, or <a href="/auth/linkedin" class="auth_provider">login through LinkedIn</a>  to post to the Newsfeed
+        <i class="icon-bell-alt"></i> To post to the Newsfeed you must first
+          <ul>
+            <li>
+              <%= link_to "Upload a profile picture", user_path(current_user) %>, or <a href="/auth/linkedin" class="auth_provider">Fetch it through LinkedIn</a> 
+            </li>
+          </ul>
       </div>
     <% end %>
     <%= render partial: "posts/post", collection: @posts, as: :post %>

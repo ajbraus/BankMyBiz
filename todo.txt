@@ -1,7 +1,4 @@
 bugs:
-  123
-  center stuff
-
   tag links not working
   remove startup -> tech/internet
   "commercial real estate"
@@ -56,6 +53,20 @@ setup subscriptions
 
 ------------------------------
 
+boostrap mode
+  new follower email goes out and tells them who follows them
+
+
+pricing recommendation:
+  Business:
+    start with 3 matches - buy 3 more for $60
+    buy access to more knowledge $199.99 (who follows, views, or gives you bucks)
+
+  Banks
+    3 matches a day - buy 3 more for $30
+    buy access to more knowledge - $49.99 (who follows, views, or gives you bucks)
+
+
 Define Key Metrics
 New Users in the past 30 days
 "Active" Users
@@ -63,13 +74,6 @@ New Users in the past 30 days
 Successful Matches
 Set user expectations
 
-Business:
-  start with 3 matches - buy 3 more
-  buy access to more knowledge $199.99
-
-Banks
-  3 matches a day - buy 3 more for cheaper
-  buy access to more knowledge - $49.99
 
 someone else grabbed your match because you didn't get it
 

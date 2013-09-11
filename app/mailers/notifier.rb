@@ -33,4 +33,10 @@ class Notifier < ActionMailer::Base
     @user = user
     mail to: @user.email, subject: "New Comment on #{@post.title}"
   end
+
+  def new_follower(user, follower)
+    @user = user
+    @follower = follower
+    mail to: @user.email, subject: "You have a new Follower on BankmyBiz.com"
+  end
 end

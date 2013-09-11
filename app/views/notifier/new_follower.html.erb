@@ -1,0 +1,9 @@
+<h4 class="h4"><%= @user.first_name.titleize %>, </h4>
+<p>
+  <%= link_to @follower.first_name_with_last_initial, user_url(@follower) %> now follows your profile on BankmyBiz.com
+</p>
+<% if false %>
+<p>
+  You have a new follower on BankmyBiz.com. <%= link_to "Upgrade your account", subscribe_url %> to see who follows you, has given you bucks, and who's viewed your profile.
+</p>
+<% end %>

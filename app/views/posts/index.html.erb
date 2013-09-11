@@ -3,7 +3,7 @@
     <%= render 'shared/trending_tags' %>
     <hr>
       <div class="home-messages">
-        <p class="muted">Your Messages</p>
+        <p class="muted"><%= link_to "Your Messages", messages_path %></p>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -23,7 +23,6 @@
             <% end %>
           </tbody>
         </table>
-        <div class="text-right"><%= link_to "to inbox", messages_path %></div>
       </div>
       <hr>
     <div class="home-messages">

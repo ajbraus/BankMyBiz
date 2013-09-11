@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       end
     end
     @posts = @user.posts.paginate(:page => params[:page], :per_page => 7)
-    @activities = PublicActivity::Activity.where(owner_id: @user.id).order("created_at desc").paginate(:page => params[:page], :per_page => 7) #.where(owner_id: current_user.friend_ids, owner_type: "User")
+    @activities = PublicActivity::Activity.where(owner_id: @user.id).order("created_at desc").paginate(:page => params[:page], :per_page => 5) #.where(owner_id: current_user.friend_ids, owner_type: "User")
   end
 
   def index

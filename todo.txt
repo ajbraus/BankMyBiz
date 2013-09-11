@@ -1,16 +1,21 @@
 bugs:
+  123
+  center stuff
+
   tag links not working
   remove startup -> tech/internet
   "commercial real estate"
   sole proprietor 
+  threading messages by subject line
 
 setup email notifications
   DONE make image in email smaller
   DONE make the signature smaller
   DONE new comment on a post you commented on
-
-  make reply a button in message send (avoid getting resonponses)
+  DONE make reply a button in message send (avoid getting resonponses)
+  
   business receives s/o following you message
+
   new matches teaser
   Email after requesting access
   email upon confirm
@@ -50,6 +55,41 @@ setup subscriptions
   promoted posts
 
 ------------------------------
+
+Define Key Metrics
+New Users in the past 30 days
+"Active" Users
+"Paid" Users
+Successful Matches
+Set user expectations
+
+Business:
+  start with 3 matches - buy 3 more
+  buy access to more knowledge $199.99
+
+Banks
+  3 matches a day - buy 3 more for cheaper
+  buy access to more knowledge - $49.99
+
+someone else grabbed your match because you didn't get it
+
+years of filing taxes - 0-3
+
+how can we directly target factoring and treasury services?
+
+Improvements to matching 
+who do you sell to? accounts receivable low, medium, high?
+
+what kind of banking do you do?
+  treasury services
+  debt lending
+  factoring
+  non-profit
+
+name will display as Adam B.
+
+
+
 
 "private message" (with lock)
 

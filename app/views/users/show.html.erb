@@ -48,6 +48,10 @@
     <p class="muted"><%= @user.bio %></p>
   </li>
   <li>
+    <strong>Goals</strong>
+    <p class="muted"><%= @user.goals %></p>
+  </li>
+  <li>
     <strong class=''>Business Type:</strong>
     <p class="muted"><%= @user.business_types.map(&:description).join(", ") %></p>
   </li>

@@ -958,4 +958,19 @@ float: right;
   margin-left: 40px;
 }
 
+.move-left {
+  position: relative;
+right: 40px;
+top: 20px;
+}
 
+.hero-creds {
+  position: absolute;
+  top: 451px;
+  color: white;
+  right: 0px;
+  background: rgba(0, 0, 0, 0.6);
+  width: 210px;
+  text-align: left;
+  padding: 0px 30px;
+}

@@ -15,4 +15,7 @@ class WelcomeController < ApplicationController
   end
   def terms
   end
+  def privacy
+    
+  end
 end

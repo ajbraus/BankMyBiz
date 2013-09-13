@@ -2,7 +2,7 @@
     <%= form_for @user.messages.new, remote:true do |f| %>
       <div class="modal-header">  
         <a class="close" data-dismiss="modal">×</a>  
-        <h3>Contact <%= @user.name %></h3>  
+        <h3>Contact <%= @user.first_name_with_last_initial %></h3>  
       </div>  
       <div class="modal-body">  
         <div class=" message-subject">
@@ -40,7 +40,7 @@
   <% end %>
   <ul>
     <li>
-      <p><strong>Name</strong> <%= @user.name %></p>
+      <p><strong>Name</strong> <%= @user.first_name_with_last_initial %></p>
     </li>
     <li><p><strong>Bucks</strong> <span class="muted"> <%= @user.karma %></span></p></li>
     <li>

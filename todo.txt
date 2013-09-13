@@ -1,5 +1,4 @@
-bugs:
-  tag links not working
+bugs:  
   remove startup -> tech/internet
   "commercial real estate"
   sole proprietor 
@@ -10,12 +9,11 @@ setup email notifications
   DONE make the signature smaller
   DONE new comment on a post you commented on
   DONE make reply a button in message send (avoid getting resonponses)
-  
-  business receives s/o following you message
+  DONE business receives s/o following you message
+  DONE Email after requesting access
 
-  new matches teaser
-  Email after requesting access
   email upon confirm
+  new matches teaser
   receipt of profile upgrade (once)
   receipt of payment (monthly!)
 
@@ -354,3 +352,4 @@ DONE downgrade the number of permissions on linked in
 DONE terms and use
 DONE Remove "facebook" "twitter" button names
 DONE add more stuff to message#show
+DONE tag links not working

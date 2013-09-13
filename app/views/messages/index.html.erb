@@ -20,7 +20,7 @@
               <tr data-link="<%= message_path(m) %>" class="<%= m.is_read? ? '' : 'unread' %>">
                 <td></td>
                 <td><%= m.subject %></td>
-                <td><%= m.sender.name %></td>
+                <td><%= m.sender.first_name_with_last_initial %></td>
                 <td><%= m.nice_created_at %></td>
               </tr>
             <% end %>
@@ -44,7 +44,7 @@
                 <%= link_to message_path(m) do %>
                 <td></td>
                 <td><%= m.subject %></td>
-                <td><%= m.receiver.name %></td>
+                <td><%= m.receiver.first_name_with_last_initial %></td>
                 <td><%= m.nice_created_at %></td>
                 <% end %>
               </tr>

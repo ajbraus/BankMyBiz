@@ -4,7 +4,7 @@
       <%= form_for @sender.messages.new, remote:true do |f| %>
         <div class="modal-header">  
           <a class="close" data-dismiss="modal">×</a>  
-          <h3>Contact <%= @sender.name %></h3>  
+          <h3>Contact <%= @sender.first_name_with_last_initial %></h3>  
         </div>  
         <div class="modal-body">  
           <div class=" message-subject">
@@ -25,7 +25,7 @@
   </div>
   <div class="span8">
     <div class='span6 one-message'>
-      <p><strong>From:</strong> <%= @message.sender.name %></p>
+      <p><strong>From:</strong> <%= @message.sender.first_name_with_last_initial %></p>
       <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
       <p><%= @message.body %></p>
       <div class="text-right btn-reply">

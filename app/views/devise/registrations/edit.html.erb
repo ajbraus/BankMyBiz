@@ -2,16 +2,21 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="field">
+    <%= f.label :avatar, "Profile Picture" %><br />
+    <%= f.file_field :avatar %>
+  </div>
+
   <div><%= f.label :name %>
   <%= f.text_field :name %></div>
 
   <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
-  <div class="field">
-    <%= f.label :avatar, "Select Profile Picture" %><br />
-    <%= f.file_field :avatar %>
-  </div>
+  <p>
+    <label><%= f.check_box :newsletter %>
+      Recieve BankmyBiz.com News?</label>
+  </p>
   
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
@@ -25,7 +30,7 @@
   <%= f.password_field :current_password %></div>
 <% end %>
 
-  <div><%= f.submit "Update", class:"btn btn-warning" %></div>
+  <div><%= f.submit "Update", class:"btn btn-warning btn-large" %></div>
 <% end %>
 
 <p class="small">Unhappy? <%= button_to "Cancel my Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class:"btn btn-mini btn-danger" %>.</p>

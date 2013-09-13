@@ -2,42 +2,9 @@
   <div class="border-right">
     <%= render 'shared/trending_tags' %>
     <hr>
-      <div class="home-messages">
-        <p class="muted"><%= link_to "Your Messages", messages_path %></p>
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th width="20%">From</th>
-              <th width="40%">Subject</th>
-            </tr>
-          </thead>
-          <tbody class="table-bordered">
-            <% @recent_messages.each do |rm| %>
-              <tr data-link="<%= message_path(rm) %>" class="<%= rm.is_read? ? '' : 'unread' %>">
-                <td><%= rm.sender.first_name_with_last_initial %></td>
-                <td>
-                  <%= rm.short_subject %><br>
-                  <span class="small muted"><%= time_ago_in_words(rm.created_at) %> ago</span>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
-      </div>
-      <hr>
-    <div class="home-messages">
-      <p class="muted">Who you Follow</p>
-      <ul>
-        <% @following_users.each do |fu| %>
-          <li>
-            <p>
-              <%= small_profile_picture(fu) %>
-              <%= link_to fu.first_name_with_last_initial, fu %>
-            </p>
-          </li>
-        <% end %>
-      </ul> 
-    </div>
+    <%= render 'shared/messages' %>
+    <hr>
+    <%= render 'shared/following' %>
   </div>
 </div>
 <div class="span6">

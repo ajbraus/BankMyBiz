@@ -1,0 +1,15 @@
+<div class="home-messages">
+  <p class="muted">Who you Follow</p>
+  <ul>
+    <% if user_signed_in? %>
+      <% current_user.followed_users.each do |fu| %>
+        <li>
+          <p>
+            <%= profile_picture(fu) %>
+            <%= link_to fu.first_name_with_last_initial, fu %>
+          </p>
+        </li>
+      <% end %>
+    <% end %>
+  </ul> 
+</div>

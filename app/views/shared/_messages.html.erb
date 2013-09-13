@@ -1,0 +1,24 @@
+<% if user_signed_in? %>
+<div class="home-messages">
+  <p class="muted"><%= link_to "Your Messages", messages_path %></p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th width="20%">From</th>
+        <th width="40%">Subject</th>
+      </tr>
+    </thead>
+    <tbody class="table-bordered">
+      <% current_user.messages.first(3).each do |rm| %>
+        <tr data-link="<%= message_path(rm) %>" class="<%= rm.is_read? ? '' : 'unread' %>">
+          <td><%= rm.sender.first_name_with_last_initial %></td>
+          <td>
+            <%= rm.short_subject %><br>
+            <span class="small muted"><%= time_ago_in_words(rm.created_at) %> ago</span>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+<% end %>

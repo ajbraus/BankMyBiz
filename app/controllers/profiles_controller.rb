@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
   def edit
     @user = current_user
-    @trending_tags = Tag.order('created_at desc').first(10)
   end
 
   def update

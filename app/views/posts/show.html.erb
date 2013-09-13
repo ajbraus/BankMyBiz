@@ -2,33 +2,9 @@
   <div class="border-right">
     <%= render 'shared/trending_tags' %>
     <hr>
-    <% if @recent_messages.present? %>
-      <div class="home-messages">
-        <p class="muted">Your Messages</p>
-        <table>
-          <% @recent_messages.each do |rm| %>
-            <tr>
-              <td><%= rm.sender.first_name_with_last_initial %></td>
-              <td><%= rm.subject %></td>
-              <td><%= rm.nice_created_at %></td>
-            </tr>
-          <% end %>
-        </table>
-        <%= link_to "more", messages_path, class:"text-right" %>
-      </div>
-      <hr>
-    <% end %>
-    <div class="home-messages">
-      <p class="muted">Who you Follow</p>
-      <ul>
-        <% @following_users.try(:each) do |fu| %>
-          <li>
-            <%= profile_picture(fu) %>
-            <%= link_to fu.first_name_with_last_initial, fu %>
-          </li>
-        <% end %>
-      </ul> 
-    </div>
+    <%= render 'shared/messages' %>
+    <hr>
+    <%= render 'shared/following' %>
   </div>
 </div>
 <div class="span6">

@@ -40,7 +40,6 @@ class PostsController < ApplicationController
     @new_post = Post.new
     @recent_messages = current_user.messages.first(3)
     @following_users = current_user.followed_users
-    @trending_tags = Tag.first(10)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -57,11 +56,7 @@ class PostsController < ApplicationController
     if user_signed_in?
       is_bank = !current_user.bank?
       @new_post = Post.new
-      @recent_messages = current_user.messages.first(3)
-      @following_users = current_user.followed_users
     end
-
-    @trending_tags = Tag.first(10)
 
     respond_to do |format|
       format.html # show.html.erb

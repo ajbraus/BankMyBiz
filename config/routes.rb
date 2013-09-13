@@ -43,8 +43,6 @@ BankMyBiz::Application.routes.draw do
     match 'users/add_avatar' => 'registrations#add_avatar', as: "add_avatar"
   end
 
-  resources :tags, only: [:create, :destroy, :show]
-
   resources :users, :only => [:show, :index, :confirm, :reject] do
     get :reject
     get :confirm

@@ -929,6 +929,7 @@ padding-left: 120px;
 }
 
 .hero-background {
+  /*background: url("cupcake.jpeg");*/
   background: url("Business_NR_09.JPG");
   background-repeat:no-repeat;
   height:340px;
@@ -947,8 +948,9 @@ float: right;
   background: white;
   height: 70px;
   position: relative;
-  bottom: 5px;
+  bottom: 6px;
   font-style: italic;
+  padding: 18px 0 0 0;
   .muted {
     padding-right: 35px;
   }

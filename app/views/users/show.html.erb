@@ -39,46 +39,49 @@
     <p class='text-center'><%= large_profile_picture(@user) %></p>
   <% end %>
   <ul>
-  <li>
-    <p><strong>Name</strong> <%= @user.name %></p>
-  </li>
-  <li><p><strong>Bucks</strong> <span class="muted"> <%= @user.karma %></span></p></li>
-  <li>
-    <strong>Bio</strong>
-    <p class="muted"><%= @user.bio %></p>
-  </li>
-  <li>
-    <strong>Goals</strong>
-    <p class="muted"><%= @user.goals %></p>
-  </li>
-  <li>
-    <strong class=''>Business Type:</strong>
-    <p class="muted"><%= @user.business_types.map(&:description).join(", ") %></p>
-  </li>
-  <li>
-    <strong class=''>Revenue Size:</strong>
-    <p class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></p>
-  </li>
-  <li>
-    <strong class=''>Years of Operation</strong>
-    <p class="muted"><%= @user.ages.map(&:description).join(", ") %></p>
-  </li>
-  <li>
-    <strong class=''>Industry</strong>
-    <p class="muted"><%= @user.industries.map(&:description).join(", ") %></p>
-  </li>
-  <li>
-    <strong class=''>Employees</strong>
-    <p class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></p>
-  </li>
-</ul>
-  <% if @user == current_user %>
-    <%= link_to "edit profile", edit_profile_path(@user) %>
-  <% elsif current_user.messages_left? %>
-    <p class='text-center'>
+    <li>
+      <p><strong>Name</strong> <%= @user.name %></p>
+    </li>
+    <li><p><strong>Bucks</strong> <span class="muted"> <%= @user.karma %></span></p></li>
+    <li>
+      <strong>Bio</strong>
+      <p class="muted"><%= @user.bio %></p>
+    </li>
+    <li>
+      <strong>Goals</strong>
+      <p class="muted"><%= @user.goals %></p>
+    </li>
+    <li>
+      <strong class=''>Business Type:</strong>
+      <p class="muted"><%= @user.business_types.map(&:description).join(", ") %></p>
+    </li>
+    <li>
+      <strong class=''>Revenue Size:</strong>
+      <p class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></p>
+    </li>
+    <li>
+      <strong class=''>Years of Operation</strong>
+      <p class="muted"><%= @user.ages.map(&:description).join(", ") %></p>
+    </li>
+    <li>
+      <strong class=''>Industry</strong>
+      <p class="muted"><%= @user.industries.map(&:description).join(", ") %></p>
+    </li>
+    <li>
+      <strong class=''>Employees</strong>
+      <p class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></p>
+    </li>
+  </ul>
+  <p class='text-center'>
+    <% if @user == current_user %>
+      <%= link_to "edit profile", edit_profile_path(@user) %>
+    <% elsif current_user.messages_left? %>
       <a data-toggle="modal" href="#contact-modal" class="btn btn-primary"><i class="icon-lock"></i> Message <%= @user.first_name_with_last_initial %></a>
-    </p>
-  <% end %>
+    <% end %>
+  </p>
+  <%= render 'shared/messages' %>
+  <hr>
+  <%= render 'shared/following' %>
 </div>
 <div class="span5">
   <% if @user == current_user %>

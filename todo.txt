@@ -5,12 +5,6 @@ bugs:
   threading messages by subject line
 
 setup email notifications
-  DONE make image in email smaller
-  DONE make the signature smaller
-  DONE new comment on a post you commented on
-  DONE make reply a button in message send (avoid getting resonponses)
-  DONE business receives s/o following you message
-  DONE Email after requesting access
 
   email upon confirm
   new matches teaser
@@ -21,6 +15,7 @@ setup pricing model
 
 lock down access to profiles of the opposite type
   DONE shortening the number of posts on homepage
+  DONE remove link in newsfeed & comment
   activity view don't show
   search posts returns only the opposite type posts
   comments
@@ -355,3 +350,12 @@ DONE terms and use
 DONE Remove "facebook" "twitter" button names
 DONE add more stuff to message#show
 DONE tag links not working
+
+
+emails
+  DONE make image in email smaller
+  DONE make the signature smaller
+  DONE new comment on a post you commented on
+  DONE make reply a button in message send (avoid getting resonponses)
+  DONE business receives s/o following you message
+  DONE Email after requesting access

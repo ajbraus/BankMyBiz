@@ -25,7 +25,7 @@
   </div>
   <div class="span8">
     <div class='span6 one-message'>
-      <p><strong>From:</strong> <%= @message.sender.first_name_with_last_initial %></p>
+      <p><strong>From:</strong> <%= link_to "#{@message.sender.first_name_with_last_initial}", user_path(@message.sender) %></p>
       <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
       <p><%= @message.body %></p>
       <div class="text-right btn-reply">

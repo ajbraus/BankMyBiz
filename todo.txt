@@ -17,6 +17,8 @@ setup email notifications
   receipt of profile upgrade (once)
   receipt of payment (monthly!)
 
+setup pricing model
+
 lock down access to profiles of the opposite type
   DONE shortening the number of posts on homepage
   activity view don't show

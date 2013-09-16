@@ -12,7 +12,7 @@
   <div class="small"><%= comment.content %></div>
   <div class="muted smaller text-right"><%= time_ago_in_words(comment.created_at) %> ago by 
     <% if comment.user %>
-      <%= link_to "#{comment.user.first_name_with_last_initial}", user_path(post.user) %>
+      <%= comment.user.first_name_with_last_initial %>
     <% end %>
   </div>
 </li>

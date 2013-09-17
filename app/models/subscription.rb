@@ -1,6 +1,7 @@
 class Subscription < ActiveRecord::Base
+  default_scope order('expires_on asc')
   belongs_to :user
-  validates_presence_of :user_id, :plan_id
+  validates_presence_of :user_id, :plan_id, :plan_id, :stripe_card_token, :expires_on
   
   attr_accessible :plan_id, :stripe_card_token
   

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130913033141) do
+ActiveRecord::Schema.define(:version => 20130917211926) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -251,9 +251,12 @@ ActiveRecord::Schema.define(:version => 20130913033141) do
   add_index "revenue_sizes_users", ["user_id", "revenue_size_id"], :name => "index_revenue_sizes_users_on_user_id_and_revenue_size_id"
 
   create_table "subscriptions", :force => true do |t|
-    t.integer "user_id"
-    t.integer "plan_id"
-    t.string  "stripe_customer_token"
+    t.integer  "user_id"
+    t.integer  "plan_id"
+    t.string   "stripe_customer_token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.date     "expires_on"
   end
 
   create_table "tags", :force => true do |t|

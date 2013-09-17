@@ -82,11 +82,11 @@ border-radius: 0px;
   background:#009E3B;
   padding:3px 7px;
   color:white;
-  &:hover {
+/*  &:hover {
     text-decoration:none;
     color:white;
     opacity:.8;
-  }
+  }*/
 }
 
 .tag-cloud {
@@ -123,6 +123,7 @@ border-radius: 4px;
 width: 100%;
 background: white;
 z-index: 100;
+margin:0;
 }
 
 .under {
@@ -462,7 +463,6 @@ hr {
   margin-left:auto;
   margin-right:auto;
   width:95%;
-  border-bottom:1px solid lightgrey;
   margin-bottom:10px;
 }
 
@@ -692,6 +692,7 @@ height: 90px;
 
 .matches {
   padding-right: 15px;
+  padding-bottom:10px;
 }
 
 .post-profile-pic {
@@ -806,6 +807,7 @@ height: 90px;
 .push-up-a-bit {
   position: relative;
   bottom:6px;
+  width: 10px;
 }
 
 .no-text-decoration {
@@ -975,4 +977,51 @@ top: 20px;
   width: 190px;
   text-align: left;
   padding: 5px 25px 0px 25px;
+}
+
+.btn-favorite {
+  background: none;
+  border: none;
+  i {
+    color:#DEDEDE;
+    font-size:17px;
+  }
+}
+
+.btn-unfavorite {
+  background: none;
+  border: none;
+  i {
+    color:gold;
+    font-size:17px;
+  }
+}
+
+.follow-form {
+  float:left;
+}
+
+.btn-grey {
+  background:#eee;
+  box-shadow: none;
+  border:1px solid #EDEDED;
+  &:hover {
+    background:#eee;
+  }
+}
+
+.hr-line {
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.save {
+  font-weight: bold;
+color: rgb(0, 156, 0);
+font-size: 15px;
+}
+
+section {
+  padding-top:20px;
 }

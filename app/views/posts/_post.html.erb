@@ -1,16 +1,17 @@
 <section class="newsfeed-item clearfix">
   <div class="clearfix margin-bottom">
-    <div class="pull-left">
-      <%= link_to post.user, class:"post-profile-pic" do %>
-        <%= profile_picture(post.user) %>
-      <% end %>
+    <div class="follow-form">
+      <%= render partial: "users/follow_form", locals: { user: post.user } %>
+    </div>
+    <div class="pull-left post-profile-pic">
+      <%= profile_picture(post.user) %>
     </div>
     <div class="pull-right grey large">
       <%= post.plusminus %>
       <% if user_signed_in? %>
         <% unless current_user == post.user%>
           <%= link_to vote_up_post_path(post), class:"breathing-room fade-in-green" do %>
-            <i class="icon-money <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"></i>
+            <i class="icon-money <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"  rel="tooltip" title="Give <%= post.user.first_name_with_last_initial %> a Buck"></i>
           <% end %>
         <% end %>
       <% end %>
@@ -18,17 +19,23 @@
     <div class="post-content">
       <%= auto_link(post.content, html: { target: '_blank' }) %>
     </div>
-    <div class="text-right muted small">
-      posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.first_name_with_last_initial if post.user %>
+    <div class="text-right">
+      <%= raw post.tags.map(&:name).map { |t| content_tag(:span, t, class:"tag smaller") }.join(' ') %>
     </div>
-    <p class="text-right">
-      <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
+    <p class="text-right muted small">
+      posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.first_name_with_last_initial if post.user %>
     </p>
+    <% if user_signed_in? && (post.user == current_user || current_user.admin?) %>
+      <div class="text-right smaller muted">
+        <%= link_to "Edit Post", edit_post_path(post) %> |
+        <%= link_to 'Delete Post', post, method: :delete, data: { confirm: 'Are you sure you would like to delete this post?' } %>
+      </div>
+    <% end %>
     <p class='text-right'>
-      <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=BankmyBiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
-        <span class="btn btn-mini btn-linkedin push-up-a-bit"><i class="icon-linkedin"></i>
+      <a href="mailto:?subject=Interesting Post&body=Here is a post from BankmyBiz.com I thought you'd like%0D%0A%0D%0A<%= post.content %>%0D%0A%0D%0ABy: <%= post.user.first_name_with_last_initial %>" class="btn btn-mini btn-grey"><i class="icon-envelope"></i></a>
+      <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>" target='_blank'>
+        <span class="btn btn-mini btn-twitter"><i class="icon-twitter"></i>
       </a>
-
       <a href="#" 
         onclick="
           window.open(
@@ -36,18 +43,14 @@
             'facebook-share-dialog', 
             'width=626,height=436'); 
           return false;" class="no-text-decoration">
-        <span class="btn btn-mini btn-facebook push-up-a-bit"><i class="icon-facebook"></i></span>
+        <span class="btn btn-mini btn-facebook"><i class="icon-facebook"></i></span>
       </a>
-      <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>" target='_blank'>
-        <span class="btn btn-mini btn-twitter push-up-a-bit"><i class="icon-twitter"></i>
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=BankmyBiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
+        <span class="btn btn-mini btn-linkedin"><i class="icon-linkedin"></i>
       </a>
     </p>
-<% if user_signed_in? && (post.user == current_user || current_user.admin?) %>
-<div class="text-right">
-<%= link_to "Edit", edit_post_path(post), class:"smaller btn btn-mini" %>
-<%= link_to 'Delete', post, class:"smaller btn btn-mini", method: :delete, data: { confirm: 'Are you sure you would like to delete this post?' } %>
-</div>
-<% end %>
 <%= render partial: 'comments/comment', collection: post.comments.where('content is not null').order('created_at asc'), as: :comment, locals: { post: post } %>
 <%= render partial: 'comments/form', locals: { post: post } %>
+  </div>
 </section>
+<div class="hr-line"></div>

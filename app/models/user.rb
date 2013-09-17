@@ -202,6 +202,10 @@ class User < ActiveRecord::Base
     skip_confirmation_notification!
   end
 
+  def has_active_subscription?
+    return subscriptions.any? && subscriptions.first.expires_on > Date.today
+  end
+
   def todays_matches
     if matched_users.last
       return matched_users.last(1)
@@ -301,7 +305,7 @@ class User < ActiveRecord::Base
   end
 
   def self.clean_up_peers_and_matches
-    User.all.each do |u|
+    User.where(bank: false).each do |u|
       #MATCHES
       u.matches.each do |m|
         if m.created_at < 6.months.ago 
@@ -311,6 +315,20 @@ class User < ActiveRecord::Base
       #PEERS
       u.peers.each do |p|
         if p.created_at < 6.months.ago
+          p.destroy
+        end
+      end
+    end
+    User.where(bank: true).each do |u|
+      #MATCHES
+      u.matches.each do |m|
+        if m.created_at < 1.year.ago 
+          m.destroy
+        end
+      end
+      #PEERS
+      u.peers.each do |p|
+        if p.created_at < 1.year.ago
           p.destroy
         end
       end

@@ -1,17 +1,19 @@
-bugs:  
-  remove startup -> tech/internet
-  "commercial real estate"
-  sole proprietor 
+setup pricing model
+  receipt of matches purchase (once)
+  receipt of BankmyBiz 360 purchase (once)
+  BankmyBiz 360 is going to expire (renew)
+
+bugs:    
   threading messages by subject line
 
-setup email notifications
+accounts recievable: low/medium/high/very high
+B2B? B2C?
 
+repost - with bmb button
+
+setup email notifications
   email upon confirm
   new matches teaser
-  receipt of profile upgrade (once)
-  receipt of payment (monthly!)
-
-setup pricing model
 
 lock down access to profiles of the opposite type
   DONE shortening the number of posts on homepage
@@ -48,9 +50,11 @@ setup subscriptions
 
 ------------------------------
 
+
+public profile / private profile
+
 boostrap mode
   new follower email goes out and tells them who follows them
-
 
 pricing recommendation:
   Business:
@@ -359,3 +363,11 @@ emails
   DONE make reply a button in message send (avoid getting resonponses)
   DONE business receives s/o following you message
   DONE Email after requesting access
+
+DONE impression_count not working
+DONE remove startup -> tech/internet
+DONE "commercial real estate"
+DONE sole proprietor 
+
+DONE follow from post in newsfeed
+DONE email newsfeed post button

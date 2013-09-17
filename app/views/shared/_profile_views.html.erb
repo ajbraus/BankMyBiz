@@ -1,13 +1,89 @@
-<section class="match">
-  <h4><%= pluralize(current_user.karma, "Buck", "Bucks") %> </h4>
-  <div class="muted small up">Added to your Posts & Comments</div>
-  <h4><%= pluralize(current_user.impressions_count, 'User', 'Users') %></h4>
-  <div class="muted small up">Viewed your Profile</div>
-  <h4><%= pluralize(current_user.followers.count, 'Follower', 'Followers') %></h4>
-  <div class="muted small up">Following your Profile</div>
-</section> 
-  <div class="text-center"> 
-    <%= link_to "Upgrade Profile", subscribe_path, class: "btn btn-success" %>
-    <div>To Contact Them</div>
-  </div>
-<hr>
+<% if user_signed_in? %>
+  <% if current_user.has_active_subscription? %>
+    <div class="text-center">
+      <h4>BankmyBiz 360&deg;</h4>
+    </div>
+    <div class="match">
+      <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon-money muted"></i></h5>
+        <%= render partial: "users/user", collection: @buck_users, as: :user %> 
+      <h5><%= pluralize(current_user.impressions_count, 'View', 'Views') %> <i class="icon-eye-open muted"></i></h5>
+        <%= render partial: "users/user", collection: current_user.impressions.map{|i| i.impressionable}.uniq.first(3), as: :user %>
+      <h5><%= current_user.followers.count %> Favorited <i class="icon-group muted"></i></h5>
+        <%= render partial: "users/user", collection: current_user.followers.first(3), as: :user %>
+    </div>
+  <% else %>
+    <div class="text-center">
+      <h4>BankmyBiz 360&deg;</h4>
+    </div>
+    <div class="match">
+      <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon-money muted"></i></h5>
+      <div class="muted small up">Added to your Posts & Comments</div>
+      <h5><%= pluralize(current_user.impressions_count, 'View', 'Views') %> <i class="icon-eye-open muted"></i></h5>
+      <div class="muted small up">Viewed your Profile</div>
+      <h5><%= current_user.followers.count %> Favorited <i class="icon-group muted"></i></h5>
+      <div class="muted small up">Favorited your Profile</div>
+    </div>
+    <hr>
+    <div class="muted text-center">
+      Subscribe To Connect
+    </div>
+    <ul>
+      <% if current_user.bank? %>
+        <li> 
+          <div class="small muted">3 month package</div>
+          <div class="price"><strong>$149.99</strong> / month</div>
+          <div class="save"></div>
+          <%= link_to new_subscription_path(plan_id: 4), class:"btn btn-success btn-small" do %>
+            Subscribe <i class="icon-white"></i>
+          <% end %>
+        </li>
+        <div class="hr-line"></div>
+        <li> 
+          <div class="small muted">6 month package</div>
+          <div class="price"><strong>$112.99</strong> / month</div>
+          <div class="save"></div>
+          <%= link_to new_subscription_path(plan_id: 5), class:"btn btn-success btn-small" do %>
+            Subscribe <i class="icon-white"></i>
+          <% end %>
+        </li>
+        <div class="hr-line"></div>
+        <li> 
+          <div class="small muted">1 year package</div>
+          <div class="price"><strong>$74.99</strong> / month</div>
+          <div class="save"></div>
+          <%= link_to new_subscription_path(plan_id: 6), class:"btn btn-success btn-small" do %>
+            Subscribe <i class="icon-white"></i>
+          <% end %>
+        </li>
+      <% else %>
+        <li>
+          <div class="small muted">1 month package</div>
+          <div class="price"><strong>$49.99</strong> / month</div>
+          <div class="save"></div>
+          <%= link_to new_subscription_path(plan_id: 1), class:"btn btn-success btn-small btn-small" do %>
+            Subscribe <i class="icon-white"></i>
+          <% end %>
+        </li>
+        <div class="hr-line"></div>
+        <li> 
+          <div class="small muted">3 month package</div>
+          <div class="price"><strong>$37.99</strong> / month</div>
+          <div class="save">Save 25%</div>
+          <%= link_to new_subscription_path(plan_id: 2), class:"btn btn-success btn-small" do %>
+            Subscribe <i class="icon-white"></i>
+          <% end %>
+        </li>
+        <div class="hr-line"></div>
+        <li> 
+          <div class="small muted">6 month package</div>
+          <div class="price"><strong>$24.99</strong> / month</div>
+          <div class="save">Save 50%</div>
+          <%= link_to new_subscription_path(plan_id: 3), class:"btn btn-success btn-small" do %>
+            Subscribe <i class="icon-white"></i>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+    <hr>
+  <% end %>
+<% end %>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  impressionist :actions=>[:show]
+  impressionist :actions=>[:show], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 
   def show
     @user = User.find(params[:id])

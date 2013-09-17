@@ -40,6 +40,11 @@ class PostsController < ApplicationController
     @new_post = Post.new
     @recent_messages = current_user.messages.first(3)
     @following_users = current_user.followed_users
+    @buck_users = []
+    current_user.posts.each do |p| 
+      @buck_users << p.voters_who_voted_for
+    end
+    @buck_users.flatten!
 
     respond_to do |format|
       format.html # new.html.erb

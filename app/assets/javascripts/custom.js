@@ -17,6 +17,9 @@ $(document).ready(function() {
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link")
   })
+
+  $("[rel=tooltip]").tooltip({ placement: 'right'});
+
   // var a = [$('#trendingTags').data("tags")];
   // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
   // a.forEach(function(entry) {

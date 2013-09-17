@@ -1,4 +1,4 @@
-<div class="text-center">
+<section class="text-center">
 <% if current_user.bank == nil %>
     <p>Which one best describes you?</p>
     <%= link_to "Bank", set_bank_path(current_user), class:"btn btn-warning btn-large" %>
@@ -12,14 +12,14 @@
     </div>
   <% else %>
     <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
-    <%= render partial: "users/match", collection: current_user.todays_matches, as: :user %>
+    <%= render partial: "users/user", collection: current_user.todays_matches, as: :user %>
     <% unless current_user.finished_profile? %>
       <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
       <div class=''>For Better Matches</div>
     <% end %>
-    <hr>
+    <div class="hr-line"></div>
     <p class="muted">Today's Peers</p>
-    <%= render partial: "users/peer", collection: current_user.todays_peers, as: :user %>
+    <%= render partial: "users/user", collection: current_user.todays_peers, as: :user %>
   <% end %>
 <% end %>
-</div>
+</section>

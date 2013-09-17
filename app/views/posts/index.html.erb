@@ -1,9 +1,9 @@
 <div class="span3">       
   <div class="border-right">
     <%= render 'shared/trending_tags' %>
-    <hr>
+    <div class="hr-line"></div>
     <%= render 'shared/messages' %>
-    <hr>
+    <div class="hr-line"></div>
     <%= render 'shared/following' %>
   </div>
 </div>
@@ -29,6 +29,7 @@
           </ul>
       </div>
     <% end %>
+    <div class="hr-line"></div>
     <%= render partial: "posts/post", collection: @posts, as: :post %>
   </div>
 </div>
@@ -36,7 +37,7 @@
 <div class="span3">  
   <div class="border-left">
     <%= render 'shared/improve_profile' %>
-    <hr>
+    <div class="hr-line"></div>
     <%= render 'shared/profile_views' %>
   </div>
 </div>

@@ -4,6 +4,11 @@
       <h4>BankmyBiz 360&deg;</h4>
     </div>
     <div class="match">
+      <% @buck_users = [] %>
+      <% current_user.posts.each do |p|  %>
+      <%   @buck_users << p.voters_who_voted_for %>
+      <% end %>
+      <% @buck_users.flatten! %>
       <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon-money muted"></i></h5>
         <%= render partial: "users/user", collection: @buck_users, as: :user %> 
       <h5><%= pluralize(current_user.impressions_count, 'View', 'Views') %> <i class="icon-eye-open muted"></i></h5>

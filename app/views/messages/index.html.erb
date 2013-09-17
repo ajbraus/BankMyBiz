@@ -1,8 +1,8 @@
 <div class="span9">
   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#tab1" data-toggle="tab">Inbox(<%= current_user.unread_messages.count %>)</a></li>
-      <li><a href="#tab2" data-toggle="tab">Sent</a></li>
+      <li class="active"><a href="#tab1" data-toggle="tab">Inbox (<%= current_user.unread_messages.count %>)</a></li>
+      <li><a href="#tab2" data-toggle="tab">Sent (<%= current_user.sent_messages.count %>)</a></li>
     </ul>
     <div class="tab-content">
       <div class="tab-pane active" id="tab1">

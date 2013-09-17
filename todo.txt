@@ -1,4 +1,5 @@
 setup pricing model
+  load BMB360 with ajax after page loads
   receipt of matches purchase (once)
   receipt of BankmyBiz 360 purchase (once)
   BankmyBiz 360 is going to expire (renew)

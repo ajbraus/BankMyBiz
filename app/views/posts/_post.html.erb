@@ -19,7 +19,7 @@
     <div class="post-content">
       <%= auto_link(post.content, html: { target: '_blank' }) %>
     </div>
-    <div class="text-right">
+    <div class="text-left">
       <%= raw post.tags.map(&:name).map { |t| content_tag(:span, t, class:"tag smaller") }.join(' ') %>
     </div>
     <p class="text-right muted small">

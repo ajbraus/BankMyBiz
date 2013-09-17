@@ -9,18 +9,18 @@
       <%   @buck_users << p.voters_who_voted_for %>
       <% end %>
       <% @buck_users.flatten! %>
-      <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon-money muted"></i></h5>
+      <h5>Gave you <%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon-money muted"></i></h5>
         <%= render partial: "users/user", collection: @buck_users, as: :user %> 
-      <h5><%= pluralize(current_user.impressions_count, 'View', 'Views') %> <i class="icon-eye-open muted"></i></h5>
+      <h5><%= current_user.impressions_count %> Viewed Your Profile <i class="icon-eye-open muted"></i></h5>
         <%= render partial: "users/user", collection: current_user.impressions.map{|i| i.impressionable}.uniq.first(3), as: :user %>
-      <h5><%= current_user.followers.count %> Favorited <i class="icon-group muted"></i></h5>
+      <h5><%= current_user.followers.count %> Favorited You <i class="icon-star muted"></i></h5>
         <%= render partial: "users/user", collection: current_user.followers.first(3), as: :user %>
     </div>
   <% else %>
     <div class="text-center">
       <h4>BankmyBiz 360&deg;</h4>
     </div>
-    <div class="match">
+    <div class="">
       <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon-money muted"></i></h5>
       <div class="muted small up">Added to your Posts & Comments</div>
       <h5><%= pluralize(current_user.impressions_count, 'View', 'Views') %> <i class="icon-eye-open muted"></i></h5>
@@ -28,9 +28,9 @@
       <h5><%= current_user.followers.count %> Favorited <i class="icon-group muted"></i></h5>
       <div class="muted small up">Favorited your Profile</div>
     </div>
-    <hr>
+
     <div class="muted text-center">
-      Subscribe To Connect
+      Subscribe To Know Who
     </div>
     <ul>
       <% if current_user.bank? %>

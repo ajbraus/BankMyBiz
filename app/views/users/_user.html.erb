@@ -1,6 +1,5 @@
 <div class="match">
 <%= link_to user_path(user), class:"no-hover" do %>
-  <div><%= profile_picture(user) %> <strong><%= user.first_name_with_last_initial %></strong></div>
+  <%= profile_picture(user) %> <strong><%= user.first_name_with_last_initial %></strong> <span class="muted"><%= user.position %></span>
 <% end %>
-<span class="muted"><%= user.position %></span>
 </div>

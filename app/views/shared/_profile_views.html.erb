@@ -20,7 +20,7 @@
     <div class="text-center">
       <h4>BankmyBiz 360&deg;</h4>
     </div>
-    <div class="">
+    <div class="match">
       <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon-money muted"></i></h5>
       <div class="muted small up">Added to your Posts & Comments</div>
       <h5><%= pluralize(current_user.impressions_count, 'View', 'Views') %> <i class="icon-eye-open muted"></i></h5>
@@ -29,9 +29,9 @@
       <div class="muted small up">Favorited your Profile</div>
     </div>
 
-    <div class="muted text-center">
+    <h5 class="text-center">
       Subscribe To Know Who
-    </div>
+    </h5>
     <ul>
       <% if current_user.bank? %>
         <li> 

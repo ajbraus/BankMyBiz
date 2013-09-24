@@ -29,9 +29,9 @@ class Notifier < ActionMailer::Base
   def new_comment(user, comment)
     @comment = comment
     @commenter = @comment.user
-    @post = @comment.post
+    @post = @comment.commentable
     @user = user
-    mail to: @user.email, subject: "New Comment on #{@post.title}"
+    mail to: @user.email, subject: "New Comment on #{@post.content}"
   end
 
   def new_follower(user, follower)

@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
                   :password_confirmation, 
                   :remember_me, 
                   :name, 
+                  :username,
                   :bank, 
                   :employee_size_ids,
                   :revenue_size_ids,
@@ -94,11 +95,20 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   before_create :skip_confirmation_notification
+  before_create :set_username
   after_create :request_confirmation
+
+  def to_param
+    "#{id} #{username}".parameterize
+  end
 
   # def send_welcome
   #   Notifier.delay.welcome(self)
   # end
+
+  def set_username
+    self.username = self.first_name_with_last_initial.split.join('-')[0..-2]
+  end
 
   def request_confirmation
     Notifier.delay.internal_new_user(self)

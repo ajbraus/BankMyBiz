@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130917211926) do
+ActiveRecord::Schema.define(:version => 20130924173334) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -302,6 +302,7 @@ ActiveRecord::Schema.define(:version => 20130917211926) do
     t.string   "position"
     t.text     "goals"
     t.boolean  "newsletter",             :default => true
+    t.string   "username"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

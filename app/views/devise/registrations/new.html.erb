@@ -12,6 +12,9 @@
       <div><%= f.label :password, "Password (min 6 characters)" %>
       <%= f.password_field :password %></div>
 
+      <div><%= f.label :password_confirmation, "Confirm Password" %>
+      <%= f.password_field :password_confirmation %></div>
+
       <div><%= f.submit "Request Access", class:"btn btn-success btn-large" %></div>
 <% end %>
 

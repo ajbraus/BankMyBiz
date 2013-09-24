@@ -1,8 +1,16 @@
+friendly_id for users
+
 setup pricing model
+  buy matches
   load BMB360 with ajax after page loads
   receipt of matches purchase (once)
   receipt of BankmyBiz 360 purchase (once)
   BankmyBiz 360 is going to expire (renew)
+  limit messages, BankmyBiz 360 gives you unlimited
+
+invite linkedin connections
+email invitation
+reward with free matches
 
 bugs:    
   threading messages by subject line
@@ -19,9 +27,9 @@ setup email notifications
 lock down access to profiles of the opposite type
   DONE shortening the number of posts on homepage
   DONE remove link in newsfeed & comment
-  activity view don't show
-  search posts returns only the opposite type posts
-  comments
+  DONE activity view don't show
+  DONE search posts returns only the opposite type posts
+  DONE comments
   block url surfing
     add friendly_id for user profiles
     if user not in matches then fuzzy the page and offer them to buy the match for $49.99
@@ -29,20 +37,14 @@ lock down access to profiles of the opposite type
 
 banker vs. biz pie chart in admin dashboard
 
+click our seo trending words
+
 setup users
   add user tags to users#show
   setup tracking impressions on users
   track who you viewed/messaged
   don't track if you go to the same user/post twice in the same three days
-
-see who who voted for you, who viewd you, your followers
-  voters_who_voted
-
-setup upgrades
-  Super user
-  Power User
-  Professional
-
+  
 setup subscriptions
   don't bill customers who are gone
   create "downgrade subscription" workflow
@@ -372,3 +374,8 @@ DONE sole proprietor
 
 DONE follow from post in newsfeed
 DONE email newsfeed post button
+
+DONE see who who voted for you, who viewd you, your followers
+  DONE voters_who_voted
+
+DONE years you filed tax returns for businesses

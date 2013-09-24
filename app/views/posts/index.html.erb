@@ -31,6 +31,7 @@
     <% end %>
     <div class="hr-line"></div>
     <%= render partial: "posts/post", collection: @posts, as: :post %>
+    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
   </div>
 </div>
 

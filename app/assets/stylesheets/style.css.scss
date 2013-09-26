@@ -2,6 +2,10 @@
   color:#009E3B;
 }
 
+.error {
+  border:red;
+}
+
 hr {
 	clear:both;
 }
@@ -1032,3 +1036,21 @@ section {
   padding-top:20px;
 }
 
+.tag-list {
+  margin-left: 53px;
+  margin-right:5px;
+}
+
+.post-btn {
+  margin-right:8px;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.post_char_count {
+  position: absolute;
+  top: -18px;
+  right: 10px;
+}

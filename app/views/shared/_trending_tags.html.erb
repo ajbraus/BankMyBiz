@@ -8,7 +8,7 @@
   <p class="muted">Trending Tags</p>
   <% Post.last(4).each do |p| %>
     <% p.tags.each do |t| %>
-      <%= link_to "#{t.posts.count} x #{t.name}", post_path(p), class:"tag" %>
+      <%= link_to "#{t.name}", post_path(p), class:"tag clickable-tag" %>
     <% end %>
   <% end %>
 </div>

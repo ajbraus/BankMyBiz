@@ -6,7 +6,7 @@
     <p class="muted">Answer to unlock matches,<br> and be matched</p>
 <% else %>
   <% if !current_user.started_profile? %>
-    <%= link_to "Start Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>
+    <%= link_to "Complete Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>
     <div class="">
       to unlock <%= current_user.bank? ? "owners" : "lenders" %>
     </div>

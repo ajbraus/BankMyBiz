@@ -82,11 +82,14 @@ border-radius: 0px;
   background:#009E3B;
   padding:3px 7px;
   color:white;
-/*  &:hover {
+}
+
+.clickable-tag {
+  &:hover {
     text-decoration:none;
     color:white;
     opacity:.8;
-  }*/
+  }
 }
 
 .tag-cloud {

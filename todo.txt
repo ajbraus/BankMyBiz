@@ -1,5 +1,3 @@
-friendly_id for users
-
 setup pricing model
   buy matches
   load BMB360 with ajax after page loads
@@ -8,6 +6,7 @@ setup pricing model
   BankmyBiz 360 is going to expire (renew)
   limit messages, BankmyBiz 360 gives you unlimited
 
+create 'hot url'
 invite linkedin connections
 email invitation
 reward with free matches
@@ -379,3 +378,4 @@ DONE see who who voted for you, who viewd you, your followers
   DONE voters_who_voted
 
 DONE years you filed tax returns for businesses
+DONE friendly_id for users

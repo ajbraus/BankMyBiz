@@ -29,7 +29,8 @@ class User < ActiveRecord::Base
                   :confirmed_at,
                   :location_ids,
                   :org_name,
-                  :position
+                  :position,
+                  :goals
                   
   is_impressionable
 
@@ -234,7 +235,7 @@ class User < ActiveRecord::Base
 
   def set_peers_and_matches
     #MATCHES
-    if matches.none? || matches.last.created_at < Date.yesterday
+    if matches.none? || matches.last.created_at < 1.week.ago
       @available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users) }
       @matches = @available_users.select do |s| 
         if s.ages.any? && ages.any?
@@ -265,7 +266,9 @@ class User < ActiveRecord::Base
       end
     end
   
-    self.matched_users << @matches.first if @matches.present?
+    matched_users << @matches.first if @matches.present?
+
+    Notifier.delay.new_match(self)
 
     #PEERS
     if peers.none? ||peers.last.created_at < Date.yesterday

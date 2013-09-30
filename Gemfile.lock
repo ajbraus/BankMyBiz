@@ -218,6 +218,8 @@ GEM
     pusher-client (0.3.1)
       ruby-hmac (~> 0.4.0)
       websocket (~> 1.0.0)
+    rabl (0.8.6)
+      activesupport (>= 2.3.14)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -371,6 +373,7 @@ DEPENDENCIES
   pry
   pry-debugger
   public_activity
+  rabl
   rails (= 3.2.6)
   rails_12factor
   rails_autolink (~> 1.0.9)

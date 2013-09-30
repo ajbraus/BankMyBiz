@@ -1,7 +1,9 @@
 <section class="newsfeed-item clearfix">
   <div class="clearfix margin-bottom">
     <div class="follow-form">
-      <%= render partial: "users/follow_form", locals: { user: post.user } %>
+      <% if user_signed_in? %>
+        <%= render partial: "users/follow_form", locals: { user: post.user } %>
+      <% end %>
     </div>
     <div class="pull-left post-profile-pic">
       <%= profile_picture(post.user) %>

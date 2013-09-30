@@ -1,3 +1,5 @@
+
+
 setup pricing model
   buy matches
   load BMB360 with ajax after page loads
@@ -13,9 +15,13 @@ reward with free matches
 
 bugs:
   threading messages by subject line
+  ajaxify comments
+  allow delete comments to creator
 
 accounts recievable: low/medium/high/very high
 B2B? B2C?
+
+add devise authentication http://stackoverflow.com/questions/7614798/devise-api-authentication
 
 repost - with bmb button
 

@@ -118,4 +118,13 @@ BankMyBiz::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+  namespace :api, defaults: {format: 'json'} do 
+    namespace :v1 do 
+      resources :posts
+      devise_for :users, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registrations" }
+      resources :tokens, :only => [:create, :destroy]
+      resources :users, only: [:show, :edit, :update, :index]
+    end
+  end
 end

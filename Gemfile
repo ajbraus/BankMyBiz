@@ -43,6 +43,8 @@ gem 'twitter-bootstrap-rails'
 gem 'coffee-rails', '~> 3.2.1'
 gem 'jquery-ui-rails'
 
+gem 'rabl'
+
 # group :development, :test do
 # 	gem 'rspec-rails'
 # 	gem 'turnip'

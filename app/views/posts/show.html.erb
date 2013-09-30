@@ -1,10 +1,12 @@
 <div class="span3">       
   <div class="border-right">
-    <%= render 'shared/trending_tags' %>
-    <hr>
-    <%= render 'shared/messages' %>
-    <hr>
-    <%= render 'shared/following' %>
+    <% if user_signed_in? %>
+      <%= render 'shared/trending_tags' %>
+      <hr>
+      <%= render 'shared/messages' %>
+      <hr>
+      <%= render 'shared/following' %>
+    <% end %>
   </div>
 </div>
 <div class="span6">

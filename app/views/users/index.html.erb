@@ -1,3 +1,27 @@
+<div class="span4 text-center">
+  <h4>User Stats</h4>
+    <!-- Table -->
+    <table class="table table-bordered user-stats">
+      <thead>
+        <tr>
+          <th>Bankers</th>
+          <th>Businesses</th>
+          <th>Undecided</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= User.where(bank: true).count %></td>
+          <td><%= User.where(bank: false).count %></td>
+          <td><%= User.where(bank: nil).count %></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="span4">
+</div>
+<div class="span4">
+</div>
 <div class="span12">
   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">

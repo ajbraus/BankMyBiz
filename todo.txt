@@ -2,6 +2,10 @@ invite mo' people
 invite linkedin connections
 reward with free matches
 
+user.html 
+  picture | Name, State
+            Position
+
 press section
 
 gibbon lists

@@ -267,7 +267,7 @@ class User < ActiveRecord::Base
         with_business_type == true
       end
       matched_users << @matches.first if @matches.present?
-      if user.receive_match_messages?
+      if self.receive_match_messages?
         Notifier.delay.new_match(self, matched_users.first)
       end
     end

@@ -8,6 +8,7 @@ gem 'thin'
 gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'devise', '2.2.4'
+gem 'devise_invitable', '~> 1.1.0'
 gem 'gibbon'
 gem 'omniauth-linkedin'
 gem 'will_paginate'

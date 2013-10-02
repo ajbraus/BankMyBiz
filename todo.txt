@@ -1,4 +1,11 @@
+bugs:
+  fix lender matches
 
+press section
+
+invite mo' people
+
+mailchimp lists
 
 setup pricing model
   buy matches

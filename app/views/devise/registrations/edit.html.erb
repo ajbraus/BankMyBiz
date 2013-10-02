@@ -17,6 +17,10 @@
     <label><%= f.check_box :newsletter %>
       Recieve BankmyBiz.com News?</label>
   </p>
+  <p>
+    <label><%= f.check_box :receive_match_messages %>
+      New Matches Notifications?</label>
+  </p>
   
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>

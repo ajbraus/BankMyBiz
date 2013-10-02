@@ -2,8 +2,9 @@ class User < ActiveRecord::Base
   include PublicActivity::Common
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :token_authenticatable
+  devise :invitable, :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, 
+         :token_authenticatable, :invitable
 
   before_save :ensure_authentication_token
   
@@ -265,11 +266,11 @@ class User < ActiveRecord::Base
         with_revenue_size == true ||
         with_business_type == true
       end
+      matched_users << @matches.first if @matches.present?
+      if user.receive_match_messages?
+        Notifier.delay.new_match(self, matched_users.first)
+      end
     end
-  
-    matched_users << @matches.first if @matches.present?
-
-    Notifier.delay.new_match(self)
 
     #PEERS
     if peers.none? ||peers.last.created_at < Date.yesterday

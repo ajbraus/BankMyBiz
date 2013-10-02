@@ -40,8 +40,9 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "You have a new Follower on BankmyBiz.com"
   end
 
-  def new_match(user)
+  def new_match(user, match)
     @user = user
-    mail to: @user.email, subject: "New #{@user.bank? ? "Owner" : "Lender"} Matches on BankmyBiz.com"
+    @match = match
+    mail to: @user.email, subject: "New #{@user.bank? ? "Owner" : "Lender"} Match on BankmyBiz.com"
   end
 end

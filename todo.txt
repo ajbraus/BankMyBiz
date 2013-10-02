@@ -1,10 +1,10 @@
 invite mo' people
-
-
+invite linkedin connections
+reward with free matches
 
 press section
 
-mailchimp lists
+gibbon lists
 
 setup pricing model
   buy matches
@@ -14,11 +14,12 @@ setup pricing model
   BankmyBiz 360 is going to expire (renew)
   limit messages, BankmyBiz 360 gives you unlimited
 
-create 'hot url'
-invite linkedin connections
-email invitation
-reward with free matches
-
+setup users
+  add user tags to users#show
+  setup tracking impressions on users
+  track who you viewed/messaged
+  don't track if you go to the same user/post twice in the same three days
+  
 bugs:
   threading messages by subject line
   ajaxify comments
@@ -27,8 +28,6 @@ bugs:
 accounts recievable: low/medium/high/very high
 B2B? B2C?
 
-add devise authentication http://stackoverflow.com/questions/7614798/devise-api-authentication
-
 repost - with bmb button
 
 setup email notifications
@@ -36,26 +35,11 @@ setup email notifications
   new matches teaser
 
 lock down access to profiles of the opposite type
-  DONE shortening the number of posts on homepage
-  DONE remove link in newsfeed & comment
-  DONE activity view don't show
-  DONE search posts returns only the opposite type posts
-  DONE comments
-  block url surfing
-    add friendly_id for user profiles
-    if user not in matches then fuzzy the page and offer them to buy the match for $49.99
   remove people who haven't started a profile from recommended users
-
-banker vs. biz pie chart in admin dashboard
+  remove link in new follower to the new follower's profile
 
 click our seo trending words
 
-setup users
-  add user tags to users#show
-  setup tracking impressions on users
-  track who you viewed/messaged
-  don't track if you go to the same user/post twice in the same three days
-  
 setup subscriptions
   don't bill customers who are gone
   create "downgrade subscription" workflow
@@ -391,3 +375,12 @@ DONE see who who voted for you, who viewd you, your followers
 
 DONE years you filed tax returns for businesses
 DONE friendly_id for users
+
+DONE shortening the number of posts on homepage
+DONE remove link in newsfeed & comment
+DONE activity view don't show
+DONE search posts returns only the opposite type posts
+DONE comments
+block url surfing
+  DONE add friendly_id for user profiles
+  DONE banker vs. biz pie chart in admin dashboard

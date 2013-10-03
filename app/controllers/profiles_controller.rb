@@ -6,6 +6,7 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     @user.set_peers_and_matches
+    @user.delay.add_to_mc_lists
 
     respond_to do |format|
       if @user.update_attributes(params[:user])

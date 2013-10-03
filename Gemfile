@@ -48,11 +48,13 @@ gem 'jquery-ui-rails'
 
 gem 'rabl'
 
-# group :development, :test do
-# 	gem 'rspec-rails'
-# 	gem 'turnip'
-# 	gem 'capyabara'
-# end
+group :development, :test do 
+  gem 'rspec-rails'
+
+  gem 'faker', '1.0.1'
+  gem 'awesome_print'
+  #   gem 'turnip' 
+end
 
 group :development do
 	gem 'pry'
@@ -61,18 +63,13 @@ group :development do
 end
 
 group :test do
+  gem 'factory_girl_rails'
   gem 'capybara', '1.1.2'
-	gem 'factory_girl_rails', '1.4.0'
 	gem 'email_spec', '1.2.1'
-	gem 'guard-rspec', '1.1.0'
-	gem "spork", '0.9.2'
-	gem 'guard-spork', '1.1.0'
-end
-
-group :development, :test do 
-	gem 'faker', '1.0.1'
-  gem 'rspec-rails'
-  gem 'awesome_print'
+	gem "spork-rails"
+  gem 'database_cleaner'
+  #gem 'guard-rspec', '1.1.0'
+	#gem 'guard-spork', '1.1.0'
 end
 
 # Gems used only for assets and not required

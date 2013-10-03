@@ -100,6 +100,7 @@ class User < ActiveRecord::Base
   before_create :skip_confirmation_notification
   before_create :set_username
   after_create :request_confirmation
+  after_create :add_user_to_user_mailing_list
 
   def to_param
     "#{id} #{username}".parameterize
@@ -219,11 +220,32 @@ class User < ActiveRecord::Base
     return subscriptions.any? && subscriptions.first.expires_on > Date.today
   end
 
+  def add_to_mc_lists
+    gb = Gibbon::API.new
+    if bank?
+      list_id = gb.lists.list({:filters => {:list_name => "Bankers"}}).id
+    else
+      list_id = gb.lists.list({:filters => {:list_name => "Businesses"}}).id
+    end
+    gb.lists.subscribe({ :id => list_id, 
+                         :email => {:email => email}, 
+                         :merge_vars => {:FNAME => first_name, :LNAME => last_name}, 
+                         :double_optin => false }) 
+  end
+
+  def add_user_to_user_mailing_list
+    user_list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
+    gb.lists.subscribe({ :id => user_list_id, 
+                         :email => {:email => email}, 
+                         :merge_vars => {:FNAME => first_name, :LNAME => last_name}, 
+                         :double_optin => false })
+  end
+
   def todays_matches
     if matched_users.last
       return matched_users.last(1)
     else
-      return User.find_by_email("michael@bankmybiz.com")
+      return User.find_by_email("team@bankmybiz.com")
     end 
   end
 
@@ -231,7 +253,7 @@ class User < ActiveRecord::Base
     if peered_users.last
       return peered_users.last(3)
     else
-      return User.find_by_email("michael@bankmybiz.com")
+      return User.find_by_email("team@bankmybiz.com")
     end 
   end
 
@@ -268,7 +290,7 @@ class User < ActiveRecord::Base
       end
       matched_users << @matches.first if @matches.present?
       if self.receive_match_messages?
-        Notifier.delay.new_match(self, matched_users.first)
+        Notifier.delay.new_match(self, matched_users.last)
       end
     end
 

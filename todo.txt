@@ -1,3 +1,5 @@
+add folks to Mailchimp lists
+
 invite mo' people
 invite linkedin connections
 reward with free matches
@@ -7,8 +9,6 @@ user.html
             Position
 
 press section
-
-gibbon lists
 
 setup pricing model
   buy matches
@@ -41,6 +41,7 @@ setup email notifications
 lock down access to profiles of the opposite type
   remove people who haven't started a profile from recommended users
   remove link in new follower to the new follower's profile
+  remove link to user's profiles in activity feed
 
 click our seo trending words
 

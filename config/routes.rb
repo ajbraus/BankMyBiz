@@ -121,9 +121,10 @@ BankMyBiz::Application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do 
     namespace :v1 do 
-      resources :posts
       devise_for :users, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registrations" }
       resources :tokens, :only => [:create, :destroy]
+      resources :posts
+      resources :activities, only: [:index]
       resources :users, only: [:show, :edit, :update, :index]
     end
   end

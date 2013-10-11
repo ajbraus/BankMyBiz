@@ -285,7 +285,7 @@ class User < ActiveRecord::Base
 
   def set_peers_and_matches
     #MATCHES
-    if u.matches.none? || u.matches.last.created_at < 1.week.ago
+    if self.matches.none? || self.matches.last.created_at < 1.week.ago
       @available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users) }
       @matches = @available_users.select do |s| 
         if s.ages.any? && ages.any?

@@ -9,8 +9,8 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
       render :status => 200,
            :json => { :success => true,
                       :info => "Registered",
-                      :data => { :user => resource,
-                                 :auth_token => current_user.authentication_token } }
+                      :id => current_user.id,
+                      :authentication_token => current_user.authentication_token }
     else
       render :status => :unprocessable_entity,
              :json => { :success => false,

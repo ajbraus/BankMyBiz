@@ -1,3 +1,7 @@
+fix paperclip
+
+set password after authenticate through linkedin
+
 add folks to Mailchimp lists
 
 invite mo' people

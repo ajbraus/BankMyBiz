@@ -18,7 +18,7 @@ class UsersController < ApplicationController
 
   def index
     if current_user.admin?
-      @unconfirmed_users = User.where("confirmed_at IS NULL").paginate(:page => params[:page], :per_page => 20)
+      @unconfirmed_users = User.where("confirmed_at IS NULL and rejected_at IS Null").paginate(:page => params[:page], :per_page => 20)
       @confirmed_users = User.where("confirmed_at IS NOT NULL").paginate(:page => params[:page], :per_page => 20)
       @rejected_users = User.where("rejected_at IS NOT NULL").paginate(:page => params[:page], :per_page => 20)
     else 

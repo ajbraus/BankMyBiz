@@ -32,7 +32,9 @@ class User < ActiveRecord::Base
                   :location_ids,
                   :org_name,
                   :position,
-                  :goals
+                  :goals,
+                  :newsletter,
+                  :receive_match_messages
                   
   is_impressionable
 
@@ -212,6 +214,14 @@ class User < ActiveRecord::Base
     return false
   end
 
+  def profile_picture_url 
+    if avatar.present?
+      return avatar.url
+    elsif pic_url.present?
+      return pic_url
+    end
+  end
+
   def skip_confirmation_notification
     skip_confirmation_notification!
   end
@@ -223,9 +233,9 @@ class User < ActiveRecord::Base
   def add_to_mc_lists
     gb = Gibbon::API.new
     if bank?
-      list_id = gb.lists.list({:filters => {:list_name => "Bankers"}}).id
+      list_id = gb.lists.list({:filters => {:list_name => "Bankers"}})["data"][0]["id"]
     else
-      list_id = gb.lists.list({:filters => {:list_name => "Businesses"}}).id
+      list_id = gb.lists.list({:filters => {:list_name => "Businesses"}})["data"][0]["id"]
     end
     gb.lists.subscribe({ :id => list_id, 
                          :email => {:email => email}, 
@@ -233,12 +243,28 @@ class User < ActiveRecord::Base
                          :double_optin => false }) 
   end
 
+  def add_all_users_to_mc
+    if Rails.env.production?
+      gb = Gibbon::API.new
+      list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
+      User.all.each do |u|
+        gb.lists.subscribe({ :id => list_id, 
+                             :email => {:email => u.email}, 
+                             :merge_vars => {:FNAME => u.first_name, :LNAME => u.last_name}, 
+                             :double_optin => false }) 
+      end
+    end
+  end
+
   def add_user_to_user_mailing_list
-    user_list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
-    gb.lists.subscribe({ :id => user_list_id, 
-                         :email => {:email => email}, 
-                         :merge_vars => {:FNAME => first_name, :LNAME => last_name}, 
-                         :double_optin => false })
+    if Rails.env.production?
+      gb = Gibbon::API.new
+      user_list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
+      gb.lists.subscribe({ :id => user_list_id, 
+                           :email => {:email => email}, 
+                           :merge_vars => {:FNAME => first_name, :LNAME => last_name}, 
+                           :double_optin => false })
+    end
   end
 
   def todays_matches
@@ -259,7 +285,7 @@ class User < ActiveRecord::Base
 
   def set_peers_and_matches
     #MATCHES
-    if matches.none? || matches.last.created_at < 1.week.ago
+    if u.matches.none? || u.matches.last.created_at < 1.week.ago
       @available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users) }
       @matches = @available_users.select do |s| 
         if s.ages.any? && ages.any?

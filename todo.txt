@@ -8,11 +8,29 @@ invite mo' people
 invite linkedin connections
 reward with free matches
 
+add photo to email
+only email on weekdays during the day
+
 user.html 
   picture | Name, State
             Position
 
 press section
+
+Add custom photo to profile
+Add "use a match to access to his/her profile"
+# of matches stored in user
+"Spend a match"
+"Buy more matches"
+Start w 10 matches 
+
+Emphasize goal - add edit button
+
+Add "looking", "interested", "learning", "not looking"
+
+Where your head quartered
+
+We should add in the drop down, are you, for profit, non profit, and who do you lend to, for profit, non profit. 
 
 setup pricing model
   buy matches

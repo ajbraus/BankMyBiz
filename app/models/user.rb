@@ -102,7 +102,6 @@ class User < ActiveRecord::Base
   before_create :skip_confirmation_notification
   before_create :set_username
   after_create :request_confirmation
-  after_create :add_user_to_user_mailing_list
 
   def to_param
     "#{id} #{username}".parameterize
@@ -231,39 +230,113 @@ class User < ActiveRecord::Base
   end
 
   def add_to_mc_lists
-    gb = Gibbon::API.new
-    if bank?
-      list_id = gb.lists.list({:filters => {:list_name => "Bankers"}})["data"][0]["id"]
-    else
-      list_id = gb.lists.list({:filters => {:list_name => "Businesses"}})["data"][0]["id"]
+    if Rails.env.production?
+      gb = Gibbon::API.new
+      list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
+      groupings_id = gb.lists.interest_groupings(id: list_id)[0]["id"]
+      if bank?
+        gb.lists.subscribe({:id => list_id,
+                             :email => {:email => self.email},
+                             :merge_vars => {:FNAME => self.first_name,
+                                             :LNAME => self.last_name,
+                                             :groupings => [{:id => "#{groupings_id}",
+                                                             :groups => ["Bankers"]
+                                                           }]
+                                            },
+                             :double_optin => false,
+                             :send_welcome => false,
+                             :update_existing => true})
+      else
+        gb.lists.subscribe({:id => list_id,
+                             :email => {:email => self.email},
+                             :merge_vars => {:FNAME => self.first_name,
+                                             :LNAME => uselflast_name,
+                                             :groupings => [{:id => "#{groupings_id}",
+                                                             :groups => ["Businesses"]
+                                                           }]
+                                            },
+                             :double_optin => false,
+                             :send_welcome => false,
+                             :update_existing => true})
+      end
     end
-    gb.lists.subscribe({ :id => list_id, 
-                         :email => {:email => email}, 
-                         :merge_vars => {:FNAME => first_name, :LNAME => last_name}, 
-                         :double_optin => false }) 
   end
 
   def add_all_users_to_mc
     if Rails.env.production?
       gb = Gibbon::API.new
       list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
+      groupings_id = gb.lists.interest_groupings(id: list_id)[0]["id"]
       User.all.each do |u|
-        gb.lists.subscribe({ :id => list_id, 
-                             :email => {:email => u.email}, 
-                             :merge_vars => {:FNAME => u.first_name, :LNAME => u.last_name}, 
-                             :double_optin => false }) 
+        if u.bank?
+          gb.lists.subscribe({:id => list_id,
+                               :email => {:email => u.email},
+                               :merge_vars => {:FNAME => u.first_name,
+                                               :LNAME => u.last_name,
+                                               :groupings => [{:id => "#{groupings_id}",
+                                                               :groups => ["Bankers"]
+                                                             }]
+                                              },
+                               :double_optin => false,
+                               :send_welcome => false,
+                               :update_existing => true})
+        elsif !u.bank?
+          gb.lists.subscribe({:id => list_id,
+                               :email => {:email => u.email},
+                               :merge_vars => {:FNAME => u.first_name,
+                                               :LNAME => u.last_name,
+                                               :groupings => [{:id => "#{groupings_id}",
+                                                               :groups => ["Businesses"]
+                                                             }]
+                                              },
+                               :double_optin => false,
+                               :send_welcome => false,
+                               :update_existing => true})
+        else
+          gb.lists.subscribe({:id => list_id,
+                               :email => {:email => u.email},
+                               :merge_vars => {:FNAME => u.first_name,
+                                               :LNAME => u.last_name,
+                                               :groupings => [{:id => "#{groupings_id}",
+                                                               :groups => ["Undecided"]
+                                                             }]
+                                              },
+                               :double_optin => false,
+                               :send_welcome => false,
+                               :update_existing => true})
+        end
+        gb.lists.subscribe({:id => list_id,
+                             :email => {:email => u.email},
+                             :merge_vars => {:FNAME => u.first_name,
+                                             :LNAME => u.last_name,
+                                             :groupings => [{:id => "#{groupings_id}",
+                                                             :groups => ["Newsletter"]
+                                                           }]
+                                            },
+                             :double_optin => false,
+                             :send_welcome => false,
+                             :update_existing => true})
       end
     end
   end
 
-  def add_user_to_user_mailing_list
+  def add_to_mc_newsletter
     if Rails.env.production?
       gb = Gibbon::API.new
-      user_list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
-      gb.lists.subscribe({ :id => user_list_id, 
-                           :email => {:email => email}, 
-                           :merge_vars => {:FNAME => first_name, :LNAME => last_name}, 
-                           :double_optin => false })
+      list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
+      groupings_id = gb.lists.interest_groupings(id: list_id)[0]["id"]
+
+      gb.lists.subscribe({:id => list_id,
+                           :email => {:email => self.email},
+                           :merge_vars => {:FNAME => self.first_name,
+                                           :LNAME => self.last_name,
+                                           :groupings => [{:id => "#{groupings_id}",
+                                                           :groups => ["Newsletter"]
+                                                         }]
+                                          },
+                           :double_optin => false,
+                           :send_welcome => false,
+                           :update_existing => true})
     end
   end
 

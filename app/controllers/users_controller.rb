@@ -31,6 +31,7 @@ class UsersController < ApplicationController
     @user.confirmed_at = Time.now
     @user.rejected_at = nil
     @user.save
+    @user.delay.add_to_mc_newsletter
 
     respond_to do |format|
       format.html { redirect_to users_path, notice:"User successufly confirmed" }

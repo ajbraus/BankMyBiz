@@ -262,7 +262,7 @@ class User < ActiveRecord::Base
     end
   end
 
-  def add_all_users_to_mc
+  def self.add_all_users_to_mc
     if Rails.env.production?
       gb = Gibbon::API.new
       list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]

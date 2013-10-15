@@ -1,12 +1,8 @@
 <h4 class="h4"><%= @user.first_name.titleize %>, </h4>
 <p>
-  You have a new Follower on BankmyBiz.com
+  You have a new follower on BankmyBiz.com - <%= link_to @follower.first_name_with_last_initial, user_url(@follower) %> followed you.
 </p>
 <p>
-  
-</p>
-<p>
-  <br>
   <strong>Tip</strong> - You can get access to the profiles of who follows you, gives you bucks, or who has viewed you by subscribing to <%= link_to raw("BankmyBiz 360&deg;"), root_url %>.
 </p>
 

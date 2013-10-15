@@ -31,10 +31,10 @@ BankMyBiz::Application.routes.draw do
   end
 
   root :to => 'welcome#index'
-  match '/howitworks', :to => 'welcome#how', :as => "how"
+  match '/how-it-works', :to => 'welcome#how', :as => "how"
   match '/terms', :to => 'welcome#terms', :as => "terms"
   match '/privacy', :to => 'welcome#privacy', :as => "privacy"
-  match '/about', :to => 'welcome#about', :as => "about"
+  match '/about-us', :to => 'welcome#about', :as => "about"
   match '/subscribe', :to => 'welcome#subscribe', :as => "subscribe"
 
   match '/posts/:id/robot_post', to: 'welcome#robot_post', as: "robot_post"

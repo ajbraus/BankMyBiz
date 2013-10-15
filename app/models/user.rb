@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   include PublicActivity::Common
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable and :omniauthable
+  # :lockable, :timeoutable
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, 
          :token_authenticatable, :invitable

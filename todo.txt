@@ -2,8 +2,6 @@ fix paperclip
 
 set password after authenticate through linkedin
 
-add folks to Mailchimp lists
-
 invite mo' people
 invite linkedin connections
 reward with free matches
@@ -411,3 +409,5 @@ DONE comments
 block url surfing
   DONE add friendly_id for user profiles
   DONE banker vs. biz pie chart in admin dashboard
+
+DONE add folks to Mailchimp lists

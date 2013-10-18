@@ -18,7 +18,7 @@
       <div class=''>For Better Matches</div>
     <% end %>
     <div class="hr-line"></div>
-    <p class="muted">Today's Peers</p>
+    <p class="muted"><%= current_user.bank? ? "Owners" : "Lenders" %> Like You</p>
     <%= render partial: "users/user", collection: current_user.todays_peers, as: :user %>
   <% end %>
 <% end %>

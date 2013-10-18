@@ -63,19 +63,27 @@
           <thead>
             <tr>
               <th width="3%"></th>
-              <th width="30%">Name</th>
-              <th width="30%">Email</th>
-              <th width="15%">Applied On</th>
-              <th width="20%">Actions</th>
+              <th width="3%">Started Profile?</th>
+              <th width="3%">Finished Profile?</th>
+              <th width="15%">Name</th>
+              <th width="15%">Email</th>
+              <th width="15%">Position</th>
+              <th width="20%">Organization</th>
+              <th width="15%">Confirmed On</th>
+              <th width="8%">Actions</th>
             </tr>
           </thead>
           <tbody class="table-bordered">
             <% @confirmed_users.each do |u| %>
               <tr>
                 <td></td>
+                <td class="text-center"><%= u.started_profile? ? "X" : "" %></td>
+                <td class="text-center"><%= u.finished_profile? ? "X" : "" %></td>
                 <td><%= u.name %></td>
                 <td><%= u.email %></td>
-                <td><%= u.nice_created_at %></td>
+                <td class="text-center"><%= u.position %></td>
+                <td class="text-center"><%= u.org_name %></td>
+                <td><%= u.nice_confirmed_at %></td>
                 <td>
                   <%= link_to "Reject", user_reject_path(u), class:"btn btn-mini btn-warning", confirm: "Are you sure?" %>
                 </td>

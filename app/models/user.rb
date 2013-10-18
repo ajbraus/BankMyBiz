@@ -150,6 +150,10 @@ class User < ActiveRecord::Base
   def nice_created_at
     created_at.strftime("%b %e, %Y") #May 21, 2010
   end
+
+  def nice_confirmed_at
+    confirmed_at.strftime("%b %e, %Y") #May 21, 2010
+  end
   
   def committed_to?(post)
     return commitments.find_by_commitment_id(post.id).present?

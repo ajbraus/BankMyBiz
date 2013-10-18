@@ -77,6 +77,6 @@ class UsersController < ApplicationController
   end
 
   def matches
-    @matches = current_user.matched_users
+    @matches = current_user.matched_users.reverse
   end
 end

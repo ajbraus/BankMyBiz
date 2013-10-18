@@ -21,6 +21,8 @@ BankMyBiz::Application.routes.draw do
 
   match '/auth/:provider/callback' => 'authentications#create'
 
+  match '/matches', to: 'users#matches'
+
   match 'user/:id/bank', to: "users#set_bank", as: 'set_bank'
   match 'user/:id/biz', to: "users#set_business", as: 'set_business'
 

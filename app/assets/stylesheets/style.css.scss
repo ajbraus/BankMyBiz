@@ -1067,3 +1067,12 @@ table.user-stats {
     text-align: center;   
   }  
 }
+
+.match-card {
+  padding:10px;
+  margin:10px 0;
+  .match-card-deets {
+    padding-left:10px;
+    width: 66%;
+  }
+}

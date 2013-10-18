@@ -1,10 +1,22 @@
-fix paperclip
-
 set password after authenticate through linkedin
+
+if undecided after a week, send - start your profile to get matches
+
+Hello (Name)! 
+
+We are excited that you chose BankmyBiz as your online resource to begin banking on relationships. In order to make the most of our network we encourage you to setup your profile as a lender or business owner. You'll then start receiving industry-specific matches. 
+
+Visit (link) www.BankmyBiz.com to setup your profile today. 
+
+The BankmyBiz Team,
+
+Michael, Adam, Jordan and Danielle
+Madison, WI 
+Have more questions? Email us at Team@BankmyBiz.com or reply to this email 
 
 invite mo' people
 invite linkedin connections
-reward with free matches
+reward with free matches & bucks
 
 add photo to email
 only email on weekdays during the day
@@ -12,6 +24,8 @@ only email on weekdays during the day
 user.html 
   picture | Name, State
             Position
+
+add twitter handel to profile
 
 press section
 
@@ -411,3 +425,6 @@ block url surfing
   DONE banker vs. biz pie chart in admin dashboard
 
 DONE add folks to Mailchimp lists
+
+
+DONE fix paperclip

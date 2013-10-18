@@ -75,4 +75,8 @@ class UsersController < ApplicationController
       format.json { render json: @user }
     end  
   end
+
+  def matches
+    @matches = current_user.matched_users
+  end
 end

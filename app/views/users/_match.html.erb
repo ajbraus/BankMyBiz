@@ -1,0 +1,12 @@
+<%= link_to user_path(match) do %>
+  <div class='match-card clearfix'>
+    <div class="pull-left">
+      <%= large_profile_picture(match) %>
+    </div>
+    <div class="match-card-deets pull-left">
+      <p><strong><%= match.name %></strong></p>
+      <p class="muted"><%= match.position %></p>
+      <p class="muted"><%= match.goals %></p>
+    </div>
+  </div>
+<% end %>

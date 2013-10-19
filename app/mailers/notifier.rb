@@ -45,4 +45,9 @@ class Notifier < ActionMailer::Base
     @match = match
     mail to: @user.email, subject: "New #{@user.bank? ? "Owner" : "Lender"} Match on BankmyBiz.com"
   end
+
+  def profile_reminder(u)
+    @user = u
+    mail to: @user.email, subject: "Unlock Matches on BankmyBiz.com by Completing your Profile"
+  end
 end

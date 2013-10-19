@@ -233,6 +233,13 @@ class User < ActiveRecord::Base
     return subscriptions.any? && subscriptions.first.expires_on > Date.today
   end
 
+  def self.profile_reminder
+    @users = User.select { |u| !u.started_profile? }
+    @users.each do |u|
+      Notifier.delay.profile_reminder(u)
+    end
+  end
+
   def add_to_mc_lists
     if Rails.env.production?
       gb = Gibbon::API.new

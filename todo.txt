@@ -1,20 +1,8 @@
-admin - 
-
 set password after authenticate through linkedin
 
 if undecided after a week, send - start your profile to get matches
 
-Hello (Name)! 
-
-We are excited that you chose BankmyBiz as your online resource to begin banking on relationships. In order to make the most of our network we encourage you to setup your profile as a lender or business owner. You'll then start receiving industry-specific matches. 
-
-Visit (link) www.BankmyBiz.com to setup your profile today. 
-
-The BankmyBiz Team,
-
-Michael, Adam, Jordan and Danielle
-Madison, WI 
-Have more questions? Email us at Team@BankmyBiz.com or reply to this email 
+make clicking on match face go to matches
 
 invite mo' people
 invite linkedin connections

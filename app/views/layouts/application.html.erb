@@ -99,7 +99,7 @@
                 <% if false %>
                 <%= form_tag root_path, :method => :get, class:"form-search" do %>
                   <div class="input-append">
-                    <%= text_field_tag :search, params[:search], class:"span2 search-query", placeholder:"Buzz Search. . ." %>
+                    <%= text_field_tag :search, params[:search], class:"span2 search-query", placeholder:"News Feed Search. . ." %>
                     <button class="btn btn-success" type="submit">
                       <i class="icon-search"></i>
                     </button>
@@ -108,7 +108,7 @@
                 <% end %>
                 <ul class="nav pull-right">
                   <li>
-                    <%= link_to "Buzz", root_path %>
+                    <%= link_to "News Feed", root_path %>
                     <% if params[:controller] == "posts" && params[:action] == "index" %>
                       <div class="under text-center"><i class="icon-caret-up green"></i></div>
                     <% end %>

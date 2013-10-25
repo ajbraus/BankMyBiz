@@ -1,3 +1,11 @@
+let everyone in
+
+add position & organization at registration
+
+if your follower posts to the newsfeed - email 
+
+plug in keywords - meta info & descriptions 
+
 set password after authenticate through linkedin
 
 if undecided after a week, send - start your profile to get matches

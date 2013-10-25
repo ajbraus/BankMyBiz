@@ -8,6 +8,6 @@ node(:trackable_content) do |activity|
   if activity.trackable_type == "User"
     "Interacted with" + " " + activity.trackable.first_name_with_last_initial
   else
-    "Posted to the Buzz:" + " " + activity.trackable.content 
+    "Posted to the News Feed:" + " " + activity.trackable.content 
   end
 end

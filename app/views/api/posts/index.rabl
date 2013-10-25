@@ -1,3 +1,3 @@
-collection @posts, :object_root => false
+collection @posts, :root => "posts"
 
 extends "api/posts/show"

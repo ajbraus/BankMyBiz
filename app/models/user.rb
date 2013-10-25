@@ -234,7 +234,7 @@ class User < ActiveRecord::Base
   end
 
   def self.profile_reminder
-    @users = User.select { |u| !u.started_profile? }
+    @users = User.select { |u| u.created_at > (Date.today + 2.weeks) || !u.started_profile? }
     @users.each do |u|
       Notifier.delay.profile_reminder(u)
     end

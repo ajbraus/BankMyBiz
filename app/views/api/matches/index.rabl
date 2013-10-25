@@ -1,3 +1,3 @@
-collection @matches, :object_root => false
+collection @matches, :root => "matches"
 
-extends "api/users/show"
+extends "api/users/mini_show"

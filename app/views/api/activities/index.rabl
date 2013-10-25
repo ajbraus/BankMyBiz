@@ -1,4 +1,4 @@
-collection @activities, :object_root => false
+collection @activities, :root => "activities"
 
 extends "api/activities/show"
 

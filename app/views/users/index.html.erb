@@ -1,4 +1,26 @@
 <div class="span4 text-center">
+  <h4>New User Stats</h4>
+    <!-- Table -->
+    <table class="table table-bordered user-stats">
+      <thead>
+        <tr>
+          <th><%= Date.today.prev_month(2).strftime("%B") %></th>
+          <th><%= Date.today.prev_month.strftime("%B") %></th>
+          <th>Last 2 Weeks</th>
+          <th>Last Week</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= User.where('created_at > ?', Date.today.prev_month(2)).count %></td>
+          <td><%= User.where('created_at > ?', Date.today.prev_month).count %></td>
+          <td><%= User.where('created_at > ?', Date.today - 2.week).count %></td>
+          <td><%= User.where('created_at > ?', Date.today - 1.week).count %></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+<div class="span4 text-center">
   <h4>User Stats</h4>
     <!-- Table -->
     <table class="table table-bordered user-stats">
@@ -7,6 +29,7 @@
           <th>Bankers</th>
           <th>Businesses</th>
           <th>Undecided</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
@@ -14,11 +37,10 @@
           <td><%= User.where(bank: true).count %></td>
           <td><%= User.where(bank: false).count %></td>
           <td><%= User.where(bank: nil).count %></td>
+          <td><%= User.all.count %></td>
         </tr>
       </tbody>
     </table>
-</div>
-<div class="span4">
 </div>
 <div class="span4">
 </div>

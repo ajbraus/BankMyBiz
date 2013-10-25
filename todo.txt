@@ -1,10 +1,5 @@
-let everyone in
-  DONE allow confirmation
-  Update confirmation email
-  make progress bar or profile completion
-  add image to edit profile
-
-add position & organization at registration
+make progress bar or profile completion
+add image to edit profile
 
 if your follower posts to the newsfeed - email 
 
@@ -430,3 +425,7 @@ DONE add folks to Mailchimp lists
 
 
 DONE fix paperclip
+
+  DONE allow confirmation
+  DONE Update confirmation email
+  DONE add position & organization at registration

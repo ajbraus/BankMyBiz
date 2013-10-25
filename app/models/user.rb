@@ -97,7 +97,7 @@ class User < ActiveRecord::Base
   validates :avatar, # :attachment_presence => true,
                      :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }
 
-  validates :name, :org_name, :position, presence: true
+  validates :name, presence: true
 
   #before_create :skip_confirmation_notification
   before_create :set_username

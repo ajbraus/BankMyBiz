@@ -97,11 +97,11 @@ class User < ActiveRecord::Base
   validates :avatar, # :attachment_presence => true,
                      :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }
 
-  validates :name, presence: true
+  validates :name, :org_name, :position, presence: true
 
-  before_create :skip_confirmation_notification
+  #before_create :skip_confirmation_notification
   before_create :set_username
-  after_create :request_confirmation
+  after_create :internal_new_user
 
   def to_param
     "#{id} #{username}".parameterize
@@ -115,9 +115,9 @@ class User < ActiveRecord::Base
     self.username = self.first_name_with_last_initial.split.join('-')[0..-2]
   end
 
-  def request_confirmation
+  def internal_new_user
     Notifier.delay.internal_new_user(self)
-    Notifier.delay.confirmation_of_request(self)
+    #Notifier.delay.confirmation_of_request(self)
     # if Rails.env.production?
     #   Message.delay.create(sender_id: User.find_by_email("michael@bankmybiz.com").id, receiver_id: self.id, subject: 'Welcome to BankmyBiz.com', body: "")
     # end
@@ -234,9 +234,9 @@ class User < ActiveRecord::Base
   end
 
   def self.send_profile_reminders
-    @users = User.select { |u| u.rejected_at.blank? 
-                               && !u.started_profile? 
-                               && (u.created_at.to_date == (Date.today - 8.days) || u.created_at.to_date == (Date.today - 21.days)) }
+    @users = User.select do |u| 
+      u.rejected_at.blank? && !u.started_profile? && ( u.created_at.to_date == (Date.today - 8.days) || u.created_at.to_date == (Date.today - 21.days) )
+    end
     @users.each do |u|
       Notifier.delay.profile_reminder(u)
     end

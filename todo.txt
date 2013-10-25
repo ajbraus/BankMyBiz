@@ -1,4 +1,8 @@
 let everyone in
+  DONE allow confirmation
+  Update confirmation email
+  make progress bar or profile completion
+  add image to edit profile
 
 add position & organization at registration
 

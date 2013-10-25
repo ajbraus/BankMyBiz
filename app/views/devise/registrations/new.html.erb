@@ -3,11 +3,17 @@
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
-      <div><%= f.label :name, "Your Full Name (private)" %>
+      <div><%= f.label :name, "Full Name* (private)" %>
       <%= f.text_field :name %></div>
 
-      <div><%= f.label :email, "Your Email" %>
+      <div><%= f.label :email, "Email*" %>
       <%= f.email_field :email %></div>
+
+      <div><%= f.label :org_name, "Organization* (private)" %>
+      <%= f.text_field :org_name %></div>
+
+      <div><%= f.label :position, "Position* (private)" %>
+      <%= f.text_field :position %></div>
 
       <div><%= f.label :password, "Password (min 6 characters)" %>
       <%= f.password_field :password %></div>

@@ -233,8 +233,10 @@ class User < ActiveRecord::Base
     return subscriptions.any? && subscriptions.first.expires_on > Date.today
   end
 
-  def self.profile_reminder
-    @users = User.select { |u| u.created_at > (Date.today + 2.weeks) || !u.started_profile? }
+  def self.send_profile_reminders
+    @users = User.select { |u| u.rejected_at.blank? 
+                               && !u.started_profile? 
+                               && (u.created_at.to_date == (Date.today - 8.days) || u.created_at.to_date == (Date.today - 21.days)) }
     @users.each do |u|
       Notifier.delay.profile_reminder(u)
     end

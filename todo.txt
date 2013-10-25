@@ -1,5 +1,14 @@
-make progress bar or profile completion
+Add "looking", "interested", "learning", "not looking"
+add twitter handel to profile
+  - import recent tweets into profile
 add image to edit profile
+make progress bar or profile completion
+
+fix homepage: 
+  Press section
+    InBusiness M-List
+
+  More text
 
 if your follower posts to the newsfeed - email 
 
@@ -7,7 +16,8 @@ plug in keywords - meta info & descriptions
 
 set password after authenticate through linkedin
 
-if undecided after a week, send - start your profile to get matches
+% match
+businesses choose multiple industries
 
 make clicking on match face go to matches
 
@@ -22,9 +32,7 @@ user.html
   picture | Name, State
             Position
 
-add twitter handel to profile
 
-press section
 
 Add custom photo to profile
 Add "use a match to access to his/her profile"
@@ -34,8 +42,6 @@ Add "use a match to access to his/her profile"
 Start w 10 matches 
 
 Emphasize goal - add edit button
-
-Add "looking", "interested", "learning", "not looking"
 
 Where your head quartered
 
@@ -429,3 +435,5 @@ DONE fix paperclip
   DONE allow confirmation
   DONE Update confirmation email
   DONE add position & organization at registration
+
+DONE if undecided after a week, send - start your profile to get matches

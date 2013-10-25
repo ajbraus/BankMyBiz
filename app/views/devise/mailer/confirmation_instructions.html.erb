@@ -367,16 +367,22 @@
                                                     <div mc:edit="std_content00">
                                                       <h4 class="h4">We're Happy You Found Us,</h4>
                                                       <p>
-                                                        Thanks for signing up for the BankmyBiz Network - an exclusive network of bankers and business owners. The next step is to confirm your account and then <strong>complete your profile</strong> to start receiving relationship matches.
+                                                        Thanks for signing up for BankmyBiz - an exclusive network of bankers and business owners. After confirming your account, you'll be able to <strong>complete your profile</strong> and start receiving relationship matches. 
                                                       </p>
                                                       <p>
-                                                        <%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+                                                        Click here to <%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %> or copy and paste this link into your browser. 
                                                       </p>
                                                       <p>
-                                                        If you want to learn more about how BankmyBiz works visit the <%= link_to 'How it Works', how_url %>. For more information on our team, visit our <%= link_to "About Us", about_url %> page.
+                                                        <%= confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
                                                       </p>
                                                       <p>
-                                                        We invite you to read and contribute to our informative blog <%= link_to "Banking on Relationships", "http://blog.bankmybiz.com" %>, <%= link_to "follow us", "https://twitter.com/bankmybiz" %> on Twitter, and <%= link_to "like us", "https://facebook.com/bankmybiz" %> on Facebook. 
+                                                        To learn more about how BankmyBiz works visit the <%= link_to 'How it Works', how_url %> page. To get to know our team better, visit our <%= link_to "About Us", about_url %> page.
+                                                      </p>
+                                                      <p>
+                                                        We invite you to join the conversation as well. You can read and contribute to our informative blog <%= link_to "Banking on Relationships", "http://blog.bankmybiz.com" %>, <%= link_to "follow us", "https://twitter.com/bankmybiz" %> on Twitter, and <%= link_to "like us", "https://facebook.com/bankmybiz" %> on Facebook. 
+                                                      </p>
+                                                      <p>
+                                                        We're really glad you found us and look forward to the new relationship.
                                                       </p>
                                                       <br>
                                                       <div class="small">

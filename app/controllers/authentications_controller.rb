@@ -11,7 +11,8 @@ class AuthenticationsController < ApplicationController
         flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => access_token.provider
         sign_in_and_redirect @user, :event => :authentication
       else
-        redirect_to root_path, notice: "Thanks for signing up! We will confirm your profile soon."
+        Devise::Mailer.confirmation_instructions(@user).deliver
+        redirect_to root_path, notice: "We have sent you an email to confirm your account. Thanks for joining!"
       end
     else
       redirect_to :back, notice: 'There was an error with LinkedIn. Check your LinkedIn account status.'

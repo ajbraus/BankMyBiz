@@ -1,13 +1,23 @@
-Add "looking", "interested", "learning", "not looking"
-add twitter handel to profile
-  - import recent tweets into profile
+users are a banker? and can have businesses
+matches between users and businesses
+
+Add "looking", "interested", "learning", "not looking" status
+add hq state
+add for-profit not-for-profit
+make business have multiple industries
+
+% match
+
+View another person's or a businesses profile - see them in the center
+
 add image to edit profile
 make progress bar or profile completion
+
+if your linkedin connection joins bank my biz get an email. check 
 
 fix homepage: 
   Press section
     InBusiness M-List
-
   More text
 
 if your follower posts to the newsfeed - email 
@@ -16,10 +26,7 @@ plug in keywords - meta info & descriptions
 
 set password after authenticate through linkedin
 
-% match
-businesses choose multiple industries
-
-make clicking on match face go to matches
+send created at with post and comment, send user position and HQ state with post
 
 invite mo' people
 invite linkedin connections
@@ -32,20 +39,10 @@ user.html
   picture | Name, State
             Position
 
-
-
-Add custom photo to profile
-Add "use a match to access to his/her profile"
-# of matches stored in user
-"Spend a match"
 "Buy more matches"
-Start w 10 matches 
+"Use a match to access to his/her profile"
 
-Emphasize goal - add edit button
-
-Where your head quartered
-
-We should add in the drop down, are you, for profit, non profit, and who do you lend to, for profit, non profit. 
+import recent tweets into profile
 
 setup pricing model
   buy matches
@@ -437,3 +434,6 @@ DONE fix paperclip
   DONE add position & organization at registration
 
 DONE if undecided after a week, send - start your profile to get matches
+
+DONE add twitter handel to profile
+DONE don't confirm email if logging in from linkedin

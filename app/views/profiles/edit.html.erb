@@ -7,6 +7,9 @@
       <%= f.label :position, "Your Position" %>
       <%= f.text_field :position %>
 
+      <%= f.label :status, "Your Broadcast" %>
+      <%= f.select :status, options_for_select(["Actively Looking", "Offers Welcome", "Just Learning", "Not Looking"], @user.status) %>
+
       <%= f.label :bio, "Tell Us About You. What Makes You and Your #{current_user.bank? ? 'Bank' : 'Business'} Great?" %>
       <%= f.text_area :bio %>
       

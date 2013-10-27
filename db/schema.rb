@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131001223230) do
+ActiveRecord::Schema.define(:version => 20131026182906) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -311,6 +311,8 @@ ActiveRecord::Schema.define(:version => 20131001223230) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.string   "handle"
+    t.string   "status"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -13,13 +13,20 @@
   <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
+
+  <div class="input-group">
+    <%= f.label :handle, "Twitter" %>
+    <span class="input-group-addon">@</span>
+    <%= f.text_field :handle %>
+  </div>
+
   <p>
     <label><%= f.check_box :newsletter %>
-      Recieve BankmyBiz.com News?</label>
+      Receive BankmyBiz.com News?</label>
   </p>
   <p>
     <label><%= f.check_box :receive_match_messages %>
-      New Matches Notifications?</label>
+      Receive New Matches Notifications?</label>
   </p>
   
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>

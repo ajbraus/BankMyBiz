@@ -34,7 +34,8 @@ class User < ActiveRecord::Base
                   :position,
                   :goals,
                   :newsletter,
-                  :receive_match_messages
+                  :receive_match_messages,
+                  :status
                   
   is_impressionable
 
@@ -81,6 +82,8 @@ class User < ActiveRecord::Base
 
   has_many :authentications, dependent: :destroy
 
+  has_many :organizations
+
   has_attached_file :avatar,
          :styles => { 
             :medium => "200x200",
@@ -99,7 +102,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  #before_create :skip_confirmation_notification
+  before_create :skip_confirmation_notification
   before_create :set_username
   after_create :internal_new_user
 

@@ -748,10 +748,15 @@ height: 90px;
 
 .border-right {
   border-right:1px solid #eee;
+  padding-left: 10px;
+  min-height: 720px;
+  background: #FAFAFA;
 }
 
 .border-left {
   border-left:1px solid #eee;
+  padding-right: 10px;
+  background: #FAFAFA;
 }
 
 .span3 {
@@ -1085,4 +1090,9 @@ table td.text-center {
 
 .affix-top {
 
+}
+
+.profile-picture-position {
+  margin: 20px 20px 0px 50px;
+  float:left;
 }

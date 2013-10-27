@@ -8,7 +8,7 @@
   <% if !current_user.started_profile? %>
     <%= link_to "Complete Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>
     <div class="">
-      to unlock <%= current_user.bank? ? "owners" : "lenders" %>
+      to unlock <%= current_user.bank? ? "owner" : "lender" %> matches
     </div>
   <% else %>
     <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>

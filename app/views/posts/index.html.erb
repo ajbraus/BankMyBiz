@@ -1,6 +1,6 @@
 <% content_for :title, "Welcome back #{current_user.first_name}" %>
 <div class="span3">       
-  <div class="border-right">
+  <div class="border-right grey-background">
     <%= render 'shared/trending_tags' %>
     <div class="hr-line"></div>
     <%= render 'shared/messages' %>
@@ -38,7 +38,7 @@
 </div>
 
 <div class="span3">  
-  <div class="border-left">
+  <div class="border-left grey-background">
     <%= render 'shared/improve_profile' %>
     <div class="hr-line"></div>
     <%= render 'shared/profile_views' %>

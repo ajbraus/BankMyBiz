@@ -3,8 +3,17 @@
       <div class="span9 offset2">
         <h4>Your Profile</h4>
       </div>
-
       <div class="span5 offset2">
+        <div class="row">
+          <div class="span1 edit-profile-image"> 
+            <%= profile_picture(@user) %> 
+          </div>
+          <div class="span3">
+            <%= f.label :avatar, "Profile Picture" %><br />
+            <%= f.file_field :avatar %>
+          </div>
+        </div>
+
         <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name (private)" %>
         <%= f.text_field :org_name %>
 
@@ -30,45 +39,11 @@
     </div>
   </div>
   <% if current_user.bank? %> 
+  <div class="row">
     <div class="span9 offset2">
       <h4>Describe Businesses You Want to Work With</h4>
     </div>
     <div class="span3 offset2"> 
-      <div class="field">
-        <%= f.label :revenue_size_ids, "Revenue" %>
-        <% for revenue_size in RevenueSize.find(:all) %>
-          <div>
-            <label>
-              <%= check_box_tag "user[revenue_size_ids][]", revenue_size.id, @user.revenue_sizes.include?(revenue_size) %>
-              <%= revenue_size.description %>
-            </label>
-          </div>
-        <% end %>  
-      </div>
-      <div class="field">
-        <%= f.label :employee_size_ids, "Employees" %>
-        <% for employee_size in EmployeeSize.find(:all) %>
-          <div>
-            <label>
-              <%= check_box_tag "user[employee_size_ids][]", employee_size.id, @user.employee_sizes.include?(employee_size) %>
-              <%= employee_size.description %>
-            </label>
-          </div>
-        <% end %>
-      </div>  
-    </div>
-    <div class="span3">
-      <div class="field">
-        <%= f.label :business_type_ids, "Entity Type" %>
-        <% for business_type in BusinessType.find(:all) %>
-          <div>
-            <label>
-              <%= check_box_tag "user[business_type_ids][]", business_type.id, @user.business_types.include?(business_type) %>
-              <%= business_type.description %>
-            </label>
-          </div>
-        <% end %>  
-      </div>
       <div class="field">
         <%= f.label :age_ids, "Years They've Filed Taxes" %>
         <% for age in Age.find(:all) %>
@@ -80,6 +55,43 @@
         </div>
         <% end %> 
       </div>
+      <div class="field">
+        <%= f.label :revenue_size_ids, "Revenue" %>
+        <% for revenue_size in RevenueSize.find(:all) %>
+          <div>
+            <label>
+              <%= check_box_tag "user[revenue_size_ids][]", revenue_size.id, @user.revenue_sizes.include?(revenue_size) %>
+              <%= revenue_size.description %>
+            </label>
+          </div>
+        <% end %>  
+      </div> 
+    </div>
+    <div class="span3">
+      <div class="field">
+        <%= f.label :business_type_ids, "Entity Types" %>
+        <% for business_type in BusinessType.find(:all) %>
+          <div>
+            <label>
+              <%= check_box_tag "user[business_type_ids][]", business_type.id, @user.business_types.include?(business_type) %>
+              <%= business_type.description %>
+            </label>
+          </div>
+        <% end %>  
+      </div>
+    </div> 
+    <div class="span3">
+      <div class="field">
+        <%= f.label :employee_size_ids, "Number of Employees" %>
+        <% for employee_size in EmployeeSize.find(:all) %>
+          <div>
+            <label>
+              <%= check_box_tag "user[employee_size_ids][]", employee_size.id, @user.employee_sizes.include?(employee_size) %>
+              <%= employee_size.description %>
+            </label>
+          </div>
+        <% end %>
+      </div> 
     </div> 
   </div>
   <% else %>
@@ -131,7 +143,9 @@
     </div> 
   </div>
   <br>
-  <div class="text-right span10">
+  <div class="text-center span9 offset2">
+    <div class="row">
     <%= submit_tag "Update Profile", class:"btn btn-success btn-large" %>
+  </div>
   </div>
 <% end %>

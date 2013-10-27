@@ -1,15 +1,14 @@
+View another person's or a businesses profile - see them in the center
+add image to edit profile
+
 non-stock/non-profit
 
 use HQ's to do matching
 
-% match
-Local badge
-Neighbor badge (same linkedin location)
+% match - calculate and save in match
+Local Capital badge - if same state
+Neighborhood Capital badge - same linkedin location
 
-View another person's or a businesses profile - see them in the center
-
-add image to edit profile
-make progress bar or profile completion
 
 if your linkedin connection joins bank my biz get an email. check 
 
@@ -440,3 +439,5 @@ DONE add hq state
 
 
 DONE make business have multiple industries
+
+DONE make progress bar or profile completion

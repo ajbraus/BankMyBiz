@@ -35,7 +35,8 @@ class User < ActiveRecord::Base
                   :goals,
                   :newsletter,
                   :receive_match_messages,
-                  :status
+                  :status,
+                  :hq_state
                   
   is_impressionable
 
@@ -102,7 +103,7 @@ class User < ActiveRecord::Base
 
   validates :name, presence: true
 
-  before_create :skip_confirmation_notification
+  #before_create :skip_confirmation_notification
   before_create :set_username
   after_create :internal_new_user
 
@@ -181,6 +182,36 @@ class User < ActiveRecord::Base
     if employee_sizes.any? && business_types.any? && industries.any? && revenue_sizes.any? && ages.any? && bio.present?
       return true
     end
+  end
+
+  def profile_questions_completed
+    progress = 0
+    progress += 1 if employee_sizes.any?
+    progress += 1 if industries.any?
+    progress += 1 if business_types.any?
+    progress += 1 if revenue_sizes.any?
+    progress += 1 if ages.any?
+    progress += 1 if locations.any?
+    progress += 1 if position.present?
+    progress += 1 if bio.present?
+    progress += 1 if goals.present?
+    progress += 1 if avatar.present? || pic_url.present?  
+    progress += 1 if org_name.present?
+    progress += 1 if hq_state.present?
+
+    return progress
+  end
+
+  def total_profile_elements
+    12
+  end
+
+  def profile_progress_percent
+    profile_questions_completed * 100 / total_profile_elements
+  end
+
+  def profile_elements_left
+    total_profile_elements - profile_questions_completed
   end
 
   def first_name

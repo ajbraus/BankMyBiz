@@ -5,11 +5,12 @@
     <%= link_to "Biz", set_business_path(current_user), class:"btn btn-success btn-large" %>
     <p class="muted">Answer to unlock matches,<br> and be matched</p>
 <% else %>
-  <% if !current_user.started_profile? %>
-    <%= link_to "Complete Your Profile", edit_profile_path(current_user), class:"btn btn-primary btn-large large" %>
-    <div class="">
-      to unlock <%= current_user.bank? ? "owner" : "lender" %> matches
+  <% if !current_user.finished_profile? %>
+    <h4>Profile Completeness</h4>
+    <div class="progress">
+      <div class="bar bar-success" style="width: <%= current_user.profile_progress_percent %>%;"><%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link" %></div>
     </div>
+    <%= link_to "#{current_user.profile_elements_left} questions to go", edit_profile_path(current_user) %> <br>to unlock <%= current_user.bank? ? "owner" : "lender" %> matches
   <% else %>
     <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
     <%= render partial: "users/user", collection: current_user.todays_matches, as: :user %>

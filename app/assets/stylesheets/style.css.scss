@@ -232,9 +232,16 @@ hr {
   color: #009966;
 }
 .progress {
-width: 150px;
-margin-top: 13px;
-margin-bottom: 0;
+width: 90%;
+margin: 20px auto;
+height: 40px;
+background: rgb(218, 218, 218);
+}
+.bar {
+  padding:10px;
+  a {
+    font-size: 16px;
+  }
 }
 
 .white {
@@ -454,9 +461,6 @@ hr {
       .marketing p + h4 {
         margin-top: 28px;
       }
-    .progress {
-  margin-bottom:2px;
-}
 
 .newsfeed-item {
   min-height: 80px;
@@ -1113,4 +1117,17 @@ br
 div.wrapper
 {
   margin-bottom: 1em;
+}
+
+a.no-link {
+  color:white;
+  &:hover {
+    text-decoration:none;
+  }
+}
+
+.edit-profile-image {
+  img {
+    margin: 16px;
+  }
 }

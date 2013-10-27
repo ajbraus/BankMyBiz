@@ -39,47 +39,63 @@
       </div>
       <%= large_profile_picture(@user) %>
     <% end %>
-      <% if @user == current_user %>
+      <div class='text-left large'>
         <br>
+        <div>
+          <strong>Name:</strong> 
+          <%= @user.first_name_with_last_initial %> 
+        </div>
+        <div>
+          <strong>Bucks:</strong> 
+          <span class="muted"> <%= @user.karma %></span>
+        </div>
+        <div>
+          <strong class=''>Position:</strong>
+          <span class="muted"><%= @user.position %></span>
+        </div>
+      </div>
+      <br>
+      <% if @user == current_user %>
         <%= link_to "edit profile", edit_profile_path(@user) %>
       <% elsif current_user.messages_left? %>
         <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-block message-button"><i class="icon-envelope-alt"></i> Contact <%= @user.first_name_with_last_initial %></a>
       <% end %>
     </div>
     <div class="span5" style="margin-top:20px;">
-      <ul>
+      <ul class="large">
         <li>
-          <p>
-            <strong>Name</strong> 
-            <%= @user.first_name_with_last_initial %> 
-          </p>
+          <strong class=''><%= @user.bank? ? "Bank" : "Business" %>:</strong>
+          <span class="muted"><%= @user.org_name %></span>
         </li>
-        <li><p><strong>Bucks</strong> <span class="muted"> <%= @user.karma %></span></p></li>
         <li>
           <strong class=''>Business Type:</strong>
-          <p class="muted"><%= @user.business_types.map(&:description).join(", ") %></p>
+          <span class="muted"><%= @user.business_types.map(&:description).join(", ") %></span>
         </li>
         <li>
-          <strong class=''>Employees</strong>
-          <p class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></p>
+          <strong class=''>Employees:</strong>
+          <span class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></span>
         </li>
         <li>
           <strong class=''>Revenue Size:</strong>
-          <p class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></p>
+          <span class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></span>
         </li>
         <li>
-          <strong class=''>Years of Operation</strong>
-          <p class="muted"><%= @user.ages.map(&:description).join(", ") %></p>
+          <strong class=''>Years of Operation:</strong>
+          <span class="muted"><%= @user.ages.map(&:description).join(", ") %></span>
         </li>
         <li>
-          <strong class=''>Industry</strong>
-          <p class="muted"><%= @user.industries.map(&:description).join(", ") %></p>
+          <strong class=''>Industry:</strong>
+          <span class="muted"><%= @user.industries.map(&:description).join(", ") %></span>
+        </li>
+        <li>
+          <strong class=''>Does Business in:</strong>
+          <span class="muted"><%= @user.locations.map(&:name).join(", ") %></span>
         </li>
       </ul>
     </div>
   </div>
   <div class="row">
-    <div class="span8">
+    <div class="span6 offset2">
       <h4>Bio</h4>
       <p class="muted"><%= @user.bio %></p>
       <hr>  
@@ -95,17 +111,16 @@
         </div>
       <% end %>
       <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
-      <hr>  
     <% end %>
     <% if @user == current_user %>
       <h4>Your Posts</h4>
     <% else %>
       <h4><%= @user.first_name %>'s Recent Posts</h4>
     <% end %>
-    <div class="span6">
-      <%= render partial: "posts/post", collection: @posts, as: :post %>
-      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-    </div>
+      <div class="span5">
+        <%= render partial: "posts/post", collection: @posts, as: :post %>
+        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+      </div>
     </div>
   </div>
 </div>

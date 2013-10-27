@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to root_path, notice: 'Profile was Successfully Updated.' }
+        format.html { redirect_to @user, notice: 'Profile was Successfully Updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

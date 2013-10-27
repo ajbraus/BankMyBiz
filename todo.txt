@@ -1,9 +1,10 @@
-View another person's or a businesses profile - see them in the center
-
 buy matches
-
 use HQ's to do matching
 % match - calculate and save in match
+
+prettier emails
+  images
+  margin above logo
 
 Local Capital badge - if same state
 Neighborhood Capital badge - same linkedin location
@@ -440,3 +441,5 @@ DONE make business have multiple industries
 
 DONE make progress bar or profile completion
 DONE add image to edit profile
+
+DONE View another person's or a businesses profile - see them in the center

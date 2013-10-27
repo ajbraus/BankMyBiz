@@ -268,10 +268,10 @@ ActiveRecord::Schema.define(:version => 20131026182906) do
   add_index "tags", ["name"], :name => "index_tags_on_name"
 
   create_table "users", :force => true do |t|
-    t.string   "email",                                :default => "",    :null => false
+    t.string   "email",                                :default => "",                 :null => false
     t.string   "encrypted_password",                   :default => ""
-    t.string   "name",                                 :default => "",    :null => false
-    t.text     "bio",                                  :default => "",    :null => false
+    t.string   "name",                                 :default => "",                 :null => false
+    t.text     "bio",                                  :default => "",                 :null => false
     t.boolean  "bank"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -281,8 +281,8 @@ ActiveRecord::Schema.define(:version => 20131026182906) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                                              :null => false
-    t.datetime "updated_at",                                              :null => false
+    t.datetime "created_at",                                                           :null => false
+    t.datetime "updated_at",                                                           :null => false
     t.integer  "impressions_count",                    :default => 0
     t.string   "pic_url"
     t.string   "linked_in_url"
@@ -311,8 +311,9 @@ ActiveRecord::Schema.define(:version => 20131026182906) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
-    t.string   "handle"
-    t.string   "status"
+    t.string   "handle",                               :default => "",                 :null => false
+    t.string   "status",                               :default => "Actively Looking", :null => false
+    t.string   "hq_state",                             :default => "",                 :null => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

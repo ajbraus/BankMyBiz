@@ -1,12 +1,10 @@
-users are a banker? and can have businesses
-matches between users and businesses
+non-stock/non-profit
 
-Add "looking", "interested", "learning", "not looking" status
-add hq state
-add for-profit not-for-profit
-make business have multiple industries
+use HQ's to do matching
 
 % match
+Local badge
+Neighbor badge (same linkedin location)
 
 View another person's or a businesses profile - see them in the center
 
@@ -437,3 +435,8 @@ DONE if undecided after a week, send - start your profile to get matches
 
 DONE add twitter handel to profile
 DONE don't confirm email if logging in from linkedin
+DONE Add "looking", "interested", "learning", "not looking" status
+DONE add hq state
+
+
+DONE make business have multiple industries

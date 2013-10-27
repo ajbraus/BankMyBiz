@@ -1,53 +1,42 @@
-<div class="span8 offset4">
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-
-  <div class="row">
-    <div class="span1 edit-profile-image"> 
-      <%= profile_picture(@user) %> 
+  <div class="span4 offset2">
+    <h4>Account Settings</h4>
+    <div class="row">
+      <div class="span1 edit-profile-image"> 
+        <%= profile_picture(@user) %> 
+      </div>
     </div>
-    <div class="span3">
-      <%= f.label :avatar, "Profile Picture" %><br />
-      <%= f.file_field :avatar %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+    <% unless current_user.authentications.any? %>
+      <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+      <%= f.password_field :password, :autocomplete => "off" %></div>
+    <% end %>
+  </div>
+  <div class="span5">
+    <h4>Communication Settings</h4>
+    <br>
+    <p>
+      <label><%= f.check_box :newsletter %>
+        Receive BankmyBiz.com News?</label>
+    </p>
+    <p>
+      <label><%= f.check_box :receive_match_messages %>
+        Receive New Matches Notifications?</label>
+    </p>   
+  </div>
+    <div class="offset2 span9 text-center">
+      <br>
+      <div><%= f.label :current_password %> <i>(to securely confirm changes)</i><br />
+      <%= f.password_field :current_password %></div>
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+        <%= f.submit "Update Settings", class:"btn btn-warning btn-large" %>
+        <p class="small">Unhappy? <%= link_to "Send Us Feedback", "mailto:team@bankmybiz.com?subject=How BankmyBiz can be better" %>, or <%= button_to "Cancel my Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class:"btn btn-mini btn-danger" %></p>
+    <% end %>
     </div>
-  </div>
-
-  <div><%= f.label :name %>
-  <%= f.text_field :name %></div>
-
-  <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
-
-
-  <div class="input-group">
-    <%= f.label :handle, "Twitter" %>
-    <span class="input-group-addon">@</span>
-    <%= f.text_field :handle %>
-  </div>
-
-  <p>
-    <label><%= f.check_box :newsletter %>
-      Receive BankmyBiz.com News?</label>
-  </p>
-  <p>
-    <label><%= f.check_box :receive_match_messages %>
-      Receive New Matches Notifications?</label>
-  </p>
-  
-  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-  <% end %>
-
-<% unless current_user.authentications.any? %>
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password, :autocomplete => "off" %></div>
-
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-  <%= f.password_field :current_password %></div>
-<% end %>
-
-  <div><%= f.submit "Update", class:"btn btn-warning btn-large" %></div>
-<% end %>
-
-<p class="small">Unhappy? <%= button_to "Cancel my Account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, class:"btn btn-mini btn-danger" %>.</p>
 </div>

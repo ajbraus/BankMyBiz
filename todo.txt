@@ -1,7 +1,5 @@
 View another person's or a businesses profile - see them in the center
-add image to edit profile
 
-non-stock/non-profit
 
 use HQ's to do matching
 
@@ -441,3 +439,4 @@ DONE add hq state
 DONE make business have multiple industries
 
 DONE make progress bar or profile completion
+DONE add image to edit profile

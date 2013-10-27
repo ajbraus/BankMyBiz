@@ -1097,8 +1097,8 @@ table td.text-center {
 }
 
 .profile-picture-position {
-  margin: 20px 20px 0px 50px;
-  float:left;
+  margin: 20px 0px 0px 0px;
+  text-align: center;
 }
 
 ol
@@ -1130,4 +1130,8 @@ a.no-link {
   img {
     margin: 16px;
   }
+}
+
+.message-button {
+  margin-top: 20px;  
 }

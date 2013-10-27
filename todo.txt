@@ -1,12 +1,12 @@
 View another person's or a businesses profile - see them in the center
 
+buy matches
 
 use HQ's to do matching
-
 % match - calculate and save in match
+
 Local Capital badge - if same state
 Neighborhood Capital badge - same linkedin location
-
 
 if your linkedin connection joins bank my biz get an email. check 
 

@@ -20,7 +20,7 @@
       </div>  
     </div>
   <% end %>
-<div class="span9">
+<div class="span8 offset1">
   <div class="row">
     <div class='profile-picture-position span2'>
     <% if current_user == @user && !current_user.has_image? %>
@@ -34,20 +34,19 @@
         <% end %>
       </div>
     <% else %>
-      <%= large_profile_picture(@user) %>
-      <div class="pull-right">
+      <div class="pull-left">
         <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
       </div>
+      <%= large_profile_picture(@user) %>
     <% end %>
-    <p class='text-center'>
       <% if @user == current_user %>
+        <br>
         <%= link_to "edit profile", edit_profile_path(@user) %>
       <% elsif current_user.messages_left? %>
-        <a data-toggle="modal" href="#contact-modal" class="btn btn-primary"><i class="icon-lock"></i> Message <%= @user.first_name_with_last_initial %></a>
+        <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-block message-button"><i class="icon-envelope-alt"></i> Contact <%= @user.first_name_with_last_initial %></a>
       <% end %>
-    </p>
     </div>
-    <div class="span6" style="margin-top:20px;">
+    <div class="span5" style="margin-top:20px;">
       <ul>
         <li>
           <p>
@@ -80,6 +79,7 @@
     </div>
   </div>
   <div class="row">
+    <div class="span8">
       <h4>Bio</h4>
       <p class="muted"><%= @user.bio %></p>
       <hr>  
@@ -102,8 +102,11 @@
     <% else %>
       <h4><%= @user.first_name %>'s Recent Posts</h4>
     <% end %>
-    <%= render partial: "posts/post", collection: @posts, as: :post %>
-    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+    <div class="span6">
+      <%= render partial: "posts/post", collection: @posts, as: :post %>
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+    </div>
+    </div>
   </div>
 </div>
 <div class='span3'>

@@ -6,19 +6,19 @@
       <div><%= f.label :name, "Full Name* (private)" %>
       <%= f.text_field :name %></div>
 
-      <div><%= f.label :email, "Email*" %>
+      <div><%= f.label :email, "Email* (private)" %>
       <%= f.email_field :email %></div>
 
       <div><%= f.label :org_name, "Organization* (private)" %>
       <%= f.text_field :org_name %></div>
 
-      <div><%= f.label :position, "Position* (private)" %>
+      <div><%= f.label :position, "Position*" %>
       <%= f.text_field :position %></div>
 
-      <div><%= f.label :password, "Password (min 6 characters)" %>
+      <div><%= f.label :password, "Password* (min 6 characters)" %>
       <%= f.password_field :password %></div>
 
-      <div><%= f.label :password_confirmation, "Confirm Password" %>
+      <div><%= f.label :password_confirmation, "Confirm Password*" %>
       <%= f.password_field :password_confirmation %></div>
 
       <div><%= f.submit "Request Access", class:"btn btn-success btn-large" %></div>

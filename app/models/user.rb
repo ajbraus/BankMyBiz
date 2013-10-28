@@ -179,9 +179,7 @@ class User < ActiveRecord::Base
   end
 
   def finished_profile?
-    if employee_sizes.any? && business_types.any? && industries.any? && revenue_sizes.any? && ages.any? && bio.present?
-      return true
-    end
+    return profile_progress_percent == 100
   end
 
   def profile_questions_completed

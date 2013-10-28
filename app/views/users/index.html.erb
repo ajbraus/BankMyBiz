@@ -6,16 +6,16 @@
         <tr>
           <th><%= Date.today.prev_month(2).strftime("%B") %></th>
           <th><%= Date.today.prev_month.strftime("%B") %></th>
-          <th>Last 2 Weeks</th>
-          <th>Last Week</th>
+          <th>This Month</th>
+          <th>This Week</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><%= User.where('created_at > ?', Date.today.prev_month(2)).count %></td>
-          <td><%= User.where('created_at > ?', Date.today.prev_month).count %></td>
-          <td><%= User.where('created_at > ?', Date.today - 2.week).count %></td>
-          <td><%= User.where('created_at > ?', Date.today - 1.week).count %></td>
+          <td><%= User.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
+          <td><%= User.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count %></td>
+          <td><%= User.where(created_at: Date.today.at_beginning_of_month..Date.today).count %></td>
+          <td><%= User.where(created_at: Date.today.at_beginning_of_week..Date.today).count %></td>
         </tr>
       </tbody>
     </table>

@@ -23,44 +23,46 @@
 <div class="span8 offset1">
   <div class="row">
     <div class='profile-picture-position span2'>
-    <% if current_user == @user && !current_user.has_image? %>
-      <div class="well">
-        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-          <div class="field">
-            <%= f.label :avatar, "Select Profile Picture" %><br />
-            <%= f.file_field :avatar %>
+      <div data-spy="affix" data-offset-top="90" class="span2">
+        <% if current_user == @user && !current_user.has_image? %>
+          <div class="well">
+            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+              <div class="field">
+                <%= f.label :avatar, "Select Profile Picture" %><br />
+                <%= f.file_field :avatar %>
+              </div>
+              <%= f.submit "Upload", class:"btn btn-success" %>
+            <% end %>
           </div>
-          <%= f.submit "Upload", class:"btn btn-success" %>
+        <% else %>
+          <div class="pull-left">
+            <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
+          </div>
+          <%= large_profile_picture(@user) %>
         <% end %>
-      </div>
-    <% else %>
-      <div class="pull-left">
-        <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
-      </div>
-      <%= large_profile_picture(@user) %>
-    <% end %>
-      <div class='text-left large'>
-        <br>
-        <div>
-          <strong>Name:</strong> 
-          <%= @user.first_name_with_last_initial %> 
+          <div class='text-left large'>
+            <br>
+            <div>
+              <strong>Name:</strong> 
+              <%= @user.first_name_with_last_initial %> 
+            </div>
+            <div>
+              <strong>Bucks:</strong> 
+              <span class="muted"> <%= @user.karma %></span>
+            </div>
+            <div>
+              <strong class=''>Position:</strong>
+              <span class="muted"><%= @user.position %></span>
+            </div>
+          </div>
+          <br>
+          <% if @user == current_user %>
+            <%= link_to "edit profile", edit_profile_path(@user) %>
+          <% elsif current_user.messages_left? %>
+            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-block message-button"><i class="icon-envelope-alt"></i> Contact <%= @user.first_name_with_last_initial %></a>
+          <% end %>
         </div>
-        <div>
-          <strong>Bucks:</strong> 
-          <span class="muted"> <%= @user.karma %></span>
-        </div>
-        <div>
-          <strong class=''>Position:</strong>
-          <span class="muted"><%= @user.position %></span>
-        </div>
       </div>
-      <br>
-      <% if @user == current_user %>
-        <%= link_to "edit profile", edit_profile_path(@user) %>
-      <% elsif current_user.messages_left? %>
-        <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-block message-button"><i class="icon-envelope-alt"></i> Contact <%= @user.first_name_with_last_initial %></a>
-      <% end %>
-    </div>
     <div class="span5" style="margin-top:20px;">
       <ul class="large profile-deets">
         <li>

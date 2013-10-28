@@ -1089,7 +1089,7 @@ table td.text-center {
 }
 
 .affix {
-
+  text-align: center;
 }
 
 .affix-top {
@@ -1099,6 +1099,9 @@ table td.text-center {
 .profile-picture-position {
   margin: 20px 0px 0px 0px;
   text-align: center;
+  .affix {
+    top:13px;
+  }
 }
 
 ol

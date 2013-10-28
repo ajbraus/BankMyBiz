@@ -8,7 +8,9 @@
   <% if !current_user.finished_profile? %>
     <h4>Profile Completeness</h4>
     <div class="progress">
-      <div class="bar bar-success" style="width: <%= current_user.profile_progress_percent %>%;"><%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link" %></div>
+      <div class="bar bar-success" style="width: <%= current_user.profile_progress_percent %>%;">
+        <%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link" %>
+      </div>
     </div>
     <%= link_to "#{current_user.profile_elements_left} questions to go", edit_profile_path(current_user) %> <br>to unlock <%= current_user.bank? ? "owner" : "lender" %> matches
   <% else %>
@@ -19,7 +21,7 @@
       <div class=''>For Better Matches</div>
     <% end %>
     <div class="hr-line"></div>
-    <p class="muted"><%= current_user.bank? ? "Owners" : "Lenders" %> Like You</p>
+    <p class="muted"><%= current_user.bank? ? "Lenders" : "Owners" %> Like You</p>
     <%= render partial: "users/user", collection: current_user.todays_peers, as: :user %>
   <% end %>
 <% end %>

@@ -1,8 +1,7 @@
 buy matches
+Only require image and org name to recieve matches
 use HQ's to do matching
 % match - calculate and save in match
-
-add pic to messages
 
 prettier emails
   images

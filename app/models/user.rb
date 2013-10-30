@@ -182,6 +182,10 @@ class User < ActiveRecord::Base
     return profile_progress_percent == 100
   end
 
+  def can_be_matched?
+    return (avatar.present? || pic_url.present?) && profile_progress_percent >= 60
+  end
+
   def profile_questions_completed
     progress = 0
     progress += 1 if employee_sizes.any?
@@ -403,8 +407,8 @@ class User < ActiveRecord::Base
 
   def set_peers_and_matches
     #MATCHES
-    if self.matches.none? || self.matches.last.created_at < 1.week.ago
-      @available_users = User.all.reject { |r| r == self || !r.finished_profile? || r.bank == self.bank || r.in?(self.matched_users) }
+    if self.finished_profile? && (self.matches.none? || self.matches.last.created_at < 1.week.ago)
+      @available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users || !r.can_be_matched?) }
       @matches = @available_users.select do |s| 
         if s.ages.any? && ages.any?
           with_age = (s.age_ids & age_ids).present?
@@ -439,8 +443,8 @@ class User < ActiveRecord::Base
     end
 
     #PEERS
-    if peers.none? ||peers.last.created_at < Date.yesterday
-      @available_users = User.all.reject { |r| r == self || !r.finished_profile? || r.bank != self.bank || r.in?(self.peered_users) }
+    if self.finished_profile? && (peers.none? ||peers.last.created_at < Date.yesterday)
+      @available_users = User.all.reject { |r| r == self || r.bank != self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
       @peers = @available_users.select do |s| 
         if s.ages.any? && ages.any?
           with_age = (s.age_ids & age_ids).present?
@@ -514,6 +518,10 @@ class User < ActiveRecord::Base
         end
       end
     end
+  end
+
+  def potential_matches_count
+    self.
   end
 end
 

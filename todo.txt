@@ -1,14 +1,14 @@
+"You're Recent Match"
 buy matches
 Only require image and org name to recieve matches
 use HQ's to do matching
 % match - calculate and save in match
+display: status
+Local Capital badge - if same state
 
 prettier emails
   images
   margin above logo
-
-Local Capital badge - if same state
-Neighborhood Capital badge - same linkedin location
 
 if your linkedin connection joins bank my biz get an email. check 
 
@@ -29,17 +29,19 @@ invite mo' people
 invite linkedin connections
 reward with free matches & bucks
 
-add photo to email
 only email on weekdays during the day
+
+"I own a healthcare business and my state contracts are growing everyday. I joined BankmyBiz.com, started some conversations on the news feed, and could immediately tell which lenders actually understood my business model by their comments.  I met with a few and, EUREKA, I found the right lender for my business.  We got the funding we were looking for and some additional tools. Thank You BankmyBiz.com! I will be singing your praises to every business owner I know."
 
 user.html 
   picture | Name, State
-            Position
+            Position, state
 
 "Buy more matches"
-"Use a match to access to his/her profile"
 
 import recent tweets into profile
+
+Neighborhood Capital badge - same linkedin location
 
 setup pricing model
   buy matches
@@ -63,11 +65,9 @@ bugs:
 accounts recievable: low/medium/high/very high
 B2B? B2C?
 
-repost - with bmb button
+My banker - my client - track who is clients and bankers of each other
 
-setup email notifications
-  email upon confirm
-  new matches teaser
+repost - with bmb button
 
 lock down access to profiles of the opposite type
   remove people who haven't started a profile from recommended users

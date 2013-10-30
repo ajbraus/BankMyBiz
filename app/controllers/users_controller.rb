@@ -78,5 +78,6 @@ class UsersController < ApplicationController
 
   def matches
     @matches = current_user.matched_users.reverse
+    @potential_matches_count = current_user.potential_matches_count
   end
 end

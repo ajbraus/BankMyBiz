@@ -1,0 +1,65 @@
+<%= form_for @purchase do |f| %>
+  <% if @purchase.errors.any? %>
+    <div class="error_messages">
+      <h2><%= pluralize(@purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
+      <ul>
+      <% @purchase.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2 class='text-center'>Buy Matches</h2>
+  <div class="span4 offset2">
+    <div class="well">
+      <h4>New Matches</h4>
+      <div class="small muted">3 New Matches</div>
+      <div class="price"><strong>$<%= current_user.bank? ? "29.99" : "74.99" %></strong></div>
+      <div class="save"></div>
+      <h4>Total: <strong class='muted'>$<%= current_user.bank? ? "29.99" : "74.99" %></strong></h4>
+    </div>
+    <div class="well">
+      <h5>Get access to . . .</h5>
+      <div class="buy-matches row">
+        <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+          <% @first_three_matches.each do |m| %>
+            <div class="span1">
+              <%= profile_picture(m) %>
+              <%= m.first_name_with_last_initial %> | <%= current_user.percentage_match(m) %>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="span1">
+            <i class="icon-plus"></i>
+          </div>
+          <div class="span1">
+            <i class="icon-plus"></i>
+          </div>
+          <div class="span1">
+            <i class="icon-plus"></i>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="span5">
+    <div id="stripe_error" class="alert alert-error" style="display:none"></div>
+    <div class="well clearfix">
+        <%= label_tag :name, "Name on Card" %>
+        <%= text_field_tag :name, nil, name: nil, class:"span4" %>
+        <p class='text-center'>
+          <%= image_tag "credit_card_logos_homepage.png" %>
+        </p>
+        <%= label_tag :card_number, "Credit Card Number " %>
+        <%= text_field_tag :card_number, nil, name: nil, class:"span4" %>
+        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+        <%= text_field_tag :card_code, nil, name: nil, class:"input-mini" %>
+        <%= label_tag :card_month, "Card Expiration" %>
+        <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'input-medium'}%>
+        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'input-small'} %>
+        <%= f.hidden_field :match_count, value:3 %>
+        <%= hidden_field_tag :stripe_card_token %>
+      <div class="actions text-right"><%= f.submit "Confirm Purchase", class:"btn btn-success btn-large" %></div>
+    </div>
+  </div>
+<% end %>

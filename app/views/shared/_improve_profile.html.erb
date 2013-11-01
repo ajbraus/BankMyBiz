@@ -14,7 +14,7 @@
     </div>
     <%= link_to "#{current_user.profile_elements_left} questions to go", edit_profile_path(current_user) %> <br>to unlock <%= current_user.bank? ? "owner" : "lender" %> matches
   <% else %>
-    <p class="muted">Today's <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
+    <p class="muted">Recent <%= current_user.bank? ? "Owner" : "Lender" %> Match</p>
     <%= render partial: "users/user", collection: current_user.todays_matches, as: :user %>
     <% unless current_user.finished_profile? %>
       <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>

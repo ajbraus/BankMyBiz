@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
   has_karma(:comments)
 
   has_many :subscriptions
+  has_many :purchases
+  has_many :cards
 
   has_many :posts, dependent: :destroy
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy
@@ -173,9 +175,7 @@ class User < ActiveRecord::Base
   end
 
   def started_profile?
-    if employee_sizes.any? || business_types.any? || industries.any? || revenue_sizes.any? || ages.any?
-      return true
-    end
+    return profile_progress_percent > 0
   end
 
   def finished_profile?
@@ -214,6 +214,42 @@ class User < ActiveRecord::Base
 
   def profile_elements_left
     total_profile_elements - profile_questions_completed
+  end
+
+  def local_capital?(other_user)
+    return self.hq_state == other_user.hq_state
+  end
+
+  def percentage_match(other_user)
+    percentage_match = 0
+
+    if other_user.ages.any? && ages.any?
+      with_age = (other_user.age_ids & age_ids).present?
+    end
+    if other_user.industries && industries.any?
+      with_industry = (other_user.industry_ids & industry_ids).present?
+    end
+    if other_user.locations.any? && locations.any?
+      with_location = (other_user.location_ids & location_ids).present?
+    end
+    if other_user.employee_sizes.any? && employee_sizes.any?
+      with_employee_size = (other_user.employee_size_ids & employee_size_ids).present?
+    end
+    if other_user.revenue_sizes.any? && revenue_sizes.any?
+      with_revenue_size = (other_user.revenue_size_ids & revenue_size_ids).present?
+    end
+    if other_user.business_types.any? && business_types.any?
+      with_business_type = (other_user.business_type_ids & business_type_ids).present?
+    end
+
+    percentage_match += 1 if with_age == true
+    percentage_match += 1 if with_industry == true
+    percentage_match += 1 if with_location == true
+    percentage_match += 1 if with_employee_size == true
+    percentage_match += 1 if with_revenue_size == true
+    percentage_match += 1 if with_business_type == true
+
+    return percentage_match * 100 / 6
   end
 
   def first_name
@@ -408,7 +444,7 @@ class User < ActiveRecord::Base
   def set_peers_and_matches
     #MATCHES
     if self.finished_profile? && (self.matches.none? || self.matches.last.created_at < 1.week.ago)
-      @available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users || !r.can_be_matched?) }
+      @available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users) || !r.can_be_matched? }
       @matches = @available_users.select do |s| 
         if s.ages.any? && ages.any?
           with_age = (s.age_ids & age_ids).present?
@@ -520,8 +556,36 @@ class User < ActiveRecord::Base
     end
   end
 
-  def potential_matches_count
-    self.
+  def potential_matches
+    available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
+    matches = available_users.select do |s|
+      if s.ages.any? && ages.any?
+        with_age = (s.age_ids & age_ids).present?
+      end
+      if s.industries && industries.any?
+        with_industry = (s.industry_ids & industry_ids).present?
+      end
+      if s.locations.any? && locations.any?
+        with_location = (s.location_ids & location_ids).present?
+      end
+      if s.employee_sizes.any? && employee_sizes.any?
+        with_employee_size = (s.employee_size_ids & employee_size_ids).present?
+      end
+      if s.revenue_sizes.any? && revenue_sizes.any?
+        with_revenue_size = (s.revenue_size_ids & revenue_size_ids).present?
+      end
+      if s.business_types.any? && business_types.any?
+        with_business_type = (s.business_type_ids & business_type_ids).present?
+      end
+
+      with_age == true ||
+      with_industry == true ||
+      with_location == true ||
+      with_employee_size == true ||
+      with_revenue_size == true ||
+      with_business_type == true
+    end
+    return matches
   end
 end
 

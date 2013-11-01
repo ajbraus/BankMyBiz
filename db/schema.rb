@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131026182906) do
+ActiveRecord::Schema.define(:version => 20131030180651) do
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -68,6 +68,17 @@ ActiveRecord::Schema.define(:version => 20131026182906) do
 
   add_index "business_types_users", ["business_type_id", "user_id"], :name => "index_business_types_users_on_business_type_id_and_user_id"
   add_index "business_types_users", ["user_id", "business_type_id"], :name => "index_business_types_users_on_user_id_and_business_type_id"
+
+  create_table "cards", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "stripe_card_token"
+    t.string   "card_type"
+    t.string   "last_four"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "cards", ["user_id"], :name => "index_cards_on_user_id"
 
   create_table "comments", :force => true do |t|
     t.string   "content"
@@ -224,6 +235,17 @@ ActiveRecord::Schema.define(:version => 20131026182906) do
 
   add_index "posts_tags", ["post_id", "tag_id"], :name => "index_posts_tags_on_post_id_and_tag_id"
   add_index "posts_tags", ["tag_id", "post_id"], :name => "index_posts_tags_on_tag_id_and_post_id"
+
+  create_table "purchases", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "match_count"
+    t.integer  "price"
+    t.string   "coupon_code"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "purchases", ["user_id"], :name => "index_purchases_on_user_id"
 
   create_table "relationships", :force => true do |t|
     t.integer  "follower_id"

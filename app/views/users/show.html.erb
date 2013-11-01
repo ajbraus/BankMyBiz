@@ -20,10 +20,10 @@
       </div>  
     </div>
   <% end %>
-<div class="span8 offset1">
+<div class="span9">
   <div class="row">
-    <div class='profile-picture-position span2'>
-      <div data-spy="affix" data-offset-top="90" class="span2">
+    <div class='profile-picture-position span3'>
+      <div data-spy="affix" data-offset-top="90" class="span3">
         <% if current_user == @user && !current_user.has_image? %>
           <div class="well">
             <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -51,6 +51,10 @@
               <span class="muted"><%= @user.position %></span>
             </div>
             <div>
+              <strong class=''>Status:</strong>
+              <span class="muted"><%= @user.status %></span>
+            </div>
+            <div>
               <strong>Bucks:</strong> 
               <span class="muted"> <%= @user.karma %></span>
             </div>
@@ -59,8 +63,21 @@
           <% if @user == current_user %>
             <%= link_to "edit profile", edit_profile_path(@user) %>
           <% elsif current_user.messages_left? %>
-            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-block message-button"><i class="icon-envelope-alt"></i> Contact <%= @user.first_name_with_last_initial %></a>
+            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large message-button"><i class="icon-envelope-alt"></i> Contact <%= @user.first_name_with_last_initial %></a>
           <% end %>
+          <hr>
+          <div class="border-right grey-background">
+            <% if @user.posts.any? %>
+              <div class="tag-cloud">
+                <p class="muted"><%= @user.first_name_with_last_initial %>'s Tags</p>
+                <% @user.posts.each do |p| %>
+                  <% p.tags.each do |t| %>
+                    <%= link_to "#{t.name}", post_path(p), class:"tag clickable-tag" %>
+                  <% end %>
+                <% end %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     <div class="span5" style="margin-top:20px;">
@@ -93,36 +110,32 @@
           <strong class=''>Does Business in:</strong>
           <span class="muted"><%= @user.locations.map(&:name).join(", ") %></span>
         </li>
+          <h4>Bio</h4>
+          <p class="muted"><%= @user.bio %></p>
+          <hr>  
+          <h4>Goals</h4>
+          <p class="muted"><%= @user.goals %></p>
+          <hr>  
+        <% if @user == current_user %>
+          <h4>Your Activity <span class="muted small">(private)</span></h4>
+          <% @activities.each do |activity| %>
+            <div class="activity">
+            <%= link_to activity.owner.name, activity.owner if activity.owner %>
+            <%= render_activity activity %>
+            </div>
+          <% end %>
+          <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
+        <% end %>
+        <% if @user == current_user %>
+          <h4>Your Posts</h4>
+        <% else %>
+          <h4><%= @user.first_name %>'s Recent Posts</h4>
+        <% end %>
+          <div class="span5">
+            <%= render partial: "posts/post", collection: @posts, as: :post %>
+            <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+          </div>
       </ul>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span6 offset2">
-      <h4>Bio</h4>
-      <p class="muted"><%= @user.bio %></p>
-      <hr>  
-      <h4>Goals</h4>
-      <p class="muted"><%= @user.goals %></p>
-      <hr>  
-    <% if @user == current_user %>
-      <h4>Your Activity <span class="muted small">(private)</span></h4>
-      <% @activities.each do |activity| %>
-        <div class="activity">
-        <%= link_to activity.owner.name, activity.owner if activity.owner %>
-        <%= render_activity activity %>
-        </div>
-      <% end %>
-      <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
-    <% end %>
-    <% if @user == current_user %>
-      <h4>Your Posts</h4>
-    <% else %>
-      <h4><%= @user.first_name %>'s Recent Posts</h4>
-    <% end %>
-      <div class="span5">
-        <%= render partial: "posts/post", collection: @posts, as: :post %>
-        <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-      </div>
     </div>
   </div>
 </div>

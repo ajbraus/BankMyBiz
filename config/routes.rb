@@ -16,12 +16,13 @@ BankMyBiz::Application.routes.draw do
     end
   end
 
-  resources :subscriptions
+  resources :subscriptions, only: [:new, :create]
+  resources :purchases, only: [:new, :create]
   resources :likes, only: [:create, :destroy]
 
   match '/auth/:provider/callback' => 'authentications#create'
 
-  match '/matches', to: 'users#matches'
+  resources :matches, only: [:index]
 
   match 'user/:id/bank', to: "users#set_bank", as: 'set_bank'
   match 'user/:id/biz', to: "users#set_business", as: 'set_business'

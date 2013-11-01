@@ -1,4 +1,14 @@
-<div class="span9">
+<% content_for :title, "Welcome back #{current_user.first_name}" %>
+<div class="span3">       
+  <div class="border-right">
+    <%= render 'shared/trending_tags' %>
+    <div class="hr-line"></div>
+    <%= render 'shared/messages' %>
+    <div class="hr-line"></div>
+    <%= render 'shared/following' %>
+  </div>
+</div>
+<div class="span6">
   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
       <li class="active"><a href="#tab1" data-toggle="tab">Inbox (<%= current_user.unread_messages.count %>)</a></li>

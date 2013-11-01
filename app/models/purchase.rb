@@ -1,12 +1,9 @@
-class Subscription < ActiveRecord::Base
-  default_scope order('expires_on asc')
+class Purchase < ActiveRecord::Base
   belongs_to :user
-  validates_presence_of :user_id, :plan_id, :stripe_card_token, :expires_on
-  
-  attr_accessible :plan_id, :stripe_card_token
-  
-  attr_accessor :stripe_card_token
-  
+  attr_accessible :coupon_code, :match_count, :price
+
+  validates :user_id, :match_count, :price, presence: true
+
   def save_with_payment
     if valid?
       customer = Stripe::Customer.create(description:user.email, plan: plan_id, card: stripe_card_token)

@@ -1,14 +1,26 @@
-"You're Recent Match"
 buy matches
-Only require image and org name to recieve matches
+
+  remove column for stripe_card_token from subscription
+  on new subscription or new purchase screen display users' cards 
+  pass in card_id param - 
+  if present use that stripe_card_token
+  else create new card and use that
+
+  only buy matches that are actively looking or interested
+
+  if status is "just learning" then don't give them matches or show their matches
+
 use HQ's to do matching
-% match - calculate and save in match
-display: status
+If "Entire US" match with any other location
+Make Entire US exclusive w JS
+
 Local Capital badge - if same state
 
 prettier emails
   images
   margin above logo
+
+SEO titles & metatags
 
 if your linkedin connection joins bank my biz get an email. check 
 
@@ -444,3 +456,11 @@ DONE make progress bar or profile completion
 DONE add image to edit profile
 
 DONE View another person's or a businesses profile - see them in the center
+
+DONE "You're Recent Match"
+DONE Only require image and org name to recieve matches
+
+
+DONE % match - calculate and save in match
+
+DONE display: status

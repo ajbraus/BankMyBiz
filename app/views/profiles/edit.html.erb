@@ -1,5 +1,15 @@
 <%= form_for @user, url: update_profile_path(@user) do |f| %>
     <div class="row">
+      <% if !@user.finished_profile? %>
+        <div class="span8 offset2 alert profile-message">
+          <p>
+            Your profile is <strong><%= @user.profile_progress_percent %>%</strong> Complete.
+          </p>
+          <p>
+            Complete <strong><%= current_user.profile_elements_left %> More Questions</strong> to Start Receiving Matches.
+          </p>
+        </div>
+      <% end %>
       <div class="span9 offset2">
         <h4>Your Profile</h4>
       </div>

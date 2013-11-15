@@ -31,10 +31,10 @@ class PostsController < ApplicationController
     is_bank = !current_user.bank?
     if params[:search].present?
       #@posts = Post.search(params[:search], with: { bank: is_bank }, :page => params[:page], :per_page => 20)
-      @posts = Post.search(params[:search], :page => params[:page], :per_page => 14)
+      @posts = Post.search(params[:search], :page => params[:page], :per_page => 10)
     else
       #@posts = Post.where(bank: is_bank).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
-      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 14)
+      @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
     end
     
     @new_post = Post.new

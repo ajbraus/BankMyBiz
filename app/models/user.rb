@@ -520,24 +520,24 @@ class User < ActiveRecord::Base
     end
   end
 
-  def add_to_mc_newsletter
-    if Rails.env.production?
-      gb = Gibbon::API.new
-      list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
-      groupings_id = gb.lists.interest_groupings(id: list_id)[0]["id"]
+  # def add_to_mc_newsletter
+  #   if Rails.env.production?
+  #     gb = Gibbon::API.new
+  #     list_id = gb.lists.list({:filters => {:list_name => "BMB Users"}})["data"][0]["id"]
+  #     groupings_id = gb.lists.interest_groupings(id: list_id)[0]["id"]
 
-      gb.lists.subscribe({:id => list_id,
-                           :email => {:email => self.email},
-                           :merge_vars => {:FNAME => self.first_name,
-                                           :LNAME => self.last_name,
-                                           :groupings => [{:id => "#{groupings_id}",
-                                                           :groups => ["Newsletter"]
-                                                         }]
-                                          },
-                           :double_optin => false,
-                           :send_welcome => false,
-                           :update_existing => true})
-    end
-  end
+  #     gb.lists.subscribe({:id => list_id,
+  #                          :email => {:email => self.email},
+  #                          :merge_vars => {:FNAME => self.first_name,
+  #                                          :LNAME => self.last_name,
+  #                                          :groupings => [{:id => "#{groupings_id}",
+  #                                                          :groups => ["Newsletter"]
+  #                                                        }]
+  #                                         },
+  #                          :double_optin => false,
+  #                          :send_welcome => false,
+  #                          :update_existing => true})
+  #   end
+  # end
 end
 

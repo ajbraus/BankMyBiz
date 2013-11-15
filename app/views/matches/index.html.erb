@@ -1,59 +1,59 @@
 <% content_for :title, "Welcome back #{current_user.first_name}" %>
-<div class="span3">       
-  <div class="border-right">
-    <%= render 'shared/trending_tags' %>
-    <div class="hr-line"></div>
-    <%= render 'shared/messages' %>
-    <div class="hr-line"></div>
-    <%= render 'shared/following' %>
-  </div>
-</div>
+
+<%= render 'shared/left_sidebar' %>
+
 <div class="span6 clearfix">
-  <div class="buy-matches row">
-    <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-      <% @first_three_matches.each do |m| %>
-        <div class="span1">
-          <%= profile_picture(m) %>
-          <%= m.first_name_with_last_initial %> | <%= current_user.percentage_match(m) %>
-        </div>
-      <% end %>
-    <% else %>
-      <div class="span1">
-        <i class="icon-plus"></i>
-      </div>
-      <div class="span1">
-        <i class="icon-plus"></i>
-      </div>
-      <div class="span1">
-        <i class="icon-plus"></i>
-      </div>
-    <% end %>
-    <div class="span3">
-      <h4>Accelerate Your Search</h4>
-      <div class="muted">
-        1 Free Match A Week <br>
-        or 3 Matches / $<%= current_user.bank? ? "29.99" : "74.99" %>
-      </div>
-      <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-        <%= link_to "Buy Matches", new_purchase_path %>
+  <div class="buy-matches gray-border-left well">
+    <div class="clearfix">
+      <% if !current_user.finished_profile? %>
+        <h4><%= link_to "Complete your Profile", edit_profile_path(current_user) %> to Start Receiving Matches</h4>
+
       <% else %>
-        Not Enough Matches<br>
-        Try <%= link_to "Broadening Your Profile", edit_profile_path(current_user) %>
+        <div class="muted pull-left">You Receive 1 Free Match A Week</div>
+        <div class="muted pull-right">
+          <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+            <% if false %>
+            <div class='text-right'><%= link_to "Add 3 Matches / $ #{current_user.bank? ? "74.99" : "24.99"}", new_purchase_path, class:"btn btn-primary" %> </div>
+            <% end %>
+          <% end %>
+        </div>
+        <section>
+          <h4>Accelerate Your Search <span class="muted">(Coming Soon)</span></h4>
+          <div class="clearfix">
+            <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+              <% @first_three_matches.each do |m| %>
+                <div class="pull-left text-center" style="width:33%;">
+                  <div><%= profile_picture(m) %></div>
+                  <div><%= m.first_name_with_last_initial %></div>
+                  <div><%= m.position %></div>
+                  <div><%= current_user.percentage_match(m) %>% match</div>
+                </div>
+              <% end %>
+            <% else %>
+              <div class="span1">
+                <i class="icon-plus"></i>
+              </div>
+              <div class="span1">
+                <i class="icon-plus"></i>
+              </div>
+              <div class="span1">
+                <i class="icon-plus"></i>
+              </div>
+            <% end %>
+          </div>
+          <section class="text-right muted">
+            Add 3 Matches for $<%= current_user.bank? ? "74.99" : "24.99" %> <br>
+            <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+              You have <%= @potential_matches_count %> Potential Matches<br>
+            <% else %>
+              Not Enough Matches Try <%= link_to "Broadening Your Profile", edit_profile_path(current_user) %>
+            <% end %>
+          </section>
+        </section>
       <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="span3 muted text-center">
-      <%= @potential_matches_count %> Potential Matches 
     </div>
   </div>
     <%= render partial: 'match', collection: @matches, as: 'match' %>
 </div>
 
-<div class="span3">  
-  <div class="border-left">
-    <%= render 'shared/improve_profile' %>
-    <div class="hr-line"></div>
-    <%= render 'shared/profile_views' %>
-  </div>
-</div>
+<%= render 'shared/right_sidebar' %>

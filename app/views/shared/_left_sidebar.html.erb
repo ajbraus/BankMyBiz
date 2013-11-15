@@ -1,0 +1,16 @@
+<div class="span3">
+  <% if user_signed_in? %>
+    <section class="matches gray-border-right">
+      The <strong>BankMyBiz Network</strong> matches you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
+    </section>
+  <% end %>
+  <section class="gray-border-right">
+    <%= render 'shared/trending_tags' %>
+  </section>
+  <section class="gray-border-right">
+    <%= render 'shared/messages' %>
+  </section>    
+  <section class="gray-border-right">
+    <%= render 'shared/following' %>
+  </section>
+</div>

@@ -1,14 +1,8 @@
 <% content_for :title, "Welcome back #{current_user.first_name}" %>
-<div class="span3">       
-  <div class="border-right">
-    <%= render 'shared/trending_tags' %>
-    <div class="hr-line"></div>
-    <%= render 'shared/messages' %>
-    <div class="hr-line"></div>
-    <%= render 'shared/following' %>
-  </div>
-</div>
-<div class="span6">
+
+<%= render 'shared/left_sidebar' %>
+
+<section class="span6">
   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
       <li class="active"><a href="#tab1" data-toggle="tab">Inbox (<%= current_user.unread_messages.count %>)</a></li>
@@ -65,11 +59,6 @@
       </div>
     </div>
   </div>
-</div>
-<div class="span3">
-  <div class="border-left grey-background">
-    <%= render 'shared/improve_profile' %>
-    <hr>
-    <%= render 'shared/profile_views' %>
-  </div>
-</div>
+</section>
+
+<%= render 'shared/right_sidebar' %>

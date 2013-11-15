@@ -140,10 +140,16 @@
       <h4>Where You Do Business</h4>
       <div class="wrapper">
       <ol>
-      <% for location in Location.find(:all) %>
+        <li>
+          <label class="pull-left wiggle-room" id="selectEntireUS">
+            <%= check_box_tag "user[location_ids][]", Location.first.id, @user.locations.include?(Location.first) %>
+            <%= Location.first.name %>
+          </label>
+        </li>        
+      <% for location in Location.all[1..-1] %>
         <li>
           <label class="pull-left wiggle-room">
-            <%= check_box_tag "user[location_ids][]", location.id, @user.locations.include?(location) %>
+            <%= check_box_tag "user[location_ids][]", location.id, @user.locations.include?(location), class:'state' %>
             <%= location.name %>
           </label>
         </li>

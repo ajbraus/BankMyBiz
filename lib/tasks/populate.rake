@@ -4,21 +4,41 @@ namespace :db do
     require 'populator'
     require 'faker'
     
-    [User, Post, Comment, Tag, Message, Authentication].each(&:delete_all)
+    [User, Post, Comment, Tag, Message, Authentication, Match, Peer, Relationship, Vote].each(&:delete_all)
     
-    User.populate 20 do |user|
+    User.populate 50 do |user|
       user.name    = Faker::Name.name
       user.email   = Faker::Internet.email
       user.encrypted_password = "password"
-      user.bio = ""
+      user.bio = Faker::Lorem.paragraph
+      user.goals = Faker::Lorem.paragraph
+      user.org_name = Populator.words(1..3).capitalize
+      user.position = Populator.words(1..2).capitalize
       user.bank = [true,false]
-      user.confirmed_at = [Time.now, nil]
+      user.confirmed_at = [Time.now]
+      user.handle = "twitter"
+      user.status = "Actively Looking"
+      user.hq_state = "WI"
+      user.pic_url = "http://m.c.lnkd.licdn.com/mpr/mprx/0_ZPIPybiaZP0CyQzaVK4hyL6T4-EfyQLasN02yXkYFAY0_G-mqvRx-krK9sor0TXGMKdSP_s-SNno"
     end
     User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", bank: false, confirmed_at: Time.now)
     User.create(name:"Test Bank", email:"test@bank.com", password:"password", bank: true, confirmed_at: Time.now)
 
     User.all.each do |user|
-      Post.populate 10..30 do |post|
+      user.industries << Industry.first(2)
+      user.locations << Location.first(2)
+      if user.bank?
+        num = 3
+      else 
+        num = 1
+      end
+      user.employee_sizes << EmployeeSize.first(num)
+      user.business_types << BusinessType.first(num)
+      user.ages << Age.first(num)
+      user.revenue_sizes << RevenueSize.first(num)
+      user.locations << Location.first(num)
+
+      Post.populate 2..5 do |post|
         post.content = Populator.words(7..18).capitalize
         post.user_id = user.id
         post.created_at = 4.months.ago..Time.now
@@ -48,17 +68,6 @@ namespace :db do
     followed_users.each { |followed| user.follow!(followed) }
     followers.each      { |follower| follower.follow!(user) }
 
-    #rake ts:index
-    
-    # Person.populate 100 do |person|
-    #   person.name    = Faker::Name.name
-    #   person.company = Faker::Company.name
-    #   person.email   = Faker::Internet.email
-    #   person.phone   = Faker::PhoneNumber.phone_number
-    #   person.street  = Faker::Address.street_address
-    #   person.city    = Faker::Address.city
-    #   person.state   = Faker::Address.us_state_abbr
-    #   person.zip     = Faker::Address.zip_code
-    # end
+    User.set_peers_and_matches
   end
 end

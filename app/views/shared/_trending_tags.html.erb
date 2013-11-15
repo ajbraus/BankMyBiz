@@ -1,9 +1,3 @@
-<% if user_signed_in? %>
-  <section class="matches">
-    The <strong>BankMyBiz Network</strong> matches you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
-  </section>
-<% end %>
-<div class="hr-line"></div>
 <div class="tag-cloud">
   <p class="muted">Trending Tags</p>
   <% Post.last(4).each do |p| %>

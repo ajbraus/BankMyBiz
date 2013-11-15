@@ -1,7 +1,10 @@
-buy matches
+calls to action to connect.
 
+security verifications and qualifications
+
+buy matches
   remove column for stripe_card_token from subscription
-  on new subscription or new purchase screen display users' cards 
+  on new subscription or new purchase screen display users' cards with add new card and destroy card
   pass in card_id param - 
   if present use that stripe_card_token
   else create new card and use that
@@ -10,46 +13,34 @@ buy matches
 
   if status is "just learning" then don't give them matches or show their matches
 
-use HQ's to do matching
-If "Entire US" match with any other location
-Make Entire US exclusive w JS
-
-Local Capital badge - if same state
+Mark profile as private, and posts as public.
 
 prettier emails
   images
   margin above logo
 
-SEO titles & metatags
+if your linkedin connection joins bank my biz get an email
 
-if your linkedin connection joins bank my biz get an email. check 
-
-fix homepage: 
+fix homepage:
   Press section
     InBusiness M-List
   More text
 
-if your follower posts to the newsfeed - email 
+  "I own a healthcare business and my state contracts are growing everyday. I joined BankmyBiz.com, started some conversations on the news feed, and could immediately tell which lenders actually understood my business model by their comments.  I met with a few and, EUREKA, I found the right lender for my business.  We got the funding we were looking for and some additional tools. Thank You BankmyBiz.com! I will be singing your praises to every business owner I know."
 
-plug in keywords - meta info & descriptions 
+if your follower posts to the newsfeed - email 
 
 set password after authenticate through linkedin
 
 send created at with post and comment, send user position and HQ state with post
+
+don't have nil columns in database at all - will break API
 
 invite mo' people
 invite linkedin connections
 reward with free matches & bucks
 
 only email on weekdays during the day
-
-"I own a healthcare business and my state contracts are growing everyday. I joined BankmyBiz.com, started some conversations on the news feed, and could immediately tell which lenders actually understood my business model by their comments.  I met with a few and, EUREKA, I found the right lender for my business.  We got the funding we were looking for and some additional tools. Thank You BankmyBiz.com! I will be singing your praises to every business owner I know."
-
-user.html 
-  picture | Name, State
-            Position, state
-
-"Buy more matches"
 
 import recent tweets into profile
 
@@ -464,3 +455,9 @@ DONE Only require image and org name to recieve matches
 DONE % match - calculate and save in match
 
 DONE display: status
+
+use HQ's to do matching - 
+  DONE If look up location by hq_state - if that location.id is in location_ids  
+  DONE or If "Entire US" match with any other location
+  DONE Make Entire US exclusive w JS
+

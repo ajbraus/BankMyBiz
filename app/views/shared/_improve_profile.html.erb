@@ -1,4 +1,4 @@
-<section class="text-center">
+<div class="text-center">
 <% if current_user.bank == nil %>
     <p>Which one best describes you?</p>
     <%= link_to "Bank", set_bank_path(current_user), class:"btn btn-warning btn-large" %>
@@ -25,4 +25,4 @@
     <%= render partial: "users/user", collection: current_user.todays_peers, as: :user %>
   <% end %>
 <% end %>
-</section>
+</div>

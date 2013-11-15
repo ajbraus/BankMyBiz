@@ -14,31 +14,33 @@
     <div class="well">
       <h4>New Matches</h4>
       <div class="small muted">3 New Matches</div>
-      <div class="price"><strong>$<%= current_user.bank? ? "29.99" : "74.99" %></strong></div>
+      <div class="price"><strong>$<%= current_user.bank? ? "74.99" : "24.99" %></strong></div>
       <div class="save"></div>
-      <h4>Total: <strong class='muted'>$<%= current_user.bank? ? "29.99" : "74.99" %></strong></h4>
+      <h4>Total: <strong class='muted'>$<%= current_user.bank? ? "74.99" : "24.99" %></strong></h4>
     </div>
     <div class="well">
       <h5>Get access to . . .</h5>
       <div class="buy-matches row">
         <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-          <% @first_three_matches.each do |m| %>
-            <div class="span1">
-              <%= profile_picture(m) %>
-              <%= m.first_name_with_last_initial %> | <%= current_user.percentage_match(m) %>
-            </div>
-          <% end %>
-        <% else %>
-          <div class="span1">
-            <i class="icon-plus"></i>
-          </div>
-          <div class="span1">
-            <i class="icon-plus"></i>
-          </div>
-          <div class="span1">
-            <i class="icon-plus"></i>
+        <% @first_three_matches.each do |m| %>
+          <div class="pull-left text-center" style="width:33%;">
+            <div><%= profile_picture(m) %></div>
+            <div><%= m.first_name_with_last_initial %></div>
+            <div><%= m.position %></div>
+            <div><%= current_user.percentage_match(m) %>% match</div>
           </div>
         <% end %>
+      <% else %>
+        <div class="span1">
+          <i class="icon-plus"></i>
+        </div>
+        <div class="span1">
+          <i class="icon-plus"></i>
+        </div>
+        <div class="span1">
+          <i class="icon-plus"></i>
+        </div>
+      <% end %>
       </div>
     </div>
   </div>

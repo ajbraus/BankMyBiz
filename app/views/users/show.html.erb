@@ -22,7 +22,7 @@
   <% end %>
 <div class="span9">
   <div class="row">
-    <div class='profile-picture-position span3'>
+    <section class='profile-picture-position span3'>
       <div data-spy="affix" data-offset-top="90" class="span3">
         <% if current_user == @user && !current_user.has_image? %>
           <div class="well">
@@ -63,10 +63,9 @@
           <% if @user == current_user %>
             <%= link_to "edit profile", edit_profile_path(@user) %>
           <% elsif current_user.messages_left? %>
-            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large message-button"><i class="icon-envelope-alt"></i> Contact <%= @user.first_name_with_last_initial %></a>
+            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large message-button"><i class="icon-envelope-alt"></i> Contact</a>
           <% end %>
-          <hr>
-          <div class="border-right grey-background">
+          <div class="well gray-border-left text-left">
             <% if @user.posts.any? %>
               <div class="tag-cloud">
                 <p class="muted"><%= @user.first_name_with_last_initial %>'s Tags</p>
@@ -79,8 +78,8 @@
             <% end %>
           </div>
         </div>
-      </div>
-    <div class="span5" style="margin-top:20px;">
+      </section>
+    <div class="span6">
       <ul class="large profile-deets">
         <li>
           <strong class=''><%= @user.bank? ? "Bank" : "Business" %>:</strong>
@@ -139,10 +138,5 @@
     </div>
   </div>
 </div>
-<div class='span3'>
-  <div class="border-left grey-background">
-    <%= render 'shared/improve_profile' %>
-    <hr>
-    <%= render 'shared/profile_views' %>
-  </div>
-</div>
+
+<%= render 'shared/right_sidebar' %>

@@ -208,6 +208,8 @@ margin: 2px;
 
 .well {
 	padding:17px;
+  border:1px solid #eee;
+  background: #FAFAFA;
 }
 
 .margin-bottom {
@@ -360,8 +362,6 @@ hr {
 
 .medium-thumbnail {
   height:50px;
-  position: relative;
-  bottom:5px;
 }
 
 .large-thumbnail {
@@ -475,6 +475,7 @@ h3.matches {
 }
 
 .comment-form {
+  clear:both;
   margin-top:15px;
   textarea {
     width: 96%;
@@ -701,7 +702,7 @@ height: 90px;
 
 .post-profile-pic {
   position: relative;
-  top: 8px;
+  bottom:3px;
   right: 6px;
   img {
     margin:3px;
@@ -750,16 +751,18 @@ height: 90px;
   bottom:8px;
 }
 
-.border-right {
-  border-right:1px solid #eee;
+.gray-border-right {
+  border:1px solid #eee;
   padding-left: 10px;
   background: #FAFAFA;
+  margin-top:15px;
 }
 
-.border-left {
-  border-left:1px solid #eee;
+.gray-border-left {
+  border:1px solid #eee;
   padding-right: 10px;
   background: #FAFAFA;
+  margin-top:15px;
 }
 
 .span3 {

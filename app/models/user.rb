@@ -61,8 +61,6 @@ class User < ActiveRecord::Base
   has_many :peers, foreign_key: "peer_id", dependent: :destroy
   has_many :peered_users, through: :peers, source: :user
 
-  has_many :likes
-
   has_and_belongs_to_many :employee_sizes
   has_and_belongs_to_many :industries
   has_and_belongs_to_many :business_types
@@ -229,8 +227,14 @@ class User < ActiveRecord::Base
     if other_user.industries && industries.any?
       with_industry = (other_user.industry_ids & industry_ids).present?
     end
-    if other_user.locations.any? && locations.any?
-      with_location = (other_user.location_ids & location_ids).present?
+    if bank? #IF MATCHING WITH BANKS PIC A BUSINESS WITH A HQ IN A STATE THE BANK DOES BUSINESS
+      if other_user.locations.any? && hq_state.present?
+        with_location = true if locations.include?(Location.first) || other_user.hq_state.in?(locations)
+      end
+    else #IF MATCHING A BUSINESS, CHOOSE A BANK THAT DOES BUSINESS IN ANY STATE THEY DO BUSINESS
+      if other_user.hq_state.present? && locations.present?
+        with_location = true if other_user.locations.include?(Location.first) || hq_state.in?(other_user.locations)
+      end
     end
     if other_user.employee_sizes.any? && employee_sizes.any?
       with_employee_size = (other_user.employee_size_ids & employee_size_ids).present?
@@ -311,6 +315,117 @@ class User < ActiveRecord::Base
     end
     @users.each do |u|
       Notifier.delay.profile_reminder(u)
+    end
+  end
+
+  def todays_matches
+    if matched_users.last
+      return matched_users.last(1)
+    else
+      return User.find_by_email("team@bankmybiz.com")
+    end 
+  end
+
+  def todays_peers
+    if peered_users.last
+      return peered_users.last(3)
+    else
+      return User.find_by_email("team@bankmybiz.com")
+    end 
+  end
+
+  def potential_matches
+    available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users) || !r.can_be_matched? }
+    matches = available_users.select do |s|
+      percentage_match(s) >= 40
+    end
+    return matches
+  end
+
+  def set_peers_and_matches
+    #MATCHES
+    if self.finished_profile? && (self.matches.none? || self.matches.last.created_at < 1.week.ago)
+      matched_users << potential_matches.first if potential_matches.any?
+      if self.receive_match_messages?
+        Notifier.delay.new_match(self, matched_users.last)
+      end
+    end
+
+    #PEERS
+    if self.finished_profile? && (peers.none? ||peers.last.created_at < Date.yesterday)
+      @available_users = User.all.reject { |r| r == self || r.bank != self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
+      @peers = @available_users.select do |s| 
+        if s.ages.any? && ages.any?
+          with_age = (s.age_ids & age_ids).present?
+        end
+        if s.industries && industries.any?
+          with_industry = (s.industry_ids & industry_ids).present?
+        end
+        if s.locations.any? && locations.any?
+          with_location = s.hq_state == hq_state
+        end
+        if s.employee_sizes.any? && employee_sizes.any?
+          with_employee_size = (s.employee_size_ids & employee_size_ids).present?
+        end
+        if s.revenue_sizes.any? && revenue_sizes.any?
+          with_revenue_size = (s.revenue_size_ids & revenue_size_ids).present?
+        end
+        if s.business_types.any? && business_types.any?
+          with_business_type = (s.business_type_ids & business_type_ids).present?
+        end
+
+        with_age == true ||
+        with_industry == true ||
+        with_location == true ||
+        with_employee_size == true ||
+        with_revenue_size == true ||
+        with_business_type == true
+      end
+
+      if @peers.count >= 3
+       peered_users << @peers.first(3) 
+      elsif @peers.count == 2
+       peered_users << @peers.first(2) 
+      elsif @peers.count == 1
+       peered_users << @peers.first 
+      end
+    end
+  end
+
+  def self.set_peers_and_matches
+    User.all.each do |u|
+      u.set_peers_and_matches
+    end
+  end
+
+  def self.clean_up_peers_and_matches
+    User.where(bank: false).each do |u|
+      #MATCHES
+      u.matches.each do |m|
+        if m.created_at < 6.months.ago 
+          m.destroy
+        end
+      end
+      #PEERS
+      u.peers.each do |p|
+        if p.created_at < 6.months.ago
+          p.destroy
+        end
+      end
+    end
+    User.where(bank: true).each do |u|
+      #MATCHES
+      u.matches.each do |m|
+        if m.created_at < 1.year.ago 
+          m.destroy
+        end
+      end
+      #PEERS
+      u.peers.each do |p|
+        if p.created_at < 1.year.ago
+          p.destroy
+        end
+      end
     end
   end
 
@@ -423,169 +538,6 @@ class User < ActiveRecord::Base
                            :send_welcome => false,
                            :update_existing => true})
     end
-  end
-
-  def todays_matches
-    if matched_users.last
-      return matched_users.last(1)
-    else
-      return User.find_by_email("team@bankmybiz.com")
-    end 
-  end
-
-  def todays_peers
-    if peered_users.last
-      return peered_users.last(3)
-    else
-      return User.find_by_email("team@bankmybiz.com")
-    end 
-  end
-
-  def set_peers_and_matches
-    #MATCHES
-    if self.finished_profile? && (self.matches.none? || self.matches.last.created_at < 1.week.ago)
-      @available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users) || !r.can_be_matched? }
-      @matches = @available_users.select do |s| 
-        if s.ages.any? && ages.any?
-          with_age = (s.age_ids & age_ids).present?
-        end
-        if s.industries && industries.any?
-          with_industry = (s.industry_ids & industry_ids).present?
-        end
-        if s.locations.any? && locations.any?
-          with_location = (s.location_ids & location_ids).present?
-        end
-        if s.employee_sizes.any? && employee_sizes.any?
-          with_employee_size = (s.employee_size_ids & employee_size_ids).present?
-        end
-        if s.revenue_sizes.any? && revenue_sizes.any?
-          with_revenue_size = (s.revenue_size_ids & revenue_size_ids).present?
-        end
-        if s.business_types.any? && business_types.any?
-          with_business_type = (s.business_type_ids & business_type_ids).present?
-        end
-
-        with_age == true ||
-        with_industry == true ||
-        with_location == true ||
-        with_employee_size == true ||
-        with_revenue_size == true ||
-        with_business_type == true
-      end
-      matched_users << @matches.first if @matches.present?
-      if self.receive_match_messages?
-        Notifier.delay.new_match(self, matched_users.last)
-      end
-    end
-
-    #PEERS
-    if self.finished_profile? && (peers.none? ||peers.last.created_at < Date.yesterday)
-      @available_users = User.all.reject { |r| r == self || r.bank != self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
-      @peers = @available_users.select do |s| 
-        if s.ages.any? && ages.any?
-          with_age = (s.age_ids & age_ids).present?
-        end
-        if s.industries && industries.any?
-          with_industry = (s.industry_ids & industry_ids).present?
-        end
-        if s.locations.any? && locations.any?
-          with_location = (s.location_ids & location_ids).present?
-        end
-        if s.employee_sizes.any? && employee_sizes.any?
-          with_employee_size = (s.employee_size_ids & employee_size_ids).present?
-        end
-        if s.revenue_sizes.any? && revenue_sizes.any?
-          with_revenue_size = (s.revenue_size_ids & revenue_size_ids).present?
-        end
-        if s.business_types.any? && business_types.any?
-          with_business_type = (s.business_type_ids & business_type_ids).present?
-        end
-
-        with_age == true ||
-        with_industry == true ||
-        with_location == true ||
-        with_employee_size == true ||
-        with_revenue_size == true ||
-        with_business_type == true
-      end
-
-      if @peers.count >= 3
-       peered_users << @peers.first(3) 
-      elsif @peers.count == 2
-       peered_users << @peers.first(2) 
-      elsif @peers.count == 1
-       peered_users << @peers.first 
-      end
-    end
-  end
-
-  def self.set_peers_and_matches
-    User.all.each do |u|
-      u.set_peers_and_matches
-    end
-  end
-
-  def self.clean_up_peers_and_matches
-    User.where(bank: false).each do |u|
-      #MATCHES
-      u.matches.each do |m|
-        if m.created_at < 6.months.ago 
-          m.destroy
-        end
-      end
-      #PEERS
-      u.peers.each do |p|
-        if p.created_at < 6.months.ago
-          p.destroy
-        end
-      end
-    end
-    User.where(bank: true).each do |u|
-      #MATCHES
-      u.matches.each do |m|
-        if m.created_at < 1.year.ago 
-          m.destroy
-        end
-      end
-      #PEERS
-      u.peers.each do |p|
-        if p.created_at < 1.year.ago
-          p.destroy
-        end
-      end
-    end
-  end
-
-  def potential_matches
-    available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
-    matches = available_users.select do |s|
-      if s.ages.any? && ages.any?
-        with_age = (s.age_ids & age_ids).present?
-      end
-      if s.industries && industries.any?
-        with_industry = (s.industry_ids & industry_ids).present?
-      end
-      if s.locations.any? && locations.any?
-        with_location = (s.location_ids & location_ids).present?
-      end
-      if s.employee_sizes.any? && employee_sizes.any?
-        with_employee_size = (s.employee_size_ids & employee_size_ids).present?
-      end
-      if s.revenue_sizes.any? && revenue_sizes.any?
-        with_revenue_size = (s.revenue_size_ids & revenue_size_ids).present?
-      end
-      if s.business_types.any? && business_types.any?
-        with_business_type = (s.business_type_ids & business_type_ids).present?
-      end
-
-      with_age == true ||
-      with_industry == true ||
-      with_location == true ||
-      with_employee_size == true ||
-      with_revenue_size == true ||
-      with_business_type == true
-    end
-    return matches
   end
 end
 

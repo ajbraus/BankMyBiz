@@ -11,15 +11,20 @@ $(document).ready(function() {
   $('.alert').delay(3000).fadeOut();
   $('.fadeInAlert').fadeIn();
   $('.comment-show').click(function() {
-    $(this).hide();
     $(this).next('.comment-form').toggle();
+    $(this).next('.comment-form').find("#appendedInputButton").focus();
   });
+
   $("tr[data-link]").click(function() {
     window.location = $(this).data("link")
   })
 
-  $("[rel=tooltip]").tooltip({ placement: 'right'});
+  $("[rel=tooltip]").tooltip({ placement: 'right'});               
 
+  $("#selectEntireUS").click(function() {
+    $(".state:checked").trigger('click');
+  });
+      
   // var a = [$('#trendingTags').data("tags")];
   // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
   // a.forEach(function(entry) {

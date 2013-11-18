@@ -25,7 +25,12 @@
       <%= raw post.tags.map(&:name).map { |t| content_tag(:span, t, class:"tag smaller") }.join(' ') %>
     </div>
     <p class="text-right muted small">
-      posted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.first_name_with_last_initial if post.user %>
+      posted <%= time_ago_in_words(post.created_at) %> ago by 
+      <% if user_signed_in? && !current_user.bank? %>
+        <%= link_to post.user.first_name_with_last_initial, post.user if post.user %>
+      <% else %>
+        <%= post.user.first_name_with_last_initial if post.user %>
+      <% end %>
     </p>
     <% if user_signed_in? && (post.user == current_user || current_user.admin?) %>
       <div class="text-right smaller muted">

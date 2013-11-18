@@ -1,7 +1,3 @@
-calls to action to connect.
-
-security verifications and qualifications
-
 buy matches
   remove column for stripe_card_token from subscription
   on new subscription or new purchase screen display users' cards with add new card and destroy card
@@ -12,6 +8,12 @@ buy matches
   only buy matches that are actively looking or interested
 
   if status is "just learning" then don't give them matches or show their matches
+
+
+calls to action to connect.
+
+security verifications and qualifications
+
 
 Mark profile as private, and posts as public.
 

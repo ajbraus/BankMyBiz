@@ -159,7 +159,7 @@
                         <i class="icon-cog"></i> Settings
                           <% end %>
                       </li>
-                      <% unless user_signed_in? %>
+                      <% if user_signed_in? %>
                       <li class="divider"></li>
                       <li><%= link_to destroy_user_session_path, method: "delete" do %>
                         <i class="icon-off"></i> Logout

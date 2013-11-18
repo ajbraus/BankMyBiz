@@ -1,3 +1,16 @@
+add zipcode
+
+accounts recievable: low/medium/high/very high
+B2B? B2C? Both
+how can we directly target factoring and treasury services?
+
+prettier emails
+  images
+  margin above logo
+  "actively looking"
+
+calls to action to connect.
+
 buy matches
   remove column for stripe_card_token from subscription
   on new subscription or new purchase screen display users' cards with add new card and destroy card
@@ -9,19 +22,9 @@ buy matches
 
   if status is "just learning" then don't give them matches or show their matches
 
+initiate with welcome message
 
-calls to action to connect.
-
-security verifications and qualifications
-
-
-Mark profile as private, and posts as public.
-
-prettier emails
-  images
-  margin above logo
-
-if your linkedin connection joins bank my biz get an email
+My banker - my client - track who is clients and bankers of each other
 
 fix homepage:
   Press section
@@ -30,7 +33,19 @@ fix homepage:
 
   "I own a healthcare business and my state contracts are growing everyday. I joined BankmyBiz.com, started some conversations on the news feed, and could immediately tell which lenders actually understood my business model by their comments.  I met with a few and, EUREKA, I found the right lender for my business.  We got the funding we were looking for and some additional tools. Thank You BankmyBiz.com! I will be singing your praises to every business owner I know."
 
-if your follower posts to the newsfeed - email 
+Favorites - 
+  a micro CRM of business and bank contacts
+  if your follower posts to the newsfeed - email 
+
+unread messages count in header - activity/notifications in header like facebook
+
+only email on weekdays during the day
+
+security verifications and qualifications
+
+Mark profile as private, and posts as public.
+
+if your linkedin connection joins bank my biz get an email
 
 set password after authenticate through linkedin
 
@@ -42,19 +57,7 @@ invite mo' people
 invite linkedin connections
 reward with free matches & bucks
 
-only email on weekdays during the day
-
 import recent tweets into profile
-
-Neighborhood Capital badge - same linkedin location
-
-setup pricing model
-  buy matches
-  load BMB360 with ajax after page loads
-  receipt of matches purchase (once)
-  receipt of BankmyBiz 360 purchase (once)
-  BankmyBiz 360 is going to expire (renew)
-  limit messages, BankmyBiz 360 gives you unlimited
 
 setup users
   add user tags to users#show
@@ -65,19 +68,10 @@ setup users
 bugs:
   threading messages by subject line
   ajaxify comments
+  ajaxify bucks
   allow delete comments to creator
 
-accounts recievable: low/medium/high/very high
-B2B? B2C?
-
-My banker - my client - track who is clients and bankers of each other
-
 repost - with bmb button
-
-lock down access to profiles of the opposite type
-  remove people who haven't started a profile from recommended users
-  remove link in new follower to the new follower's profile
-  remove link to user's profiles in activity feed
 
 click our seo trending words
 
@@ -89,35 +83,7 @@ setup subscriptions
 
 ------------------------------
 
-
-public profile / private profile
-
-boostrap mode
-  new follower email goes out and tells them who follows them
-
-pricing recommendation:
-  Business:
-    start with 3 matches - buy 3 more for $60
-    buy access to more knowledge $199.99 (who follows, views, or gives you bucks)
-
-  Banks
-    3 matches a day - buy 3 more for $30
-    buy access to more knowledge - $49.99 (who follows, views, or gives you bucks)
-
-
-Define Key Metrics
-New Users in the past 30 days
-"Active" Users
-"Paid" Users
-Successful Matches
-Set user expectations
-
-
-someone else grabbed your match because you didn't get it
-
-years of filing taxes - 0-3
-
-how can we directly target factoring and treasury services?
+Someone else grabbed your match because you didn't get it
 
 Improvements to matching 
 who do you sell to? accounts receivable low, medium, high?
@@ -128,23 +94,8 @@ what kind of banking do you do?
   factoring
   non-profit
 
-name will display as Adam B.
-
-
-
-
-"private message" (with lock)
-
-what kind of banking do you do? 
-
-affix stuff to top
-
-# potential matches
-
 upgrade profile for bankers not businesses
-Pricing for biz vs banker
 
-initiate with welcome message
 send richtext messages
 
 share = get bucks
@@ -159,26 +110,13 @@ message sent more obvious - sent count
 
 make reply from message in email actually reply as a message.
 
-ajaxify voting
-
 add karma
   recently added karma (last week's votes)
   start out with 25 reputation points
 
 follow tags
 
-  Chat
-
-  trending tags - most posts with those tags - tags with counts
-  
   Control / Moderation
-
-  buy matches
-
-  how do we kick out people who just got a new bank through our site?
-
-  start with matches and buy more
-  start with a match a day, ping them if they aren't on the site for 5 days with a "new match" email
 
 
 
@@ -463,3 +401,4 @@ use HQ's to do matching -
   DONE or If "Entire US" match with any other location
   DONE Make Entire US exclusive w JS
 
+DONE # potential matches

@@ -111,15 +111,15 @@
       </div>
       <div class="span5 offset2">
         <%= f.label :business_type_ids, "Entity Type" %>
-        <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}), prompt:"Select Entity Type" %>    
+        <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}, [@user.business_types.first.description, @user.business_types.first.id]), prompt:"Select Entity Type" %>    
         <%= f.label :employee_size_ids, "Employees" %>
-        <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}), prompt:"Select Employee Size" %>    
+        <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}, [@user.employee_sizes.first.description, @user.employee_sizes.first.id]), prompt:"Select Employee Size" %>    
       </div>
       <div class="span5">
         <%= f.label :revenue_size_ids, "Revenue" %>
-        <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}), prompt:"Select Revenue" %> 
+        <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}, [@user.revenue_sizes.first.description, @user.revenue_sizes.first.id]), prompt:"Select Revenue" %> 
         <%= f.label :age_ids, "Years Filed Taxes" %>
-        <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}), prompt:"Select Years Filed Taxes" %>     
+        <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}, [@user.ages.first.description, @user.ages.first.id]), prompt:"Select Years Filed Taxes" %>     
       </div>
     </div>
   <% end %>

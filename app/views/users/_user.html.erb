@@ -5,7 +5,11 @@
         <td><%= profile_picture(user) %></td>
         <td>
           <strong><%= user.first_name_with_last_initial %></strong> <br>
-          <span class="muted"><%= user.position %>, <%= user.try(:hq_state) %></span>
+          <span class="muted">
+            <%= user.position %>, <%= user.try(:hq_state) %><br>
+            <%= current_user.percentage_match(user) %>% Match<br>
+            <%= current_user.status %>
+            </span>
         </td>
       </tr>
     </table>

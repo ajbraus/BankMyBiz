@@ -1,8 +1,11 @@
 <h4 class="h4">Hello <%= @user.first_name.titleize %>, </h4>
 <p>
-  You have a new follower on BankmyBiz.com - <%= link_to @follower.first_name_with_last_initial, user_url(@follower) %> followed you.
+  You have a new follower on BankmyBiz.com:
 </p>
+
+<%= render partial: 'users/email_user', locals: { current_user: @user, other_user: @follower } %>
+
 <p>
-  <strong>Tip</strong> - You can get access to the profiles of who follows you, gives you bucks, or who has viewed you by subscribing to <%= link_to raw("BankmyBiz 360&deg;"), root_url %>.
+  <strong>Tip</strong> - Post interesting links, wins, and your industry expertise to the News Feed to improve your profile, create conversations, and earn bucks. 
 </p>
 

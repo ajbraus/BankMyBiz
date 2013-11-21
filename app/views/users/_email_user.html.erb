@@ -1,0 +1,15 @@
+<%= link_to user_url(other_user), class:"no-hover" do %>
+  <table>
+    <tr>
+      <td><img src="<%= image_url(other_user) %>" width="80" style='margin-right:10px; border-radius:100px;'></td>
+      <td>
+        <strong><%= other_user.first_name_with_last_initial %></strong> <br>
+        <span class="muted">
+          <%= other_user.position %>, <%= other_user.try(:hq_state) %><br>
+          <%= current_user.percentage_match(other_user) %>% Match<br>
+          <%= current_user.status %>
+          </span>
+      </td>
+    </tr>
+  </table>
+<% end %>

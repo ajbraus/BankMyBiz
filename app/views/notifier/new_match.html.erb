@@ -1,7 +1,10 @@
 <h4 class="h4">Congratulations <%= @user.first_name.titleize %>, </h4>
 <p>
-  You have a new match on BankmyBiz.com! <%= link_to "Click here", user_url(@match) %> to review their profile.
+  You have a new match on BankmyBiz.com!
 </p>
+
+<%= render partial: 'users/email_user', locals: { current_user: @user, other_user: @match } %>
+
 <p>
   BankMyBiz.com creates one free new match per week. You can accelerate the speed of building lending relationships by posting to the News Feed, starting conversations by commenting on News Feed posts, and purchasing more matches.
 </p>

@@ -56,6 +56,16 @@ module UsersHelper
     ]
   end
 
+  def image_url(user)
+    if user.avatar.present?
+      user.avatar.url(:original)
+    elsif user.authentications.where(:provider == "linkedin").any?
+      user.pic_url
+    else
+      "http://bankmybiz.com/assets/default_profile_pic.png"
+    end
+  end
+
   def profile_picture(user)
     if user.avatar.present?
       image_tag user.avatar.url(:original), class:"medium-thumbnail img-circle"

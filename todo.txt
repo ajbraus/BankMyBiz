@@ -3,11 +3,23 @@ add zipcode
 accounts recievable: low/medium/high/very high
 B2B? B2C? Both
 how can we directly target factoring and treasury services?
+Accounts receivable
+Debt to income ratio
+Size of loan/financing sought
 
 prettier emails
   images
   margin above logo
   "actively looking"
+
+add message button to user.html
+
+Alert that profile is private
+
+Make match happen during the day
+Jordan - setup focus groups
+Follow up with the Orange County bank guy
+Approach investors in Austin or SXSW
 
 calls to action to connect.
 

@@ -7,11 +7,6 @@ Accounts receivable
 Debt to income ratio
 Size of loan/financing sought
 
-prettier emails
-  images
-  margin above logo
-  "actively looking"
-
 add message button to user.html
 
 Alert that profile is private

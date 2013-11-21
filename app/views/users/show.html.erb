@@ -1,4 +1,4 @@
-  <div id="contact-modal" class="modal hide fade in" style="display: none; ">  
+  <div id="contact-modal" class="modal hide fade in" style="display: none;">  
     <%= form_for @user.messages.new, remote:true do |f| %>
       <div class="modal-header">  
         <a class="close" data-dismiss="modal">×</a>  
@@ -18,8 +18,8 @@
         <%= f.submit "Send Private Message", :class => "btn btn-primary" %>
         <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
       </div>  
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 <div class="span9">
   <div class="row">
     <section class='profile-picture-position span3'>

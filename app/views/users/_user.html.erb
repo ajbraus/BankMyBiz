@@ -1,17 +1,20 @@
 <div class="match">
-  <%= link_to user_path(user), class:"no-hover" do %>
-    <table>
-      <tr>
-        <td><%= profile_picture(user) %></td>
-        <td>
-          <strong><%= user.first_name_with_last_initial %></strong> <br>
-          <span class="muted">
-            <%= user.position %>, <%= user.try(:hq_state) %><br>
-            <%= current_user.percentage_match(user) %>% Match<br>
-            <%= current_user.status %>
-            </span>
-        </td>
-      </tr>
-    </table>
+  <% if current_user.has_image? %>
+    <div class="pull-left">
+      <%= render partial: 'users/follow_form', locals: { user: user } if user_signed_in? %>
+    </div>
   <% end %>
+  <table>
+    <tr>
+      <td><%= link_to user_path(user) do %><%= profile_picture(user) %><% end %></td>
+      <td>
+        <strong><%= user.first_name_with_last_initial %></strong> <br>
+        <span class="muted">
+          <%= user.position %>, <%= user.try(:hq_state) %><br>
+          <%= current_user.percentage_match(user) %>% Match | <%= link_to "contact", user_path(user) %> <br>
+          <%= current_user.status %> 
+          </span>
+      </td>
+    </tr>
+  </table>
 </div>

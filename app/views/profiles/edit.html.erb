@@ -34,17 +34,17 @@
         <%= f.label :status, "Your Business Match Status" %>
         <%= f.select :status, options_for_select(["Actively Looking", "Offers Welcome", "Just Browsing"], @user.status) %>   
 
-        <%= f.label :hq_state, "Headquartered In" %>
+        <%= f.label :hq_state, "Headquartered In (private)" %>
         <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), prompt: "Select State" %>  
       </div>
     </div>
     <br>
     <div class="row">
       <div class="span9 offset2">
-      <%= f.label :bio, "Tell Us About You. What Makes You and Your #{current_user.bank? ? 'Bank' : 'Business'} Great?" %>
+      <%= f.label :bio, "Tell Us About You. What Makes You and Your #{current_user.bank? ? 'Bank' : 'Business'} Great? (private)" %>
       <%= f.text_area :bio %>
       
-      <%= f.label :goals, "What are your #{current_user.bank? ? 'Bank' : 'Business'}'s Goals" %>
+      <%= f.label :goals, "What are your #{current_user.bank? ? 'Bank' : 'Business'}'s Goals (private)" %>
       <%= f.text_area :goals %>
     </div>
   </div>
@@ -107,7 +107,8 @@
   <% else %>
     <div class="row">
       <div class="span9 offset2">
-        <h4>About Your Business</h4>
+        <h4>About Your Business <span class="muted">(private)</span></h4>
+
       </div>
       <div class="span5 offset2">
         <%= f.label :business_type_ids, "Entity Type" %>
@@ -142,7 +143,7 @@
   <div class="row">
     <br>
     <div class="span3 offset2">
-        <h4>What Industry or Industries?</h4>
+        <h4>What Industry or Industries? <span class="muted">(private)</span></h4>
         <% for industry in Industry.find(:all) %>
           <div>
             <label>
@@ -153,7 +154,7 @@
         <% end %> 
     </div>
     <div class="span4">
-      <h4>Where You Do Business</h4>
+      <h4>Where You Do Business <span class="muted">(private)</span></h4>
       <div class="wrapper">
       <ol>
         <li>

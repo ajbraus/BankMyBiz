@@ -21,4 +21,8 @@ class WelcomeController < ApplicationController
   def privacy
     
   end
+
+  def testimonials 
+
+  end
 end

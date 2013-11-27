@@ -1,5 +1,8 @@
-buy matches
-  add destroy card
+fix homepage:
+  Press section
+    InBusiness M-List
+
+  submit sitemap to google
 
 
 only buy matches that are actively looking or interested
@@ -22,12 +25,8 @@ initiate with welcome message
 
 My banker - my client - track who is clients and bankers of each other
 
-fix homepage:
-  Press section
-    InBusiness M-List
-  More text
-
-  "I own a healthcare business and my state contracts are growing everyday. I joined BankmyBiz.com, started some conversations on the news feed, and could immediately tell which lenders actually understood my business model by their comments.  I met with a few and, EUREKA, I found the right lender for my business.  We got the funding we were looking for and some additional tools. Thank You BankmyBiz.com! I will be singing your praises to every business owner I know."
+buy matches
+  add destroy card
 
 Favorites - 
   a micro CRM of business and bank contacts

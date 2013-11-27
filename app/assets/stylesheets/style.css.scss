@@ -295,6 +295,15 @@ textarea {
   display: inline-block;
 }
 
+ul.press li img {
+  height:100px;
+  margin:10px;
+}
+
+ul.conferences li img {
+  height:150px;
+}
+
 .yourimage {
   text-align: center;
 }
@@ -430,14 +439,14 @@ hr {
 }
 
 .responsive-jumbotron {
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
   text-align: center;
 }
 
 .jumbotron {
-  margin: 0 0 30px 0;
+  margin: 0 0 20px 0;
   text-align: center;
-  padding: 40px 50px 50px 50px;
+  padding: 20px 50px 50px 50px;
   background-size: 100%;
   background-repeat: no-repeat;
 }
@@ -944,15 +953,15 @@ padding-left: 120px;
   /*background: url("cupcake.jpeg");*/
   background: url("Business_NR_09.JPG");
   background-repeat:no-repeat;
-  height:340px;
+  height:300px;
   background-size:100%;
   background-position: 0 -110px;
 }
 
 .sign-up-buttons {
-position: relative;
-top: 150px;
-float: right;
+  position: relative;
+  top: 130px;
+  float: right;
 }
 
 .splash-quote {
@@ -980,7 +989,7 @@ top: 20px;
 
 .hero-creds {
   position: absolute;
-  top: 451px;
+  top: 406px;
   color: white;
   right: 0px;
   background: rgba(0, 0, 0, 0.6);
@@ -1057,8 +1066,8 @@ section {
 }
 
 .user-type {
-  padding-top: 30px;
-  padding-bottom: 50px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 table.user-stats {

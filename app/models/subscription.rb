@@ -4,4 +4,8 @@ class Subscription < ActiveRecord::Base
   validates_presence_of :user_id, :plan_id, :expires_on, :price
   
   attr_accessible :plan_id, :stripe_card_id, :expires_on, :price
+
+  def expired?
+    return expires_on > Date.today
+  end
 end

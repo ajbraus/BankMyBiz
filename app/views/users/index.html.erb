@@ -4,8 +4,8 @@
     <table class="table table-bordered user-stats">
       <thead>
         <tr>
-          <th><%= Date.today.prev_month(2).strftime("%B") %></th>
-          <th><%= Date.today.prev_month.strftime("%B") %></th>
+          <th><%= Date.today.prev_month(2).strftime("%b") %></th>
+          <th><%= Date.today.prev_month.strftime("%b") %></th>
           <th>This Month</th>
           <th>This Week</th>
         </tr>
@@ -42,24 +42,36 @@
       </tbody>
     </table>
 </div>
-<div class="span4">
+<div class="span4 text-center">
   <h4>Conversion Stats</h4>
     <!-- Table -->
     <table class="table table-bordered user-stats">
       <thead>
         <tr>
-          <th>Subscribing Users</th>
-          <th>Matches Bought Last Month</th>
-          <th>Matches Bought Last Week</th>
-          <th>Matches Bought This Week</th>
+          <th></th>
+          <th><%= Date.today.prev_month(2).strftime("%b") %></th>
+          <th><%= Date.today.prev_month.strftime("%b") %></th>
+          <th>This Month</th>
+          <th>This Week</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
+          <td>Match</td>
+          <td><%= Purchase.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
+          <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count)*3 %></td>
+          <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_month..Date.today).count)*3 %></td>
+          <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_week..Date.today).count)*3 %></td>
+          <td><%= (Purchase.all.count)*3 %></td>
+        </tr>
+        <tr>
+          <td>360</td>
+          <td><%= Subscription.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
+          <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count)*3 %></td>
+          <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_month..Date.today).count)*3 %></td>
+          <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_week..Date.today).count)*3 %></td>
+          <td><%= Subscription.where("expires_on > ?", Date.today).count %></td>
         </tr>
       </tbody>
     </table>

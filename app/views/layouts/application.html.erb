@@ -112,6 +112,18 @@
                 <% end %>
                 <ul class="nav pull-right">
                   <li>
+                    <% if current_user.finished_profile? %>
+                      <%= link_to new_purchase_path do %>
+                      Buy Matches - <span class='red'>New</span>
+                      <% end %>
+                      <% if params[:controller] == "purchases" && params[:action] == "new" %>
+                        <div class="under text-center"><i class="icon-caret-up green"></i></div>
+                      <% end %>
+                    <% else %>
+                      <%= link_to "Get Matches", edit_profile_path(current_user) %>
+                    <% end %>
+                  </li>
+                  <li>
                     <%= link_to root_path, rel:"tooltip", title:"News Feed", data: {placement: "bottom"} do %>
                       <i class="icon ion-ios7-chatboxes-outline"></i>
                     <% end %>
@@ -143,18 +155,6 @@
                     <%= link_to "Me", user_path(current_user) %>
                     <% if params[:controller] == "users" && params[:action] == "show" %>
                       <div class="under text-center"><i class="icon-caret-up green"></i></div>
-                    <% end %>
-                  </li>
-                  <li>
-                    <% if current_user.finished_profile? %>
-                      <%= link_to new_purchase_path do %>
-                      Buy Matches - <span class='red'>New</span>
-                      <% end %>
-                      <% if params[:controller] == "purchases" && params[:action] == "new" %>
-                        <div class="under text-center"><i class="icon-caret-up green"></i></div>
-                      <% end %>
-                    <% else %>
-                      <%= link_to "Get Matches", edit_profile_path(current_user) %>
                     <% end %>
                   </li>
                   <% if current_user.admin? %>

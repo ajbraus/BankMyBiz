@@ -1,11 +1,14 @@
+add Favorites to nav
+  a micro CRM of business and bank contacts
+  if your follower posts to the newsfeed - email 
+
+
 fix homepage:
   submit sitemap to google
 
-
 accounts recievable: low/medium/high/very high
 B2B? B2C? Both
-how can we directly target factoring and treasury services?
-Debt to income ratio
+Kind of banking: Factoring, Traditional, 
 Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
 only buy matches that are actively looking or interested
 
@@ -24,10 +27,6 @@ My banker - my client - track who is clients and bankers of each other
 
 buy matches
   add destroy card
-
-Favorites - 
-  a micro CRM of business and bank contacts
-  if your follower posts to the newsfeed - email 
 
 unread messages count in header - activity/notifications in header like facebook
 

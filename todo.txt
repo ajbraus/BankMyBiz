@@ -1,23 +1,43 @@
-add Favorites to nav
-  a micro CRM of business and bank contacts
-  if your follower posts to the newsfeed - email 
+are matches going out?
 
+Testimonials page
+
+Letter from Michael, CEO
 
 fix homepage:
   submit sitemap to google
 
+add Favorites to nav
+  a micro CRM of business and bank contacts
+  if your follower posts to the newsfeed - email 
+
+unread messages count in header - activity/notifications in header like facebook
+
+ad space
+
+import recent tweets
+
+add privacy link to footer
+
+setup users
+  add user tags to users#show
+  setup tracking impressions on users
+  don't track if you go to the same user/post twice in the same three days
+  
 accounts recievable: low/medium/high/very high
 B2B? B2C? Both
 Kind of banking: Factoring, Traditional, 
 Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
 only buy matches that are actively looking or interested
 
-
 add zipcode
 
 Alert that profile is private
 
+set password after authenticate through linkedin.
+
 Make match happen during the day
+only email on weekdays during the day
 
 calls to action to connect
 
@@ -28,17 +48,9 @@ My banker - my client - track who is clients and bankers of each other
 buy matches
   add destroy card
 
-unread messages count in header - activity/notifications in header like facebook
-
-only email on weekdays during the day
-
-security verifications and qualifications
-
 Mark profile as private, and posts as public.
 
-if your linkedin connection joins bank my biz get an email
-
-set password after authenticate through linkedin
+if your linkedin connection joins bank my biz get an email.
 
 send created at with post and comment, send user position and HQ state with post
 
@@ -48,14 +60,7 @@ invite mo' people
 invite linkedin connections
 reward with free matches & bucks
 
-import recent tweets into profile
 
-setup users
-  add user tags to users#show
-  setup tracking impressions on users
-  track who you viewed/messaged
-  don't track if you go to the same user/post twice in the same three days
-  
 bugs:
   threading messages by subject line
   ajaxify comments

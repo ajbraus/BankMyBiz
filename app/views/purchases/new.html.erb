@@ -21,9 +21,9 @@
         <%= image_tag "credit_card_logos_homepage.png" %>
       </div>
     </div>
-    <div class="well">
+    <div class="well clearfix">
       <h5>Get access to . . .</h5>
-      <div class="buy-matches row">
+      <div class="buy-matches">
         <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
         <% @first_three_matches.each do |m| %>
           <div class="pull-left text-center" style="width:33%;">

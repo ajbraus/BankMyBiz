@@ -59,12 +59,13 @@
               <span class="muted"> <%= @user.karma + 100 %></span>
             </div>
           </div>
-          <br>
+          <div class="text-right">
           <% if @user == current_user %>
             <%= link_to "edit profile", edit_profile_path(@user) %>
           <% elsif current_user.messages_left? %>
-            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large message-button"><i class="icon-envelope-alt"></i> Contact</a>
+            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary message-button"><i class="icon-envelope-alt"></i> Contact</a>
           <% end %>
+          </div>
           <div class="well gray-border-left text-left">
             <% if @user.posts.any? %>
               <div class="tag-cloud">

@@ -10,11 +10,6 @@
 
       <% else %>
         <div class="muted pull-left">You Receive 1 Free Match A Week</div>
-        <div class="muted pull-right">
-          <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-            <div class='text-right'><%= link_to "3 Matches / $ #{current_user.bank? ? "74.99" : "24.99"}", new_purchase_path, class:"btn btn-primary" %> </div>
-          <% end %>
-        </div>
         <section>
           <h4>Accelerate Your Search </h4>
           <div class="clearfix">
@@ -39,14 +34,19 @@
               </div>
             <% end %>
           </div>
-          <section class="text-right muted">
+          <section class="muted text-right">
+            <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+              <div class='text-right'><%= link_to "Buy 3 Matches / $ #{current_user.bank? ? "74.99" : "24.99"}", new_purchase_path, class:"btn btn-success btn-large" %> </div>
+            <% end %>
+          </section>
+          <div class="text-right muted">
             <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
               You have <%= @potential_matches_count %> Potential Matches<br>
             <% else %>
               Add 3 Matches for $<%= current_user.bank? ? "74.99" : "24.99" %> <br>
               Not Enough Matches Try <%= link_to "Broadening Your Profile", edit_profile_path(current_user) %>
             <% end %>
-          </section>
+          </div>
         </section>
       <% end %>
     </div>

@@ -33,60 +33,62 @@
     </div>
 
     <ul>
-      <% if current_user.bank? %>
-        <li> 
-          <div class="small muted">3 month package</div>
-          <div class="price"><strong>$149.99</strong> / month</div>
-          <div class="save"></div>
-          <%= link_to new_subscription_path(plan_id: 4), class:"btn btn-success btn-small" do %>
-            Subscribe <i class="icon-white"></i>
-          <% end %>
-        </li>
-        <div class="hr-line"></div>
-        <li> 
-          <div class="small muted">6 month package</div>
-          <div class="price"><strong>$112.99</strong> / month</div>
-          <div class="save"></div>
-          <%= link_to new_subscription_path(plan_id: 5), class:"btn btn-success btn-small" do %>
-            Subscribe <i class="icon-white"></i>
-          <% end %>
-        </li>
-        <div class="hr-line"></div>
-        <li> 
-          <div class="small muted">1 year package</div>
-          <div class="price"><strong>$74.99</strong> / month</div>
-          <div class="save"></div>
-          <%= link_to new_subscription_path(plan_id: 6), class:"btn btn-success btn-small" do %>
-            Subscribe <i class="icon-white"></i>
-          <% end %>
-        </li>
-      <% else %>
-        <li>
-          <div class="small muted">1 month package</div>
-          <div class="price"><strong>$49.99</strong> / month</div>
-          <div class="save"></div>
-          <%= link_to new_subscription_path(plan_id: 1), class:"btn btn-success btn-small btn-small" do %>
-            Subscribe <i class="icon-white"></i>
-          <% end %>
-        </li>
-        <div class="hr-line"></div>
-        <li> 
-          <div class="small muted">3 month package</div>
-          <div class="price"><strong>$37.99</strong> / month</div>
-          <div class="save">Save 25%</div>
-          <%= link_to new_subscription_path(plan_id: 2), class:"btn btn-success btn-small" do %>
-            Subscribe <i class="icon-white"></i>
-          <% end %>
-        </li>
-        <div class="hr-line"></div>
-        <li> 
-          <div class="small muted">6 month package</div>
-          <div class="price"><strong>$24.99</strong> / month</div>
-          <div class="save">Save 50%</div>
-          <%= link_to new_subscription_path(plan_id: 3), class:"btn btn-success btn-small" do %>
-            Subscribe <i class="icon-white"></i>
-          <% end %>
-        </li>
+      <% unless current_user.bank == nil %>
+        <% if current_user.bank? %>
+          <li> 
+            <div class="small muted">3 month package</div>
+            <div class="price"><strong>$149.99</strong> / month</div>
+            <div class="save"></div>
+            <%= link_to new_subscription_path(plan_id: 4), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+          <div class="hr-line"></div>
+          <li> 
+            <div class="small muted">6 month package</div>
+            <div class="price"><strong>$112.99</strong> / month</div>
+            <div class="save"></div>
+            <%= link_to new_subscription_path(plan_id: 5), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+          <div class="hr-line"></div>
+          <li> 
+            <div class="small muted">1 year package</div>
+            <div class="price"><strong>$74.99</strong> / month</div>
+            <div class="save"></div>
+            <%= link_to new_subscription_path(plan_id: 6), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <div class="small muted">1 month package</div>
+            <div class="price"><strong>$49.99</strong> / month</div>
+            <div class="save"></div>
+            <%= link_to new_subscription_path(plan_id: 1), class:"btn btn-success btn-small btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+          <div class="hr-line"></div>
+          <li> 
+            <div class="small muted">3 month package</div>
+            <div class="price"><strong>$37.99</strong> / month</div>
+            <div class="save">Save 25%</div>
+            <%= link_to new_subscription_path(plan_id: 2), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+          <div class="hr-line"></div>
+          <li> 
+            <div class="small muted">6 month package</div>
+            <div class="price"><strong>$24.99</strong> / month</div>
+            <div class="save">Save 50%</div>
+            <%= link_to new_subscription_path(plan_id: 3), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
     <hr>

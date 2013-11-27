@@ -1,33 +1,30 @@
+buy matches
+  DONE remove column for stripe_card_id from subscription
+  DONE on new subscription or new purchase screen display users' cards with add new card 
+  add rescues for customer and card Stripe errors
+  update subscriptions to use multiple credit cards
+
+  add destroy card
+
+  only buy matches that are actively looking or interested
+
+
 add zipcode
 
 accounts recievable: low/medium/high/very high
 B2B? B2C? Both
 how can we directly target factoring and treasury services?
-Accounts receivable
 Debt to income ratio
-Size of loan/financing sought
+Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
 
 add message button to user.html
 
 Alert that profile is private
 
 Make match happen during the day
-Jordan - setup focus groups
-Follow up with the Orange County bank guy
-Approach investors in Austin or SXSW
 
-calls to action to connect.
+calls to action to connect
 
-buy matches
-  remove column for stripe_card_token from subscription
-  on new subscription or new purchase screen display users' cards with add new card and destroy card
-  pass in card_id param - 
-  if present use that stripe_card_token
-  else create new card and use that
-
-  only buy matches that are actively looking or interested
-
-  if status is "just learning" then don't give them matches or show their matches
 
 initiate with welcome message
 

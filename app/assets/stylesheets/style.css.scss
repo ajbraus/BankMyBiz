@@ -1168,3 +1168,24 @@ a.no-link {
 .read {
   background: #eee;
 }
+
+.line {
+  z-index: -1;
+  border-top: aliceblue;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #eee;
+  margin-top: -10px;
+}
+
+.line-box {
+  position: relative;
+  height: 40px;
+}
+
+.line-text {
+  background: white;
+  width: 60px;
+  margin: 0 auto;
+}

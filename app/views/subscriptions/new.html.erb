@@ -18,37 +18,46 @@
       <div class="price"><strong>$49.99</strong> / month</div>
       <div class="save"></div>
       <h4>Total: <strong class='muted'>$49.99</strong></h4>
+      <%= f.hidden_field :price, value: 4999 %>
       <% elsif params[:plan_id] == "2" %>
       <h4>360&deg; Biz</h4>
       <div class="small muted">3 month package</div>
       <div class="price"><strong>$37.99</strong> / month</div>
       <div class="save">You're Saving 25%</div>
       <h4>Total: <strong class='muted'>$113.97</strong></h4>
+      <%= f.hidden_field :price, value: 11397 %>
       <% elsif params[:plan_id] == "3" %>
       <h4>360&deg; Biz</h4>
       <div class="small muted">6 month package</div>
       <div class="price"><strong>$24.99</strong> / month</div>
       <div class="save">You're Saving 50%</div>
       <h4>Total: <strong class='muted'>$149.94</strong></h4>
+      <%= f.hidden_field :price, value: 14994 %>
       <% elsif params[:plan_id] == "4" %>
       <h4>360&deg; Bank</h4>
       <div class="small muted">3 month package</div>
       <div class="price"><strong>$149.99</strong> / month</div>
       <div class="save"></div>
       <h4>Total: <strong class='muted'>$449.97</strong></h4>
+      <%= f.hidden_field :price, value: 44997 %>
       <% elsif params[:plan_id] == "5" %>
       <h4>360&deg; Bank</h4>
       <div class="small muted">6 month package</div>
       <div class="price"><strong>$112.99</strong> / month</div>
       <div class="save">You're Saving 25%</div>
       <h4>Total: <strong class='muted'>$677.94</strong></h4>
+      <%= f.hidden_field :price, value: 67794 %>
       <% elsif params[:plan_id] == "6" %>
       <h4>360&deg; Bank</h4>
       <div class="small muted">1 year package</div>
       <div class="price"><strong>$74.99</strong> / month</div>
       <div class="save">You're Saving 50%</div>
       <h4>Total: <strong class='muted'>$899.88</strong></h4>
+      <%= f.hidden_field :price, value: 89988 %>
       <% end %>
+      <div class='text-center'>
+        <%= image_tag "credit_card_logos_homepage.png" %>
+      </div>
     </div>
     <div class="well">
       <h5>Get access to . . .</h5>
@@ -66,23 +75,70 @@
     </div>
   </div>
   <div class="span5">
-    <div id="stripe_error" class="alert alert-error" style="display:none"></div>
-    <div class="well clearfix">
-        <%= label_tag :name, "Name on Card" %>
-        <%= text_field_tag :name, nil, name: nil, class:"span4" %>
-        <p class='text-center'>
-          <%= image_tag "credit_card_logos_homepage.png" %>
-        </p>
-        <%= label_tag :card_number, "Credit Card Number " %>
-        <%= text_field_tag :card_number, nil, name: nil, class:"span4" %>
-        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-        <%= text_field_tag :card_code, nil, name: nil, class:"input-mini" %>
-        <%= label_tag :card_month, "Card Expiration" %>
-        <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'input-medium'}%>
-        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'input-small'} %>
-        <%= f.hidden_field :plan_id, value:params[:plan_id] %>
-        <%= f.hidden_field :stripe_card_token %>
-      <div class="actions text-right"><%= f.submit "Subscribe", class:"btn btn-success btn-large" %></div>
-    </div>
+    <div class="cards well">
+      <h4>Cards</h4>
+        <table>
+      <% if !current_user.stripe_customer_id.present? %>
+        <span class="muted">No Cards</span>
+      <% else %>
+        <tr>
+          <th>
+          </th>
+          <th>
+            Type
+          </th>
+          <th>
+            Last 4
+          </th>
+          <th>
+            Expiration
+          </th>
+        </tr>
+        <% @cards.each_with_index do |c, index| %>
+          <tr>
+            <td>
+              <%= radio_button_tag "existing_card_id", c['id'] %>
+            </td>
+            <td>
+              <%= c["type"] %>
+            </td>
+            <td>
+              <%= c["last4"] %> 
+            </td>
+            <td>
+              <%= c["exp_month"] %> / <%= c["exp_year"] %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+        <tr>
+          <td>
+            <%= radio_button_tag "existing_card_id", nil %>
+          </td>
+          <td>
+            New Card
+          </td>
+        </tr>
+      </table>
+      <div id="creditCardInputs" style="display:none;">
+      <div id="stripe_error" class="alert alert-error" style="display:none"></div>
+        <section>
+          <%= label_tag :name, "Name on Card" %>
+          <%= text_field_tag :name, nil, name: nil, class:"span4" %>
+          <%= label_tag :card_number, "Credit Card Number " %>
+          <%= text_field_tag :card_number, nil, name: nil, class:"span4" %>
+          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+          <%= text_field_tag :card_code, nil, name: nil, class:"input-mini" %>
+          <%= label_tag :card_month, "Card Expiration" %>
+          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'input-medium'}%>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'input-small'} %>
+          <%= f.hidden_field :plan_id, value:params[:plan_id] %>
+          <%= hidden_field_tag :stripe_card_id %>
+        </section>
+      </div>
+    <section class="actions text-right">
+      <%= f.submit "Confirm Purchase", class:"btn btn-success btn-large", disabled:true %>
+    </section>
   </div>
+</div>
 <% end %>

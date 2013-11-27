@@ -1,12 +1,12 @@
 <div class="match">
   <% if current_user.has_image? %>
-    <div class="pull-left">
+    <div class="pull-left" style="height:0; position:relative; bottom:3px; right:10px;">
       <%= render partial: 'users/follow_form', locals: { user: user } if user_signed_in? %>
     </div>
   <% end %>
   <table>
     <tr>
-      <td><%= link_to user_path(user) do %><%= profile_picture(user) %><% end %></td>
+      <td width="55"><%= link_to user_path(user) do %><%= profile_picture(user) %><% end %></td>
       <td>
         <strong><%= user.first_name_with_last_initial %></strong> <br>
         <span class="muted">

@@ -1,7 +1,5 @@
 class Post < ActiveRecord::Base
   include PublicActivity::Common
-  is_impressionable :counter_cache => true #@post.impressions_count
-  #tracked owner: ->(controller, model) { controller && controller.current_user }
   belongs_to :user
   has_many :committed_users, through: :commitments
   has_and_belongs_to_many :tags

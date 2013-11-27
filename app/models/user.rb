@@ -36,8 +36,9 @@ class User < ActiveRecord::Base
                   :newsletter,
                   :receive_match_messages,
                   :status,
-                  :hq_state
-                  
+                  :hq_state,
+                  :stripe_customer_id
+
   is_impressionable
 
   acts_as_voter
@@ -46,7 +47,6 @@ class User < ActiveRecord::Base
 
   has_many :subscriptions
   has_many :purchases
-  has_many :cards
 
   has_many :posts, dependent: :destroy
   has_many :commitments, foreign_key: "committed_user_id", dependent: :destroy

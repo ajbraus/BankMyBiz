@@ -49,3 +49,9 @@ old code
     <% end %>
   </div>
 </div>
+
+
+<div class="line-box">
+  <p class="text-center muted line-text">or</p>
+  <div class="line"></div>
+</div>

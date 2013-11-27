@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_filter :authenticate_user!
-  impressionist :actions=>[:show], :unique => [:impressionable_type, :impressionable_id, :session_hash]
 
   def show
     @user = User.find(params[:id])
@@ -24,55 +23,5 @@ class UsersController < ApplicationController
     else 
       redirect_to root_path, notice: "Oops, here you go!"
     end
-  end
-
-  def confirm
-    @user = User.find(params[:user_id])
-    @user.confirmed_at = Time.now
-    @user.rejected_at = nil
-    @user.save
-    @user.delay.add_to_mc_newsletter
-
-    respond_to do |format|
-      format.html { redirect_to users_path, notice:"User successufly confirmed" }
-      format.js
-      format.json { render json: @user }
-    end  
-  end
-
-  def reject
-    @user = User.find(params[:user_id])
-    @user.rejected_at = Time.now
-    @user.confirmed_at = nil
-    @user.save
-
-    respond_to do |format|
-      format.html { redirect_to users_path, notice:"User successufly rejected" }
-      format.js
-      format.json { render json: @user }
-    end  
-  end
-
-  def set_bank
-    @user = User.find(params[:id])
-    @user.update_attributes(bank: true)
-    @user.locations << Location.first
-
-    respond_to do |format|
-      format.html { redirect_to edit_profile_path(@user) }
-      format.js
-      format.json { render json: @user }
-    end  
-  end
-
-  def set_business
-    @user = User.find(params[:id])
-    @user.update_attributes(bank: false)
-
-    respond_to do |format|
-      format.html { redirect_to edit_profile_path(@user) }
-      format.js
-      format.json { render json: @user }
-    end  
   end
 end

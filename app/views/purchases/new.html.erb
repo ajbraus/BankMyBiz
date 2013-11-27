@@ -17,6 +17,9 @@
       <div class="price"><strong>$<%= current_user.bank? ? "74.99" : "24.99" %></strong></div>
       <div class="save"></div>
       <h4>Total: <strong class='muted'>$<%= current_user.bank? ? "74.99" : "24.99" %></strong></h4>
+      <div class='text-center'>
+        <%= image_tag "credit_card_logos_homepage.png" %>
+      </div>
     </div>
     <div class="well">
       <h5>Get access to . . .</h5>
@@ -44,24 +47,72 @@
       </div>
     </div>
   </div>
-  <div class="span5">
-    <div id="stripe_error" class="alert alert-error" style="display:none"></div>
-    <div class="well clearfix">
-        <%= label_tag :name, "Name on Card" %>
-        <%= text_field_tag :name, nil, name: nil, class:"span4" %>
-        <p class='text-center'>
-          <%= image_tag "credit_card_logos_homepage.png" %>
-        </p>
-        <%= label_tag :card_number, "Credit Card Number " %>
-        <%= text_field_tag :card_number, nil, name: nil, class:"span4" %>
-        <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-        <%= text_field_tag :card_code, nil, name: nil, class:"input-mini" %>
-        <%= label_tag :card_month, "Card Expiration" %>
-        <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'input-medium'}%>
-        <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'input-small'} %>
-        <%= f.hidden_field :match_count, value:3 %>
-        <%= hidden_field_tag :stripe_card_token %>
-      <div class="actions text-right"><%= f.submit "Confirm Purchase", class:"btn btn-success btn-large" %></div>
-    </div>
+  <div class="span5">  
+    <div class="cards well">
+      <h4>Cards</h4>
+        <table>
+      <% if !current_user.stripe_customer_id.present? %>
+        <span class="muted">No Cards</span>
+      <% else %>
+        <tr>
+          <th>
+          </th>
+          <th>
+            Type
+          </th>
+          <th>
+            Last 4
+          </th>
+          <th>
+            Expiration
+          </th>
+        </tr>
+        <% @cards.each_with_index do |c, index| %>
+          <tr>
+            <td>
+              <%= radio_button_tag "stripe_card_id", c['id'] %>
+            </td>
+            <td>
+              <%= c["type"] %>
+            </td>
+            <td>
+              <%= c["last4"] %> 
+            </td>
+            <td>
+              <%= c["exp_month"] %> / <%= c["exp_year"] %>
+            </td>
+          </tr>
+        <% end %>
+      <% end %>
+        <tr>
+          <td>
+            <%= radio_button_tag "stripe_card_id", nil %>
+          </td>
+          <td>
+            New Card
+          </td>
+        </tr>
+      </table>
+      <div id="creditCardInputs" style="display:none;">
+        <div id="stripe_error" class="alert alert-error" style="display:none"></div>
+        <section>
+          <%= label_tag :name, "Name on Card" %>
+          <%= text_field_tag :name, nil, name: nil, class:"span4" %>
+          <%= label_tag :card_number, "Credit Card Number " %>
+          <%= text_field_tag :card_number, nil, name: nil, class:"span4" %>
+          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
+          <%= text_field_tag :card_code, nil, name: nil, class:"input-mini" %>
+          <%= label_tag :card_month, "Card Expiration" %>
+          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'input-medium'}%>
+          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'input-small'} %>
+          <%= f.hidden_field :match_count, value:3 %>
+          <%= f.hidden_field :price, value: current_user.bank? ? "74.99" : "24.99" %>
+          <%= hidden_field_tag :stripe_card_id %>
+        </section>
+      </div>
+    <section class="actions text-right">
+      <%= f.submit "Confirm Purchase", class:"btn btn-success btn-large", disabled:true %>
+    </section>
   </div>
+</div>
 <% end %>

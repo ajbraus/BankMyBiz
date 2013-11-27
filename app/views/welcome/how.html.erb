@@ -3,7 +3,7 @@
   content_for :description, "We are a banker and business social network for defining trust and relationships upon which to do business" 
   content_for :keywords, "Find a Banker, Get a Loan, Bank Account"
 %>
-
+<% if false %>
     <div class="span4 text-left">
         <div data-spy="affix" class='affixed-nav' data-offset-top="90">
             <ul class="nav nav-list">
@@ -18,12 +18,21 @@
             </ul>
         </div>
     </div>
-    <div class="span6">
+    <% end %>
+    <div class="span6 offset3">
+        <fieldset id="one">
+            <h3>Welcome</h3>
+            <div class="fieldset-content">
+              <p>
+                Welcome to BankmyBiz.com. We're glad you found us. We're ready to <strong>save you time</strong> and <strong>make you money</strong>. Here's how.
+              </p>
+            </div>
+        </fieldset>
         <fieldset id="one">
             <legend>Matches</legend>
             <div class="fieldset-content">
               <p>
-                BankmyBiz is a <strong>Matching Platform</strong> meaning we match Lenders and Owners. 
+                BankmyBiz is a <strong>Matching Platform</strong>, meaning we match Lenders and Owners. 
               </p>
               <p>
                 <strong>Lenders</strong> are all types of people who work for banks or organizations that can help finance a business. <strong>Owners</strong> are users who either own businesses or "own" getting financing for a business.

@@ -16,6 +16,8 @@ BankMyBiz::Application.routes.draw do
     end
   end
 
+  resources :favorites, only: [:index]
+
   resources :subscriptions, only: [:new, :create]
   resources :purchases, only: [:new, :create]
   resources :likes, only: [:create, :destroy]

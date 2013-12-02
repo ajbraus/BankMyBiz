@@ -144,6 +144,18 @@
                     <% end %>
                   </li>
                   <li>
+                    <% if current_user.finished_profile? %>
+                      <%= link_to favorites_path, rel:"tooltip", title:"Favorites", data: {placement: "bottom"} do %>
+                        <i class="icon ion-ios7-star-outline"></i>
+                      <% end %>
+                      <% if params[:controller] == "favorites" && params[:action] == "index" %>
+                        <div class="under text-center"><i class="icon-caret-up green"></i></div>
+                      <% end %>
+                    <% else %>
+                      <%= link_to "Get Matches", edit_profile_path(current_user) %>
+                    <% end %>
+                  </li>
+                  <li>
                     <%= link_to messages_path, rel:"tooltip", title:"Messages", data: {placement: "bottom"} do %>
                       <i class="icon ion-ios7-email-outline"></i>
                     <% end %>

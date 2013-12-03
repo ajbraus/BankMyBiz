@@ -157,7 +157,11 @@
                   </li>
                   <li>
                     <%= link_to messages_path, rel:"tooltip", title:"Messages", data: {placement: "bottom"} do %>
-                      <i class="icon ion-ios7-email-outline"></i>
+                      <% if current_user.unread_messages.any? %>
+                        <i class="icon ion-ios7-email"></i> <span class="message-count"><%= current_user.unread_messages.count %></span> 
+                      <% else %>
+                        <i class="icon ion-ios7-email-outline"></i>
+                      <% end %>
                     <% end %>
                     <% if params[:controller] == "messages" && params[:action] == "index" %>
                       <div class="under text-center"><i class="icon-caret-up green"></i></div>

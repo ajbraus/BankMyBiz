@@ -65,10 +65,10 @@
             <%= link_to "edit profile", edit_profile_path(@user) %>
           <% elsif current_user.messages_left? %>
             <a data-toggle="modal" href="#contact-modal" class="btn btn-primary message-button"><i class="icon-envelope-alt"></i> Contact</a>
+            <section class="muted large">
+              <%= calls_to_action.sample %>
+            </section>
           <% end %>
-          <section class="muted large">
-            <%= calls_to_action.sample %>
-          </section>
           </div>
           <div class="well gray-border-left text-left">
             <% if @user.posts.any? %>

@@ -23,21 +23,15 @@
       <%= f.hidden_field :receiver_id, value: "#{@sender.id}" %>
     <% end %>
   </div>
-  <div class="span8">
-    <div class='span6 one-message'>
+  <section class="span9">
+    <section class='span6 one-message large'>
       <p><strong>From:</strong> <%= link_to "#{@message.sender.first_name_with_last_initial}", user_path(@message.sender) %></p>
       <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
       <p><%= simple_format @message.body %></p>
       <div class="text-right btn-reply">
         <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large">Reply</a>
       </div>
-    </div>
-  </div>
-  <div class="span3 offset1">  
-    <div class="border-left">
-      <%= render 'shared/improve_profile' %>
-      <hr>
-      <%= render 'shared/profile_views' %>
-    </div>
-  </div>
+    </section>
+  </section>
+<%= render 'shared/right_sidebar' %>
 </div>

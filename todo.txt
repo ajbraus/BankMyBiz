@@ -2,9 +2,6 @@ fix impressions
 
 don't track if you go to the same user/post twice in the same three days
 
-unread messages count in header - activity/notifications in header like facebook
-  initiate with welcome message
-
 add privacy link to footer
   
 accounts recievable: low/medium/high/very high
@@ -404,3 +401,7 @@ DONE add Favorites to nav
 DONE are matches going out?
 
 DONE calls to action to connect
+
+DONE unread messages count in header - activity/notifications in header like facebook
+DONE  initiate with welcome message
+

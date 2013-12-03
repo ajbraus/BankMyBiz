@@ -1,7 +1,41 @@
-add Favorites to nav
-  if your follower posts to the newsfeed - email 
-
 are matches going out?
+fix impressions
+
+don't track if you go to the same user/post twice in the same three days
+
+calls to action to connect
+
+unread messages count in header - activity/notifications in header like facebook
+  initiate with welcome message
+
+add privacy link to footer
+  
+accounts recievable: low/medium/high/very high
+B2B? B2C? Both
+Kind of banking: Factoring, Traditional, 
+Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
+only buy matches that are actively looking or interested
+
+invite mo' people
+invite linkedin connections
+reward with free matches & bucks
+
+bugs:
+  threading messages by subject line
+  ajaxify comments
+  ajaxify bucks
+  allow delete comments to creator
+
+____________________________________________________
+
+
+rework interface: 
+  ad space
+  import recent tweets
+  more information dense?
+  infographic . . . 
+
+
 
 Testimonials page
 
@@ -10,39 +44,23 @@ Letter from Michael, CEO
 fix homepage:
   submit sitemap to google
 
-unread messages count in header - activity/notifications in header like facebook
+what makes a really good banker - one you can trust and has relationships . . .lots of linkedin connections . . . hmmm "verifications" 
 
-ad space
-
-import recent tweets
-
-add privacy link to footer
-
-setup users
-  add user tags to users#show
-  setup tracking impressions on users
-  don't track if you go to the same user/post twice in the same three days
-  
-accounts recievable: low/medium/high/very high
-B2B? B2C? Both
-Kind of banking: Factoring, Traditional, 
-Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
-only buy matches that are actively looking or interested
 
 add zipcode
-
-Alert that profile is private
 
 set password after authenticate through linkedin.
 
 Make match happen during the day
 only email on weekdays during the day
 
-calls to action to connect
-
-initiate with welcome message
-
 My banker - my client - track who is clients and bankers of each other
+
+setup subscriptions
+  don't bill customers who are gone
+  create "downgrade subscription" workflow
+  1/month package, 3/month package %25, 6/month package %50
+  promoted posts
 
 buy matches
   add destroy card
@@ -55,33 +73,17 @@ send created at with post and comment, send user position and HQ state with post
 
 don't have nil columns in database at all - will break API
 
-invite mo' people
-invite linkedin connections
-reward with free matches & bucks
-
-
-bugs:
-  threading messages by subject line
-  ajaxify comments
-  ajaxify bucks
-  allow delete comments to creator
-
 repost - with bmb button
 
 click our seo trending words
 
-setup subscriptions
-  don't bill customers who are gone
-  create "downgrade subscription" workflow
-  1/month package, 3/month package %25, 6/month package %50
-  promoted posts
+
 
 ------------------------------
 
-Someone else grabbed your match because you didn't get it
 
-Improvements to matching 
-who do you sell to? accounts receivable low, medium, high?
+
+Someone else grabbed your match because you didn't get it
 
 what kind of banking do you do?
   treasury services
@@ -89,12 +91,7 @@ what kind of banking do you do?
   factoring
   non-profit
 
-upgrade profile for bankers not businesses
-
 send richtext messages
-
-share = get bucks
-  uptick karma?
 
 Security
   don't destroy users
@@ -105,13 +102,9 @@ message sent more obvious - sent count
 
 make reply from message in email actually reply as a message.
 
-add karma
-  recently added karma (last week's votes)
-  start out with 25 reputation points
-
 follow tags
 
-  Control / Moderation
+Control / Moderation
 
 
 
@@ -406,3 +399,6 @@ DONE add rescues for customer and card Stripe errors
 DONE update subscriptions to use multiple credit cards
 
 DONE add message button to user.html
+
+DONE add Favorites to nav
+  DONE if your follower posts to the newsfeed - email 

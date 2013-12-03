@@ -172,90 +172,6 @@ class User < ActiveRecord::Base
     commitments.find(commitment.id).destroy
   end
 
-  def started_profile?
-    return profile_progress_percent > 0
-  end
-
-  def finished_profile?
-    return profile_progress_percent == 100
-  end
-
-  def can_be_matched?
-    return (avatar.present? || pic_url.present?) && profile_progress_percent >= 60
-  end
-
-  def profile_questions_completed
-    progress = 0
-    progress += 1 if employee_sizes.any?
-    progress += 1 if industries.any?
-    progress += 1 if business_types.any?
-    progress += 1 if revenue_sizes.any?
-    progress += 1 if ages.any?
-    progress += 1 if locations.any?
-    progress += 1 if position.present?
-    progress += 1 if bio.present?
-    progress += 1 if goals.present?
-    progress += 1 if avatar.present? || pic_url.present?  
-    progress += 1 if org_name.present?
-    progress += 1 if hq_state.present?
-
-    return progress
-  end
-
-  def total_profile_elements
-    12
-  end
-
-  def profile_progress_percent
-    profile_questions_completed * 100 / total_profile_elements
-  end
-
-  def profile_elements_left
-    total_profile_elements - profile_questions_completed
-  end
-
-  def local_capital?(other_user)
-    return self.hq_state == other_user.hq_state
-  end
-
-  def percentage_match(other_user)
-    percentage_match = 0
-
-    if other_user.ages.any? && ages.any?
-      with_age = (other_user.age_ids & age_ids).present?
-    end
-    if other_user.industries && industries.any?
-      with_industry = (other_user.industry_ids & industry_ids).present?
-    end
-    if bank? #IF MATCHING WITH BANKS PIC A BUSINESS WITH A HQ IN A STATE THE BANK DOES BUSINESS
-      if other_user.locations.any? && hq_state.present?
-        with_location = true if locations.include?(Location.first) || other_user.hq_state.in?(locations)
-      end
-    else #IF MATCHING A BUSINESS, CHOOSE A BANK THAT DOES BUSINESS IN ANY STATE THEY DO BUSINESS
-      if other_user.hq_state.present? && locations.present?
-        with_location = true if other_user.locations.include?(Location.first) || hq_state.in?(other_user.locations)
-      end
-    end
-    if other_user.employee_sizes.any? && employee_sizes.any?
-      with_employee_size = (other_user.employee_size_ids & employee_size_ids).present?
-    end
-    if other_user.revenue_sizes.any? && revenue_sizes.any?
-      with_revenue_size = (other_user.revenue_size_ids & revenue_size_ids).present?
-    end
-    if other_user.business_types.any? && business_types.any?
-      with_business_type = (other_user.business_type_ids & business_type_ids).present?
-    end
-
-    percentage_match += 1 if with_age == true
-    percentage_match += 1 if with_industry == true
-    percentage_match += 1 if with_location == true
-    percentage_match += 1 if with_employee_size == true
-    percentage_match += 1 if with_revenue_size == true
-    percentage_match += 1 if with_business_type == true
-
-    return percentage_match * 100 / 6
-  end
-
   def first_name
     @name_array = self.name.split(' ')
     @name_array[0].capitalize
@@ -318,6 +234,103 @@ class User < ActiveRecord::Base
     end
   end
 
+  def started_profile?
+    return profile_progress_percent > 0
+  end
+
+  def finished_profile?
+    return profile_progress_percent == 100
+  end
+
+  def in_same_location?(other_user)
+    if self.bank? #IF MATCHING WITH BANKS PIC A BUSINESS WITH A HQ IN A STATE THE BANK DOES BUSINESS
+      if self.locations.any? && other_user.hq_state.present?
+        return self.locations.include?(Location.first) || other_user.hq_state.in?(self.locations)
+      end
+    else #IF MATCHING A BUSINESS, CHOOSE A BANK THAT DOES BUSINESS IN THE STATE OF THEIR HEADQUARTERS
+      if self.hq_state.present? && other_user.locations.present?
+        return self.hq_state.in?(other_user.locations) # other_user.locations.include?(Location.first) || 
+      end
+    end
+    return false
+  end
+
+  def can_be_matched?
+    return (avatar.present? || pic_url.present?) && profile_progress_percent >= 60
+  end
+
+  def profile_questions_completed
+    progress = 0
+    progress += 1 if employee_sizes.any?
+    progress += 1 if industries.any?
+    progress += 1 if business_types.any?
+    progress += 1 if revenue_sizes.any?
+    progress += 1 if ages.any?
+    progress += 1 if locations.any?
+    progress += 1 if position.present?
+    progress += 1 if bio.present?
+    progress += 1 if goals.present?
+    progress += 1 if avatar.present? || pic_url.present?  
+    progress += 1 if org_name.present?
+    progress += 1 if hq_state.present?
+
+    return progress
+  end
+
+  def total_profile_elements
+    12
+  end
+
+  def profile_progress_percent
+    profile_questions_completed * 100 / total_profile_elements
+  end
+
+  def profile_elements_left
+    total_profile_elements - profile_questions_completed
+  end
+
+  def local_capital?(other_user)
+    return self.hq_state == other_user.hq_state
+  end
+
+  def percentage_match(other_user)
+    percentage_match = 0
+
+    if other_user.ages.any? && ages.any?
+      with_age = (other_user.age_ids & age_ids).present?
+    end
+    if other_user.industries && industries.any?
+      with_industry = (other_user.industry_ids & industry_ids).present?
+    end
+    # if bank? #IF MATCHING WITH BANKS PIC A BUSINESS WITH A HQ IN A STATE THE BANK DOES BUSINESS
+    #   if other_user.locations.any? && hq_state.present?
+    #     with_location = true if locations.include?(Location.first) || other_user.hq_state.in?(locations)
+    #   end
+    # else #IF MATCHING A BUSINESS, CHOOSE A BANK THAT DOES BUSINESS IN ANY STATE THEY DO BUSINESS
+    #   if other_user.hq_state.present? && locations.present?
+    #     with_location = true if other_user.locations.include?(Location.first) || hq_state.in?(other_user.locations)
+    #   end
+    # end
+    if other_user.employee_sizes.any? && employee_sizes.any?
+      with_employee_size = (other_user.employee_size_ids & employee_size_ids).present?
+    end
+    if other_user.revenue_sizes.any? && revenue_sizes.any?
+      with_revenue_size = (other_user.revenue_size_ids & revenue_size_ids).present?
+    end
+    if other_user.business_types.any? && business_types.any?
+      with_business_type = (other_user.business_type_ids & business_type_ids).present?
+    end
+
+    percentage_match += 1 if with_age == true
+    percentage_match += 1 if with_industry == true
+    # percentage_match += 1 if with_location == true
+    percentage_match += 1 if with_employee_size == true
+    percentage_match += 1 if with_revenue_size == true
+    percentage_match += 1 if with_business_type == true
+
+    return percentage_match * 100 / 5
+  end
+
   def todays_matches
     if matched_users.last
       return matched_users.last(1)
@@ -335,10 +348,12 @@ class User < ActiveRecord::Base
   end
 
   def potential_matches
-    available_users = User.all.reject { |r| r == self || r.bank == self.bank || r.in?(self.matched_users) || !r.can_be_matched? }
-    matches = available_users.select do |s|
-      percentage_match(s) >= 40
-    end
+    matches = User.all.reject { |m| m == self || 
+                                    m.bank == self.bank || 
+                                    !m.can_be_matched? ||
+                                    !m.in_same_location?(self) ||
+                                    m.in?(self.matched_users) || 
+                                    self.percentage_match(m) < 40 }
     return matches
   end
 

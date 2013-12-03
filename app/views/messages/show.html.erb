@@ -10,7 +10,7 @@
           <div class=" message-subject">
             <%= f.text_field :subject , :placeholder => "Subject",  :class => "span5 message-subject-input"%>
           </div>
-          <div class=" message-body ">
+          <div class="message-body">
             <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span5 message-subject-input"%>
           </div>               
         </div>  
@@ -27,7 +27,7 @@
     <div class='span6 one-message'>
       <p><strong>From:</strong> <%= link_to "#{@message.sender.first_name_with_last_initial}", user_path(@message.sender) %></p>
       <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
-      <p><%= @message.body %></p>
+      <p><%= simple_format @message.body %></p>
       <div class="text-right btn-reply">
         <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large">Reply</a>
       </div>

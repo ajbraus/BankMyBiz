@@ -23,6 +23,7 @@ namespace :db do
     end
     User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", bank: false, confirmed_at: Time.now)
     User.create(name:"Test Bank", email:"test@bank.com", password:"password", bank: true, confirmed_at: Time.now)
+    User.create(name:"Team BankmyBiz", email:"team@bankmybiz.com", password:"password", bank: true, confirmed_at: Time.now)
 
     User.all.each do |user|
       user.industries << Industry.first(2)

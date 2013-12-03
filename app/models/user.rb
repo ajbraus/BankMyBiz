@@ -106,9 +106,25 @@ class User < ActiveRecord::Base
   #before_create :skip_confirmation_notification
   before_create :set_username
   after_create :internal_new_user
+  after_create :create_welcome_message
 
   def to_param
     "#{id} #{username}".parameterize
+  end
+
+  def create_welcome_message 
+    Message.create(
+      subject: "Welcome to BankmyBiz",
+      body: "#{self.first_name}, Thanks for joining the BankmyBiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Connect with peers and matches. Ask them questions through BankmyBiz's private and secure messaging system. Ask them things like 'What is your biggest challenge recently?' or 'What about your business are you most proud?', or 'What is your most audacious goal for your business?'. Questions are a great way to start a business relationship and everyone on BankmyBiz is interested in starting those!" + "\n" +
+            "You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n" +
+            "We're proud of the BankmyBiz matching algorithm but you don't have to rely on it! Post to the News Feed to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n" +
+            "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for BankmyBiz 360&deg; to get 360&deg; of the activity happening on BankmyBiz." + "\n\n" +
+            "Thanks and Again, Welcome!" + "\n\n" +
+            "Michael Adam, CEO BankmyBiz",
+      sender_id: User.find_by_email("test@bank.com").id,
+      receiver_id: self.id,
+      is_read: false
+      )
   end
 
   # def send_welcome

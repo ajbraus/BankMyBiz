@@ -24,4 +24,26 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: "Oops, here you go!"
     end
   end
+
+  def set_business
+    @user = User.find(params[:id])
+    @user.bank = false
+    
+    if @user.save
+      redirect_to edit_profile_path(@user)
+    else
+      redirect_to :back, notice: "There was a problem. Try again"
+    end
+  end
+
+  def set_bank
+    @user = User.find(params[:id])
+    @user.bank = true
+
+    if @user.save
+      redirect_to edit_profile_path(@user)
+    else
+      redirect_to :back, notice: "There was a problem. Try again"
+    end
+  end
 end

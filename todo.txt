@@ -397,7 +397,6 @@ DONE add message button to user.html
 DONE add Favorites to nav
   DONE if your follower posts to the newsfeed - email 
 
-
 DONE are matches going out?
 
 DONE calls to action to connect

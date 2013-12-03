@@ -244,7 +244,7 @@ class User < ActiveRecord::Base
 
   def self.send_profile_reminders
     @users = User.select do |u| 
-      u.rejected_at.blank? && !u.started_profile? && ( u.created_at.to_date == (Date.today - 8.days) || u.created_at.to_date == (Date.today - 21.days) )
+      u.rejected_at.blank? && !u.finished_profile? && ( u.created_at.to_date == (Date.today - 8.days) || u.created_at.to_date == (Date.today - 21.days) )
     end
     @users.each do |u|
       Notifier.delay.profile_reminder(u)

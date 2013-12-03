@@ -1,0 +1,9 @@
+<% content_for :title, "Your Favorites" %>
+
+<%= render 'shared/left_sidebar' %>
+
+<div class="span6 clearfix">
+    <%= render partial: 'matches/match', collection: @favorites, as: 'match' %>
+</div>
+
+<%= render 'shared/right_sidebar' %>

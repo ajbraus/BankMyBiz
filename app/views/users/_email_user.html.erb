@@ -7,7 +7,7 @@
         <span class="muted">
           <%= other_user.position %>, <%= other_user.try(:hq_state) %><br>
           <%= current_user.percentage_match(other_user) %>% Match<br>
-          <%= current_user.status %>
+          <%= other_user.status %>
           </span>
       </td>
     </tr>

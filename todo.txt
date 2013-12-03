@@ -1,7 +1,5 @@
 add Favorites to nav
-  a micro CRM of business and bank contacts
   if your follower posts to the newsfeed - email 
-
 
 are matches going out?
 

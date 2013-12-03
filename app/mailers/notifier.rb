@@ -50,4 +50,10 @@ class Notifier < ActionMailer::Base
     @user = u
     mail to: @user.email, subject: "Unlock Matches on BankmyBiz.com by Completing your Profile"
   end
+
+  def new_post(user, post)
+    @user = user
+    @post = post
+    mail to: @user.email, subject: "#{@post.user.first_name_with_last_initial}'s New Post on BankmyBiz.com"
+  end
 end

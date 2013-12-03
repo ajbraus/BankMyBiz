@@ -1,4 +1,3 @@
-are matches going out?
 fix impressions
 
 don't track if you go to the same user/post twice in the same three days
@@ -402,3 +401,6 @@ DONE add message button to user.html
 
 DONE add Favorites to nav
   DONE if your follower posts to the newsfeed - email 
+
+
+DONE are matches going out?

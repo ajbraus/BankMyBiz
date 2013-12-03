@@ -1,4 +1,26 @@
 module UsersHelper
+  def calls_to_action
+   [
+    "Strike up a conversation...",
+    "Open your rolladeck...",
+    "Start smiling and dialing...",
+    "Relationships start with a question...",
+    "What is their biggest challenge?",
+    "What are they most proud of?",
+    "What are you waiting for?",
+    "They signed up to be contacted...",
+    "Your match wants you to contact them...",
+    "Victory goes to the bold...",
+    "Triumph is just 'Try' with a little umph!",
+    "Get ready to listen...",
+    "Don't close a sale, open a relationship...",
+    "If you don't reach out, your competitor will...",
+    "Wrap your questions in expertise...",
+    "Make a customer, not a sale...",
+    "Are you ready to RUUUUUMBLE?"
+    ]
+  end
+
   def us_states
     [
       ['AL'],

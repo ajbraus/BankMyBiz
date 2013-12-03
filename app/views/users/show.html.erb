@@ -1,3 +1,4 @@
+<% content_for :title, "Private Profile" %>
   <div id="contact-modal" class="modal hide fade in" style="display: none;">  
     <%= form_for @user.messages.new, remote:true do |f| %>
       <div class="modal-header">  
@@ -65,6 +66,9 @@
           <% elsif current_user.messages_left? %>
             <a data-toggle="modal" href="#contact-modal" class="btn btn-primary message-button"><i class="icon-envelope-alt"></i> Contact</a>
           <% end %>
+          <section class="muted large">
+            <%= calls_to_action.sample %>
+          </section>
           </div>
           <div class="well gray-border-left text-left">
             <% if @user.posts.any? %>

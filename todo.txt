@@ -1,7 +1,5 @@
 fix impressions
-
 don't track if you go to the same user/post twice in the same three days
-
 add privacy link to footer
   
 accounts recievable: low/medium/high/very high

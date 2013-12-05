@@ -122,7 +122,7 @@ class User < ActiveRecord::Base
             "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for BankmyBiz 360&deg; to get 360&deg; of the activity happening on BankmyBiz." + "\n\n\n" +
             "Thanks and again, Welcome!" + "\n\n\n" +
             "Michael Adam, CEO BankmyBiz",
-      sender_id: User.find_by_email("team@bankmybiz.com").id,
+      sender_id: User.find_by_email("michael@bankmybiz.com").id,
       receiver_id: self.id,
       is_read: false
       )

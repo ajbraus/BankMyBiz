@@ -85,6 +85,8 @@ class User < ActiveRecord::Base
 
   has_many :organizations
 
+  has_many :invitations, :class_name => self.to_s, :as => :invited_by
+
   has_attached_file :avatar,
          :styles => { 
             :medium => "200x200",
@@ -101,31 +103,40 @@ class User < ActiveRecord::Base
   validates :avatar, # :attachment_presence => true,
                      :attachment_content_type => { :content_type => [ 'image/png', 'image/jpg', 'image/gif', 'image/jpeg' ] }
 
-  validates :name, presence: true
+  # validates :name, presence: true
 
-  #before_create :skip_confirmation_notification
+  # before_create :skip_confirmation_notification
   before_create :set_username
   after_create :internal_new_user
   after_create :create_welcome_message
+  after_invitation_accepted :email_invited_by
+  after_invitation_accepted :create_welcome_message
+  after_invitation_accepted :set_username
+
+  def email_invited_by
+     Notifier.delay.invitation_accepted(self, self.invited_by)
+  end
 
   def to_param
     "#{id} #{username}".parameterize
   end
 
   def create_welcome_message 
-    Message.create(
-      subject: "Welcome to BankmyBiz",
-      body: "#{self.first_name}," + "\n\n" + 
-            "Thanks for joining the BankmyBiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use BankmyBiz's private and secure messaging system to ask questions like 'What is your biggest challenge recently?' or 'What is your biggest goal for your business?'." + "\n\n" +
-            "We're proud of the BankmyBiz matching algorithm. Matches you receive want to hear from you. You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n\n" +
-            "Post to the News Feed to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
-            "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for BankmyBiz 360&deg; to get 360&deg; of the activity happening on BankmyBiz." + "\n\n\n" +
-            "Thanks and again, Welcome!" + "\n\n\n" +
-            "Michael Adam, CEO BankmyBiz",
-      sender_id: User.find_by_email("michael@bankmybiz.com").id,
-      receiver_id: self.id,
-      is_read: false
-      )
+    if self.name.present?
+      Message.create(
+        subject: "Welcome to BankmyBiz",
+        body: "#{self.first_name}," + "\n\n" + 
+              "Thanks for joining the BankmyBiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use BankmyBiz's private and secure messaging system to ask questions like 'What is your biggest challenge recently?' or 'What is your biggest goal for your business?'." + "\n\n" +
+              "The BankmyBiz matching algorithm matches you with people who want to connect with you. You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n\n" +
+              "Post to the News Feed to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
+              "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for BankmyBiz 360&deg; to get 360&deg; of the activity happening on BankmyBiz." + "\n\n\n" +
+              "Thanks and again, Welcome!" + "\n\n\n" +
+              "Michael Adam, CEO BankmyBiz",
+        sender_id: User.find_by_email("michael@bankmybiz.com").id,
+        receiver_id: self.id,
+        is_read: false
+        )
+    end
   end
 
   # def send_welcome
@@ -133,7 +144,11 @@ class User < ActiveRecord::Base
   # end
 
   def set_username
-    self.username = self.first_name_with_last_initial.split.join('-')[0..-2]
+    if self.name.present?
+      self.username = self.first_name_with_last_initial.split.join('-')[0..-2]
+    else
+      self.username = self.email.split('@')[0]
+    end
   end
 
   def internal_new_user

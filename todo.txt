@@ -1,16 +1,17 @@
+invite mo' people
+invite linkedin connections
+reward with free matches & bucks
+
 fix impressions
 don't track if you go to the same user/post twice in the same three days
 add privacy link to footer
   
+only buy matches that are actively looking or interested
 accounts recievable: low/medium/high/very high
 B2B? B2C? Both
 Kind of banking: Factoring, Traditional, 
 Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
-only buy matches that are actively looking or interested
 
-invite mo' people
-invite linkedin connections
-reward with free matches & bucks
 
 bugs:
   threading messages by subject line

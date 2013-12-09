@@ -1,6 +1,33 @@
+<div id="invite-modal" class="modal hide fade in" style="display: none; ">  
+  <%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post}, remote:true do |f| %>
+    <%= devise_error_messages! %>
+    <div class="modal-header">  
+      <a class="close" data-dismiss="modal">×</a>  
+      <h3>Send Invites</h3> 
+    </div>
+    <div class="modal-body">  
+      <% resource.class.invite_key_fields.each do |field| -%>
+        <div class="message-subject">
+          <%= f.text_field field, :class => "span7 message-subject-input", placeholder: "Add Emails (separated by commas)" %>
+        </div>
+      <% end %>      
+      <div class="message-body">
+        <%= text_area_tag 'body', nil, :value => "I want to invite you to BankmyBiz.com, a matching platform for lenders and business owners. Its the 'match.com' of business lending relationships.", :rows => "8", :class => "span7 message-subject-input"%>
+      </div>   
+    </div>      
+    <div class="modal-footer">  
+      <%= f.submit t("devise.invitations.new.submit_button"), class:"pull-right btn btn-success btn-large" %>
+    </div>  
+  <% end %>
+</div>
+
 <div class="span3">  
   <section class="gray-border-left">
     <%= render 'shared/improve_profile' %>
+  </section>
+  <section>
+    <a data-toggle="modal" href="#invite-modal" class="btn btn-inverse btn-large btn-block">Invite | <i class="ion-ios7-email"></i></a>
+    <div class="muted small">Get a Match When Invites Register</div>
   </section>
   <section class="gray-border-left">
     <%= render 'shared/profile_views' %>

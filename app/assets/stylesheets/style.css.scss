@@ -25,6 +25,16 @@ strong {
 ul, li {
   list-style: none;
 }
+ 
+.modal {
+ left: 55%;
+ width: 90%;
+ max-width: 445px;
+}
+
+.modal form {
+  margin: 0;
+}
 
 a.no-hover {
   &:hover {
@@ -134,10 +144,16 @@ z-index: 100;
 margin:0;
 }
 
-.icon {
+.navbar .icon {
 font-size: 26px;
 position: relative;
 bottom: 4px;
+}
+
+.btn-large i {
+  font-size: 23px;
+  position: relative;
+  top: 3px;
 }
 
 .under {
@@ -1223,4 +1239,10 @@ border-radius: 20px;
 padding: 1px 5px;
 text-shadow: none;
 color: white;
+}
+
+.center {
+  margin: 0 auto;
+  width: 220px;
+  margin-top: 20px;
 }

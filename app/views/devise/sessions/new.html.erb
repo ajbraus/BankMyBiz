@@ -1,4 +1,5 @@
-<div class="span4 offset4">
+<div class="center">
+  <h2>Login</h2>
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email %>
   <%= f.email_field :email, :autofocus => true %></div>
@@ -9,13 +10,13 @@
   <% if devise_mapping.rememberable? -%>
     <div>
       <label>
-        <%= f.check_box :remember_me %>
+        <%= f.check_box :remember_me, checked: true %>
         Remember Me
       </label>
     </div>
   <% end -%>
 
-  <div><%= f.submit "Sign in", class:"btn btn-primary btn-large btn-block" %></div>
+  <section><%= f.submit "Login", class:"btn btn-success btn-large" %></section>
 <% end %>
 <p>
   <a href="/auth/linkedin" class="auth_provider btn btn-large btn-block btn-linkedin">

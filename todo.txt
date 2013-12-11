@@ -1,6 +1,7 @@
 Credit Card payment bounced but card was saved and then it worked.
 fix impressions
 only buy/make matches that are actively looking or interested
+matches not going out
 
 invite linkedin connections
 

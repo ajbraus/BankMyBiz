@@ -370,7 +370,6 @@ DEPENDENCIES
   rails_12factor
   rails_autolink (~> 1.0.9)
   rspec-rails
-  sass
   sass-rails
   spork-rails
   stripe

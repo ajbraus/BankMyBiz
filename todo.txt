@@ -1,13 +1,12 @@
-pagination f-ed
 Credit Card payment bounced but card was saved and then it worked.
+fix impressions
+only buy/make matches that are actively looking or interested
 
 invite linkedin connections
 
-fix impressions
 don't track if you go to the same user/post twice in the same three days
 add privacy link to footer
   
-only buy matches that are actively looking or interested
 accounts recievable: low/medium/high/very high
 B2B? B2C? Both
 Kind of banking: Factoring, Traditional, 
@@ -29,8 +28,6 @@ rework interface:
   import recent tweets
   more information dense?
   infographic . . . 
-
-
 
 Testimonials page
 
@@ -412,4 +409,4 @@ invite mo' people
   DONE send emails
   DONE invitation accepted
   DONE reward match
-reward with free matches & bucks
+  DONE reward with free matches & bucks

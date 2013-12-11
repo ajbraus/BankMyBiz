@@ -1,5 +1,5 @@
 <div class="tag-cloud">
-  <h4>Trending Tags</h4>
+  <h4>Trending Interests</h4>
   <% Post.last(5).each do |p| %>
     <% p.tags.each do |t| %>
       <%= link_to "#{t.name}", post_path(p), class:"tag clickable-tag" %>

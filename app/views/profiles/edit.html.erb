@@ -42,11 +42,11 @@
         </section>
       </div>
       <div class="row">
-        <section class="col-sm-12">
-          <%= f.label :bio, "Tell Us About You. What Makes You and Your #{current_user.bank? ? 'Bank' : 'Business'} Great? (private)" %>
+        <section class="col-sm-6">
+          <%= f.label :bio, "What Makes You and Your #{current_user.bank? ? 'Bank' : 'Business'} Great? (private)" %>
           <%= f.text_area :bio, class:"form-control" %>
         </section>
-        <section class="col-sm-12">
+        <section class="col-sm-6">
           <%= f.label :goals, "What are your #{current_user.bank? ? 'Bank' : 'Business'}'s Goals (private)" %>
           <%= f.text_area :goals, class:"form-control" %>
         </section>
@@ -110,12 +110,7 @@
           </div> 
         </div>
       <% else %>
-        <div class="row">
-          <div class="col-sm-9">
-            <h4>About Your Business <span class="muted">(private)</span></h4>
-          </div>
-        </div>
-        <div class="row">
+        <section class="row">
           <div class="col-sm-6">
             <%= f.label :business_type_ids, "Entity Type" %>
             <% if @user.business_types.any? %>
@@ -132,8 +127,8 @@
               <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}), { prompt:"Select Employee Size" }, class:'form-control' %>   
             <% end %>
           </div>
-        </div>
-        <div class="row">
+        </section>
+        <section class="row">
           <div class="col-sm-6">
             <%= f.label :revenue_size_ids, "Revenue" %>
             <% if @user.revenue_sizes.any? %>
@@ -150,7 +145,7 @@
               <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}), {}, prompt:"Select Years Filed Taxes", class:'form-control' %>
             <% end %> 
           </div>    
-        </div>
+        </section>
       <% end %>
       <section class="row">
         <div class="col-sm-4">

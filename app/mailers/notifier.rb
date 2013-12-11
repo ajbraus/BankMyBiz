@@ -1,4 +1,5 @@
 class Notifier < ActionMailer::Base
+  add_template_helper(UsersHelper)
   include UsersHelper
   include ActionView::Helpers::AssetTagHelper  
   layout 'email' # use email.(html|text).erb as the layout for emails

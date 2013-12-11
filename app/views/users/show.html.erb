@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<section class='profile-picture-position col-sm-3' role="complementary"> 
+<section class='profile-picture-position col-sm-3'> 
   <% if current_user == @user && !current_user.has_image? %>
     <div class="well">
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -61,10 +61,10 @@
       <span class="muted"> <%= @user.karma + 100 %></span>
     </div>
   </div>
-  <div class="text-right">
+  <div class="text-center">
   <% if @user == current_user %>
     <%= link_to "edit profile", edit_profile_path(@user) %>
-  <% elsif current_user.messages_left? %>
+  <% else %>
     <section>
       <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-lg">Contact | <i class="ion-ios7-email"></i> </a>
     </section>
@@ -73,50 +73,45 @@
     </section>
   <% end %>
   </div>
+  <% if @user.posts.any? %>
   <div class="well gray-border-left text-left">
-    <% if @user.posts.any? %>
-      <div class="tag-cloud">
-        <p class="muted"><%= @user.first_name_with_last_initial %>'s Tags</p>
-        <% @user.posts.each do |p| %>
-          <% p.tags.each do |t| %>
-            <%= link_to "#{t.name}", post_path(p), class:"tag clickable-tag" %>
-          <% end %>
+    <h4>Their Interests</h4>    
+    <div class="tag-cloud">
+      <p class="muted"><%= @user.first_name_with_last_initial %>'s Tags</p>
+      <% @user.posts.each do |p| %>
+        <% p.tags.each do |t| %>
+          <%= link_to "#{t.name}", post_path(p), class:"tag clickable-tag" %>
         <% end %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
+  <% end %>
 </section>
 
 <div class="col-sm-6" role="main">
-  <ul class="large profile-deets">
-    <li>
+  <div class="large profile-deets">
+    <div>
       <strong class=''><%= @user.bank? ? "Bank" : "Business" %>:</strong>
-      <span class="muted"><%= @user.org_name %></span>
-    </li>
-    <li>
-      <strong class=''>Business Type:</strong>
-      <span class="muted"><%= @user.business_types.map(&:description).join(", ") %></span>
-    </li>
-    <li>
-      <strong class=''>Employees:</strong>
-      <span class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></span>
-    </li>
-    <li>
-      <strong class=''>Revenue Size:</strong>
-      <span class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></span>
-    </li>
-    <li>
-      <strong class=''>Years of Operation:</strong>
-      <span class="muted"><%= @user.ages.map(&:description).join(", ") %></span>
-    </li>
-    <li>
-      <strong class=''>Industry:</strong>
-      <span class="muted"><%= @user.industries.map(&:description).join(", ") %></span>
-    </li>
-    <li>
+      <div class="muted"><%= @user.org_name %></div>
+    </div>
+    <div>
       <strong class=''>Does Business in:</strong>
-      <span class="muted"><%= @user.locations.map(&:name).join(", ") %></span>
-    </li>
+      <div class="muted"><%= @user.locations.map(&:name).join(", ") %></div>
+    </div>
+    <% if @user.bank? %>
+      <h4>Does Business With</h4>
+    <% end %>
+    <strong class=''>Business Type:</strong>
+    <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
+    <strong class=''>Employees:</strong>
+    <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
+    <strong class=''>Revenue Size:</strong>
+    <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
+    <strong class=''>Years of Operation:</strong>
+    <div class="muted"><%= @user.ages.map(&:description).join(", ") %></div>
+    <strong class=''>Industry:</strong>
+    <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
+    <hr>  
     <h4>Bio</h4>
     <p class="muted"><%= @user.bio %></p>
     <hr>  
@@ -124,7 +119,7 @@
     <p class="muted"><%= @user.goals %></p>
     <hr>  
     <% if @user == current_user %>
-      <h4>Your Activity <span class="muted small">(private)</span></h4>
+      <h4>Your Activity <div class="muted small">(private)</div></h4>
       <% @activities.each do |activity| %>
         <div class="activity">
         <%= link_to activity.owner.name, activity.owner if activity.owner %>
@@ -133,6 +128,7 @@
       <% end %>
       <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
     <% end %>
+    <hr>  
     <% if @user == current_user %>
       <h4>Your Posts</h4>
     <% else %>
@@ -140,6 +136,6 @@
     <% end %>
     <%= render partial: "posts/post", collection: @posts, as: :post %>
     <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-  </ul>
+  </div>
 </div>
   <%= render 'shared/right_sidebar' %>

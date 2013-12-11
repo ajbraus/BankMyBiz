@@ -32,7 +32,7 @@
         </div>
         <div class="col-sm-5">
           <%= f.label :hq_state, "Headquarter State" %>
-          <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), {}, prompt: "Select State", class:'form-control' %>  
+          <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), { prompt: "Select State" }, class:'form-control' %>  
         </div>
       </div>
       <div class="row">
@@ -119,17 +119,17 @@
           <div class="col-sm-6">
             <%= f.label :business_type_ids, "Entity Type" %>
             <% if @user.business_types.any? %>
-              <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}, [@user.business_types.first.description, @user.business_types.first.id]), {}, prompt:"Select Entity Type", class:'form-control' %>    
+              <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}, [@user.business_types.first.description, @user.business_types.first.id]), { prompt:"Select Entity Type" }, class:'form-control' %>    
             <% else %>
-              <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}), {}, prompt:"Select Entity Type", class:'form-control' %>   
+              <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}), { prompt:"Select Entity Type" }, class:'form-control' %>   
             <% end %>
           </div>
           <div class="col-sm-6">
             <%= f.label :employee_size_ids, "Employees" %>
             <% if @user.employee_sizes.any? %>
-              <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}, [@user.employee_sizes.first.description, @user.employee_sizes.first.id]), {}, prompt:"Select Employee Size", class:'form-control' %>    
+              <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}, [@user.employee_sizes.first.description, @user.employee_sizes.first.id]), { prompt:"Select Employee Size" }, class:'form-control' %>    
             <% else %>
-              <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}), {}, prompt:"Select Employee Size", class:'form-control' %>   
+              <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}), { prompt:"Select Employee Size" }, class:'form-control' %>   
             <% end %>
           </div>
         </div>
@@ -137,15 +137,15 @@
           <div class="col-sm-6">
             <%= f.label :revenue_size_ids, "Revenue" %>
             <% if @user.revenue_sizes.any? %>
-              <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}, [@user.revenue_sizes.first.description, @user.revenue_sizes.first.id]), {}, prompt:"Select Revenue", class:'form-control' %> 
+              <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}, [@user.revenue_sizes.first.description, @user.revenue_sizes.first.id]), { prompt:"Select Revenue" }, class:'form-control' %> 
             <% else %>
-              <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}), {}, prompt:"Select Revenue", class:'form-control' %> 
+              <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}), { prompt:"Select Revenue" }, class:'form-control' %> 
             <% end %>
           </div>
           <div class="col-sm-6">
             <%= f.label :age_ids, "Years Filed Taxes" %>
             <% if @user.ages.any? %>
-              <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}, [@user.ages.first.description, @user.ages.first.id]), {}, prompt:"Select Years Filed Taxes", class:'form-control' %>
+              <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}, [@user.ages.first.description, @user.ages.first.id]), { prompt:"Select Years Filed Taxes" }, class:'form-control' %>
             <% else %>
               <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}), {}, prompt:"Select Years Filed Taxes", class:'form-control' %>
             <% end %> 

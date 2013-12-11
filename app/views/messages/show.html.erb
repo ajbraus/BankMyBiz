@@ -19,8 +19,7 @@
               </section>    
             </div>  
             <div class="modal-footer">  
-              <%= f.submit "Send Message", :class => "btn btn-primary" %>
-              <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
+              <%= f.submit "Send Message", :class => "btn btn-primary" %> 
             </div>  
           </div>
           <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>

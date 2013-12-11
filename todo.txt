@@ -1,4 +1,4 @@
-login as bank
+pagination f-ed
 Credit Card payment bounced but card was saved and then it worked.
 
 invite linkedin connections

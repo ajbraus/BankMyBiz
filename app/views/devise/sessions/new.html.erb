@@ -1,28 +1,28 @@
 <div class="center">
   <h2>Login</h2>
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %>
-  <%= f.email_field :email, :autofocus => true %></div>
+  <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+    <p><%= f.label :email %>
+    <%= f.email_field :email, :autofocus => true, class:"form-control" %></p>
 
-  <div><%= f.label :password %>
-  <%= f.password_field :password %></div>
+    <p><%= f.label :password %>
+    <%= f.password_field :password, class:"form-control" %></p>
 
-  <% if devise_mapping.rememberable? -%>
-    <div>
-      <label>
-        <%= f.check_box :remember_me, checked: true %>
-        Remember Me
-      </label>
-    </div>
-  <% end -%>
+    <% if devise_mapping.rememberable? -%>
+      <div>
+        <label>
+          <%= f.check_box :remember_me, checked: true %>
+          Remember Me
+        </label>
+      </div>
+    <% end -%>
 
-  <section><%= f.submit "Login", class:"btn btn-success btn-large" %></section>
-<% end %>
-<p>
-  <a href="/auth/linkedin" class="auth_provider btn btn-large btn-block btn-linkedin">
-    <i class="icon-linkedin"></i> | Login
-  </a>
-</p>
+    <section><%= f.submit "Login", class:"btn btn-success btn-lg" %></section>
+  <% end %>
+  <section>
+    <a href="/auth/linkedin" class="auth_provider btn btn-lg btn-block btn-linkedin">
+      Login | <i class="icon ion-social-linkedin"></i>
+    </a>
+  </section>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
 </div>

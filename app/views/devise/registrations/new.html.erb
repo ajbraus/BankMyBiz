@@ -3,32 +3,32 @@
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
-    <div><%= f.label :name, "Full Name* (private)" %>
-    <%= f.text_field :name %></div>
+    <p><%= f.label :name, "Full Name* (private)" %>
+    <%= f.text_field :name, class:'form-control' %></p>
 
-    <div><%= f.label :email, "Email* (private)" %>
-    <%= f.email_field :email %></div>
+    <p><%= f.label :email, "Email* (private)" %>
+    <%= f.email_field :email, class:"form-control" %></p>
 
-    <div><%= f.label :org_name, "Organization* (private)" %>
-    <%= f.text_field :org_name %></div>
+    <p><%= f.label :org_name, "Organization* (private)" %>
+    <%= f.text_field :org_name, class:'form-control' %></p>
 
-    <div><%= f.label :position, "Position*" %>
-    <%= f.text_field :position %></div>
+    <p><%= f.label :position, "Position*" %>
+    <%= f.text_field :position, class:'form-control' %></p>
 
-    <div><%= f.label :password, "Password* (min 6 characters)" %>
-    <%= f.password_field :password %></div>
+    <p><%= f.label :password, "Password* (min 6 characters)" %>
+    <%= f.password_field :password, class:"form-control" %></p>
 
-    <div><%= f.label :password_confirmation, "Confirm Password*" %>
-    <%= f.password_field :password_confirmation %></div>
+    <p><%= f.label :password_confirmation, "Confirm Password*" %>
+    <%= f.password_field :password_confirmation, class:"form-control" %></p>
 
-    <div><%= f.submit "Register", class:"btn btn-success btn-large" %></div>
+    <section><%= f.submit "Register", class:"btn btn-success btn-lg" %></section>
   <% end %>
 
-  <p>
-    <a href="/auth/linkedin" class="auth_provider btn btn-large btn-block btn-linkedin">
-      <i class="icon-linkedin"></i> | Register
+  <section>
+    <a href="/auth/linkedin" class="auth_provider btn btn-lg btn-block btn-linkedin">
+      Register | <i class="icon ion-social-linkedin"></i>
     </a>
-  </p>
+  </section>
 
   <%= render "devise/shared/links" %>
 

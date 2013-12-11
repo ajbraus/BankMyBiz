@@ -1,0 +1,9 @@
+<h4 class="h4"><%= @inviter.first_name.titleize %>, </h4>
+
+<p>
+  <strong><%= link_to @invitee.name.titleize, user_url(@invitee) %> accepted your invitation!</strong>, and you were rewarded a <%= link_to 'Free New Match', matches_url %>.
+</p>
+
+<p>
+  <strong>Tip</strong> - Post to the News Feed to improve your profile, create conversations, and earn bucks. Try posting interesting links, wins, and your industry expertise.
+</p>

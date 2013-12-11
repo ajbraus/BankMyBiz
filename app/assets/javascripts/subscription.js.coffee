@@ -9,12 +9,8 @@ jQuery ->
   $(':radio').click ->
     if $('#existing_card_id_').is(':checked')
       $("#creditCardInputs").slideDown();
-    else
-      $("#creditCardInputs").slideUp();
     if $('#stripe_card_id_').is(':checked')
       $("#creditCardInputs").slideDown();
-    else
-      $("#creditCardInputs").slideUp();
 
   
 

@@ -9,45 +9,47 @@
       </ul>
     </div>
   <% end %>
+
   <h2 class='text-center'>Buy Matches</h2>
-  <div class="span4 offset2">
-    <div class="well">
-      <h4>New Matches</h4>
-      <div class="small muted">3 New Matches</div>
-      <div class="price"><strong>$<%= current_user.bank? ? "74.99" : "24.99" %></strong></div>
-      <div class="save"></div>
-      <h4>Total: <strong class='muted'>$<%= current_user.bank? ? "74.99" : "24.99" %></strong></h4>
-      <div class='text-center'>
-        <%= image_tag "credit_card_logos_homepage.png" %>
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-2">
+      <div class="well">
+        <h4>New Matches</h4>
+        <div class="small muted">3 New Matches</div>
+        <div class="price"><strong>$<%= current_user.bank? ? "74.99" : "24.99" %></strong></div>
+        <div class="save"></div>
+        <h4>Total: <strong class='muted'>$<%= current_user.bank? ? "74.99" : "24.99" %></strong></h4>
+        <div class='text-center'>
+          <%= image_tag "credit_card_logos_homepage.png" %>
+        </div>
       </div>
-    </div>
-    <div class="well clearfix">
-      <h5>Get access to . . .</h5>
-      <div class="buy-matches">
-        <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-        <% @first_three_matches.each do |m| %>
-          <div class="pull-left text-center" style="width:33%;">
-            <div><%= profile_picture(m) %></div>
-            <div><%= m.first_name_with_last_initial %></div>
-            <div><%= m.position %></div>
-            <div><%= current_user.percentage_match(m) %>% match</div>
+      <div class="well clearfix">
+        <h5>Get access to . . .</h5>
+        <div class="buy-matches">
+          <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+          <% @first_three_matches.each do |m| %>
+            <div class="pull-left text-center" style="width:33%;">
+              <div><%= profile_picture(m) %></div>
+              <div><%= m.first_name_with_last_initial %></div>
+              <div><%= m.position %></div>
+              <div><%= current_user.percentage_match(m) %>% match</div>
+            </div>
+          <% end %>
+        <% else %>
+          <div class="span1">
+            <i class="icon-plus"></i>
+          </div>
+          <div class="span1">
+            <i class="icon-plus"></i>
+          </div>
+          <div class="span1">
+            <i class="icon-plus"></i>
           </div>
         <% end %>
-      <% else %>
-        <div class="span1">
-          <i class="icon-plus"></i>
         </div>
-        <div class="span1">
-          <i class="icon-plus"></i>
-        </div>
-        <div class="span1">
-          <i class="icon-plus"></i>
-        </div>
-      <% end %>
       </div>
     </div>
-  </div>
-  <div class="span5">  
+  <div class="col-sm-5">  
     <div class="cards well">
       <h4>Cards</h4>
         <table>
@@ -95,24 +97,40 @@
       </table>
       <div id="creditCardInputs" style="display:none;">
         <div id="stripe_error" class="alert alert-error" style="display:none"></div>
-        <section>
-          <%= label_tag :name, "Name on Card" %>
-          <%= text_field_tag :name, nil, name: nil, class:"span4" %>
-          <%= label_tag :card_number, "Credit Card Number " %>
-          <%= text_field_tag :card_number, nil, name: nil, class:"span4" %>
-          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-          <%= text_field_tag :card_code, nil, name: nil, class:"input-mini" %>
-          <%= label_tag :card_month, "Card Expiration" %>
-          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'input-medium'}%>
-          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'input-small'} %>
+        <section class="row">
+          <p class="col-sm-9">
+            <%= label_tag :name, "Name on Card", class:"control-label" %>
+            <%= text_field_tag :name, nil, name: nil, class:"form-control" %>
+          </p>
+          <p class="col-sm-9">
+            <%= label_tag :card_number, "Credit Card Number", class:"control-label" %>
+            <%= text_field_tag :card_number, nil, name: nil, class:"form-control" %>
+          </p>         
+            <div class="col-sm-4">
+              <%= label_tag :card_code, "CVV Code" %>
+              <%= text_field_tag :card_code, nil, name: nil, class:"form-control" %>
+            </div>
+            <div class="col-sm-8">
+              <div class="row">
+                <div class="col-sm-7">
+                  <%= label_tag :card_month, "Month" %>
+                  <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'form-control'}%>
+                </div>
+                <div class="col-sm-5">
+                  <%= label_tag :card_month, "Year" %>
+                  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'form-control'} %>
+                </div>
+            </div>
+          </div>
           <%= f.hidden_field :match_count, value:3 %>
           <%= f.hidden_field :price, value: current_user.bank? ? "74.99" : "24.99" %>
           <%= hidden_field_tag :stripe_card_id %>
         </section>
       </div>
     <section class="actions text-right">
-      <%= f.submit "Confirm Purchase", class:"btn btn-success btn-large", disabled:true %>
+      <%= f.submit "Confirm Purchase", class:"btn btn-success btn-lg", disabled:true %>
     </section>
   </div>
+</div>
 </div>
 <% end %>

@@ -11,8 +11,9 @@
         <strong><%= link_to user_path(user) do %><%= user.first_name_with_last_initial %><% end %></strong> <br>
         <span class="muted">
           <%= user.position %>, <%= user.try(:hq_state) %><br>
-          <%= current_user.percentage_match(user) %>% Match | <%= link_to "contact", user_path(user) %> <br>
           <%= current_user.status %> 
+          <br>
+          <%= current_user.percentage_match(user) %>% Match | <%= link_to "contact", user_path(user) %>
           </span>
       </td>
     </tr>

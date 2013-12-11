@@ -9,10 +9,11 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if @user.matched_users.empty? && @user.finished_profile?
-          @user.set_peers_and_matches
+          @user.set_matches
+          @user.set_peers
           @user.delay.add_to_mc_lists
         end
-        format.html { redirect_to @user, notice: 'Profile was Successfully Updated.' }
+        format.html { redirect_to @user }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -98,10 +98,10 @@ class PostsController < ApplicationController
         @user.followers.each do |f|
           Notifier.delay.new_post(f, @post)
         end
-        format.html { redirect_to root_path, notice: 'Post was successfully created.' }
+        format.html { redirect_to root_path }
         format.json { render json: @post, status: :created, location: @post }
       else
-        format.html { redirect_to :back }
+        format.html { redirect_to :back, notice: 'There was a problem, please try again' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
@@ -114,7 +114,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
-        format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
+        format.html { redirect_to root_path }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

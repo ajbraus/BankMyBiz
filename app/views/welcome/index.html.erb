@@ -6,7 +6,7 @@
     </div>
   </div>
 </div>
-<div class="jumbotron visible-desktop visible-tablet hidden-phone hero-background">
+<div class="jumbotron hidden-xs hero-background">
   <div class="container">
     <div class="row">
       <div class="pull-left">
@@ -19,12 +19,12 @@
       <div class="text-center sign-up-buttons">
         <p>
           <a href="/auth/linkedin" class="auth_provider btn btn-linkedin splash-btn">          
-            Request Free Access | <i class="icon-linkedin"></i>
+            Request Free Access | <i class="icon ion-social-linkedin"></i>
           </a>
         </p>
         <p>
-          <%= link_to new_registration_path(resource_name), class:'btn splash-btn' do %>
-          Request Free Access | <i class="icon-envelope"></i>
+          <%= link_to new_registration_path(resource_name), class:'btn btn-default splash-btn' do %>
+          Request Free Access | <i class="icon ion-ios7-email-outline"></i>
           <% end %>
         </p>
       </div>
@@ -35,7 +35,7 @@
     </div>
   </div>
 </div>
-<div class="responsive-jumbotron hidden-desktop hidden-tablet visible-phone">
+<div class="responsive-jumbotron visible-xs">
     <div class="responsive-video">
       <object width="480" height="360"><param name="movie" value="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="//www.youtube.com/v/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0" type="application/x-shockwave-flash" width="256" height="145" allowscriptaccess="always" allowfullscreen="true"></embed></object>
     </div>
@@ -52,8 +52,9 @@
   </div>
 </div>
 <div class="container">
+  <div class="col-sm-10 col-sm-offset-1">
   <div class="row">
-    <div class="span12 text-center">
+    <div class="col-sm-12 text-center">
       <h2>Bank On Relationships</h2>
       <div class="lead">
         BankmyBiz.com Matches Business Owners and Lenders <br> Request Free Access Today.
@@ -67,117 +68,131 @@
   </div>
   <hr>
   <div class="row">      
-    <div class="span4 text-center"><h3 class='text-center'><%= image_tag "one.png", width:60 %> <br>Join </h3></div>
-    <div class="span4 text-center"><h3 class='text-center'><%= image_tag "two.png", width:60 %> <br>Private 3-Minute Profile</h3> </div>
-    <div class="span4 text-center"><h3 class='text-center'><%= image_tag "three.png", width:60 %> <br>Start Connecting</h3></div>
+    <div class="col-sm-4 text-center"><h3 class='text-center'><%= image_tag "one.png", width:60 %> <br>Join </h3></div>
+    <div class="col-sm-4 text-center"><h3 class='text-center'><%= image_tag "two.png", width:60 %> <br>Private 3-Minute Profile</h3> </div>
+    <div class="col-sm-4 text-center"><h3 class='text-center'><%= image_tag "three.png", width:60 %> <br>Start Connecting</h3></div>
   </div>
   <hr>
   <div class="row user-type">
-    <h2 class="span12 text-center">For Business Owners</h2>
-    <div class="span4 user-type">
+    <h2 class="col-sm-12 text-center">For Business Owners</h2>
+    <div class="col-sm-4 user-type">
       <h3 class="text-center">Matches & Messages</h3>
       <p>Request free access to receive matches based on our BankmyBiz.com matching platform, send secure private messages, and post to the News Feed, all for free. <%= link_to "learn more", how_path, anchor: "one" %></p>
     </div>
-    <div class="span4 user-type">
+    <div class="col-sm-4 user-type">
       <h3 class="text-center">Ready to Lend</h3>
       <p>Lenders on BankmyBiz.com are actively looking to lend. But more than that, they are looking to learn, connect, educate, and build relationships with businesses.</p>
     </div>
-    <div class='span4 user-type'>
+    <div class='col-sm-4 user-type'>
       <h3 class="text-center">An Exclusive Network</h3>
       <p>Interact with a network of lenders and business owners to learn, enhance your brand, and extend your business’s reach.</p>
     </div>
-    <div class="span12 text-center margin-bottom">
+  </div>
+  <div class="row">
+    <div class="text-center margin-bottom">
       <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">          
-          Request Free Access |  <i class="icon-linkedin"></i>
+          Request Free Access |  <i class="icon ion-social-linkedin"></i>
       </a>
-      <%= link_to new_registration_path(resource_name), class:'btn' do %>
-       Request Free Access | <i class="icon-envelope"></i>
+      <%= link_to new_registration_path(resource_name), class:'btn btn-default' do %>
+       Request Free Access | <i class="icon ion-ios7-email-outline"></i>
       <% end %>
     </div>
   </div>
   <hr>
   <div class="row user-type">
-    <h2 class="span12 text-center">For Lenders</h2>
-    <div class="span4 user-type">
+    <h2 class="col-sm-12 text-center">For Lenders</h2>
+    <div class="col-sm-4 user-type">
       <h3 class="text-center">Matches & Messages</h3>
       <p>Request free access to receive matches based on our BankmyBiz.com matching platform, send secure private messages, and post to the News Feed, all for free. <%= link_to "learn more", how_path, anchor: "one" %></p>
     </div>
-    <div class='span4 user-type'>
+    <div class='col-sm-4 user-type'>
       <h3 class="text-center">Ready to Borrow</h3>
       <p>Find businesses you can lend to in less time than ever. Through our matching platform, we find businesses that match your interests. And use the News Feed to educate borrowers about non-traditional products that are a fit for them.</p> 
     </div>
-    <div class="span4 user-type">
+    <div class="col-sm-4 user-type">
       <h3 class="text-center">Relationship Lending</h3>
       <p>Relationships lending is better, but it can be hard. BankmyBiz.com makes it easier. We help you connect warmly with the decision makers. We help you track your existing relationships and keep on the same page.</p>
     </div>
-    <div class="text-center span12">
+  </div>
+  <div class="row">
+    <div class="text-center col-sm-12">
       <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">          
-          Request Free Access |  <i class="icon-linkedin"></i>
+          Request Free Access |  <i class="icon ion-social-linkedin"></i>
       </a>
-      <%= link_to new_registration_path(resource_name), class:'btn' do %>
-       Request Free Access | <i class="icon-envelope"></i>
+      <%= link_to new_registration_path(resource_name), class:'btn btn-default' do %>
+       Request Free Access | <i class="icon ion-ios7-email-outline"></i>
       <% end %>
     </div>
   </div>
   <hr>
-  <div class="row user-type">
-    <h2 class="span12 text-center">Conferences</h2>
-    <ul class="inline conferences pull-left">
-      <li>
+  <div class="row user-type conferences">
+    <h2 class="col-sm-12 text-center">Conferences</h2>
+    <div class="row">
+      <div class="col-sm-4">
         <%= link_to "http://forwardfest.org/", target:"_blank" do %>
           <% image_tag "ftf.jpg" %>
         <% end %>
         <h4 class="text-center">August 16, 2013 <br> Badger Startup Summit</h4>
-      </li>
-      <li>
+      </div>
+      <div class="col-sm-8">
+        <h4>Forward Tech Festival</h4>
+        <p>
+          BankmyBiz.com was happy to participate in the Forward Technology Festival in our home town of <b>Madison, WI</b>.  We participated as one of the pitching companies at the Badger Startup Summit.
+        </p>
+        <p>
+          FTF is sprawling technology/food event that lasts over 10 days with various events spanning from investor panels, technology hack days, and a startup bar crawl. 
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4">
         <%= link_to "http://sxsw.com/interactive/startupvillage", target:"_blank" do %>
           <% image_tag "sxsw.png" %>
         <% end %>
         <h4 class="text-center">March 7, 2014 <br> Spotlight Startup</h4>
-      </li>
-    </ul>
-    <div class="span8 offset4">
-      <h4>SXSW Interacive Spotlight Startup</h4>
-      <p>
-        We are excited to announce that BankmyBiz has been chosen out of thousands of applicants to be a <b>Spotlight Startup at the 2014 SXSW Interactive</b>.
-      </p>
-      <p>
-        SXSW Interactive is one of the country's primiere tech festivals and attracts 30,000+ paying attendees from Silicon Valley to Silicon Alley. It takes place every spring in Austin, TX. Many successful technology companies have launched into the national stage through SXSW including <b>Twitter</b> in 2007 and <b>Foursquare</b> in 2009. Maybe Bankmybiz is next?
-      </p>
-      <p>
-        Our goals for the conference is build momentum up to the conference and then show our growing successes and our huge potential. 
-      </p>
-      <p>
-        <b>Thanks to our bankers and business owners</b> using out platform for helping us to be one of the brightest startups in the nation.
-      </p>
+      </div>
+      <div class="col-sm-8">
+        <h4>SXSW Interacive Spotlight Startup</h4>
+        <p>
+          We are excited to announce that BankmyBiz has been chosen out of thousands of applicants to be a <b>Spotlight Startup at the 2014 SXSW Interactive</b>.
+        </p>
+        <p>
+          SXSW Interactive is one of the country's primiere tech festivals and attracts 30,000+ paying attendees from Silicon Valley to Silicon Alley. It takes place every spring in Austin, TX. Many successful technology companies have launched into the national stage through SXSW including <b>Twitter</b> in 2007 and <b>Foursquare</b> in 2009. Maybe Bankmybiz is next?
+        </p>
+        <p>
+          Our goals for the conference is build momentum up to the conference and then show our growing successes and our huge potential. 
+        </p>
+        <p>
+          <b>Thanks to our bankers and business owners</b> using out platform for helping us to be one of the brightest startups in the nation.
+        </p>
+      </div>
     </div>
   </div>
   <hr>
   <div class="row user-type">
-    <h2 class="span12 text-center">Press</h2>
-    <ul class="inline press">
-      <li>
-        <%= link_to "http://www.madisonmagazine.com/Madison-Magazine/November-2013/The-M-List/Michael-Adam/", target:"_blank" do %>
-          <% image_tag "MM.jpg" %>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "http://www.biztimes.com/article/20131001/ENEWSLETTERS05/131009989/-1/finance_blog", target:"_blank" do %>
-          <% image_tag "biztimes.jpg" %>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "http://www.madisonstartups.com/company-profile-bankmybiz-com/", target:"_blank" do %>
-          <% image_tag "madstartups.jpg" %>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "http://www.bizjournals.com/milwaukee/news/2013/09/30/wisconsin-start-up-aims-to-be-linkedin.html", target:"_blank" do %>
-          <% image_tag "businessjournal.jpg" %>
-        <% end %>
-      </li>
-    </ul>
+    <h2 class="col-sm-12 text-center">Press</h2>
+    <div class="pull-left press">
+      <%= link_to "http://www.madisonmagazine.com/Madison-Magazine/November-2013/The-M-List/Michael-Adam/", target:"_blank" do %>
+        <% image_tag "MM.jpg" %>
+      <% end %>
+    </div>
+    <div class="pull-left press">
+      <%= link_to "http://www.biztimes.com/article/20131001/ENEWSLETTERS05/131009989/-1/finance_blog", target:"_blank" do %>
+        <% image_tag "biztimes.jpg" %>
+      <% end %>
+    </div>
+    <div class="pull-left press">
+      <%= link_to "http://www.madisonstartups.com/company-profile-bankmybiz-com/", target:"_blank" do %>
+        <% image_tag "madstartups.jpg" %>
+      <% end %>
+    </div>
+    <div class="pull-left press">
+      <%= link_to "http://www.bizjournals.com/milwaukee/news/2013/09/30/wisconsin-start-up-aims-to-be-linkedin.html", target:"_blank" do %>
+        <% image_tag "businessjournal.jpg" %>
+      <% end %>
+    </div>
   </div>
+</div>
 </div> <!-- /container -->
 <% if Rails.env.production? %>
 <div class="hidden-posts">

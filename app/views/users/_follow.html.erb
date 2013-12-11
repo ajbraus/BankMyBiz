@@ -1,6 +1,6 @@
 <%= form_for(current_user.relationships.build(followed_id: user.id)) do |f| %>
   <span><%= f.hidden_field :followed_id %></span>
   <button class="btn-favorite">
-    <i class="icon-star" rel="tooltip" title="Favorite <%= user.first_name_with_last_initial %>"></i>
+    <i class="icon ion-ios7-star" rel="tooltip" title="Favorite <%= user.first_name_with_last_initial %>"></i>
   </button>
 <% end %>

@@ -114,7 +114,17 @@ class User < ActiveRecord::Base
   after_invitation_accepted :set_username
 
   def email_invited_by
-     Notifier.delay.invitation_accepted(self, self.invited_by)
+     inviter = self.invited_by
+     inviter.reward_a_match
+     Notifier.delay.invitation_accepted(self.invited_by, self)
+  end
+
+  def reward_a_match
+    if self.finished_profile?
+      if potential_matches.any?
+        matched_users << potential_matches.first
+      end
+    end
   end
 
   def to_param
@@ -123,19 +133,22 @@ class User < ActiveRecord::Base
 
   def create_welcome_message 
     if self.name.present?
-      Message.create(
-        subject: "Welcome to BankmyBiz",
-        body: "#{self.first_name}," + "\n\n" + 
-              "Thanks for joining the BankmyBiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use BankmyBiz's private and secure messaging system to ask questions like 'What is your biggest challenge recently?' or 'What is your biggest goal for your business?'." + "\n\n" +
-              "The BankmyBiz matching algorithm matches you with people who want to connect with you. You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n\n" +
-              "Post to the News Feed to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
-              "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for BankmyBiz 360&deg; to get 360&deg; of the activity happening on BankmyBiz." + "\n\n\n" +
-              "Thanks and again, Welcome!" + "\n\n\n" +
-              "Michael Adam, CEO BankmyBiz",
-        sender_id: User.find_by_email("michael@bankmybiz.com").id,
-        receiver_id: self.id,
-        is_read: false
-        )
+      michael = User.find_by_email("michael@bankmybiz.com")
+      if michael.present?
+        Message.create(
+          subject: "Welcome to BankmyBiz",
+          body: "#{self.first_name}," + "\n\n" + 
+                "Thanks for joining the BankmyBiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use BankmyBiz's private and secure messaging system to ask questions like 'What is your biggest challenge recently?' or 'What is your biggest goal for your business?'." + "\n\n" +
+                "The BankmyBiz matching algorithm matches you with people who want to connect with you. You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n\n" +
+                "Post to the News Feed to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
+                "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for BankmyBiz 360&deg; to get 360&deg; of the activity happening on BankmyBiz." + "\n\n\n" +
+                "Thanks and again, Welcome!" + "\n\n\n" +
+                "Michael Adam, CEO BankmyBiz",
+          sender_id: michael.id,
+          receiver_id: self.id,
+          is_read: false
+          )
+      end
     end
   end
 
@@ -389,16 +402,18 @@ class User < ActiveRecord::Base
     return matches
   end
 
-  def set_peers_and_matches
-    #MATCHES
+  def set_matches
     if self.finished_profile? && (self.matches.none? || self.matches.last.created_at < 1.week.ago)
-      matched_users << potential_matches.first if potential_matches.any?
-      if self.receive_match_messages?
-        Notifier.delay.new_match(self, matched_users.last)
+      if potential_matches.any?
+        matched_users << potential_matches.first 
+        if self.receive_match_messages?
+          Notifier.delay.new_match(self, matched_users.last)
+        end
       end
     end
+  end
 
-    #PEERS
+  def set_peers
     if self.finished_profile? && (peers.none? ||peers.last.created_at < Date.yesterday)
       @available_users = User.all.reject { |r| r == self || r.bank != self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
       @peers = @available_users.select do |s| 
@@ -441,7 +456,8 @@ class User < ActiveRecord::Base
 
   def self.set_peers_and_matches
     User.all.each do |u|
-      u.set_peers_and_matches
+      u.set_matches
+      u.set_peers
     end
   end
 

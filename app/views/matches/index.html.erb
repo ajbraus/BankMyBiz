@@ -2,52 +2,50 @@
 
 <%= render 'shared/left_sidebar' %>
 
-<div class="span6 clearfix">
+<div class="col-sm-6 clearfix">
   <div class="buy-matches gray-border-left well">
     <div class="clearfix">
       <% if !current_user.finished_profile? %>
         <h4><%= link_to "Complete your Profile", edit_profile_path(current_user) %> to Start Receiving Matches</h4>
 
       <% else %>
-        <div class="muted pull-left">You Receive 1 Free Match A Week</div>
-        <section>
-          <h4>Accelerate Your Search </h4>
-          <div class="clearfix">
-            <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-              <% @first_three_matches.each do |m| %>
-                <div class="pull-left text-center" style="width:33%;">
-                  <div><%= profile_picture(m) %></div>
-                  <div><%= m.first_name_with_last_initial %></div>
-                  <div><%= m.position %></div>
-                  <div><%= current_user.percentage_match(m) %>% match</div>
-                </div>
-              <% end %>
-            <% else %>
-              <div class="span1">
-                <i class="icon-plus"></i>
-              </div>
-              <div class="span1">
-                <i class="icon-plus"></i>
-              </div>
-              <div class="span1">
-                <i class="icon-plus"></i>
+        <h4>Accelerate Your Search </h4>
+        <p class="muted">You Receive 1 Free Match A Week</p>
+        <div class="clearfix">
+          <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+            <% @first_three_matches.each do |m| %>
+              <div class="pull-left text-center" style="width:33%;">
+                <div><%= profile_picture(m) %></div>
+                <div><%= m.first_name_with_last_initial %></div>
+                <div><%= m.position %></div>
+                <div><%= current_user.percentage_match(m) %>% match</div>
               </div>
             <% end %>
-          </div>
-          <section class="muted text-right">
-            <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-              <div class='text-right'><%= link_to "Buy 3 Matches / $ #{current_user.bank? ? "74.99" : "24.99"}", new_purchase_path, class:"btn btn-success btn-large" %> </div>
-            <% end %>
-          </section>
-          <div class="text-right muted">
-            <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-              You have <%= @potential_matches_count %> Potential Matches<br>
-            <% else %>
-              Add 3 Matches for $<%= current_user.bank? ? "74.99" : "24.99" %> <br>
-              Not Enough Matches Try <%= link_to "Broadening Your Profile", edit_profile_path(current_user) %>
-            <% end %>
-          </div>
+          <% else %>
+            <div class="span1">
+              <i class="icon-plus"></i>
+            </div>
+            <div class="span1">
+              <i class="icon-plus"></i>
+            </div>
+            <div class="span1">
+              <i class="icon-plus"></i>
+            </div>
+          <% end %>
+        </div>
+        <section class="muted text-right">
+          <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+            <div class='text-right'><%= link_to "Buy 3 Matches / $ #{current_user.bank? ? "74.99" : "24.99"}", new_purchase_path, class:"btn btn-success btn-lg" %> </div>
+          <% end %>
         </section>
+        <div class="text-right muted">
+          <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+            You have <%= @potential_matches_count %> Potential Matches<br>
+          <% else %>
+            Add 3 Matches for $<%= current_user.bank? ? "74.99" : "24.99" %> <br>
+            Not Enough Matches Try <%= link_to "Broadening Your Profile", edit_profile_path(current_user) %>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

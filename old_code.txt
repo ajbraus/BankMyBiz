@@ -10,7 +10,7 @@ old code
 <% end %>
 
 
-  <div class="span5 offset1">
+  <div class="col-sm-offset-5 col-sm-offset-1">
     <h2>Businesses</h2>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -26,10 +26,10 @@ old code
 
       <%= f.hidden_field :bank, value: false %>
 
-      <div><%= f.submit "Sign up", class:"btn btn-success btn-large" %></div>
+      <div><%= f.submit "Sign up", class:"btn btn-success btn-lg" %></div>
     <% end %>
   </div>
-  <div class="span5 offset1">
+  <div class="col-sm-offset-5 col-sm-offset-1">
     <h2>Lenders</h2>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
@@ -45,7 +45,7 @@ old code
 
       <%= f.hidden_field :bank, value: true %>
 
-      <div><%= f.submit "Sign up", class:"btn btn-warning btn-large" %></div>
+      <div><%= f.submit "Sign up", class:"btn btn-warning btn-lg" %></div>
     <% end %>
   </div>
 </div>
@@ -55,3 +55,16 @@ old code
   <p class="text-center muted line-text">or</p>
   <div class="line"></div>
 </div>
+
+<% if false %>
+<%= form_tag root_path, :method => :get, class:"form-search" do %>
+  <div class="input-append">
+    <%= text_field_tag :search, params[:search], class:"span2 search-query", placeholder:"News Feed Search. . ." %>
+    <button class="btn btn-success" type="submit">
+      <i class="icon-search"></i>
+    </button>
+  </div>
+<% end %>
+<% end %>
+
+data-spy="affix" data-offset-top="90" data-offset-bottom="200" 

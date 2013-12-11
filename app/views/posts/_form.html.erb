@@ -1,10 +1,10 @@
-<div class="span6 offset3">
+<div class="col-sm-6 col-sm-offset-3">
 <%= form_for(@post) do |f| %>
   <%= link_to current_user do %>
     <%= profile_picture(current_user) %>
   <% end %>
-  <%= f.text_area :content, class:"span5 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
-  <%= f.text_field :tag_list, class:"span4", placeholder:"Tags (separated by comma)" %>
+  <%= f.text_area :content, class:"col-sm-offset-5 post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . ." %>
+  <%= f.text_field :tag_list, class:"col-sm-4", placeholder:"Tags (separated by comma)" %>
   <%= f.submit "Post", class:"btn pull-right btn-success" %>
 <% end %>
 </div>

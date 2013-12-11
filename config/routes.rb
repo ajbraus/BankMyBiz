@@ -2,7 +2,7 @@ BankMyBiz::Application.routes.draw do
 
   resources :authentications
 
-  resources :messages
+  resources :messages, path: "contacts"
   resources :posts do 
     member do
       get :vote_up

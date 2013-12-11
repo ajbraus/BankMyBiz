@@ -1,147 +1,145 @@
 <% content_for :title, "Private Profile" %>
-  <div id="contact-modal" class="modal hide fade in" style="display: none;">  
-    <%= form_for @user.messages.new, remote:true do |f| %>
-      <div class="modal-header">  
-        <a class="close" data-dismiss="modal">×</a>  
-        <h3>Contact <%= @user.first_name_with_last_initial %></h3>  
-      </div>  
-      <div class="modal-body">  
-        <div class=" message-subject">
-          <%= f.text_field :subject , :placeholder => "Subject",  :class => "span5 message-subject-input"%>
-        </div>
-        <div class=" message-body ">
-          <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span5 message-subject-input"%>
-        </div>               
-        <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
-        <%= f.hidden_field :receiver_id, value: "#{@user.id}" %>
-      </div>  
-      <div class="modal-footer">  
-        <%= f.submit "Send Private Message", :class => "btn btn-primary" %>
-        <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
-      </div>  
-    <% end %>
-  </div>
-<div class="span9">
-  <div class="row">
-    <section class='profile-picture-position span3'>
-      <div data-spy="affix" data-offset-top="90" class="span3">
-        <% if current_user == @user && !current_user.has_image? %>
-          <div class="well">
-            <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-              <div class="field">
-                <%= f.label :avatar, "Select Profile Picture" %><br />
-                <%= f.file_field :avatar %>
-              </div>
-              <%= f.submit "Upload", class:"btn btn-success" %>
-            <% end %>
+<div id="contact-modal" class="modal fade" style="display: none;">  
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <%= form_for @user.messages.new, remote:true do |f| %>
+        <div class="modal-header">  
+          <a class="close" data-dismiss="modal">×</a>  
+          <h3>Contact <%= @user.first_name_with_last_initial %></h3>  
+        </div>  
+        <div class="modal-body">  
+          <div class="row">
+            <%= f.text_field :subject , :placeholder => "Subject",  :class => "form-control"%>
           </div>
-        <% else %>
-          <div class="pull-left">
-            <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
-          </div>
-          <%= large_profile_picture(@user) %>
-        <% end %>
-          <div class='text-left large'>
-            <br>
-            <div>
-              <strong>Name:</strong> 
-              <%= @user.first_name_with_last_initial %> 
-            </div>
-            <div>
-              <strong class=''>Position:</strong>
-              <span class="muted"><%= @user.position %></span>
-            </div>
-            <div>
-              <strong class=''>Status:</strong>
-              <span class="muted"><%= @user.status %></span>
-            </div>
-            <div>
-              <strong>Bucks:</strong> 
-              <span class="muted"> <%= @user.karma + 100 %></span>
-            </div>
-          </div>
-          <div class="text-right">
-          <% if @user == current_user %>
-            <%= link_to "edit profile", edit_profile_path(@user) %>
-          <% elsif current_user.messages_left? %>
-            <a data-toggle="modal" href="#contact-modal" class="btn btn-primary message-button"><i class="icon-envelope-alt"></i> Contact</a>
-            <section class="muted large">
-              <%= calls_to_action.sample %>
-            </section>
-          <% end %>
-          </div>
-          <div class="well gray-border-left text-left">
-            <% if @user.posts.any? %>
-              <div class="tag-cloud">
-                <p class="muted"><%= @user.first_name_with_last_initial %>'s Tags</p>
-                <% @user.posts.each do |p| %>
-                  <% p.tags.each do |t| %>
-                    <%= link_to "#{t.name}", post_path(p), class:"tag clickable-tag" %>
-                  <% end %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
-        </div>
-      </section>
-    <div class="span6">
-      <ul class="large profile-deets">
-        <li>
-          <strong class=''><%= @user.bank? ? "Bank" : "Business" %>:</strong>
-          <span class="muted"><%= @user.org_name %></span>
-        </li>
-        <li>
-          <strong class=''>Business Type:</strong>
-          <span class="muted"><%= @user.business_types.map(&:description).join(", ") %></span>
-        </li>
-        <li>
-          <strong class=''>Employees:</strong>
-          <span class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></span>
-        </li>
-        <li>
-          <strong class=''>Revenue Size:</strong>
-          <span class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></span>
-        </li>
-        <li>
-          <strong class=''>Years of Operation:</strong>
-          <span class="muted"><%= @user.ages.map(&:description).join(", ") %></span>
-        </li>
-        <li>
-          <strong class=''>Industry:</strong>
-          <span class="muted"><%= @user.industries.map(&:description).join(", ") %></span>
-        </li>
-        <li>
-          <strong class=''>Does Business in:</strong>
-          <span class="muted"><%= @user.locations.map(&:name).join(", ") %></span>
-        </li>
-          <h4>Bio</h4>
-          <p class="muted"><%= @user.bio %></p>
-          <hr>  
-          <h4>Goals</h4>
-          <p class="muted"><%= @user.goals %></p>
-          <hr>  
-        <% if @user == current_user %>
-          <h4>Your Activity <span class="muted small">(private)</span></h4>
-          <% @activities.each do |activity| %>
-            <div class="activity">
-            <%= link_to activity.owner.name, activity.owner if activity.owner %>
-            <%= render_activity activity %>
-            </div>
-          <% end %>
-          <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
-        <% end %>
-        <% if @user == current_user %>
-          <h4>Your Posts</h4>
-        <% else %>
-          <h4><%= @user.first_name %>'s Recent Posts</h4>
-        <% end %>
-          <div class="span5">
-            <%= render partial: "posts/post", collection: @posts, as: :post %>
-            <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
-          </div>
-      </ul>
+          <section class="row" >
+            <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "form-control"%>
+          </section>               
+          <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
+          <%= f.hidden_field :receiver_id, value: "#{@user.id}" %>
+        </div>  
+        <div class="modal-footer">  
+          <%= f.submit "Send", :class => "btn btn-primary btn-lg" %> 
+        </div>  
+      <% end %>
     </div>
   </div>
 </div>
 
-<%= render 'shared/right_sidebar' %>
+<section class='profile-picture-position col-sm-3' role="complementary"> 
+  <% if current_user == @user && !current_user.has_image? %>
+    <div class="well">
+      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+        <div class="field">
+          <%= f.label :avatar, "Select Profile Picture" %><br />
+          <%= f.file_field :avatar %>
+        </div>
+        <%= f.submit "Upload", class:"btn btn-success" %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="pull-left">
+      <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
+    </div>
+    <%= large_profile_picture(@user) %>
+  <% end %>
+  <div class='text-left large'>
+    <br>
+    <div>
+      <strong>Name:</strong> 
+      <%= @user.first_name_with_last_initial %> 
+    </div>
+    <div>
+      <strong class=''>Position:</strong>
+      <span class="muted"><%= @user.position %></span>
+    </div>
+    <div>
+      <strong class=''>Status:</strong>
+      <span class="muted"><%= @user.status %></span>
+    </div>
+    <div>
+      <strong>Bucks:</strong> 
+      <span class="muted"> <%= @user.karma + 100 %></span>
+    </div>
+  </div>
+  <div class="text-right">
+  <% if @user == current_user %>
+    <%= link_to "edit profile", edit_profile_path(@user) %>
+  <% elsif current_user.messages_left? %>
+    <section>
+      <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-lg">Contact | <i class="ion-ios7-email"></i> </a>
+    </section>
+    <section class="muted large">
+      <%= calls_to_action.sample %>
+    </section>
+  <% end %>
+  </div>
+  <div class="well gray-border-left text-left">
+    <% if @user.posts.any? %>
+      <div class="tag-cloud">
+        <p class="muted"><%= @user.first_name_with_last_initial %>'s Tags</p>
+        <% @user.posts.each do |p| %>
+          <% p.tags.each do |t| %>
+            <%= link_to "#{t.name}", post_path(p), class:"tag clickable-tag" %>
+          <% end %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</section>
+
+<div class="col-sm-6" role="main">
+  <ul class="large profile-deets">
+    <li>
+      <strong class=''><%= @user.bank? ? "Bank" : "Business" %>:</strong>
+      <span class="muted"><%= @user.org_name %></span>
+    </li>
+    <li>
+      <strong class=''>Business Type:</strong>
+      <span class="muted"><%= @user.business_types.map(&:description).join(", ") %></span>
+    </li>
+    <li>
+      <strong class=''>Employees:</strong>
+      <span class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></span>
+    </li>
+    <li>
+      <strong class=''>Revenue Size:</strong>
+      <span class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></span>
+    </li>
+    <li>
+      <strong class=''>Years of Operation:</strong>
+      <span class="muted"><%= @user.ages.map(&:description).join(", ") %></span>
+    </li>
+    <li>
+      <strong class=''>Industry:</strong>
+      <span class="muted"><%= @user.industries.map(&:description).join(", ") %></span>
+    </li>
+    <li>
+      <strong class=''>Does Business in:</strong>
+      <span class="muted"><%= @user.locations.map(&:name).join(", ") %></span>
+    </li>
+    <h4>Bio</h4>
+    <p class="muted"><%= @user.bio %></p>
+    <hr>  
+    <h4>Goals</h4>
+    <p class="muted"><%= @user.goals %></p>
+    <hr>  
+    <% if @user == current_user %>
+      <h4>Your Activity <span class="muted small">(private)</span></h4>
+      <% @activities.each do |activity| %>
+        <div class="activity">
+        <%= link_to activity.owner.name, activity.owner if activity.owner %>
+        <%= render_activity activity %>
+        </div>
+      <% end %>
+      <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
+    <% end %>
+    <% if @user == current_user %>
+      <h4>Your Posts</h4>
+    <% else %>
+      <h4><%= @user.first_name %>'s Recent Posts</h4>
+    <% end %>
+    <%= render partial: "posts/post", collection: @posts, as: :post %>
+    <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+  </ul>
+</div>
+  <%= render 'shared/right_sidebar' %>

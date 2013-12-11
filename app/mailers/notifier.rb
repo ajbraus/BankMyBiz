@@ -2,7 +2,7 @@ class Notifier < ActionMailer::Base
   include UsersHelper
   include ActionView::Helpers::AssetTagHelper  
   layout 'email' # use email.(html|text).erb as the layout for emails
-  default from: "BankmyBiz team@bankmybiz.com"
+  default from: "BankmyBiz Team - team@bankmybiz.com"
 
   def internal_new_user(user)
     @user = user
@@ -11,7 +11,7 @@ class Notifier < ActionMailer::Base
 
   def confirmation_of_request(user)
     @user = user
-    mail to: @user.email, subject: "Request Received for Access"
+    mail to: @user.email, subject: "Request received for access"
   end
 
   def welcome(user)
@@ -43,12 +43,12 @@ class Notifier < ActionMailer::Base
   def new_match(user, match)
     @user = user
     @match = match
-    mail to: @user.email, subject: "New #{@user.bank? ? "Owner" : "Lender"} Match"
+    mail to: @user.email, subject: "New #{@user.bank? ? "owner" : "lender"} match"
   end
 
   def profile_reminder(u)
     @user = u
-    mail to: @user.email, subject: "Get Matches by Completing your Profile"
+    mail to: @user.email, subject: "Get matches by completing your profile"
   end
 
   def new_post(user, post)
@@ -62,6 +62,13 @@ class Notifier < ActionMailer::Base
     @inviter = inviter
     @body = body
 
-    mail to: @user.email, subject: "#{@user.name} invites you to Bank on Relationships"
+    mail to: @user.email, subject: "#{@user.name} invites you to bank on relationships"
+  end
+
+  def invitation_accepted(inviter, invitee)
+    @inviter = user
+    @invitee = invitee
+
+    mail to: @inviter.email, subject: "#{@invitee.name} accepted your invitation."
   end
 end

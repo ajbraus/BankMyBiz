@@ -8,7 +8,7 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
-  $('.alert').delay(3000).fadeOut();
+  $('.alert-disappear').delay(2000).fadeOut();
   $('.fadeInAlert').fadeIn();
   $('.comment-show').click(function() {
     $(this).next('.comment-form').toggle();
@@ -23,6 +23,10 @@ $(document).ready(function() {
 
   $("#selectEntireUS").click(function() {
     $(".state:checked").trigger('click');
+  });
+
+  $(".state").click(function() {
+    $("#EntireUS:checked").trigger('click');
   });
       
   // var a = [$('#trendingTags').data("tags")];

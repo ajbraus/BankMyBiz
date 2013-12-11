@@ -1,6 +1,7 @@
-invite mo' people
+login as bank
+Credit Card payment bounced but card was saved and then it worked.
+
 invite linkedin connections
-reward with free matches & bucks
 
 fix impressions
 don't track if you go to the same user/post twice in the same three days
@@ -12,6 +13,7 @@ B2B? B2C? Both
 Kind of banking: Factoring, Traditional, 
 Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
 
+Encourage people to write long posts in the newsfeed.
 
 bugs:
   threading messages by subject line
@@ -403,3 +405,11 @@ DONE calls to action to connect
 DONE unread messages count in header - activity/notifications in header like facebook
 DONE  initiate with welcome message
 
+
+
+invite mo' people
+  DONE email invitation
+  DONE send emails
+  DONE invitation accepted
+  DONE reward match
+reward with free matches & bucks

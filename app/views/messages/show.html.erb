@@ -1,35 +1,41 @@
 <div class="row">
-  <div class="span9">
-    <div id="contact-modal" class="modal hide fade in" style="display: none; ">  
-      <%= form_for @sender.messages.new, remote:true do |f| %>
-        <div class="modal-header">  
-          <a class="close" data-dismiss="modal">×</a>  
-          <h3>Contact <%= @sender.first_name_with_last_initial %></h3>  
-        </div>  
-        <div class="modal-body">  
-          <div class=" message-subject">
-            <%= f.text_field :subject , :placeholder => "Subject",  :class => "span6 message-subject-input"%>
+  <div class="col-sm-9">
+    <div id="contact-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">  
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <%= form_for @sender.messages.new, remote:true do |f| %>
+            <div class="modal-header">  
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 class="modal-title" id="contactModalLabel">Contact <%= @sender.first_name_with_last_initial %></h3>  
+            </div>  
+            <div class="modal-body">  
+              <div class="row">
+                <%= f.text_field :subject , :placeholder => "Subject",  :class => "form-control"%>
+              </div>
+              <section class="row">
+                <div class="message-body">
+                  <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "form-control"%>
+                </div>           
+              </section>    
+            </div>  
+            <div class="modal-footer">  
+              <%= f.submit "Send Message", :class => "btn btn-primary" %>
+              <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
+            </div>  
           </div>
-          <div class="message-body">
-            <%= f.text_area :body , :placeholder => "Type your message here...", :rows => "8", :class => "span6 message-subject-input"%>
-          </div>               
-        </div>  
-        <div class="modal-footer">  
-          <%= f.submit "Send Message", :class => "btn btn-primary" %>
-          <a href="#" class="btn" data-dismiss="modal">Cancel</a>  
-        </div>  
+          <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
+          <%= f.hidden_field :receiver_id, value: "#{@sender.id}" %>
+        <% end %>
       </div>
-      <%= f.hidden_field :sender_id, value: "#{current_user.id}" %>
-      <%= f.hidden_field :receiver_id, value: "#{@sender.id}" %>
-    <% end %>
+    </div>
   </div>
-  <section class="span9">
-    <section class='span6 one-message large'>
+  <section class="col-sm-9">
+    <section class='one-message large'>
       <p><strong>From:</strong> <%= link_to "#{@message.sender.first_name_with_last_initial}", user_path(@message.sender) %></p>
       <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
       <p><%= simple_format @message.body %></p>
       <div class="text-right btn-reply">
-        <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-large">Reply</a>
+        <button data-toggle="modal" data-target="#contact-modal" class="btn btn-primary btn-lg">Reply</button>
       </div>
     </section>
   </section>

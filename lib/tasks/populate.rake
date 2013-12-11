@@ -4,8 +4,11 @@ namespace :db do
     require 'populator'
     require 'faker'
     
-    [User, Post, Comment, Tag, Message, Authentication, Match, Peer, Relationship, Vote].each(&:delete_all)
+    [Location, User, Post, Comment, Tag, Message, Authentication, Match, Peer, Relationship, Vote].each(&:delete_all)
     
+    Location.create(name:"Entire US")
+    UsersController.helpers.us_states.each {|s| Location.create(name: s[0]) }
+
     User.populate 50 do |user|
       user.name    = Faker::Name.name
       user.email   = Faker::Internet.email

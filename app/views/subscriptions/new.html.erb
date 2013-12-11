@@ -10,7 +10,7 @@
     </div>
   <% end %>
   <h2 class='text-center'>BankmyBiz 360&deg;</h2>
-  <div class="span4 offset2">
+  <div class="col-sm-4 col-sm-offset-2">
     <div class="well">
       <% if params[:plan_id] == "1" %>
       <h4>360&deg; Biz</h4>
@@ -74,7 +74,7 @@
       </ul>
     </div>
   </div>
-  <div class="span5">
+  <div class="col-sm-5">
     <div class="cards well">
       <h4>Cards</h4>
         <table>
@@ -122,22 +122,37 @@
       </table>
       <div id="creditCardInputs" style="display:none;">
       <div id="stripe_error" class="alert alert-error" style="display:none"></div>
-        <section>
-          <%= label_tag :name, "Name on Card" %>
-          <%= text_field_tag :name, nil, name: nil, class:"span4" %>
-          <%= label_tag :card_number, "Credit Card Number " %>
-          <%= text_field_tag :card_number, nil, name: nil, class:"span4" %>
-          <%= label_tag :card_code, "Security Code on Card (CVV)" %>
-          <%= text_field_tag :card_code, nil, name: nil, class:"input-mini" %>
-          <%= label_tag :card_month, "Card Expiration" %>
-          <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'input-medium'}%>
-          <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'input-small'} %>
+        <section class="row">
+          <p class="col-sm-9">
+            <%= label_tag :name, "Name on Card", class:"control-label" %>
+            <%= text_field_tag :name, nil, name: nil, class:"form-control" %>
+          </p>
+          <p class="col-sm-9">
+            <%= label_tag :card_number, "Credit Card Number", class:"control-label" %>
+            <%= text_field_tag :card_number, nil, name: nil, class:"form-control" %>
+          </p>         
+            <div class="col-sm-4">
+              <%= label_tag :card_code, "CVV Code" %>
+              <%= text_field_tag :card_code, nil, name: nil, class:"form-control" %>
+            </div>
+            <div class="col-sm-8">
+              <div class="row">
+                <div class="col-sm-7">
+                  <%= label_tag :card_month, "Month" %>
+                  <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'form-control'}%>
+                </div>
+                <div class="col-sm-5">
+                  <%= label_tag :card_month, "Year" %>
+                  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'form-control'} %>
+                </div>
+            </div>
+          </div>
           <%= f.hidden_field :plan_id, value:params[:plan_id] %>
           <%= hidden_field_tag :stripe_card_id %>
         </section>
       </div>
     <section class="actions text-right">
-      <%= f.submit "Confirm Purchase", class:"btn btn-success btn-large", disabled:true %>
+      <%= f.submit "Confirm Purchase", class:"btn btn-success btn-lg", disabled:true %>
     </section>
   </div>
 </div>

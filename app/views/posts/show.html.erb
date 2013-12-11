@@ -1,5 +1,5 @@
 <% content_for :title, "Business Lending - Business Banking - Loans | BankmyBiz" %>
-<div class="span3">       
+<div class="col-sm-3">       
   <div class="border-right">
     <% if user_signed_in? %>
       <%= render 'shared/trending_tags' %>
@@ -10,12 +10,12 @@
     <% end %>
   </div>
 </div>
-<div class="span6">
+<div class="col-sm-6">
   <%= link_to "Back", :back %>
   <%= render partial: 'posts/post', locals: { post: @post } %>
 </div>
 
-<div class="span3">  
+<div class="col-sm-3">  
   <div class="border-left">
     <% if user_signed_in? %>
     <%= render 'shared/improve_profile' %>

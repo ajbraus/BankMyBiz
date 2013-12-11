@@ -1,6 +1,6 @@
 <%= render 'form' %>
 <div class="row">
-  <div class="span7 col-sm-offset-3">
-<%= render partial: 'comments/comment', collection: @post.comments.where('content is not null').order('created_at asc'), as: :comment, locals: { post: @post } %>
+  <div class="col-sm-7 col-sm-offset-3">
+  <%= render partial: 'comments/comment', collection: @post.comments.where('content is not null').order('created_at asc'), as: :comment, locals: { post: @post } %>
   </div>
 </div>

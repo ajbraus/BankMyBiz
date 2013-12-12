@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
                   :age_ids,
                   :business_type_ids,
                   :industry_ids,
+                  :accounts_receivable_ids, 
+                  :loan_size_ids,
+                  :customer_type_ids,
                   :bio,
                   :linked_in_url, 
                   :pic_url, 
@@ -67,6 +70,9 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :revenue_sizes
   has_and_belongs_to_many :ages
   has_and_belongs_to_many :locations
+  has_and_belongs_to_many :accounts_receivables
+  has_and_belongs_to_many :loan_sizes
+  has_and_belongs_to_many :customer_types
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed
@@ -288,15 +294,18 @@ class User < ActiveRecord::Base
   end
 
   def in_same_location?(other_user)
-    if self.bank? #IF MATCHING WITH BANKS PIC A BUSINESS WITH A HQ IN A STATE THE BANK DOES BUSINESS
-      if self.locations.any? && other_user.hq_state.present?
-        return self.locations.include?(Location.first) || other_user.hq_state.in?(self.locations)
-      end
-    else #IF MATCHING A BUSINESS, CHOOSE A BANK THAT DOES BUSINESS IN THE STATE OF THEIR HEADQUARTERS
-      if self.hq_state.present? && other_user.locations.present?
-        return self.hq_state.in?(other_user.locations) # other_user.locations.include?(Location.first) || 
-      end
+    if self.bank? 
+      match_bank = self
+      match_biz = other_user
+    else
+      match_bank = other_user
+      match_biz = self
     end
+
+    if match_bank.locations.any? && match_biz.hq_state.present?
+      return match_bank.locations.include?(Location.first) || match_bank.hq_state.in?(match_bank.locations)
+    end
+
     return false
   end
 
@@ -306,6 +315,9 @@ class User < ActiveRecord::Base
 
   def profile_questions_completed
     progress = 0
+    progress += 1 if accounts_receivables.any?
+    progress += 1 if loan_sizes.any?
+    progress += 1 if customer_types.any?
     progress += 1 if employee_sizes.any?
     progress += 1 if industries.any?
     progress += 1 if business_types.any?
@@ -323,7 +335,7 @@ class User < ActiveRecord::Base
   end
 
   def total_profile_elements
-    12
+    15
   end
 
   def profile_progress_percent
@@ -347,15 +359,6 @@ class User < ActiveRecord::Base
     if other_user.industries && industries.any?
       with_industry = (other_user.industry_ids & industry_ids).present?
     end
-    # if bank? #IF MATCHING WITH BANKS PIC A BUSINESS WITH A HQ IN A STATE THE BANK DOES BUSINESS
-    #   if other_user.locations.any? && hq_state.present?
-    #     with_location = true if locations.include?(Location.first) || other_user.hq_state.in?(locations)
-    #   end
-    # else #IF MATCHING A BUSINESS, CHOOSE A BANK THAT DOES BUSINESS IN ANY STATE THEY DO BUSINESS
-    #   if other_user.hq_state.present? && locations.present?
-    #     with_location = true if other_user.locations.include?(Location.first) || hq_state.in?(other_user.locations)
-    #   end
-    # end
     if other_user.employee_sizes.any? && employee_sizes.any?
       with_employee_size = (other_user.employee_size_ids & employee_size_ids).present?
     end
@@ -365,15 +368,26 @@ class User < ActiveRecord::Base
     if other_user.business_types.any? && business_types.any?
       with_business_type = (other_user.business_type_ids & business_type_ids).present?
     end
+    if other_user.accounts_receivables.any? && accounts_receivables.any?
+      with_ar = (other_user.accounts_receivable_ids & accounts_receivable_ids).present?
+    end
+    if other_user.loan_sizes.any? && loan_sizes.any?
+      with_loan_size = (other_user.loan_size_ids & loan_size_ids).present?
+    end
+    if other_user.customer_types.any? && customer_types.any?
+      with_customer_type = (other_user.customer_type_ids & customer_type_ids).present?
+    end
 
     percentage_match += 1 if with_age == true
     percentage_match += 1 if with_industry == true
-    # percentage_match += 1 if with_location == true
     percentage_match += 1 if with_employee_size == true
     percentage_match += 1 if with_revenue_size == true
     percentage_match += 1 if with_business_type == true
+    percentage_match += 1 if with_ar == true
+    percentage_match += 1 if with_loan_size == true
+    percentage_match += 1 if with_customer_type == true
 
-    return percentage_match * 100 / 5
+    return percentage_match * 100 / 8
   end
 
   def todays_matches
@@ -397,8 +411,8 @@ class User < ActiveRecord::Base
                                     m.bank == self.bank || 
                                     !m.can_be_matched? ||
                                     !m.in_same_location?(self) ||
-                                    m.in?(self.matched_users) || 
-                                    self.percentage_match(m) < 40 }
+                                    m.in?(self.matched_users) ||
+                                    self.percentage_match(m) < 50 }
     return matches
   end
 
@@ -435,13 +449,24 @@ class User < ActiveRecord::Base
         if s.business_types.any? && business_types.any?
           with_business_type = (s.business_type_ids & business_type_ids).present?
         end
+        if s.accounts_receivables.any? && accounts_receivables.any?
+          with_ar = (s.accounts_receivable_ids & accounts_receivable_ids).present?
+        end
+        if s.loan_sizes.any? && loan_sizes.any?
+          with_loan_size = (s.loan_size_ids & loan_size_ids).present?
+        end
+        if s.customer_types.any? && customer_types.any?
+          with_customer_type = (s.customer_type_ids & customer_type_ids).present?
+        end
 
         with_age == true ||
         with_industry == true ||
         with_location == true ||
         with_employee_size == true ||
         with_revenue_size == true ||
-        with_business_type == true
+        with_business_type == true ||
+        (with_ar == true && with_customer_type == true) ||
+        with_loan_size == true
       end
 
       if @peers.count >= 3

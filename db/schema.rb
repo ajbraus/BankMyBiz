@@ -11,7 +11,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131203044228) do
+ActiveRecord::Schema.define(:version => 20131212055227) do
+
+  create_table "accounts_receivables", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "accounts_receivables_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "accounts_receivable_id"
+  end
+
+  add_index "accounts_receivables_users", ["accounts_receivable_id", "user_id"], :name => "index_ar_users_on_ar_id_and_user_id"
+  add_index "accounts_receivables_users", ["user_id", "accounts_receivable_id"], :name => "index_ar_users_on_user_id_and_ar_id"
 
   create_table "activities", :force => true do |t|
     t.integer  "trackable_id"
@@ -91,6 +105,20 @@ ActiveRecord::Schema.define(:version => 20131203044228) do
   add_index "commitments", ["committed_user_id", "commitment_id"], :name => "index_commitments_on_committed_user_id_and_commitment_id", :unique => true
   add_index "commitments", ["committed_user_id"], :name => "index_commitments_on_committed_user_id"
 
+  create_table "customer_types", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "customer_types_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "customer_type_id"
+  end
+
+  add_index "customer_types_users", ["customer_type_id", "user_id"], :name => "index_customer_types_users_on_customer_type_id_and_user_id"
+  add_index "customer_types_users", ["user_id", "customer_type_id"], :name => "index_customer_types_users_on_user_id_and_customer_type_id"
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -159,6 +187,20 @@ ActiveRecord::Schema.define(:version => 20131203044228) do
 
   add_index "industries_users", ["industry_id", "user_id"], :name => "index_industries_users_on_industry_id_and_user_id"
   add_index "industries_users", ["user_id", "industry_id"], :name => "index_industries_users_on_user_id_and_industry_id"
+
+  create_table "loan_sizes", :force => true do |t|
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "loan_sizes_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "loan_size_id"
+  end
+
+  add_index "loan_sizes_users", ["loan_size_id", "user_id"], :name => "index_loan_sizes_users_on_loan_size_id_and_user_id"
+  add_index "loan_sizes_users", ["user_id", "loan_size_id"], :name => "index_loan_sizes_users_on_user_id_and_loan_size_id"
 
   create_table "locations", :force => true do |t|
     t.string   "name"

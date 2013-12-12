@@ -4,7 +4,7 @@
     <% if user_signed_in? %>
       <span class="breathing-room">
         <%= link_to vote_up_post_comment_path(post, comment), class:"pull-left fade-in-green" do %>
-        <i class="icon-money <%= current_user.voted_for?(comment) ? 'green' : '' %>"></i>
+        <i class="icon ion-plus-round <%= current_user.voted_for?(comment) ? 'green' : '' %>"></i>
         <% end %>
       </span>
     <% end %>

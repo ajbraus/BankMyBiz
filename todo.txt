@@ -7,11 +7,25 @@ invite linkedin connections
 
 don't track if you go to the same user/post twice in the same three days
 add privacy link to footer
-  
-accounts recievable: low/medium/high/very high
-B2B? B2C? Both
-Kind of banking: Factoring, Traditional, 
+
+add validate.js to profile#edit
+
 Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
+  DONE add to matching algorithm
+  add to banker profile
+  user#show
+
+accounts receivable: low/medium/high/very high
+  DONE add to matching algorithm
+  add to banker profile
+  user#show
+
+B2B? B2C? Both
+  DONE add to matching algorithm
+  add to banker profile
+  user#show
+
+Kind of banking: Factoring, Traditional, 
 
 Encourage people to write long posts in the newsfeed.
 

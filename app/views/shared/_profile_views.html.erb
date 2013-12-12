@@ -7,7 +7,7 @@
       <%   @buck_users << p.voters_who_voted_for %>
       <% end %>
       <% @buck_users.flatten! %>
-      <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon ion-plus"></i></h5>
+      <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon ion-plus-round"></i></h5>
         <%= render partial: "users/user", collection: @buck_users, as: :user %> 
       <h5><%= current_user.impressions_count %> Profile Views <i class="icon ion-eye"></i></h5>
         <%= render partial: "users/user", collection: current_user.impressions.map{|i| i.impressionable}.uniq.first(3), as: :user %>

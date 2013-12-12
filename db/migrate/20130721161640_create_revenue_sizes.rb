@@ -5,10 +5,10 @@ class CreateRevenueSizes < ActiveRecord::Migration
 
       t.timestamps
     end
-    RevenueSize.create(description: "$0-$100k")    
-    RevenueSize.create(description: "$100k-$1m")    
-    RevenueSize.create(description: "$1m-$5m")    
-    RevenueSize.create(description: "$5m-10m")    
-    RevenueSize.create(description: "$10M and Above")    
+    RevenueSize.create(description: "$0 - $100k")    
+    RevenueSize.create(description: "$100k - $1M")    
+    RevenueSize.create(description: "$1M - $5M")    
+    RevenueSize.create(description: "$5M - 10M")    
+    RevenueSize.create(description: "$10M +")    
   end
 end

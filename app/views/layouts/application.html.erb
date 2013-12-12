@@ -160,8 +160,10 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to "Me", user_path(current_user) %>
-                <% if params[:controller] == "users" && params[:action] == "show" %>
+                <%= link_to user_path(current_user) do %>
+                  Me
+                <% end %>
+                <% if @user.present? && @user == current_user %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
                 <% end %>
               </li>
@@ -172,25 +174,23 @@
                   <% end %>
                 </li>
               <% end %>
-              <li class="divider-vertical"></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle little" data-toggle="dropdown">
-                  <%= current_user.karma + 100 %> <i class="icon-money"></i> - <%= current_user.first_name_with_last_initial %>
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                   <li><%= link_to edit_profile_path(current_user) do %>
-                    <i class="icon-wrench"></i> Edit Profile
+                    <i class="icon ion-wrench"></i> Edit Profile
                       <% end %>
                   </li>
                   <li><%= link_to edit_user_registration_path do %>
-                    <i class="icon-cog"></i> Settings
+                    <i class="icon ion-gear-a"></i> Settings
                       <% end %>
                   </li>
                   <% if user_signed_in? %>
                   <li class="divider"></li>
                   <li><%= link_to destroy_user_session_path, method: "delete" do %>
-                    <i class="icon-off"></i> Logout
+                    <i class="icon ion-log-out"></i> Logout
                       <% end %>
                   </li>
                   <% end %>

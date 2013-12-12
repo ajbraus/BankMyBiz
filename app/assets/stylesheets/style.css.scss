@@ -1174,7 +1174,7 @@ ol
 ol li
 {
   float: left;
-  width: 9em;
+  width: 72px;
 }  /* stop the float */
 br
 {
@@ -1225,18 +1225,18 @@ a.no-link {
 }
 
 .alert {
-  width: 100%;
-  padding: 5px 5px;
+  z-index: 1000;
   text-align: center;
-  margin: 0;
-  width: 80%;
-  margin: 0 auto;
-  position: absolute;
-  max-width: 570px;
-      -webkit-border-radius: 0px;
+  width: 100%;
+  position: relative;
+  -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-
+  margin-bottom: -24px;
+  float: left;
+  font-size: 13px;
+  padding: 0 0;
+  line-height: 19px;
 }
 
 .read {

@@ -1,11 +1,13 @@
-update user profile view to reflect changes to profile
+add invites to analytics page
+
+add og meta tags
+Invite on LinkedIn
+
 Testimonials page
-Then on to the mobile app
 
 Credit Card payment bounced but card was saved and then it worked.
 fix impressions
 only buy/make matches that are actively looking or interested
-email already taken in invitation view
 
 invite linkedin connections
 
@@ -14,21 +16,6 @@ add privacy link to footer
 
 add validate.js to profile#edit
 
-Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
-  DONE add to matching algorithm
-  DONE add to banker profile
-  user#show
-
-accounts receivable: low/medium/high/very high
-  DONE add to matching algorithm
-  DONE add to banker profile
-  user#show
-
-B2B? B2C? Both
-  DONE add to matching algorithm
-  DONE add to banker profile
-  user#show
-
 SLL Cert
 
 bugs:
@@ -36,6 +23,8 @@ bugs:
   ajaxify comments
   ajaxify bucks
   allow delete comments to creator
+
+Then on to the mobile app
 
 ____________________________________________________
 
@@ -413,3 +402,19 @@ invite mo' people
   DONE reward match
   DONE reward with free matches & bucks
   DONE emails not going out
+
+
+  Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
+    DONE add to matching algorithm
+    DONE add to banker profile
+    user#show
+
+  accounts receivable: low/medium/high/very high
+    DONE add to matching algorithm
+    DONE add to banker profile
+    user#show
+
+  B2B? B2C? Both
+    DONE add to matching algorithm
+    DONE add to banker profile
+    user#show

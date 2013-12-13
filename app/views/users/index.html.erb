@@ -118,29 +118,23 @@
           <thead>
             <tr>
               <th width="3%"></th>
-              <th width="30%">Name</th>
               <th width="30%">Email</th>
-              <th width="15%">Applied On</th>
-              <th width="20%">Actions</th>
+              <th width="15%">Invited On</th>
             </tr>
           </thead>
           <tbody class="table-bordered">
             <% @invited_users.each do |u| %>
               <tr>
                 <td></td>
-                <td><%= u.name %></td>
                 <td><%= u.email %></td>
                 <td><%= u.nice_created_at %></td>
-                <td>
-                  <%= link_to "Confirm", user_confirm_path(u), class:"btn btn-mini btn-success" %>
-                  <%= link_to "Reject", user_reject_path(u), class:"btn btn-mini btn-warning", confirm: "Are you sure?" %>
-                </td>
               </tr>
             <% end %>
           </tbody>
         </table>
         <%= will_paginate @invited_users, renderer: BootstrapPagination::Rails %>
       </div>
+
       <div class="tab-pane" id="tab2">
         <table class="table table-hover">
           <thead>

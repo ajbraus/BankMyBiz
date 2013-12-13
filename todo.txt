@@ -1,3 +1,7 @@
+update user profile view to reflect changes to profile
+Testimonials page
+Then on to the mobile app
+
 Credit Card payment bounced but card was saved and then it worked.
 fix impressions
 only buy/make matches that are actively looking or interested
@@ -12,22 +16,20 @@ add validate.js to profile#edit
 
 Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
   DONE add to matching algorithm
-  add to banker profile
+  DONE add to banker profile
   user#show
 
 accounts receivable: low/medium/high/very high
   DONE add to matching algorithm
-  add to banker profile
+  DONE add to banker profile
   user#show
 
 B2B? B2C? Both
   DONE add to matching algorithm
-  add to banker profile
+  DONE add to banker profile
   user#show
 
-Kind of banking: Factoring, Traditional, 
-
-Encourage people to write long posts in the newsfeed.
+SLL Cert
 
 bugs:
   threading messages by subject line
@@ -37,6 +39,7 @@ bugs:
 
 ____________________________________________________
 
+Invitations using a hot link and through LinkedIn
 
 rework interface: 
   ad space
@@ -44,15 +47,12 @@ rework interface:
   more information dense?
   infographic . . . 
 
-Testimonials page
-
-Letter from Michael, CEO
-
 fix homepage:
   submit sitemap to google
 
 what makes a really good banker - one you can trust and has relationships . . .lots of linkedin connections . . . hmmm "verifications" 
 
+Encourage people to write long posts in the newsfeed.
 
 add zipcode
 
@@ -84,26 +84,14 @@ repost - with bmb button
 
 click our seo trending words
 
-
-
 ------------------------------
 
-
-
 Someone else grabbed your match because you didn't get it
-
-what kind of banking do you do?
-  treasury services
-  debt lending
-  factoring
-  non-profit
 
 send richtext messages
 
 Security
   don't destroy users
-
-SLL Cert
 
 message sent more obvious - sent count
 
@@ -117,7 +105,6 @@ Control / Moderation
 
 ---------------------------------------
 ---------------------------------------
-
 
 
 DONE Setup tags

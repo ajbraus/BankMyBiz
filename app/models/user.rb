@@ -409,6 +409,7 @@ class User < ActiveRecord::Base
   def potential_matches
     matches = User.all.reject { |m| m == self || 
                                     m.bank == self.bank || 
+                                    # m.status == "Just Browsing" ||
                                     !m.can_be_matched? ||
                                     !m.in_same_location?(self) ||
                                     m.in?(self.matched_users) ||

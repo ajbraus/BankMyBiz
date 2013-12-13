@@ -1,7 +1,7 @@
 class InvitationsController < Devise::InvitationsController
   def create
     params[:user][:email].split(',').each do |email|    
-      User.invite!(email: email) do |u|
+      User.invite!({ email: email }, current_user) do |u|
         u.skip_invitation = true
       end
       

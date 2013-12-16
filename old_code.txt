@@ -68,3 +68,9 @@ old code
 <% end %>
 
 data-spy="affix" data-offset-top="90" data-offset-bottom="200" 
+
+      <div class="fb-like" data-href="https://www.facebook.com/pages/Bankmybiz/451357408284592" data-width="350" data-show-faces="true" data-send="false"></div>
+      <script src="//platform.linkedin.com/in.js" type="text/javascript">
+       lang: en_US
+      </script>
+      <script type="IN/FollowCompany" data-id="3279881" data-counter="right"></script>

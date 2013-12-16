@@ -9,7 +9,6 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if @user.matched_users.empty? && @user.finished_profile?
-          binding.pry
           @user.set_matches
           @user.set_peers
           @user.delay.add_to_mc_lists

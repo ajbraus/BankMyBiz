@@ -1,7 +1,6 @@
 <%= link_to user_url(other_user), class:"no-hover" do %>
   <table>
     <tr>
-      <%- binding.pry %>
       <td><img src="<%= image_url(other_user) %>" width="80" style='margin-right:10px; border-radius:100px;'></td>
       <td>
         <strong><%= other_user.first_name_with_last_initial %></strong> <br>

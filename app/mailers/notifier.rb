@@ -63,7 +63,7 @@ class Notifier < ActionMailer::Base
     @inviter = inviter
     @body = body
 
-    mail to: @user.email, subject: "#{@user.name} invites you to bank on relationships"
+    mail to: @user.email, subject: "You've been invited to Bank on Relationships"
   end
 
   def invitation_accepted(inviter, invitee)

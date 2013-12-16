@@ -125,6 +125,7 @@ BankMyBiz::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
 
+  #/api/v1/ . . . 
   namespace :api, defaults: {format: 'json'} do 
     namespace :v1 do 
       devise_for :users, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registrations" }

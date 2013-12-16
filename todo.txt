@@ -1,15 +1,17 @@
 add invites to analytics page
 
-add og meta tags
 Invite on LinkedIn
+
+add og meta tags
+post to facebook
+post to linkedin
 
 Testimonials page
 
 Credit Card payment bounced but card was saved and then it worked.
 fix impressions
-only buy/make matches that are actively looking or interested
 
-invite linkedin connections
+only buy/make matches that are actively looking or interested
 
 don't track if you go to the same user/post twice in the same three days
 add privacy link to footer

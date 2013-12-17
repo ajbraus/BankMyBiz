@@ -125,19 +125,6 @@
         </div>
         <div class="row">
           <div class="col-sm-3">
-            <div class="field"> 
-              <h4>Industries*</h4>
-              <% for industry in Industry.find(:all) %>
-                <div>
-                  <label>
-                    <%= check_box_tag "user[industry_ids][]", industry.id, @user.industries.include?(industry) %>
-                    <%= industry.description %>
-                  </label>
-                </div>
-              <% end %> 
-            </div>
-          </div>
-          <div class="col-sm-3">
             <div class="field">
               <h4>Years Filed Taxes*</h4>
               <% for age in Age.find(:all) %>
@@ -160,6 +147,8 @@
                 </div>
               <% end %>  
             </div>
+          </div> 
+          <div class="col-sm-3">
             <div class="field">
               <h4># Employees*</h4>
               <% for employee_size in EmployeeSize.find(:all) %>
@@ -224,9 +213,23 @@
       <% end %>
       <section class="row">
         <div class="col-sm-12 clearfix">
+          <h4>Industries*</h4>
+          <ol class="industries">
+            <% for industry in Industry.find(:all) %>
+              <li>
+                <label class="pull-left">
+                  <%= check_box_tag "user[industry_ids][]", industry.id, @user.industries.include?(industry) %>
+                  <%= industry.description %>
+                </label>
+              </li>
+            <% end %> 
+          </ol>
+        </div>
+      </section>
+      <section class="row">
+        <div class="col-sm-12 clearfix">
           <h4>In Which States Do You Do Business?*</h4>
-          <div class="wrapper">
-          <ol>
+          <ol class="locations">
             <li>
               <label class="pull-left" id="selectEntireUS">
                 <%= check_box_tag "user[location_ids][]", Location.first.id, @user.locations.include?(Location.first), id:'EntireUS' %>
@@ -242,7 +245,6 @@
             </li>
           <% end %> 
           </ol>
-        </div>
       </section> 
       <div class="row text-right">
         <%= submit_tag "Update Profile", class:"btn btn-success btn-lg" %>

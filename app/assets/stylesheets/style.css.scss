@@ -1171,11 +1171,15 @@ ol
 {
   width: 100%;
 }  /* float & allow room for the widest item */
-ol li
+ol.locations  li
 {
   float: left;
   width: 72px;
 }  /* stop the float */
+ol.industries li {
+  float:left;
+  width:140px;
+}
 br
 {
   clear: left;

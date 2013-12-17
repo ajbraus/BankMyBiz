@@ -1,10 +1,8 @@
-add invites to analytics page
+view user linkedin profile
+banker and busines profiles - spider graphs
+autocomplete on tags
 
 Invite on LinkedIn
-
-add og meta tags
-post to facebook
-post to linkedin
 
 Testimonials page
 
@@ -420,3 +418,7 @@ invite mo' people
     DONE add to matching algorithm
     DONE add to banker profile
     user#show
+
+DONE add og meta tags
+DONE post to facebook
+DONE post to linkedin

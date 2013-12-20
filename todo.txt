@@ -1,22 +1,9 @@
-view user linkedin profile
-banker and busines profiles - spider graphs
-autocomplete on tags
-
-Invite on LinkedIn
-
-Testimonials page
-
 Credit Card payment bounced but card was saved and then it worked.
 fix impressions
-
-only buy/make matches that are actively looking or interested
-
 don't track if you go to the same user/post twice in the same three days
-add privacy link to footer
+autocomplete on tags
 
-add validate.js to profile#edit
-
-SLL Cert
+I'm interested in being contacted by you.
 
 bugs:
   threading messages by subject line
@@ -24,17 +11,21 @@ bugs:
   ajaxify bucks
   allow delete comments to creator
 
+
+bankmybiz awards
+Testimonials page
+
+only buy/make matches that are actively looking or interested
+
+add privacy link to footer
+
+add validate.js to profile#edit
+
+SLL Cert
+
 Then on to the mobile app
 
 ____________________________________________________
-
-Invitations using a hot link and through LinkedIn
-
-rework interface: 
-  ad space
-  import recent tweets
-  more information dense?
-  infographic . . . 
 
 fix homepage:
   submit sitemap to google
@@ -72,6 +63,9 @@ don't have nil columns in database at all - will break API
 repost - with bmb button
 
 click our seo trending words
+
+banker and busines profiles - spider graphs
+
 
 ------------------------------
 

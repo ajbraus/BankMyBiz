@@ -89,7 +89,7 @@
         </thead>
         <tbody>
           <tr>
-            <td><%= User.all.count - User.percentage_complete_profiles %></td>
+            <td><%= User.where('bank IS NOT NULL').count - User.percentage_complete_profiles %></td>
             <td><%= User.percentage_complete_profiles %></td>
           </tr>
         </tbody>

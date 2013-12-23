@@ -1,9 +1,18 @@
-set people's profiles
-Credit Card payment bounced but card was saved and then it worked.
+create users with default values
+  - banks default in
+    All AR Levels
+    All industries
+    All Ages after first
+    All Employee sizes
+    All Business Types
+    All Revenue Sizes
+    All Loan Sizes
+    All Customer Types
+
+Credit Card payment bounced but card was saved and then it worked
 fix impressions
 don't track if you go to the same user/post twice in the same three days
 autocomplete on tags
-
 
 $ in pipeline
 
@@ -420,3 +429,6 @@ invite mo' people
 DONE add og meta tags
 DONE post to facebook
 DONE post to linkedin
+
+
+DONE set people's profiles

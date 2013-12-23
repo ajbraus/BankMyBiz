@@ -133,14 +133,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def self.percentage_complete_profiles
-    complete_profiles_count = 0
-    User.all.each do |u|
-      complete_profiles_count += 1 if u.profile_progress_percent == 100
-    end
-    return complete_profiles_count
-  end
-
   def to_param
     "#{id} #{username}".parameterize
   end
@@ -293,6 +285,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.percentage_complete_profiles
+    complete_profiles_count = 0
+    User.all.each do |u|
+      complete_profiles_count += 1 if u.profile_progress_percent == 100
+    end
+    return complete_profiles_count
+  end
+  
   def started_profile?
     return profile_progress_percent > 0
   end

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          :token_authenticatable, :invitable
 
   before_save :ensure_authentication_token
-  
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, 
                   :password, 
@@ -131,6 +131,14 @@ class User < ActiveRecord::Base
         matched_users << potential_matches.first
       end
     end
+  end
+
+  def self.percentage_complete_profiles
+    complete_profiles_count = 0
+    User.all.each do |u|
+      complete_profiles_count += 1 if u.profile_progress_percent == 100
+    end
+    return complete_profiles_count
   end
 
   def to_param

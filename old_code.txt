@@ -74,3 +74,38 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
        lang: en_US
       </script>
       <script type="IN/FollowCompany" data-id="3279881" data-counter="right"></script>
+
+
+
+  def default_values
+    User.all.each do |u|
+      if u.customer_types.none?
+        u.customer_types << CustomerType.find(1)
+        u.customer_types << CustomerType.find(2)
+      end
+      
+      if u.loan_sizes.none?
+        if !u.bank?
+          u.loan_sizes << LoanSize.find(1)
+        else
+          u.loan_sizes << LoanSize.find(1)
+          u.loan_sizes << LoanSize.find(2)
+          u.loan_sizes << LoanSize.find(3)
+          u.loan_sizes << LoanSize.find(4)
+          u.loan_sizes << LoanSize.find(5)
+          u.loan_sizes << LoanSize.find(6)
+        end
+      end
+
+      if u.accounts_receivables.none?
+        if !u.bank? 
+          u.accounts_receivables << AccountsReceivable.find(1)
+        else
+          u.accounts_receivables << AccountsReceivable.find(1)
+          u.accounts_receivables << AccountsReceivable.find(2)
+          u.accounts_receivables << AccountsReceivable.find(3)
+          u.accounts_receivables << AccountsReceivable.find(4)
+        end
+      end
+    end
+  end

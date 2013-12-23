@@ -1,80 +1,100 @@
-<div class="col-sm-4 text-center">
-  <h4>New User Stats</h4>
-    <!-- Table -->
-    <table class="table table-bordered user-stats">
-      <thead>
-        <tr>
-          <th><%= Date.today.prev_month(2).strftime("%b") %></th>
-          <th><%= Date.today.prev_month.strftime("%b") %></th>
-          <th>This Month</th>
-          <th>This Week</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= User.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
-          <td><%= User.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count %></td>
-          <td><%= User.where(created_at: Date.today.at_beginning_of_month..Date.today).count %></td>
-          <td><%= User.where(created_at: Date.today.at_beginning_of_week..Date.today).count %></td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-<div class="col-sm-4 text-center">
-  <h4>User Stats</h4>
-    <!-- Table -->
-    <table class="table table-bordered user-stats">
-      <thead>
-        <tr>
-          <th>Bankers</th>
-          <th>Businesses</th>
-          <th>Undecided</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><%= User.where(bank: true).count %></td>
-          <td><%= User.where(bank: false).count %></td>
-          <td><%= User.where(bank: nil).count %></td>
-          <td><%= User.all.count %></td>
-        </tr>
-      </tbody>
-    </table>
-</div>
-<div class="col-sm-4 text-center">
-  <h4>Conversion Stats</h4>
-    <!-- Table -->
-    <table class="table table-bordered user-stats">
-      <thead>
-        <tr>
-          <th></th>
-          <th><%= Date.today.prev_month(2).strftime("%b") %></th>
-          <th><%= Date.today.prev_month.strftime("%b") %></th>
-          <th>This Month</th>
-          <th>This Week</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Match</td>
-          <td><%= Purchase.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
-          <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count)*3 %></td>
-          <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_month..Date.today).count)*3 %></td>
-          <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_week..Date.today).count)*3 %></td>
-          <td><%= (Purchase.all.count)*3 %></td>
-        </tr>
-        <tr>
-          <td>360</td>
-          <td><%= Subscription.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
-          <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count)*3 %></td>
-          <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_month..Date.today).count)*3 %></td>
-          <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_week..Date.today).count)*3 %></td>
-          <td><%= Subscription.where("expires_on > ?", Date.today).count %></td>
-        </tr>
-      </tbody>
-    </table>
+<div class="row">
+  <div class="col-sm-4 text-center">
+    <h4>New User Stats</h4>
+      <!-- Table -->
+      <table class="table table-bordered user-stats">
+        <thead>
+          <tr>
+            <th><%= Date.today.prev_month(2).strftime("%b") %></th>
+            <th><%= Date.today.prev_month.strftime("%b") %></th>
+            <th>This Month</th>
+            <th>This Week</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= User.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
+            <td><%= User.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count %></td>
+            <td><%= User.where(created_at: Date.today.at_beginning_of_month..Date.today).count %></td>
+            <td><%= User.where(created_at: Date.today.at_beginning_of_week..Date.today).count %></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="col-sm-4 text-center">
+    <h4>User Stats</h4>
+      <!-- Table -->
+      <table class="table table-bordered user-stats">
+        <thead>
+          <tr>
+            <th>Bankers</th>
+            <th>Businesses</th>
+            <th>Undecided</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= User.where(bank: true).count %></td>
+            <td><%= User.where(bank: false).count %></td>
+            <td><%= User.where(bank: nil).count %></td>
+            <td><%= User.all.count %></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="col-sm-4 text-center">
+    <h4>Conversion Stats</h4>
+      <!-- Table -->
+      <table class="table table-bordered user-stats">
+        <thead>
+          <tr>
+            <th></th>
+            <th><%= Date.today.prev_month(2).strftime("%b") %></th>
+            <th><%= Date.today.prev_month.strftime("%b") %></th>
+            <th>This Month</th>
+            <th>This Week</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Match</td>
+            <td><%= Purchase.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
+            <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count)*3 %></td>
+            <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_month..Date.today).count)*3 %></td>
+            <td><%= (Purchase.where(created_at: Date.today.at_beginning_of_week..Date.today).count)*3 %></td>
+            <td><%= (Purchase.all.count)*3 %></td>
+          </tr>
+          <tr>
+            <td>360</td>
+            <td><%= Subscription.where(created_at: Date.today.at_beginning_of_month.prev_month(2)..Date.today.at_beginning_of_month.prev_month).count %></td>
+            <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_month.prev_month..Date.today.at_beginning_of_month).count)*3 %></td>
+            <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_month..Date.today).count)*3 %></td>
+            <td><%= (Subscription.where(created_at: Date.today.at_beginning_of_week..Date.today).count)*3 %></td>
+            <td><%= Subscription.where("expires_on > ?", Date.today).count %></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+  <div class="col-sm-4 text-center">
+    <h4>Profile Completion Stats</h4>
+      <!-- Table -->
+      <table class="table table-bordered user-stats">
+        <thead>
+          <tr>
+            <th>Incomplete Profiles</th>
+            <th>Completed Profiles</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= User.all.count - User.percentage_complete_profiles %></td>
+            <td><%= User.percentage_complete_profiles %></td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
 </div>
 <div class="col-sm-12">
   <div class="tabbable"> <!-- Only required for left/right tabs -->

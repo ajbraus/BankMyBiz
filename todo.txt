@@ -1,7 +1,11 @@
+set people's profiles
 Credit Card payment bounced but card was saved and then it worked.
 fix impressions
 don't track if you go to the same user/post twice in the same three days
 autocomplete on tags
+
+
+$ in pipeline
 
 I'm interested in being contacted by you.
 

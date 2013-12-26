@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
                   :hq_state,
                   :stripe_customer_id
 
-  is_impressionable :counter_cache => true
+  is_impressionable :counter_cache => true, :unique => :user_id
 
   acts_as_voter
   has_karma(:posts)

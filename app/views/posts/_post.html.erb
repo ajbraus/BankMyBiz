@@ -13,7 +13,7 @@
       <% if user_signed_in? %>
         <% unless current_user == post.user%>
           <%= link_to vote_up_post_path(post), class:"breathing-room fade-in-green" do %>
-            <i class="icon ion-plus-round <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"  rel="tooltip" title="Give <%= post.user.first_name_with_last_initial %> a Buck"></i>
+            <i class="icon ion-plus-circled <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"  rel="tooltip" title="Give <%= post.user.first_name_with_last_initial %> a Buck"></i>
           <% end %>
         <% end %>
       <% end %>
@@ -26,7 +26,7 @@
     </div>
     <p class="text-right muted small">
       posted <%= time_ago_in_words(post.created_at) %> ago by 
-      <% if user_signed_in? && !current_user.bank? %>
+      <% if user_signed_in? && current_user.bank == false %>
         <%= link_to post.user.first_name_with_last_initial, post.user if post.user %>
       <% else %>
         <%= post.user.first_name_with_last_initial if post.user %>

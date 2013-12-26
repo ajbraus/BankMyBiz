@@ -1,7 +1,10 @@
 BUGS!!!!
 Credit Card payment bounced but card was saved and then it worked
-fix impressions
 Remove public activity? - don't track if you go to the same use,post twice in the same three days
+
+when you sign up ask for bank/biz & with linked in ask for bank/biz, organization, position, password, and password confirm.
+
+remove _post.html links if bank:false
 
 increas profile completion
   create users with default values
@@ -15,8 +18,6 @@ increas profile completion
       All Loan Sizes
       All Customer Types
 
-autocomplete on tags
-
 increase matches
   only bu,make matches that are actively looking or interested
 
@@ -26,6 +27,8 @@ Increase contacts
 $ in pipeline
 
 %match you are with person you are viewing.
+
+autocomplete on tags
 
 bugs:
   threading messages by subject line
@@ -429,6 +432,8 @@ invite mo' people
 DONE add og meta tags
 DONE post to facebook
 DONE post to linkedin
+
+DONE fix impressions
 
 
 DONE set people's profiles

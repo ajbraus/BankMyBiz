@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
                   :hq_state,
                   :stripe_customer_id
 
-  is_impressionable
+  is_impressionable :counter_cache => true
 
   acts_as_voter
   has_karma(:posts)
@@ -142,14 +142,14 @@ class User < ActiveRecord::Base
       michael = User.find_by_email("michael@bankmybiz.com")
       if michael.present?
         Message.create(
-          subject: "Welcome to BankmyBiz",
+          subject: "Welcome to Bankmybiz",
           body: "#{self.first_name}," + "\n\n" + 
-                "Thanks for joining the BankmyBiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use BankmyBiz's private and secure messaging system to ask questions like 'What is your biggest challenge recently?' or 'What is your biggest goal for your business?'." + "\n\n" +
-                "The BankmyBiz matching algorithm matches you with people who want to connect with you. You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n\n" +
+                "Thanks for joining the Bankmybiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use Bankmybiz's private and secure messaging system to ask questions like 'What is your biggest challenge recently?' or 'What is your biggest goal for your business?'." + "\n\n" +
+                "The Bankmybiz matching algorithm matches you with people who want to connect with you. You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n\n" +
                 "Post to the News Feed to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
-                "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for BankmyBiz 360&deg; to get 360&deg; of the activity happening on BankmyBiz." + "\n\n\n" +
+                "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for Bankmybiz 360&deg; to get 360&deg; of the activity happening on Bankmybiz." + "\n\n\n" +
                 "Thanks and again, Welcome!" + "\n\n\n" +
-                "Michael Adam, CEO BankmyBiz",
+                "Michael Adam, CEO Bankmybiz",
           sender_id: michael.id,
           receiver_id: self.id,
           is_read: false
@@ -174,7 +174,7 @@ class User < ActiveRecord::Base
     Notifier.delay.internal_new_user(self)
     #Notifier.delay.confirmation_of_request(self)
     # if Rails.env.production?
-    #   Message.delay.create(sender_id: User.find_by_email("michael@bankmybiz.com").id, receiver_id: self.id, subject: 'Welcome to BankmyBiz.com', body: "")
+    #   Message.delay.create(sender_id: User.find_by_email("michael@bankmybiz.com").id, receiver_id: self.id, subject: 'Welcome to Bankmybiz.com', body: "")
     # end
   end
 

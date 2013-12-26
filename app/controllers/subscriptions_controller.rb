@@ -55,7 +55,7 @@ class SubscriptionsController < ApplicationController
       end
 
       @subscription.save
-      redirect_to root_path, :notice => "Welcome to BankmyBiz360. You now have 360 degree access to users who interact with you."
+      redirect_to root_path, :notice => "Welcome to Bankmybiz360. You now have 360 degree access to users who interact with you."
       return
     else
       redirect_to new_subscription_path(plan_id: plan), notice: "There was a problem with your subscription. Please try again."

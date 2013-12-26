@@ -3,7 +3,7 @@ class Notifier < ActionMailer::Base
   include UsersHelper
   include ActionView::Helpers::AssetTagHelper  
   layout 'email' # use email.(html|text).erb as the layout for emails
-  default from: "BankmyBiz Team - team@bankmybiz.com"
+  default from: "Bankmybiz"
 
   def internal_new_user(user)
     @user = user
@@ -17,7 +17,7 @@ class Notifier < ActionMailer::Base
 
   def welcome(user)
     @user = user
-    mail to: @user.email, subject: "Welcome to BankmyBiz.com"
+    mail to: @user.email, subject: "Welcome to bankmybiz.com"
   end
 
   def send_message(message)

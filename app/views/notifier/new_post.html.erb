@@ -1,6 +1,6 @@
 <h4 class="h4"><%= @user.first_name.titleize %>, </h4>
 <p>
-  Your Favorite <%= @post.user.first_name_with_last_initial %> posted to the News Feed on BankmyBiz.com.
+  Your Favorite <%= @post.user.first_name_with_last_initial %> posted to the News Feed on Bankmybiz.com.
 </p>
 
 <p>
@@ -18,7 +18,7 @@
           posted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.first_name_with_last_initial if @post.user %>
         </p>
         <p class='text-right'>
-          <a href="mailto:?subject=Interesting Post&body=Here is a post from BankmyBiz.com I thought you'd like%0D%0A%0D%0A<%= @post.content %>%0D%0A%0D%0ABy: <%= @post.user.first_name_with_last_initial %>" class="btn btn-mini btn-grey"><i class="icon-envelope"></i></a>
+          <a href="mailto:?subject=Interesting Post&body=Here is a post from Bankmybiz.com I thought you'd like%0D%0A%0D%0A<%= @post.content %>%0D%0A%0D%0ABy: <%= @post.user.first_name_with_last_initial %>" class="btn btn-mini btn-grey"><i class="icon-envelope"></i></a>
           <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= @post.id %>&text=<%= @post.content %>" target='_blank'>Tweet
           </a>
           <a href="#" 
@@ -30,7 +30,7 @@
               return false;" class="no-text-decoration">
             Share
           </a>
-          <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= @post.id %>&title=<%= @post.content %>&source=BankmyBiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">LinkedIn
+          <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= @post.id %>&title=<%= @post.content %>&source=Bankmybiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">LinkedIn
           </a>
         </p>
       </td>

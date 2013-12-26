@@ -39,7 +39,7 @@
       </div>
     <% end %>
     <p class='text-right'>
-      <a href="mailto:?subject=Interesting Post&body=Here is a post from BankmyBiz.com I thought you'd like%0D%0A%0D%0A<%= post.content %>%0D%0A%0D%0ABy: <%= post.user.first_name_with_last_initial %>" class="btn btn-default btn-xs"><i class="icon ion-ios7-email-outline"></i></a>
+      <a href="mailto:?subject=Interesting Post&body=Here is a post from Bankmybiz.com I thought you'd like%0D%0A%0D%0A<%= post.content %>%0D%0A%0D%0ABy: <%= post.user.first_name_with_last_initial %>" class="btn btn-default btn-xs"><i class="icon ion-ios7-email-outline"></i></a>
       <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>" target='_blank'>
         <span class="btn btn-xs btn-twitter"><i class="icon ion-social-twitter"></i>
       </a>
@@ -52,7 +52,7 @@
           return false;" class="no-text-decoration">
         <span class="btn btn-xs btn-facebook"><i class="icon ion-social-facebook"></i></span>
       </a>
-      <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=BankmyBiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=Bankmybiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
         <span class="btn btn-xs btn-linkedin"><i class="icon ion-social-linkedin"></i>
       </a>
     </p>

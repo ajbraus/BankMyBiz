@@ -1,22 +1,31 @@
-create users with default values
-  - banks default in
-    All AR Levels
-    All industries
-    All Ages after first
-    All Employee sizes
-    All Business Types
-    All Revenue Sizes
-    All Loan Sizes
-    All Customer Types
-
+BUGS!!!!
 Credit Card payment bounced but card was saved and then it worked
 fix impressions
-don't track if you go to the same user/post twice in the same three days
+Remove public activity? - don't track if you go to the same use,post twice in the same three days
+
+increas profile completion
+  create users with default values
+    - banks default in
+      All AR Levels
+      All industries
+      All Ages after first
+      All Employee sizes
+      All Business Types
+      All Revenue Sizes
+      All Loan Sizes
+      All Customer Types
+
 autocomplete on tags
+
+increase matches
+  only bu,make matches that are actively looking or interested
+
+Increase contacts
+  I'm interested in being contacted by you.
 
 $ in pipeline
 
-I'm interested in being contacted by you.
+%match you are with person you are viewing.
 
 bugs:
   threading messages by subject line
@@ -24,17 +33,24 @@ bugs:
   ajaxify bucks
   allow delete comments to creator
 
-
-bankmybiz awards
 Testimonials page
-
-only buy/make matches that are actively looking or interested
 
 add privacy link to footer
 
+Improve newsfeed
+  email to users who have same tags as just posted
+  follow tags at the beginning
+
+
+set password after authenticate through linkedin.
+
 add validate.js to profile#edit
 
+if your linkedin connection joins bankmybiz get an email
+
 SLL Cert
+
+add zipcode
 
 Then on to the mobile app
 
@@ -47,27 +63,18 @@ what makes a really good banker - one you can trust and has relationships . . .l
 
 Encourage people to write long posts in the newsfeed.
 
-add zipcode
-
-set password after authenticate through linkedin.
-
-Make match happen during the day
-only email on weekdays during the day
-
 My banker - my client - track who is clients and bankers of each other
 
 setup subscriptions
   don't bill customers who are gone
   create "downgrade subscription" workflow
-  1/month package, 3/month package %25, 6/month package %50
+  ,month package, ,month package %25, ,month package %50
   promoted posts
 
 buy matches
   add destroy card
 
 Mark profile as private, and posts as public.
-
-if your linkedin connection joins bank my biz get an email.
 
 send created at with post and comment, send user position and HQ state with post
 
@@ -76,9 +83,6 @@ don't have nil columns in database at all - will break API
 repost - with bmb button
 
 click our seo trending words
-
-banker and busines profiles - spider graphs
-
 
 ------------------------------
 
@@ -89,15 +93,11 @@ send richtext messages
 Security
   don't destroy users
 
-message sent more obvious - sent count
-
 make reply from message in email actually reply as a message.
 
 follow tags
 
-Control / Moderation
-
-
+Control, Moderation
 
 ---------------------------------------
 ---------------------------------------
@@ -218,7 +218,7 @@ DONE bankers vs lenders
 
 DONE first name and industry
 
-DONE add wins to landing page - business owners/bankers
+DONE add wins to landing page - business owner,bankers
   DONE hide comment until click to comment
   DONE format comments
 
@@ -232,7 +232,7 @@ DONE public_actionify following people
   DONE add admin user
   DONE confirmable
 
-DONE tweet/fb_share/linkedin share post
+DONE twee,fb_shar,linkedin share post
 DONE format post#show page with comments (make public for robots)
 
 DONE Last name still showing, with last initial
@@ -241,7 +241,7 @@ DONE add S-Corp
 DONE make pictures links to profile
 DONE lock down 1 match
 DONE lock down 1 message
-DONE add edit/delete to posts in newsfeed
+DONE add edi,delete to posts in newsfeed
 
 DONE make admin work
 DONE make facebook button grey
@@ -271,18 +271,18 @@ DONE add public activity for voting
 DONE give a buck
 
 DONE justify the wins
-DONE bank matches / biz matches
+DONE bank matches, biz matches
 
 
 hint
-<div class="hint"><i class="icon-lightbulb"></i> FYI</div>
+<div class="hint"><i class="icon-lightbulb">,i> FYI,div>
 
 
 DONE open new tab for links
 
 DONE What location do you lend to?
 
-DONE lender/owner matches per a day
+DONE lende,owner matches per a day
   DONE setup scheduler to run set_peers and set_matches every night
   DONE setup some matches and peers upon login
 
@@ -296,7 +296,7 @@ better "improve profile section"
 
 DONE "How many years have you filed taxes" (instead of years of operation)
 
-DONE Position Owner/CFO
+DONE Position Owne,CFO
 DONE icon in "add photo to post to newsfeed"
 
 DONE comment button btn-primary
@@ -316,11 +316,11 @@ emails
   DONE make the signature smaller
   DONE new comment on a post you commented on
   DONE make reply a button in message send (avoid getting resonponses)
-  DONE business receives s/o following you message
+  DONE business receives ,o following you message
   DONE Email after requesting access
 
 DONE impression_count not working
-DONE remove startup -> tech/internet
+DONE remove startup -> tec,internet
 DONE "commercial real estate"
 DONE sole proprietor 
 
@@ -397,7 +397,7 @@ DONE are matches going out?
 
 DONE calls to action to connect
 
-DONE unread messages count in header - activity/notifications in header like facebook
+DONE unread messages count in header - activit,notifications in header like facebook
 DONE  initiate with welcome message
 
 
@@ -411,12 +411,12 @@ invite mo' people
   DONE emails not going out
 
 
-  Size of loan/financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
+  Size of loa,financing sought $25k - $100k, $100k - $250k, $250k - $500k, $500k- $1M, $1- $5M, $5M + 
     DONE add to matching algorithm
     DONE add to banker profile
     user#show
 
-  accounts receivable: low/medium/high/very high
+  accounts receivable: lo,mediu,hig,very high
     DONE add to matching algorithm
     DONE add to banker profile
     user#show
@@ -432,3 +432,39 @@ DONE post to linkedin
 
 
 DONE set people's profiles
+
+
+Advertising, Sales, Marketing
+Transportation
+Agriculture
+Arts
+Automotive
+Science, Biotech
+Construction
+Consulting
+Internet
+Consumer Products
+Data, Analytics
+Design
+Education
+Energy
+Electronics
+Engineering
+Entertainment, Media
+Events
+Fashion, Apparel 
+Financial Services
+Food & Beverage
+Gaming
+Government, Politics
+Health, Wellness
+Healthcare, Pharma
+Hospitality
+Legal
+Manufacturing
+Non Profit
+Commercial Real Estate
+Residential Real Estate
+Retail
+Security
+Travel, Tourism

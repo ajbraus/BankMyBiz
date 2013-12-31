@@ -1,12 +1,6 @@
-BUGS!!!!
-Credit Card payment bounced but card was saved and then it worked
-Remove public activity? - don't track if you go to the same use,post twice in the same three days
-
-when you sign up ask for bank/biz & with linked in ask for bank/biz, organization, position, password, and password confirm.
-
-remove _post.html links if bank:false
-
 increas profile completion
+  when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
+
   create users with default values
     - banks default in
       All AR Levels
@@ -17,21 +11,38 @@ increas profile completion
       All Revenue Sizes
       All Loan Sizes
       All Customer Types
+      Select HQ state from Geocode gem
+      Locations = HQ state
+      bio, goals = remove for requirement for matching
 
-increase matches
-  only bu,make matches that are actively looking or interested
+improve industries list
+rearrange profile#edit
+
+BUGS!!!!
+Credit Card payment bounced but card was saved and then it worked
+  buy matches
+    add destroy card
+Remove public activity? - don't track if you go to the same use,post twice in the same three days
+
+enterprise deal one pager
 
 Increase contacts
   I'm interested in being contacted by you.
+  %match you are with person you are viewing.
+  add zipcode
 
-$ in pipeline
+increase matches
+  only bu,make matches that are actively looking or interested
+  threading messages by subject line
 
-%match you are with person you are viewing.
+Improve newsfeed
+  email to users who have same tags as just posted
+  follow tags at the beginning
+  autocomplete on tags
 
-autocomplete on tags
+$ in pipeline - So the general relationship banking rule is... Whatever the deal / loan you are looking for... Is worth 3X... So loan amount + potential entire biz relationship + personal banking needs. 
 
 bugs:
-  threading messages by subject line
   ajaxify comments
   ajaxify bucks
   allow delete comments to creator
@@ -40,20 +51,11 @@ Testimonials page
 
 add privacy link to footer
 
-Improve newsfeed
-  email to users who have same tags as just posted
-  follow tags at the beginning
-
-
-set password after authenticate through linkedin.
-
 add validate.js to profile#edit
 
 if your linkedin connection joins bankmybiz get an email
 
 SLL Cert
-
-add zipcode
 
 Then on to the mobile app
 
@@ -73,9 +75,6 @@ setup subscriptions
   create "downgrade subscription" workflow
   ,month package, ,month package %25, ,month package %50
   promoted posts
-
-buy matches
-  add destroy card
 
 Mark profile as private, and posts as public.
 

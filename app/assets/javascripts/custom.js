@@ -8,6 +8,10 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
+
+  $('#new_user').validate({ errorPlacement: function(error, element) {} });
+  $('.edit_user').validate({ errorPlacement: function(error, element) {} });
+
   $('.alert-disappear').delay(2000).fadeOut();
   $('.fadeInAlert').fadeIn();
   $('.comment-show').click(function() {

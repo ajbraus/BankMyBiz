@@ -4,22 +4,36 @@
     <%= devise_error_messages! %>
 
     <p><%= f.label :name, "Full Name* (private)" %>
-    <%= f.text_field :name, class:'form-control' %></p>
+    <%= f.text_field :name, class:'form-control required' %></p>
 
     <p><%= f.label :email, "Email* (private)" %>
-    <%= f.email_field :email, class:"form-control" %></p>
+    <%= f.email_field :email, class:"form-control required" %></p>
+
+    <p>
+      <div class="btn-group" data-toggle="buttons">
+        <label>Which Best Describes You?</label>
+        <label class="btn btn-success">
+          <%= f.radio_button :bank, true %>
+          Banker
+        </label>
+        <label class="btn btn-warning">
+          <%= f.radio_button :bank, false %> 
+          Biz Owner
+        </label>
+      </div>
+    </p>
 
     <p><%= f.label :org_name, "Organization* (private)" %>
-    <%= f.text_field :org_name, class:'form-control' %></p>
+    <%= f.text_field :org_name, class:'form-control required' %></p>
 
     <p><%= f.label :position, "Position*" %>
-    <%= f.text_field :position, class:'form-control' %></p>
+    <%= f.text_field :position, class:'form-control required' %></p>
 
     <p><%= f.label :password, "Password* (min 6 characters)" %>
-    <%= f.password_field :password, class:"form-control" %></p>
+    <%= f.password_field :password, class:"form-control required" %></p>
 
     <p><%= f.label :password_confirmation, "Confirm Password*" %>
-    <%= f.password_field :password_confirmation, class:"form-control" %></p>
+    <%= f.password_field :password_confirmation, class:"form-control required" %></p>
 
     <section><%= f.submit "Register", class:"btn btn-success btn-lg" %></section>
   <% end %>

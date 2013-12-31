@@ -121,7 +121,7 @@ border-radius: 0px;
 }
 
 .row {
-
+  margin-top:10px;
 }
 .media-object {
 	-webkit-border-radius: 4px;
@@ -1294,4 +1294,12 @@ margin-right: -18px;
 
 .modal-content {
   padding:0 15px;
+}
+
+input.error {
+  background: rgb(255, 249, 249);
+  border: 1px solid #b94a48;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
 }

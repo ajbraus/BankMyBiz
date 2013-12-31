@@ -34,8 +34,10 @@
         </div>
       </div>
       <div class="row">
+        <h3>Your Matching Profile</h3>
+        <p class="muted">These questions will <strong>protect your privacy</strong> while connecting you with <strong><%= @user.bank? ? "businesses" : "lenders" %> right for you.</strong></p>
         <div class="col-sm-4 clearfix">
-          <h4>Industries*</h4>
+          <h4>Your Industries*</h4>
             <% for industry in Industry.find(:all) %>
               <div class="clear-both">
                 <label class="pull-left">
@@ -46,8 +48,6 @@
             <% end %> 
         </div>
         <div class="col-sm-8">
-          <h4>Your Matching Profile</h4>
-          <p class="muted">These questions protect your privacy while connecting you with <strong><%= @user.bank? ? "businesses" : "lenders" %> right for you.</strong></p>
           <div class="row">
             <div class="col-sm-6">
               <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name*" %>
@@ -128,24 +128,20 @@
                 <% end %> 
               </div>
             </div>
-          </div>
-        </div>
         <% else %>
           </div>
         <% end %>
-          <div class="row">
-            <div class="col-sm-6">
-              <%= f.label :bio, "What Makes #{current_user.bank? ? 'You A Great Banker' : 'Your Business Great'}?*" %>
-              <%= f.text_area :bio, class:"form-control" %> 
-            </div>
-            <div class="col-sm-6">
-              <%= f.label :goals, "What are #{current_user.bank? ? 'Common Goals of Your Customers' : 'Your Business\'s Goals'}" %>
-              <%= f.text_area :goals, class:"form-control" %>
-            </div>
+        <div class='row'>
+          <div class="col-sm-6">
+            <%= f.label :bio, "What Makes #{current_user.bank? ? 'You A Great Banker' : 'You Great'}?*" %>
+            <%= f.text_area :bio, class:"form-control" %> 
           </div>
+          <div class="col-sm-6">
+            <%= f.label :goals, "What are #{current_user.bank? ? 'Your Customers\'s Goals' : 'Your Goals'}?*" %>
+            <%= f.text_area :goals, class:"form-control" %>
+          </div>
+        </div>
       <% if current_user.bank? %>
-      </div>
-      </div> 
         <div class="row">
           <div class="col-sm-9">
             <h3>Describe Your Ideal Match</h3>
@@ -243,7 +239,7 @@
       <div class="row">
         <div class="col-sm-12 clearfix">
           <h4>In Which States Do You Do Business?*</h4>
-          <ol class="locations">
+          <ol class="locations clearfix">
             <li>
               <label class="pull-left" id="selectEntireUS">
                 <%= check_box_tag "user[location_ids][]", Location.first.id, @user.locations.include?(Location.first), id:'EntireUS' %>
@@ -269,5 +265,6 @@
         </div>
       </div>
     </div>
-  <% end %>
   </div>
+  <% end %>
+</div>

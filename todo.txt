@@ -1,22 +1,5 @@
-increas profile completion
-  when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
-
-  create users with default values
-    - banks default in
-      All AR Levels
-      All industries
-      All Ages after first
-      All Employee sizes
-      All Business Types
-      All Revenue Sizes
-      All Loan Sizes
-      All Customer Types
-      Select HQ state from Geocode gem
-      Locations = HQ state
-      bio, goals = remove for requirement for matching
-
 improve industries list
-rearrange profile#edit
+
 
 BUGS!!!!
 Credit Card payment bounced but card was saved and then it worked
@@ -60,6 +43,8 @@ SLL Cert
 Then on to the mobile app
 
 ____________________________________________________
+
+when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
 
 fix homepage:
   submit sitemap to google
@@ -437,38 +422,36 @@ DONE fix impressions
 
 DONE set people's profiles
 
+DONE rearrange profile#edit
 
-Advertising, Sales, Marketing
-Transportation
+Industry list
 Agriculture
-Arts
+Arts & Design
 Automotive
 Science, Biotech
-Construction
-Consulting
-Internet
 Consumer Products
-Data, Analytics
-Design
 Education
 Energy
 Electronics
 Engineering
-Entertainment, Media
 Events
-Fashion, Apparel 
-Financial Services
-Food & Beverage
+Fashion & Apparel 
 Gaming
-Government, Politics
-Health, Wellness
-Healthcare, Pharma
-Hospitality
+Government & Politics
 Legal
+Security
+Travel & Tourism
+Retail
+Sales & Marketing
 Manufacturing
 Non Profit
-Commercial Real Estate
-Residential Real Estate
-Retail
-Security
-Travel, Tourism
+Food & Beverage
+Health, Wellness
+Healthcare, Pharma
+Entertainment, Media
+Financial Services
+Construction
+Consulting
+Real Estate (Res)
+Real Estate (Com)
+Internet

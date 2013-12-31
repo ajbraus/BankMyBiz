@@ -277,6 +277,9 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
+    simple_form (2.1.1)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     slop (3.4.4)
     spork (1.0.0rc4)
     spork-rails (4.0.0)
@@ -371,6 +374,7 @@ DEPENDENCIES
   rails_autolink (~> 1.0.9)
   rspec-rails
   sass-rails
+  simple_form
   spork-rails
   stripe
   therubyracer

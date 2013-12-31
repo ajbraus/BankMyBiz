@@ -1,4 +1,4 @@
-<%= form_for @user, url: update_profile_path(@user) do |f| %>
+<%= simple_form_for @user, url: update_profile_path(@user) do |f| %>
     <div class="col-sm-10 col-sm-offset-1">
       <% if !@user.finished_profile? %>
         <div class="alert-warning profile-message">
@@ -110,12 +110,14 @@
             <div class="row">
               <div class="col-sm-3">
                 <%= f.label :customer_type_ids, "Customers*" %>
+                <div>
                 <% for customer_type in CustomerType.find(:all) %>
                   <label>
                     <%= check_box_tag "user[customer_type_ids][]", customer_type.id, @user.customer_types.include?(customer_type) %>
                     <%= customer_type.description %>
                   </label>
                 <% end %> 
+                </div>
               </div>
               <div class="col-sm-8 col-sm-offset-1">
                 <%= f.label :loan_size_ids, "Financing Sought*" %>

@@ -1,7 +1,7 @@
 <% if current_user.bank == nil %>
-    <p>Which one best describes you?</p>
-    <%= link_to "Bank", set_bank_path(current_user), class:"btn btn-warning btn-lg" %>
-    <%= link_to "Biz", set_business_path(current_user), class:"btn btn-success btn-lg" %>
+    <h4>Banker or Biz Owner?</h4>
+    <%= link_to "Bank", set_bank_path(current_user), class:"btn btn-success btn-lg" %>
+    <%= link_to "Business", set_business_path(current_user), class:"btn btn-warning btn-lg" %>
     <p class="muted">Answer to unlock matches,<br> and be matched</p>
 <% else %>
   <% if !current_user.finished_profile? %>

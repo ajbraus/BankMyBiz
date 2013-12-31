@@ -63,7 +63,9 @@
   </div>
   <div class="text-center">
   <% if @user == current_user %>
-    <%= link_to "edit profile", edit_profile_path(@user) %>
+    <%= link_to edit_profile_path(@user), class:"btn btn-default btn-block btn-lg" do %>
+      <i class="icon ion-ios7-person-outline"></i> Edit Profile
+    <% end %>
   <% else %>
     <section>
       <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-lg">Contact | <i class="ion-ios7-email"></i> </a>

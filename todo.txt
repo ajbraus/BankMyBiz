@@ -7,20 +7,16 @@ Remove public activity? - don't track if you go to the same use,post twice in th
 mobile app
 
 Increase contacts
-  Personal walls - post to their wall.
-  I'm interested in being contacted by you. - 
-    rework follow into "interested" send message
-    update relationships controller
-    fix unfollow button
-  %match you are with person you are viewing.
   add zipcode
 
-increase matches
-  only bu,make matches that are actively looking or interested
-  threading messages by subject line
+For existing banking relationships
+  Thread messages by subject line
+  My banker
+  Instantaneous chat
+  Goal setting / tracking
 
 Improve newsfeed
-  email to users who have same tags as just posted
+  email to users who have same tags as you've posted to
   follow tags at the beginning
   autocomplete on tags
 
@@ -73,11 +69,6 @@ repost - with bmb button
 click our seo trending words
 
 ------------------------------
-
-take current relationships onto bankmybiz -> what challenges do you have manging your current relationships.
-  My banker
-  Instantaneous chat
-  Goal setting / tracking
 
 
 Someone else grabbed your match because you didn't get it
@@ -464,3 +455,11 @@ Real Estate (Com)
 Internet
 
 DONE improve industries list
+
+DONE I'm interested in being contacted by you. - 
+  DONE rework follow into "interested" send message
+  DONE update relationships controller
+  DONE fix unfollow button
+DONE %match you are with person you are viewing.
+
+DONE only bu,make matches that are actively looking or interested

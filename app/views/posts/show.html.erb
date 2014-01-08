@@ -1,26 +1,10 @@
 <% content_for :title, "Business Lending - Business Banking - Loans | Bankmybiz" %>
-<div class="col-sm-3">       
-  <div class="border-right">
-    <% if user_signed_in? %>
-      <%= render 'shared/trending_tags' %>
-      <hr>
-      <%= render 'shared/messages' %>
-      <hr>
-      <%= render 'shared/following' %>
-    <% end %>
-  </div>
-</div>
+<%= render 'shared/left_sidebar' %>
+
 <div class="col-sm-6">
   <%= link_to "Back", :back %>
   <%= render partial: 'posts/post', locals: { post: @post } %>
 </div>
 
-<div class="col-sm-3">  
-  <div class="border-left">
-    <% if user_signed_in? %>
-    <%= render 'shared/improve_profile' %>
-    <hr>
-    <%= render 'shared/profile_views' %>
-    <% end %>
-  </div>
-</div>
+<%= render 'shared/right_sidebar' %>
+

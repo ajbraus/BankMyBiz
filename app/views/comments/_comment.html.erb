@@ -1,22 +1,22 @@
 <li class="comment">
-  <div class="pull-left grey small" style="margin-left: -8px;">
-    <div class="pull-left"><%= comment.plusminus %></div>
+  <div class="col-xs-2 text-center grey small" style="margin-left: -8px;">
+    <%= comment.plusminus %> 
     <% if user_signed_in? %>
-      <span class="breathing-room">
-        <%= link_to vote_up_post_comment_path(post, comment), class:"pull-left fade-in-green" do %>
-        <i class="icon ion-plus-round <%= current_user.voted_for?(comment) ? 'green' : '' %>"></i>
-        <% end %>
-      </span>
-    <% end %>
-  </div>
-  <div class="small"><%= comment.content %></div>
-  <div class="muted smaller text-right"><%= time_ago_in_words(comment.created_at) %> ago by 
-    <% if comment.user %>
-      <% if user_signed_in? && !current_user.bank? %>
-        <%= link_to comment.user.first_name_with_last_initial, comment.user %>
-      <% else %>
-        <%= comment.user.first_name_with_last_initial %>
+      <%= link_to vote_up_post_comment_path(post, comment), class:"fade-in-green" do %>
+       <i class="icon ion-plus-circled <%= current_user.voted_for?(comment) ? 'green' : '' %>" rel="tooltip" title="Give <%= comment.user.first_name_with_last_initial %> a Buck"></i>
       <% end %>
     <% end %>
+  </div>
+  <div class="col-xs-10">
+    <div class="small"><%= comment.content %></div>
+    <div class="muted smaller text-right"><%= time_ago_in_words(comment.created_at) %> ago by 
+      <% if comment.user %>
+        <% if user_signed_in? && !current_user.bank? %>
+          <%= link_to comment.user.first_name_with_last_initial, comment.user %>
+        <% else %>
+          <%= comment.user.first_name_with_last_initial %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </li>

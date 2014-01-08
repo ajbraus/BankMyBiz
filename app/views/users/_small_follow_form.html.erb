@@ -1,0 +1,9 @@
+<% unless current_user == user %>
+  <span id="follow_form">
+  <% if current_user.following?(user) %>
+    <%= render partial: 'users/small_unfollow', locals: { user: user } %>
+  <% else %>
+    <%= render partial: 'users/small_follow', locals: { user: user } %>
+  <% end %>
+  </span>
+<% end %>

@@ -14,14 +14,14 @@
           <%= f.text_area :content, class:"form-control post-textarea", placeholder:"Post your questions and expertise to our network of lenders and owners . . .", id:"newPostContent" %>
         </div>
       </div>
-      <section class="row">
+      <div class="row">
         <div class="col-xs-8 col-xs-offset-2">
           <%= f.text_field :tag_list, class:"form-control", placeholder:"Interests Keywords (separated by comma)" %>
         </div>
         <div class="col-xs-2">
           <%= f.submit "Post", class:"btn btn-success post-btn", id:"submitPost" %>
         </div>
-      </section>
+      </div>
     <% end %>
   <% else %>
     <div class="well alert-info" id="fadeInAlert">

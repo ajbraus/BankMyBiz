@@ -33,29 +33,19 @@ $(document).ready(function() {
     $("#EntireUS:checked").trigger('click');
   });
       
-  // var a = [$('#trendingTags').data("tags")];
-  // var colors = ["label-warning", "label-info", "label-success", "label-important", "label-default", "label-inverse"];
-  // a.forEach(function(entry) {
-  //   var color = colors[Math.floor(Math.random()*colors.length)];
-  //   var style = "label " + color
-  //   $('#trendingTags').prepend("<span class='" + style + "''>" + entry + "</span>")
-  // });
+  $('.not-interested').hover(
+    function() {
+      $( this ).html("<i class='icon ion-flask'></i> Uninterested")
+    }, function() {
+      $( this ).html("<i class='icon ion-flask green'></i> Interested")
+    }
+  );
 
-  // $('#closeJumbotron').click(function(){
-  //   $('#overview').slideUp();
-  // });
-
-  // $('.label').click(function(){
-  //  $(this).appendTo('#searchTags');
-  // });
-
-  // $('#clearBtn').click(function(){
-  //   $('#searchTags').children().prependTo('#topicMenu');
-  // });
-
-  // var index;
-
-  // for (index = 0; index < a.length; ++index) {
-  //   $('#topicMenu').append("<span class='label label-warning'>" + index + "</span>")
-  // }
+  $('.interested').hover(
+    function() {
+      $( this ).html("<i class='icon ion-flask green'></i> Interested")
+    }, function() {
+      $( this ).html("<i class='icon ion-flask'></i> Interested")
+    }
+  );
 });

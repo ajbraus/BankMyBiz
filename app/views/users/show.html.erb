@@ -1,4 +1,4 @@
-<% content_for :title, "Private Profile" %>
+<% content_for :title, "#{@user.first_name_with_last_initial}'s Profile" %>
 <div id="contact-modal" class="modal fade" style="display: none;">  
   <div class="modal-dialog">
     <div class="modal-content">
@@ -37,9 +37,6 @@
       <% end %>
     </div>
   <% else %>
-    <div class="pull-left">
-      <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
-    </div>
     <%= large_profile_picture(@user) %>
   <% end %>
   <div class='text-left large'>
@@ -49,32 +46,40 @@
       <%= @user.first_name_with_last_initial %> 
     </div>
     <div>
+      <strong><%= @user.bank? ? "Bank" : "Business" %>:</strong>
+      <%= @user.org_name %>
+    </div>
+    
+    <div>
       <strong class=''>Position:</strong>
       <span class="muted"><%= @user.position %></span>
+    </div>
+    <div>
+      <strong>Bucks:</strong> 
+      <span class="muted"> <%= @user.karma + 100 %></span>
     </div>
     <div>
       <strong class=''>Status:</strong>
       <span class="muted"><%= @user.status %></span>
     </div>
     <div>
-      <strong>Bucks:</strong> 
-      <span class="muted"> <%= @user.karma + 100 %></span>
+      <strong class=''>Percent Match:</strong>
+      <span class="muted"><%= current_user.percentage_match(@user) %>% </span>
     </div>
   </div>
-  <div class="text-center">
-  <% if @user == current_user %>
-    <%= link_to edit_profile_path(@user), class:"btn btn-default btn-block btn-lg" do %>
-      <i class="icon ion-ios7-person-outline"></i> Edit Profile
+  <section class="text-center">
+    <% if @user == current_user %>
+      <%= link_to edit_profile_path(@user), class:"btn btn-default btn-block btn-lg" do %>
+        <i class="icon ion-ios7-person-outline"></i> Edit Profile
+      <% end %>
+    <% else %>
+      <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
+      <a data-toggle="modal" href="#contact-modal" class="btn btn-default btn-lg btn-block"><i class="ion-ios7-email blue"></i> Contact </a>
+      <section class="muted large">
+        <%= calls_to_action.sample %>
+      </section>
     <% end %>
-  <% else %>
-    <section>
-      <a data-toggle="modal" href="#contact-modal" class="btn btn-primary btn-lg">Contact | <i class="ion-ios7-email"></i> </a>
-    </section>
-    <section class="muted large">
-      <%= calls_to_action.sample %>
-    </section>
-  <% end %>
-  </div>
+  </section>
   <% if @user.posts.any? %>
   <div class="well gray-border-left text-left">
     <h4><%= @user.first_name_with_last_initial %>'s Interests</h4>    
@@ -89,21 +94,19 @@
   <% end %>
 </section>
 
-<div class="col-sm-6 large">
+<div class="col-sm-6 large border-left">
   <div class="row">
-    <section class="col-sm-7">
-      <strong class=''><%= @user.bank? ? "Bank" : "Business" %>:</strong>
-      <span class="muted"><%= @user.org_name %></span>
-    </section>
-  </div>
-  <div class="row">
-    <section class="col-sm-8">
-      <strong class=''>Does Business in:</strong>
-      <div class="muted"><%= @user.locations.map(&:name).join(", ") %></div>
-    </section>
+    <div class="col-sm-6">
+      <h3>Bio</h3>
+      <p class="muted"><%= @user.bio %></p>
+    </div>
+    <div class="col-sm-6">
+      <h3>Goals</h3>
+      <p class="muted"><%= @user.goals %></p>
+    </div>
   </div>
   <% if @user.bank? %>
-    <h3>Does Business With</h3>
+    <h3>Preferences</h3>
   <% end %>
   <div class='row'>
     <section class="col-sm-6">
@@ -146,12 +149,12 @@
       <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
     </section>
   </div>
-  <hr>  
-  <h4>Bio</h4>
-  <p class="muted"><%= @user.bio %></p>
-  <hr>  
-  <h4>Goals</h4>
-  <p class="muted"><%= @user.goals %></p>
+  <div class="row">
+    <section class="col-sm-8">
+      <strong class=''>Does Business in:</strong>
+      <div class="muted"><%= @user.locations.map(&:name).join(", ") %></div>
+    </section>
+  </div>
   <hr>  
   <% if @user == current_user %>
     <h4>Your Activity <div class="muted small">(private)</div></h4>

@@ -52,6 +52,7 @@ BankMyBiz::Application.routes.draw do
   resources :users, :only => [:show, :index, :confirm, :reject] do
     get :reject
     get :confirm
+    get :interested
   end
   match 'users/:id' => 'users#show'
   match 'users/:id/profile/edit' => 'profiles#edit', as: 'edit_profile'

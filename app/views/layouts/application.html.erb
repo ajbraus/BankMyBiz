@@ -134,7 +134,7 @@
               <li>
                 <% if current_user.finished_profile? %>
                   <%= link_to matches_path, rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
-                    <i class="big-icon icon ion-ios7-personadd-outline"></i>
+                    <i class="big-icon icon ion-ios7-people-outline"></i>
                   <% end %>
                 <% else %>
                   <%= link_to edit_profile_path(current_user), rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
@@ -145,14 +145,16 @@
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
                 <% end %>
               </li>
+              <% if current_user.followed_users.any? %>
               <li>
-                <%= link_to favorites_path, rel:"tooltip", title:"Favorites", data: {placement: "bottom"} do %>
-                  <i class="big-icon icon ion-ios7-star-outline"></i>
+                <%= link_to favorites_path, rel:"tooltip", title:"Interested", data: {placement: "bottom"} do %>
+                  <i class="big-icon icon ion-flask"></i>
                 <% end %>
                 <% if params[:controller] == "favorites" && params[:action] == "index" %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
                 <% end %>
               </li>
+              <% end %>
               <li>
                 <%= link_to messages_path, rel:"tooltip", title:"Contacts", data: {placement: "bottom"} do %>
                   <% if current_user.unread_messages.any? %>

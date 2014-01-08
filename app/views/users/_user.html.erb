@@ -1,21 +1,26 @@
 <div class="match">
-  <% if current_user.has_image? %>
-    <div class="pull-left" style="height:0; position:relative; bottom:3px; right:10px;">
-      <%= render partial: 'users/follow_form', locals: { user: user } if user_signed_in? %>
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="match-pic">
+        <%= link_to user_path(user) do %><%= profile_picture(user) %><% end %></td>
+      </div>
     </div>
-  <% end %>
-  <table>
-    <tr>
-      <td width="55"><%= link_to user_path(user) do %><%= profile_picture(user) %><% end %></td>
-      <td>
-        <strong><%= link_to user_path(user) do %><%= user.first_name_with_last_initial %><% end %></strong> <br>
-        <span class="muted">
-          <%= user.position %>, <%= user.try(:hq_state) %><br>
-          <%= current_user.status %> 
-          <br>
-          <%= current_user.percentage_match(user) %>% Match | <%= link_to "contact", user_path(user) %>
-          </span>
-      </td>
-    </tr>
-  </table>
+    <div class="col-sm-8">
+      <strong><%= link_to user_path(user) do %><%= user.first_name_with_last_initial %><% end %></strong> <br>
+      <span class="muted">
+        <%= user.position %>, <%= user.try(:hq_state) %><br>
+        <%= user.status %> 
+        <br>
+        <%= current_user.percentage_match(user) %>% Match
+      </span>
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-xs-12">
+    <%= render partial: 'users/small_follow_form', locals: { user: user } if user_signed_in? && current_user.has_image? %>
+    <%= link_to user_path(user), class:'btn btn-block btn-default' do %>
+      <i class="ion-ios7-email blue"></i> Contact
+    <% end %>
+  </div>
+</div>
 </div>

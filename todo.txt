@@ -1,16 +1,17 @@
-improve industries list
-
-
 BUGS!!!!
 Credit Card payment bounced but card was saved and then it worked
   buy matches
     add destroy card
 Remove public activity? - don't track if you go to the same use,post twice in the same three days
 
-enterprise deal one pager
+mobile app
 
 Increase contacts
-  I'm interested in being contacted by you.
+  Personal walls - post to their wall.
+  I'm interested in being contacted by you. - 
+    rework follow into "interested" send message
+    update relationships controller
+    fix unfollow button
   %match you are with person you are viewing.
   add zipcode
 
@@ -72,6 +73,12 @@ repost - with bmb button
 click our seo trending words
 
 ------------------------------
+
+take current relationships onto bankmybiz -> what challenges do you have manging your current relationships.
+  My banker
+  Instantaneous chat
+  Goal setting / tracking
+
 
 Someone else grabbed your match because you didn't get it
 
@@ -455,3 +462,5 @@ Consulting
 Real Estate (Res)
 Real Estate (Com)
 Internet
+
+DONE improve industries list

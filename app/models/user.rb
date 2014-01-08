@@ -232,12 +232,6 @@ class User < ActiveRecord::Base
     relationships.find_by_followed_id(other_user.id)
   end
 
-  def follow!(other_user)
-    relationships.create!(followed_id: other_user.id)
-    other_user.create_activity :follow, owner: self
-    Notifier.delay.new_follower(self, other_user)
-  end
-
   def unfollow!(other_user)
     relationships.find_by_followed_id(other_user.id).destroy
   end

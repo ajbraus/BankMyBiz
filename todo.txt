@@ -1,10 +1,33 @@
+when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
+
+ask a question in the news feed - maybe call it the Questions and News
+
 BUGS!!!!
 Credit Card payment bounced but card was saved and then it worked
   buy matches
     add destroy card
 Remove public activity? - don't track if you go to the same use,post twice in the same three days
 
+bugs:
+  ajaxify comments
+  ajaxify bucks
+  allow delete comments to creator
+
+$ in pipeline - So the general relationship banking rule is... Whatever the loan you are looking for is worth 3X. So loan amount + potential entire biz relationship + personal banking needs. 
+
+SLL Cert
+
+add privacy link to footer
+
+Testimonials page
+
+fix homepage:
+  submit sitemap to google
+
+
 mobile app
+
+____________________________________________________
 
 Increase contacts
   add zipcode
@@ -20,31 +43,9 @@ Improve newsfeed
   follow tags at the beginning
   autocomplete on tags
 
-$ in pipeline - So the general relationship banking rule is... Whatever the deal / loan you are looking for... Is worth 3X... So loan amount + potential entire biz relationship + personal banking needs. 
-
-bugs:
-  ajaxify comments
-  ajaxify bucks
-  allow delete comments to creator
-
-Testimonials page
-
-add privacy link to footer
-
-add validate.js to profile#edit
 
 if your linkedin connection joins bankmybiz get an email
 
-SLL Cert
-
-Then on to the mobile app
-
-____________________________________________________
-
-when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
-
-fix homepage:
-  submit sitemap to google
 
 what makes a really good banker - one you can trust and has relationships . . .lots of linkedin connections . . . hmmm "verifications" 
 

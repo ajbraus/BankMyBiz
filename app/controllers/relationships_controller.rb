@@ -16,7 +16,7 @@ class RelationshipsController < ApplicationController
       is_read: false
       )
 
-    Notifier.delay.new_follower(current_user, @user)
+    Notifier.delay.new_follower(@user, current_user)
     respond_to do |format|
       format.html { redirect_to @user }
       format.js

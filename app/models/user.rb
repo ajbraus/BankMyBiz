@@ -413,17 +413,21 @@ class User < ActiveRecord::Base
     end 
   end
 
-  def magic_number_two(other_user)
+  def bankable?(other_user)
     if other_user.bank?
-      if other_user.two_years == true && two_years == true
-        return true
-      elsif other_user.two_years == false
+      if other_user.two_years == true
+        if two_years == true
+          return true
+        end
+      else
         return true
       end
     else
-      if two_years == true && other_user.two_years == true
-        return true
-      elsif two_years == false
+      if two_years == true 
+        if other_user.two_years == true
+          return true
+        end
+      else
         return true
       end
     end
@@ -431,11 +435,10 @@ class User < ActiveRecord::Base
   end
 
   def potential_matches
-    matches = User.all.reject { |m| m == self || 
+    matches = User.all.reject { |m| m.status == "Just Browsing" ||
+                                    m == self || 
                                     m.bank == self.bank || 
-                                    m.status == "Just Browsing" ||
-                                    !m.can_be_matched? ||
-                                    !m.magic_number_two(self) ||
+                                    !m.bankable?(self) ||
                                     !m.in_same_location?(self) ||
                                     m.in?(self.matched_users) ||
                                     self.percentage_match(m) < 50 }

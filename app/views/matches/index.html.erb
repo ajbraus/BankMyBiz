@@ -15,7 +15,7 @@
           <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
             <% @first_three_matches.each do |m| %>
               <div class="col-sm-4 text-center">
-                <div><%= profile_picture(m) %></div>
+                <div><%= medium_profile_picture(m) %></div>
                 <div><%= m.first_name_with_last_initial %></div>
                 <div><%= m.position %></div>
                 <div><%= current_user.percentage_match(m) %>% match</div>

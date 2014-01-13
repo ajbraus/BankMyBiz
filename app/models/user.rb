@@ -40,7 +40,8 @@ class User < ActiveRecord::Base
                   :receive_match_messages,
                   :status,
                   :hq_state,
-                  :stripe_customer_id
+                  :stripe_customer_id,
+                  :two_years
 
   is_impressionable :counter_cache => true, :unique => :user_id
 
@@ -355,6 +356,9 @@ class User < ActiveRecord::Base
   def percentage_match(other_user)
     percentage_match = 0
 
+    #creating a percentage match instead of a filter where it cuts down and down
+
+
     if other_user.ages.any? && ages.any?
       with_age = (other_user.age_ids & age_ids).present?
     end
@@ -380,6 +384,7 @@ class User < ActiveRecord::Base
       with_customer_type = (other_user.customer_type_ids & customer_type_ids).present?
     end
 
+    
     percentage_match += 1 if with_age == true
     percentage_match += 1 if with_industry == true
     percentage_match += 1 if with_employee_size == true
@@ -408,14 +413,33 @@ class User < ActiveRecord::Base
     end 
   end
 
+  def magic_number_two(other_user)
+    if other_user.bank?
+      if other_user.two_years == true && two_years == true
+        return true
+      elsif other_user.two_years == false
+        return true
+      end
+    else
+      if two_years == true && other_user.two_years == true
+        return true
+      elsif two_years == false
+        return true
+      end
+    end
+    return false
+  end
+
   def potential_matches
     matches = User.all.reject { |m| m == self || 
                                     m.bank == self.bank || 
                                     m.status == "Just Browsing" ||
                                     !m.can_be_matched? ||
+                                    !m.magic_number_two(self) ||
                                     !m.in_same_location?(self) ||
                                     m.in?(self.matched_users) ||
                                     self.percentage_match(m) < 50 }
+
     return matches
   end
 
@@ -434,9 +458,11 @@ class User < ActiveRecord::Base
     if self.finished_profile? && (peers.none? ||peers.last.created_at < Date.yesterday)
       @available_users = User.all.reject { |r| r == self || r.bank != self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
       @peers = @available_users.select do |s| 
-        if s.ages.any? && ages.any?
+
+        if s.ages && ages.any?
           with_age = (s.age_ids & age_ids).present?
         end
+
         if s.industries && industries.any?
           with_industry = (s.industry_ids & industry_ids).present?
         end

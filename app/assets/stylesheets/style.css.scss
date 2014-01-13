@@ -786,7 +786,7 @@ height: 90px;
 }
 
 .btn-linkedin {
-    background-color: hsl(196, 100%, 39%) ;
+  background-color: hsl(196, 100%, 39%) ;
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#0091c6", endColorstr="#0091c6");
   background-image: -khtml-gradient(linear, left top, left bottom, from(#0091c6), to(#0091c6));
@@ -800,11 +800,11 @@ height: 90px;
   color: #fff !important;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.00);
   -webkit-font-smoothing: antialiased;
-  &:hover{
+/*  &:hover{
     background:#037AA5;
     -webkit-transition: color .25s linear .1s;
     transition: color .25s linear .1s;
-  }
+  }*/
 }
 
 .splash-btn {

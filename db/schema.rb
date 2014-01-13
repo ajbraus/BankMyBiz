@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131212055227) do
+ActiveRecord::Schema.define(:version => 20140113034040) do
 
   create_table "accounts_receivables", :force => true do |t|
     t.string   "description"
@@ -369,6 +369,7 @@ ActiveRecord::Schema.define(:version => 20131212055227) do
     t.string   "status",                               :default => "Actively Looking", :null => false
     t.string   "hq_state",                             :default => "",                 :null => false
     t.string   "stripe_customer_id"
+    t.boolean  "two_years"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

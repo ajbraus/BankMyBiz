@@ -59,6 +59,14 @@
             </div>
           </div>
           <div class="row">
+            <div class="col-xs-12">
+              <label>
+                <%= f.check_box :two_years %>
+                <%= current_user.bank? ? "You Require Customers to have Filed 2 Years of Tax Returns" : "Your Business has Filed 2 Years of Business Tax Returns" %> 
+              </label>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-sm-3">
               <%= f.label :hq_state, "HQ in" %>
               <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), { prompt: "State" }, class:'form-control' %>  
@@ -83,7 +91,7 @@
             </div>
             <div class="row">
               <div class="col-sm-3">
-                <%= f.label :age_ids, "Yrs Taxed*" %>
+                <%= f.label :age_ids, "Biz Age" %>
                 <% if @user.ages.any? %>
                   <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}, [@user.ages.first.description, @user.ages.first.id]), { prompt:"Years" }, class:'form-control' %>
                 <% else %>
@@ -119,7 +127,7 @@
                 <% end %> 
                 </div>
               </div>
-              <div class="col-sm-8 col-sm-offset-1">
+              <div class="col-sm-6">
                 <%= f.label :loan_size_ids, "Financing Sought*" %>
                 <% if @user.loan_sizes.any? %>
                 <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}, [@user.loan_sizes.first.description, @user.loan_sizes.first.id]), { prompt:"Dollar Amount" }, class:'form-control' %>
@@ -151,7 +159,7 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="field">
-              <h4>Years Filed Taxes*</h4>
+              <h4>Years In Business*</h4>
               <% for age in Age.find(:all) %>
               <div>
                 <label>

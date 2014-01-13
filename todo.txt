@@ -1,4 +1,3 @@
-How many years in business 0-1, 2-5, 5-10 10+
 have you filed business tax returns for more than two years?
 do you require 2 years to lend?
 
@@ -468,3 +467,5 @@ DONE I'm interested in being contacted by you. -
 DONE %match you are with person you are viewing.
 
 DONE only bu,make matches that are actively looking or interested
+
+DONE How many years in business 0-1, 2-5, 5-10 10+

@@ -340,7 +340,7 @@ class User < ActiveRecord::Base
     progress += 1 if avatar.present? || pic_url.present?  
     progress += 1 if org_name.present?
     progress += 1 if hq_state.present?
-    progress += 1 if two_years.present?
+    progress += 1 if two_years != nil
 
     return progress
   end

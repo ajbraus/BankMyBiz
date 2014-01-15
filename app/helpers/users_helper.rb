@@ -111,11 +111,11 @@ module UsersHelper
 
   def medium_profile_picture(user)
     if user.avatar.present?
-      image_tag user.avatar.url(:original), class:"normal-thumbnail img-circle"
+      image_tag user.avatar.url(:original), class:"medium-thumbnail img-circle"
     elsif user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"normal-thumbnail img-circle"
+      image_tag user.pic_url, class:"medium-thumbnail img-circle"
     else
-      image_tag "default_profile_pic.png", class:"normal-thumbnail img-circle"
+      image_tag "default_profile_pic.png", class:"medium-thumbnail img-circle"
     end
   end
 

@@ -413,16 +413,12 @@ hr {
 
 /*This is the Project Page*/
 
-.normal-thumbnail {
-  width:100%;
-}
-
 .small-thumbnail {
 	height: 30px;
 }
 
 .medium-thumbnail {
-  width:130%;
+  width: 75px;
 }
 
 .large-thumbnail {
@@ -1240,12 +1236,6 @@ a.no-link {
   }
 }
 
-.edit-profile-image {
-  img {
-    margin: 16px;
-  }
-}
-
 .message-button {
   margin-top: 20px;  
 }
@@ -1340,12 +1330,16 @@ margin-right: -18px;
   padding:0 15px;
 }
 
-input.error {
+input.error, textarea.error {
   background: rgb(255, 249, 249);
   border: 1px solid #b94a48;
   -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+select.error {
+  background-color: pink;
 }
 
 .match-pic {

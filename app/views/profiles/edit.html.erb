@@ -37,11 +37,13 @@
         <h3>Your Matching Profile</h3>
         <p class="muted">These questions will <strong>protect your privacy</strong> while connecting you with <strong><%= @user.bank? ? "businesses" : "lenders" %> right for you.</strong></p>
         <div class="col-sm-4 clearfix">
-          <h4>Your Industries*</h4>
+          <h4>Your Industries*
+            <p class="small muted">Select at least one</p></h4>
+          
             <% for industry in Industry.find(:all) %>
               <div class="clear-both">
                 <label class="pull-left">
-                  <%= check_box_tag "user[industry_ids][]", industry.id, @user.industries.include?(industry) %>
+                  <%= check_box_tag "user[industry_ids][]", industry.id, @user.industries.include?(industry), class:"required" %>
                   <%= industry.description %>
                 </label>
               </div>
@@ -61,57 +63,64 @@
           <div class="row">
             <div class="col-xs-12">
               <label>
-                <%= f.check_box :two_years %>
-                <%= current_user.bank? ? "You Require Customers to have Filed 2 Years of Tax Returns" : "Your Business has Filed 2 Years of Business Tax Returns" %> 
+                <%= current_user.bank? ? "Do You Require Customers to have Filed 2 Years of Tax Returns?*" : "Has Your Business Filed 2 Years of Business Tax Returns?*" %> 
+              </label></br>
+              <label>
+                <%= f.radio_button :two_years, true, class:"required" %>
+                Yes
+              </label>
+              <label>
+                <%= f.radio_button :two_years, false %>
+                No
               </label>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-3">
-              <%= f.label :hq_state, "HQ in" %>
-              <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), { prompt: "State" }, class:'form-control' %>  
+              <%= f.label :hq_state, "HQ in*" %>
+              <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), { prompt: "State" }, class:'form-control required' %>  
             </div>
             <% if !current_user.bank? %>
               <div class="col-sm-5">
                 <%= f.label :business_type_ids, "Entity Type*" %>
                 <% if @user.business_types.any? %>
-                  <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}, [@user.business_types.first.description, @user.business_types.first.id]), { prompt:"Entity Type" }, class:'form-control' %>    
+                  <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}, [@user.business_types.first.description, @user.business_types.first.id]), { prompt:"Entity Type" }, class:'form-control required' %>    
                 <% else %>
-                  <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}), { prompt:"Entity Type" }, class:'form-control' %>   
+                  <%= f.select :business_type_ids, options_for_select(BusinessType.all.collect {|x| [x.description, x.id]}), { prompt:"Entity Type" }, class:'form-control required' %>   
                 <% end %>
               </div>
               <div class="col-sm-4">
                 <%= f.label :employee_size_ids, "Employees*" %>
                 <% if @user.employee_sizes.any? %>
-                  <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}, [@user.employee_sizes.first.description, @user.employee_sizes.first.id]), { prompt:"Employees" }, class:'form-control' %>    
+                  <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}, [@user.employee_sizes.first.description, @user.employee_sizes.first.id]), { prompt:"Employees" }, class:'form-control required' %>    
                 <% else %>
-                  <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}), { prompt:"Employees" }, class:'form-control' %>   
+                  <%= f.select :employee_size_ids, options_for_select(EmployeeSize.all.collect {|x| [x.description, x.id]}), { prompt:"Employees" }, class:'form-control required' %>   
                 <% end %>
               </div> 
             </div>
             <div class="row">
               <div class="col-sm-3">
-                <%= f.label :age_ids, "Biz Age" %>
+                <%= f.label :age_ids, "Biz Age*" %>
                 <% if @user.ages.any? %>
-                  <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}, [@user.ages.first.description, @user.ages.first.id]), { prompt:"Years" }, class:'form-control' %>
+                  <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}, [@user.ages.first.description, @user.ages.first.id]), { prompt:"Years" }, class:'form-control required' %>
                 <% else %>
-                  <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}), { prompt:"Years" }, class:'form-control' %>
+                  <%= f.select :age_ids, options_for_select(Age.all.collect {|x| [x.description, x.id]}), { prompt:"Years" }, class:'form-control required' %>
                 <% end %> 
               </div>   
               <div class="col-sm-5">
                 <%= f.label :revenue_size_ids, "Revenue*" %>
                 <% if @user.revenue_sizes.any? %>
-                  <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}, [@user.revenue_sizes.first.description, @user.revenue_sizes.first.id]), { prompt:"Revenue" }, class:'form-control' %> 
+                  <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}, [@user.revenue_sizes.first.description, @user.revenue_sizes.first.id]), { prompt:"Revenue" }, class:'form-control required' %> 
                 <% else %>
-                  <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}), { prompt:"Revenue" }, class:'form-control' %> 
+                  <%= f.select :revenue_size_ids, options_for_select(RevenueSize.all.collect {|x| [x.description, x.id]}), { prompt:"Revenue" }, class:'form-control required' %> 
                 <% end %>
               </div>
               <div class="col-sm-4">
                 <%= f.label :accounts_receivable_ids, "AR Size*" %>
                 <% if @user.accounts_receivables.any? %>
-                <%= f.select :accounts_receivable_ids, options_for_select(AccountsReceivable.all.collect {|x| [x.description, x.id]}, [@user.accounts_receivables.first.description, @user.accounts_receivables.first.id]), { prompt:"AR Size" }, class:'form-control' %>
+                <%= f.select :accounts_receivable_ids, options_for_select(AccountsReceivable.all.collect {|x| [x.description, x.id]}, [@user.accounts_receivables.first.description, @user.accounts_receivables.first.id]), { prompt:"AR Size" }, class:'form-control required' %>
                 <% else %>
-                  <%= f.select :accounts_receivable_ids, options_for_select(AccountsReceivable.all.collect {|x| [x.description, x.id]}), { prompt:"AR Size" }, class:'form-control' %>   
+                  <%= f.select :accounts_receivable_ids, options_for_select(AccountsReceivable.all.collect {|x| [x.description, x.id]}), { prompt:"AR Size" }, class:'form-control required' %>   
                 <% end %> 
               </div>
             </div>
@@ -121,7 +130,7 @@
                 <div>
                 <% for customer_type in CustomerType.find(:all) %>
                   <label>
-                    <%= check_box_tag "user[customer_type_ids][]", customer_type.id, @user.customer_types.include?(customer_type) %>
+                    <%= check_box_tag "user[customer_type_ids][]", customer_type.id, @user.customer_types.include?(customer_type), class:"required" %>
                     <%= customer_type.description %>
                   </label>
                 <% end %> 
@@ -130,9 +139,9 @@
               <div class="col-sm-6">
                 <%= f.label :loan_size_ids, "Financing Sought*" %>
                 <% if @user.loan_sizes.any? %>
-                <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}, [@user.loan_sizes.first.description, @user.loan_sizes.first.id]), { prompt:"Dollar Amount" }, class:'form-control' %>
+                <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}, [@user.loan_sizes.first.description, @user.loan_sizes.first.id]), { prompt:"Dollar Amount" }, class:'form-control required' %>
                 <% else %>
-                  <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}), { prompt:"Dollar Amount" }, class:'form-control' %>   
+                  <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}), { prompt:"Dollar Amount" }, class:'form-control required' %>   
                 <% end %> 
               </div>
             </div>
@@ -141,12 +150,12 @@
         <% end %>
         <div class='row'>
           <div class="col-sm-6">
-            <%= f.label :bio, "What Makes #{current_user.bank? ? 'You A Great Banker' : 'You Great'}?*" %>
-            <%= f.text_area :bio, class:"form-control" %> 
+            <%= f.label :bio, "What Makes #{current_user.bank? ? 'You A Great Banker*' : 'You Great*'}?*" %>
+            <%= f.text_area :bio, class:"form-control required" %> 
           </div>
           <div class="col-sm-6">
-            <%= f.label :goals, "What are #{current_user.bank? ? 'Your Customers\'s Goals' : 'Your Goals'}?*" %>
-            <%= f.text_area :goals, class:"form-control" %>
+            <%= f.label :goals, "What are #{current_user.bank? ? 'Your Customers\'s Goals*' : 'Your Goals'}?*" %>
+            <%= f.text_area :goals, class:"form-control required" %>
           </div>
         </div>
       <% if current_user.bank? %>
@@ -159,22 +168,26 @@
         <div class="row">
           <div class="col-sm-3">
             <div class="field">
-              <h4>Years In Business*</h4>
+              <h4>Years In Business*
+                <p class="small muted">Select at least one</p></h4>
+              
               <% for age in Age.find(:all) %>
               <div>
                 <label>
-                  <%= check_box_tag "user[age_ids][]", age.id, @user.ages.include?(age) %>
+                  <%= check_box_tag "user[age_ids][]", age.id, @user.ages.include?(age), class:"required" %>
                   <%= age.description %>
                 </label>
               </div>
               <% end %> 
             </div>
             <div class="field">
-              <h4>Entity Types*</h4>
+              <h4>Entity Types*
+                <p class="small muted">Select at least one</p></h4>
+              
               <% for business_type in BusinessType.find(:all) %>
                 <div>
                   <label>
-                    <%= check_box_tag "user[business_type_ids][]", business_type.id, @user.business_types.include?(business_type) %>
+                    <%= check_box_tag "user[business_type_ids][]", business_type.id, @user.business_types.include?(business_type), class:"required" %>
                     <%= business_type.description %>
                   </label>
                 </div>
@@ -183,22 +196,26 @@
           </div> 
           <div class="col-sm-3">
             <div class="field">
-              <h4># Employees*</h4>
+              <h4># Employees*
+                <p class="small muted">Select at least one</p></h4>
+              
               <% for employee_size in EmployeeSize.find(:all) %>
                 <div>
                   <label>
-                    <%= check_box_tag "user[employee_size_ids][]", employee_size.id, @user.employee_sizes.include?(employee_size) %>
+                    <%= check_box_tag "user[employee_size_ids][]", employee_size.id, @user.employee_sizes.include?(employee_size), class:"required" %>
                     <%= employee_size.description %>
                   </label>
                 </div>
               <% end %>
             </div> 
             <div class="field">
-              <h4>AR Size*</h4>
+              <h4>AR Size*
+                <p class="small muted">Select at least one</p></h4>
+              
               <% for accounts_receivable in AccountsReceivable.find(:all) %>
                 <div>
                   <label>
-                    <%= check_box_tag "user[accounts_receivable_ids][]", accounts_receivable.id, @user.accounts_receivables.include?(accounts_receivable) %>
+                    <%= check_box_tag "user[accounts_receivable_ids][]", accounts_receivable.id, @user.accounts_receivables.include?(accounts_receivable), class:"required" %>
                     <%= accounts_receivable.description %>
                   </label>
                 </div>
@@ -207,22 +224,26 @@
           </div> 
           <div class="col-sm-3">
             <div class="field">
-              <h4>Revenue*</h4>
+              <h4>Revenue*
+                <p class="small muted">Select at least one</p></h4>
+              
               <% for revenue_size in RevenueSize.find(:all) %>
                 <div>
                   <label>
-                    <%= check_box_tag "user[revenue_size_ids][]", revenue_size.id, @user.revenue_sizes.include?(revenue_size) %>
+                    <%= check_box_tag "user[revenue_size_ids][]", revenue_size.id, @user.revenue_sizes.include?(revenue_size), class:"required" %>
                     <%= revenue_size.description %>
                   </label>
                 </div>
               <% end %>  
             </div> 
             <div class="field">
-              <h4>Customers*</h4>
+              <h4>Customers*
+                <p class="small muted">Select at least one</p></h4>
+              
               <% for customer_type in CustomerType.find(:all) %>
                 <div>
                   <label>
-                    <%= check_box_tag "user[customer_type_ids][]", customer_type.id, @user.customer_types.include?(customer_type) %>
+                    <%= check_box_tag "user[customer_type_ids][]", customer_type.id, @user.customer_types.include?(customer_type), class:"required" %>
                     <%= customer_type.description %>
                   </label>
                 </div>
@@ -231,11 +252,13 @@
           </div> 
           <div class="col-sm-3">
             <div class="field">
-              <h4>Size of Financing*</h4>
+              <h4>Size of Financing*
+                <p class="small muted">Select at least one</p></h4>
+              
               <% for loan_size in LoanSize.find(:all) %>
                 <div>
                   <label>
-                    <%= check_box_tag "user[loan_size_ids][]", loan_size.id, @user.loan_sizes.include?(loan_size) %>
+                    <%= check_box_tag "user[loan_size_ids][]", loan_size.id, @user.loan_sizes.include?(loan_size), class:"required" %>
                     <%= loan_size.description %>
                   </label>
                 </div>
@@ -246,11 +269,13 @@
       <% end %>
       <div class="row">
         <div class="col-sm-12 clearfix">
-          <h4>In Which States Do You Do Business?*</h4>
+          <h4>In Which States Do You Do Business?*
+            <p class="small muted">Select at least one</p></h4>
+          
           <ol class="locations clearfix">
             <li>
               <label class="pull-left" id="selectEntireUS">
-                <%= check_box_tag "user[location_ids][]", Location.first.id, @user.locations.include?(Location.first), id:'EntireUS' %>
+                <%= check_box_tag "user[location_ids][]", Location.first.id, @user.locations.include?(Location.first), id:'EntireUS', class:"required" %>
                 <%= Location.first.name %>
               </label>
             </li>        
@@ -271,6 +296,7 @@
             <%= submit_tag "Update Profile", class:"btn btn-success btn-lg" %>
           </div>
         </div>
+        <div class="alert alert-danger text-left clearfix" id="form_error" style="display:none;"></div>
       </div>
     </div>
   </div>

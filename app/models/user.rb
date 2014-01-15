@@ -116,6 +116,7 @@ class User < ActiveRecord::Base
   before_create :set_username
   after_create :internal_new_user
   after_create :create_welcome_message
+  after_create :add_default_profile_elements
   after_invitation_accepted :email_invited_by
   after_invitation_accepted :create_welcome_message
   after_invitation_accepted :set_username
@@ -124,6 +125,11 @@ class User < ActiveRecord::Base
      inviter = self.invited_by
      inviter.reward_a_match
      Notifier.delay.invitation_accepted(self.invited_by, self)
+  end
+
+  def add_default_profile_elements
+    customer_types << CustomerType.first(2)
+    save
   end
 
   def reward_a_match
@@ -318,6 +324,7 @@ class User < ActiveRecord::Base
 
   def profile_questions_completed
     progress = 0
+
     progress += 1 if accounts_receivables.any?
     progress += 1 if loan_sizes.any?
     progress += 1 if customer_types.any?
@@ -333,12 +340,13 @@ class User < ActiveRecord::Base
     progress += 1 if avatar.present? || pic_url.present?  
     progress += 1 if org_name.present?
     progress += 1 if hq_state.present?
+    progress += 1 if two_years.present?
 
     return progress
   end
 
   def total_profile_elements
-    15
+    16
   end
 
   def profile_progress_percent

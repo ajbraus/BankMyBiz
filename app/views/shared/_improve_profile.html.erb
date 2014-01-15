@@ -27,9 +27,9 @@
         <div class=''>For Better Matches</div>
       <% end %>
       <% if false %>
-      <div class="hr-line"></div>
-      <p class="muted"><%= current_user.bank? ? "Lenders" : "Owners" %> Like You</p>
-      <%= render partial: "users/user", collection: current_user.todays_peers, as: :user %>
+        <div class="hr-line"></div>
+        <p class="muted"><%= current_user.bank? ? "Lenders" : "Owners" %> Like You</p>
+        <%= render partial: "users/user", collection: current_user.todays_peers, as: :user %>
       <% end %>
     <% end %>
   <% end %>

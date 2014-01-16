@@ -1,14 +1,13 @@
-have you filed business tax returns for more than two years?
-do you require 2 years to lend?
-
-when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
-
-ask a question in the news feed - maybe call it the Questions and News
-
-BUGS!!!!
 Credit Card payment bounced but card was saved and then it worked
   buy matches
     add destroy card
+
+
+Make biz user experience - sign up, finish profile, you have been matched with 10 bankers (bi-directional)
+
+Testimonials
+ask a question in the news feed - maybe call it the Questions and News
+
 Remove public activity? - don't track if you go to the same use,post twice in the same three days
 
 bugs:
@@ -16,19 +15,28 @@ bugs:
   ajaxify bucks
   allow delete comments to creator
 
-$ in pipeline - So the general relationship banking rule is... Whatever the loan you are looking for is worth 3X. So loan amount + potential entire biz relationship + personal banking needs. 
-
 SLL Cert
 
 add privacy link to footer
 
-Testimonials page
+$ in pipeline - So the general relationship banking rule is... Whatever the loan you are looking for is worth 3X. So loan amount + potential entire biz relationship + personal banking needs. 
 
 fix homepage:
   submit sitemap to google
 
-
 mobile app
+
+
+
+Call our bankers and ask them for feedback.
+Collect "Tombstone" on deals
+Target businesses who are struggling who don't know who to bank with
+Contact us with deals that succeed (the tombstone stuff)
+pitch day at first biz
+bookkeepers, CPI, legal services, booking offices, Real estate, 
+
+
+when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
 
 ____________________________________________________
 
@@ -469,3 +477,5 @@ DONE %match you are with person you are viewing.
 DONE only bu,make matches that are actively looking or interested
 
 DONE How many years in business 0-1, 2-5, 5-10 10+
+
+DONE have you filed business tax returns for more than two years?

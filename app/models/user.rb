@@ -423,50 +423,42 @@ class User < ActiveRecord::Base
 
   def bankable?(other_user)
     if other_user.bank?
-      if other_user.two_years == true
-        if two_years == true
-          return true
-        end
-      else
-        return true
-      end
+      bank = other_user
+      biz = self
     else
-      if two_years == true 
-        if other_user.two_years == true
-          return true
-        end
-      else
-        return true
-      end
+      bank = self
+      biz = other_user
+    end
+    
+    if bank.two_years == false
+      return true
+    else
+      return true if biz.two_years == true
     end
     return false
   end
 
   def potential_matches
-    matches = User.all.reject { |m| m.status == "Just Browsing" ||
-                                    m == self || 
-                                    m.bank == self.bank || 
-                                    !m.bankable?(self) ||
-                                    !m.in_same_location?(self) ||
-                                    m.in?(self.matched_users) ||
-                                    self.percentage_match(m) < 50 }
+    matchables = User.where("id != ? AND status != ? AND bank != ? ", self.id, "Just Browsing", self.bank)
 
-    return matches
+    matchables.select! { |m| m.bankable?(self) ||
+                             m.in_same_location?(self) || 
+                             m.percentage_match(self) > 50 }
+
+    matchables.reject! { |m| self.matched_users.include?(m) }
+
+    return matchables
   end
 
   def set_matches
-    if self.finished_profile? && (self.matches.none? || self.matches.last.created_at < 1.week.ago)
-      if potential_matches.any?
-        matched_users << potential_matches.first 
-        if self.receive_match_messages?
-          Notifier.delay.new_match(self, matched_users.last)
-        end
-      end
+    if finished_profile? #&& (matches.none? || matches.last.created_at < 1.week.ago) && potential_matches.any?
+      matched_users << potential_matches.first
+      Notifier.delay.new_match(self, matched_users.last) if receive_match_messages?
     end
   end
 
   def set_peers
-    if self.finished_profile? && (peers.none? ||peers.last.created_at < Date.yesterday)
+    if finished_profile? && (peers.none? ||peers.last.created_at < Date.yesterday)
       @available_users = User.all.reject { |r| r == self || r.bank != self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
       @peers = @available_users.select do |s| 
 

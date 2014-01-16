@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '1.9.3'
 gem 'rails', '3.2.6'
-gem 'heroku'
 gem 'pg'
 gem 'thin'
 gem 'dotenv-rails', :groups => [:development, :test]
@@ -11,7 +10,6 @@ gem 'rack-cors', :require => 'rack/cors'
 
 gem 'devise', '2.2.4'
 gem 'devise_invitable', '~> 1.1.0'
-gem 'gibbon'
 gem 'omniauth-linkedin'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'

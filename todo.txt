@@ -2,6 +2,7 @@ Credit Card payment bounced but card was saved and then it worked
   buy matches
     add destroy card
 
+flag user
 
 Make biz user experience - sign up, finish profile, you have been matched with 10 bankers (bi-directional)
 

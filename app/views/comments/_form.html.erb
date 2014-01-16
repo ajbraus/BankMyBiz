@@ -1,18 +1,14 @@
-<div class="comment-show">
-  <div class="small muted" rel="tooltip" data-placement="left" title="Start A Conversation"><i class="icon ion-ios7-chatboxes-outline"></i> Comment</div>
-</div>
 
-<div class="comment-form" style="display:none;">
+<section>
 <%= form_for [post, post.comments.new] do |f| %>
-  <div class="col-lg-6">
-    <div class="input-group">
-      <%= f.text_field :content, class:'form-control', id:"appendedInputButton" %>
-      <span class="input-group-btn">
-        <button name="commit" type="submit" value="Create Comment" class="btn btn-warning">
-          <i class="icon ion-chatbox"></i>
-        </button>
-      </span>
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
+  <div class="input-group">
+    <%= f.text_field :content, class:'form-control', id:"appendedInputButton", placeholder:"Comment to start a conversation" %>
+    <span class="input-group-btn">
+      <button name="commit" type="submit" value="Create Comment" class="btn btn-warning">
+        <i class="icon ion-chatbox"></i>
+      </button>
+    </span>
+  </div><!-- /input-group -->
 <% end %>
-</div>
+</section>
+<br>

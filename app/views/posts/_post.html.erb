@@ -55,6 +55,7 @@
     </section>
   </div>
   <%= render partial: 'comments/form', locals: { post: post } %>
+  <div class="small muted"><i class="icon ion-ios7-chatboxes-outline"></i> Comments</div>
   <%= render partial: 'comments/comment', collection: post.comments.where('content is not null').order('created_at desc'), as: :comment, locals: { post: post } %>
   
 </section>

@@ -5,6 +5,11 @@ Credit Card payment bounced but card was saved and then it worked
 flag user
 
 Make biz user experience - sign up, finish profile, you have been matched with 10 bankers (bi-directional)
+  complete profile
+    - if bank - give match with biz
+    - if biz - give match with banker and match 5 360 bankers with biz
+
+  send profile reminder the next day after sign_up and then 3 days later, then 20 days later
 
 Testimonials
 ask a question in the news feed - maybe call it the Questions and News

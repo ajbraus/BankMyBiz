@@ -55,7 +55,7 @@
     </section>
   </div>
   <%= render partial: 'comments/form', locals: { post: post } %>
-  <%= render partial: 'comments/comment', collection: post.comments.where('content is not null').order('created_at asc'), as: :comment, locals: { post: post } %>
+  <%= render partial: 'comments/comment', collection: post.comments.where('content is not null').order('created_at desc'), as: :comment, locals: { post: post } %>
   
 </section>
 <div class="hr-line"></div>

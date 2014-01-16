@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <div class="col-xs-10">
-    <div class="small"><%= comment.content %></div>
+    <div class="small"><%= auto_link(comment.content, html: { target: '_blank' }) %></div>
     <div class="muted smaller text-right"><%= time_ago_in_words(comment.created_at) %> ago by 
       <% if comment.user %>
         <% if user_signed_in? && !current_user.bank? %>

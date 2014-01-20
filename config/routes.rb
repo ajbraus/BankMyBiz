@@ -37,7 +37,7 @@ BankMyBiz::Application.routes.draw do
 
   root :to => 'welcome#index'
   match '/how-it-works', :to => 'welcome#how', :as => "how"
-  match '/proof', :to => 'welcome#testimonials', :as => "testimonials"
+  match '/testimonials', :to => 'welcome#testimonials', :as => "testimonials"
   match '/terms', :to => 'welcome#terms', :as => "terms"
   match '/privacy', :to => 'welcome#privacy', :as => "privacy"
   match '/about-us', :to => 'welcome#about', :as => "about"

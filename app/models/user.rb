@@ -364,9 +364,6 @@ class User < ActiveRecord::Base
   def percentage_match(other_user)
     percentage_match = 0
 
-    #creating a percentage match instead of a filter where it cuts down and down
-
-
     if other_user.ages.any? && ages.any?
       with_age = (other_user.age_ids & age_ids).present?
     end
@@ -391,8 +388,7 @@ class User < ActiveRecord::Base
     if other_user.customer_types.any? && customer_types.any?
       with_customer_type = (other_user.customer_type_ids & customer_type_ids).present?
     end
-
-    
+  
     percentage_match += 1 if with_age == true
     percentage_match += 1 if with_industry == true
     percentage_match += 1 if with_employee_size == true

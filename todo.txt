@@ -4,6 +4,11 @@ Credit Card payment bounced but card was saved and then it worked
 
 flag user
 
+make tags #tags
+autocomplete on tags
+add #tags to social shares
+
+
 Make biz user experience - sign up, finish profile, you have been matched with 10 bankers (bi-directional)
   complete profile
     - if bank - give match with biz

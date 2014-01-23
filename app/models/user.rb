@@ -437,13 +437,12 @@ class User < ActiveRecord::Base
   def potential_matches
     matchables = User.where("id != ? AND status != ? AND bank != ? ", self.id, "Just Browsing", self.bank)
 
-    matchables.select! { |m| m.bankable?(self) ||
-                             m.in_same_location?(self) || 
-                             m.percentage_match(self) > 50 }
+    matches = matchables.select { |m| m.bankable?(self) &&
+                                      m.in_same_location?(self) &&
+                                      m.percentage_match(self) > 50 &&
+                                      !m.in?(self.matched_users) } 
 
-    matchables.reject! { |m| self.matched_users.include?(m) }
-
-    return matchables
+    return matches
   end
 
   def set_matches

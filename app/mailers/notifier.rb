@@ -22,9 +22,9 @@ class Notifier < ActionMailer::Base
 
   def send_message(message)
     @message = message
-    @receiver = @message.receiver
+    @user = @message.receiver
     @sender = @message.sender
-    mail to: @receiver.email, subject: "Message from #{@sender.first_name}"
+    mail to: @user.email, subject: "Message from #{@sender.first_name}"
   end
 
   def new_comment(user, comment)
@@ -67,9 +67,9 @@ class Notifier < ActionMailer::Base
   end
 
   def invitation_accepted(inviter, invitee)
-    @inviter = user
+    @user = inviter
     @invitee = invitee
 
-    mail to: @inviter.email, subject: "#{@invitee.name} accepted your invitation."
+    mail to: @user.email, subject: "#{@invitee.name} accepted your invitation."
   end
 end

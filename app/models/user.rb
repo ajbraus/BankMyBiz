@@ -1,12 +1,12 @@
 class User < ActiveRecord::Base
   include PublicActivity::Common
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable
+  # :lockable, :timeoutable,  :token_authenticatable, 
   devise :invitable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, 
-         :token_authenticatable, :invitable
+         :invitable
 
-  before_save :ensure_authentication_token
+  before_save :generate_auth_token, :set_auth_token_expiration
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, 
@@ -655,5 +655,17 @@ class User < ActiveRecord::Base
   #                          :update_existing => true})
   #   end
   # end
+
+  private
+  
+  def generate_auth_token
+    begin
+      self.auth_token = SecureRandom.hex
+    end while self.class.exists?(auth_token: auth_token)
+  end
+
+  def set_auth_token_expiration
+    self.auth_token_expires_at = DateTime.now + 60.days
+  end
 end
 

@@ -1,5 +1,6 @@
 class MessagesController < ApplicationController
   before_filter :authenticate_user!
+
   def index
     @messages = current_user.messages.paginate(:page => params[:page], :per_page => 15, order: 'created_at desc')
     @sent_messages = current_user.sent_messages.paginate(:page => params[:page], :per_page => 15, order: 'created_at desc')

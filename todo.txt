@@ -1,3 +1,9 @@
+make comments subject unique to post
+
+make match email subject unique to match
+
+make message subject thread to the same conversation
+
 Credit Card payment bounced but card was saved and then it worked
   buy matches
     add destroy card

@@ -63,6 +63,9 @@ group :development do
 	gem 'pry'
 	gem 'pry-debugger'
   gem 'populator'
+  gem 'powder'
+  gem 'powify'
+  gem 'pry-remote'
 end
 
 group :test do

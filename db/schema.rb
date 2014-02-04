@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115164928) do
+ActiveRecord::Schema.define() do
 
   create_table "accounts_receivables", :force => true do |t|
     t.string   "description"
@@ -357,7 +357,6 @@ ActiveRecord::Schema.define(:version => 20140115164928) do
     t.text     "goals"
     t.boolean  "newsletter",                           :default => true
     t.string   "username"
-    t.string   "authentication_token"
     t.boolean  "receive_match_messages",               :default => true
     t.string   "invitation_token",       :limit => 60
     t.datetime "invitation_sent_at"
@@ -370,6 +369,8 @@ ActiveRecord::Schema.define(:version => 20140115164928) do
     t.string   "hq_state",                             :default => "",                 :null => false
     t.string   "stripe_customer_id"
     t.boolean  "two_years"
+    t.string   "auth_token",                                                           :null => false
+    t.datetime "auth_token_expires_at",                                                :null => false
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

@@ -23,6 +23,8 @@ namespace :db do
       user.status = "Actively Looking"
       user.hq_state = "WI"
       user.pic_url = "http://m.c.lnkd.licdn.com/mpr/mprx/0_ZPIPybiaZP0CyQzaVK4hyL6T4-EfyQLasN02yXkYFAY0_G-mqvRx-krK9sor0TXGMKdSP_s-SNno"
+      user.auth_token = SecureRandom.hex
+      user.auth_token_expires_at = DateTime.now + 60.days
     end
     User.create(name:"Adam J Braus", email:"ajbraus@gmail.com", password:"password", bank: false, confirmed_at: Time.now)
     User.create(name:"Test Bank", email:"test@bank.com", password:"password", bank: true, confirmed_at: Time.now)

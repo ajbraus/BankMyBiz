@@ -17,7 +17,7 @@
     </br>
     <% else %>
       <h4>Current <%= current_user.bank? ? "Owner" : "Lender" %> Match</h4>
-      <%= render partial: "users/user", collection: current_user.todays_matches, as: :user %>
+      <%= render partial: "users/user", collection: current_user.matches.last.user, as: :user %>
       <p class="muted">
         <%= calls_to_action.sample %>
       </p>

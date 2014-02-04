@@ -3,7 +3,7 @@ attributes :id, :name, :authentication_token, :bio, :impressions_count,
            :org_name, :position, :goals, :newsletter, :receive_match_messages, :two_years
 
 node(:industries) { |u| u.industries.map(&:description).join(', ')}
-node(:locations) { |u| u.locations.map(&:description).join(', ')}
+node(:locations) { |u| u.locations.map(&:name).join(', ')}
 node(:ages) { |u| u.ages.map(&:description).join(', ')}
 node(:customer_types) { |u| u.customer_types.map(&:description).join(', ')}
 node(:business_types) { |u| u.business_types.map(&:description).join(', ')}

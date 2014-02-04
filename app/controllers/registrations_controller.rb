@@ -5,7 +5,6 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    binding.pry
     @user = User.find(current_user.id)
 
     successfully_updated = if params[:user][:password].present?

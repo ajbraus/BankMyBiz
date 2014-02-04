@@ -1,8 +1,9 @@
 class Api::V1::MatchesController < ApplicationController
-  before_filter :authenticate_user!
+  #before_filter :authenticate_user!
   
   def index
-    @matches = current_user.matched_users
+    @matches = User.find(4).matched_users
+    #@matches = current_user.matched_users
     render 'api/matches/index'
   end
 

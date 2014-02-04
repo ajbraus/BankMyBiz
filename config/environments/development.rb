@@ -3,8 +3,8 @@ BankMyBiz::Application.configure do
 
   config.middleware.use Rack::Cors do
     allow do
-      origins 'localhost:8000'
-      resource '*', :headers => :any, :methods => [:get, :post, :options, :delete]
+      origins '*'
+      resource '*', :headers => :any, :methods => [:get, :post, :options, :patch, :delete]
     end
   end
 

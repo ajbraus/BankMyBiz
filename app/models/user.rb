@@ -401,9 +401,9 @@ class User < ActiveRecord::Base
     return percentage_match * 100 / 8
   end
 
-  def todays_matches
-    if matched_users.last
-      return matched_users.last(1)
+  def todays_match
+    if matches.last.present?
+      return matches.last.user
     else
       return User.find_by_email("team@bankmybiz.com")
     end 

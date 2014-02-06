@@ -19,7 +19,7 @@
   </div>
   <div class="row">
     <div class="text-right">
-      <%= raw post.tags.map(&:name).map { |t| content_tag(:span, t, class:"tag small") }.join(' ') %>
+      <%= raw post.tags.map(&:name).map { |t| content_tag(:span, "#" + t, class:"tag small") }.join(' ') %>
     </div>
     <section class="text-right muted small">
       posted <%= time_ago_in_words(post.created_at) %> ago by 
@@ -38,7 +38,7 @@
     <section class='text-right'>
       <a href="mailto:?subject=Interesting Post&body=Here is a post from Bankmybiz.com I thought you'd like%0D%0A%0D%0A<%= post.content %>%0D%0A%0D%0ABy: <%= post.user.first_name_with_last_initial %>" class="btn btn-default btn-xs btn-rounded"><i class="icon ion-ios7-email-outline"></i> email</a>
       <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>" target='_blank'>
-        <span class="btn btn-xs btn-rounded btn-twitter"><i class="icon ion-social-twitter"></i> twitter
+        <span class="btn btn-xs btn-rounded btn-twitter"><i class="icon ion-social-twitter"></i> tweet
       </a>
       <a href="#" 
         onclick="
@@ -47,10 +47,10 @@
             'facebook-share-dialog', 
             'width=626,height=436'); 
           return false;" class="no-text-decoration">
-        <span class="btn btn-xs btn-rounded btn-facebook"><i class="icon ion-social-facebook"></i> facebook</span>
+        <span class="btn btn-xs btn-rounded btn-facebook"><i class="icon ion-social-facebook"></i> share</span>
       </a>
       <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=Bankmybiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
-        <span class="btn btn-xs btn-rounded btn-linkedin"><i class="icon ion-social-linkedin"> linkedin</i>
+        <span class="btn btn-xs btn-rounded btn-linkedin"><i class="icon ion-social-linkedin"> post</i>
       </a>
     </section>
   </div>

@@ -32,7 +32,7 @@ class Notifier < ActionMailer::Base
     @commenter = @comment.user
     @post = @comment.commentable
     @user = user
-    mail to: @user.email, subject: "New comment on a conversation"
+    mail to: @user.email, subject: "New comment on a post by #{@post.user.first_name_with_last_initial}"
   end
 
   def new_follower(user, follower)
@@ -44,7 +44,7 @@ class Notifier < ActionMailer::Base
   def new_match(user, match)
     @user = user
     @match = match
-    mail to: @user.email, subject: "New #{@user.bank? ? "owner" : "lender"} match"
+    mail to: @user.email, subject: "You Matched with #{@user.first_name_with_last_initial} with #{@user.org_name}"
   end
 
   def profile_reminder(u)

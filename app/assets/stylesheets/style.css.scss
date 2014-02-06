@@ -419,7 +419,7 @@ hr {
 }
 
 .medium-thumbnail {
-  width: 75px;
+  width: 147%;
 }
 
 .large-thumbnail {
@@ -620,7 +620,7 @@ height: 90px;
 }
 
 .smaller {
-  font-size:75%;
+  font-size:83%;
 }
 
 .smallest {
@@ -1033,7 +1033,8 @@ padding-left: 120px;
 
 .sign-up-buttons {
   position: relative;
-  top: 130px;
+  top: 100px;
+  left:40px;
   float: right;
 }
 
@@ -1075,7 +1076,7 @@ top: 20px;
 
 .hero-creds {
   position: absolute;
-  top: 386px;
+  top: 600px;
   color: white;
   right: 0px;
   background: rgba(0, 0, 0, 0.6);

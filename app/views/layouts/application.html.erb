@@ -105,8 +105,13 @@
               <%= link_to 'Blog', "http://blog.bankmybiz.com", class:"little", target:"_blank" %>
             </li>
           </ul>
-          <% if user_signed_in? %>
-            <ul class="nav navbar-nav navbar-right">
+          <ul class="nav navbar-nav navbar-right">
+            <% if false %>
+            <li class="down">
+              <strong class='large'>(312) 806 - 0208</strong>
+            </li>
+            <% end %>
+            <% if user_signed_in? %>
               <li>  
                 <% if current_user.finished_profile? %>
                   <%= link_to new_purchase_path do %>
@@ -202,9 +207,7 @@
                   <% end %>
                 </ul>
               </li>
-            </ul>
-          <% else %>
-            <ul class="nav navbar-nav navbar-right">
+            <% else %>
               <li>
                 <a href="/auth/linkedin" class="auth_provider btn btn-linkedin">
                   Login | <i class="icon ion-social-linkedin"></i>
@@ -215,8 +218,8 @@
                   Login | <i class="ion-ios7-email-outline"></i>
                 <% end %>
               </li>
-            </ul>
-          <% end %>
+            <% end %>
+          </ul>
           </div><!-- /.nav-collapse -->
         </div> <!-- /navbar-header -->
         <%= yield %>

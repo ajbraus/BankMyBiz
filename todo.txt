@@ -1,19 +1,48 @@
-make comments subject unique to post
+rip off https://www.fundera.com/small-business-lenders
 
-make match email subject unique to match
+use newsle to get press for our customers and lenders onto the newsfeed
 
-make message subject thread to the same conversation
+norton secured
+mcafee secure
+godaddy verified and secure
+
+footer - lender login
+
+Loan priority
+<select class="select optional parsley-validated" data-trigger="blur" id="borrower_loan_priority_cd" name="borrower[loan_priority_cd]" placeholder="--SELECT--" required="required"><option value=""></option>
+<option value="1">Lowest Interest Rate</option>
+<option value="2">Fastest time to funding</option>
+<option value="3">Longest repayment period</option>
+<option value="4">No collateral required</option>
+<option value="5">Least amount of required documentation</option></select>
+Loan purpose
+<select class="select optional parsley-validated" data-trigger="blur" id="borrower_loan_purpose_id" name="borrower[loan_purpose_id]" required="required"><option value=""></option>
+<option value="1">Expansion</option>
+<option value="2">Buyout A Partner</option>
+<option value="3">Marketing/Advertising</option>
+<option value="4">Starting a Business</option>
+<option value="5">Working Capital</option>
+<option value="6">Refinance / Consolidate Debt</option>
+<option value="7">Remodel an existing location</option>
+<option value="8">Purchase Equipment</option>
+<option value="9">Repair Equipment</option>
+<option value="10">Other</option></select>
+
+add michael's phone number to the website - google voice
+
+add #tags to social shares - &hashtags=<%= post.tags.map(&:name).join(',') %>
+autocomplete on tags
+
+bugs:
+  ajaxify comments
+  ajaxify bucks
+  allow delete comments to creator
+
+SSL Cert
 
 Credit Card payment bounced but card was saved and then it worked
   buy matches
     add destroy card
-
-flag user
-
-make tags #tags
-autocomplete on tags
-add #tags to social shares
-
 
 Make biz user experience - sign up, finish profile, you have been matched with 10 bankers (bi-directional)
   complete profile
@@ -23,26 +52,16 @@ Make biz user experience - sign up, finish profile, you have been matched with 1
   send profile reminder the next day after sign_up and then 3 days later, then 20 days later
 
 Testimonials
-ask a question in the news feed - maybe call it the Questions and News
+
 
 Remove public activity? - don't track if you go to the same use,post twice in the same three days
 
-bugs:
-  ajaxify comments
-  ajaxify bucks
-  allow delete comments to creator
-
-SLL Cert
-
 add privacy link to footer
-
-$ in pipeline - So the general relationship banking rule is... Whatever the loan you are looking for is worth 3X. So loan amount + potential entire biz relationship + personal banking needs. 
 
 fix homepage:
   submit sitemap to google
 
 mobile app
-
 
 
 Call our bankers and ask them for feedback.
@@ -56,6 +75,8 @@ bookkeepers, CPI, legal services, booking offices, Real estate,
 when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
 
 ____________________________________________________
+
+flag user
 
 Increase contacts
   add zipcode
@@ -496,3 +517,6 @@ DONE only bu,make matches that are actively looking or interested
 DONE How many years in business 0-1, 2-5, 5-10 10+
 
 DONE have you filed business tax returns for more than two years?
+DONE make comments subject unique to post
+DONE make match email subject unique to match
+DONE make message subject thread to the same conversation

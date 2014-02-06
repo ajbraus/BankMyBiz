@@ -4,7 +4,10 @@
 
 <section class="col-sm-6">
   <% if current_user.has_image? %>
-    <div class="text-right muted"><span id="postCharCount">0</span>/250</div>
+    <div class="row">
+      <strong class='pull-left muted'>Post to News Feed</strong>
+      <div class="pull-right muted"><span id="postCharCount">0</span>/250</div>
+    </div>
     <%= form_for @new_post, html: { class:"clearfix position-relative" } do |f| %>
       <div class="row">
         <%= link_to current_user, class:'no-hover col-xs-2' do %>
@@ -32,6 +35,8 @@
       <%= link_to "Upload a profile picture", edit_profile_path(current_user) %>, or <a href="/auth/linkedin" class="auth_provider">Fetch it through LinkedIn</a> 
     </div>
   <% end %>
+  <h3>News & Questions</h3>
+  <span class="text-muted smaller">Here Find Owner & Banker News, Questions, Links, and Updates.</span>
   <div class="hr-line"></div>
   <%= render partial: "posts/post", collection: @posts, as: :post %>
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>

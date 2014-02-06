@@ -5,7 +5,7 @@
 <section class="col-sm-6">
   <% if current_user.has_image? %>
     <div class="row">
-      <strong class='pull-left muted'>Post to News Feed</strong>
+      <strong class='pull-left muted'>Post to Public News Feed</strong>
       <div class="pull-right muted"><span id="postCharCount">0</span>/250</div>
     </div>
     <%= form_for @new_post, html: { class:"clearfix position-relative" } do |f| %>

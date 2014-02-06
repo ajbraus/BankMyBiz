@@ -405,7 +405,7 @@ class User < ActiveRecord::Base
     if matches.last.present?
       return matches.last.user
     else
-      return User.find_by_email("team@bankmybiz.com")
+      return User.find_by_email("michael@bankmybiz.com")
     end 
   end
 

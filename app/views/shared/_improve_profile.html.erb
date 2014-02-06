@@ -1,36 +1,41 @@
 <% if user_signed_in? %>
   <% if current_user.bank == nil %>
+    <section class="well">
       <h4>Banker or Biz Owner?</h4>
       <%= link_to "Bank", set_bank_path(current_user), class:"btn btn-success btn-lg" %>
       <%= link_to "Business", set_business_path(current_user), class:"btn btn-warning btn-lg" %>
       <p class="muted">Answer to unlock matches,<br> and be matched</p>
+    </section>
   <% else %>
     <% if !current_user.finished_profile? %>
-    <h4>Complete Your Profile</h4>
-      <%= link_to "#{current_user.profile_elements_left} questions to go", edit_profile_path(current_user) %>
-      <div class="progress progress-striped active">
-        <div class="progress-bar progress-bar-success" style="width: <%= current_user.profile_progress_percent %>%;">
-          <%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link progress-percent" %>
+    <section class="well">
+      <h4>Complete Your Profile</h4>
+        <%= link_to "#{current_user.profile_elements_left} questions to go", edit_profile_path(current_user) %>
+        <div class="progress progress-striped active">
+          <div class="progress-bar progress-bar-success" style="width: <%= current_user.profile_progress_percent %>%;">
+            <%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link progress-percent" %>
+          </div>
         </div>
-      </div>
-      to unlock <%= current_user.bank? ? "owner" : "lender" %> matches
-    </br>
-    <% else %>
-      <h4>Current <%= current_user.bank? ? "Owner" : "Lender" %> Match</h4>
-      <%= render partial: "users/user", locals: { user: current_user.todays_match } %>
-      <p class="muted">
-        <%= calls_to_action.sample %>
-      </p>
-
-      <% unless current_user.finished_profile? %>
-        <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
-        <div class=''>For Better Matches</div>
-      <% end %>
-      <% if false %>
-        <div class="hr-line"></div>
-        <p class="muted"><%= current_user.bank? ? "Lenders" : "Owners" %> Like You</p>
-        <%= render partial: "users/user", collection: current_user.todays_peers, as: :user %>
-      <% end %>
+        to unlock <%= current_user.bank? ? "owner" : "lender" %> matches
+      </br>
+    </section>
+    <% elsif current_user.todays_match.present? %>
+      <section class="well">
+        <h4>Current <%= current_user.bank? ? "Owner" : "Lender" %> Match</h4>
+        <%= render partial: "users/user", locals: { user: current_user.todays_match } %>
+        <p class="muted">
+          <%= calls_to_action.sample %>
+        </p>
+        <% unless current_user.finished_profile? %>
+          <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
+          <div class=''>For Better Matches</div>
+        <% end %>
+        <% if false %>
+          <div class="hr-line"></div>
+          <p class="muted"><%= current_user.bank? ? "Lenders" : "Owners" %> Like You</p>
+          <%= render partial: "users/user", collection: current_user.todays_peers, as: :user %>
+        <% end %>
+      </section>
     <% end %>
   <% end %>
 <% end %>

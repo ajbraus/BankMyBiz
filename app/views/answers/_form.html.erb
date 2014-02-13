@@ -1,0 +1,13 @@
+<section>
+<%= form_for [post, post.answers.new] do |f| %>
+  <div class="input-group">
+    <%= f.text_field :body, class:'form-control', id:"appendedInputButton", placeholder:"Post your Advice" %>
+    <span class="input-group-btn">
+      <button name="commit" type="submit" value="Create Comment" class="btn btn-success">
+        <i class="icon ion-chatbox"></i>
+      </button>
+    </span>
+  </div><!-- /input-group -->
+<% end %>
+</section>
+<br>

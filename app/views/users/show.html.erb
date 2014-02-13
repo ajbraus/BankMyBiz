@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<section class='profile-picture-position col-sm-3'> 
+<section class='profile-picture-position col-sm-4'> 
   <% if current_user == @user && !current_user.has_image? %>
     <div class="well">
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -92,9 +92,16 @@
     </div>
   </div>
   <% end %>
+
+  <section class="well">
+    <%= render 'shared/social_buttons' %>
+  </section>
+  <section class="well">
+    <%= render 'shared/trending_tags' %>
+  </section>
 </section>
 
-<div class="col-sm-6 large border-left">
+<div class="col-sm-8 large border-left">
   <div class="row">
     <div class="col-sm-6">
       <h3>Bio</h3>
@@ -168,11 +175,10 @@
   <% end %>
   <hr>  
   <% if @user == current_user %>
-    <h4>Your Posts</h4>
+    <h4>Your News & Questions</h4>
   <% else %>
-    <h4><%= @user.first_name %>'s Recent Posts</h4>
+    <h4><%= @user.first_name %>'s Recent News & Questions</h4>
   <% end %>
   <%= render partial: "posts/post", collection: @posts, as: :post %>
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
-  <%= render 'shared/right_sidebar' %>

@@ -1,9 +1,26 @@
-<% content_for :title, "Business Lending - Business Banking - Loans | Bankmybiz" %>
-<%= render 'shared/left_sidebar' %>
+<% 
+  content_for :title, "#{@post.tags.first(3)[0].try(:normalize)} - #{@post.tags.first(3)[1].try(:normalize)} - #{@post.tags.first(3)[2].try(:normalize)} | Bankmybiz" 
+  content_for :description, "#{@post.title[0,155]}" 
+  content_for :keywords, "#{@post.tags.first(3)[0].try(:normalize)}, #{@post.tags.first(3)[1].try(:normalize)}, #{@post.tags.first(3)[2].try(:normalize)}"
+%>
 
-<div class="col-sm-6">
-  <%= link_to "Back", :back %>
-  <%= render partial: 'posts/post', locals: { post: @post } %>
+<div class="col-sm-8">
+  <section>
+    <%= link_to root_path, class:'btn btn-default' do %>
+      <i class="icon ion-ios7-arrow-back"></i> News Feed
+    <% end %>
+  </section>
+  <section>
+    <%= render partial: 'posts/post', locals: { post: @post } %>
+    <% if user_signed_in? %>
+      <%= render partial: 'answers/form', locals: { post: @post } %>    
+      <%= render partial: 'answers/answer', collection: @post.answers.where('body IS NOT NULL').order('created_at desc'), as: :answer, locals: { post: @post } %>
+    <% else %>
+      <div class='alert alert-warning' style="padding:10px;font-size:110%;">
+        <a href="/auth/linkedin">Connect through Linkedin</a>, <%= link_to "Sign Up", new_registration_path(resource_name) %>, or <%= link_to "Login", new_session_path(resource_name) %> to see this question's <u><strong><%= pluralize @post.answers.count, "Piece" %> of Advice</strong></u>
+      </div>
+    <% end %>
+  </section>
 </div>
 
 <%= render 'shared/right_sidebar' %>

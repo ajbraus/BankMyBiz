@@ -1,12 +1,66 @@
+QA
+  DONE - create answers
+  DONE - Add comments to answers 
+  DONE - add comments questions
+  DONE - add search 
+  DONE - cleanup post#show
+  DONE - add browse link to splash page
+  DONE - add click tag to sort by tag
+  DONE - add counts to tags
+  DONE - Camelcase all tags
+  - autocomplete on existing tags https://github.com/aehlke/tag-it
+  DONE - Mark Best Answer
+  DONE - add and display impressions per post
+  
+  - add vote down to questions, answers, and comments everything
+  - add Cred to all user displays
+    DONE - when post question + 10
+    DONE - when post answer (on other people's questions) + 10
+    DONE - when marked best advice + 25
+    DONE - when vote up + 1
+    DONE - when vote down - 3
+  - edit answers
+  - delete comments
+
+  - if no profile pic - do not allow post to news feed
+  DONE - if not logged in - do not see answers
+
+
+SEO 
+  DONE - add SEO per page 
+  - add baller footer - footer - lender verification info
+  - Create Products (with SEO on pages)
+  - Link users to products
+  - Link users to matches through products
+  - friendlyid on posts (better urls)
+
+Clean up profile
+  - Make interested send a message (not create a favorites)
+
+remove the word lenders
+
+Difference between funder and business
+  - Give everyone bankmybiz 360
+  - Add "Get Certified" workflow for Funders - pay $100/month $75/ 6months $50 / year
+  - Add SSL
+  - Biz can be "interested" in funder
+  - Funder
+
+Double check all in mobile
+
 rip off https://www.fundera.com/small-business-lenders
+
+Thread messages by subject line
+
+remove public activity
 
 use newsle to get press for our customers and lenders onto the newsfeed
 
 norton secured
 mcafee secure
 godaddy verified and secure
-
-footer - lender login
+powered by stripe
+SSL secured
 
 Loan priority
 <select class="select optional parsley-validated" data-trigger="blur" id="borrower_loan_priority_cd" name="borrower[loan_priority_cd]" placeholder="--SELECT--" required="required"><option value=""></option>
@@ -34,47 +88,28 @@ add #tags to social shares - &hashtags=<%= post.tags.map(&:name).join(',') %>
 autocomplete on tags
 
 bugs:
-  ajaxify comments
-  ajaxify bucks
+  ajaxify Comments
+  ajaxify Cred
   allow delete comments to creator
-
-SSL Cert
 
 Credit Card payment bounced but card was saved and then it worked
   buy matches
     add destroy card
 
-Make biz user experience - sign up, finish profile, you have been matched with 10 bankers (bi-directional)
-  complete profile
-    - if bank - give match with biz
-    - if biz - give match with banker and match 5 360 bankers with biz
-
-  send profile reminder the next day after sign_up and then 3 days later, then 20 days later
-
-Testimonials
-
-
-Remove public activity? - don't track if you go to the same use,post twice in the same three days
-
-add privacy link to footer
-
 fix homepage:
   submit sitemap to google
 
-mobile app
-
-
-Call our bankers and ask them for feedback.
 Collect "Tombstone" on deals
 Target businesses who are struggling who don't know who to bank with
 Contact us with deals that succeed (the tombstone stuff)
 pitch day at first biz
 bookkeepers, CPI, legal services, booking offices, Real estate, 
 
-
-when you sign up ask for bank/biz & with linked in ask for bank/biz, image, organization, position, password, and password confirm.
+when you sign up ask for bank/biz & with linkedin ask for bank/biz, image, organization, position, password, and password confirm.
 
 ____________________________________________________
+
+
 
 flag user
 
@@ -82,7 +117,6 @@ Increase contacts
   add zipcode
 
 For existing banking relationships
-  Thread messages by subject line
   My banker
   Instantaneous chat
   Goal setting / tracking

@@ -1,13 +1,16 @@
-<li class="comment">
-  <div class="col-xs-2 text-center grey small" style="margin-left: -8px;">
+<li class="row">
+  <div class="col-xs-1 text-center grey small" style="margin-left: -8px;">
     <%= comment.plusminus %> 
     <% if user_signed_in? %>
-      <%= link_to vote_up_post_comment_path(post, comment), class:"fade-in-green" do %>
-       <i class="icon ion-plus-circled <%= current_user.voted_for?(comment) ? 'green' : '' %>" rel="tooltip" title="Give <%= comment.user.first_name_with_last_initial %> a Buck"></i>
+      <%= link_to vote_up_comment_path(comment), class:"fade-in-green #{current_user.voted_for?(comment) ? 'disabled' : ''}" do %>
+       <i class="icon ion-arrow-up-a <%= current_user.voted_for?(comment) ? 'green' : '' %>" rel="tooltip" title="+1 Cred"></i>
+      <% end %>
+      <%= link_to vote_down_comment_path(comment), class:"fade-in-orange #{current_user.voted_against?(comment) ? 'disabled' : ''}" do %>
+       <i class="icon ion-arrow-down-a <%= current_user.voted_against?(comment) ? 'orange' : '' %>" rel="tooltip" title="-3 Cred"></i>
       <% end %>
     <% end %>
   </div>
-  <div class="col-xs-10">
+  <div class="col-xs-11">
     <div class="small"><%= auto_link(comment.content, html: { target: '_blank' }) %></div>
     <div class="muted smaller text-right"><%= time_ago_in_words(comment.created_at) %> ago by 
       <% if comment.user %>

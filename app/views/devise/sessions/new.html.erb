@@ -1,5 +1,14 @@
-<div class="center">
-  <h2>Login</h2>
+<div class="col-sm-4 col-sm-offset-4">
+  <h2 class='text-center'>Login</h2>
+  <section>
+    <p>
+      <a href="/auth/linkedin" class="auth_provider btn btn-lg btn-block btn-linkedin">
+        Login w/ Linkedin | <i class="icon ion-social-linkedin"></i>
+      </a>
+    </p>
+    <center class='text-muted'> - or - </center>
+  </section>
+  <div class="hr-line"></div>
   <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
     <p><%= f.label :email %>
     <%= f.email_field :email, :autofocus => true, class:"form-control" %></p>
@@ -16,13 +25,8 @@
       </div>
     <% end -%>
 
-    <section><%= f.submit "Login", class:"btn btn-success btn-lg" %></section>
+    <section class='text-right'><%= f.submit "Login", class:"btn btn-success btn-lg" %></section>
   <% end %>
-  <section>
-    <a href="/auth/linkedin" class="auth_provider btn btn-lg btn-block btn-linkedin">
-      Login | <i class="icon ion-social-linkedin"></i>
-    </a>
-  </section>
 
   <%= render "devise/shared/links" %>
 </div>

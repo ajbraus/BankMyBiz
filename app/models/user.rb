@@ -41,12 +41,14 @@ class User < ActiveRecord::Base
                   :status,
                   :hq_state,
                   :stripe_customer_id,
-                  :two_years
+                  :two_years,
+                  :cred_count
 
   is_impressionable :counter_cache => true, :unique => :user_id
 
   acts_as_voter
   has_karma(:posts)
+  has_karma(:answers)
   has_karma(:comments)
 
   has_many :subscriptions

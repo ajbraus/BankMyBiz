@@ -1,0 +1,31 @@
+<div class="col-sm-6 col-sm-offset-3">
+ <% if current_user.has_image? %>
+    <div class="row">
+      <h1 class='text-center'>Post to News Feed</h1>
+    </div>
+    <%= form_for @post, html: { class:"clearfix position-relative" } do |f| %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="pull-right muted"><span id="titleCharCount">0</span>/250</div>
+          <section><%= f.text_field :title, class:"form-control", placeholder:"Title", id:"newPostTitle" %></section>
+          <section><%= f.text_area :content, class:"form-control post-textarea", placeholder:"Description" %></section>
+          <section>
+            <%= f.text_field :tag_list, class:"form-control", placeholder:"Interests Keywords (separated by comma)" %>
+          </section>
+          <section class="text-right">
+            <%= small_profile_picture(current_user) %>
+            <%= f.submit "Post to News Feed", class:"btn btn-success btn-lg", id:"submitPost" %>
+          </section>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <div class="well alert-info" id="fadeInAlert">
+      <div class="col-sm-2">
+        <%= image_tag 'default_profile_pic.png', class:"img-circle", width:50 %>
+      </div>
+      <p><i class="icon ion-ios7-bell"></i> To post to the Newsfeed you must first</p>
+      <%= link_to "Upload a profile picture", edit_profile_path(current_user) %>, or <a href="/auth/linkedin" class="auth_provider">Fetch it through LinkedIn</a> 
+    </div>
+  <% end %>
+</div>

@@ -1,5 +1,16 @@
-<div class="center">
-  <h2>Register</h2>
+<div class="col-sm-4 col-sm-offset-4">
+  <h2 class='text-center'>Register</h2>
+
+  <section>
+    <p>
+      <a href="/auth/linkedin" class="auth_provider btn btn-lg btn-block btn-linkedin">
+        Join w/ Linkedin | <i class="icon ion-social-linkedin"></i>
+      </a>
+    </p>
+    <center class='text-muted'> - or - </center>
+  </section>
+  <div class="hr-line"></div>
+  <section>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
@@ -10,15 +21,15 @@
     <%= f.email_field :email, class:"form-control required" %></p>
 
     <p>
+      <label>Which Best Describes You?</label>
       <div class="btn-group" data-toggle="buttons">
-        <label>Which Best Describes You?</label>
         <label class="btn btn-success">
           <%= f.radio_button :bank, true %>
-          Banker
+          Funder
         </label>
         <label class="btn btn-warning">
           <%= f.radio_button :bank, false %> 
-          Biz Owner
+          Business
         </label>
       </div>
     </p>
@@ -35,15 +46,9 @@
     <p><%= f.label :password_confirmation, "Confirm Password*" %>
     <%= f.password_field :password_confirmation, class:"form-control required" %></p>
 
-    <section><%= f.submit "Register", class:"btn btn-success btn-lg" %></section>
+    <p class="text-right"><%= f.submit "Register w/ Email", class:"btn btn-success btn-lg" %></p>
   <% end %>
-
-  <section>
-    <a href="/auth/linkedin" class="auth_provider btn btn-lg btn-block btn-linkedin">
-      Register | <i class="icon ion-social-linkedin"></i>
-    </a>
-  </section>
-
+</section>
   <%= render "devise/shared/links" %>
 
 </div>

@@ -30,7 +30,7 @@ BankMyBiz::Application.routes.draw do
   resources :favorites, only: [:index]
 
   resources :subscriptions, only: [:new, :create]
-  #resources :purchases, only: [:new, :create]
+  resources :purchases, only: [:new, :create]
   resources :likes, only: [:create, :destroy]
 
   match '/auth/:provider/callback' => 'authentications#create'

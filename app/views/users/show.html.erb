@@ -44,10 +44,16 @@ end
       <% end %>
     </div>
   <% else %>
+  <div class='background' style="background-color:<%= @user.background_color %>;">
     <%= large_profile_picture(@user) %>
+  </div>
   <% end %>
   <div class='text-left large'>
     <br>
+    <div>
+      <strong class=''>Status:</strong>
+      <span class="<%= @user.status_class %>"><%= @user.status %></span>
+    </div>
     <div>
       <strong>Name:</strong> 
       <%= @user.first_name_with_last_initial %> 
@@ -56,7 +62,6 @@ end
       <strong><%= @user.bank? ? "Bank" : "Business" %>:</strong>
       <%= @user.org_name %>
     </div>
-    
     <div>
       <strong class=''>Position:</strong>
       <span class="muted"><%= @user.position %></span>
@@ -64,10 +69,6 @@ end
     <div>
       <strong>Bucks:</strong> 
       <span class="muted"> <%= @user.karma + 100 %></span>
-    </div>
-    <div>
-      <strong class=''>Status:</strong>
-      <span class="muted"><%= @user.status %></span>
     </div>
     <div>
       <strong class=''>Percent Match:</strong>
@@ -80,18 +81,16 @@ end
         <i class="icon ion-ios7-person-outline"></i> Edit Profile
       <% end %>
     <% else %>
-      <div class="pull-right">
+      <div class="text-right">
         <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
+        <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
+            <a data-toggle="modal" href="#contact-modal" class="btn btn-sm btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
+        <% end %>
       </div>
-      <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
-        <div class="pull-right">
-          <a data-toggle="modal" href="#contact-modal" class="btn btn-sm btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
-        </div>
-      <% end %>
+      <section class="muted large">
+        <%= calls_to_action.sample %>
+      </section>
     <% end %>
-  </section>
-  <section class="muted large">
-    <%= calls_to_action.sample %>
   </section>
   <% if @user.posts.any? %>
     <div class="well gray-border-left text-left">
@@ -173,17 +172,6 @@ end
       <div class="muted"><%= @user.locations.map(&:name).join(", ") %></div>
     </section>
   </div>
-  <hr>  
-  <% if @user == current_user %>
-    <h4>Your Activity <div class="muted small">(private)</div></h4>
-    <% @activities.each do |activity| %>
-      <div class="activity">
-      <%= link_to activity.owner.name, activity.owner if activity.owner %>
-      <%= render_activity activity %>
-      </div>
-    <% end %>
-    <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
-  <% end %>
   <hr>  
   <% if @user == current_user %>
     <h4>Your News & Questions</h4>

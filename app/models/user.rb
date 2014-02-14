@@ -123,6 +123,28 @@ class User < ActiveRecord::Base
   after_invitation_accepted :create_welcome_message
   after_invitation_accepted :set_username
 
+  def background_color
+    if status = "Actively Looking"
+      return "rgba(0, 158, 0, 0.72)"
+    elsif status = "Offers Welcome"
+      return "rgba(255, 215, 0, 0.6)"
+    elsif status = "Just Browsing"
+      return "rgba(0, 90, 255, 0.48)"
+    else
+    end
+  end
+
+  def status_class
+    if status = "Actively Looking"
+      return "text-success"
+    elsif status = "Offers Welcome"
+      return "text-warning"
+    elsif status = "Just Browsing"
+      return "text-info"
+    else
+    end
+  end
+
   def email_invited_by
      inviter = self.invited_by
      inviter.reward_a_match

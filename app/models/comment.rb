@@ -1,7 +1,6 @@
 class Comment < ActiveRecord::Base
   include PublicActivity::Common
-  # tracked owner: ->(controller, model) { controller && controller.current_user }
-  
+  # tracked owner: ->(controller, model) { controller && controller.current_user }  
   belongs_to :commentable, polymorphic: true
   belongs_to :user
 
@@ -11,6 +10,14 @@ class Comment < ActiveRecord::Base
 
   validates :commentable_id, :commentable_type, :content, presence: true
   
+  before_save :set_last_touched
+
+  def set_last_touched
+    if self.commentable_type == "Post"
+      self.commentable.update_attributes(last_touched: Time.now)
+    end
+  end
+
   def nice_created_at
     self.created_at.strftime "%b %e, %l:%M%P"
   end  

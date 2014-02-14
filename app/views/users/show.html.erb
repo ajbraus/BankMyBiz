@@ -1,4 +1,11 @@
-<% content_for :title, "#{@user.first_name_with_last_initial}'s Profile" %>
+<% 
+if @user_tags.present?
+  content_for :title, "#{@user_tags.first(3)[0].try(:normalize)} - #{@user_tags.first(3)[1].try(:normalize)} - #{@user_tags.first(3)[2].try(:normalize)} | Bankmybiz" 
+  content_for :keywords, "#{@user_tags.first(3)[0].try(:normalize)}, #{@user_tags.first(3)[1].try(:normalize)}, #{@user_tags.first(3)[2].try(:normalize)}"
+end
+  content_for :description, "#{@user.bio[0,155]}" 
+%>
+
 <div id="contact-modal" class="modal fade" style="display: none;">  
   <div class="modal-dialog">
     <div class="modal-content">
@@ -67,30 +74,34 @@
       <span class="muted"><%= current_user.percentage_match(@user) %>% </span>
     </div>
   </div>
-  <section class="text-center">
+  <section class="clearfix">
     <% if @user == current_user %>
       <%= link_to edit_profile_path(@user), class:"btn btn-default btn-block btn-lg" do %>
         <i class="icon ion-ios7-person-outline"></i> Edit Profile
       <% end %>
     <% else %>
-      <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
-      <a data-toggle="modal" href="#contact-modal" class="btn btn-default btn-lg btn-block"><i class="ion-ios7-email blue"></i> Contact </a>
-      <section class="muted large">
-        <%= calls_to_action.sample %>
-      </section>
+      <div class="pull-right">
+        <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
+      </div>
+      <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
+        <div class="pull-right">
+          <a data-toggle="modal" href="#contact-modal" class="btn btn-sm btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
+        </div>
+      <% end %>
     <% end %>
   </section>
+  <section class="muted large">
+    <%= calls_to_action.sample %>
+  </section>
   <% if @user.posts.any? %>
-  <div class="well gray-border-left text-left">
-    <h4><%= @user.first_name_with_last_initial %>'s Interests</h4>    
-    <div class="tag-cloud">
-      <% @user.posts.each do |p| %>
-        <% p.tags.each do |t| %>
-          <%= link_to "#{t.name}", post_path(p), class:"tag clickable-tag" %>
+    <div class="well gray-border-left text-left">
+      <h4><%= @user.first_name_with_last_initial %>'s Interests</h4>    
+      <div class="tag-cloud">
+        <% @user_tags.each do |t| %>
+          <%= link_to "#{t.name}", posts_path(search: t.name), class:"tag clickable-tag" %>
         <% end %>
-      <% end %>
+      </div>
     </div>
-  </div>
   <% end %>
 
   <section class="well">

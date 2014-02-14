@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-9">
+  <div class="col-sm-8">
     <div id="contact-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">  
       <div class="modal-dialog">
         <div class="modal-content">
@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <section class="col-sm-9">
+  <section class="col-sm-8">
     <section class='one-message large'>
       <p><strong>From:</strong> <%= link_to "#{@message.sender.first_name_with_last_initial}", user_path(@message.sender) %></p>
       <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>

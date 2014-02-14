@@ -1,13 +1,13 @@
 <section>
-<%= form_for [post, post.answers.new] do |f| %>
-  <div class="input-group">
-    <%= f.text_field :body, class:'form-control', id:"appendedInputButton", placeholder:"Post your Advice" %>
-    <span class="input-group-btn">
-      <button name="commit" type="submit" value="Create Comment" class="btn btn-success">
-        <i class="icon ion-chatbox"></i>
-      </button>
-    </span>
-  </div><!-- /input-group -->
-<% end %>
+  <%= form_for [post, post.answers.new] do |f| %>
+    <div class="col-xs-12">
+      <%= f.text_area :body, class:'form-control', id:"appendedInputButton", placeholder:"Post your Advice" %>
+      <section>
+        <button name="commit" type="submit" value="Create Comment" class="btn btn-success pull-right" rel="tooltip" title="+10 Cred">
+          <i class="icon ion-chatbox"></i> Give Advice
+        </button>
+      </section>
+    </div><!-- /input-group -->
+  <% end %>
 </section>
 <br>

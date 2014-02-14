@@ -38,7 +38,6 @@ ul, li {
 }
 
 li {
-  margin-top:10px;
 }
  
 .modal {
@@ -152,7 +151,7 @@ border-radius: 4px;
 }
 
 .navbar {
-  margin: 17px 0 0 0;
+  margin: 10px 0 0 0;
 border:none;
 border-bottom: 1px solid #eee;
 width: 100%;
@@ -163,7 +162,7 @@ z-index: 100;
         border-radius: 0px;
   .navbar-nav {
     position: relative;
-    top: 9px;
+    top: 10px;
   }
   .navbar-brand {
     padding: 10px 15px;
@@ -188,12 +187,15 @@ bottom: 4px;
 
 .under {
   position: relative;
-bottom: 17px;
+bottom: 20px;
 }
 
-.navbar .nav > li > a {
-padding: 10px 10px 10px;
+.navbar-nav > li {
+  > a {
+  padding: 10px 10px 10px;
+  }
 }
+
 
 .nav {
   top:10px;
@@ -1377,11 +1379,16 @@ select.error {
 }
 
 .match-pic {
-  position: relative;
-  top: 5px;
   text-align: center;
 }
 
 .btn-rounded {
   border-radius: 14px;
+}
+
+
+.edit_user {
+  .row {
+    margin-top:15px;
+  }
 }

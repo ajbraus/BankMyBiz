@@ -1,89 +1,13 @@
 <% if user_signed_in? %>
-  <% if current_user.has_active_subscription? %>
-    <h4>Bankmybiz 360&deg;</h4>
-    <div class="match">
-      <% @buck_users = [] %>
-      <% current_user.posts.each do |p|  %>
-      <%   @buck_users << p.voters_who_voted_for %>
+  <h4>Bankmybiz 360&deg;</h4>
+  <div class="match">
+    <% if false %>
+    <h5><%= pluralize(current_user.karma, "User") %> Gave You Cred!</h5>
+      <%= render partial: "users/user", collection: current_user.posts.order('created_at DESC').map { |p| p.voters_who_voted_for }.flatten!.uniq.first(3), as: :user %> 
       <% end %>
-      <% @buck_users.flatten! %>
-      <h5>Up <%= pluralize(current_user.karma, "Vote", "Votes") %> <i class="icon ion-plus-round"></i></h5>
-        <%= render partial: "users/user", collection: @buck_users, as: :user %> 
-      <h5><%= current_user.impressions_count %> Profile Views <i class="icon ion-eye"></i></h5>
-        <%= render partial: "users/user", collection: current_user.impressions.map{|i| i.impressionable}.uniq.first(3), as: :user %>
-      <h5><%= current_user.followers.count %> Favorited You <i class="icon ion-ios7-star"></i></h5>
-        <%= render partial: "users/user", collection: current_user.followers.first(3), as: :user %>
-    </div>
-  <% else %>
-      <h4>Bankmybiz 360&deg;</h4>
-      <strong class="text-center small">
-        Subscribe To Know Who . . . 
-      </strong>
-    <div class="match">
-      <h5><%= pluralize(current_user.karma, "Buck", "Bucks") %> <i class="icon ion-plus"></i></h5>
-      <div class="muted small up">gave you Bucks </div>
-      <h5><%= pluralize(current_user.impressions_count, 'View', 'Views') %> <i class="icon ion-eye"></i></h5>
-      <div class="muted small up"> viewed your Profile</div>
-      <h5><%= current_user.followers.count %> Interested in You <i class="icon ion-flask"></i></h5>
-      <div class="muted small up">favorited You</div>
-    </div>
-      <% unless current_user.bank == nil %>
-        <% if current_user.bank? %>
-          <li> 
-            <div class="small muted">3 month package</div>
-            <div class="price"><strong>$149.99</strong> / month</div>
-            <div class="save"></div>
-            <%= link_to new_subscription_path(plan_id: 4), class:"btn btn-success btn-small" do %>
-              Subscribe <i class="icon-white"></i>
-            <% end %>
-          </li>
-          <div class="hr-line"></div>
-          <li> 
-            <div class="small muted">6 month package</div>
-            <div class="price"><strong>$112.99</strong> / month</div>
-            <div class="save"></div>
-            <%= link_to new_subscription_path(plan_id: 5), class:"btn btn-success btn-small" do %>
-              Subscribe <i class="icon-white"></i>
-            <% end %>
-          </li>
-          <div class="hr-line"></div>
-          <li> 
-            <div class="small muted">1 year package</div>
-            <div class="price"><strong>$74.99</strong> / month</div>
-            <div class="save"></div>
-            <%= link_to new_subscription_path(plan_id: 6), class:"btn btn-success btn-small" do %>
-              Subscribe <i class="icon-white"></i>
-            <% end %>
-          </li>
-        <% else %>
-          <li>
-            <div class="small muted">1 month package</div>
-            <div class="price"><strong>$49.99</strong> / month</div>
-            <div class="save"></div>
-            <%= link_to new_subscription_path(plan_id: 1), class:"btn btn-success btn-small btn-small" do %>
-              Subscribe <i class="icon-white"></i>
-            <% end %>
-          </li>
-          <div class="hr-line"></div>
-          <li> 
-            <div class="small muted">3 month package</div>
-            <div class="price"><strong>$37.99</strong> / month</div>
-            <div class="save">Save 25%</div>
-            <%= link_to new_subscription_path(plan_id: 2), class:"btn btn-success btn-small" do %>
-              Subscribe <i class="icon-white"></i>
-            <% end %>
-          </li>
-          <div class="hr-line"></div>
-          <li> 
-            <div class="small muted">6 month package</div>
-            <div class="price"><strong>$24.99</strong> / month</div>
-            <div class="save">Save 50%</div>
-            <%= link_to new_subscription_path(plan_id: 3), class:"btn btn-success btn-small" do %>
-              Subscribe <i class="icon-white"></i>
-            <% end %>
-          </li>
-        <% end %>
-      <% end %>
-    <hr>
-  <% end %>
+    <h5><%= pluralize current_user.impressions_count, "User" %> Viewed Your Profile!</h5>
+      <%= render partial: "users/user", collection: current_user.impressions.order("created_at DESC").map{|i| i.impressionable }.uniq.first(3), as: :user %>
+    <h5><%= pluralize current_user.followers.count, "User" %> Follow You on Bankmybiz!</h5>
+      <%= render partial: "users/user", collection: current_user.followers.order('created_at DESC').first(3), as: :user %>
+  </div>
 <% end %>

@@ -40,17 +40,17 @@ $(document).ready(function() {
       
   $('.not-interested').hover(
     function() {
-      $( this ).html("<i class='icon ion-flask'></i> Uninterested")
+      $( this ).html("<i class='icon ion-person-add'></i> Unfollow")
     }, function() {
-      $( this ).html("<i class='icon ion-flask green'></i> Interested")
+      $( this ).html("<i class='icon ion-person-add green'></i> Following")
     }
   );
 
   $('.interested').hover(
     function() {
-      $( this ).html("<i class='icon ion-flask green'></i> Interested")
+      $( this ).html("<i class='icon ion-person-add green'></i> Follow")
     }, function() {
-      $( this ).html("<i class='icon ion-flask'></i> Interested")
+      $( this ).html("<i class='icon ion-person-add'></i> Follow")
     }
   );
 });

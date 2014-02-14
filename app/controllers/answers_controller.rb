@@ -32,6 +32,7 @@ class AnswersController < ApplicationController
   # GET /answers/1/edit
   def edit
     @answer = Answer.find(params[:id])
+    @post = @answer.post
   end
 
   # POST /answers
@@ -61,14 +62,15 @@ class AnswersController < ApplicationController
     @answer = Answer.find(params[:id])
     @post = @answer.post
 
+    if params[:answer][:accepted] == "true"
+      @post.answers.where(accepted: true).each { |a| a.update_attributes(accepted: false) } 
+      @answer.user.update_attributes(cred_count: current_user.cred_count + 25) unless current_user == @answer.user
+    elsif params[:answer][:accepted] == "false"
+      @answer.user.update_attributes(cred_count: current_user.cred_count - 25)
+    end
+
     respond_to do |format|
       if @answer.update_attributes(params[:answer])
-        if params[:answer][:accepted] == true
-          @post.answers.where(accepted: true).each { |a| a.update_attributes(accepted: false) } 
-          @answer.user.update_attributes(cred_count: current_user.cred_count + 25)
-        elsif params[:answer][:accepted] == false
-          @answer.user.update_attributes(cred_count: current_user.cred_count - 25)
-        end
         format.html { redirect_to @post, notice: 'Answer was successfully updated.' }
         format.json { head :no_content }
       else

@@ -1,6 +1,6 @@
 <div class="match">
   <div class="row">
-    <div class="col-sm-5">
+    <div class="col-sm-4">
       <div class="match-pic">
         <%= link_to user_path(user) do %><%= medium_profile_picture(user) %><% end %></td>
       </div>
@@ -16,11 +16,17 @@
     </div>
   </div>
   <div class="row">
-  <div class="col-xs-12">
-    <%= render partial: 'users/small_follow_form', locals: { user: user } if user_signed_in? && current_user.has_image? %>
-    <%= link_to user_path(user), class:'btn btn-block btn-default' do %>
-      <i class="ion-ios7-email blue"></i> Contact
-    <% end %>
+    <section class="col-xs-12">
+      <div class="pull-right">
+        <%= render partial: 'users/follow_form', locals: { user: user } %>
+      </div>
+      <% if user.following?(current_user) || current_user.is_a_match_with?(user)%>
+        <div class="pull-right">
+          <%= link_to user_path(user), class:'btn-sm btn btn-default' do %>
+            <i class="ion-ios7-email blue"></i> Contact
+          <% end %>
+        </div>
+      <% end %>
+    </section>
   </div>
-</div>
 </div>

@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!, :load_commentable
+  before_filter :authenticate_user!
+  before_filter :load_commentable, except:[:destroy]
   
   def vote_up
     begin
@@ -118,10 +119,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment = Comment.find(params[:id])
+    @commentable = @comment.commentable
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
+      format.html { redirect_to @commentable }
       format.json { head :no_content }
     end
   end

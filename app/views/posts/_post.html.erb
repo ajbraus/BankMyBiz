@@ -1,40 +1,33 @@
 <div class="post">
   <div class="row">
-    <div class="col-xs-2 grey larger text-center">
-      <div class="row">
-        <div class="col-xs-6">
-          <% if user_signed_in? %>
-            <% unless current_user == post.user%>
-              <%= link_to vote_up_post_path(post), class:"breathing-room fade-in-green" do %>
-                <i class="icon ion-chevron-up <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"  rel="tooltip" title="+1 Cred"> </i>
-              <% end %>
-              <%= link_to vote_down_post_path(post), class:"fade-in-orange #{current_user.voted_against?(post) ? 'disabled' : ''}" do %>
-               <i class="icon ion-chevron-down <%= current_user.voted_against?(post) ? 'orange' : '' %>" rel="tooltip" title="-3 Cred"></i>
-              <% end %>
-            <% end %>
+    <div class="col-xs-1 grey larger text-center">
+      <div class="row">    
+        <div class="col-xs-12">  
+        <% if (user_signed_in? && current_user != post.user) || !user_signed_in? %>
+          <%= link_to vote_up_post_path(post), class:"breathing-room fade-in-green" do %>
+            <i class="icon ion-chevron-up <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"  rel="tooltip" title="+1 Cred"> </i>
           <% end %>
+          <%= post.plusminus %>
+          <%= link_to vote_down_post_path(post), class:"fade-in-orange #{current_user.voted_against?(post) ? 'disabled' : ''}" do %>
+           <i class="icon ion-chevron-down <%= current_user.voted_against?(post) ? 'orange' : '' %>" rel="tooltip" title="-3 Cred"></i>
+          <% end %>
+        <% end %>
         </div>
-        <div class="col-xs-6">
-          <%= post.plusminus %> Cred
-        </div>
-      </div>
-      <div class="row">
-        <%= pluralize post.impressions_count, "View" %> 
       </div>
     </div>
     <% if params[:action] == "show" %>
       <div class="col-xs-10">
-        <p><b class="large"><%= post.title %></b></p>
+        <section><b class="large"><%= post.title %></b></section>
         <% if params[:action] == "show" %>
-          <%= auto_link(@post.content, html: { target: '_blank' }) %>
+          <%= auto_link(post.content, html: { target: '_blank' }) %>
         <% end %>
       </div>
     <% else %>
       <%= link_to post, class:"title" do %>
         <div class="col-xs-10">
-          <p><b class="large"><%= post.title %></b></p>
+          <section><b class="large"><%= post.title %></b></section>
           <% if params[:action] == "show" %>
-            <%= auto_link(@post.content, html: { target: '_blank' }) %>
+            <%= auto_link(post.content, html: { target: '_blank' }) %>
           <% end %>
         </div>
       <% end %>
@@ -71,26 +64,35 @@
       </div>
     </div>
     <section class='col-sm-7 text-right'>
-      <a href="mailto:?subject=Interesting Post&body=Here is a post from Bankmybiz.com I thought you'd like%0D%0A%0D%0A<%= post.content %>%0D%0A%0D%0ABy: <%= post.user.first_name_with_last_initial %>" class="btn btn-default btn-xs btn-rounded"><i class="icon ion-ios7-email-outline"></i> email</a>
-      <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>" target='_blank'>
-        <span class="btn btn-xs btn-rounded btn-twitter"><i class="icon ion-social-twitter"></i> tweet
-      </a>
-      <a href="#" 
-        onclick="
-          window.open(
-            'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
-            'facebook-share-dialog', 
-            'width=626,height=436'); 
-          return false;" class="no-text-decoration">
-        <span class="btn btn-xs btn-rounded btn-facebook"><i class="icon ion-social-facebook"></i> share</span>
-      </a>
-      <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.content %>&source=Bankmybiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
-        <span class="btn btn-xs btn-rounded btn-linkedin"><i class="icon ion-social-linkedin"> post</i>
-      </a>
+      <div class="row">
+        <div class="col-xs-12">
+          <a href="mailto:?subject=Interesting Post&body=Here is a post from Bankmybiz.com I thought you'd like%0D%0A%0D%0A<%= post.title %>%0D%0A%0D%0A<%= post.content %>%0D%0A%0D%0A<%= post.tags.map(&:name).join(', ')%>%0D%0A%0D%0ABy: <%= post.user.first_name_with_last_initial %>" class="btn btn-default btn-xs btn-rounded"><i class="icon ion-ios7-email-outline"></i> email</a>
+          <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>&hashtags=Interests Keywords: <%= post.tags.map(&:name).join(',')%>" target='_blank'>
+            <span class="btn btn-xs btn-rounded btn-twitter"><i class="icon ion-social-twitter"></i> tweet
+          </a>
+          <a href="#" 
+            onclick="
+              window.open(
+                'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+                'facebook-share-dialog', 
+                'width=626,height=436'); 
+              return false;" class="no-text-decoration">
+            <span class="btn btn-xs btn-rounded btn-facebook"><i class="icon ion-social-facebook"></i> share</span>
+          </a>
+          <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.title + " " + post.tags.map(&:name).join(", ") %>&source=Bankmybiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
+            <span class="btn btn-xs btn-rounded btn-linkedin"><i class="icon ion-social-linkedin"> post</i>
+          </a>
+        </div>
+      </div>
+      <section class="row text-muted">
+        <div class="col-xs-12">
+          <%= pluralize post.answers.count, "Answer" %> | <%= pluralize post.impressions_count, "View" %>
+        </div>
+      </section>
     </section>
   </div>
   <% if params[:action] == "show" %>
-    <%= render partial: 'comments/form', locals: { commentable: @post } %>
+    <%= render partial: 'comments/form', locals: { commentable: post } %>
   <% end %>
 </div>
 <div class="hr-line"></div>

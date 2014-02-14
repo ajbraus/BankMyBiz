@@ -1,6 +1,6 @@
 <%= form_for(current_user.relationships.build(followed_id: user.id)) do |f| %>
   <span><%= f.hidden_field :followed_id %></span>
-  <button class="btn-default btn btn-lg btn-block interested">
-    <i class="icon ion-flask"></i> Interested
+  <button class="btn-default btn-sm btn interested">
+    <i class="icon ion-person-add"></i> Follow
   </button>
 <% end %>

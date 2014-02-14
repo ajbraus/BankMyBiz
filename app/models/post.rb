@@ -18,7 +18,7 @@ class Post < ActiveRecord::Base
   before_save :set_last_touched
 
   def set_last_touched
-    last_touched = Time.now)
+    last_touched = Time.now
   end
 
   def increment_tag_use_count

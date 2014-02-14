@@ -5,11 +5,11 @@
         <div class="col-xs-12">  
         <% if (user_signed_in? && current_user != post.user) || !user_signed_in? %>
           <%= link_to vote_up_post_path(post), class:"breathing-room fade-in-green" do %>
-            <i class="icon ion-chevron-up <%= user_signed_in? && current_user.voted_for?(post) ? 'green' : '' %>"  rel="tooltip" title="+1 Cred"> </i>
+            <i class="icon ion-chevron-up <%= user_signed_in? && current_user.voted_for?(post) ? 'green disabled' : '' %>"  rel="tooltip" title="+1 Cred"> </i>
           <% end %>
           <%= post.plusminus %>
-          <%= link_to vote_down_post_path(post), class:"fade-in-orange #{current_user.voted_against?(post) ? 'disabled' : ''}" do %>
-           <i class="icon ion-chevron-down <%= current_user.voted_against?(post) ? 'orange' : '' %>" rel="tooltip" title="-3 Cred"></i>
+          <%= link_to vote_down_post_path(post), class:"fade-in-orange #{user_signed_in? && current_user.voted_against?(post) ? 'disabled orange' : ''}" do %>
+           <i class="icon ion-chevron-down" rel="tooltip" title="-3 Cred"></i>
           <% end %>
         <% end %>
         </div>

@@ -208,3 +208,13 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
     <% end %>
     <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
   <% end %>
+
+
+  Post.all.each do |p|
+    if p.comments.any?
+      p.last_touched_at = p.comments.first.created_at
+    else
+      p.last_touched_at = p.created_at
+    end
+    p.save
+  end

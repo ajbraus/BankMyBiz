@@ -47,6 +47,7 @@ BankMyBiz::Application.routes.draw do
   end
 
   get '/news-feed' => 'posts#index', as: 'posts'
+  post '/news-feed' => 'posts#create'
 
   root :to => 'welcome#index'
   match '/how-it-works', :to => 'welcome#how', :as => "how"

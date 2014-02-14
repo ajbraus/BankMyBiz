@@ -93,11 +93,6 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = @user.posts.build(params[:post])
-    if @user.bank?
-      @post.bank = true
-    else
-      @post.bank = false
-    end
 
     respond_to do |format|
       if @post.save
@@ -106,7 +101,7 @@ class PostsController < ApplicationController
         @user.followers.each do |f|
           Notifier.delay.new_post(f, @post)
         end
-        format.html { redirect_to root_path }
+        format.html { redirect_to @post }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { redirect_to :back, notice: 'There was a problem, please try again' }

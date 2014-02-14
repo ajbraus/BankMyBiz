@@ -9,14 +9,19 @@ String.prototype.supplant = function (o) {
 
 $(document).ready(function() {
 
+  $('body').on('click', 'a.disabled', function(event) {
+      event.preventDefault();
+  });
+  
   $('#new_user').validate({ errorPlacement: function(error, element) {} });
   $(".edit_user").validate({ errorPlacement: function(error, element) {} });
 
   $('.alert-disappear').delay(2000).fadeOut();
   $('.fadeInAlert').fadeIn();
   $('.comment-show').click(function() {
-    $(this).next('.comment-form').toggle();
-    $(this).next('.comment-form').find("#appendedInputButton").focus();
+    $('.comment-form').hide();
+    $(this).parent().next('.comment-form').toggle();
+    $(this).parent().next('.comment-form').find("#appendedInputButton").focus();
   });
 
   $("tr[data-link]").click(function() {
@@ -35,17 +40,17 @@ $(document).ready(function() {
       
   $('.not-interested').hover(
     function() {
-      $( this ).html("<i class='icon ion-flask'></i> Uninterested")
+      $( this ).html("<i class='icon ion-person-add'></i> Unfollow")
     }, function() {
-      $( this ).html("<i class='icon ion-flask green'></i> Interested")
+      $( this ).html("<i class='icon ion-person-add green'></i> Following")
     }
   );
 
   $('.interested').hover(
     function() {
-      $( this ).html("<i class='icon ion-flask green'></i> Interested")
+      $( this ).html("<i class='icon ion-person-add green'></i> Follow")
     }, function() {
-      $( this ).html("<i class='icon ion-flask'></i> Interested")
+      $( this ).html("<i class='icon ion-person-add'></i> Follow")
     }
   );
 });

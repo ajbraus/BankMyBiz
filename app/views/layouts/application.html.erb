@@ -90,9 +90,17 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
+            <% if false %>
             <li>
-              <%= link_to 'How it Works', how_path, class:"little" %>
-              <% if params[:controller] == "welcome" && params[:action] == "how" %>
+              <%= link_to 'About', about_path, class:"little" %>
+              <% if params[:controller] == "welcome" && params[:action] == "about" %>
+                <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
+              <% end %>
+            </li>
+            <% end %>
+            <li>
+              <%= link_to 'Team', team_path, class:"little" %>
+              <% if params[:controller] == "welcome" && params[:action] == "team" %>
                 <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
               <% end %>
             </li>
@@ -105,28 +113,39 @@
             <li>
               <%= link_to 'Blog', "http://blog.bankmybiz.com", class:"little", target:"_blank" %>
             </li>
+            <li class="dropdown">
+              <!-- <a data-toggle="dropdown" href="#">Funding Options <i class="icon ion-arrow-down-b"></i></a> -->
+              <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li>
+                  <a href="#">SBA</a>
+                </li>
+                <li>
+                  <a href="#">SBA</a>
+                </li>
+                <li>
+                  <a href="#">SBA</a>
+                </li>
+                <li class="divider"></li>
+                <li>
+                  <a href="#">SBA</a>
+                </li>
+                <li>
+                  <a href="#">SBA</a>
+                </li>
+                <li>
+                  <a href="#">SBA</a>
+                </li>
+                <li>
+                  <a href="#">SBA</a>
+                </li>
+              </ul>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <% if false %>
             <li class="down">
-              <strong class='large'>(312) 806 - 0208</strong>
+              <strong><i class="icon ion-ios7-telephone"></i> (312) 806 - 0208 | </strong> 
             </li>
-            <% end %>
             <% if user_signed_in? %>
-              <li>  
-                <% if current_user.finished_profile? %>
-                  <%= link_to new_purchase_path do %>
-                  Buy Matches - <span class='red'>New</span>
-                  <% end %>
-                <% else %>
-                  <%= link_to edit_profile_path(current_user) do %>
-                  Buy Matches - <span class='red'>New</span>
-                  <% end %>
-                <% end %>
-                <% if params[:controller] == "purchases" && params[:action] == "new" %>
-                  <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
-                <% end %>
-              </li>
               <li>
                 <%= link_to root_path, rel:"tooltip", title:"News Feed", data: {placement: "bottom"} do %>
                   <i class="big-icon icon ion-ios7-chatboxes-outline"></i>
@@ -151,8 +170,8 @@
               </li>
               <% if current_user.followed_users.any? %>
               <li>
-                <%= link_to favorites_path, rel:"tooltip", title:"Interested", data: {placement: "bottom"} do %>
-                  <i class="big-icon icon ion-flask"></i>
+                <%= link_to favorites_path, rel:"tooltip", title:"Following", data: {placement: "bottom"} do %>
+                  <i class="big-icon icon ion-ios7-personadd-outline"></i>
                 <% end %>
                 <% if params[:controller] == "favorites" && params[:action] == "index" %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
@@ -160,7 +179,7 @@
               </li>
               <% end %>
               <li>
-                <%= link_to messages_path, rel:"tooltip", title:"Contacts", data: {placement: "bottom"} do %>
+                <%= link_to messages_path, rel:"tooltip", title:"Messages", data: {placement: "bottom"} do %>
                   <% if current_user.unread_messages.any? %>
                     <i class="big-icon icon ion-ios7-email"></i> <span class="message-count"><%= current_user.unread_messages.count %></span> 
                   <% else %>
@@ -180,7 +199,7 @@
               <% end %>
               <li>
                 <%= link_to user_path(current_user) do %>
-                  Me
+                  <%= current_user.first_name_with_last_initial %> - <%= current_user.cred_count %> Cred 
                 <% end %>
                 <% if @user.present? && @user == current_user %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
@@ -233,6 +252,14 @@
           </li>
           <li>
             <a href="mailto:team@bankmybiz.com?subject=I have a question for Bankmybiz.com">Contact Us</a>
+          </li>
+          <li>
+            <%= link_to 'About', how_path, class:"little" %>
+            <% if false %>
+            <% if params[:controller] == "welcome" && params[:action] == "how" %>
+              <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
+            <% end %>
+            <% end %>
           </li>
           <li>
             <%= link_to "Terms & Conditions", terms_path %>

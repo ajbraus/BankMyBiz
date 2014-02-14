@@ -1,18 +1,32 @@
 class Post < ActiveRecord::Base
   include PublicActivity::Common
   belongs_to :user
-  has_many :committed_users, through: :commitments
   has_and_belongs_to_many :tags
+  has_many :answers, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   
-  has_many :comments, as: :commentable
-  has_many :likes, as: :likeable
-
+  is_impressionable :counter_cache => true
   acts_as_voteable
   
-  attr_accessible :content,
+  attr_accessible :title,
+                  :content,
                   :tag_list
 
-  validates :content, presence: true
+  validates :title, :content, presence: true
+
+  after_create :increment_tag_use_count
+  before_save :set_last_touched
+
+  def set_last_touched
+    update_attributes(last_touched: Time.now)
+  end
+
+  def increment_tag_use_count
+    tags.each do |t|
+      t.use_count += 1
+      t.save
+    end
+  end
 
   def nice_created_at_date
     created_at.strftime("%b %e, %Y") #May 21, 2010

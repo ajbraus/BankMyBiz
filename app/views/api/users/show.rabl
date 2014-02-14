@@ -12,7 +12,7 @@ node(:employee_sizes) { |u| u.employee_sizes.map(&:description).join(', ')}
 node(:revenue_sizes) { |u| u.revenue_sizes.map(&:description).join(', ')}
 
 
-node(:karma) { |u| u.karma + 100 }
+node(:cred_count) { |u| u.cred_count }
 node(:profile_picture_url) { |u| u.profile_picture_url }
 node(:matches_count) { |u| u.matches.count }
 

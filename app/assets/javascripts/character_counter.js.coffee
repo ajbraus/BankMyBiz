@@ -1,17 +1,17 @@
 $ ->
-  $('#newPostContent').keyup ->
+  $('#newPostTitle').keyup ->
     content_length = $(@).val().length
-    $('#postCharCount').text(content_length)
+    $('#titleCharCount').text(content_length)
     if content_length > 249
-      $('#postCharCount').css("color", "#CD0000");
+      $('#titleCharCount').css("color", "#CD0000");
       $('#submitPost').addClass('disabled')
     else
-      $('#postCharCount').css("color", "black");
+      $('#titleCharCount').css("color", "black");
       $('#submitPost').removeClass('disabled')
       
     # if content_length > 229
-    #   $('#newPostContent').keydown (e) ->
+    #   $('#newPostTitle').keydown (e) ->
     #     e.preventDefault();
     #     return false;
     # else
-    #   $('#newPostContent').keydown(true)
+    #   $('#newPostTitle').keydown(true)

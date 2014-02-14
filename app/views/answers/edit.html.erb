@@ -1,0 +1,23 @@
+<div class="col-sm-8">
+  <section>
+    <%= link_to :back, class:'btn btn-default' do %>
+      <i class="icon ion-ios7-arrow-back"></i> Post
+    <% end %>
+  </section>
+  <section>
+    <%= render partial: 'posts/post', locals: { post: @post } %>
+    <%= form_for [@post, @answer] do |f| %>
+      <div class="col-xs-12">
+        <%= f.text_area :body, class:'form-control', id:"appendedInputButton", placeholder:"Post your Advice" %>
+        <section>
+          <button name="commit" type="submit" value="Create Comment" class="btn btn-success pull-right" rel="tooltip" title="+10 Cred">
+            <i class="icon ion-chatbox"></i> Give Advice
+          </button>
+        </section>
+      </div><!-- /input-group -->
+    <% end %>
+  </section>
+  </div>
+  <%= render 'shared/right_sidebar' %>
+</div>
+

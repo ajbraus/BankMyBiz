@@ -1,9 +1,10 @@
-<% content_for :title, "Interested" %>
+<% content_for :title, "Following" %>
 
-<%= render 'shared/left_sidebar' %>
-
-<div class="col-sm-6 clearfix">
-    <%= render partial: 'matches/match', collection: @favorites, as: 'match' %>
+<div class="col-sm-8 clearfix">
+  <div class="col-sm-12 clearfix">
+    <h3>Following <span class="text-muted smallest">Follow funders to get start conversations and get updates.</span></h3>
+  </div>
+  <%= render partial: 'matches/match', collection: @favorites, as: 'match' %>
 </div>
 
 <%= render 'shared/right_sidebar' %>

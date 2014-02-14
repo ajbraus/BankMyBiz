@@ -30,9 +30,19 @@
             </tr>
           </table>
         </div>
-        <div class="col-sm-5 col-sm-offset-1">
+        <div class="col-sm-5 col-sm-offset-2">
           <%= f.label :status, "Your Match Status*" %>
           <%= f.select :status, options_for_select(["Actively Looking", "Offers Welcome", "Just Browsing"], @user.status), {}, class:'form-control' %>   
+          <% if !@user.bank? %>
+            <section>
+              <%= f.label :loan_size_ids, "Financing Sought*" %>
+              <% if @user.loan_sizes.any? %>
+              <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}, [@user.loan_sizes.first.description, @user.loan_sizes.first.id]), { prompt:"Dollar Amount" }, class:'form-control required' %>
+              <% else %>
+                <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}), { prompt:"Dollar Amount" }, class:'form-control required' %>   
+              <% end %> 
+            </section>
+          <% end %>
         </div>
       </div>
       <div class="row">
@@ -61,7 +71,7 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-xs-12">
+            <div class="col-sm-9">
               <label>
                 <%= current_user.bank? ? "Do You Require Customers to have Filed 2 Years of Tax Returns?*" : "Has Your Business Filed 2 Years of Business Tax Returns?*" %> 
               </label></br>
@@ -73,6 +83,17 @@
                 <%= f.radio_button :two_years, false %>
                 No
               </label>
+            </div>
+            <div class="col-sm-3">
+              <%= f.label :customer_type_ids, "Customers*" %>
+              <div>
+              <% for customer_type in CustomerType.find(:all) %>
+                <label>
+                  <%= check_box_tag "user[customer_type_ids][]", customer_type.id, @user.customer_types.include?(customer_type), class:"required" %>
+                  <%= customer_type.description %>
+                </label>
+              <% end %> 
+              </div>
             </div>
           </div>
           <div class="row">
@@ -124,33 +145,12 @@
                 <% end %> 
               </div>
             </div>
-            <div class="row">
-              <div class="col-sm-3">
-                <%= f.label :customer_type_ids, "Customers*" %>
-                <div>
-                <% for customer_type in CustomerType.find(:all) %>
-                  <label>
-                    <%= check_box_tag "user[customer_type_ids][]", customer_type.id, @user.customer_types.include?(customer_type), class:"required" %>
-                    <%= customer_type.description %>
-                  </label>
-                <% end %> 
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <%= f.label :loan_size_ids, "Financing Sought*" %>
-                <% if @user.loan_sizes.any? %>
-                <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}, [@user.loan_sizes.first.description, @user.loan_sizes.first.id]), { prompt:"Dollar Amount" }, class:'form-control required' %>
-                <% else %>
-                  <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}), { prompt:"Dollar Amount" }, class:'form-control required' %>   
-                <% end %> 
-              </div>
-            </div>
         <% else %>
           </div>
         <% end %>
         <div class='row'>
           <div class="col-sm-6">
-            <%= f.label :bio, "What Makes #{current_user.bank? ? 'You A Great Banker*' : 'You Great*'}?*" %>
+            <%= f.label :bio, "What Makes #{current_user.bank? ? 'You A Great Banker' : 'You Great'}?*" %>
             <%= f.text_area :bio, class:"form-control required" %> 
           </div>
           <div class="col-sm-6">

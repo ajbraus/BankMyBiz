@@ -56,17 +56,6 @@ old code
   <div class="line"></div>
 </div>
 
-<% if false %>
-<%= form_tag root_path, :method => :get, class:"form-search" do %>
-  <div class="input-append">
-    <%= text_field_tag :search, params[:search], class:"span2 search-query", placeholder:"News Feed Search. . ." %>
-    <button class="btn btn-success" type="submit">
-      <i class="icon-search"></i>
-    </button>
-  </div>
-<% end %>
-<% end %>
-
 data-spy="affix" data-offset-top="90" data-offset-bottom="200" 
 
       <div class="fb-like" data-href="https://www.facebook.com/pages/Bankmybiz/451357408284592" data-width="350" data-show-faces="true" data-send="false"></div>
@@ -109,3 +98,113 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
       end
     end
   end
+
+  <li>  
+    <% if current_user.finished_profile? %>
+      <%= link_to new_purchase_path do %>
+      Buy Matches - <span class='red'>New</span>
+      <% end %>
+    <% else %>
+      <%= link_to edit_profile_path(current_user) do %>
+      Buy Matches - <span class='red'>New</span>
+      <% end %>
+    <% end %>
+    <% if params[:controller] == "purchases" && params[:action] == "new" %>
+      <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
+    <% end %>
+  </li>
+
+
+  <% else %>
+      <h4>Bankmybiz 360&deg;</h4>
+      <strong class="text-center small">
+        Subscribe To Know Who . . . 
+      </strong>
+    <div class="match">
+      <h5><%= pluralize(current_user.karma, "Vote", "Votes") %> <i class="icon ion-plus"></i></h5>
+      <div class="muted small up">gave you Votes </div>
+      <h5><%= pluralize(current_user.impressions_count, 'View', 'Views') %> <i class="icon ion-eye"></i></h5>
+      <div class="muted small up"> viewed your Profile</div>
+      <h5><%= current_user.followers.count %> Interested in You <i class="icon ion-flask"></i></h5>
+      <div class="muted small up">favorited You</div>
+    </div>
+      <% unless current_user.bank == nil %>
+        <% if current_user.bank? %>
+          <li> 
+            <div class="small muted">3 month package</div>
+            <div class="price"><strong>$149.99</strong> / month</div>
+            <div class="save"></div>
+            <%= link_to new_subscription_path(plan_id: 4), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+          <div class="hr-line"></div>
+          <li> 
+            <div class="small muted">6 month package</div>
+            <div class="price"><strong>$112.99</strong> / month</div>
+            <div class="save"></div>
+            <%= link_to new_subscription_path(plan_id: 5), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+          <div class="hr-line"></div>
+          <li> 
+            <div class="small muted">1 year package</div>
+            <div class="price"><strong>$74.99</strong> / month</div>
+            <div class="save"></div>
+            <%= link_to new_subscription_path(plan_id: 6), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+        <% else %>
+          <li>
+            <div class="small muted">1 month package</div>
+            <div class="price"><strong>$49.99</strong> / month</div>
+            <div class="save"></div>
+            <%= link_to new_subscription_path(plan_id: 1), class:"btn btn-success btn-small btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+          <div class="hr-line"></div>
+          <li> 
+            <div class="small muted">3 month package</div>
+            <div class="price"><strong>$37.99</strong> / month</div>
+            <div class="save">Save 25%</div>
+            <%= link_to new_subscription_path(plan_id: 2), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+          <div class="hr-line"></div>
+          <li> 
+            <div class="small muted">6 month package</div>
+            <div class="price"><strong>$24.99</strong> / month</div>
+            <div class="save">Save 50%</div>
+            <%= link_to new_subscription_path(plan_id: 3), class:"btn btn-success btn-small" do %>
+              Subscribe <i class="icon-white"></i>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+    <hr>
+  <% end %>
+
+
+  <% if user_signed_in? %>
+    <section class="well">
+      <h4>Get Free Matches</h4>
+      <a data-toggle="modal" data-target="#invite-modal" class="btn btn-default btn-lg btn-block">Invite | <i class="icon ion-ios7-email-outline"></i></a>
+      <section class="muted small">Receive a Free Match When Someone You Invite Registers</section>
+    </section>
+  <% end %>
+
+
+    <% if @user == current_user %>
+    <h4>Your Activity <div class="muted small">(private)</div></h4>
+    <% @activities.each do |activity| %>
+      <div class="activity">
+      <%= link_to activity.owner.name, activity.owner if activity.owner %>
+      <%= render_activity activity %>
+      </div>
+    <% end %>
+    <%= will_paginate @activities, renderer: BootstrapPagination::Rails %>
+  <% end %>

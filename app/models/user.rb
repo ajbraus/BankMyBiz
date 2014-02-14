@@ -41,12 +41,14 @@ class User < ActiveRecord::Base
                   :status,
                   :hq_state,
                   :stripe_customer_id,
-                  :two_years
+                  :two_years,
+                  :cred_count
 
   is_impressionable :counter_cache => true, :unique => :user_id
 
   acts_as_voter
   has_karma(:posts)
+  has_karma(:answers)
   has_karma(:comments)
 
   has_many :subscriptions
@@ -121,6 +123,28 @@ class User < ActiveRecord::Base
   after_invitation_accepted :create_welcome_message
   after_invitation_accepted :set_username
 
+  def background_color
+    if status = "Actively Looking"
+      return "rgba(0, 158, 0, 0.72)"
+    elsif status = "Offers Welcome"
+      return "rgba(255, 215, 0, 0.6)"
+    elsif status = "Just Browsing"
+      return "rgba(0, 90, 255, 0.48)"
+    else
+    end
+  end
+
+  def status_class
+    if status = "Actively Looking"
+      return "text-success"
+    elsif status = "Offers Welcome"
+      return "text-warning"
+    elsif status = "Just Browsing"
+      return "text-info"
+    else
+    end
+  end
+
   def email_invited_by
      inviter = self.invited_by
      inviter.reward_a_match
@@ -144,6 +168,10 @@ class User < ActiveRecord::Base
     "#{id} #{username}".parameterize
   end
 
+  def is_a_match_with?(other_user)
+    return other_user.in?(self.matched_users)
+  end
+
   def create_welcome_message 
     if self.name.present?
       michael = User.find_by_email("michael@bankmybiz.com")
@@ -151,7 +179,7 @@ class User < ActiveRecord::Base
         Message.create(
           subject: "Welcome to Bankmybiz",
           body: "#{self.first_name}," + "\n\n" + 
-                "Thanks for joining the Bankmybiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use Bankmybiz's private and secure messaging system to ask questions like 'What is your biggest challenge recently?' or 'What is your biggest goal for your business?'." + "\n\n" +
+                "Thanks for joining the Bankmybiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use the Bankmybiz's public News Feed and private secure messaging system to ask questions about your biggest challenges or about how to achieve your biggest goals'." + "\n\n" +
                 "The Bankmybiz matching algorithm matches you with people who want to connect with you. You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n\n" +
                 "Post to the News Feed to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
                 "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for Bankmybiz 360&deg; to get 360&deg; of the activity happening on Bankmybiz." + "\n\n\n" +

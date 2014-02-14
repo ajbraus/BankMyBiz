@@ -1,10 +1,16 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!, except: [:show]
+  before_filter :authenticate_user!, except: [:show, :index]
+  impressionist :actions=>[:show]
 
   def vote_up
     begin
       current_user.vote_exclusively_for(@post = Post.find(params[:id]))
       @post.create_activity :voted_up, owner: current_user
+      @post.update_attributes(last_touched: Time.now)
+
+      @user = @post.user
+      @user.update_attributes(cred_count: @user.cred_count + 1)
+
       redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
@@ -15,6 +21,11 @@ class PostsController < ApplicationController
     begin
       current_user.vote_exclusively_against(@post = Post.find(params[:id]))
       @post.create_activity :voted_down, owner: current_user
+      @post.update_attributes(last_touched: Time.now)
+      
+      @user = @post.user
+      @user.update_attributes(cred_count: @user.cred_count - 3)
+
       redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
@@ -28,18 +39,15 @@ class PostsController < ApplicationController
       flash.now[:warning] = "We're sorry, an error occured."
     end
 
-    is_bank = !current_user.bank?
     if params[:search].present?
-      #@posts = Post.search(params[:search], with: { bank: is_bank }, :page => params[:page], :per_page => 20)
-      @posts = Post.search(params[:search], :page => params[:page], :per_page => 10)
+      @posts = Post.search(params[:search], :page => params[:page], :per_page => 10, order: 'created_at DESC')
+      @active = Post.search(params[:search], :page => params[:page], :per_page => 10, order: 'last_touched_at DESC')
     else
-      #@posts = Post.where(bank: is_bank).order('created_at desc').paginate(:page => params[:page], :per_page => 20)
       @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
+      @active = Post.order('last_touched_at desc').paginate(:page => params[:page], :per_page => 10)
     end
-    
-    @new_post = Post.new
-    @recent_messages = current_user.messages.first(3)
-    @following_users = current_user.followed_users
+
+    #@unanswered = @posts.select { |p| p.answers.none? }.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # new.html.erb
@@ -67,8 +75,7 @@ class PostsController < ApplicationController
   # GET /posts/new
   # GET /posts/new.json
   def new
-    @user = current_user
-    @post = @user.posts.build
+    @post = current_user.posts.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -94,6 +101,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
+        current_user.update_attributes(cred_count: current_user.cred_count + 10)
         @post.create_activity :create, owner: current_user
         @user.followers.each do |f|
           Notifier.delay.new_post(f, @post)
@@ -127,7 +135,10 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post = Post.find(params[:id])
+    @user = @post.user
     @post.destroy
+
+    @user.update_attributes(cred_count: current_user.cred_count - 10)
 
     respond_to do |format|
       format.html { redirect_to posts_url }

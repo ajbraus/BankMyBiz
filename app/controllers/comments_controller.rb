@@ -1,10 +1,15 @@
 class CommentsController < ApplicationController
-  before_filter :authenticate_user!, :load_commentable
+  before_filter :authenticate_user!
+  before_filter :load_commentable, except:[:destroy]
   
   def vote_up
     begin
       current_user.vote_exclusively_for(@comment = Comment.find(params[:id]))
       @comment.create_activity :voted_up, owner: current_user
+
+      @user = @comment.commentable.user
+      @user.update_attributes(cred_count: @user.cred_count + 1)
+
       redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
@@ -15,6 +20,10 @@ class CommentsController < ApplicationController
     begin
       current_user.vote_exclusively_against(@comment = Comment.find(params[:id]))
       @comment.create_activity :voted_down, owner: current_user
+      
+      @user = @comment.commentable.user
+      @user.update_attributes(cred_count: @user.cred_count - 3)
+      
       redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
@@ -63,6 +72,12 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = @commentable.comments.new(params[:comment])
+
+    if @commentable.class.name == "Post"
+      @redirect = @commentable
+    else
+      @redirect = @commentable.post
+    end
     @comment.user = current_user
 
     respond_to do |format|
@@ -75,10 +90,10 @@ class CommentsController < ApplicationController
           end
         end
       
-        format.html { redirect_to root_path }
+        format.html { redirect_to @redirect, notice: "Comment created successfully" }
         format.json { render json: @comment, status: :created, location: @comment }
       else
-        format.html { render action: "new" }
+        format.html { redirect_to @commentable, notice: "There was a problem creating your comment. Please try again."}
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
     end
@@ -104,10 +119,11 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @comment = Comment.find(params[:id])
+    @commentable = @comment.commentable
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to comments_url }
+      format.html { redirect_to @commentable }
       format.json { head :no_content }
     end
   end

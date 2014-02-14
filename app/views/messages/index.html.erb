@@ -1,8 +1,9 @@
 <% content_for :title, "Messages" %>
 
-<%= render 'shared/left_sidebar' %>
-
-<section class="col-sm-6">
+<section class="col-sm-8">
+  <div class="col-sm-12 clearfix">
+    <h3>Messages <span class="text-muted smallest">You're messages inbox.</span></h3>
+  </div>
   <div class="tabbable"> <!-- Only required for left/right tabs -->
     <ul class="nav nav-tabs">
       <li class="active"><a href="#tab1" data-toggle="tab">Inbox (<%= current_user.unread_messages.count %>)</a></li>

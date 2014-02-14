@@ -4,6 +4,9 @@ class WelcomeController < ApplicationController
 	end
   def about
   end
+
+  def team
+  end
   
   def how
   end

@@ -1,8 +1,9 @@
 <% content_for :title, "Matches" %>
 
-<%= render 'shared/left_sidebar' %>
-
-<div class="col-sm-6 clearfix">
+<div class="col-sm-8 clearfix">
+  <div class="col-sm-12 clearfix">
+    <h3>Funder Matches <span class="text-muted smallest">Find Funders that Match your Business.</span></h3>
+  </div>
   <div class="buy-matches gray-border-left well">
     <div class="clearfix">
       <% if !current_user.finished_profile? %>

@@ -4,8 +4,7 @@ class AddTitleToPosts < ActiveRecord::Migration
     remove_column :posts, :bank
 
     Post.all.each do |p|
-      p.title = p.content[0,155] + " ... "
-      p.save
+      p.update_attributes(title: p.content[0,155] + " ...")
     end
   end
 end

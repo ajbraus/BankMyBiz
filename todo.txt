@@ -2,6 +2,8 @@ Products
   - Create Products (with SEO on pages)
   - with data model ready to change the matching algo
 
+increment use_count on tag
+
 SEO 
   - update per page SEO
   - add baller footer

@@ -16,12 +16,12 @@
       </div>
     </div>
     <% if params[:action] == "show" %>
-      <div class="col-xs-10">
+      <p class="col-xs-10">
         <section><b class="large"><%= post.title %></b></section>
         <% if params[:action] == "show" %>
           <%= auto_link(post.content, html: { target: '_blank' }) %>
         <% end %>
-      </div>
+      </p>
     <% else %>
       <%= link_to post, class:"title" do %>
         <div class="col-xs-10">

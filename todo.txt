@@ -1,5 +1,3 @@
-search & new post
-
 Products
   - Create Products (with SEO on pages)
   - with data model ready to change the matching algo

@@ -1,7 +1,15 @@
 <div class="tag-cloud text-left">
-  <h4>Following Interests</h4>
-  <% Tag.order('use_count DESC').first(18).shuffle.each do |t| %>
-    <%= link_to "##{t.name} x #{t.use_count}", posts_path(search: t.name), class:"tag clickable-tag" %>
+  <% if user_signed_in? %>
+    <h4>Interests you Follow</h4>
+<!--       <div class="input-group">
+        <input type="text" class="form-control">
+        <span class="input-group-btn">
+          <button class="btn btn-success" type="button">Follow</button>
+        </span>
+      </div> -->
+    <% current_user.tags.last(8).each do |t| %>
+      <%= link_to "##{t.name} x #{t.use_count}", posts_path(search: t.name), class:"tag clickable-tag" %>
+    <% end %>
   <% end %>
   <h4>Trending Interests</h4>
   <% Tag.order('use_count DESC').first(18).shuffle.each do |t| %>

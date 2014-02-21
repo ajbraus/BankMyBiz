@@ -1,0 +1,1 @@
+<a href="mailto:?subject=Interesting Post&body=Here is a post from Bankmybiz.com I thought you'd like%0D%0A%0D%0A<%= post.title %>%0D%0A%0D%0A<%= post.content %>%0D%0A%0D%0A<%= post.tags.map(&:name).join(', ')%>%0D%0A%0D%0ABy: <%= post.user.first_name_with_last_initial %>" class="btn btn-default btn-xs btn-rounded"><i class="icon ion-ios7-email-outline"></i> email</a>

@@ -5,6 +5,13 @@ class Notifier < ActionMailer::Base
   layout 'email' # use email.(html|text).erb as the layout for emails
   default from: "Bankmybiz"
 
+  def tag_follower_update(user, tag, post)
+    @user = user
+    @tag = tag
+    @post = post
+    mail to: @user.email, subject: "#{post.user.first_name_with_last_initial} just asked about #{@tag.name}. Give them some expert advice."
+  end
+
   def internal_new_user(user)
     @user = user
     mail to: "team@bankmybiz.com", subject: "New User to Confirm or Reject"

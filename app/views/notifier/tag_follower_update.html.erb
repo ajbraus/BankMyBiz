@@ -1,0 +1,36 @@
+<h4 class="h4"><%= @user.first_name.titleize %>, </h4>
+<p>
+  <%= @post.user.first_name_with_last_initial %> just posted a question to the News Feed on Bankmybiz.com about one of your interests: <b><%= @tag.name %></b>.
+</p>
+
+<p>
+  <table>
+    <tr>
+      <td><img src="<%= image_url(@post.user) %>" width="50" style='margin-right:10px; border-radius:100px;vertical-align:top;'></td>
+      <td>
+        <p>
+          <b><%= @post.title %></b>
+        </p>
+        <p class="post-content">
+          <%= auto_link(@post.content, html: { target: '_blank' }) %>
+        </p>
+        <p class="text-left">
+          <%= raw @post.tags.map(&:name).map { |t| content_tag(:span, t, style:"background:#009E3B;padding:3px 7px;color:white;font-size:90%;") }.join(' ') %>
+        </p>
+        <p style="text-align:right;font-size:90%;color:grey;">
+          posted <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.first_name_with_last_initial if @post.user %>
+        </p>
+        <p class='text-right'>
+          <%= render partial: 'shared/share_email_btn', locals: { post: @post } %>
+          <%= render partial: 'shared/share_twitter_btn', locals: { post: @post } %>
+          <%= render partial: 'shared/share_fb_btn', locals: { post: @post } %>
+          <%= render partial: 'shared/share_linkedin_btn', locals: { post: @post } %>
+        </p>
+      </td>
+    </tr>
+  </table>
+</p>
+
+<p>
+  <strong>Tip</strong> - Post questions to the News Feed and answer unanswered questions to improve your profile, create conversations, and earn bucks. Try posting interesting links, wins, and your industry expertise.
+</p>

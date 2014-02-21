@@ -1,5 +1,5 @@
 Q&A
-  - follow tags
+  - follow questions, tags - favorites
 
 Products
   - Create Products (with SEO on pages)

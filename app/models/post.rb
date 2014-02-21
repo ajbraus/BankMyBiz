@@ -17,6 +17,14 @@ class Post < ActiveRecord::Base
   after_create :increment_tag_use_count
   before_save :set_last_touched
 
+  def send_update_to_tag_followers
+    tags.each do |t|
+      t.users.each do |u|
+        Notifier.delay.tag_follower_update(u, t, self)
+      end
+    end
+  end
+
   def set_last_touched
     last_touched = Time.now
   end

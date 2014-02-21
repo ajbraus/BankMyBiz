@@ -56,22 +56,10 @@
     <section class='col-sm-7 text-right'>
       <div class="row">
         <div class="col-xs-12">
-          <a href="mailto:?subject=Interesting Post&body=Here is a post from Bankmybiz.com I thought you'd like%0D%0A%0D%0A<%= post.title %>%0D%0A%0D%0A<%= post.content %>%0D%0A%0D%0A<%= post.tags.map(&:name).join(', ')%>%0D%0A%0D%0ABy: <%= post.user.first_name_with_last_initial %>" class="btn btn-default btn-xs btn-rounded"><i class="icon ion-ios7-email-outline"></i> email</a>
-          <a href="https://twitter.com/share?url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&text=<%= post.content %>&hashtags=Interests Keywords: <%= post.tags.map(&:name).join(',')%>" target='_blank'>
-            <span class="btn btn-xs btn-rounded btn-twitter"><i class="icon ion-social-twitter"></i> tweet
-          </a>
-          <a href="#" 
-            onclick="
-              window.open(
-                'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
-                'facebook-share-dialog', 
-                'width=626,height=436'); 
-              return false;" class="no-text-decoration">
-            <span class="btn btn-xs btn-rounded btn-facebook"><i class="icon ion-social-facebook"></i> share</span>
-          </a>
-          <a href="http://www.linkedin.com/shareArticle?mini=true&url=https%3A%2F%2Fwww.bankmybiz.com%2Fposts%2F<%= post.id %>&title=<%= post.title + " " + post.tags.map(&:name).join(", ") %>&source=Bankmybiz.com" rel="nofollow" onclick="NewWindow(this.href,'template_window','550','400','yes','center');return false" onfocus="this.blur()" target="_blank">
-            <span class="btn btn-xs btn-rounded btn-linkedin"><i class="icon ion-social-linkedin"> post</i>
-          </a>
+          <%= render partial: 'shared/share_email_btn', locals: { post: post } %>
+          <%= render partial: 'shared/share_twitter_btn', locals: { post: post } %>
+          <%= render partial: 'shared/share_fb_btn', locals: { post: post } %>
+          <%= render partial: 'shared/share_linkedin_btn', locals: { post: post } %>
         </div>
       </div>
       <section class="row text-muted">

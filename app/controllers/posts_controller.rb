@@ -101,6 +101,8 @@ class PostsController < ApplicationController
         @user.followers.each do |f|
           Notifier.delay.new_post(f, @post)
         end
+        @post.send_update_to_tag_followers
+        @user.tags << @post.tags
         format.html { redirect_to @post }
         format.json { render json: @post, status: :created, location: @post }
       else

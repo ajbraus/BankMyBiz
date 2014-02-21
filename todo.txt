@@ -1,5 +1,6 @@
 Q&A
   - follow tags
+    - autocomplete tags with tag-it on posts
     - add new followed tag with tag-it
     - delete followed tag
     - don't receive interests emails

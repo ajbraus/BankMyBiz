@@ -1,7 +1,7 @@
 <% 
-if @user_tags.present?
-  content_for :title, "#{@user_tags.first(3)[0].try(:normalize)} - #{@user_tags.first(3)[1].try(:normalize)} - #{@user_tags.first(3)[2].try(:normalize)} | Bankmybiz" 
-  content_for :keywords, "#{@user_tags.first(3)[0].try(:normalize)}, #{@user_tags.first(3)[1].try(:normalize)}, #{@user_tags.first(3)[2].try(:normalize)}"
+if @user.tags.present?
+  content_for :title, "#{@user.tags.first(3)[0].try(:normalize)} - #{@user.tags.first(3)[1].try(:normalize)} - #{@user.tags.first(3)[2].try(:normalize)} | Bankmybiz" 
+  content_for :keywords, "#{@user.tags.first(3)[0].try(:normalize)}, #{@user.tags.first(3)[1].try(:normalize)}, #{@user.tags.first(3)[2].try(:normalize)}"
 end
   content_for :description, "#{@user.bio[0,155]}" 
 %>
@@ -96,7 +96,7 @@ end
     <div class="well gray-border-left text-left">
       <h4><%= @user.first_name_with_last_initial %>'s Interests</h4>    
       <div class="tag-cloud">
-        <% @user_tags.each do |t| %>
+        <% @user.tags.each do |t| %>
           <%= link_to "#{t.name}", posts_path(search: t.name), class:"tag clickable-tag" %>
         <% end %>
       </div>

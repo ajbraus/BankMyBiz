@@ -91,18 +91,19 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @user = current_user
-    @post = @user.posts.build(params[:post])
+    @post = current_user.posts.build(params[:post])
 
     respond_to do |format|
       if @post.save
+        
         current_user.update_attributes(cred_count: current_user.cred_count + 10)
         @post.create_activity :create, owner: current_user
-        @user.followers.each do |f|
+        current_user.followers.each do |f|
           Notifier.delay.new_post(f, @post)
         end
         @post.delay.send_update_to_tag_followers(current_user)
-        @user.tags << @post.tags
+        current_user.tags << @post.tags
+
         format.html { redirect_to @post }
         format.json { render json: @post, status: :created, location: @post }
       else

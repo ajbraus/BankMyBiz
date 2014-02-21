@@ -26,9 +26,7 @@
   <% end %>
   <div class="row">
     <div class="col-xs-12 text-right">
-      <% post.tags.each do |t| %>
-        <%= link_to "##{t.name}", posts_path(search: t.name), class:"tag clickable-tag" %>
-      <% end %>
+      <%= render partial: 'shared/tag', collection: post.tags %>
     </div>
   </div>
   <section class="row">

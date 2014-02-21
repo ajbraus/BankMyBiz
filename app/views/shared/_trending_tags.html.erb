@@ -7,12 +7,8 @@
           <button class="btn btn-success" type="button">Follow</button>
         </span>
       </div> -->
-    <% current_user.tags.last(8).each do |t| %>
-      <%= link_to "##{t.name} x #{t.use_count}", posts_path(search: t.name), class:"tag clickable-tag" %>
-    <% end %>
+    <%= render partial: 'shared/tag', collection: current_user.tags.last(8) %>
   <% end %>
   <h4>Trending Interests</h4>
-  <% Tag.order('use_count DESC').first(18).shuffle.each do |t| %>
-    <%= link_to "##{t.name} x #{t.use_count}", posts_path(search: t.name), class:"tag clickable-tag" %>
-  <% end %>
+  <%= render partial: 'shared/tag', collection: Tag.order('use_count DESC').first(15).shuffle %>
 </div>

@@ -1,5 +1,9 @@
 Q&A
-  - follow questions, tags - favorites
+  - follow tags
+    - add new followed tag with tag-it
+    - delete followed tag
+    - don't receive interests emails
+    - don't receive answers emails
 
 Products
   - Create Products (with SEO on pages)

@@ -17,7 +17,10 @@
       <%= render partial: 'answers/answer', collection: @post.answers.where('body IS NOT NULL').order('created_at desc'), as: :answer, locals: { post: @post } %>
     <% else %>
       <div class='alert alert-warning' style="padding:10px;font-size:110%;">
-        <a href="/auth/linkedin">Connect through Linkedin</a>, <%= link_to "Sign Up", new_registration_path(resource_name) %>, or <%= link_to "Login", new_session_path(resource_name) %> to see this question's <u><strong><%= pluralize @post.answers.count, "Piece" %> of Advice</strong></u>
+        <ul>
+          <li><u><strong><%= pluralize @post.answers.count, "Piece" %> of Advice</strong></u> posted on this question.</li>
+        </ul>
+        <a href="/auth/linkedin">Connect through Linkedin</a>, <%= link_to "Sign Up", new_registration_path(resource_name) %>, or <%= link_to "Login", new_session_path(resource_name) %>
       </div>
     <% end %>
   </section>

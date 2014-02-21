@@ -1,4 +1,8 @@
 <div class="tag-cloud text-left">
+  <h4>Following Interests</h4>
+  <% Tag.order('use_count DESC').first(18).shuffle.each do |t| %>
+    <%= link_to "##{t.name} x #{t.use_count}", posts_path(search: t.name), class:"tag clickable-tag" %>
+  <% end %>
   <h4>Trending Interests</h4>
   <% Tag.order('use_count DESC').first(18).shuffle.each do |t| %>
     <%= link_to "##{t.name} x #{t.use_count}", posts_path(search: t.name), class:"tag clickable-tag" %>

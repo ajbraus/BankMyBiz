@@ -1,5 +1,23 @@
 BankMyBiz::Application.routes.draw do
 
+  resources :products, only: [:show]
+
+  match '/term_loan', to: 'products#term_loan', as: 'term_loans'
+  match '/line_of_credit', to: 'products#line_of_credit', as: 'line_of_credit'
+  match '/sba_loan', to: 'products#sba_loan', as: 'sba'
+  match '/factoring', to: 'products#factoring', as: 'factoring'
+  match '/grants', to: 'products#grants', as: 'grants'
+  match '/revenue_based', to: 'products#revenue_based', as: 'revenue_based'
+  match '/asset_based_financing', to: 'products#asset_based', as: 'asset_based'
+  match '/private_equity', to: 'products#private_equity', as: 'private_equity'
+  match '/community_development', to: 'products#community_development', as: 'community_development'
+  match '/angel_investment', to: 'products#angel_investment', as: 'angel_investment'
+  match '/venture_capital', to: 'products#venture_capital', as: 'venture_capital'
+  match '/crowd_funding_for_rewards', to: 'products#crowd_funding_for_rewards', as: 'crowd_funding_for_rewards'
+  match '/crowd_funding_for_equity', to: 'products#crowd_funding_for_equity', as: 'crowd_funding_for_equity'
+  match '/merchant_cash_advance', to: 'products#merchant_cash_advance', as: 'merchant_cash_advance'
+  match '/cash_advance_financing', to: 'products#cash_advance', as: 'cash_advance'
+
   resources :authentications, only: [:index, :create, :destroy]
 
   resources :messages

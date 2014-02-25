@@ -114,36 +114,64 @@
               <%= link_to 'Blog', "http://blog.bankmybiz.com", class:"little", target:"_blank" %>
             </li>
             <li class="dropdown">
-              <!-- <a data-toggle="dropdown" href="#">Funding Options <i class="icon ion-arrow-down-b"></i></a> -->
+              <a data-toggle="dropdown" href="#">Funding Options <i class="icon ion-arrow-down-b"></i></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                <li><div class="col-xs-12"><b>Traditional</b></div></li>
                 <li>
-                  <a href="#">SBA</a>
+                  <%= link_to 'Term Loan', term_loans_path %>
                 </li>
                 <li>
-                  <a href="#">SBA</a>
+                  <%= link_to 'Line of Credit', line_of_credit_path %>
                 </li>
                 <li>
-                  <a href="#">SBA</a>
+                  <%= link_to 'Small Business Admin', sba_path %>
                 </li>
                 <li class="divider"></li>
+                <li><div class="col-xs-12"><b>Non Traditional</b></div></li>
                 <li>
-                  <a href="#">SBA</a>
+                  <%= link_to 'Factoring', factoring_path %>
                 </li>
                 <li>
-                  <a href="#">SBA</a>
+                  <%= link_to 'Revenue Based', revenue_based_path %>
                 </li>
                 <li>
-                  <a href="#">SBA</a>
+                  <%= link_to 'Asset Based', asset_based_path %>
                 </li>
                 <li>
-                  <a href="#">SBA</a>
+                  <%= link_to 'Private Equity', private_equity_path %>
+                </li>
+                <li>
+                  <%= link_to 'Community Development', community_development_path %>
+                </li>
+                <li>
+                  <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path %>
+                </li>
+                <li>
+                  <%= link_to 'Cash Advance', cash_advance_path %>
+                </li>
+                <li>
+                  <%= link_to 'Grants', grants_path %>
+                </li>
+                <li>
+                  <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path %>
+                </li>
+                <li class="divider"></li>
+                <li><div class="col-xs-12"><b>Equity</b></div></li>
+                <li>
+                  <%= link_to 'Crowd Funding (Equity)', crowd_funding_for_equity_path %>
+                </li>
+                <li>
+                  <%= link_to 'Angel Investment', angel_investment_path %>
+                </li>
+                <li>
+                  <%= link_to 'Venture Capital', venture_capital_path %>
                 </li>
               </ul>
             </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li class="down">
-              <strong><i class="icon ion-ios7-telephone"></i> (608) 284 - 8970 | </strong> 
+              <strong><i class="icon ion-ios7-telephone"></i> 608 . 284 . 8970 | </strong> 
             </li>
             <% if user_signed_in? %>
               <li>
@@ -246,40 +274,81 @@
       </div> <!-- CONTAINER -->
       <hr>
       <footer id="footer">
-        <ul class="links">
-          <li>
-            &#169; 2013 BankMyBiz, LLC
-          </li>
-          <li>
-            <a href="mailto:team@bankmybiz.com?subject=I have a question for Bankmybiz.com">Contact Us</a>
-          </li>
-          <li>
-            <%= link_to 'About', how_path, class:"little" %>
-            <% if false %>
-            <% if params[:controller] == "welcome" && params[:action] == "how" %>
-              <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
-            <% end %>
-            <% end %>
-          </li>
-          <li>
-            <%= link_to "Terms & Conditions", terms_path %>
-          </li>
-          <li>
-            <%= link_to "Team", about_path %>
-          </li>
-          <li>
-            <%= link_to "Linkedin", "http://www.linkedin.com/company/bankmybiz-com", target:"_blank" %>
-          </li>
-          <li>
-            <%= link_to "twitter", "https://www.twitter.com/bankmybiz", target:"_blank" %>
-          </li>
-          <li>
-            <a href="https://plus.google.com/111339007136871525117" rel="publisher" target="_blank">Google+</a>
-          </li>
-          <li>
-            <%= link_to "facebook", "https://www.facebook.com/pages/Bankmybiz/451357408284592", target:"_blank" %>
-          </li>
-        </ul>
+        <div class="row">
+          <div class="col-sm-6">
+            <h4>Funding Options</h4>
+          </div>
+          <div class="col-sm-3">
+            <h4>About & Social</h4>
+          </div>
+          <div class="col-sm-3">
+            <h4>Help</h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <h5>Non-Traditional</h5>
+            <div class="list-group">
+                <%= link_to 'Factoring', factoring_path, class:"list-group-item" %>
+                <%= link_to 'Revenue Based', revenue_based_path, class:"list-group-item" %>
+                <%= link_to 'Asset Based', asset_based_path, class:"list-group-item" %>
+                <%= link_to 'Private Equity', private_equity_path, class:"list-group-item" %>
+                <%= link_to 'Community Development', community_development_path, class:"list-group-item" %>
+                <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path, class:"list-group-item" %>
+                <%= link_to 'Cash Advance', cash_advance_path, class:"list-group-item" %>
+                <%= link_to 'Grants', grants_path, class:"list-group-item" %>
+                <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item" %>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <h5>Traditional</h5>
+            <div class="list-group">
+              <%= link_to 'Term Loan', term_loans_path, class:"list-group-item" %>
+              <%= link_to 'Line of Credit', line_of_credit_path, class:"list-group-item" %>
+              <%= link_to 'Small Business Admin', sba_path, class:"list-group-item" %>
+            </div>
+            <h5>Equity</h5>
+            <div class="list-group">
+              <%= link_to 'Crowd Funding (Equity)', crowd_funding_for_equity_path, class:"list-group-item" %>
+              <%= link_to 'Angel Investment', angel_investment_path, class:"list-group-item" %>
+              <%= link_to 'Venture Capital', venture_capital_path, class:"list-group-item" %>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <h5>Social</h5>
+            <div class="list-group">
+              <%= link_to "Linkedin", "http://www.linkedin.com/company/bankmybiz-com", target:"_blank", class:"list-group-item" %>
+              <%= link_to "Twitter", "https://www.twitter.com/bankmybiz", target:"_blank", class:"list-group-item" %>
+              <a href="https://plus.google.com/111339007136871525117" rel="publisher" target="_blank" class="list-group-item">Google+</a>
+              <%= link_to "Facebook", "https://www.facebook.com/pages/Bankmybiz/451357408284592", target:"_blank", class:"list-group-item" %>
+            </div>
+            <h5>About Us</h5>
+            <div class="list-group">
+              <%= link_to 'Testimonials', testimonials_path, class:"list-group-item" %>
+              <%= link_to "Team", about_path, class:"list-group-item" %>
+              <%= link_to "Terms & Conditions", terms_path, class:"list-group-item" %>
+            </div>
+          </div>
+          <div class="col-sm-3">
+              <a href="mailto:team@bankmybiz.com?subject=I have a question for Bankmybiz.com" class="btn-lg btn btn-warning-outline">
+                <strong class="orange"><i class="icon ion-ios7-email"></i> Team@Bankmybiz.com</strong>
+              </a>
+              <br>
+              <a href="#" class="btn-lg btn btn-warning-outline">
+                <strong class="orange"><i class="icon ion-ios7-telephone"></i> 608 . 284 . 8970</strong> 
+              </a>
+              <hr>
+              <div class="text-center">
+                <br>
+                <div class="btn btn-default">Become a Certified Funder</div>
+              </div>
+              <hr>
+              <div class="text-center">
+                <br>
+                <div class="lead little">&#169; 2013 BankMyBiz, LLC</div>
+              </div>
+          </div>
+        </div>
       </footer>
     <!-- Javascripts
     ================================================== -->

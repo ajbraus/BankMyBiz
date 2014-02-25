@@ -1,5 +1,5 @@
 <%= form_for @user, url: update_profile_path(@user) do |f| %>
-    <div class="col-sm-10 col-sm-offset-1">
+    <div class="col-sm-12">
       <% if !@user.finished_profile? %>
         <div class="alert-warning profile-message">
           <p>
@@ -12,7 +12,6 @@
       <% end %>
       <h3>Your Matching Profile</h3>
       <p class="muted"> * indicates a field <strong>required</strong> to receive matches</p>
-      <p class="muted">These questions will <strong>protect your privacy</strong> while connecting you with <strong><%= @user.bank? ? "businesses" : "lenders" %> right for you.</strong></p>
       <div class="row">
         <div class="col-xs-4 col-xs-offset-1"> 
           <table>
@@ -46,7 +45,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-sm-4 clearfix">
+        <div class="col-sm-3 clearfix">
           <h4>Your Industries*
             <p class="small muted">Select at least one</p></h4>
           
@@ -59,7 +58,7 @@
               </div>
             <% end %> 
         </div>
-        <div class="col-sm-8">
+        <div class="col-sm-9">
           <div class="row">
             <div class="col-sm-6">
               <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name*" %>
@@ -160,9 +159,22 @@
         </div>
       <% if current_user.bank? %>
         <div class="row">
+          <div class="col-sm-12">
+            <h3>Types of Funding You Offer</h3>
+            <div class="muted">Choose at least one from each subheader</div>
+            <div class="row">
+              <div class="col-sm-12 products">
+                <% Product.all.each do |p| %>
+                  <span class="btn btn-default"><%= p.name %></span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
           <div class="col-sm-9">
             <h3>Describe Your Ideal Match</h3>
-            <p class="muted">Choose at least one from each subheader</p>
+            <div class="muted">Choose at least one from each subheader</div>
           </div>
         </div>
         <div class="row">

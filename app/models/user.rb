@@ -78,6 +78,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :customer_types
 
   has_and_belongs_to_many :tags
+  has_and_belongs_to_many :products
 
   has_many :relationships, foreign_key: "follower_id", dependent: :destroy
   has_many :followed_users, through: :relationships, source: :followed

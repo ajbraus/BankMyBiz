@@ -1,13 +1,9 @@
-Q&A
-  - follow tags
-    - autocomplete tags with tag-it on posts
-    - add new followed tag with tag-it
-    - delete followed tag
-    - don't receive interests emails
-    - don't receive answers emails
+video on responsive
+optimize for responsive
 
 Products
   - Create Products (with SEO on pages)
+  - Allow bankers to choose which funding they do as checkboxes (max 4)
   - with data model ready to change the matching algo
 
 SEO 
@@ -17,6 +13,16 @@ SEO
   - autocomplete on existing tags https://github.com/aehlke/tag-it
   - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
 
+Funders pay to be matched on products
+
+Q&A
+  - follow tags
+    - autocomplete tags with tag-it on posts
+    - add new followed tag with tag-it
+    - delete followed tag
+    - don't receive interests emails
+    - don't receive answers emails
+
 ajaxify Comments & Answers
 ajaxify Cred
 
@@ -24,7 +30,7 @@ remove the word lenders
 
 Double check all in mobile
 
-add michael's phone number to the website - google voice
+prime rate scrape - http://online.wsj.com/mdc/public/page/2_3020-moneyrate.html
 
 ____________________________________________________
 
@@ -44,7 +50,6 @@ Simplest Documentation
 Longest Repayment
 Least Turn Around Time
 Least Collateral
-
 
 Loan purpose
 
@@ -566,3 +571,4 @@ DONE - delete comments
 DONE - if no profile pic - do not allow post to news feed or answer  
 DONE - delete posts, answers, and comments destroys votes, decrements cred, destroys impressions
 DONE - Active, Newest, Unanswered
+DONE  add michael's phone number to the website - google voice

@@ -1,16 +1,17 @@
 <div class="col-sm-6 col-sm-offset-3">
  <% if current_user.has_image? %>
     <div class="row">
-      <h1 class='text-center'>Post to News Feed</h1>
+      <h1 class='text-center'>Ask for Advice</h1>
     </div>
     <%= form_for @post, html: { class:"clearfix position-relative" } do |f| %>
       <div class="row">
         <div class="col-xs-12">
           <div class="pull-right muted"><span id="titleCharCount">0</span>/250</div>
-          <section><%= f.text_field :title, class:"form-control", placeholder:"Title", id:"newPostTitle" %></section>
-          <section><%= f.text_area :content, class:"form-control post-textarea", placeholder:"Description" %></section>
+          <section><%= f.text_field :title, class:"form-control", placeholder:"Ask a Question", id:"newPostTitle" %></section>
+          <section><%= f.text_area :content, class:"form-control post-textarea", placeholder:"Summary and Details of Question. Be as specific as possible." %></section>
           <section>
-            <%= f.text_field :tag_list, class:"form-control", placeholder:"Interests Keywords (separated by comma)" %>
+            <%= f.label :tag_list, "Keywords" %>
+            <%= f.text_field :tag_list, class:"form-control", id: "postTags" %>
           </section>
           <section class="text-right">
             <%= small_profile_picture(current_user) %>

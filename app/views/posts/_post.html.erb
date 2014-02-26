@@ -37,11 +37,14 @@
         <% end %>
       </div>
       <div class="col-xs-8">
+        <br>
+        <% if false %>
         posted <%= time_ago_in_words(post.created_at) %> ago by 
+        <% end %>
         <% if user_signed_in? && current_user.bank == false %>
-          <%= link_to post.user.first_name_with_last_initial, post.user if post.user %>
+          <%= link_to "#{post.user.first_name_with_last_initial} - #{post.user.cred_count} Cred", post.user if post.user %>
         <% else %>
-          <%= post.user.first_name_with_last_initial if post.user %>
+          <%= post.user.first_name_with_last_initial if post.user %> - <%= post.user.cred_count %> Cred 
         <% end %>
         <% if user_signed_in? && (post.user == current_user || current_user.admin?) %>
           <div class="smaller muted">

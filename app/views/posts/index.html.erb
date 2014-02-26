@@ -1,16 +1,15 @@
 <% content_for :title, "News Feed" %>
 <div class="col-sm-8">
   <div class="row">
-    <div class="col-sm-12 clearfix">
-      <h3>Questions & Answers <span class="text-muted smallest">Small Business Financing, Questions, and Answers.</span></h3>
+    <section class="col-sm-12 clearfix">
       <%= render 'shared/search_form' %>
-    </div>
+    </section>
   </div>
   <section>
     <ul class="nav nav-tabs">
-      <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
+      <li class="active"><a href="#active" data-toggle="tab">Active Questions</a></li>
       <!-- <li><a href="#unanswered" data-toggle="tab">Unanswered</a></li> -->
-      <li><a href="#newest" data-toggle="tab">Newest</a></li>
+      <li><a href="#newest" data-toggle="tab">Newest Questions</a></li>
     </ul>
     <div class="hr-line"></div>
 

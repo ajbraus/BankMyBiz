@@ -12,6 +12,12 @@ Q&A
 ajaxify Comments & Answers
 ajaxify Cred
 
+Run Post.find_each(&:save) in production, uncomment out line in Post.rb and push
+
+add picture to advice
+
+New Question above match on right sidebar
+
 -------------------------------------------------------
 
 Products
@@ -19,7 +25,6 @@ Products
 
 SEO 
   - update per page SEO
-  - friendlyid on posts (better urls)
   - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
 
 rake sitemap:refresh in production
@@ -603,3 +608,5 @@ DONE - add baller footer
 DONE - Allow bankers to choose which funding they do as checkboxes (max 4)
 DONE - with data model ready to change the matching algo
 DONE - Funders have products
+
+DONE - friendlyid on posts (better urls)

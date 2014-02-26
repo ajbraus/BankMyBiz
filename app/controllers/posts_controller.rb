@@ -95,7 +95,6 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        
         current_user.update_attributes(cred_count: current_user.cred_count + 10)
         @post.create_activity :create, owner: current_user
         current_user.followers.each do |f|

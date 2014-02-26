@@ -10,7 +10,7 @@ class PostsController < ApplicationController
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
 
-      render nothing: true
+      redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
     end
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count - 3)
 
-      render nothing: true
+      redirect_to :back
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
     end

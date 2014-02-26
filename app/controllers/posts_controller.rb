@@ -6,12 +6,11 @@ class PostsController < ApplicationController
     begin
       current_user.vote_exclusively_for(@post = Post.find(params[:id]))
       @post.create_activity :voted_up, owner: current_user
-      @post.update_attributes(last_touched: Time.now)
 
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
 
-      redirect_to :back
+      render nothing: true
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
     end
@@ -21,12 +20,11 @@ class PostsController < ApplicationController
     begin
       current_user.vote_exclusively_against(@post = Post.find(params[:id]))
       @post.create_activity :voted_down, owner: current_user
-      @post.update_attributes(last_touched: Time.now)
       
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count - 3)
 
-      redirect_to :back
+      render nothing: true
     rescue ActiveRecord::RecordInvalid
       redirect_to :back
     end

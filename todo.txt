@@ -15,8 +15,6 @@ Run Post.find_each(&:save) in production, uncomment out line in Post.rb and push
 
 add picture to advice
 
-New Question above match on right sidebar
-
 -------------------------------------------------------
 
 Products

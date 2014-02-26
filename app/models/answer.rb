@@ -8,6 +8,6 @@ class Answer < ActiveRecord::Base
   before_save :set_last_touched
 
   def set_last_touched
-    self.post.update_attributes(last_touched: Time.now)
+    self.post.update_attributes(last_touched_at: Time.now)
   end
 end

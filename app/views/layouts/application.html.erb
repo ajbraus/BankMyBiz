@@ -322,18 +322,18 @@
             <% end %>
           </div>
           <div class="col-sm-3">
+            <h5>About Us</h5>
+            <div class="list-group">
+              <%= link_to 'Testimonials', testimonials_path, class:"list-group-item" %>
+              <%= link_to "Team", about_path, class:"list-group-item" %>
+              <%= link_to "Terms & Conditions", terms_path, class:"list-group-item" %>
+            </div>
             <h5>Social</h5>
             <div class="list-group">
               <%= link_to "Linkedin", "http://www.linkedin.com/company/bankmybiz-com", target:"_blank", class:"list-group-item" %>
               <%= link_to "Twitter", "https://www.twitter.com/bankmybiz", target:"_blank", class:"list-group-item" %>
               <a href="https://plus.google.com/111339007136871525117" rel="publisher" target="_blank" class="list-group-item">Google+</a>
               <%= link_to "Facebook", "https://www.facebook.com/pages/Bankmybiz/451357408284592", target:"_blank", class:"list-group-item" %>
-            </div>
-            <h5>About Us</h5>
-            <div class="list-group">
-              <%= link_to 'Testimonials', testimonials_path, class:"list-group-item" %>
-              <%= link_to "Team", about_path, class:"list-group-item" %>
-              <%= link_to "Terms & Conditions", terms_path, class:"list-group-item" %>
             </div>
           </div>
           <div class="col-sm-3">
@@ -345,11 +345,13 @@
                 <strong class="orange"><i class="icon ion-ios7-telephone"></i> 608 . 284 . 8970</strong> 
               </a>
               <hr>
+              <% if false %>
               <div class="text-center">
                 <br>
                 <div class="btn btn-default">Become a Certified Funder</div>
               </div>
               <hr>
+              <% end %>
               <div class="text-center">
                 <br>
                 <div class="lead little">&#169; 2013 BankMyBiz, LLC</div>

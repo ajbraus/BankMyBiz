@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
 
   def set_last_touched
     if self.commentable_type == "Post"
-      self.commentable.update_attributes(last_touched: Time.now)
+      self.commentable.update_attributes(last_touched_at: Time.now)
     end
   end
 

@@ -11,7 +11,8 @@ class Post < ActiveRecord::Base
   attr_accessible :title,
                   :content,
                   :slug,
-                  :tag_list
+                  :tag_list,
+                  :last_touched_at
 
   validates :title, :content, :slug, presence: true
 
@@ -36,7 +37,7 @@ class Post < ActiveRecord::Base
   end
 
   def set_last_touched
-    last_touched = Time.now
+    last_touched_at = Time.now
   end
 
   def increment_tag_use_count

@@ -113,6 +113,7 @@
             <li>
               <%= link_to 'Blog', "http://blog.bankmybiz.com", class:"little", target:"_blank" %>
             </li>
+            <% if false %>
             <li class="dropdown">
               <a data-toggle="dropdown" href="#">Funding Options <i class="icon ion-arrow-down-b"></i></a>
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -168,7 +169,9 @@
                 </li>
               </ul>
             </li>
+            <% end %>
           </ul>
+
           <ul class="nav navbar-nav navbar-right">
             <li class="down">
               <strong><i class="icon ion-ios7-telephone"></i> 608 . 284 . 8970 | </strong> 
@@ -276,10 +279,10 @@
       <footer id="footer">
         <div class="row">
           <div class="col-sm-6">
-            <h4>Funding Options</h4>
+            <!-- <h4>Funding Options</h4> -->
           </div>
           <div class="col-sm-3">
-            <h4>About & Social</h4>
+            <h4>About Us & Social</h4>
           </div>
           <div class="col-sm-3">
             <h4>Help</h4>
@@ -287,6 +290,7 @@
         </div>
         <div class="row">
           <div class="col-sm-3">
+            <% if false %>
             <h5>Non-Traditional</h5>
             <div class="list-group">
                 <%= link_to 'Factoring', factoring_path, class:"list-group-item" %>
@@ -299,8 +303,10 @@
                 <%= link_to 'Grants', grants_path, class:"list-group-item" %>
                 <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item" %>
             </div>
+            <% end %>
           </div>
           <div class="col-sm-3">
+            <% if false %>
             <h5>Traditional</h5>
             <div class="list-group">
               <%= link_to 'Term Loan', term_loans_path, class:"list-group-item" %>
@@ -313,6 +319,7 @@
               <%= link_to 'Angel Investment', angel_investment_path, class:"list-group-item" %>
               <%= link_to 'Venture Capital', venture_capital_path, class:"list-group-item" %>
             </div>
+            <% end %>
           </div>
           <div class="col-sm-3">
             <h5>Social</h5>

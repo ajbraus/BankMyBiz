@@ -2,7 +2,6 @@ optimize for responsive
 
 Q&A
   - follow tags
-    - autocomplete tags with tag-it on posts
     - add new followed tag with tag-it
     - delete followed tag
     - don't receive interests emails
@@ -610,3 +609,5 @@ DONE - with data model ready to change the matching algo
 DONE - Funders have products
 
 DONE - friendlyid on posts (better urls)
+
+DONE - autocomplete tags with tag-it on posts

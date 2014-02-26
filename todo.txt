@@ -1,19 +1,4 @@
-video on responsive
 optimize for responsive
-
-Products
-  - Create Products (with SEO on pages)
-  - Allow bankers to choose which funding they do as checkboxes (max 4)
-  - with data model ready to change the matching algo
-
-SEO 
-  - update per page SEO
-  - add baller footer
-  - friendlyid on posts (better urls)
-  - autocomplete on existing tags https://github.com/aehlke/tag-it
-  - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
-
-Funders pay to be matched on products
 
 Q&A
   - follow tags
@@ -22,26 +7,64 @@ Q&A
     - delete followed tag
     - don't receive interests emails
     - don't receive answers emails
+    - follow 5 tags upon login
 
 ajaxify Comments & Answers
 ajaxify Cred
 
-remove the word lenders
+-------------------------------------------------------
 
-Double check all in mobile
+Products
+  - Create Products (with SEO on pages)  
 
-prime rate scrape - http://online.wsj.com/mdc/public/page/2_3020-moneyrate.html
+SEO 
+  - update per page SEO
+  - friendlyid on posts (better urls)
+  - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
+
+rake sitemap:refresh in production
 
 ____________________________________________________
 
 Products
-  - Link users to matches through products
-  - Funders have products
   - Businesses have products (based on their profile)
+  incorporate entity type
+
+     term_loan - in business 2 years, revenue, 
+     line_of_credit - in business 2 years, revenue,
+     sba_loan ???
+
+     factoring - High/Very High AR, B2B customers
+     revenue_based - High Revenue ...???
+     asset_based - in business 2 years, Industries???
+     private_equity - ???
+     community_development_fund - ???
+     merchant_cash_advance - ???
+     cash_advance - ???
+     grants - industry = non-profit/education/healthcare, entity_type = nonprofit, bcorp
+     crowd_funding_for_rewards - industry = Manufacturing/Consumer Products/Arts & Design and few employees, low AR, low revenue, B2C customers
+
+     crowd_funding_for_equity - young business, 
+     angel_investment
+     venture_capital
+
+  - Link users to matches through products
+  - Funders pay to be matched on products
 
 anonymous questions
 
-remove public activity
+use or remove public activity
+
+Customers:
+  Consumers
+  Private Businesses
+  Government
+  Health Systems
+
+entity type:
+  add b-corp
+
+revenue - add 0-5K and 5-25K, 26-100K
 
 Loan priority
 
@@ -66,21 +89,17 @@ Other
 
 Money
   - Get verified = Funders, service providers, and businesses
-  - Add "Become a Certified Funder" workflow for Funders - pay $150/month $100/ 6months $75 / year
+  - Add "Become a Verified Funder" workflow for Funders - pay $150/month $100/ 6months $75 / year
 
 Difference between funder and business
   - Add SSL
   - powered by stripe
   - SSL secured
+  - update email domain, sitemap domain
 
 Credit Card payment bounced but card was saved and then it worked
   Subscription
     add destroy card
-
-fix homepage:
-  submit sitemap to google
-
-
 
 ----------------------------------------------------
 
@@ -109,6 +128,9 @@ Improve newsfeed
   email to users who have same tags as you've posted to
   follow tags at the beginning
   autocomplete on tags
+
+
+prime rate scrape - http://online.wsj.com/mdc/public/page/2_3020-moneyrate.html
 
 
 if your linkedin connection joins bankmybiz get an email
@@ -572,3 +594,12 @@ DONE - if no profile pic - do not allow post to news feed or answer
 DONE - delete posts, answers, and comments destroys votes, decrements cred, destroys impressions
 DONE - Active, Newest, Unanswered
 DONE  add michael's phone number to the website - google voice
+
+
+DONE video on responsive
+
+
+DONE - add baller footer
+DONE - Allow bankers to choose which funding they do as checkboxes (max 4)
+DONE - with data model ready to change the matching algo
+DONE - Funders have products

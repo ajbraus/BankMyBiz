@@ -42,7 +42,8 @@ class User < ActiveRecord::Base
                   :hq_state,
                   :stripe_customer_id,
                   :two_years,
-                  :cred_count
+                  :cred_count,
+                  :product_ids
 
   is_impressionable :counter_cache => true, :unique => :user_id
 

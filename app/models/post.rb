@@ -10,12 +10,20 @@ class Post < ActiveRecord::Base
   
   attr_accessible :title,
                   :content,
+                  :slug,
                   :tag_list
 
-  validates :title, :content, presence: true
+  validates :title, :content, :slug, presence: true
 
   after_create :increment_tag_use_count
   before_save :set_last_touched
+
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+  # def should_generate_new_friendly_id?
+  #   new_record?
+  # end
 
   def send_update_to_tag_followers(current_user)
     tags.each do |t|

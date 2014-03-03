@@ -9,77 +9,69 @@
       </ul>
     </div>
   <% end %>
-  <h2 class='text-center'>Bankmybiz 360&deg;</h2>
+  <h2 class='text-center'>Become a Certified Funder</h2>
   <div class="col-sm-4 col-sm-offset-2">
     <div class="well">
-      <% if params[:plan_id] == "1" %>
-      <h4>360&deg; Biz</h4>
-      <div class="small muted">1 month package</div>
-      <div class="price"><strong>$49.99</strong> / month</div>
-      <div class="save"></div>
-      <h4>Total: <strong class='muted'>$49.99</strong></h4>
-      <%= f.hidden_field :price, value: 4999 %>
-      <% elsif params[:plan_id] == "2" %>
-      <h4>360&deg; Biz</h4>
-      <div class="small muted">3 month package</div>
-      <div class="price"><strong>$37.99</strong> / month</div>
-      <div class="save">You're Saving 25%</div>
-      <h4>Total: <strong class='muted'>$113.97</strong></h4>
-      <%= f.hidden_field :price, value: 11397 %>
-      <% elsif params[:plan_id] == "3" %>
-      <h4>360&deg; Biz</h4>
-      <div class="small muted">6 month package</div>
-      <div class="price"><strong>$24.99</strong> / month</div>
-      <div class="save">You're Saving 50%</div>
-      <h4>Total: <strong class='muted'>$149.94</strong></h4>
-      <%= f.hidden_field :price, value: 14994 %>
-      <% elsif params[:plan_id] == "4" %>
-      <h4>360&deg; Bank</h4>
-      <div class="small muted">3 month package</div>
-      <div class="price"><strong>$149.99</strong> / month</div>
-      <div class="save"></div>
-      <h4>Total: <strong class='muted'>$449.97</strong></h4>
-      <%= f.hidden_field :price, value: 44997 %>
-      <% elsif params[:plan_id] == "5" %>
-      <h4>360&deg; Bank</h4>
-      <div class="small muted">6 month package</div>
-      <div class="price"><strong>$112.99</strong> / month</div>
-      <div class="save">You're Saving 25%</div>
-      <h4>Total: <strong class='muted'>$677.94</strong></h4>
-      <%= f.hidden_field :price, value: 67794 %>
-      <% elsif params[:plan_id] == "6" %>
-      <h4>360&deg; Bank</h4>
-      <div class="small muted">1 year package</div>
-      <div class="price"><strong>$74.99</strong> / month</div>
-      <div class="save">You're Saving 50%</div>
-      <h4>Total: <strong class='muted'>$899.88</strong></h4>
-      <%= f.hidden_field :price, value: 89988 %>
-      <% end %>
-      <div class='text-center'>
-        <%= image_tag "credit_card_logos_homepage.png" %>
-      </div>
+      <h4>Certification & Matching</h4>
+      <p>Be Listed as a Certified Funder</p>
+      <p>Business Profile Matching</p>
+      <p>Business Funding Options Matching</p>
     </div>
     <div class="well">
-      <h5>Get access to . . .</h5>
-      <ul>
-        <li>
-          <i class="icon ion-plus-round"></i> Who Gave You Bucks
-        </li>
-        <li>
-          <i class="icon ion-eye"></i> Who Viewed Your Profile
-        </li>
-        <li>
-          <i class="icon ion-ios7-star"></i> Who Follows You
-        </li>
-      </ul>
+      <h4>Choose Package</h4>
+      <div class="row">
+        <div class="col-xs-7">
+          <div class="muted">3 month package</div>
+          <div class="price"><strong>$149.99</strong> / month</div>
+        </div>
+        <div class="col-xs-5">
+          <div class="save"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>Total: <strong class='muted'>$449.97</strong></h4>
+        </div>
+        <%= f.hidden_field :price, value: 44997 %>
+      </div>
+        
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="muted">6 month package</div>
+          <div class="price"><strong>$112.99</strong> / month</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>Total: <strong class='muted'>$677.94</strong> <span class="save">Save 50%</span></h4>
+        </div>
+        <%= f.hidden_field :price, value: 67794 %>
+      </div>
+        
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="muted">1 year package</div>
+          <div class="price"><strong>$74.99</strong> / month</div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h4>Total: <strong class='muted'>$899.88</strong> <span class="save">Save 50%</span></h4>
+        </div>
+        <%= f.hidden_field :price, value: 89988 %>
+      </div>
     </div>
   </div>
   <div class="col-sm-5">
     <div class="cards well">
+      <div class='text-center'>
+        <%= image_tag "credit_card_logos_homepage.png" %>
+      </div>
+      <hr>
       <h4>Cards</h4>
         <table>
       <% if !current_user.stripe_customer_id.present? %>
-        <span class="muted">No Cards</span>
+        <p class="muted">No Cards</p>
       <% else %>
         <tr>
           <th>

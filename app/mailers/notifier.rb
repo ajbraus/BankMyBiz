@@ -34,6 +34,12 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "Message from #{@sender.first_name}"
   end
 
+  def new_answer(user, answer)
+    @user = user
+    @answer = @answer
+    mail to: @user.email, subject: "#{answer.user.first_name_with_last_initial} Gave you Advice on Bankmybiz"
+  end
+
   def new_comment(user, comment)
     @comment = comment
     @commenter = @comment.user

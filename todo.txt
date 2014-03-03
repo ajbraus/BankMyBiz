@@ -1,3 +1,6 @@
+DONE not receiving answer emails
+Setup "Certification"
+
 optimize for responsive
 
 Q&A
@@ -10,8 +13,6 @@ Q&A
 
 ajaxify Comments & Answers
 ajaxify Cred
-
-Run Post.find_each(&:save) in production, uncomment out line in Post.rb and push
 
 add picture to advice
 
@@ -609,3 +610,4 @@ DONE - Funders have products
 DONE - friendlyid on posts (better urls)
 
 DONE - autocomplete tags with tag-it on posts
+DONE  Run Post.find_each(&:save) in production, uncomment out line in Post.rb and push

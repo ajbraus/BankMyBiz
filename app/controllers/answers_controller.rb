@@ -42,6 +42,7 @@ class AnswersController < ApplicationController
 
     respond_to do |format|
       if @answer.save
+        Notifier.delay.new_answer(@post.user, @answer)
         if @answer.user != current_user
           current_user.update_attributes(cred_count: current_user.cred_count + 10)
         end

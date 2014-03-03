@@ -16,18 +16,14 @@
         <%= link_to post, class:"title" do %> <b class="large"><%= post.title %></b> <% end %>
       <% end %>
     </div>
-  </div>
-  <% if params[:action] == "show" %>
-  <div class="row">
-    <div class="col-xs-11 col-xs-offset-1">
-      <%= auto_link(post.content, html: { target: '_blank' }) %>
-    </div>
-  </div>
-  <% end %>
-  <div class="row">
-    <div class="col-xs-12 text-right">
+    <% if params[:action] == "show" %>
+      <section class="col-xs-11">
+        <%= auto_link(post.content, html: { target: '_blank' }) %>
+      </section>
+    <% end %>
+    <section class="col-xs-11 text-right">
       <%= render partial: 'shared/tag', collection: post.tags %>
-    </div>
+    </section>
   </div>
   <section class="row">
     <div class="col-sm-5">

@@ -42,10 +42,9 @@ class PostsController < ApplicationController
       @active = Post.search(params[:search], :page => params[:page], :per_page => 10, order: 'last_touched_at DESC')
     else
       @posts = Post.order('created_at desc').paginate(:page => params[:page], :per_page => 10)
-      @active = Post.order('last_touched_at desc').paginate(:page => params[:page], :per_page => 10)
+      @active = Post.order('last_touched_at desc').paginate(:page => params[:page], :per_page => 10)  
     end
-
-    #@unanswered = @posts.select { |p| p.answers.none? }.paginate(:page => params[:page], :per_page => 10)
+    @unanswered = @posts.select { |p| p.answers.none? }.paginate(:page => params[:page], :per_page => 10)
 
     respond_to do |format|
       format.html # new.html.erb

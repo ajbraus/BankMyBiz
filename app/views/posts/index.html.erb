@@ -10,6 +10,7 @@
       <li class="active"><a href="#active" data-toggle="tab">Active Questions</a></li>
       <!-- <li><a href="#unanswered" data-toggle="tab">Unanswered</a></li> -->
       <li><a href="#newest" data-toggle="tab">Newest Questions</a></li>
+      <li><a href="#unanswered" data-toggle="tab">Unanswered Questions</a></li>
     </ul>
     <div class="hr-line"></div>
 
@@ -19,15 +20,13 @@
         <%= render partial: "posts/post", collection: @active, as: :post %>
         <%= will_paginate @active, renderer: BootstrapPagination::Rails %>
       </div>
-      <% if false %>
-      <div class="tab-pane" id="unanswered">
-        <%= render partial: "posts/post", collection: @unanswered, as: :post %>
-        <%= will_paginate @unanswered, renderer: BootstrapPagination::Rails %>
-      </div>
-      <% end %>
       <div class="tab-pane" id="newest">
         <%= render partial: "posts/post", collection: @posts, as: :post %>
         <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+      </div>
+      <div class="tab-pane" id="unanswered">
+        <%= render partial: "posts/post", collection: @unanswered, as: :post %>
+        <%= will_paginate @unanswered, renderer: BootstrapPagination::Rails %>
       </div>
     </div>
   </section>

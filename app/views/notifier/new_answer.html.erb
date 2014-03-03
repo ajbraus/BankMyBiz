@@ -1,0 +1,11 @@
+<h4 class="h4"><%= @user.first_name.titleize %>, </h4>
+<p>
+  <strong><%= @answer.first_name_with_last_initial %></strong> just offered you some advice on your question, <%= link_to @answer.post.title, post_url(@answer.post) %>
+</p>
+<p>
+  <%= link_to "View Advice", post_url(@answer.post) %>
+</p>
+
+<p>
+  <strong>Tip</strong> - Remember to vote up questions and advice that help you and mark good advice as "the best" by clicking the check mark "<i class="icon ion-check"></i>".
+</p>

@@ -2,7 +2,7 @@ BankMyBiz::Application.routes.draw do
 
   resources :products, only: [:show]
 
-  match '/term_loan', to: 'products#term_loan', as: 'term_loans'
+  match '/term_loan', to: 'products#term_loan', as: 'term_loan'
   match '/line_of_credit', to: 'products#line_of_credit', as: 'line_of_credit'
   match '/sba_loan', to: 'products#sba_loan', as: 'sba'
   match '/factoring', to: 'products#factoring', as: 'factoring'

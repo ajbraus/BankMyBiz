@@ -1,45 +1,81 @@
 <% 
-  content_for :title, "SBA | Small Business | Government Loan - Bankmybiz" 
-  content_for :description, "The U.S. Small Business Administration (SBA) is an agency of the government that assists small businesses." 
+  content_for :title, "Angel Investment - Business Funding - Small Business | Bankmybiz" 
+  content_for :description, "When an individual, or group, provides money for a business startup, usually in exchange for equity (ownership) in the business." 
   content_for :keywords, "SBA, Small Business, Government Loan | Bankmybiz"
 %>
 
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-    <h1 class='text-center'><%= params[:action].underscore.titlecase %></h1>
+  <%= render partial: 'options_nav' %>
+  <div class="col-sm-9">
+    <h1 class='text-center'><%= params[:action].underscore.titlecase.upcase %></h1>
     <hr>
-    <div class="col-sm-8">
-      <%= render partial: 'funders' %>
-      <h3>Intro</h3>
-      <p>
-        The <b>U.S. Small Business Administration (SBA)</b> is an independent agency of the federal government. The SBA offers aid, advice, assistance and protects the interests of small businesses. There are many different SBA offices spread out throughout the country which enable small businesses a chance to interact locally with the SBA.  
-      </p>
-      <blockquote>
-        <p>The SBA offers aid, advice, assistance and protects the interests of small businesses.</p>
-      </blockquote>
-      
-      <h3>Micro Loans</h3>
-      <p>
-        The SBA offers a variety of programs, but primarily serves as a certified lender and advisor to small businesses.  One such program is the microloan program. <b>The microloan program provides loans up to $50,000 to U.S. based businesses</b>, with the average loan amount being around $13,000. This is an ideal program for many businesses who need less money than a typical business bank loan.  
-      </p>
+    <div class="row">
+      <div class="col-sm-7">
+        <h3>Put up Your Assets</h3>
+        <p>
+          Angel Investment is when an individual, or group, invests money in a business. Usually the money is in exchange for equity, or a part-ownership, in the business and future business growth. Historically angel investors were a family member or friend of an owner of the business startup, but this greatly depends on the industry. 
+        </p>
+        <blockquote>
+          <p>Since angel investors are personally invested in the business’ growth, they might offer more favorable terms than other business lenders or investors.</p>
+        </blockquote>
+        <h3>What do Angels Do?</h3>
+        <p>
+          Angel investors invest their own money to spur the startup business's growth. Angel investors often act at a very early stage of the business, typically before most business bankers, or other certified lenders, would loan money to fuel the startup’s business growth. Since angel investing happens at an early stage of the business, angel investors negotiate terms more informally and directly with the business owner.  In this way angel investors are quite different than <%= link_to "Venture Capitalists", venture_capital_path %> in how they try to create business growth.  
+        </p>
+        <h3>Not Always One Person</h3>
+        <p>
+          Generally angel investors act alone, but increasing a number of angel investors organize themselves into angel networks or angel groups to fuel diverse business growth. This allows angel investors to pool their investments, which spreads out the risk.  This also enables angel investors to share knowledge from past business investments, business loans, and careers..  Note that angel investors are not typically certified lenders or business bankers.
+        </p>
+        <h3>Investors Personally Invested</h3>
+        <p>
+          An important part of angel investing is that often the investor takes a personal interest in the business as well as a financial stake in the business growth.  This means that the angel investor acts as an advisor to the new business, and can provide valuable advice.  It is commonly believed that business startups with angel investors avoid typical pitfalls for a new business. One example of advice could be how to avoid expensive business loans.  Since angel investors are personally invested in the business’ growth, they might offer more favorable terms than other business lenders or investors.  It is not uncommon for an angel investor to view their financial contribution as an investment in the person as well as the business itself.  This means that business owners with a good relationship with their angel(s) may receive more support even if their business startup fails; a scenario unlikely for conventional business bank loans from certified lenders.
+        </p>
+      </div>
 
-      <h3>Loan Guarantees</h3>
-      <p>
-        Another program is the <b>7(a) Loan Guarantee Program</b>. It is designed to assist entrepreneurs start or expand their businesses. As of 2010, the program makes up to $5 million available to small businesses through bank and non-bank institutions in the lending business. The <b>Small Business Jobs Act of 2010</b> permanently increased the maximum size of these loans from $2 million to $5 million.
-      </p>
-
-      <h3>Resource Centers Near You</h3>
-      <p>
-        As mentioned above, the lending business is not the only one that the SBA engages in.  There are many resource centers including: <b>900 Small Business Development Centers</b>, <b>110 Women's Business Centers</b>, and <b>350 chapters of volunteers</b> who provide free mentoring under the Service Corps of Retired Executives (SCORE) program.  The SBA has many other niche programs, particularly for women and minority businesses. 
-      </p>
-
-      <%= render partial: 'funders' %>
+      <div class="col-sm-5 grades">
+        <h3 class='text-center'><span class='text-muted'>Grade</span> <%= params[:action].underscore.titlecase %></h3>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">A</h1>
+            <h3 class='text-center'>Amount</h3>
+            <p class='text-muted'>Angels will give you enought for you to grow, but you might have to proove it for it.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">A-</h1>
+            <h3 class='text-center'>Cost</h3>
+            <p class='text-muted'>There is no monthly payment, but you will be giving away equity in your company.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">B</h1>
+            <h3 class='text-center'>Terms</h3>
+            <p class='text-muted'>You will be giving up equity in your company but angel investors only succeed if you succeed.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">B-</h1>
+            <h3 class='text-center'>Exit Ease</h3>
+            <p class='text-muted'>You are building a partnership with any Angel Investor.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">C-</h1>
+            <h3 class='text-center'>Approval</h3>
+            <p class='text-muted'>Its about who you know and how good your pitch is.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge text-center">D</h1>
+            <h3 class='text-center'>Funding Speed</h3>
+            <p class='text-muted'>It usually takes 6 months to find investors, negotiate terms, and close a deal.</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="col-sm-4">
-      Grade 1
-      <hr>
-      Grade 2
-    </div>
+    <hr>
+    <%= render partial: 'funders' %>
   </div>
 </div>

@@ -1,45 +1,77 @@
 <% 
-  content_for :title, "SBA | Small Business | Government Loan - Bankmybiz" 
-  content_for :description, "The Small Business Administration (SBA) is part of the government that provides local small business loans, funding, financing, and assistance." 
-  content_for :keywords, "SBA, Small Business, Government Loan | Bankmybiz"
+  content_for :title, "Asset Based - Bank Loan - Fund Business | Bankmybiz" 
+  content_for :description, "An asset based loan is any loan which has an asset owned by the business held as collateral."
+  content_for :keywords, "Asset Based, Bank Loan, Fund Business | Bankmybiz"
 %>
 
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-    <h1 class='text-center'><%= params[:action].underscore.titlecase %></h1>
+  <%= render partial: 'options_nav' %>
+  <div class="col-sm-9">
+    <h1 class='text-center'><%= params[:action].underscore.titlecase.upcase %></h1>
     <hr>
-    <div class="col-sm-8">
-      <%= render partial: 'funders' %>
-      <h3>Intro</h3>
-      <p>
-        An asset based loan is when a business puts up something valuable as security on a loan.  If a business can't pay back the loan, the bank takes the asset instead. A business puts up stuff it owns like its inventory, equipment, debts or machinery. Business banks, and other certified lenders, prefer assets which, in the event of a delinquent loan, that they can easily sell to recover the unpaid debt.  Asset based loans are good for businesses that have a business growth strategy of owning hard assets like construction, retail, and manufacturing. 
-      </p>
-      <blockquote>
-        <p>The SBA offers aid, advice, assistance and protects the interests of small businesses.</p>
-      </blockquote>
-      
-      <h3>Micro Loans</h3>
-      <p>
-        A business supplies propane to customers throughout a state and owns a fleet of trucks.  The business contacts a banker and arranges a new business bank loan. In order to get a better rate on their business bank loan, they choose a asset based loan and put up the fleet of trucks as collateral for a new shipment of propane at an interest rate of 5.75% Annual Percentage Rate (APR) until the loan is paid off.  If the business is unable to pay the loan off, the bank gets the fleet of trucks.
-      </p>
+    <div class="row">
+      <div class="col-sm-7">
+        <h3>Put up Your Assets</h3>
+        <p>
+          An asset based loan is any business loan where the bank holds a business asset as collateral. This is analogous to how a house is collateral for a home mortgage. A business can use its assets as collateral to secure a business loan, a bigger amount, or a lower the rate. Asset based loans are good for businesses that have a business growth strategy of owning more and more assets.
+        </p>
+        <blockquote>
+          <p>Asset based loans are good for businesses that have a business growth strategy of owning more and more assets.</p>
+        </blockquote>
+        <h3>What Counts as an Asset?</h3>
+        <p>
+          Business banks, and other certified lenders, prefer assets which, in the event of a delinquent loan, could be easily seized and liquidated to recover a large portion of the outstanding business loan. Some examples of assets businesses have are tangibles like inventory, equipment, machinery, but you can also collateralize intangibles like your the money their customers owe you your "AR" or Accounts Receivable. If you have a lot of accounts receivable you might be better served by <%= link_to "Factoring", factoring_path %>.
+        </p>
+        <h3>For Example ...</h3>
+        <p>
+          Imagine a business supplies propane to customers throughout a state and owns a fleet of trucks. The business contacts a banker and arranges a new asset bank loan. In order to get a better rate on their business bank loan, they choose a asset based loan and put up the fleet of trucks as collateral for a new shipment of propane at an interest rate of 5.75% Annual Percentage Rate (APR) until the loan is paid off.  If the business is unable to pay the loan off, the bank gets the fleet of trucks.
+        </p>
+      </div>
 
-      <h3>Loan Guarantees</h3>
-      <p>
-        Another program is the <b>7(a) Loan Guarantee Program</b>. It is designed to assist entrepreneurs start or expand their businesses. As of 2010, the program makes up to $5 million available to small businesses through bank and non-bank institutions in the lending business. The <b>Small Business Jobs Act of 2010</b> permanently increased the maximum size of these loans from $2 million to $5 million.
-      </p>
-
-      <h3>Resource Centers Near You</h3>
-      <p>
-        As mentioned above, the lending business is not the only one that the SBA engages in.  There are many resource centers including: <b>900 Small Business Development Centers</b>, <b>110 Women's Business Centers</b>, and <b>350 chapters of volunteers</b> who provide free mentoring under the Service Corps of Retired Executives (SCORE) program.  The SBA has many other niche programs, particularly for women and minority businesses. 
-      </p>
-
-      <%= render partial: 'funders' %>
+      <div class="col-sm-5 grades">
+        <h3 class='text-center'><span class='text-muted'>Grade</span> <%= params[:action].underscore.titlecase %></h3>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">B+</h1>
+            <h3 class='text-center'>Approval</h3>
+            <p class='text-muted'>Its easier to get approval because you put up an asset as collateral.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">B+</h1>
+            <h3 class='text-center'>Amount</h3>
+            <p class='text-muted'>The amount you qualify will be bolstered by the value of the asset you collateralize.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">B</h1>
+            <h3 class='text-center'>Exit Ease</h3>
+            <p class='text-muted'>Depends on the other terms of the loan.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge text-center">B-</h1>
+            <h3 class='text-center'>Funding Speed</h3>
+            <p class='text-muted'>Timeline speed is subject to industry and lending institution.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">B-</h1>
+            <h3 class='text-center'>Cost</h3>
+            <p class='text-muted'>Traditional bank prices, typically based on the current Prime Rate</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">C</h1>
+            <h3 class='text-center'>Terms</h3>
+            <p class='text-muted'>Loan collateral is the asset you are purchasing. Avoid putting up “all business assets” as collateral.</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="col-sm-4">
-      Grade 1
-      <hr>
-      Grade 2
-    </div>
+    <hr>
+    <%= render partial: 'funders' %>
   </div>
 </div>

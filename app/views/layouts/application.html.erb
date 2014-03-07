@@ -118,7 +118,7 @@
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li><div class="col-xs-12"><b>Traditional</b></div></li>
                 <li>
-                  <%= link_to 'Term Loan', term_loans_path %>
+                  <%= link_to 'Term Loan', term_loan_path %>
                 </li>
                 <li>
                   <%= link_to 'Line of Credit', line_of_credit_path %>
@@ -132,19 +132,14 @@
                   <%= link_to 'Factoring', factoring_path %>
                 </li>
                 <li>
+                  <%= link_to 'Asset Based', asset_based_path %>
+                </li>
+                <% if false %>
+                <li>
                   <%= link_to 'Revenue Based', revenue_based_path %>
                 </li>
                 <li>
-                  <%= link_to 'Asset Based', asset_based_path %>
-                </li>
-                <li>
                   <%= link_to 'Private Equity', private_equity_path %>
-                </li>
-                <li>
-                  <%= link_to 'Community Development', community_development_path %>
-                </li>
-                <li>
-                  <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path %>
                 </li>
                 <li>
                   <%= link_to 'Cash Advance', cash_advance_path %>
@@ -154,6 +149,13 @@
                 </li>
                 <li>
                   <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path %>
+                </li>
+                <li>
+                  <%= link_to 'Community Development', community_development_path %>
+                </li>
+                <% end %>
+                <li>
+                  <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path %>
                 </li>
                 <li class="divider"></li>
                 <li><div class="col-xs-12"><b>Equity</b></div></li>
@@ -304,7 +306,7 @@
           <div class="col-sm-3">
             <h5>Traditional</h5>
             <div class="list-group">
-              <%= link_to 'Term Loan', term_loans_path, class:"list-group-item" %>
+              <%= link_to 'Term Loan', term_loan_path, class:"list-group-item" %>
               <%= link_to 'Line of Credit', line_of_credit_path, class:"list-group-item" %>
               <%= link_to 'Small Business Admin', sba_path, class:"list-group-item" %>
             </div>

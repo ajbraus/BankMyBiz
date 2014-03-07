@@ -2,11 +2,11 @@
   <h4 class='text-center'><%= params[:action].underscore.titlecase %> Funders on Bankmybiz</h4>
   <% Product.find(1).users.limit(4).order("RANDOM()").each do |u| %>
     <div class="col-sm-4 text-center">
-      <%= link_to user_path(m) do %>        
-        <div class="col-sm-10 col-sm-offset-1"><%= medium_profile_picture(m) %></div>
-        <section><%= m.first_name_with_last_initial %></section>
-        <div><%= m.position %></div>
-        <div><%= current_user.percentage_match(m) %>% match</div>
+      <%= link_to user_path(u) do %>        
+        <div class="col-sm-10 col-sm-offset-1"><%= medium_profile_picture(u) %></div>
+        <section><%= u.first_name_with_last_initial %></section>
+        <div><%= u.position %></div>
+        <div><%= current_user.percentage_match(u) %>% match</div>
       <% end %>
     </div>    
   <% end %>

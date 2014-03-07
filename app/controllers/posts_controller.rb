@@ -103,7 +103,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post }
         format.json { render json: @post, status: :created, location: @post }
       else
-        format.html { redirect_to new_post, notice: 'There was a problem, please try again' }
+        format.html { redirect_to :back, notice: 'There was a problem, please try again' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end

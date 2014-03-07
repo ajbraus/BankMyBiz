@@ -218,3 +218,56 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
     end
     p.save
   end
+
+          <% if current_user.bank? %>
+          <section class="muted text-right">
+            <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+              <div class='text-right'><%= link_to "Buy 3 Matches / $ #{current_user.bank? ? "74.99" : "24.99"}", new_purchase_path, class:"btn btn-success btn-lg" %> </div>
+            <% end %>
+          </section>
+        <% end %>
+
+              <% else %>
+        <h4>Potential Matches</h4>
+        <p class="muted">You Receive 1 Free Match A Week</p>
+        <div class="row">
+          <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+            <% @first_three_matches.each do |m| %>
+              <% if current_user.bank? %>
+                <div class="col-sm-4 text-center">
+                  <div class="col-sm-10 col-sm-offset-1"><%= medium_profile_picture(m) %></div>
+                  <section><%= m.first_name_with_last_initial %></section>
+                  <div><%= m.position %></div>
+                  <div><%= current_user.percentage_match(m) %>% match</div>
+                </div>
+              <% else %>
+                <%= link_to user_path(m) do %>
+                  <div class="col-sm-4 text-center">
+                    <div class="col-sm-10 col-sm-offset-1"><%= medium_profile_picture(m) %></div>
+                    <section><%= m.first_name_with_last_initial %></section>
+                    <div><%= m.position %></div>
+                    <div><%= current_user.percentage_match(m) %>% match</div>
+                  </div>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% else %>
+            <div class="col-sm-4 text-center">
+              <i class="icon ion-plus-circled big-icon grey"></i>
+            </div>
+            <div class="col-sm-4 text-center">
+              <i class="icon ion-plus-circled big-icon grey"></i>
+            </div>
+            <div class="col-sm-4 text-center">
+              <i class="icon ion-plus-circled big-icon grey"></i>
+            </div>
+          <% end %>
+        </div>
+        <section class="text-right muted">
+          <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
+            You have <%= @potential_matches_count %> Potential Matches<br>
+          <% else %>
+            Add 3 Matches for $<%= current_user.bank? ? "74.99" : "24.99" %> <br>
+            Not Enough Matches Try <%= link_to "Broadening Your Profile", edit_profile_path(current_user) %>
+          <% end %>
+        </section>

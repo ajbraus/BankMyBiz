@@ -10,9 +10,9 @@ class PostsController < ApplicationController
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
 
-      redirect_to :back
+      redirect_to root_path
     rescue ActiveRecord::RecordInvalid
-      redirect_to :back
+      redirect_to root_path
     end
   end
 
@@ -24,9 +24,9 @@ class PostsController < ApplicationController
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count - 3)
 
-      redirect_to :back
+      redirect_to root_path
     rescue ActiveRecord::RecordInvalid
-      redirect_to :back
+      redirect_to root_path
     end
   end
 
@@ -103,7 +103,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post }
         format.json { render json: @post, status: :created, location: @post }
       else
-        format.html { redirect_to :back, notice: 'There was a problem, please try again' }
+        format.html { redirect_to new_post, notice: 'There was a problem, please try again' }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end

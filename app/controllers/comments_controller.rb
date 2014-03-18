@@ -5,7 +5,6 @@ class CommentsController < ApplicationController
   def vote_up
     begin
       current_user.vote_exclusively_for(@comment = Comment.find(params[:id]))
-      @comment.create_activity :voted_up, owner: current_user
 
       @user = @comment.commentable.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
@@ -19,7 +18,6 @@ class CommentsController < ApplicationController
   def vote_down
     begin
       current_user.vote_exclusively_against(@comment = Comment.find(params[:id]))
-      @comment.create_activity :voted_down, owner: current_user
       
       @user = @comment.commentable.user
       @user.update_attributes(cred_count: @user.cred_count - 3)
@@ -82,7 +80,6 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        @comment.create_activity :create, owner: current_user
         @comment_users = (@comment.commentable.comments.map{ |c| c.user } + [@comment.commentable.user]).uniq
         @comment_users.each do |u|
           unless u == current_user

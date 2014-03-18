@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  include PublicActivity::Common
+  # include PublicActivity::Common
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable,  :token_authenticatable, 
   devise :invitable, :database_authenticatable, :registerable,
@@ -255,7 +255,6 @@ class User < ActiveRecord::Base
   
   def commit!(post)
     @commitment = commitments.create!(commitment_id: post.id)
-    @commitment.create_activity :create, owner: current_user
   end  
 
   def reneg!(commitment)

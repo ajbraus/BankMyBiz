@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  include PublicActivity::StoreController
+#  include PublicActivity::StoreController
 
   # before_filter :check_password_present
 

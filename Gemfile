@@ -16,7 +16,7 @@ gem 'devise_invitable', '~> 1.1.0'
 gem 'omniauth-linkedin'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
-gem 'public_activity'
+# gem 'public_activity'
 gem 'impressionist'
 gem "therubyracer"
 gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS

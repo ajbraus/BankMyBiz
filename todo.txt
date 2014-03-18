@@ -1,5 +1,7 @@
-DONE not receiving answer emails
+not receiving answer emails
+
 Setup "Certification"
+keep selling matches
 
 optimize for responsive
 
@@ -14,8 +16,6 @@ Q&A
 ajaxify Comments & Answers
 ajaxify Cred
 
-add picture to advice
-
 -------------------------------------------------------
 
 Products
@@ -25,6 +25,7 @@ SEO
   - update per page SEO
   - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
 
+test sitemap in production
 rake sitemap:refresh in production
 
 ____________________________________________________
@@ -56,7 +57,7 @@ Products
 
 anonymous questions
 
-use or remove public activity
+
 
 Customers:
   Consumers
@@ -611,3 +612,5 @@ DONE - friendlyid on posts (better urls)
 
 DONE - autocomplete tags with tag-it on posts
 DONE  Run Post.find_each(&:save) in production, uncomment out line in Post.rb and push
+DONE use or remove public activity
+DONE add picture to advice

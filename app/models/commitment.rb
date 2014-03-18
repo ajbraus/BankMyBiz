@@ -1,5 +1,5 @@
 class Commitment < ActiveRecord::Base
-  include PublicActivity::Common
+#  include PublicActivity::Common
   
   attr_accessible :commitment_id
   

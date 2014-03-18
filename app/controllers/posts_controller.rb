@@ -5,7 +5,6 @@ class PostsController < ApplicationController
   def vote_up
     begin
       current_user.vote_exclusively_for(@post = Post.find(params[:id]))
-      @post.create_activity :voted_up, owner: current_user
 
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
@@ -19,7 +18,6 @@ class PostsController < ApplicationController
   def vote_down
     begin
       current_user.vote_exclusively_against(@post = Post.find(params[:id]))
-      @post.create_activity :voted_down, owner: current_user
       
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count - 3)
@@ -93,7 +91,6 @@ class PostsController < ApplicationController
     respond_to do |format|
       if @post.save
         current_user.update_attributes(cred_count: current_user.cred_count + 10)
-        @post.create_activity :create, owner: current_user
         current_user.followers.each do |f|
           Notifier.delay.new_post(f, @post)
         end

@@ -4,7 +4,6 @@ class RelationshipsController < ApplicationController
   def create
     @user = User.find(params[:relationship][:followed_id])
     current_user.relationships.create!(followed_id: @user.id)
-    @user.create_activity :follow, owner: current_user
 
     Message.create(
       subject: "#{current_user.first_name_with_last_initial} wants to connect",

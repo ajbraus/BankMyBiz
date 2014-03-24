@@ -1,13 +1,13 @@
 <section class="answer">
   <div class="row">
     <div class="col-xs-1 text-center larger grey" style="margin-left: -8px;">
-      <%= answer.plusminus %> 
+      <span class="vote-count"><%= answer.plusminus %> </span>
       <% if user_signed_in? %>
-        <%= link_to vote_up_answer_path(answer), class:"fade-in-green" do %>
-         <i class="icon ion-plus-circled <%= current_user.voted_for?(answer) ? 'green' : '' %>" rel="tooltip" title="+1 Cred"></i>
+        <%= link_to vote_up_answer_path(answer), class:"#{current_user.voted_for?(answer) ? 'green disabled' : 'fade-in-green'} vote-up", remote: true do %>
+         <i class="icon ion-plus-circled" rel="tooltip" title="+1 Cred"></i>
         <% end %>
-        <%= link_to vote_down_answer_path(answer), class:"fade-in-orange #{current_user.voted_against?(answer) ? 'disabled' : ''}" do %>
-         <i class="icon ion-minus-circled <%= current_user.voted_against?(answer) ? 'orange' : '' %>" rel="tooltip" title="-3 Cred"></i>
+        <%= link_to vote_down_answer_path(answer), class:"#{current_user.voted_against?(answer) ? 'orange disabled' : 'fade-in-orange'} vote-down", remote: true do %>
+         <i class="icon ion-minus-circled" rel="tooltip" title="-3 Cred"></i>
         <% end %>
       <% end %>
     </div>

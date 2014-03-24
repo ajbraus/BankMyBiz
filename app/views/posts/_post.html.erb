@@ -1,11 +1,11 @@
 <div class="post">
   <div class="row">
     <div class="col-xs-1 grey larger text-center">
-      <%= link_to vote_up_post_path(post), class:"breathing-room fade-in-green vote-up" do %>
-        <i class="icon ion-chevron-up <%= user_signed_in? && current_user.voted_for?(post) ? 'green disabled' : '' %>"  rel="tooltip" title="+1 Cred"> </i>
+      <%= link_to vote_up_post_path(post), class:"breathing-room vote-up #{user_signed_in? && current_user.voted_for?(post) ? 'green disabled' : 'fade-in-green'}", remote: true do %>
+        <i class="icon ion-chevron-up"  rel="tooltip" title="+1 Cred"> </i>
       <% end %>
-      <%= post.plusminus %>
-      <%= link_to vote_down_post_path(post), class:"fade-in-orange #{user_signed_in? && current_user.voted_against?(post) ? 'disabled orange' : ''} vote-down" do %>
+      <span class="vote-count"><%= post.plusminus %></span>
+      <%= link_to vote_down_post_path(post), class:"vote-down #{user_signed_in? && current_user.voted_against?(post) ? 'disabled orange' : 'fade-in-orange'}", remote: true do %>
        <i class="icon ion-chevron-down" rel="tooltip" title="-3 Cred"></i>
       <% end %>
     </div>

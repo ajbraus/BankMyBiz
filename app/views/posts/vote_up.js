@@ -1,0 +1,1 @@
+$("div").withPostId(<%= @post.id %>).find(".vote-up").addClass("green disabled");

@@ -9,9 +9,10 @@ class PostsController < ApplicationController
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
 
-      redirect_to root_path
+      render nothing: true
+      
     rescue ActiveRecord::RecordInvalid
-      redirect_to root_path
+      redirect_to root_path, notice: "There was an error submitting your vote"
     end
   end
 
@@ -22,9 +23,10 @@ class PostsController < ApplicationController
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count - 3)
 
-      redirect_to root_path
+    render nothing: true
+
     rescue ActiveRecord::RecordInvalid
-      redirect_to root_path
+      redirect_to root_path, notice: "There was an error submitting your vote"
     end
   end
 

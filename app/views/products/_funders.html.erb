@@ -1,9 +1,11 @@
 <div class="row">
-  <h4 class='text-center'><%= params[:action].underscore.titlecase %> Funders on Bankmybiz</h4>
-  <% Product.find(1).users.limit(4).order("RANDOM()").each do |u| %>
-    <div class="col-sm-4 text-center">
+  <h4 class='text-center'><%= @product.name %> Funders on Bankmybiz</h4>
+  <% @product.users.limit(4).order("RANDOM()").each do |u| %>
+    <div class="col-sm-3 text-center">
       <%= link_to user_path(u) do %>        
-        <div class="col-sm-10 col-sm-offset-1"><%= medium_profile_picture(u) %></div>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2"><%= medium_profile_picture(u) %></div>
+        </div>
         <section><%= u.first_name_with_last_initial %></section>
         <div><%= u.position %></div>
         <% if user_signed_in? %>

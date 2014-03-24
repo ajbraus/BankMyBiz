@@ -8,9 +8,10 @@ class AnswersController < ApplicationController
       @user = @answer.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
 
-      redirect_to :back
+      render nothing: true
+      
     rescue ActiveRecord::RecordInvalid
-      redirect_to :back
+      redirect_to root_path, notice: "There was an error submitting your vote"
     end
   end
 
@@ -21,9 +22,9 @@ class AnswersController < ApplicationController
       @user = @answer.user
       @user.update_attributes(cred_count: @user.cred_count - 3)
 
-      redirect_to :back
+      render nothing: true
     rescue ActiveRecord::RecordInvalid
-      redirect_to :back
+      redirect_to root_path, notice: "There was an error submitting your vote"
     end
   end
 

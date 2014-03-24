@@ -541,7 +541,7 @@ class User < ActiveRecord::Base
   def self.set_peers_and_matches
     User.all.each do |u|
       u.set_matches
-      u.set_peers
+      #u.set_peers
     end
   end
 
@@ -549,13 +549,13 @@ class User < ActiveRecord::Base
     User.where(bank: false).each do |u|
       #MATCHES
       u.matches.each do |m|
-        if m.created_at < 6.months.ago 
+        if m.created_at < 1.month.ago 
           m.destroy
         end
       end
       #PEERS
       u.peers.each do |p|
-        if p.created_at < 6.months.ago
+        if p.created_at < 1.month.ago
           p.destroy
         end
       end
@@ -563,13 +563,13 @@ class User < ActiveRecord::Base
     User.where(bank: true).each do |u|
       #MATCHES
       u.matches.each do |m|
-        if m.created_at < 1.year.ago 
+        if m.created_at < 4.months.ago 
           m.destroy
         end
       end
       #PEERS
       u.peers.each do |p|
-        if p.created_at < 1.year.ago
+        if p.created_at < 4.months.ago
           p.destroy
         end
       end

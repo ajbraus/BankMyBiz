@@ -82,8 +82,8 @@ module UsersHelper
   def image_url(user)
     if user.avatar.present?
       user.avatar.url(:original)
-    elsif user.authentications.where(:provider == "linkedin").any?
-      user.pic_url
+    elsif auth = user.authentications.find_by_provider("linkedin")
+      user.authenticatauth
     else
       "http://bankmybiz.com/assets/default_profile_pic.png"
     end
@@ -92,8 +92,8 @@ module UsersHelper
   def profile_picture(user)
     if user.avatar.present?
       image_tag user.avatar.url(:original), class:"medium-thumbnail img-circle"
-    elsif user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"medium-thumbnail img-circle"
+    elsif auth = user.authentications.find_by_provider("linkedin")
+      image_tag auth.profile_pic_url, class:"medium-thumbnail img-circle"
     else
       image_tag "default_profile_pic.png", class:"medium-thumbnail img-circle"
     end
@@ -102,8 +102,8 @@ module UsersHelper
   def small_profile_picture(user)
     if user.avatar.present?
       image_tag user.avatar.url(:original), class:"small-thumbnail img-circle"
-    elsif user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"small-thumbnail img-circle"
+    elsif auth = user.authentications.find_by_provider("linkedin")
+      image_tag auth.profile_pic_url, class:"small-thumbnail img-circle"
     else
       image_tag "default_profile_pic.png", class:"small-thumbnail img-circle"
     end
@@ -112,8 +112,8 @@ module UsersHelper
   def medium_profile_picture(user)
     if user.avatar.present?
       image_tag user.avatar.url(:original), class:"medium-thumbnail img-circle"
-    elsif user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"medium-thumbnail img-circle"
+    elsif auth = user.authentications.find_by_provider("linkedin")
+      image_tag auth.profile_pic_url, class:"medium-thumbnail img-circle"
     else
       image_tag "default_profile_pic.png", class:"medium-thumbnail img-circle"
     end
@@ -123,8 +123,8 @@ module UsersHelper
   def large_profile_picture(user)
     if user.avatar.present?
       image_tag user.avatar.url(:original), class:"img-polaroid large-thumbnail img-circle"
-    elsif user.authentications.where(:provider == "linkedin").any?
-      image_tag user.pic_url, class:"img-polaroid large-thumbnail img-circle"
+    elsif auth = user.authentications.find_by_provider("linkedin")
+      image_tag auth.profile_pic_url, class:"img-polaroid large-thumbnail img-circle"
     else
       image_tag "default_profile_pic.png", class:"img-polaroid large-thumbnail img-circle"
     end

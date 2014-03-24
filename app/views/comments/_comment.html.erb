@@ -3,16 +3,16 @@
     <div class="row">
       <div class="col-xs-4">
         <% if user_signed_in? %>
-          <%= link_to vote_up_comment_path(comment), class:"fade-in-green #{current_user.voted_for?(comment) ? 'disabled' : ''}" do %>
-           <i class="icon ion-arrow-up-a <%= current_user.voted_for?(comment) ? 'green' : '' %>" rel="tooltip" title="+1 Cred"></i>
+          <%= link_to vote_up_comment_path(comment), class:"#{current_user.voted_for?(comment) ? 'disabled green' : 'fade-in-green'} vote-up", remote: true do %>
+           <i class="icon ion-arrow-up-a" rel="tooltip" title="+1 Cred"></i>
           <% end %>
-          <%= link_to vote_down_comment_path(comment), class:"fade-in-orange #{current_user.voted_against?(comment) ? 'disabled' : ''}" do %>
-           <i class="icon ion-arrow-down-a <%= current_user.voted_against?(comment) ? 'orange' : '' %>" rel="tooltip" title="-3 Cred"></i>
+          <%= link_to vote_down_comment_path(comment), class:"#{current_user.voted_against?(comment) ? 'disabled orange' : 'fade-in-orange'} vote-down", remote: true do %>
+           <i class="icon ion-arrow-down-a" rel="tooltip" title="-3 Cred"></i>
           <% end %>
         <% end %>
       </div>
-      <div class="pull-left down">
-        <%= comment.plusminus %> 
+      <div class="pull-left down vote-count">
+        <%= comment.plusminus %>
       </div>
     </div>
   </div>

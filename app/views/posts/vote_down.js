@@ -1,0 +1,1 @@
+$("div").withPostId(<%= @post.id %>).find(".vote-down").addClass("orange disabled");

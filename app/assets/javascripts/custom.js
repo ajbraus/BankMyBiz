@@ -9,16 +9,8 @@ String.prototype.supplant = function (o) {
 
 $(document).ready(function() {
 
-  // $('.vote-up').click(function(){
-  //   $(this).children(".icon").addClass('green');
-  // });
-
-  // $('.vote-down').click(function(){
-  //   $(this).children(".icon").addClass('orange')
-  // });
-
   $('body').on('click', 'a.disabled', function(event) {
-      event.preventDefault();
+    event.preventDefault();
   });
   
   $('#new_user').validate({ errorPlacement: function(error, element) {} });

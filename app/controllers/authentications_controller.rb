@@ -41,8 +41,7 @@ class AuthenticationsController < ApplicationController
       return user
     end
     # NO AUTH SO FIND USER BY EMAIL
-    email = access_token.info.email
-    user = User.find_by_email(email)
+    user = User.find_by_email(access_token.info.email)
     if user.present? 
       # IF USER PRESENT CREATE AUTH AND UPDATE USER
       provider = access_token.provider
@@ -66,11 +65,12 @@ class AuthenticationsController < ApplicationController
                 :location => access_token.info.location
               )
       user.skip_confirmation!
-      user.save!
-      provider = access_token.provider
-      uid = access_token.uid
-      authentication = user.authentications.create(provider: provider, uid: uid)
-      user.authentications << authentication
+      if user.save
+        provider = access_token.provider
+        uid = access_token.uid
+        authentication = user.authentications.create(provider: provider, uid: uid)
+        user.authentications << authentication
+      end
     end
     return user
   end

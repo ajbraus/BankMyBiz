@@ -1,7 +1,18 @@
-not receiving answer emails
+fix all errors
+
+peers are fucked - rethink
+impressions table is fucked - just use impression counter?
+
+Put best answers on top
+ajaxify Comments
+ajaxify Cred
+
+newsletter/digest
 
 Setup "Certification"
 keep selling matches
+
+alert for login is too blank
 
 optimize for responsive
 
@@ -13,8 +24,7 @@ Q&A
     - don't receive answers emails
     - follow 5 tags upon login
 
-ajaxify Comments & Answers
-ajaxify Cred
+zipcodes
 
 -------------------------------------------------------
 

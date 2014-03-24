@@ -134,6 +134,9 @@
                 <li>
                   <%= link_to 'Asset Based', asset_based_path %>
                 </li>
+                <li>
+                  <%= link_to 'Grants', grants_path %>
+                </li>
                 <% if false %>
                 <li>
                   <%= link_to 'Revenue Based', revenue_based_path %>
@@ -143,9 +146,6 @@
                 </li>
                 <li>
                   <%= link_to 'Cash Advance', cash_advance_path %>
-                </li>
-                <li>
-                  <%= link_to 'Grants', grants_path %>
                 </li>
                 <li>
                   <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path %>
@@ -293,14 +293,16 @@
             <h5>Non-Traditional</h5>
             <div class="list-group">
                 <%= link_to 'Factoring', factoring_path, class:"list-group-item" %>
-                <%= link_to 'Revenue Based', revenue_based_path, class:"list-group-item" %>
                 <%= link_to 'Asset Based', asset_based_path, class:"list-group-item" %>
-                <%= link_to 'Private Equity', private_equity_path, class:"list-group-item" %>
-                <%= link_to 'Community Development', community_development_path, class:"list-group-item" %>
                 <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path, class:"list-group-item" %>
-                <%= link_to 'Cash Advance', cash_advance_path, class:"list-group-item" %>
                 <%= link_to 'Grants', grants_path, class:"list-group-item" %>
-                <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item" %>
+                <% if false %>
+                  <%= link_to 'Private Equity', private_equity_path, class:"list-group-item" %>
+                  <%= link_to 'Cash Advance', cash_advance_path, class:"list-group-item" %>
+                  <%= link_to 'Revenue Based', revenue_based_path, class:"list-group-item" %>
+                  <%= link_to 'Community Development', community_development_path, class:"list-group-item" %>
+                  <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item" %>
+                <% end %>
             </div>
           </div>
           <div class="col-sm-3">

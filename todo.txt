@@ -1,15 +1,20 @@
-fix all errors
+Put best answers on top
+
+Products
+  - Create Products (with SEO on pages)  
 
 peers are fucked - rethink
 impressions table is fucked - just use impression counter?
 
-Put best answers on top
-ajaxify Comments
-
-newsletter/digest
-
-Setup "Certification"
+Setup "Certification" - add SSL
 keep selling matches
+
+SEO 
+  - update per page SEO
+  - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
+  - sitemap in S3 - https://github.com/kjvarga/sitemap_generator/wiki/Generate-Sitemaps-on-read-only-filesystems-like-Heroku
+  
+newsletter/digest
 
 alert for login is too blank
 
@@ -26,13 +31,6 @@ Q&A
 zipcodes
 
 -------------------------------------------------------
-
-Products
-  - Create Products (with SEO on pages)  
-
-SEO 
-  - update per page SEO
-  - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
 
 test sitemap in production
 rake sitemap:refresh in production

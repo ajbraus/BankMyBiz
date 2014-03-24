@@ -1,45 +1,92 @@
 <% 
-  content_for :title, "SBA | Small Business | Government Loan - Bankmybiz" 
-  content_for :description, "The U.S. Small Business Administration (SBA) is an agency of the government that assists small businesses." 
-  content_for :keywords, "SBA, Small Business, Government Loan | Bankmybiz"
+  content_for :title, "Grants - Business Grants - Grant Funding | Bankmybiz" 
+  content_for :description, "Many small businesses creating new technology and products can find funding through business grants." 
+  content_for :keywords, "Grants, Business Grants, Grant Funding | Bankmybiz"
 %>
 
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-    <h1 class='text-center'><%= params[:action].underscore.titlecase %></h1>
+  <%= render partial: 'options_nav' %>
+  <div class="col-sm-9">
+    <h1 class='text-center'><%= params[:action].underscore.titlecase.upcase %></h1>
     <hr>
-    <div class="col-sm-8">
-      <%= render partial: 'funders' %>
-      <h3>Intro</h3>
-      <p>
-        The <b>U.S. Small Business Administration (SBA)</b> is an independent agency of the federal government. The SBA offers aid, advice, assistance and protects the interests of small businesses. There are many different SBA offices spread out throughout the country which enable small businesses a chance to interact locally with the SBA.  
-      </p>
-      <blockquote>
-        <p>The SBA offers aid, advice, assistance and protects the interests of small businesses.</p>
-      </blockquote>
-      
-      <h3>Micro Loans</h3>
-      <p>
-        The SBA offers a variety of programs, but primarily serves as a certified lender and advisor to small businesses.  One such program is the microloan program. <b>The microloan program provides loans up to $50,000 to U.S. based businesses</b>, with the average loan amount being around $13,000. This is an ideal program for many businesses who need less money than a typical business bank loan.  
-      </p>
+    <div class="row">
+      <div class="col-sm-7">
+        <h3>Grant Funding</h3>
+        <p>
+          Grants represent "free money" for funding businesses and non-profits that run by minorities or women, improve the social good, or are engaged in commercializing new technology. Grants represent funds that do not need to be repaid in either cash or equity. The amounts of grants vary between $5,000 and hundreds of thousands of dollars. While no debt is issued from a business bank loan, or equity sold, the organization you receive the grant money from will will likely want to see results from the funding. 
+        </p>
+        <blockquote>
+          <p>Grants represent "free money" for funding businesses and non-profits that improve the social good or are commercializing new technology</p>
+        </blockquote>
+        
+        <h3>Grant Types and Facts</h3>
+        <p>
+          Most Grants are given out by the government and nongovernmental organizations to nonprofits and educational institutions whose focus is medicine, education, scientific research or technology development. Only few certified lenders and business bankers give grants, they are often are interested in giving money to specific groups and types of organizations, such as educational institutions. In most cases, your business must be devoted to new technology research or be a nonprofit in order to apply for most grants. 
+        </p>
 
-      <h3>Loan Guarantees</h3>
-      <p>
-        Another program is the <b>7(a) Loan Guarantee Program</b>. It is designed to assist entrepreneurs start or expand their businesses. As of 2010, the program makes up to $5 million available to small businesses through bank and non-bank institutions in the lending business. The <b>Small Business Jobs Act of 2010</b> permanently increased the maximum size of these loans from $2 million to $5 million.
-      </p>
+        <h3>Minority and Women Owned Grants</h3>
+        <p>
+          There are many nongovernment grants issued to small business owners based on ethnic minorities, women, and other underrepresented people in business. Business owners must meet the specifications of the grant, and the business or nonprofit organization should meet whatever criteria the organization may have.  For instance, if you apply for a nongovernmental grant that provides grants to women-owned businesses, at least one woman must own the business.
+        </p>
 
-      <h3>Resource Centers Near You</h3>
-      <p>
-        As mentioned above, the lending business is not the only one that the SBA engages in.  There are many resource centers including: <b>900 Small Business Development Centers</b>, <b>110 Women's Business Centers</b>, and <b>350 chapters of volunteers</b> who provide free mentoring under the Service Corps of Retired Executives (SCORE) program.  The SBA has many other niche programs, particularly for women and minority businesses. 
-      </p>
+        <h3>Small Business Innovation Research Program (SBIR)</h3>
+        <p>
+          One great resource for grants is the Small Business Innovation Research Program (SBIR). SBIR is a competitive program that encourages small business owners to explore technological potential and provides the incentive to profit from commercialization. This program is intended to help small business owners contribute to the R&D development within the United States and has been the seed funding for many, now large corporations.
 
-      <%= render partial: 'funders' %>
+          <h3>SBIR Qualifications:</h3>
+          <ul>
+            <li>American-owned and independently operated</li>
+            <li>For-profit small business</li>
+            <li>Principal researcher employed by business</li>
+            <li>Fewer than 500 employees</li>
+          </ul>
+        </p>
+      </div>
+
+      <div class="col-sm-5 grades">
+        <h3 class='text-center'><span class='text-muted'>Grade</span> <%= params[:action].underscore.titlecase %></h3>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">A+</h1>
+            <h3 class='text-center'>Cost</h3>
+            <p class='text-muted'>Grants are basically "free money"</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">A+</h1>
+            <h3 class='text-center'>Terms</h3>
+            <p class='text-muted'>Grant funders are usually only interested in seeing the impact the money creates.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">A</h1>
+            <h3 class='text-center'>Exit Ease</h3>
+            <p class='text-muted'></p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">C</h1>
+            <h3 class='text-center'>Amount</h3>
+            <p class='text-muted'>Grants are generally small amounts of money.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge text-center">D</h1>
+            <h3 class='text-center'>Funding Speed</h3>
+            <p class='text-muted'>Grant cycles can be over months and years.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">D</h1>
+            <h3 class='text-center'>Approval</h3>
+            <p class='text-muted'>You must match the qualifications of the grant, and submit an in depth proposal of how you will use the funds.</p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="col-sm-4">
-      Grade 1
-      <hr>
-      Grade 2
-    </div>
+    <hr>
+    <%= render partial: 'funders' %>
   </div>
 </div>

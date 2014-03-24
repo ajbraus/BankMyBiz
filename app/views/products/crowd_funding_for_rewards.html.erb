@@ -1,45 +1,88 @@
 <% 
-  content_for :title, "SBA | Small Business | Government Loan - Bankmybiz" 
-  content_for :description, "The U.S. Small Business Administration (SBA) is an agency of the government that assists small businesses." 
-  content_for :keywords, "SBA, Small Business, Government Loan | Bankmybiz"
+  content_for :title, "Line of Credit - Bank Loan - Business Banker | Bankmybiz" 
+  content_for :description, "A Line of Credit allows business owners a flexible business loan which can be paid back anytime."
+  content_for :keywords, "Line of Credit, Bank Loan, Business Banker | Bankmybiz"
 %>
 
 <div class="row">
-  <div class="col-sm-10 col-sm-offset-1">
-    <h1 class='text-center'><%= params[:action].underscore.titlecase %></h1>
+  <%= render partial: 'options_nav' %>
+  <div class="col-sm-9">
+    <h1 class='text-center'><%= params[:action].underscore.titlecase.upcase %></h1>
     <hr>
-    <div class="col-sm-8">
-      <%= render partial: 'funders' %>
-      <h3>Intro</h3>
-      <p>
-        The <b>U.S. Small Business Administration (SBA)</b> is an independent agency of the federal government. The SBA offers aid, advice, assistance and protects the interests of small businesses. There are many different SBA offices spread out throughout the country which enable small businesses a chance to interact locally with the SBA.  
-      </p>
-      <blockquote>
-        <p>The SBA offers aid, advice, assistance and protects the interests of small businesses.</p>
-      </blockquote>
-      
-      <h3>Micro Loans</h3>
-      <p>
-        The SBA offers a variety of programs, but primarily serves as a certified lender and advisor to small businesses.  One such program is the microloan program. <b>The microloan program provides loans up to $50,000 to U.S. based businesses</b>, with the average loan amount being around $13,000. This is an ideal program for many businesses who need less money than a typical business bank loan.  
-      </p>
+    <div class="row">
+      <div class="col-sm-7">
+        <h3>Traditional & Flexible</h3>
+        <p>
+          A Line of Credit (or "LOC") is like a business credit card but for more money and much <b>lower rates</b>.Just like a credit card, once your business is approved, you can use it for whatever you like as long as you do not exceed the maximum. Although you could buy anything, a Line of Credit is traditionally meant to be used for revolving expenses that effect cash flow, such as payroll, taxes, promotions, inventory, etc.
+        </p>
+        <h3>For Revolving Expenses</h3>
+        <p>
+          For example, let's say you have customers that pay you for your service over the course of a month, but you have employees you must pay the first of every month. A Line of Credit would be an excellent way to cover the revolving expense of paying your employees and then getting paid back by your customers throughout the month. Once your customers do pay you, you can choose to pay down your Line of Credit, or carry a balance and pay interest.
+        </p>
+        <blockquote>
+          <p>A Line of Credit (or "LOC") is like a business credit card but for more money and much <b>lower rates</b>.</p>
+        </blockquote>
 
-      <h3>Loan Guarantees</h3>
-      <p>
-        Another program is the <b>7(a) Loan Guarantee Program</b>. It is designed to assist entrepreneurs start or expand their businesses. As of 2010, the program makes up to $5 million available to small businesses through bank and non-bank institutions in the lending business. The <b>Small Business Jobs Act of 2010</b> permanently increased the maximum size of these loans from $2 million to $5 million.
-      </p>
+        <h3>Setting the Rate</h3>
+        <p>
+          When the business bank and business owner first establish the Line of Credit, they will determine an interest rate.  The owner pays the interest rate only on the money they use. In the example above, the owner would pay interest on the $23,500 they use for the payroll, but once the business owner pays back $13,500, the owner will only pay interest on the $10,000 still outstanding.
+        </p>
 
-      <h3>Resource Centers Near You</h3>
-      <p>
-        As mentioned above, the lending business is not the only one that the SBA engages in.  There are many resource centers including: <b>900 Small Business Development Centers</b>, <b>110 Women's Business Centers</b>, and <b>350 chapters of volunteers</b> who provide free mentoring under the Service Corps of Retired Executives (SCORE) program.  The SBA has many other niche programs, particularly for women and minority businesses. 
-      </p>
+        <h3>Rainy Day Fund</h3>
+        <p>
+          Like a credit card, on a LOC interest is only charged on the portion you use. So it makes sense for any business owner to get a Line of Credit even if it is just serves as a "Rainy Day Fund". That way if an emergency occurs, you has immediate access to cash. Also, loan prepayment penalties on Lines of Credit are pretty rare, so businesses can cheaply borrow money for short periods of time.
+        </p>
 
-      <%= render partial: 'funders' %>
+        <h3>Hard to Qualify</h3>
+        <p>
+           If it is hard to get a <%= link_to "Term Loan", term_loan_path %>, then it is <b>even harder</b> to qualify for a Line of Credit. Business banks usually require businesses to be well established before a business bank will offer them a Line of Credit. Ways to signal how established and credible your business is include having filed taxes for several years, having recurring revenue, and employing good accounting standards.
+        </p>
+      </div>
+
+      <div class="col-sm-5 grades">
+        <h3 class='text-center'><span class='text-muted'>Grade</span> <%= params[:action].underscore.titlecase %></h3>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">A+</h1>
+            <h3 class='text-center'>Exit Ease</h3>
+            <p class='text-muted'>No repayment fines.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">B</h1>
+            <h3 class='text-center'>Cost</h3>
+            <p class='text-muted'>The rate is better than a credit card but not as great as a <%= link_to "Term Loan", term_loan_path %></p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">B-</h1>
+            <h3 class='text-center'>Terms</h3>
+            <p class='text-muted'>Your business assets are collatoral, but not as strigently as with a <%= link_to "Term Loan", term_loan_path %>.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">B-</h1>
+            <h3 class='text-center'>Amount</h3>
+            <p class='text-muted'>You get what you qualify for.</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">D</h1>
+            <h3 class='text-center'>Approval</h3>
+            <p class='text-muted'>Must have recurring revenue, and have filed taxes for more than two years.</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge text-center">C-</h1>
+            <h3 class='text-center'>Funding Speed</h3>
+            <p class='text-muted'>Even longer than a <%= link_to "Term Loan", term_loan_path %></p>
+          </div>
+        </div>
+      </div>
     </div>
-
-    <div class="col-sm-4">
-      Grade 1
-      <hr>
-      Grade 2
-    </div>
+    <hr>
+    <%= render partial: 'funders' %>
   </div>
 </div>

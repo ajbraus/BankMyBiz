@@ -49,7 +49,6 @@ class ProductsController < ApplicationController
   def angel_investment
     @product = Product.find_by_name(params[:action].underscore.titlecase)
   end
-  @product = Product.find_by_name(params[:action].underscore.titlecase)
   def venture_capital
     @product = Product.find_by_name(params[:action].underscore.titlecase)
   end

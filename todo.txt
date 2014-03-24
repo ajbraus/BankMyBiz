@@ -5,7 +5,6 @@ impressions table is fucked - just use impression counter?
 
 Put best answers on top
 ajaxify Comments
-ajaxify Cred
 
 newsletter/digest
 
@@ -624,3 +623,5 @@ DONE - autocomplete tags with tag-it on posts
 DONE  Run Post.find_each(&:save) in production, uncomment out line in Post.rb and push
 DONE use or remove public activity
 DONE add picture to advice
+
+DONE ajaxify Cred

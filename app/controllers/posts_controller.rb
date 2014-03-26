@@ -21,7 +21,7 @@ class PostsController < ApplicationController
       current_user.vote_exclusively_against(@post = Post.find(params[:id]))
       
       @user = @post.user
-      @user.update_attributes(cred_count: @user.cred_count - 3)
+      @user.update_attributes(cred_count: @user.cred_count - 1)
 
     render nothing: true
 

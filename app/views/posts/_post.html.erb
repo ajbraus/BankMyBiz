@@ -6,7 +6,7 @@
       <% end %>
       <span class="vote-count"><%= post.plusminus %></span>
       <%= link_to vote_down_post_path(post), class:"vote-down #{user_signed_in? && current_user.voted_against?(post) ? 'disabled orange' : 'fade-in-orange'}", remote: true do %>
-       <i class="icon ion-chevron-down" rel="tooltip" title="-3 Cred"></i>
+       <i class="icon ion-chevron-down" rel="tooltip" title="-1 Cred"></i>
       <% end %>
     </div>
     <div class="col-xs-11">

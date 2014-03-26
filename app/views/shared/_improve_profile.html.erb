@@ -17,11 +17,8 @@
         <h4 class="text-center">to Unlock <%= current_user.bank? ? "Owner" : "Funder" %> Matches</h4>
       </br>
     <% elsif current_user.todays_match.present? %>
-      <h4>Current <%= current_user.bank? ? "Owner" : "Funder" %> Match</h4>
+      <h4><%= current_user.bank? ? "Owner" : "Funder" %> Match</h4>
       <%= render partial: "users/user", locals: { user: current_user.todays_match } %>
-      <div class="muted">
-        <%= calls_to_action.sample %>
-      </div>
       <% unless current_user.finished_profile? %>
         <section>
           <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>

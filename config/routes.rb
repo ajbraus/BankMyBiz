@@ -47,6 +47,9 @@ BankMyBiz::Application.routes.draw do
 
   resources :favorites, only: [:index]
 
+  resources :tags, only: [:index, :create]
+  get 'tags/:tag', to: 'tags#show', as: :tag
+
   resources :subscriptions, only: [:new, :create]
   resources :purchases, only: [:new, :create]
   resources :likes, only: [:create, :destroy]
@@ -92,8 +95,6 @@ BankMyBiz::Application.routes.draw do
   match 'users/:id/profiles' => 'profiles#update', as: 'update_profile'
 
   resources :commitments, only: [:create, :destroy]
-
-  get 'tags/:tag', to: 'tags#show', as: :tag
 
 
 

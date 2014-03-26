@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
       current_user.vote_exclusively_against(@comment = Comment.find(params[:id]))
       
       @user = @comment.commentable.user
-      @user.update_attributes(cred_count: @user.cred_count - 3)
+      @user.update_attributes(cred_count: @user.cred_count - 1)
       
       render nothing: true
     rescue ActiveRecord::RecordInvalid

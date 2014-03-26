@@ -1,13 +1,17 @@
 <div class="tag-cloud text-left">
   <% if user_signed_in? %>
     <h4>Your Interests</h4>
-<!--       <div class="input-group">
-        <input type="text" class="form-control">
+    <%= form_for Tag.new, remote: true do |f| %>
+      <div class="input-group">
+        <%= f.text_field :name, class:"form-control", id:"followTags" %>
         <span class="input-group-btn">
-          <button class="btn btn-success" type="button">Follow</button>
+          <%= f.submit "Follow", class:"btn btn-success" %>
         </span>
-      </div> -->
-    <%= render partial: 'shared/tag', collection: current_user.tags.last(8) %>
+      </div>
+    <% end %>
+    <div id="myTags">
+      <%= render partial: 'shared/tag', collection: current_user.tags %>
+    </div>
   <% end %>
   <h4>Trending Interests</h4>
   <%= render partial: 'shared/tag', collection: Tag.order('use_count DESC').first(15).shuffle %>

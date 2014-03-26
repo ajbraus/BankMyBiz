@@ -7,7 +7,7 @@
            <i class="icon ion-arrow-up-a" rel="tooltip" title="+1 Cred"></i>
           <% end %>
           <%= link_to vote_down_comment_path(comment), class:"#{current_user.voted_against?(comment) ? 'disabled orange' : 'fade-in-orange'} vote-down", remote: true do %>
-           <i class="icon ion-arrow-down-a" rel="tooltip" title="-3 Cred"></i>
+           <i class="icon ion-arrow-down-a" rel="tooltip" title="-1 Cred"></i>
           <% end %>
         <% end %>
       </div>

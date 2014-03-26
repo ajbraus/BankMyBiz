@@ -271,3 +271,7 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
             Not Enough Matches Try <%= link_to "Broadening Your Profile", edit_profile_path(current_user) %>
           <% end %>
         </section>
+
+              <div class="muted">
+        <%= calls_to_action.sample %>
+      </div>

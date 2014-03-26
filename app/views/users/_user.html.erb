@@ -6,15 +6,16 @@
       </div>
     </div>
     <div class="col-sm-7">
-      <strong><%= link_to user_path(user) do %><%= user.first_name_with_last_initial %><% end %></strong> <br>
+      <strong><%= user.first_name_with_last_initial %></strong> - <%= user.position %> <%= user.hq_state.present? ? ", " + user.hq_state : "" %><br>
       <span class="muted">
-        <%= user.position %>, <%= user.try(:hq_state) %><br>
+        <%= user.org_name %><br>
         <%= user.status %> 
         <br>
         <%= current_user.percentage_match(user) %>% Match
       </span>
     </div>
   </div>
+  <% if false %>
   <div class="row">
     <section class="col-xs-12">
       <div class="pull-right">
@@ -29,4 +30,5 @@
       <% end %>
     </section>
   </div>
+  <% end %>
 </div>

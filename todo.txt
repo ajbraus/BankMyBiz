@@ -5,6 +5,8 @@ Products
 
 peers are fucked - rethink
 impressions table is fucked - just use impression counter?
+impressions on posts are not even counting
+use impressionable in user and view_count cache counter in post
 
 Setup "Certification" - add SSL
 keep selling matches

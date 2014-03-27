@@ -14,7 +14,7 @@
     <%= render partial: 'posts/post', locals: { post: @post } %>
     <% if user_signed_in? %>
       <%= render partial: 'answers/form', locals: { post: @post } %>    
-      <%= render partial: 'answers/answer', collection: @post.answers.where('body IS NOT NULL').order('created_at desc'), as: :answer, locals: { post: @post } %>
+      <%= render partial: 'answers/answer', collection: @post.answers.where('body IS NOT NULL').order('accepted ASC, created_at DESC'), as: :answer, locals: { post: @post } %>
     <% else %>
       <div class='alert alert-warning' style="padding:10px;font-size:110%;">
         <u><strong><%= pluralize @post.answers.count, "Piece" %> of Advice</strong></u> posted on this question.

@@ -1,4 +1,9 @@
-Put best answers on top
+Setup "Certification" - add SSL
+Setup CRM style workflows
+keep selling matches
+Zip Codes
+  ["53703", "53792", "53558", "90290"]
+
 
 Products
   - Create Products (with SEO on pages)  
@@ -8,8 +13,6 @@ impressions table is fucked - just use impression counter?
 impressions on posts are not even counting
 use impressionable in user and view_count cache counter in post
 
-Setup "Certification" - add SSL
-keep selling matches
 
 SEO 
   - update per page SEO
@@ -24,13 +27,13 @@ optimize for responsive
 
 Q&A
   - follow tags
-    - add new followed tag with tag-it
+    DONE - add new followed tag with tag-it
     - delete followed tag
     - don't receive interests emails
     - don't receive answers emails
     - follow 5 tags upon login
 
-zipcodes
+
 
 -------------------------------------------------------
 
@@ -186,6 +189,13 @@ make reply from message in email actually reply as a message.
 follow tags
 
 Control, Moderation
+
+
+Improve zipcodes
+  - http://stackoverflow.com/questions/8343673/postgres-find-zip-codes-near-specific-zip-code
+  - http://www.geopostcodes.com/USA $29.99
+  - http://www.getzipcodedata.com/ $5.00
+  - MyModel.where("field LIKE :prefix", prefix: "#{prefix}%")
 
 ---------------------------------------
 ---------------------------------------
@@ -625,3 +635,5 @@ DONE use or remove public activity
 DONE add picture to advice
 
 DONE ajaxify Cred
+DONE Put best answers on top
+

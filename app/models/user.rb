@@ -43,7 +43,8 @@ class User < ActiveRecord::Base
                   :stripe_customer_id,
                   :two_years,
                   :cred_count,
-                  :product_ids
+                  :product_ids,
+                  :zip_code
 
   is_impressionable :counter_cache => true, :unique => :user_id
 
@@ -126,6 +127,11 @@ class User < ActiveRecord::Base
   after_invitation_accepted :email_invited_by
   after_invitation_accepted :create_welcome_message
   after_invitation_accepted :set_username
+
+  def near_by_matches
+    zip_prefix = self.zip_code[0..2]
+    User.where(bank: !self.bank?).where("zip_code LIKE '#{zip_prefix}%'")
+  end
 
   def background_color
     if status == "Actively Looking"
@@ -371,6 +377,7 @@ class User < ActiveRecord::Base
     progress += 1 if avatar.present? || pic_url.present?  
     progress += 1 if org_name.present?
     progress += 1 if hq_state.present?
+    #progress += 1 if zip_code.present?
     progress += 1 if two_years != nil
 
     return progress

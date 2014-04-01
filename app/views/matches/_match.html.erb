@@ -1,21 +1,29 @@
 <div class='col-lg-6 match-card clearfix'>
-  <%= link_to user_path(match) do %>
-    <%= medium_profile_picture(match) %>
-  <% end %>
-  <blockquote>
-    <h4><%= match.name %> <span class='text-muted small'><%= match.hq_state %></span></h4>
-    <div class='text-muted small'><%= match.position %> at <%= match.org_name %></div>
-    <% if match.website_url.present? %>
-      <%= link_to match.website_url do %>
-        <i class="icon ion-earth"></i> <%= match.website_url %> 
-      <% end %>
+  <div class="row">
+    <%= link_to user_path(match), class:"col-xs-3 text-center" do %>
+      <%= medium_profile_picture(match) %>
     <% end %>
-    <%= link_to user_path(match) do %>
-      <i class="icon ion-ios7-email"></i> Contact
+    <div class="col-xs-9">
+      <div class='deets'>
+        <h4><%= match.name %> <span class='text-muted small'><%= match.hq_state %></span></h4>
+        <div class='text-muted small'><%= match.position %> at <%= match.org_name %></div>
+        <% if match.website_url.present? %>
+          <%= link_to match.website_url do %>
+            <i class="icon ion-earth"></i> <%= match.website_url %> 
+          <% end %>
+        <% end %>
+        <%= link_to user_path(match) do %>
+          <i class="icon ion-ios7-email"></i> Contact
+        <% end %>
+        <div class='text-muted small'><%= match.status %></div>
+        <div class='text-muted small'><%= current_user.percentage_match(match) %>% Match <%= !current_user.local?(match) ? "| Local" : "" %></div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <% if match.tags.any? %>
+    <div class='text-muted small'>Interests</div>
+    <%= raw match.tags.first(5).map(&:name).map { |t| content_tag(:span, t, style:"background:#009E3B;padding:3px 7px;color:white;font-size:90%;") }.join(' ') %>
     <% end %>
-    <p><%= match.status %> | <%= current_user.percentage_match(match) %>% Match <%= !current_user.local?(match) ? "| Local" : "" %></p>
-  </blockquote>
-  <br>
-  <%= raw match.tags.first(5).map(&:name).map { |t| content_tag(:span, t, style:"background:#009E3B;padding:3px 7px;color:white;font-size:90%;") }.join(' ') %>
+  </div>
 </div>
-<hr>

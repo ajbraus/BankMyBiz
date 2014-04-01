@@ -1202,7 +1202,10 @@ table.user-stats {
 }
 
 .match-card {
-  margin-bottom:20px;
+  border-bottom: 1px solid #eee;
+  padding-top:20px;
+  min-height: 200px;
+  border-right:1px solid #eee;
   a {
     color:grey;
     &:hover {
@@ -1211,12 +1214,12 @@ table.user-stats {
     }
   }
   img {
-    float:left;
+    margin-top:20px;
   }
   p {
 
   }
-  blockquote {
+  .deets {
     float:left;
     margin:5px 0 5px 15px;
     padding-top:5px;

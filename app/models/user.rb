@@ -133,6 +133,10 @@ class User < ActiveRecord::Base
     User.where(bank: !self.bank?).where("zip_code LIKE '#{zip_prefix}%'")
   end
 
+  def local?(other_user)
+    return self.zip_code[0..2] == other_user.zip_code[0..2]
+  end
+
   def background_color
     if status == "Actively Looking"
       return "rgba(0, 158, 0, 0.72)"
@@ -377,14 +381,14 @@ class User < ActiveRecord::Base
     progress += 1 if avatar.present? || pic_url.present?  
     progress += 1 if org_name.present?
     progress += 1 if hq_state.present?
-    #progress += 1 if zip_code.present?
+    progress += 1 if zip_code.present?
     progress += 1 if two_years != nil
 
     return progress
   end
 
   def total_profile_elements
-    16
+    17
   end
 
   def profile_progress_percent

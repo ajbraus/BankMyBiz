@@ -11,7 +11,7 @@
         <%= user.org_name %><br>
         <%= user.status %> 
         <br>
-        <%= current_user.percentage_match(user) %>% Match
+        <%= current_user.percentage_match(user) %>% Match <%= current_user.local?(user) ? "| Local Funder" : "" %>
       </span>
     </div>
   </div>

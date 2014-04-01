@@ -1,8 +1,10 @@
 Setup "Certification" - add SSL
 Setup CRM style workflows
 keep selling matches
-Zip Codes
-  ["53703", "53792", "53558", "90290"]
+
+add "00000" as zipcode to all profile complete users with nil zipcode
+create local? method - tell people if matches are local
+
 
 
 Products

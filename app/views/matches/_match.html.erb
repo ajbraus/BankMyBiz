@@ -1,13 +1,21 @@
-<%= link_to user_path(match) do %>
-  <div class='match-card clearfix'>
-    <div class="pull-left">
-      <%= large_profile_picture(match) %>
-    </div>
-    <div class="match-card-deets pull-left">
-      <p><strong><%= match.name %></strong></p>
-      <p><%= match.status %> | <%= current_user.percentage_match(match) %>% Match </p>
-      <p class="muted"><%= match.position %></p>
-      <p class="muted"><%= match.goals %></p>
-    </div>
-  </div>
-<% end %>
+<div class='col-lg-6 match-card clearfix'>
+  <%= link_to user_path(match) do %>
+    <%= medium_profile_picture(match) %>
+  <% end %>
+  <blockquote>
+    <h4><%= match.name %> <span class='text-muted small'><%= match.hq_state %></span></h4>
+    <div class='text-muted small'><%= match.position %> at <%= match.org_name %></div>
+    <% if match.website_url.present? %>
+      <%= link_to match.website_url do %>
+        <i class="icon ion-earth"></i> <%= match.website_url %> 
+      <% end %>
+    <% end %>
+    <%= link_to user_path(match) do %>
+      <i class="icon ion-ios7-email"></i> Contact
+    <% end %>
+    <p><%= match.status %> | <%= current_user.percentage_match(match) %>% Match <%= !current_user.local?(match) ? "| Local" : "" %></p>
+  </blockquote>
+  <br>
+  <%= raw match.tags.first(5).map(&:name).map { |t| content_tag(:span, t, style:"background:#009E3B;padding:3px 7px;color:white;font-size:90%;") }.join(' ') %>
+</div>
+<hr>

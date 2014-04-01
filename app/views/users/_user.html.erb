@@ -11,7 +11,7 @@
         <%= user.org_name %><br>
         <%= user.status %> 
         <br>
-        <%= current_user.percentage_match(user) %>% Match <%= current_user.local?(user) ? "| Local Funder" : "" %>
+        <%= current_user.percentage_match(user) %>% Match <%= current_user.local?(user) ? "| Local" : "" %>
       </span>
     </div>
   </div>
@@ -23,7 +23,7 @@
       </div>
       <% if user.following?(current_user) || current_user.is_a_match_with?(user)%>
         <div class="pull-right">
-          <%= link_to user_path(user), class:'btn-sm btn btn-default' do %>
+          <%= link_to user_path(user), class:'btn btn-default' do %>
             <i class="ion-ios7-email blue"></i> Contact
           <% end %>
         </div>

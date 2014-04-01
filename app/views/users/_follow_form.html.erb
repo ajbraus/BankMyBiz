@@ -1,5 +1,5 @@
 <% unless current_user == user %>
-  <span id="follow_form">
+  <span class="pull-right">
   <% if current_user.following?(user) %>
     <%= render partial: 'users/unfollow', locals: { user: user } %>
   <% else %>

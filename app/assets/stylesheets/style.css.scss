@@ -439,7 +439,7 @@ hr {
 }
 
 .medium-thumbnail {
-  width: 100%;
+  width: 75px;
 }
 
 .large-thumbnail {
@@ -1202,11 +1202,28 @@ table.user-stats {
 }
 
 .match-card {
-  padding:10px;
-  margin:10px 0;
-  .match-card-deets {
-    padding-left:10px;
-    width: 66%;
+  margin-bottom:20px;
+  a {
+    color:grey;
+    &:hover {
+      color: #009E3B;
+      text-decoration: none;
+    }
+  }
+  img {
+    float:left;
+  }
+  p {
+
+  }
+  blockquote {
+    float:left;
+    margin:5px 0 5px 15px;
+    padding-top:5px;
+    padding-bottom:5px;
+    h4 {
+      margin: 0 0 0 0;
+    }
   }
 }
 
@@ -1254,10 +1271,7 @@ ol.industries li {
   float:left;
   width:140px;
 }
-br
-{
-  clear: left;
-}  /* separate the list from subsequent markup */
+
 div.wrapper
 {
   margin-bottom: 1em;

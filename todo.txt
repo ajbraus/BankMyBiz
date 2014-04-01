@@ -1,10 +1,75 @@
-Setup "Certification" - add SSL
 Setup CRM style workflows
+  following
+    allow contact
+    see recent activity
+    website / twitter handle
+      always have http://
+
+Pre-qualifying
+
+reverse geocode and set city by zipcode
+
+Customers:
+  Local Consumers
+  National Consumers
+  International Consumers
+  Local Businesses
+  National Businesses
+  International Businesses
+  Government
+  Health Systems
+  Military
+
+a = "Local Consumers, National Consumers, International Consumers, Local Businesses, National Businesses, International Businesses, Government, Health Systems, Military"
+a = a.split(", ")
+a.each do |b|
+  CustomerType.create(description: b)
+end
+
+ct = CustomerType.where(description: "B2B").first
+ct.users.each do |u|
+  local_customers = CustomerType.find(3)
+  national_customers = CustomerType.find(4)
+  u.customer_types << local_customers
+  u.customer_types << national_customers
+end
+
+ct = CustomerType.where(description: "B2C").first
+ct.users.each do |u|
+  local_businesses = CustomerType.find(6)
+  national_businesses = CustomerType.find(7)
+  u.customer_types << local_businesses
+  u.customer_types << national_businesses
+end
+
+CustomerType.where(description: "B2B").first.destroy
+CustomerType.where(description: "B2C").first.destroy
+
+
+Loan priority
+
+Lowest Rate
+Simplest Documentation
+Longest Repayment
+Least Turn Around Time
+Least Collateral
+
+Loan purpose
+
+Expansion
+Buyout A Partner
+Marketing/Advertising
+Starting a Business
+Working Capital
+Refinance / Consolidate Debt
+Remodel an existing location
+Purchase Equipment
+Repair Equipment
+Other
+
+Setup "Certification" - add SSL
+
 keep selling matches
-
-add "00000" as zipcode to all profile complete users with nil zipcode
-create local? method - tell people if matches are local
-
 
 
 Products
@@ -72,39 +137,6 @@ Products
 anonymous questions
 
 
-
-Customers:
-  Consumers
-  Private Businesses
-  Government
-  Health Systems
-
-entity type:
-  add b-corp
-
-revenue - add 0-5K and 5-25K, 26-100K
-
-Loan priority
-
-Lowest Rate
-Simplest Documentation
-Longest Repayment
-Least Turn Around Time
-Least Collateral
-
-Loan purpose
-
-Expansion
-Buyout A Partner
-Marketing/Advertising
-Starting a Business
-Working Capital
-Refinance / Consolidate Debt
-Remodel an existing location
-Purchase Equipment
-Repair Equipment
-Other
-
 Money
   - Get verified = Funders, service providers, and businesses
   - Add "Become a Verified Funder" workflow for Funders - pay $150/month $100/ 6months $75 / year
@@ -124,6 +156,13 @@ Credit Card payment bounced but card was saved and then it worked
 Thread messages by subject line
 use newsle to get press for our customers and lenders onto the newsfeed
 
+
+revenue - add 
+
+$0-$25k, $25k-$100k, $100k-$1m, $1m-$5m, $5m-10m, $10m and Above
+create new one
+check them all for all users who have RevenueSize.find(1)
+add order column
 
 
 when you sign up ask for bank/biz & with linkedin ask for bank/biz, image, organization, position, password, and password confirm.
@@ -639,3 +678,9 @@ DONE add picture to advice
 DONE ajaxify Cred
 DONE Put best answers on top
 
+DONE Zipcodes
+DONE add "00000" as zipcode to all profile complete users with nil zipcode
+DONE create local? method - tell people if matches are local
+
+
+DONE add b-corp

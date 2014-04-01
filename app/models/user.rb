@@ -134,7 +134,10 @@ class User < ActiveRecord::Base
   end
 
   def local?(other_user)
-    return self.zip_code[0..2] == other_user.zip_code[0..2]
+    if self.zip_code.present? && other_user.zip_code.present?
+      return self.zip_code[0..2] == other_user.zip_code[0..2]
+    end
+    return false
   end
 
   def background_color

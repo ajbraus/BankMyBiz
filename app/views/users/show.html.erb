@@ -67,8 +67,8 @@ end
       <span class="muted"><%= @user.position %></span>
     </div>
     <div>
-      <strong>Bucks:</strong> 
-      <span class="muted"> <%= @user.karma + 100 %></span>
+      <strong>Cred:</strong> 
+      <span class="muted"> <%= @user.cred_count %></span>
     </div>
     <div>
       <strong class=''>Percent Match:</strong>
@@ -84,7 +84,7 @@ end
       <div class="text-right">
         <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
         <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
-            <a data-toggle="modal" href="#contact-modal" class="btn btn-sm btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
+            <a data-toggle="modal" href="#contact-modal" class="btn btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
         <% end %>
       </div>
       <section class="muted large">

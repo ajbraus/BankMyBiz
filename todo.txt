@@ -1,50 +1,15 @@
 Setup CRM style workflows
   following
-    allow contact
+    DONE allow contact
     see recent activity
+    unfollow
     website / twitter handle
       always have http://
 
+Setup "Certification" - add SSL
+keep selling matches
+
 Pre-qualifying
-
-reverse geocode and set city by zipcode
-
-Customers:
-  Local Consumers
-  National Consumers
-  International Consumers
-  Local Businesses
-  National Businesses
-  International Businesses
-  Government
-  Health Systems
-  Military
-
-a = "Local Consumers, National Consumers, International Consumers, Local Businesses, National Businesses, International Businesses, Government, Health Systems, Military"
-a = a.split(", ")
-a.each do |b|
-  CustomerType.create(description: b)
-end
-
-ct = CustomerType.where(description: "B2B").first
-ct.users.each do |u|
-  local_customers = CustomerType.find(3)
-  national_customers = CustomerType.find(4)
-  u.customer_types << local_customers
-  u.customer_types << national_customers
-end
-
-ct = CustomerType.where(description: "B2C").first
-ct.users.each do |u|
-  local_businesses = CustomerType.find(6)
-  national_businesses = CustomerType.find(7)
-  u.customer_types << local_businesses
-  u.customer_types << national_businesses
-end
-
-CustomerType.where(description: "B2B").first.destroy
-CustomerType.where(description: "B2C").first.destroy
-
 
 Loan priority
 
@@ -67,9 +32,20 @@ Purchase Equipment
 Repair Equipment
 Other
 
-Setup "Certification" - add SSL
+SEO 
+  - update per page SEO
+  - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
+  - sitemap in S3 - https://github.com/kjvarga/sitemap_generator/wiki/Generate-Sitemaps-on-read-only-filesystems-like-Heroku
 
-keep selling matches
+alert for login is too blank
+
+test sitemap in production
+rake sitemap:refresh in production
+
+____________________________________________________
+
+
+reverse geocode and set city by zipcode
 
 
 Products
@@ -81,16 +57,7 @@ impressions on posts are not even counting
 use impressionable in user and view_count cache counter in post
 
 
-SEO 
-  - update per page SEO
-  - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
-  - sitemap in S3 - https://github.com/kjvarga/sitemap_generator/wiki/Generate-Sitemaps-on-read-only-filesystems-like-Heroku
-  
 newsletter/digest
-
-alert for login is too blank
-
-optimize for responsive
 
 Q&A
   - follow tags
@@ -100,14 +67,6 @@ Q&A
     - don't receive answers emails
     - follow 5 tags upon login
 
-
-
--------------------------------------------------------
-
-test sitemap in production
-rake sitemap:refresh in production
-
-____________________________________________________
 
 Products
   - Businesses have products (based on their profile)
@@ -684,3 +643,44 @@ DONE create local? method - tell people if matches are local
 
 
 DONE add b-corp
+
+
+
+DONE 
+
+Customers:
+  Local Consumers
+  National Consumers
+  International Consumers
+  Local Businesses
+  National Businesses
+  International Businesses
+  Government
+  Health Systems
+  Military
+
+a = "Local Consumers, National Consumers, International Consumers, Local Businesses, National Businesses, International Businesses, Government, Health Systems, Military"
+a = a.split(", ")
+a.each do |b|
+  CustomerType.create(description: b)
+end
+
+ct = CustomerType.where(description: "B2B").first
+ct.users.each do |u|
+  local_customers = CustomerType.find(3)
+  national_customers = CustomerType.find(4)
+  u.customer_types << local_customers
+  u.customer_types << national_customers
+end
+
+ct = CustomerType.where(description: "B2C").first
+ct.users.each do |u|
+  local_businesses = CustomerType.find(6)
+  national_businesses = CustomerType.find(7)
+  u.customer_types << local_businesses
+  u.customer_types << national_businesses
+end
+
+CustomerType.where(description: "B2B").first.destroy
+CustomerType.where(description: "B2C").first.destroy
+

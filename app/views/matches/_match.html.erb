@@ -23,7 +23,7 @@
   <div>
     <% if match.tags.any? %>
     <div class='text-muted small'>Interests</div>
-    <%= raw match.tags.first(5).map(&:name).map { |t| content_tag(:span, t, style:"background:#009E3B;padding:3px 7px;color:white;font-size:90%;") }.join(' ') %>
+    <%= raw match.tags.first(4).map(&:name).map { |t| content_tag(:span, t, style:"background:#009E3B;padding:3px 7px;color:white;font-size:90%;") }.join(' ') %>
     <% end %>
   </div>
 </div>

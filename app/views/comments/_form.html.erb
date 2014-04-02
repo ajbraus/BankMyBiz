@@ -1,6 +1,8 @@
 <div class="row">
   <div class="col-sm-11 col-sm-offset-1">
-    <div class="small muted text-right"><%= commentable.comments.count %> <i class="icon ion-ios7-chatboxes-outline"></i> Comments - <span class="btn btn-default btn-xs comment-show">Leave a Comment</span></div>
+    <div class="small muted text-right"><%= commentable.comments.count %> <i class="icon ion-ios7-chatboxes-outline"></i> Comments 
+<% if user_signed_in? %>
+    - <span class="btn btn-default btn-xs comment-show">Leave a Comment</span></div>
     <div style="display:none;" class="comment-form">
     <%= form_for [commentable, commentable.comments.new] do |f| %>
       <div class="input-group">
@@ -13,6 +15,7 @@
       </div><!-- /input-group -->
     <% end %>
     </div>
+    <% end %>
 
     <ul>
       <%= render partial: 'comments/comment', collection: commentable.comments.where('content is not null').order('created_at desc'), as: :comment, locals: { post: commentable } %>

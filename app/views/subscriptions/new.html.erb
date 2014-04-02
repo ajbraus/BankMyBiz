@@ -10,64 +10,83 @@
     </div>
   <% end %>
   <h2 class='text-center'>Become a Certified Funder</h2>
-  <div class="col-sm-4 col-sm-offset-2">
-    <div class="well">
-      <h4>Certification & Matching</h4>
-      <p>Be Listed as a Certified Funder</p>
-      <p>Business Profile Matching</p>
-      <p>Business Funding Options Matching</p>
+  <div class="col-xs-8 col-xs-offset-2">
+    <div class="well certification">
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="text-center"><i class="icon ion-checkmark-circled gold"></i> </div>
+          <h5>Get Certified!</h5>
+          <p class='text-muted'>
+            Take a priveleged position in our network. Your profile will always be displayed with the "Certified Funder Badge."
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <div class="text-center"><i class="icon ion-ios7-people green"></i> </div>
+          <h5>Business Matches</h5>
+          <p class='text-muted'>
+            Receive 52 business matches a year. Matches are business decision makers looking to borrow that are taylored to you're matching profile.
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <div class="text-center"><i class="icon ion-arrow-down-b blue"></i> </div>
+          <h5>Listed in Funding Options</h5>
+          <p class='text-muted'>
+            Get inbound leads from matching businesses by being listed as a certified Bankmybiz Network funder in our <%= link_to "Funding Options", term_loan_path, target:"_blank" %> pages. 
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="col-sm-4 col-sm-offset-2">
     <div class="well">
       <h4>Choose Package</h4>
       <div class="row">
         <div class="col-xs-7">
-          <div class="muted">3 month package</div>
-          <div class="price"><strong>$149.99</strong> / month</div>
+          <div class="radio">
+            <label>
+              <%= f.radio_button :plan, value: "funder_three_months" %>
+              <div class="muted">3 month package</div>
+              <div class="price"><strong>$199.99</strong> / month</div>
+              <h4>Total: <strong class='muted'>$599.97</strong></h4>
+            </label>
+          </div>
         </div>
         <div class="col-xs-5">
           <div class="save"></div>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <h4>Total: <strong class='muted'>$449.97</strong></h4>
-        </div>
-        <%= f.hidden_field :price, value: 44997 %>
-      </div>
         
       <div class="row">
         <div class="col-xs-12">
-          <div class="muted">6 month package</div>
-          <div class="price"><strong>$112.99</strong> / month</div>
+          <div class="radio">
+            <label>
+              <%= f.radio_button :plan, value: "funder_six_months" %>
+              <div class="muted">6 month package</div>
+              <div class="price"><strong>$149.99</strong> / month</div>
+              <h4>Total: <strong class='muted'>$899.94</strong> <span class="save">Save 25%</span></h4>
+            </label>
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="col-xs-12">
-          <h4>Total: <strong class='muted'>$677.94</strong> <span class="save">Save 50%</span></h4>
+          <div class="radio">
+            <label>
+              <%= f.radio_button :plan, value: "funder_year" %>
+              <div class="muted">1 year package</div>
+              <div class="price"><strong>$99.99</strong> / month</div>
+              <h4>Total: <strong class='muted'>$1199.88</strong> <span class="save">Save 50%</span></h4>
+            </label>
+          </div>
         </div>
-        <%= f.hidden_field :price, value: 67794 %>
-      </div>
-        
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="muted">1 year package</div>
-          <div class="price"><strong>$74.99</strong> / month</div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <h4>Total: <strong class='muted'>$899.88</strong> <span class="save">Save 50%</span></h4>
-        </div>
-        <%= f.hidden_field :price, value: 89988 %>
       </div>
     </div>
   </div>
-  <div class="col-sm-5">
+  <div class="col-sm-4">
     <div class="cards well">
       <div class='text-center'>
         <%= image_tag "credit_card_logos_homepage.png" %>
       </div>
-      <hr>
       <h4>Cards</h4>
         <table>
       <% if !current_user.stripe_customer_id.present? %>
@@ -113,33 +132,33 @@
         </tr>
       </table>
       <div id="creditCardInputs" style="display:none;">
-      <div id="stripe_error" class="alert alert-error" style="display:none"></div>
+      <div id="stripe_error" class="text-danger" style="display:none"></div>
         <section class="row">
-          <p class="col-sm-9">
+          <p class="col-sm-12">
             <%= label_tag :name, "Name on Card", class:"control-label" %>
             <%= text_field_tag :name, nil, name: nil, class:"form-control" %>
           </p>
-          <p class="col-sm-9">
+          <p class="col-sm-12">
             <%= label_tag :card_number, "Credit Card Number", class:"control-label" %>
             <%= text_field_tag :card_number, nil, name: nil, class:"form-control" %>
           </p>         
-            <div class="col-sm-4">
-              <%= label_tag :card_code, "CVV Code" %>
-              <%= text_field_tag :card_code, nil, name: nil, class:"form-control" %>
-            </div>
-            <div class="col-sm-8">
-              <div class="row">
-                <div class="col-sm-7">
-                  <%= label_tag :card_month, "Month" %>
-                  <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'form-control'}%>
-                </div>
-                <div class="col-sm-5">
-                  <%= label_tag :card_month, "Year" %>
-                  <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'form-control'} %>
-                </div>
+          <div class="col-sm-4">
+            <%= label_tag :card_code, "CVV Code" %>
+            <%= text_field_tag :card_code, nil, name: nil, class:"form-control" %>
+          </div>
+          <div class="col-sm-8">
+            <div class="row">
+              <div class="col-sm-7">
+                <%= label_tag :card_month, "Month" %>
+                <%= select_month nil, {add_month_numbers_true: true}, {name: nil, id: "card_month", class:'form-control'}%>
+              </div>
+              <div class="col-sm-5">
+                <%= label_tag :card_month, "Year" %>
+                <%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+15}, {name: nil, id: "card_year", class:'form-control'} %>
+              </div>
             </div>
           </div>
-          <%= f.hidden_field :plan_id, value:params[:plan_id] %>
+          <%= f.hidden_field :plan, value: params[:plan] %>
           <%= hidden_field_tag :stripe_card_id %>
         </section>
       </div>

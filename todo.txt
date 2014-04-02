@@ -1,3 +1,16 @@
+“Become a Certified Funder” - with subscription payments - 70% done (need to add SSL)
+  add free 1 month subscription upon user creation
+  do not display certified lender until after a month
+Turn back on purchasing more matches - 80% done
+CRM of followed users and matches - 60% done (lots of neat opportunities here!)
+  toggle interests, contact info
+Beautification of the home screen and questions 
+Setup the site to submit our sitemap automatically to major search engines as it updates (jack our SEO!)
+
+validate zip-code = 5 digits
+
+Merchant cash advance is in equity section
+
 Setup CRM style workflows
   following
     DONE allow contact
@@ -5,9 +18,13 @@ Setup CRM style workflows
     unfollow
     website / twitter handle
       always have http://
+      add to edit & profile & welcome
+    recent questions, recent advice, 
 
 Setup "Certification" - add SSL
 keep selling matches
+
+make questions shorter
 
 Pre-qualifying
 

@@ -13,8 +13,12 @@ $(document).ready(function() {
     event.preventDefault();
   });
   
-  $('#new_user').validate({ errorPlacement: function(error, element) {} });
-  $(".edit_user").validate({ errorPlacement: function(error, element) {} });
+  $('#new_user').validate({ 
+    errorPlacement: function(error, element) {}
+  });
+  $(".edit_user").validate({ 
+    errorPlacement: function(error, element) {} 
+  });
 
   $('.alert-disappear').delay(2000).fadeOut();
   $('.fadeInAlert').fadeIn();

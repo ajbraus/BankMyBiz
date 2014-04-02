@@ -192,14 +192,13 @@
                   <% end %>
                 <% else %>
                   <%= link_to edit_profile_path(current_user), rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
-                    <i class="big-icon icon ion-ios7-personadd-outline"></i>
+                    <i class="big-icon icon ion-ios7-people-outline"></i>
                   <% end %>
                 <% end %>
                 <% if params[:controller] == "matches" && params[:action] == "index" %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
                 <% end %>
               </li>
-              <% if current_user.followed_users.any? %>
               <li>
                 <%= link_to favorites_path, rel:"tooltip", title:"Following", data: {placement: "bottom"} do %>
                   <i class="big-icon icon ion-ios7-personadd-outline"></i>
@@ -208,7 +207,6 @@
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
                 <% end %>
               </li>
-              <% end %>
               <li>
                 <%= link_to messages_path, rel:"tooltip", title:"Messages", data: {placement: "bottom"} do %>
                   <% if current_user.unread_messages.any? %>
@@ -343,15 +341,6 @@
                 <strong class="orange"><i class="icon ion-ios7-telephone"></i> 608 . 284 . 8970</strong> 
               </a>
               <hr>
-              <% if user_signed_in? && current_user.bank? %>
-                <div class="text-center">
-                  <br>
-                  <%= link_to new_subscription_path, class: "btn btn-default" do %> 
-                    Become a Certified Funder
-                  <% end %>
-                </div>
-                <hr>
-              <% end %>
               <div class="text-center">
                 <br>
                 <div class="lead little">&#169; 2013 BankMyBiz, LLC</div>

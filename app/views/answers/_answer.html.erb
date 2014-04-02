@@ -40,8 +40,8 @@
           </button>
         <% end %>
       <% end %>  
-    <% else %>
-      <i class="icon ion-android-checkmark <%= answer.accepted? ? 'green' : 'text-muted' %>" rel="tooltip" title="Mark Best Advice" style="font-size:220%;"></i>
+    <% elsif answer.accepted? %>
+      <i class="icon ion-android-checkmark green" rel="tooltip" title="Mark Best Advice" style="font-size:220%;"></i>
     <% end %>
 
     </div>
@@ -57,10 +57,11 @@
       <% else %>
         <%= answer.user.first_name_with_last_initial if answer.user %>
       <% end %>
+      <% if user_signed_in? && answer.user.has_active_subscription? %><i class="icon ion-checkmark-circled gold"></i><% end %>
       <% if user_signed_in? && (answer.user == current_user || current_user.admin?) %>
         <div class="smaller muted">
-          <%= link_to "Edit answer", edit_answer_path(answer) %> |
-          <%= link_to 'Delete answer', answer, method: :delete, data: { confirm: 'Are you sure you would like to delete this answer?' } %>
+          <%= link_to "Edit", edit_answer_path(answer) %> |
+          <%= link_to 'Delete', answer, method: :delete, data: { confirm: 'Are you sure you would like to delete this answer?' } %>
         </div>
       <% end %>
     </div>

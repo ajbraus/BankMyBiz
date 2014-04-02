@@ -435,7 +435,7 @@ hr {
 /*This is the Project Page*/
 
 .small-thumbnail {
-	height: 30px;
+	height: 45px;
 }
 
 .medium-thumbnail {
@@ -1204,7 +1204,7 @@ table.user-stats {
 .match-card {
   border-bottom: 1px solid #eee;
   padding-top:10px;
-  min-height: 220px;
+  min-height: 210px;
   border-right:1px solid #eee;
   a {
     color:grey;
@@ -1437,4 +1437,13 @@ select.error {
   padding: 15px;
   margin: 0 auto;
   text-align: center;
+}
+
+.certification {
+  .icon {
+    font-size:40px;
+  }
+  h5 {
+    text-align: center;
+  }
 }

@@ -3,7 +3,7 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   validates_presence_of :user_id, :plan_id, :expires_on, :price
   
-  attr_accessible :plan_id, :stripe_card_id, :expires_on, :price
+  attr_accessible :plan, :stripe_subscription_id, :expires_on
 
   def expired?
     return expires_on > Date.today

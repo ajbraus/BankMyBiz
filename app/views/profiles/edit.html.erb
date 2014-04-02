@@ -31,7 +31,7 @@
         </div>
         <div class="col-sm-8">
           <div class="col-sm-4">
-            <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name*" %>
+            <%= f.label :org_name, "#{current_user.bank? ? 'Bank or Fund' : 'Business'} Name*" %>
             <%= f.text_field :org_name, class:"form-control required" %>
           </div>
           <div class="col-sm-2">
@@ -60,6 +60,13 @@
               <% end %> 
             </section>
           <% end %>
+          <section class="col-sm-6">
+            <%= f.label :website_url, "Website URL" %>
+            <div class="input-group">
+              <span class="input-group-addon">http://</span>
+              <%= f.text_field :website_url, class:"form-control", placeholder: "www.bankmybiz.com" %> 
+            </div>
+          </section>
         </div>
       </div>
       <div class="row">
@@ -159,7 +166,7 @@
             <%= f.text_area :bio, class:"form-control required" %> 
           </div>
           <div class="col-sm-6">
-            <%= f.label :goals, "What are #{current_user.bank? ? 'Your Customers\'s Goals*' : 'Your Goals'}?*" %>
+            <%= f.label :goals, "What are #{current_user.bank? ? 'Your Customers\'s Goals' : 'Your Goals'}?*" %>
             <%= f.text_area :goals, class:"form-control required" %>
           </div>
         </div>

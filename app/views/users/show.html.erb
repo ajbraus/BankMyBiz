@@ -60,7 +60,11 @@ end
     </div>
     <div>
       <strong><%= @user.bank? ? "Bank" : "Business" %>:</strong>
-      <%= @user.org_name %>
+      <% if @user.website_url.present? %>
+        <%= link_to "http://" + @user.website_url do %>
+          <%= @user.org_name %>
+        <% end %>
+      <% end %>
     </div>
     <div>
       <strong class=''>Position:</strong>

@@ -44,7 +44,8 @@ class User < ActiveRecord::Base
                   :two_years,
                   :cred_count,
                   :product_ids,
-                  :zip_code
+                  :zip_code,
+                  :website_url
 
   is_impressionable :counter_cache => true, :unique => :user_id
 
@@ -196,10 +197,10 @@ class User < ActiveRecord::Base
         Message.create(
           subject: "Welcome to Bankmybiz",
           body: "#{self.first_name}," + "\n\n" + 
-                "Thanks for joining the Bankmybiz Network where members bank on relationships. Complete your profile to begin to receive matches and peers. Questions are a great way to start a business relationship. Use the Bankmybiz's public News Feed and private secure messaging system to ask questions about your biggest challenges or about how to achieve your biggest goals'." + "\n\n" +
-                "The Bankmybiz matching algorithm matches you with people who want to connect with you. You receive one free match a week, but if you want more more, you can purchase 3 Matches at a time from your Matches page." + "\n\n" +
-                "Post to the News Feed to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
-                "There are a few other bells and whistles we home you use such as marking users as your Favorites, reading and contributing to our blog 'Banking on Relationships', and signing up for Bankmybiz 360&deg; to get 360&deg; of the activity happening on Bankmybiz." + "\n\n\n" +
+                "Thanks for joining the Bankmybiz Network where members bank on relationships. Complete your profile to begin to receive matches. Questions are a great way to start a business relationship. Use the Bankmybiz's public Q&A platform to ask questions about your biggest challenges or about how to achieve your biggest goals'." + "\n\n" +
+                "The Bankmybiz matching algorithm matches you with people who want to connect with you. Youn can send secure private messages to your matches and followers. You receive one free match a week, but if you want more more, you can purchase matches at a time from your Matches page." + "\n\n" +
+                "Post questions and advice to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
+                "There are a few other bells and whistles we home you use such as following users to get notified about their activity, reading and contributing to our blog 'Banking on Relationships.'" + "\n\n\n" +
                 "Thanks and again, Welcome!" + "\n\n\n" +
                 "Michael Adam, CEO Bankmybiz",
           sender_id: michael.id,

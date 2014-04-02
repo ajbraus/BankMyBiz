@@ -1,17 +1,4 @@
 <div class="row">
   <h4 class='text-center'><%= @product.name %> Funders on Bankmybiz</h4>
-  <% @product.users.limit(4).order("RANDOM()").each do |u| %>
-    <div class="col-sm-3 text-center">
-      <%= link_to user_path(u) do %>        
-        <div class="row">
-          <div class="col-sm-8 col-sm-offset-2"><%= medium_profile_picture(u) %></div>
-        </div>
-        <section><%= u.first_name_with_last_initial %></section>
-        <div><%= u.position %></div>
-        <% if user_signed_in? %>
-        <div><%= current_user.percentage_match(u) %>% match</div>
-        <% end %>
-      <% end %>
-    </div>    
-  <% end %>
+  <%= render partial: 'matches/match', collection: @product.users.limit(4).order("RANDOM()"), as: 'match' %>
 </div>

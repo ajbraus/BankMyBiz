@@ -20,3 +20,8 @@
 .env
 
 /public/sitemap.xml.gz
+
+bundle.pem
+server.crt
+server.key
+logfile

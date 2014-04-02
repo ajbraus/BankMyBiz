@@ -27,7 +27,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by_name(params[:action].underscore.titlecase)
   end
   def community_development_fund
-    @product = Product.find_by_name(params[:action].underscore.titlecase)
+    @product = Product.find_by_name("Community Development Fund")
   end
   def merchant_cash_advance
     @product = Product.find_by_name(params[:action].underscore.titlecase)

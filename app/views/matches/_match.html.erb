@@ -13,7 +13,9 @@
           <% end %>
         <% end %>
         <div class='text-muted small'><%= match.status %></div>
-        <div class='text-muted small'><%= current_user.percentage_match(match) %>% Match <%= !current_user.local?(match) ? "| Local" : "" %></div>
+        <% if user_signed_in? %>
+          <div class='text-muted small'><%= current_user.percentage_match(match) %>% Match <%= !current_user.local?(match) ? "| Local" : "" %></div>
+        <% end %>
       </div>
     </div>
   </div>

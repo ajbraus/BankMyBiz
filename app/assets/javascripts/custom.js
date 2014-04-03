@@ -8,6 +8,9 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
+   $("button").dblclick(function (event) {  
+    preventDefault()
+   });
 
   $('body').on('click', 'a.disabled', function(event) {
     event.preventDefault();

@@ -2,7 +2,7 @@ class TagsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @tags = Tag.order(:name).where("lower(name) like ?", "%#{params[:term].downcase}%").first(10)
+    @tags = Tag.order(:name).where("LOWER(name) LIKE ?", "%#{params[:term].downcase}%").first(7)
 
     render 'tags/index'
   end

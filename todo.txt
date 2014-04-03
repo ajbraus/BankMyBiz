@@ -15,7 +15,9 @@ validate zip-code = 5 digits
 
 Merchant cash advance is in equity section
 
-make questions shorter
+send emails to post author, answer authors, and all commenter authors (on post and answers)
+
+Make questions shorter
 
 Pre-qualifying
 
@@ -42,9 +44,6 @@ Other
 
 SEO 
   - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
-  - 
-
-
 
 alert for login is too blank
 
@@ -53,7 +52,6 @@ ____________________________________________________
 
 reverse geocode and set city by zipcode
 
-
 Products
   - Create Products (with SEO on pages)  
 
@@ -61,7 +59,6 @@ peers are fucked - rethink
 impressions table is fucked - just use impression counter?
 impressions on posts are not even counting
 use impressionable in user and view_count cache counter in post
-
 
 newsletter/digest
 
@@ -72,7 +69,6 @@ Q&A
     - don't receive interests emails
     - don't receive answers emails
     - follow 5 tags upon login
-
 
 Products
   - Businesses have products (based on their profile)

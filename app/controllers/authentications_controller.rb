@@ -33,10 +33,9 @@ class AuthenticationsController < ApplicationController
     uid = access_token.uid
     auth = Authentication.find_by_uid(uid.to_s)
     if auth.present?
-      auth.update_attributes(uid: auth.uid)
+      auth.update_attributes(uid: auth.uid, :profile_pic_url => access_token.info.image)
       user = auth.user
       user.update_attributes(:linked_in_url => access_token.info.urls.public_profile, 
-                             :pic_url => access_token.info.image, 
                              :location => access_token.info.location)
       return user
     end
@@ -46,12 +45,11 @@ class AuthenticationsController < ApplicationController
       # IF USER PRESENT CREATE AUTH AND UPDATE USER
       provider = access_token.provider
       uid = access_token.uid
-      authentication = user.authentications.build(provider: provider, uid: uid)
+      authentication = user.authentications.build(provider: provider, uid: uid, :profile_pic_url => access_token.info.image)
       user.authentications << authentication
       user.update_attributes(email: access_token.info.email, 
                              name: access_token.info.name, 
                              :linked_in_url => access_token.info.urls.public_profile, 
-                             :pic_url => access_token.info.image, 
                              :location => access_token.info.location)
     else
       #IF NO USER CREATE USER AND AUTH
@@ -61,14 +59,13 @@ class AuthenticationsController < ApplicationController
                 :remember_me => true,
                 :password => Devise.friendly_token[0,20],
                 :linked_in_url => access_token.info.urls.public_profile,
-                :pic_url => access_token.info.image, 
                 :location => access_token.info.location
               )
       user.skip_confirmation!
       if user.save
         provider = access_token.provider
         uid = access_token.uid
-        authentication = user.authentications.create(provider: provider, uid: uid)
+        authentication = user.authentications.create(provider: provider, uid: uid, profile_pic_url: access_token.info.image)
         user.authentications << authentication
       end
     end

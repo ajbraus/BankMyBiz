@@ -83,7 +83,7 @@ module UsersHelper
     if user.avatar.present?
       user.avatar.url(:original)
     elsif auth = user.authentications.find_by_provider("linkedin")
-      user.authenticatauth
+      auth.profile_pic_url
     else
       "http://bankmybiz.com/assets/default_profile_pic.png"
     end

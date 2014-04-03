@@ -26,7 +26,6 @@ class User < ActiveRecord::Base
                   :customer_type_ids,
                   :bio,
                   :linked_in_url, 
-                  :pic_url, 
                   :location,
                   :terms,
                   :admin,
@@ -302,7 +301,7 @@ class User < ActiveRecord::Base
   end
 
   def has_image?
-    if avatar.present? || pic_url.present?
+    if avatar.present? || authentications.first.present?
       return true
     end
     return false
@@ -311,8 +310,8 @@ class User < ActiveRecord::Base
   def profile_picture_url 
     if avatar.present?
       return avatar.url
-    elsif pic_url.present?
-      return pic_url
+    elsif authentications.first.present?
+      return authentications.first.profile_pic_url
     end
   end
 
@@ -366,7 +365,7 @@ class User < ActiveRecord::Base
   end
 
   def can_be_matched?
-    return (avatar.present? || pic_url.present?) && profile_progress_percent >= 60
+    return (avatar.present? || authentications.first.present?) && profile_progress_percent >= 60
   end
 
   def profile_questions_completed
@@ -384,7 +383,7 @@ class User < ActiveRecord::Base
     progress += 1 if position.present?
     progress += 1 if bio.present?
     progress += 1 if goals.present?
-    progress += 1 if avatar.present? || pic_url.present?  
+    progress += 1 if avatar.present? || authentications.first.present?  
     progress += 1 if org_name.present?
     progress += 1 if hq_state.present?
     progress += 1 if zip_code.present?

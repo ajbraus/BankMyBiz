@@ -33,6 +33,8 @@ BankMyBiz::Application.routes.draw do
     end
   end
 
+  get '/advice' => 'posts#index'
+
   resources :answers do
     resources :comments
     member do
@@ -69,9 +71,6 @@ BankMyBiz::Application.routes.draw do
   authenticated :user do
     root :to => 'posts#index'
   end
-
-  get '/advice' => 'posts#index', as: 'posts'
-  post '/news-feed' => 'posts#create'
 
   root :to => 'welcome#index'
   match '/how-it-works', :to => 'welcome#how', :as => "how"

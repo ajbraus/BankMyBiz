@@ -1,6 +1,6 @@
 <div class="post">
   <div class="row">
-    <div class="col-xs-1 grey larger text-center">
+    <div class="col-xs-1 grey larger text-center votes">
       <% if user_signed_in? %>
       <%= link_to vote_up_post_path(post), class:"breathing-room vote-up #{user_signed_in? && current_user.voted_for?(post) ? 'green disabled' : 'fade-in-green'}", remote: true do %>
         <i class="icon ion-chevron-up"  rel="tooltip" title="+1 Cred"> </i>
@@ -30,8 +30,8 @@
       <%= render partial: 'shared/tag', collection: post.tags %>
     </section>
   </div>
-  <section class="row">
-    <div class="col-sm-6">
+  <div class="row">
+    <div class="col-sm-5 col-sm-offset-1">
       <% if user_signed_in? %>
         <%= link_to post.user, class:'pull-left' do %>
           <%= small_profile_picture(post.user) %>
@@ -50,7 +50,7 @@
         <% end %>
       </div>
     </div>
-    <section class='col-sm-6 text-right'>
+    <div class='col-sm-6 text-right'>
       <div class="row">
         <div class="col-xs-12">
           <%= render partial: 'shared/share_email_btn', locals: { post: post } %>
@@ -59,13 +59,13 @@
           <%= render partial: 'shared/share_linkedin_btn', locals: { post: post } %>
         </div>
       </div>
-      <section class="row text-muted">
+      <div class="row text-muted small">
         <div class="col-xs-12">
           <%= pluralize post.answers.count, "Answer" %> | <%= pluralize post.impressions_count, "View" %>
         </div>
-      </section>
-    </section>
-  </section>
+      </div>
+    </div>
+  </div>
   <% if params[:action] == "show" %>
     <%= render partial: 'comments/form', locals: { commentable: post } %>
   <% end %>

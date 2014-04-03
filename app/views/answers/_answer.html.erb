@@ -11,7 +11,7 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-xs-11">
+    <div class="col-xs-10">
       <div class=""><%= auto_link(answer.body, html: { target: '_blank' }) %></div>
       <div class="muted small text-right"><%= time_ago_in_words(answer.created_at) %> ago by 
         <% if answer.user %>

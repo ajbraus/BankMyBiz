@@ -119,10 +119,10 @@ border-radius: 0px;
 }
 
 .tag {
+  font-size: 12px;
   background:#009E3B;
-  padding:3px 7px;
+  padding:5px 7px;
   color:white;
-  line-height: 2;
 }
 
 .clickable-tag {
@@ -1446,4 +1446,9 @@ select.error {
   h5 {
     text-align: center;
   }
+}
+
+.votes {
+  position: relative;
+  top:15px;
 }

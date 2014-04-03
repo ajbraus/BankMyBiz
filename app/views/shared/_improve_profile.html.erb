@@ -6,7 +6,7 @@
       <%= link_to "Funder", set_bank_path(current_user), class:"btn btn-success btn-lg" %>
       <%= link_to "Business", set_business_path(current_user), class:"btn btn-warning btn-lg" %>
     </p>
-    <p class="muted">Answer to Unlock Matches</p>
+    <div class="muted">Answer to Unlock Matches</div>
   <% else %>
     <% if !current_user.finished_profile? %>
       <h4>Complete Your Profile</h4>

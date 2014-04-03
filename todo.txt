@@ -1,28 +1,19 @@
-“Become a Certified Funder” - with subscription payments - 70% done (need to add SSL)
+“Become a Certified Funder” - with subscription payments - 70% done
   add free 1 month subscription upon user creation
   do not display certified lender until after a month
+Setup SSL
+  MX records
+  blog.bankmybiz.com CNAME domains.tumblr.com
 Turn back on purchasing more matches - 80% done
 CRM of followed users and matches - 60% done (lots of neat opportunities here!)
-  toggle interests, contact info
-Beautification of the home screen and questions 
-Setup the site to submit our sitemap automatically to major search engines as it updates (jack our SEO!)
+  toggle interests, contact info (website / twitter handle), see recent activity, unfollow
+  always have http://
+  add to edit & profile & welcome
+  recent questions, recent advice, 
 
 validate zip-code = 5 digits
 
 Merchant cash advance is in equity section
-
-Setup CRM style workflows
-  following
-    DONE allow contact
-    see recent activity
-    unfollow
-    website / twitter handle
-      always have http://
-      add to edit & profile & welcome
-    recent questions, recent advice, 
-
-Setup "Certification" - add SSL
-keep selling matches
 
 make questions shorter
 
@@ -50,14 +41,12 @@ Repair Equipment
 Other
 
 SEO 
-  - update per page SEO
   - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
-  - sitemap in S3 - https://github.com/kjvarga/sitemap_generator/wiki/Generate-Sitemaps-on-read-only-filesystems-like-Heroku
+  - 
+
+
 
 alert for login is too blank
-
-test sitemap in production
-rake sitemap:refresh in production
 
 ____________________________________________________
 
@@ -129,11 +118,21 @@ Credit Card payment bounced but card was saved and then it worked
 
 ----------------------------------------------------
 
+Database size
+public     | impressions                |       1739
+public     | peers                      |        970
+public     | customer_types_users       |        915
+public     | industries_users           |        641
+public     | loan_sizes_users           |        435
+public     | matches                    |        396
+public     | accounts_receivables_users |        340
+public     | business_types_users       |        320
+
+
+
 Thread messages by subject line
 use newsle to get press for our customers and lenders onto the newsfeed
 
-
-revenue - add 
 
 $0-$25k, $25k-$100k, $100k-$1m, $1m-$5m, $5m-10m, $10m and Above
 create new one
@@ -701,3 +700,7 @@ end
 CustomerType.where(description: "B2B").first.destroy
 CustomerType.where(description: "B2C").first.destroy
 
+
+DONE Setup the site to submit our sitemap automatically to major search engines as it updates (jack our SEO!)
+  http://www.glowingrectangles.com/2012/09/dynamic-sitemaps-on-heroku-with-rails-3/
+DONE Beautification of the home screen and questions 

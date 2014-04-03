@@ -8,7 +8,6 @@ gem 'dotenv-rails', :groups => [:development, :test]
 
 gem 'rack-cors', :require => 'rack/cors'
 
-gem 'sitemap_generator'
 gem 'friendly_id'
 
 gem 'devise', '2.2.4'

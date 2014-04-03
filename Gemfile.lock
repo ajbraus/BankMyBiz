@@ -269,8 +269,6 @@ GEM
       multi_json (~> 1.0)
       rubyzip
       websocket (~> 1.0.4)
-    sitemap_generator (5.0.0)
-      builder
     slop (3.4.4)
     spork (1.0.0rc4)
     spork-rails (4.0.0)
@@ -368,7 +366,6 @@ DEPENDENCIES
   rails_autolink (~> 1.0.9)
   rspec-rails
   sass-rails
-  sitemap_generator
   spork-rails
   stripe
   therubyracer

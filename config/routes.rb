@@ -20,6 +20,9 @@ BankMyBiz::Application.routes.draw do
 
   resources :authentications, only: [:index, :create, :destroy]
 
+  resources :sitemaps, :only => :show
+  match "/sitemap.xml", :controller => "sitemaps", :action => "show", :format => :xml
+
   resources :messages
   resources :posts do 
     resources :comments
@@ -67,7 +70,7 @@ BankMyBiz::Application.routes.draw do
     root :to => 'posts#index'
   end
 
-  get '/news-feed' => 'posts#index', as: 'posts'
+  get '/advice' => 'posts#index', as: 'posts'
   post '/news-feed' => 'posts#create'
 
   root :to => 'welcome#index'
@@ -77,9 +80,6 @@ BankMyBiz::Application.routes.draw do
   match '/privacy', :to => 'welcome#privacy', :as => "privacy"
   match '/about-us', :to => 'welcome#about', :as => "about"
   match '/team', :to => 'welcome#team', :as => "team"
-  match '/subscribe', :to => 'welcome#subscribe', :as => "subscribe"
-
-  match '/posts/:id/robot_post', to: 'welcome#robot_post', as: "robot_post"
 
   devise_for :users, :controllers => { :registrations => "registrations", :invitations => 'invitations' } do
     match 'users/add_avatar' => 'registrations#add_avatar', as: "add_avatar"

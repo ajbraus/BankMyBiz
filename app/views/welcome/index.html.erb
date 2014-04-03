@@ -242,8 +242,3 @@
   </div>
 </div>
 </div> <!-- /container -->
-<% if Rails.env.production? %>
-<div class="hidden-posts">
-  <%= link_to "post", robot_post_path(Post.first) %>
-</div>
-<% end %>

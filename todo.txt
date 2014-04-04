@@ -1,8 +1,15 @@
 price out tech prices
-show that you won't be solicited
+
 fastupfront.com
 
+  landing page:
+    show that you won't be solicited
+    move for funders to another page
+    move press to testimonials
+    move conferences to press
+    update press with sentinel and WSJ article
 
+tracking deals done & successful match (messages exchanged)
 
 “Become a Certified Funder” - with subscription payments - 70% done
   add free 1 month subscription upon user creation

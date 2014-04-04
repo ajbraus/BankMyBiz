@@ -89,6 +89,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(params[:post])
+    @post.last_touched_at = Time.now
 
     respond_to do |format|
       if @post.save
@@ -99,7 +100,7 @@ class PostsController < ApplicationController
         @post.delay.send_update_to_tag_followers(current_user)
         current_user.tags << @post.tags
 
-        format.html { redirect_to @post }
+        format.html { redirect_to root_path }
         format.json { render json: @post, status: :created, location: @post }
       else
         format.html { redirect_to :back, notice: 'There was a problem, please try again' }

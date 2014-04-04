@@ -649,8 +649,8 @@ height: 90px;
   font-weight: 700;
 }
 
-.little {
-  font-size: 90%;
+.lead.little {
+  font-size: 120%;
 }
 
 .small {
@@ -1125,7 +1125,7 @@ top: 20px;
 
 .hero-creds {
   position: absolute;
-  top: 509px;
+  top: 606px;
   color: white;
   right: 0px;
   background: rgba(0, 0, 0, 0.6);
@@ -1499,6 +1499,6 @@ padding: 8px 12px;
   }
 }
 
-
-
-
+.win {
+  margin-top:15px;
+}

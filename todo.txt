@@ -3,11 +3,9 @@ price out tech prices
 fastupfront.com
 
   landing page:
-    show that you won't be solicited
     move for funders to another page
     move press to testimonials
-    move conferences to press
-    update press with sentinel and WSJ article
+    move conferences to conferences    
     move conference text to blog
 
 tracking deals done & successful match (messages exchanged)
@@ -720,3 +718,6 @@ CustomerType.where(description: "B2C").first.destroy
 DONE Setup the site to submit our sitemap automatically to major search engines as it updates (jack our SEO!)
   http://www.glowingrectangles.com/2012/09/dynamic-sitemaps-on-heroku-with-rails-3/
 DONE Beautification of the home screen and questions 
+
+DONE show that you won't be solicited
+DONE update press with sentinel and WSJ article

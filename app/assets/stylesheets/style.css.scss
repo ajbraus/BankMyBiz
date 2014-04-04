@@ -194,6 +194,10 @@ border-radius: 0px;
   }
 }
 
+.navbar-collapse .navbar-nav.navbar-right:last-child {
+  margin-right: 5px;
+}
+
 .navbar-default {
 
 }
@@ -790,6 +794,7 @@ height: 90px;
 .down {
   position: relative;
   top: 8px;
+  margin-right: 5px;
 }
 
 .matches {
@@ -1337,15 +1342,14 @@ a.title {
   z-index: 1000;
   text-align: center;
   width: 100%;
-  position: relative;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
   border-radius: 0px;
-  margin-bottom: -41px;
-  float: left;
   font-size: 18px;
   padding: 10px 0;
   line-height: 19px;
+  position: fixed;
+  top: 66px;
 }
 
 .read {

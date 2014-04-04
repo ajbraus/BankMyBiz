@@ -15,7 +15,7 @@
           </section>
           <section class="text-right">
             <%= small_profile_picture(current_user) %>
-            <%= f.submit "Post to News Feed", class:"btn btn-success btn-lg", id:"submitPost" %>
+            <%= f.submit "Post Question", class:"btn btn-success btn-lg", id:"submitPost" %>
           </section>
         </div>
       </div>
@@ -25,7 +25,7 @@
       <div class="col-sm-2">
         <%= image_tag 'default_profile_pic.png', class:"img-circle", width:50 %>
       </div>
-      <p><i class="icon ion-ios7-bell"></i> To post to the Newsfeed you must first</p>
+      <p><i class="icon ion-ios7-bell"></i> To post Questions you must first</p>
       <%= link_to "Upload a profile picture", edit_profile_path(current_user) %>, or <a href="/auth/linkedin" class="auth_provider">Fetch it through LinkedIn</a> 
     </div>
   <% end %>

@@ -1,0 +1,13 @@
+<div class="col-sm-4 col-sm-offset-4">
+  <h3>Unsubscribe</h3>
+  <p class='text-muted'>Enter email to unsubscribe from match emails.</p>
+  <%= form_tag '/email_unsubscriptions', html: { class:"clearfix position-relative" } do |f| %>
+    <div class="row">
+      <div class="col-xs-12">
+        <section><%= text_field_tag :email, nil, class:"form-control", placeholder:"Email Address" %></section>
+        <section class='text-right'><%= submit_tag "Submit", class:"btn btn-success" %></section>
+      </div>
+    </div>
+  <% end %>
+  <section class='text-muted'><%= link_to "Login", new_session_path(resource_name) %> to your profile to change your match status to stop receiving matches.</section>
+</div>

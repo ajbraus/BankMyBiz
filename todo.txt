@@ -1,4 +1,3 @@
-unsubscribe without login
 
 price out tech prices
 fastupfront.com
@@ -18,8 +17,6 @@ CRM of followed users and matches - 60% done (lots of neat opportunities here!)
   always have http://
   add to edit & profile & welcome
   recent questions, recent advice, 
-
-
 
 
 Setup SSL
@@ -70,6 +67,8 @@ alert for login is too blank
 
 ____________________________________________________
 
+
+unsubscribe without login - 
 
 reverse geocode and set city by zipcode
 

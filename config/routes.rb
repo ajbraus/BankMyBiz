@@ -50,6 +50,8 @@ BankMyBiz::Application.routes.draw do
     end
   end
 
+  resources :email_unsubscriptions, only: [:new, :create]
+
   resources :favorites, only: [:index]
 
   resources :tags, only: [:index, :create]

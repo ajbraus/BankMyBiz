@@ -1,5 +1,6 @@
-price out tech prices
+unsubscribe without login
 
+price out tech prices
 fastupfront.com
 
   landing page:
@@ -8,21 +9,28 @@ fastupfront.com
     move press to testimonials
     move conferences to press
     update press with sentinel and WSJ article
+    move conference text to blog
 
 tracking deals done & successful match (messages exchanged)
 
-“Become a Certified Funder” - with subscription payments - 70% done
-  add free 1 month subscription upon user creation
-  do not display certified lender until after a month
-Setup SSL
-  MX records
-  blog.bankmybiz.com CNAME domains.tumblr.com
-Turn back on purchasing more matches - 80% done
 CRM of followed users and matches - 60% done (lots of neat opportunities here!)
   toggle interests, contact info (website / twitter handle), see recent activity, unfollow
   always have http://
   add to edit & profile & welcome
   recent questions, recent advice, 
+
+
+
+
+Setup SSL
+  MX records
+  blog.bankmybiz.com CNAME domains.tumblr.com
+
+“Become a Certified Funder” - with subscription payments - 70% done
+  add free 1 month subscription upon user creation
+  do not display certified lender until after a month
+Turn back on purchasing more matches - 80% done
+
 
 validate zip-code = 5 digits
 

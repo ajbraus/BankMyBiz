@@ -1,3 +1,6 @@
+Products
+  - Create Products (with SEO on pages)  
+
 
 price out tech prices
 fastupfront.com
@@ -69,9 +72,6 @@ ____________________________________________________
 unsubscribe without login - 
 
 reverse geocode and set city by zipcode
-
-Products
-  - Create Products (with SEO on pages)  
 
 peers are fucked - rethink
 impressions table is fucked - just use impression counter?

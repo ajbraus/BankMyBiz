@@ -162,7 +162,7 @@ GEM
     multi_json (1.8.2)
     multi_xml (0.5.4)
     multipart-post (1.2.0)
-    mysql2 (0.3.12b5)
+    mysql2 (0.3.13)
     newrelic_rpm (3.6.6.147)
     nokogiri (1.5.9)
     oauth (0.4.7)
@@ -348,7 +348,7 @@ DEPENDENCIES
   jquery-rails
   jquery-ui-rails
   less-rails
-  mysql2 (= 0.3.12b5)
+  mysql2 (= 0.3.13)
   newrelic_rpm
   omniauth-linkedin
   paperclip (~> 3.0)

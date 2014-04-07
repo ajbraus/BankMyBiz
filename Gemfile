@@ -28,7 +28,8 @@ gem 'stripe'
 
 gem "thumbs_up"
 
-gem 'mysql2',          '0.3.12b5'
+#gem 'mysql2',          '0.3.12b5'
+gem 'mysql2',          '0.3.13', :platform => :ruby
 gem 'thinking-sphinx', '3.0.3' #'2.0.11'
 gem 'flying-sphinx',   '1.0.0' #'0.8.4'
 

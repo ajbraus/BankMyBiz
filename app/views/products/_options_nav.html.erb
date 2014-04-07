@@ -15,13 +15,14 @@
       <%= link_to 'Factoring', factoring_path, class:"list-group-item #{params[:action] == 'factoring' ? 'btn-success': ''}" %>
       <%= link_to 'Asset Based', asset_based_path, class:"list-group-item #{params[:action] == 'asset_based' ? 'btn-success': ''}" %>
       <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path, class:"list-group-item #{params[:action] == 'merchant_cash_advance' ? 'btn-success': ''}" %>
+      <%= link_to 'Cash Advance', cash_advance_path, class:"list-group-item #{params[:action] == 'cash_advance' ? 'btn-success': ''}" %>
       <%= link_to 'Grants', grants_path, class:"list-group-item #{params[:action] == 'grants' ? 'btn-success': ''}" %>
+      <%= link_to 'Private Equity', private_equity_path, class:"list-group-item #{params[:action] == 'private_equity' ? 'btn-success': ''}" %>
+      <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item #{params[:action] == 'crowd_funding_For_rewards' ? 'btn-success': ''}" %>
+
       <% if false %>
       <%= link_to 'Revenue Based', revenue_based_path, class:"list-group-item #{params[:action] == 'revenue_based' ? 'btn-success': ''}" %>
-      <%= link_to 'Private Equity', private_equity_path, class:"list-group-item #{params[:action] == 'private_equity' ? 'btn-success': ''}" %>
       <%= link_to 'Community Development', community_development_path, class:"list-group-item #{params[:action] == 'community_development' ? 'btn-success': ''}" %>
-      <%= link_to 'Cash Advance', cash_advance_path, class:"list-group-item #{params[:action] == 'cash_advance' ? 'btn-success': ''}" %>
-      <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item #{params[:action] == 'crowd_funding_For_rewards' ? 'btn-success': ''}" %>
       <% end %>
   </div>
   <h5>Equity</h5>

@@ -29,7 +29,7 @@
       <% end %>
       <section class="text-right post-tags">
         <% post.tags.each do |t| %>
-          <%= link_to "#{t.name}", posts_path(search: t.name), class:"tag clickable-tag" %>
+          <%= link_to "#{t.name}", posts_path(search: t.normalize), class:"tag clickable-tag" %>
         <% end %>
       </section>
     </div>

@@ -1,5 +1,3 @@
-When user deleted - messages not deleted
-
 Track messages back and forth
 
 confirmation sent page

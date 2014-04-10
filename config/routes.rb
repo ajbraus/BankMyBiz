@@ -1,5 +1,7 @@
 BankMyBiz::Application.routes.draw do
 
+  resources :milestones
+
   resources :products, only: [:show]
 
   match '/term_loan', to: 'products#term_loan', as: 'term_loan'

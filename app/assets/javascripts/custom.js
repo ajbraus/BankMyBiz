@@ -52,12 +52,4 @@ $(document).ready(function() {
       $( this ).html("<i class='icon ion-person-add green'></i> Following")
     }
   );
-
-  $('.interested').hover(
-    function() {
-      $( this ).html("<i class='icon ion-person-add green'></i> Follow")
-    }, function() {
-      $( this ).html("<i class='icon ion-person-add'></i> Follow")
-    }
-  );
 });

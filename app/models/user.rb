@@ -92,7 +92,7 @@ class User < ActiveRecord::Base
                                     dependent:   :destroy
   has_many :followers, through: :reverse_relationships, source: :follower
 
-  has_many :messages, class_name: "Message", foreign_key: "receiver_id"
+  has_many :messages, class_name: "Message", foreign_key: "receiver_id", dependent: :destroy
   has_many :read_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: true }
   has_many :unread_messages, class_name: "Message", foreign_key: "receiver_id", conditions: { is_read: false }
   has_many :sent_messages, class_name: "Message", foreign_key: "sender_id", dependent: :destroy
@@ -102,6 +102,9 @@ class User < ActiveRecord::Base
   has_many :organizations
 
   has_many :invitations, :class_name => self.to_s, :as => :invited_by
+
+  has_many :milestones, foreign_key: "funder_id"
+  has_many :biz_milestones, class_name: "Milestone", foreign_key: "owner_id"
 
   has_attached_file :avatar,
          :styles => { 

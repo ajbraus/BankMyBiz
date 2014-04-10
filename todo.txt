@@ -1,44 +1,13 @@
-Products
-  - Create Products (with SEO on pages)  
+When user deleted - messages not deleted
 
+Track messages back and forth
 
-price out tech prices
-fastupfront.com
+confirmation sent page
 
-  landing page:
-    move for funders to another page
-    move press to testimonials
-    move conferences to conferences    
-    move conference text to blog
-
-tracking deals done & successful match (messages exchanged)
-
-CRM of followed users and matches - 60% done (lots of neat opportunities here!)
-  toggle interests, contact info (website / twitter handle), see recent activity, unfollow
-  always have http://
-  add to edit & profile & welcome
-  recent questions, recent advice, 
-
-
-Setup SSL
-  MX records
-  blog.bankmybiz.com CNAME domains.tumblr.com
-
-“Become a Certified Funder” - with subscription payments - 70% done
-  add free 1 month subscription upon user creation
-  do not display certified lender until after a month
-Turn back on purchasing more matches - 80% done
-
+follow 5 tags as part of signup
 
 validate zip-code = 5 digits
-
 Merchant cash advance is in equity section
-
-send emails to post author, answer authors, and all commenter authors (on post and answers)
-
-Make questions shorter
-
-Pre-qualifying
 
 Loan priority
 
@@ -48,7 +17,7 @@ Longest Repayment
 Least Turn Around Time
 Least Collateral
 
-Loan purpose
+Loan purpose (add as dropdown to milestone)
 
 Expansion
 Buyout A Partner
@@ -60,6 +29,39 @@ Remodel an existing location
 Purchase Equipment
 Repair Equipment
 Other
+
+Infographic to show business and banker's matching profile
+  What you match on - industry, customer types, size, etc
+  A signature of size of financing, size of business, age of business - older bigger businesses, younger smaller businesses
+
+landing page:
+  move for funders to another page
+  move press to testimonials
+  move conferences to conferences    
+  move conference text to blog
+
+CRM of followed users and matches - 60% done (lots of neat opportunities here!)
+  toggle interests, contact info (website / twitter handle), see recent activity, unfollow
+  always have http://
+  add to edit & profile & welcome
+  recent questions, recent advice, 
+
+Setup SSL
+  MX records
+  blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
+
+“Become a Certified Funder” - with subscription payments - 70% done
+  add free 1 month subscription upon user creation
+  do not display certified lender until after a month
+Turn back on purchasing more matches - 80% done
+
+
+send emails to post author, answer authors, and all commenter authors (on post and answers)
+
+Make questions shorter
+
+Pre-qualifying
+
 
 SEO 
   - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
@@ -721,3 +723,13 @@ DONE Beautification of the home screen and questions
 
 DONE show that you won't be solicited
 DONE update press with sentinel and WSJ article
+
+
+DONE Products
+  DONE -  Create Products (with SEO on pages)  
+
+
+DONE tracking deals done & successful match (messages exchanged)
+  DONE Display Milestones
+  DONE do not let biz to biz or funder to funder milestones happen
+  DONE let funders make for biz and biz make for funders

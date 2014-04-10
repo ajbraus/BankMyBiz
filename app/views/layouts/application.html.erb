@@ -189,7 +189,7 @@
               <li>
                 <% if current_user.finished_profile? %>
                   <%= link_to matches_path, rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
-                    <i class="big-icon icon ion-ios7-people-outline"></i>
+                    <div class="pull-left"><%= current_user.matches.count %></div>&nbsp; <i class="big-icon icon ion-ios7-people-outline"></i>
                   <% end %>
                 <% else %>
                   <%= link_to edit_profile_path(current_user), rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
@@ -202,7 +202,7 @@
               </li>
               <li>
                 <%= link_to favorites_path, rel:"tooltip", title:"Following", data: {placement: "bottom"} do %>
-                  <i class="big-icon icon ion-ios7-personadd-outline"></i>
+                  <div class="pull-left"><%= current_user.followed_users.count %></div>&nbsp; <i class="big-icon icon ion-ios7-personadd-outline"></i>
                 <% end %>
                 <% if params[:controller] == "favorites" && params[:action] == "index" %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
@@ -229,7 +229,7 @@
               <% end %>
               <li>
                 <%= link_to user_path(current_user) do %>
-                  <%= current_user.first_name_with_last_initial %> - <%= current_user.cred_count %> Cred 
+                  <%= current_user.first_name_with_last_initial %> - <span rel="tooltip" title="Bankmybiz Credit" data-placement="bottom"><i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %></span> | <span rel="tooltip" title="Milestones" data-placement="bottom"><i class="icon ion-pricetags gold"></i> <%= current_user.milestones.count %></span>
                 <% end %>
                 <% if @user.present? && @user == current_user %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>

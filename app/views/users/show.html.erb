@@ -48,6 +48,34 @@ end
     <%= large_profile_picture(@user) %>
   </div>
   <% end %>
+  <section class="clearfix">
+    <% if @user == current_user %>
+      <%= link_to edit_profile_path(@user), class:"btn btn-default btn-block btn-lg" do %>
+        <i class="icon ion-ios7-person-outline"></i> Edit Profile
+      <% end %>
+    <% else %>
+      <div class="text-right clearfix">
+        <% if current_user.bank != @user.bank && @user.finished_profile? %>
+          <% if current_user.bank? && current_user.products.any? %>
+            <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
+              <i class="icon ion-pricetags gold"></i> New Milestone
+            <% end %>
+          <% elsif @user.products.any? %>
+            <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
+              <i class="icon ion-pricetags gold"></i> New Milestone
+            <% end %>            
+          <% end %>
+        <% end %>
+        <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
+        <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
+            <a data-toggle="modal" href="#contact-modal" class="btn btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
+        <% end %>
+      </div>
+      <section class="muted large">
+        <%= calls_to_action.sample %>
+      </section>
+    <% end %>
+  </section>
   <div class='text-left large'>
     <br>
     <div>
@@ -79,23 +107,6 @@ end
       <span class="muted"><%= current_user.percentage_match(@user) %>% </span>
     </div>
   </div>
-  <section class="clearfix">
-    <% if @user == current_user %>
-      <%= link_to edit_profile_path(@user), class:"btn btn-default btn-block btn-lg" do %>
-        <i class="icon ion-ios7-person-outline"></i> Edit Profile
-      <% end %>
-    <% else %>
-      <div class="text-right">
-        <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
-        <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
-            <a data-toggle="modal" href="#contact-modal" class="btn btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
-        <% end %>
-      </div>
-      <section class="muted large">
-        <%= calls_to_action.sample %>
-      </section>
-    <% end %>
-  </section>
   <% if @user.posts.any? %>
     <div class="well gray-border-left text-left">
       <h4><%= @user.first_name_with_last_initial %>'s Interests</h4>    
@@ -130,20 +141,25 @@ end
     <h3>Preferences</h3>
   <% end %>
   <div class='row'>
+    <section class="col-xs-12">
+      <strong class=''>Products:</strong>
+      <div class="muted"><%= @user.products.map(&:description).join(", ") %></div>
+    </section>
+  </div>
+  <div class='row'>
     <section class="col-sm-6">
       <strong class=''>Business Type:</strong>
       <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
     </section>
-
-    <section class="col-sm-6"> 
-      <strong class=''>Employees:</strong>
-      <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
+    <section class="col-sm-6">
+      <strong class=''>Customers</strong>
+      <div class="muted"><%= @user.customer_types.map(&:description).join(", ") %></div>
     </section>
   </div>
   <div class="row">
-    <section class="col-sm-3">
-      <strong class=''>Customers</strong>
-      <div class="muted"><%= @user.customer_types.map(&:description).join(", ") %></div>
+    <section class="col-sm-3"> 
+      <strong class=''>Employees:</strong>
+      <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
     </section>
     <section class="col-sm-3">
       <strong class=''>AR</strong>
@@ -177,6 +193,24 @@ end
     </section>
   </div>
   <hr>  
+  <% if @user.bank? %>
+    <% if @user.milestones.any? %>
+      <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+    <% else %>
+      <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
+      <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Funder and seal a deal? Congradulations! Navigate to the Funder's profile to mark the milestone.</p>
+    <% end %>
+    <%= render partial: "milestones/milestone", collection: @user.milestones, as: :milestone %>
+  <% else %>
+    <% if @user.biz_milestones.any? %>
+      <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+    <% else %>
+      <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
+      <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Business Owner and seal a deal? Congradulations! Navigate to the Business Owner's profile to mark the milestone.</p>
+    <% end %>
+    <%= render partial: "milestones/milestone", collection: @user.biz_milestones, as: :milestone %>
+  <% end %>
+  <hr>
   <% if @user == current_user %>
     <h4>Your News & Questions</h4>
   <% else %>

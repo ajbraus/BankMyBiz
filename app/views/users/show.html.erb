@@ -138,14 +138,14 @@ end
     </div>
   </div>
   <% if @user.bank? %>
-    <h3>Preferences</h3>
+    <h3>Preferences</h3>    
+    <div class='row'>
+      <section class="col-xs-12">
+        <strong class=''>Products:</strong>
+        <div class="muted"><%= @user.products.map(&:name).join(", ") %></div>
+      </section>
+    </div>
   <% end %>
-  <div class='row'>
-    <section class="col-xs-12">
-      <strong class=''>Products:</strong>
-      <div class="muted"><%= @user.products.map(&:description).join(", ") %></div>
-    </section>
-  </div>
   <div class='row'>
     <section class="col-sm-6">
       <strong class=''>Business Type:</strong>

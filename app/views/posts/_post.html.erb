@@ -27,7 +27,7 @@
           <%= auto_link(post.content, html: { target: '_blank' }) %>
         </section>
       <% end %>
-      <section class="text-right">
+      <section class="text-right post-tags">
         <%= render partial: 'shared/tag', collection: post.tags %>
       </section>
     </div>

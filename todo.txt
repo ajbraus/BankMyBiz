@@ -1,4 +1,6 @@
-fix impressions
+fix user impressions -> unique, know who viewed you
+# of tags - 5
+validate zipcode
 
 Track messages back and forth
 
@@ -733,3 +735,5 @@ DONE tracking deals done & successful match (messages exchanged)
   DONE Display Milestones
   DONE do not let biz to biz or funder to funder milestones happen
   DONE let funders make for biz and biz make for funders
+
+DONE fix impressions

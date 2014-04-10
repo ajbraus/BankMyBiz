@@ -1,14 +1,15 @@
 fix user impressions -> unique, know who viewed you
 # of tags - 5
-validate zipcode
+validate zip-code = 5 digits
+
+make sure emails are going out to commenters, answers,
+
+Onboarding
+  confirmation sent page
+  follow 5 tags as part of signup
 
 Track messages back and forth
 
-confirmation sent page
-
-follow 5 tags as part of signup
-
-validate zip-code = 5 digits
 Merchant cash advance is in equity section
 
 Loan priority
@@ -49,6 +50,7 @@ CRM of followed users and matches - 60% done (lots of neat opportunities here!)
   recent questions, recent advice, 
 
 Setup SSL
+  recreate secret
   MX records
   blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
 

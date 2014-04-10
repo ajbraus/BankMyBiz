@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!, except: [:show, :index]
-  impressionist :actions=>[:show]
 
   def vote_up
     begin
@@ -56,6 +55,7 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @post.update_attributes(impressions_count: @post.impressions_count += 1)
     @comments = @post.comments
     
     if user_signed_in?

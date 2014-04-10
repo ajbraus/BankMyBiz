@@ -1,17 +1,16 @@
 class Post < ActiveRecord::Base
-#  include PublicActivity::Common
   belongs_to :user
   has_and_belongs_to_many :tags
   has_many :answers, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   
-  is_impressionable :counter_cache => true
   acts_as_voteable
   
   attr_accessible :title,
                   :content,
                   :slug,
                   :tag_list,
+                  :impressions_count,
                   :last_touched_at
 
   validates :title, :content, :slug, presence: true

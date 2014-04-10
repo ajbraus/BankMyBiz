@@ -58,6 +58,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'faker', '1.0.1'
   gem 'awesome_print'
+  gem 'meta_request'
   #   gem 'turnip' 
 end
 

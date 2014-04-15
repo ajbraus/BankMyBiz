@@ -80,6 +80,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :accounts_receivables
   has_and_belongs_to_many :loan_sizes
   has_and_belongs_to_many :customer_types
+  has_and_belongs_to_many :loan_priorities
+  has_and_belongs_to_many :loan_purposes
 
   has_and_belongs_to_many :tags
   has_and_belongs_to_many :products

@@ -13,7 +13,13 @@
   <section>
     <%= render partial: 'posts/post', locals: { post: @post } %>
     <% if user_signed_in? %>
-      <%= render partial: 'answers/form', locals: { post: @post } %>    
+      <% if current_user.has_image? %>
+        <%= render partial: 'answers/form', locals: { post: @post } %>    
+      <% else %>
+        <div class='well alert-warning text-center'>
+          <i class="icon ion-information-circled"></i> Add your <%= link_to "Profile Picture", edit_profile_path(current_user) %> to post advice.
+        </div>
+      <% end %>
     <% end %>
     <% if false %>
       <div class='alert alert-warning' style="padding:10px;font-size:110%;">

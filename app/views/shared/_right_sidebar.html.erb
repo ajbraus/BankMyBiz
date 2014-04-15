@@ -27,7 +27,13 @@
 
 <div class="col-sm-4 pull-right">  
   <section>
-    <%= link_to "Ask For Advice", new_post_path, class:"btn btn-lg btn-success btn-block", rel:"tooltip", title:"+10 Cred" %>
+    <% if current_user.has_image? %>
+      <%= link_to "Ask For Advice", new_post_path, class:"btn btn-lg btn-success btn-block", rel:"tooltip", title:"+10 Cred" %>
+    <% else %>
+      <div class='well alert-warning text-center'>
+        <i class="icon ion-information-circled"></i> Add your <%= link_to "Profile Picture", edit_profile_path(current_user) %> to Get Advice.
+      </div>
+    <% end %>
   </section>
   <%= render 'shared/improve_profile' %>
   <%= render 'shared/social_buttons' %>

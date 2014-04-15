@@ -1,21 +1,21 @@
 Match w products
 
-Loan priority
-Loan purpose (add as dropdown to milestone)
-
+Loan priority & Loan purpose 
+  add to finished_profile?
+  add defaults
+  add loan purpose as dropdown to milestone
+  
 Loan amounts should be way less 5-10, 10-20
 Revenue amounts way less too
 Merchant cash advance is in equity section
 
 Make milestones not buried and offer 500 cred for completing a milestone
 
+send initial message as email
+
 fix user impressions -> unique, know who viewed you
 max # of tags - 5
 validate zip-code = 5 digits
-
-make sure emails are going out to commenters, answers,
-
-is flying sphinx reindexing enough?
 
 follow 5 tags as part of signup
 

@@ -24,6 +24,8 @@ class User < ActiveRecord::Base
                   :accounts_receivable_ids, 
                   :loan_size_ids,
                   :customer_type_ids,
+                  :loan_priority_ids,
+                  :loan_purpose_ids,
                   :bio,
                   :linked_in_url, 
                   :location,

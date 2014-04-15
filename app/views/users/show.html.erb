@@ -38,7 +38,7 @@ end
       <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
         <div class="field">
           <%= f.label :avatar, "Select Profile Picture" %><br />
-          <%= f.file_field :avatar %>
+          <%= f.file_field :avatar, class:'required' %>
         </div>
         <%= f.submit "Upload", class:"btn btn-success" %>
       <% end %>
@@ -89,8 +89,8 @@ end
     <div>
       <strong><%= @user.bank? ? "Bank" : "Business" %>:</strong>
       <% if @user.website_url.present? %>
-        <%= link_to "http://" + @user.website_url do %>
-          <%= @user.org_name %>
+        <%= link_to "http://" + @user.website_url, target:"_blank" do %>
+          <%= @user.org_name.capitalize %>
         <% end %>
       <% end %>
     </div>
@@ -128,8 +128,11 @@ end
 
 <div class="col-sm-8 large border-left">
   <div class="row">
+    <div class="col-xs-12">
+      <h3>Personal Profile</h3>
+    </div>
     <div class="col-sm-6">
-      <h3>Bio</h3>
+      <h3>About</h3>
       <p class="muted"><%= @user.bio %></p>
     </div>
     <div class="col-sm-6">
@@ -147,69 +150,97 @@ end
     </div>
   <% end %>
   <div class='row'>
-    <section class="col-sm-6">
+    <div class="col-xs-12">
+      <h3>Organization Profile</h3>
+    </div>
+    <section class="col-sm-4">
       <strong class=''>Business Type:</strong>
       <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
     </section>
-    <section class="col-sm-6">
+    <section class="col-sm-4">
       <strong class=''>Customers</strong>
       <div class="muted"><%= @user.customer_types.map(&:description).join(", ") %></div>
     </section>
+    <section class="col-sm-4">
+      <strong class=''>Business Age:</strong>
+      <div class="muted"><%= @user.ages.map(&:description).join(", ") %> Years</div>
+    </section>
   </div>
   <div class="row">
-    <section class="col-sm-3"> 
+    <section class="col-sm-4"> 
       <strong class=''>Employees:</strong>
       <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
     </section>
-    <section class="col-sm-3">
+    <section class="col-sm-4">
       <strong class=''>AR</strong>
       <div class="muted"><%= @user.accounts_receivables.map(&:description).join(", ") %></div>
     </section>
-    <section class="col-sm-6">
+    <section class="col-sm-4">
       <strong class=''>Revenue Size:</strong>
       <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
     </section>
   </div>
   <div class="row">
-    <section class="col-sm-5">
-      <strong class=''>Business Age:</strong>
-      <div class="muted"><%= @user.ages.map(&:description).join(", ") %> Years</div>
-    </section>
-    <section class="col-sm-7">
-      <strong class=''>Size of Financing</strong>
-      <div class="muted"><%= @user.loan_sizes.map(&:description).join(", ") %></div>
-    </section>
-  </div>
-  <div class="row">
-    <section class="col-sm-12">
+    <section class="col-sm-4">
       <strong class=''>Industry:</strong>
       <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
     </section>
-  </div>
-  <div class="row">
-    <section class="col-sm-8">
+    <section class="col-sm-4">
       <strong class=''>Does Business in:</strong>
       <div class="muted"><%= @user.locations.map(&:name).join(", ") %></div>
     </section>
+    <% if @user.bank? %>
+      <section class="col-sm-4">
+        <strong class=''>Size of Financing</strong>
+        <div class="muted"><%= @user.loan_sizes.map(&:description).join(", ") %></div>
+      </section>
+    <% end %>
   </div>
-  <hr>  
-  <% if @user.bank? %>
-    <% if @user.milestones.any? %>
-      <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
-    <% else %>
-      <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
-      <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Funder and seal a deal? Congradulations! Navigate to the Funder's profile to mark the milestone.</p>
-    <% end %>
-    <%= render partial: "milestones/milestone", collection: @user.milestones, as: :milestone %>
-  <% else %>
-    <% if @user.biz_milestones.any? %>
-      <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
-    <% else %>
-      <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
-      <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Business Owner and seal a deal? Congradulations! Navigate to the Business Owner's profile to mark the milestone.</p>
-    <% end %>
-    <%= render partial: "milestones/milestone", collection: @user.biz_milestones, as: :milestone %>
+  <% if !@user.bank? %>
+    <hr>  
+    <div class='row'>
+      <div class="col-xs-12">
+        <h3>Funding Profile</h3>
+      </div>
+      <section class="col-sm-4">
+        <strong>Funding Sought:</strong> <br>
+        <%= @user.loan_sizes.first.try(:description) %> 
+      </section>
+      <section class="col-sm-4">
+        <strong>Funding Purpose:</strong> <br>
+        <%= @user.loan_purposes.first.try(:description) %> 
+      </section>
+      <section class="col-sm-4">
+        <strong>Funding Priority:</strong> <br>
+        <%= @user.loan_priorities.first.try(:description) %> 
+      </section>
+    </div>  
   <% end %>
+  <hr>
+  <div class='row'>
+    <div class="col-xs-12">
+      <h3>Milestones</h3>
+    </div>
+    <div class="col-xs-12">
+      <% if @user.bank? %>
+        <% if @user.milestones.any? %>
+          <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+        <% else %>
+          <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
+          <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Funder and seal a deal? Congradulations! Navigate to the Funder's profile to mark the milestone.</p>
+        <% end %>
+        <%= render partial: "milestones/milestone", collection: @user.milestones, as: :milestone %>
+      <% else %>
+        <% if @user.biz_milestones.any? %>
+          <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+        <% else %>
+          <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
+          <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Business Owner and seal a deal? Congradulations! Navigate to the Business Owner's profile to mark the milestone.</p>
+        <% end %>
+        <%= render partial: "milestones/milestone", collection: @user.biz_milestones, as: :milestone %>
+      <% end %>
+    </div>
+  </div>
   <hr>
   <% if @user == current_user %>
     <h4>Your News & Questions</h4>

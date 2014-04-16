@@ -1,15 +1,33 @@
 Match w products
+  test after update user check for products they match with
+
+  add emerging tech - add to grants
+  create equipment_loan
+
+you do sba? for banks
 
 Loan priority & Loan purpose 
   add to finished_profile?
   add defaults
   add loan purpose as dropdown to milestone
   
+Products:
+  What you will need - documents
+    SBA 1) Minimum 650 Credit Score for all Board Members
+        2) Personal Financial Statement for all Board Members
+        3) Last 3 years of personal tax returns for all Board Members
+        4) Business plan
+        5) 3 years projections
+  Recent questions
+
 Loan amounts should be way less 5-10, 10-20
 Revenue amounts way less too
 Merchant cash advance is in equity section
 
 Make milestones not buried and offer 500 cred for completing a milestone
+  dropdown list of matches. . .
+
+rich text for questions and answers
 
 send initial message as email
 

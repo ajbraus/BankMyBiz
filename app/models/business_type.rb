@@ -1,4 +1,6 @@
 class BusinessType < ActiveRecord::Base
+  attr_accessible :description, :rank
+  
   has_and_belongs_to_many :users
-  attr_accessible :description
+  default_scope order('rank ASC')
 end

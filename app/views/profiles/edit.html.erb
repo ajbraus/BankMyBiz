@@ -38,13 +38,13 @@
             <%= f.text_field :position, class:"form-control required" %>  
           </section>
         </div>
-        <div class='col-sm-2'>
+        <div class='col-sm-1'>
           <section>
-            <%= f.label :hq_state, "HQ State*" %>
+            <%= f.label :hq_state, "State*" %>
             <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), { prompt: "State" }, class:'form-control required' %>  
           </section>
           <section>
-            <%= f.label :zip_code, "Zip Code*" %>
+            <%= f.label :zip_code, "Zip*" %>
             <%= f.text_field :zip_code, class:"form-control required" %>  
           </section>
         </div>

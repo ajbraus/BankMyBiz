@@ -136,6 +136,61 @@ class User < ActiveRecord::Base
   after_invitation_accepted :email_invited_by
   after_invitation_accepted :create_welcome_message
   after_invitation_accepted :set_username
+  after_update :set_products
+
+  def set_products
+    unless bank?
+      products << Product.find_by_description("Term Loan")  if  two_years == true && Age.where("rank > 1") & ages && RevenueSize.where("rank > 2") & revenue_sizes
+      products << Product.find_by_description("Line of Credit") if two_years == true && Age.where("rank > 1") & ages && RevenueSize.where("rank > 2") & revenue_sizes
+      products << Product.find_by_description("SBA Loan") if Age.where("rank < 4") && RevenueSize.where("rank > 1") & revenue_sizes
+      products << Product.find_by_description("Factoring") if AccountsReceivable.where("rank > 2") & accounts_receivables
+      products << Product.find_by_description("Revenue Based") if RevenueSize.where("rank > 2") & revenue_sizes
+      products << Product.find_by_description("Asset Based") if RevenueSize.where("rank > 2") & revenue_sizes && Industry.where(id: [5,19,17,21,24,27,6,3,4])
+      products << Product.find_by_description("Community Development Fund") if BusinessType.where(id: [6,9,8]) & business_types
+      products << Product.find_by_description("Merchant Cash Advance") if RevenueSize.where("rank > 2") & revenue_sizes
+      products << Product.find_by_description("Grants") if BusinessType.where(id: [6,9,8]) & business_types
+      products << Product.find_by_description("Crowd Funding for Rewards") if Industry.where(id: [8,14,18,21,24,27])
+      products << Product.find_by_description("Crowd Funding for Equity") if Industry.where(id: [14,17,19,5,21,13,6,12,3,2,20,31])
+      products << Product.find_by_description("Angel Investment") if two_years == false && RevenueSize.where("rank > 1") & revenue_sizes && Industry.where(id: [14,20,13,12])
+      
+      # products << Product.find_by_description("Private Equity") if false # DO NOT ASSIGN
+      # products << Product.find_by_description("Cash Advance") if false # DO NOT ASSIGN
+      # products << Product.find_by_description("Venture Capital") if false # DO NOT ASSIGN
+
+      # [17, "Agriculture"]
+      # [18, "Arts & Design"]
+      # [19, "Automotive"]
+      # [5, "Construction"]
+      # [7, "Consulting"]
+      # [21, "Consumer Products"]
+      # [13, "Data & Analytics"]
+      # [22, "Education"]
+      # [24, "Electronics"]
+      # [23, "Energy"]
+      # [25, "Engineering"]
+      # [8, "Entertainment & Media"]
+      # [26, "Events"]
+      # [27, "Fashion & Apparel"]
+      # [1, "Financial Services"]
+      # [6, "Food & Beverage"]
+      # [28, "Government & Politics"]
+      # [12, "Healthcare & Pharma"]
+      # [16, "Health & Wellness"]
+      # [14, "Internet"]
+      # [29, "Legal"]
+      # [3, "Manufacturing"]
+      # [11, "Nonprofit"]
+      # [9, "Real Estate (Com)"]
+      # [10, "Real Estate (Res)"]
+      # [2, "Retail"]
+      # [15, "Sales &  Marketing"]
+      # [20, "Science & Biotech"]
+      # [30, "Security"]
+      # [4, "Transportation & Distribution"]
+      # [31, "Travel & Tourism"]
+
+    end
+  end
 
   def near_by_matches
     zip_prefix = self.zip_code[0..2]

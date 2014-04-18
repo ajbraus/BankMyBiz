@@ -138,7 +138,8 @@ class User < ActiveRecord::Base
   after_invitation_accepted :set_username
 
   def set_products
-    unless bank? && !finished_profile?
+    if !bank? && finished_profile?
+      products = []
       if  two_years == true && (Age.where("rank > 1") & ages).any? && (RevenueSize.where("rank > 2") & revenue_sizes).any?
         products << Product.find_by_name("Term Loan")  
       end
@@ -163,7 +164,7 @@ class User < ActiveRecord::Base
       if (RevenueSize.where("rank > 2") & revenue_sizes).any?
         products << Product.find_by_name("Merchant Cash Advance")
       end
-      if BusinessType.where(id: [6,9,8]) & business_types
+      if (BusinessType.where(id: [6,9,8]) & business_types).any?
         products << Product.find_by_name("Grants")
       end
       if (Industry.where(id: [8,14,18,21,24,27]) & industries).any?

@@ -1,8 +1,6 @@
-<div class="match clearfix">
-  <div class="pull-left margin-right">
-    <%= link_to user_path(user) do %><%= small_profile_picture(user) %><% end %></td>
-  </div>
-  <div class="pull-left">
+<div class="match row">
+  <%= link_to user_path(user), class:"col-xs-2" do %><%= small_profile_picture(user) %><% end %></td>
+  <div class="col-xs-10">
     <strong><%= user.first_name_with_last_initial %></strong> - <%= user.position %> at <%= user.org_name %><br>
       <%= user.status %> 
       <br>

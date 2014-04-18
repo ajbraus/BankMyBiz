@@ -139,42 +139,42 @@ class User < ActiveRecord::Base
 
   def set_products
     if !bank? && finished_profile?
-      products = []
+      self.products = []
       if  two_years == true && (Age.where("rank > 1") & ages).any? && (RevenueSize.where("rank > 2") & revenue_sizes).any?
-        products << Product.find_by_name("Term Loan")  
+        self.products << Product.find_by_name("Term Loan")  
       end
       if two_years == true && (Age.where("rank > 1") & ages).any? && (RevenueSize.where("rank > 2") & revenue_sizes).any?
-        products << Product.find_by_name("Line of Credit") 
+        self.products << Product.find_by_name("Line of Credit") 
       end
       if (Age.where("rank < 4") & ages).any? && (RevenueSize.where("rank > 1") & revenue_sizes).any?
-        products << Product.find_by_name("SBA Loan")
+        self.products << Product.find_by_name("SBA Loan")
       end
       if (AccountsReceivable.where("rank > 2") & accounts_receivables).any?
-        products << Product.find_by_name("Factoring")
+        self.products << Product.find_by_name("Factoring")
       end
       if (RevenueSize.where("rank > 2") & revenue_sizes).any?
-        products << Product.find_by_name("Revenue Based") 
+        self.products << Product.find_by_name("Revenue Based") 
       end
       if (RevenueSize.where("rank > 2") & revenue_sizes).any? && Industry.where(id: [5,19,17,21,24,27,6,3,4])
-        products << Product.find_by_name("Asset Based")
+        self.products << Product.find_by_name("Asset Based")
       end
       if (BusinessType.where(id: [6,9,8]) & business_types).any?
-        products << Product.find_by_name("Community Development Fund")
+        self.products << Product.find_by_name("Community Development Fund")
       end
       if (RevenueSize.where("rank > 2") & revenue_sizes).any?
-        products << Product.find_by_name("Merchant Cash Advance")
+        self.products << Product.find_by_name("Merchant Cash Advance")
       end
       if (BusinessType.where(id: [6,9,8]) & business_types).any?
-        products << Product.find_by_name("Grants")
+        self.products << Product.find_by_name("Grants")
       end
       if (Industry.where(id: [8,14,18,21,24,27]) & industries).any?
-        products << Product.find_by_name("Crowd Funding for Rewards") 
+        self.products << Product.find_by_name("Crowd Funding for Rewards") 
       end
       if (Industry.where(id: [14,17,19,5,21,13,6,12,3,2,20,31]) & industries).any?
-        products << Product.find_by_name("Crowd Funding for Equity") 
+        self.products << Product.find_by_name("Crowd Funding for Equity") 
       end
       if two_years == false && (RevenueSize.where("rank > 1") & revenue_sizes).any? && Industry.where(id: [14,20,13,12])
-        products << Product.find_by_name("Angel Investment") 
+        self.products << Product.find_by_name("Angel Investment") 
       end
       
       # products << Product.find_by_description("Private Equity") if false # DO NOT ASSIGN

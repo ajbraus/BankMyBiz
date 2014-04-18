@@ -34,7 +34,7 @@
           </div>
         <% end %>
       <% end %>
-      <% if !current_user.bank? %>
+      <% if !current_user.bank? && current_user.products.any? %>
         <div class="clearfix">
           <h4>Matched Funding Options</h4>
           <div class="col-sm-10 col-sm-offset-1">

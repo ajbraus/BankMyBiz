@@ -5,12 +5,12 @@ class ProfilesController < ApplicationController
 
   def update
     @user = current_user
+    @user.set_products
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
         if @user.matched_users.empty? && @user.finished_profile?
           @user.set_matches
-          @user.set_peers
           @user.delay.add_to_mc_lists
         end
         format.html { redirect_to @user }

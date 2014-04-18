@@ -1,13 +1,15 @@
 <% if user_signed_in? %>
-  <h4>Bankmybiz 360&deg;</h4>
-  <div class="match">
-    <% if false %>
-    <h5><%= pluralize(current_user.karma, "User") %> Gave You Cred!</h5>
-      <%= render partial: "users/user", collection: current_user.posts.order('created_at DESC').map { |p| p.voters_who_voted_for }.flatten!.uniq.first(3), as: :user %> 
-      <% end %>
-    <h5><%= pluralize current_user.impressions_count, "User" %> Viewed Your Profile!</h5>
-      <%= render partial: "users/user", collection: current_user.impressions.order("created_at DESC").map{|i| i.impressionable }.uniq.first(3), as: :user %>
-    <h5><%= pluralize current_user.followers.count, "User" %> Follow You on Bankmybiz!</h5>
-      <%= render partial: "users/user", collection: current_user.followers.order('created_at DESC').first(3), as: :user %>
-  </div>
+  <section class="well">
+    <h4>Bankmybiz 360&deg;</h4>
+    <div class="match">
+      <% if false %>
+      <h5><%= pluralize(current_user.karma, "User") %> Gave You Cred!</h5>
+        <%= render partial: "users/user", collection: current_user.posts.order('created_at DESC').map { |p| p.voters_who_voted_for }.flatten!.uniq.first(3), as: :user %> 
+        <% end %>
+      <h5><%= pluralize current_user.impressions_count, "User" %> Viewed Your Profile!</h5>
+        <%= render partial: "users/user", collection: current_user.impressions.order("created_at DESC").map{|i| i.impressionable }.uniq.first(3), as: :user %>
+      <h5><%= pluralize current_user.followers.count, "User" %> Follow You on Bankmybiz!</h5>
+        <%= render partial: "users/user", collection: current_user.followers.order('created_at DESC').first(3), as: :user %>
+    </div>
+  </section>
 <% end %>

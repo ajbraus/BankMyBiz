@@ -1,8 +1,16 @@
 Match w products
   test after update user check for products they match with
 
+  add funding priority -> Best Relationship
   add emerging tech - add to grants
   create equipment_loan
+  add deposits - save you're money to start a business!
+
+rank - http://stackoverflow.com/questions/6511008/how-can-i-order-the-items-in-my-collection-select-form-field?lq=1
+
+make sure followers get emailed
+
+logo from WBA
 
 you do sba? for banks
 
@@ -60,7 +68,7 @@ Setup SSL
   MX records
   blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
 
-“Become a Certified Funder” - with subscription payments - 70% done
+“Become a Certified Banker” - with subscription payments - 70% done
   add free 1 month subscription upon user creation
   do not display certified lender until after a month
 Turn back on purchasing more matches - 80% done
@@ -123,14 +131,14 @@ Products
      venture_capital
 
   - Link users to matches through products
-  - Funders pay to be matched on products
+  - Bankers pay to be matched on products
 
 anonymous questions
 
 
 Money
-  - Get verified = Funders, service providers, and businesses
-  - Add "Become a Verified Funder" workflow for Funders - pay $150/month $100/ 6months $75 / year
+  - Get verified = Bankers, service providers, and businesses
+  - Add "Become a Verified Banker" workflow for Bankers - pay $150/month $100/ 6months $75 / year
 
 Difference between funder and business
   - Add SSL
@@ -667,7 +675,7 @@ DONE video on responsive
 DONE - add baller footer
 DONE - Allow bankers to choose which funding they do as checkboxes (max 4)
 DONE - with data model ready to change the matching algo
-DONE - Funders have products
+DONE - Bankers have products
 
 DONE - friendlyid on posts (better urls)
 

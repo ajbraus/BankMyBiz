@@ -1,7 +1,5 @@
 BankMyBiz::Application.routes.draw do
-
   resources :milestones
-
   resources :products, only: [:show]
 
   match '/term_loan', to: 'products#term_loan', as: 'term_loan'
@@ -12,7 +10,7 @@ BankMyBiz::Application.routes.draw do
   match '/revenue_based', to: 'products#revenue_based', as: 'revenue_based'
   match '/asset_based_financing', to: 'products#asset_based', as: 'asset_based'
   match '/private_equity', to: 'products#private_equity', as: 'private_equity'
-  match '/community_development', to: 'products#community_development', as: 'community_development'
+  match '/community_development_fund', to: 'products#community_development', as: 'community_development'
   match '/angel_investment', to: 'products#angel_investment', as: 'angel_investment'
   match '/venture_capital', to: 'products#venture_capital', as: 'venture_capital'
   match '/crowd_funding_for_rewards', to: 'products#crowd_funding_for_rewards', as: 'crowd_funding_for_rewards'

@@ -136,22 +136,45 @@ class User < ActiveRecord::Base
   after_invitation_accepted :email_invited_by
   after_invitation_accepted :create_welcome_message
   after_invitation_accepted :set_username
-  after_update :set_products
 
   def set_products
-    unless bank?
-      products << Product.find_by_description("Term Loan")  if  two_years == true && Age.where("rank > 1") & ages && RevenueSize.where("rank > 2") & revenue_sizes
-      products << Product.find_by_description("Line of Credit") if two_years == true && Age.where("rank > 1") & ages && RevenueSize.where("rank > 2") & revenue_sizes
-      products << Product.find_by_description("SBA Loan") if Age.where("rank < 4") && RevenueSize.where("rank > 1") & revenue_sizes
-      products << Product.find_by_description("Factoring") if AccountsReceivable.where("rank > 2") & accounts_receivables
-      products << Product.find_by_description("Revenue Based") if RevenueSize.where("rank > 2") & revenue_sizes
-      products << Product.find_by_description("Asset Based") if RevenueSize.where("rank > 2") & revenue_sizes && Industry.where(id: [5,19,17,21,24,27,6,3,4])
-      products << Product.find_by_description("Community Development Fund") if BusinessType.where(id: [6,9,8]) & business_types
-      products << Product.find_by_description("Merchant Cash Advance") if RevenueSize.where("rank > 2") & revenue_sizes
-      products << Product.find_by_description("Grants") if BusinessType.where(id: [6,9,8]) & business_types
-      products << Product.find_by_description("Crowd Funding for Rewards") if Industry.where(id: [8,14,18,21,24,27])
-      products << Product.find_by_description("Crowd Funding for Equity") if Industry.where(id: [14,17,19,5,21,13,6,12,3,2,20,31])
-      products << Product.find_by_description("Angel Investment") if two_years == false && RevenueSize.where("rank > 1") & revenue_sizes && Industry.where(id: [14,20,13,12])
+    unless bank? && !finished_profile?
+      if  two_years == true && (Age.where("rank > 1") & ages).any? && (RevenueSize.where("rank > 2") & revenue_sizes).any?
+        products << Product.find_by_name("Term Loan")  
+      end
+      if two_years == true && (Age.where("rank > 1") & ages).any? && (RevenueSize.where("rank > 2") & revenue_sizes).any?
+        products << Product.find_by_name("Line of Credit") 
+      end
+      if (Age.where("rank < 4") & ages).any? && (RevenueSize.where("rank > 1") & revenue_sizes).any?
+        products << Product.find_by_name("SBA Loan")
+      end
+      if (AccountsReceivable.where("rank > 2") & accounts_receivables).any?
+        products << Product.find_by_name("Factoring")
+      end
+      if (RevenueSize.where("rank > 2") & revenue_sizes).any?
+        products << Product.find_by_name("Revenue Based") 
+      end
+      if (RevenueSize.where("rank > 2") & revenue_sizes).any? && Industry.where(id: [5,19,17,21,24,27,6,3,4])
+        products << Product.find_by_name("Asset Based")
+      end
+      if (BusinessType.where(id: [6,9,8]) & business_types).any?
+        products << Product.find_by_name("Community Development Fund")
+      end
+      if (RevenueSize.where("rank > 2") & revenue_sizes).any?
+        products << Product.find_by_name("Merchant Cash Advance")
+      end
+      if BusinessType.where(id: [6,9,8]) & business_types
+        products << Product.find_by_name("Grants")
+      end
+      if (Industry.where(id: [8,14,18,21,24,27]) & industries).any?
+        products << Product.find_by_name("Crowd Funding for Rewards") 
+      end
+      if (Industry.where(id: [14,17,19,5,21,13,6,12,3,2,20,31]) & industries).any?
+        products << Product.find_by_name("Crowd Funding for Equity") 
+      end
+      if two_years == false && (RevenueSize.where("rank > 1") & revenue_sizes).any? && Industry.where(id: [14,20,13,12])
+        products << Product.find_by_name("Angel Investment") 
+      end
       
       # products << Product.find_by_description("Private Equity") if false # DO NOT ASSIGN
       # products << Product.find_by_description("Cash Advance") if false # DO NOT ASSIGN

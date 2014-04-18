@@ -12,7 +12,7 @@ class SitemapsController < ApplicationController
                      '/revenue_based',
                      '/asset_based_financing',
                      '/private_equity',
-                     '/community_development',
+                     '/community_development_fund',
                      '/angel_investment',
                      '/venture_capital',
                      '/crowd_funding_for_rewards',

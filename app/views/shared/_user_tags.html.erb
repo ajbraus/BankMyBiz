@@ -1,0 +1,18 @@
+<% if user_signed_in? %>
+<section class="well">
+  <div class="tag-cloud text-left">
+    <h4>Your Interests</h4>
+    <%= form_for Tag.new, remote: true do |f| %>
+      <div class="input-group">
+        <%= f.text_field :name, class:"form-control", id:"followTags", placeholder:"Follow Interests" %>
+        <span class="input-group-btn">
+          <%= f.submit "Follow", class:"btn btn-success" %>
+        </span>
+      </div>
+    <% end %>
+    <div id="myTags">
+      <%= render partial: 'shared/tag', collection: current_user.tags %>
+    </div>
+  </div>
+</section>
+<% end %>

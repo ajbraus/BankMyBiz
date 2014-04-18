@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   has_and_belongs_to_many :tags
   has_many :answers, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
-  
+
   acts_as_voteable
   
   attr_accessible :title,

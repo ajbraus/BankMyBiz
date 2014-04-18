@@ -285,11 +285,11 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
     </div>
     <div class="col-sm-4 user-type">
       <h3 class="text-center">Ready to Lend</h3>
-      <p>Funders on Bankmybiz.com are actively looking to lend. But more than that, they are looking to learn, connect, educate, and build relationships with businesses.</p>
+      <p>Bankers on Bankmybiz.com are actively looking to lend. But more than that, they are looking to learn, connect, educate, and build relationships with businesses.</p>
     </div>
     <div class='col-sm-4 user-type'>
       <h3 class="text-center">An Exclusive Network</h3>
-      <p>Interact with a network of Funders and business owners to learn, enhance your brand, and extend your business’s reach.</p>
+      <p>Interact with a network of Bankers and business owners to learn, enhance your brand, and extend your business’s reach.</p>
     </div>
   </div>
   <div class="row">
@@ -304,7 +304,7 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
   </div>
   <hr>
   <div class="row user-type">
-    <h2 class="col-sm-12 text-center">For Funders</h2>
+    <h2 class="col-sm-12 text-center">For Bankers</h2>
     <div class="col-sm-4 user-type">
       <h3 class="text-center">Matches & Messages</h3>
       <p>Get free access to receive matches based on our Bankmybiz.com matching platform, send secure private messages, and post questions to Bankmybiz, all for free. <%= link_to "learn more", how_path, anchor: "one" %></p>

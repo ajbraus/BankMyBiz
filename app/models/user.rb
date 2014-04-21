@@ -140,79 +140,50 @@ class User < ActiveRecord::Base
   def set_products
     if !bank? && finished_profile?
       self.products = []
-      if  two_years == true && (Age.where("rank > 1") & ages).any? && (RevenueSize.where("rank > 2") & revenue_sizes).any?
-        self.products << Product.find_by_name("Term Loan")  
+      if loan_sizes.first.rank < 2 
+        self.products << Product.find_by_name("Deposits") 
+        self.products << Product.find_by_name("Credit Cards") 
       end
-      if two_years == true && (Age.where("rank > 1") & ages).any? && (RevenueSize.where("rank > 2") & revenue_sizes).any?
+      if two_years == true && ages.first.rank > 1 && revenue_sizes.first.rank > 2
+        self.products << Product.find_by_name("Term Loan")  
         self.products << Product.find_by_name("Line of Credit") 
       end
-      if (Age.where("rank < 4") & ages).any? && (RevenueSize.where("rank > 1") & revenue_sizes).any?
+      if ages.first.rank < 3 && revenue_sizes.first.rank > 1
         self.products << Product.find_by_name("SBA Loan")
       end
-      if (AccountsReceivable.where("rank > 2") & accounts_receivables).any?
+      if accounts_receivables.first.rank > 2
         self.products << Product.find_by_name("Factoring")
       end
-      if (RevenueSize.where("rank > 2") & revenue_sizes).any?
+      if revenue_sizes.first.rank > 2
         self.products << Product.find_by_name("Revenue Based") 
       end
-      if (RevenueSize.where("rank > 2") & revenue_sizes).any? && Industry.where(id: [5,19,17,21,24,27,6,3,4])
+      if revenue_sizes.first.rank > 2 && (industry_ids & [5,19,17,21,24,27,6,3,4]).any?
         self.products << Product.find_by_name("Asset Based")
       end
-      if (BusinessType.where(id: [6,9,8]) & business_types).any?
+      if (business_type_ids & [6,9,8]).any?
         self.products << Product.find_by_name("Community Development Fund")
       end
-      if (RevenueSize.where("rank > 2") & revenue_sizes).any?
+      if revenue_sizes.first.rank > 2
         self.products << Product.find_by_name("Merchant Cash Advance")
       end
-      if (BusinessType.where(id: [6,9,8]) & business_types).any?
+      if (business_type_ids & [6,9,8]).any? || industry_ids.include?(32)
         self.products << Product.find_by_name("Grants")
       end
-      if (Industry.where(id: [8,14,18,21,24,27]) & industries).any?
+      if (industry_ids & [8,14,18,21,24,27]).any?
         self.products << Product.find_by_name("Crowd Funding for Rewards") 
       end
-      if (Industry.where(id: [14,17,19,5,21,13,6,12,3,2,20,31]) & industries).any?
+      if (industry_ids & [14,17,19,5,21,13,6,12,3,2,20,31]).any?
         self.products << Product.find_by_name("Crowd Funding for Equity") 
       end
-      if two_years == false && (RevenueSize.where("rank > 1") & revenue_sizes).any? && Industry.where(id: [14,20,13,12])
+      if two_years == false && revenue_sizes.first.rank > 1 && (industry_ids & [14,20,13,12]).any?
         self.products << Product.find_by_name("Angel Investment") 
       end
-      
+      if (loan_purpose_ids & [8,9]).any? && revenue_sizes.first.rank > 1
+        self.products << Product.find_by_name("Equipment Loan") 
+      end
       # products << Product.find_by_description("Private Equity") if false # DO NOT ASSIGN
       # products << Product.find_by_description("Cash Advance") if false # DO NOT ASSIGN
       # products << Product.find_by_description("Venture Capital") if false # DO NOT ASSIGN
-
-      # [17, "Agriculture"]
-      # [18, "Arts & Design"]
-      # [19, "Automotive"]
-      # [5, "Construction"]
-      # [7, "Consulting"]
-      # [21, "Consumer Products"]
-      # [13, "Data & Analytics"]
-      # [22, "Education"]
-      # [24, "Electronics"]
-      # [23, "Energy"]
-      # [25, "Engineering"]
-      # [8, "Entertainment & Media"]
-      # [26, "Events"]
-      # [27, "Fashion & Apparel"]
-      # [1, "Financial Services"]
-      # [6, "Food & Beverage"]
-      # [28, "Government & Politics"]
-      # [12, "Healthcare & Pharma"]
-      # [16, "Health & Wellness"]
-      # [14, "Internet"]
-      # [29, "Legal"]
-      # [3, "Manufacturing"]
-      # [11, "Nonprofit"]
-      # [9, "Real Estate (Com)"]
-      # [10, "Real Estate (Res)"]
-      # [2, "Retail"]
-      # [15, "Sales &  Marketing"]
-      # [20, "Science & Biotech"]
-      # [30, "Security"]
-      # [4, "Transportation & Distribution"]
-      # [31, "Travel & Tourism"]
-
     end
   end
 
@@ -474,12 +445,14 @@ class User < ActiveRecord::Base
     progress += 1 if hq_state.present?
     progress += 1 if zip_code.present?
     progress += 1 if two_years != nil
+    progress += 1 if loan_priorities.any?
+    progress += 1 if loan_purposes.any?
 
     return progress
   end
 
   def total_profile_elements
-    17
+    19
   end
 
   def profile_progress_percent

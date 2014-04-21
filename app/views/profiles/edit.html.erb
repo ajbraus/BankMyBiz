@@ -172,7 +172,7 @@
                 <%= hidden_field_tag "product[category_ids][]", nil %>
                 <h5>Traditional</h5>
                 <div class="btn-group" data-toggle="buttons">
-                  <% Product.all.first(3).each do |product| %>
+                  <% Product.where(kind:"Traditional").each do |product| %>
                     <label class="btn btn-default <%= @user.product_ids.include?(product.id) ? 'active' : '' %>">
                       <%= check_box_tag "user[product_ids][]", product.id, @user.product_ids.include?(product.id), id: dom_id(product) %>
                       <%= product.name %>
@@ -181,7 +181,7 @@
                 </div>
                 <h5>Non Traditional</h5>
                 <div class="btn-group" data-toggle="buttons">
-                  <% Product.all[3..11].each do |product| %>
+                  <% Product.where(kind:"Non-Traditional").each do |product| %>
                     <label class="btn btn-default <%= @user.product_ids.include?(product.id) ? 'active' : '' %>">
                       <%= check_box_tag "user[product_ids][]", product.id, @user.product_ids.include?(product.id), id: dom_id(product) %>
                       <%= product.name %>
@@ -190,7 +190,7 @@
                 </div>
                 <h5>Equity</h5>
                 <div class="btn-group" data-toggle="buttons">
-                  <% Product.all.last(3).each do |product| %>
+                  <% Product.where(kind:"Equity").each do |product| %>
                     <label class="btn btn-default <%= @user.product_ids.include?(product.id) ? 'active' : '' %>">
                       <%= check_box_tag "user[product_ids][]", product.id, @user.product_ids.include?(product.id), id: dom_id(product) %>
                       <%= product.name %>

@@ -1,24 +1,33 @@
-Match w products
-  test after update user check for products they match with
+Build pages for deposits, equipment loans, and credit cards
 
-  add funding priority -> Best Relationship
-  add emerging tech - add to grants
-  create equipment_loan
-  add deposits - save you're money to start a business!
+# add Emerging tech to industries
+Industry.create(description: "Emerging Tech")
 
-rank - http://stackoverflow.com/questions/6511008/how-can-i-order-the-items-in-my-collection-select-form-field?lq=1
+# add deposits, credit cards, equipment loans to products
+Product.create(name: "Deposits", kind:"Traditional")
+Product.create(name: "Credit Cards", kind: "Traditional")
+Product.create(name: "Equipment Loan", kind: "Non-Traditional")
 
-make sure followers get emailed
+# add defaults priorities to all existing non-banks
+# set_products for all non-banks
+User.where(bank:false).each do |u|
+  u.loan_priorities << LoanPriority.first
+  u.loan_purposes << LoanPurpose.first
+  u.save
+  u.set_products
+end
 
-logo from WBA
-
-you do sba? for banks
+DONE add emerging tech - add to grants
+DONE create equipment_loan product - suggest if purpose is to repair or buy equipment, revenue > rank 1
+add deposits - save you're money to start a business! - suggest if LoanSize is < rank 3
+add credit cards - suggest if LoanSize is < rank 3
+merchant cash advance - if LoanSize < rank 3 and revenue higher than rank 1
 
 Loan priority & Loan purpose 
   add to finished_profile?
   add defaults
   add loan purpose as dropdown to milestone
-  
+
 Products:
   What you will need - documents
     SBA 1) Minimum 650 Credit Score for all Board Members
@@ -28,13 +37,11 @@ Products:
         5) 3 years projections
   Recent questions
 
-Loan amounts should be way less 5-10, 10-20
-Revenue amounts way less too
-Merchant cash advance is in equity section
-
 Make milestones not buried and offer 500 cred for completing a milestone
   dropdown list of matches. . .
 
+logo from WBA
+make sure followers get emailed
 rich text for questions and answers
 
 send initial message as email
@@ -751,3 +758,6 @@ DONE tracking deals done & successful match (messages exchanged)
   DONE let funders make for biz and biz make for funders
 
 DONE fix impressions
+DONE add funding priority -> Best Relationship
+DONE test after update user check for products they match with
+DONE Merchant cash advance is in equity section

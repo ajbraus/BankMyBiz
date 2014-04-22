@@ -151,6 +151,15 @@
                 </li>
                 <% if false %>
                 <li>
+                  <%= link_to 'Deposits', deposits_path %>
+                </li>
+                <li>
+                  <%= link_to 'Credit Cards', credit_cards_path %>
+                </li>
+                <li>
+                  <%= link_to 'Equipment Loan', equipment_loan_path %>
+                </li>
+                <li>
                   <%= link_to 'Revenue Based', revenue_based_path %>
                 </li>
                 <li>
@@ -200,8 +209,8 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to favorites_path, rel:"tooltip", title:"Following", data: {placement: "bottom"} do %>
-                  <div class="pull-left"><%= current_user.followed_users.count %></div>&nbsp; <i class="big-icon icon ion-ios7-personadd-outline"></i>
+                <%= link_to favorites_path, rel:"tooltip", title:"Pipeline", data: {placement: "bottom"} do %>
+                  <div class="pull-left"><%= current_user.followed_users.count %></div>&nbsp; <i class="big-icon icon ion-ios7-bookmarks-outline"></i>
                 <% end %>
                 <% if params[:controller] == "favorites" && params[:action] == "index" %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>

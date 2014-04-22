@@ -1,12 +1,6 @@
-Build pages for deposits, equipment loans, and credit cards
+Build pages for deposits, equipment loans, and credit cards - add to options_nav and application.html
 
-# add Emerging tech to industries
-Industry.create(description: "Emerging Tech")
-
-# add deposits, credit cards, equipment loans to products
-Product.create(name: "Deposits", kind:"Traditional")
-Product.create(name: "Credit Cards", kind: "Traditional")
-Product.create(name: "Equipment Loan", kind: "Non-Traditional")
+set matches to happen every 10 days
 
 # add defaults priorities to all existing non-banks
 # set_products for all non-banks
@@ -17,15 +11,8 @@ User.where(bank:false).each do |u|
   u.set_products
 end
 
-DONE add emerging tech - add to grants
-DONE create equipment_loan product - suggest if purpose is to repair or buy equipment, revenue > rank 1
-add deposits - save you're money to start a business! - suggest if LoanSize is < rank 3
-add credit cards - suggest if LoanSize is < rank 3
-merchant cash advance - if LoanSize < rank 3 and revenue higher than rank 1
-
-Loan priority & Loan purpose 
-  add to finished_profile?
-  add defaults
+fix milestones
+  add matches, follwers and followed as dropdown
   add loan purpose as dropdown to milestone
 
 Products:
@@ -37,22 +24,35 @@ Products:
         5) 3 years projections
   Recent questions
 
-Make milestones not buried and offer 500 cred for completing a milestone
-  dropdown list of matches. . .
-
 logo from WBA
 make sure followers get emailed
-rich text for questions and answers
-
-send initial message as email
 
 fix user impressions -> unique, know who viewed you
-max # of tags - 5
 validate zip-code = 5 digits
-
 follow 5 tags as part of signup
 
+Setup SSL
+  recreate secret
+  MX records
+  blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
+
+“Become a Certified Banker” - with subscription payments - 70% done
+  add free 1 month subscription upon user creation
+  do not display certified lender until after a month
+  upgrade on banker sidebar
+Turn back on purchasing more matches - 80% done
+
+
+SEO 
+  - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
+
+alert for login is too blank
+
+____________________________________________________
+
+
 Track messages back and forth
+
 
 Infographic to show business and banker's matching profile
   What you match on - industry, customer types, size, etc
@@ -64,36 +64,21 @@ landing page:
   move conferences to conferences    
   move conference text to blog
 
+
 CRM of followed users and matches - 60% done (lots of neat opportunities here!)
   toggle interests, contact info (website / twitter handle), see recent activity, unfollow
   always have http://
   add to edit & profile & welcome
   recent questions, recent advice, 
 
-Setup SSL
-  recreate secret
-  MX records
-  blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
-
-“Become a Certified Banker” - with subscription payments - 70% done
-  add free 1 month subscription upon user creation
-  do not display certified lender until after a month
-Turn back on purchasing more matches - 80% done
-
 
 send emails to post author, answer authors, and all commenter authors (on post and answers)
 
-Make questions shorter
-
 Pre-qualifying
 
-
-SEO 
-  - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
-
-alert for login is too blank
-
-____________________________________________________
+max # of tags - 5
+rich text for questions and answers
+send initial message as email
 
 
 unsubscribe without login - 
@@ -761,3 +746,20 @@ DONE fix impressions
 DONE add funding priority -> Best Relationship
 DONE test after update user check for products they match with
 DONE Merchant cash advance is in equity section
+
+
+DONE# add deposits, credit cards, equipment loans to products
+Product.create(name: "Deposits", kind:"Traditional")
+Product.create(name: "Credit Cards", kind: "Traditional")
+Product.create(name: "Equipment Loan", kind: "Non-Traditional")
+
+DONE Industry.create(description: "Emerging Tech")
+
+DONE add emerging tech - add to grants
+DONE create equipment_loan product - suggest if purpose is to repair or buy equipment, revenue > rank 1
+DONE add deposits - save you're money to start a business! - suggest if LoanSize is < rank 3
+DONE add credit cards - suggest if LoanSize is < rank 3
+DONE merchant cash advance - if LoanSize < rank 3 and revenue higher than rank 1
+
+
+  DONE add to finished_profile?

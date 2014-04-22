@@ -2,12 +2,12 @@
 
 <div class="col-sm-8 clearfix">
   <div class="col-sm-12 clearfix">
-    <h3>Following <span class="text-muted smallest">Follow funders to get start conversations and get updates.</span></h3>
+    <h3>Your Relationship Pipeline <span class="text-muted smallest">Follow other users to start conversations and get updates on their activity.</span></h3>
   </div>
   <% if @favorites.any? %>
     <%= render partial: 'matches/match', collection: @favorites, as: 'match' %>
   <% else %>
-    <h4>You have not followed anyone on Bankmybiz</h4>
+    <h4>You're Relationship Pipeline is empty. Follow more users on Bankmybiz to grow it.</h4>
     <p class="text-muted">
       Find users profiles through Matches and the Bankmybiz Q&A Platform. Follow users by clicking "Follow" on their profile. If you match a user or a user follows you back, then you can send them secure private messages.
     </p>

@@ -3,25 +3,25 @@ BankMyBiz::Application.routes.draw do
   resources :products, only: [:show]
 
   match '/deposits', to: 'products#deposits', as: 'deposits'
-  match '/credit_cards', to: 'products#credit_cards', as: 'credit_cards'
-  match '/term_loan', to: 'products#term_loan', as: 'term_loan'
-  match '/line_of_credit', to: 'products#line_of_credit', as: 'line_of_credit'
-  match '/sba_loan', to: 'products#sba_loan', as: 'sba'
+  match '/credit-cards', to: 'products#credit_cards', as: 'credit_cards'
+  match '/term-loan', to: 'products#term_loan', as: 'term_loan'
+  match '/line-of-credit', to: 'products#line_of_credit', as: 'line_of_credit'
+  match '/sba-loan', to: 'products#sba_loan', as: 'sba'
 
   match '/factoring', to: 'products#factoring', as: 'factoring'
   match '/grants', to: 'products#grants', as: 'grants'
-  match '/revenue_based', to: 'products#revenue_based', as: 'revenue_based'
-  match '/asset_based_financing', to: 'products#asset_based', as: 'asset_based'
-  match '/private_equity', to: 'products#private_equity', as: 'private_equity'
-  match '/community_development_fund', to: 'products#community_development', as: 'community_development'
-  match '/crowd_funding_for_rewards', to: 'products#crowd_funding_for_rewards', as: 'crowd_funding_for_rewards'
-  match '/merchant_cash_advance', to: 'products#merchant_cash_advance', as: 'merchant_cash_advance'
-  match '/cash_advance_financing', to: 'products#cash_advance', as: 'cash_advance'
-  match '/equipment_loan', to: 'products#equipment_loan', as: 'equipment_loan'
+  match '/revenue-based', to: 'products#revenue_based', as: 'revenue_based'
+  match '/asset-based-financing', to: 'products#asset_based', as: 'asset_based'
+  match '/private-equity', to: 'products#private_equity', as: 'private_equity'
+  match '/community-development_fund', to: 'products#community_development', as: 'community_development'
+  match '/crowd-funding-for-rewards', to: 'products#crowd_funding_for_rewards', as: 'crowd_funding_for_rewards'
+  match '/merchant-cash-advance', to: 'products#merchant_cash_advance', as: 'merchant_cash_advance'
+  match '/cash-advance-financing', to: 'products#cash_advance', as: 'cash_advance'
+  match '/equipment-loan', to: 'products#equipment_loan', as: 'equipment_loan'
 
-  match '/angel_investment', to: 'products#angel_investment', as: 'angel_investment'
-  match '/venture_capital', to: 'products#venture_capital', as: 'venture_capital'
-  match '/crowd_funding_for_equity', to: 'products#crowd_funding_for_equity', as: 'crowd_funding_for_equity'
+  match '/angel-investment', to: 'products#angel_investment', as: 'angel_investment'
+  match '/venture-capital', to: 'products#venture_capital', as: 'venture_capital'
+  match '/crowd-funding-for-equity', to: 'products#crowd_funding_for_equity', as: 'crowd_funding_for_equity'
 
 
   resources :authentications, only: [:index, :create, :destroy]

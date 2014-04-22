@@ -10,6 +10,11 @@
     <%= link_to 'Line of Credit', line_of_credit_path, class:"list-group-item #{params[:action] == 'line_of_credit' ? 'btn-success': ''}" %>
     <%= link_to 'Small Business Admin', sba_path, class:"list-group-item #{params[:action] == 'sba_loan' ? 'btn-success': ''}" %>
   </div>
+  <% if false %>
+    <%= link_to 'Deposits', deposits_path %>
+    <%= link_to 'Credit Cards', credit_cards_path %>
+    <%= link_to 'Equipment Loan', equipment_loan_path %>
+  <% end %>
   <h5>Non-Traditional</h5>
   <div class="list-group">
       <%= link_to 'Factoring', factoring_path, class:"list-group-item #{params[:action] == 'factoring' ? 'btn-success': ''}" %>

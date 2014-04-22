@@ -140,7 +140,7 @@ class User < ActiveRecord::Base
   def set_products
     if !bank? && finished_profile?
       self.products = []
-      if loan_sizes.first.rank < 2 
+      if loan_sizes.first.rank < 3
         self.products << Product.find_by_name("Deposits") 
         self.products << Product.find_by_name("Credit Cards") 
       end
@@ -163,7 +163,7 @@ class User < ActiveRecord::Base
       if (business_type_ids & [6,9,8]).any?
         self.products << Product.find_by_name("Community Development Fund")
       end
-      if revenue_sizes.first.rank > 2
+      if revenue_sizes.first.rank > 1 && loan_sizes.first.rank < 3
         self.products << Product.find_by_name("Merchant Cash Advance")
       end
       if (business_type_ids & [6,9,8]).any? || industry_ids.include?(32)

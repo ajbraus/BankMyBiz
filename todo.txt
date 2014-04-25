@@ -1,16 +1,5 @@
 Build pages for deposits, equipment loans, and credit cards - add to options_nav and application.html
 
-set matches to happen every 10 days
-
-# add defaults priorities to all existing non-banks
-# set_products for all non-banks
-User.where(bank:false).each do |u|
-  u.loan_priorities << LoanPriority.first
-  u.loan_purposes << LoanPurpose.first
-  u.save
-  u.set_products
-end
-
 Setup SSL
   recreate secret
   MX records
@@ -767,3 +756,13 @@ DONE merchant cash advance - if LoanSize < rank 3 and revenue higher than rank 1
 
 
   DONE add to finished_profile?
+
+
+DONE # add defaults priorities to all existing non-banks
+# set_products for all non-banks
+User.where(bank:false).each do |u|
+  u.loan_priorities << LoanPriority.first
+  u.loan_purposes << LoanPurpose.first
+  u.save
+  u.set_products
+end

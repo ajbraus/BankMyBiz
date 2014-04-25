@@ -552,7 +552,7 @@ class User < ActiveRecord::Base
   end
 
   def set_matches
-    if finished_profile? && (matches.none? || matches.last.created_at < 1.week.ago) && potential_matches.any?
+    if finished_profile? && (matches.none? || matches.last.created_at < 10.days.ago) && potential_matches.any?
       match = potential_matches.first
       matched_users << match
       Notifier.delay.new_match(self, match) if receive_match_messages?

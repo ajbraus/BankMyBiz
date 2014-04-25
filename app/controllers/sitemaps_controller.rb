@@ -21,15 +21,14 @@ class SitemapsController < ApplicationController
                      '/cash-advance-financing',
                      '/deposits',
                      '/credit-cards',
-                     '/equipment-loan'
+                     '/equipment-loan',
                      '/how-it-works',
                      '/testimonials',
                      '/terms',
                      '/privacy',
                      '/about-us',
                      '/team',
-                     '/advice'
-                 ]
+                     '/advice']
     respond_to do |format|
      format.xml
     end

@@ -11,6 +11,21 @@ User.where(bank:false).each do |u|
   u.set_products
 end
 
+Setup SSL
+  recreate secret
+  MX records
+  blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
+
+“Become a Certified Banker” - with subscription payments - 70% done
+  add free 1 month subscription upon user creation
+  do not display certified lender until after a month
+  upgrade on banker sidebar
+Turn back on purchasing more matches - 80% done
+
+Zip Codes 
+  have multiple zip codes, no more than 4.
+  when 53703 new businesses get setup - I get matched with them, but if no new matches in that zip code then in generalizes.
+
 fix milestones
   add matches, follwers and followed as dropdown
   add loan purpose as dropdown to milestone
@@ -30,17 +45,6 @@ make sure followers get emailed
 fix user impressions -> unique, know who viewed you
 validate zip-code = 5 digits
 follow 5 tags as part of signup
-
-Setup SSL
-  recreate secret
-  MX records
-  blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
-
-“Become a Certified Banker” - with subscription payments - 70% done
-  add free 1 month subscription upon user creation
-  do not display certified lender until after a month
-  upgrade on banker sidebar
-Turn back on purchasing more matches - 80% done
 
 
 SEO 

@@ -6,13 +6,13 @@
     <h5>Traditional</h5>
   </section>
   <div class="list-group">
+    <%= link_to 'Deposits', deposits_path, class:"list-group-item #{params[:action] == 'deposits' ? 'btn-success': ''}" %>
+    <%= link_to 'Credit Cards', credit_cards_path, class:"list-group-item #{params[:action] == 'credit_cards' ? 'btn-success': ''}" %>
     <%= link_to 'Term Loan', term_loan_path, class:"list-group-item #{params[:action] == 'term_loan' ? 'btn-success': ''}" %>
     <%= link_to 'Line of Credit', line_of_credit_path, class:"list-group-item #{params[:action] == 'line_of_credit' ? 'btn-success': ''}" %>
     <%= link_to 'Small Business Admin', sba_path, class:"list-group-item #{params[:action] == 'sba_loan' ? 'btn-success': ''}" %>
   </div>
   <% if false %>
-    <%= link_to 'Deposits', deposits_path %>
-    <%= link_to 'Credit Cards', credit_cards_path %>
     <%= link_to 'Equipment Loan', equipment_loan_path %>
   <% end %>
   <h5>Non-Traditional</h5>
@@ -21,13 +21,13 @@
       <%= link_to 'Asset Based', asset_based_path, class:"list-group-item #{params[:action] == 'asset_based' ? 'btn-success': ''}" %>
       <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path, class:"list-group-item #{params[:action] == 'merchant_cash_advance' ? 'btn-success': ''}" %>
       <%= link_to 'Cash Advance', cash_advance_path, class:"list-group-item #{params[:action] == 'cash_advance' ? 'btn-success': ''}" %>
+      <%= link_to 'Community Development', community_development_fund_path, class:"list-group-item #{params[:action] == 'community_development_fund' ? 'btn-success': ''}" %>
       <%= link_to 'Grants', grants_path, class:"list-group-item #{params[:action] == 'grants' ? 'btn-success': ''}" %>
       <%= link_to 'Private Equity', private_equity_path, class:"list-group-item #{params[:action] == 'private_equity' ? 'btn-success': ''}" %>
       <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item #{params[:action] == 'crowd_funding_For_rewards' ? 'btn-success': ''}" %>
 
       <% if false %>
       <%= link_to 'Revenue Based', revenue_based_path, class:"list-group-item #{params[:action] == 'revenue_based' ? 'btn-success': ''}" %>
-      <%= link_to 'Community Development', community_development_path, class:"list-group-item #{params[:action] == 'community_development' ? 'btn-success': ''}" %>
       <% end %>
   </div>
   <h5>Equity</h5>

@@ -13,7 +13,7 @@ BankMyBiz::Application.routes.draw do
   match '/revenue-based', to: 'products#revenue_based', as: 'revenue_based'
   match '/asset-based-financing', to: 'products#asset_based', as: 'asset_based'
   match '/private-equity', to: 'products#private_equity', as: 'private_equity'
-  match '/community-development_fund', to: 'products#community_development', as: 'community_development'
+  match '/community-development-fund', to: 'products#community_development_fund', as: 'community_development_fund'
   match '/crowd-funding-for-rewards', to: 'products#crowd_funding_for_rewards', as: 'crowd_funding_for_rewards'
   match '/merchant-cash-advance', to: 'products#merchant_cash_advance', as: 'merchant_cash_advance'
   match '/cash-advance-financing', to: 'products#cash_advance', as: 'cash_advance'

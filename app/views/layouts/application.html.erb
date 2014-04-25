@@ -118,6 +118,12 @@
               <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
                 <li><div class="col-xs-12"><b>Traditional</b></div></li>
                 <li>
+                  <%= link_to 'Deposits', deposits_path %>
+                </li>
+                <li>
+                  <%= link_to 'Credit Cards', credit_cards_path %>
+                </li>
+                <li>
                   <%= link_to 'Term Loan', term_loan_path %>
                 </li>
                 <li>
@@ -141,6 +147,9 @@
                   <%= link_to 'Cash Advance', cash_advance_path %>
                 </li>
                 <li>
+                  <%= link_to 'Community Development Fund', community_development_fund_path %>
+                </li>
+                <li>
                   <%= link_to 'Grants', grants_path %>
                 </li>
                 <li>
@@ -151,19 +160,10 @@
                 </li>
                 <% if false %>
                 <li>
-                  <%= link_to 'Deposits', deposits_path %>
-                </li>
-                <li>
-                  <%= link_to 'Credit Cards', credit_cards_path %>
-                </li>
-                <li>
                   <%= link_to 'Equipment Loan', equipment_loan_path %>
                 </li>
                 <li>
                   <%= link_to 'Revenue Based', revenue_based_path %>
-                </li>
-                <li>
-                  <%= link_to 'Community Development', community_development_path %>
                 </li>
                 <% end %>
                 <li class="divider"></li>

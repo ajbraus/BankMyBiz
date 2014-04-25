@@ -1,0 +1,84 @@
+<% 
+  content_for :title, "Community Development | Small Business Loan | Small Business Grant - Bankmybiz"
+  content_for :description, "Community Development Funds are organizations which help small business owners receive loans or grants to start or grow their businesses. Often the use of the funds comes with restrictions."
+  content_for :keywords, "Community Development, Small Business Loan, Small Business Grant - Bankmybiz"
+%>
+
+<div class="row">
+  <%= render partial: 'options_nav' %>
+  <div class="col-sm-9">
+    <h1 class='text-center'><%= params[:action].underscore.titlecase.upcase %></h1>
+    <hr>
+    <div class="row">
+      <div class="col-sm-7">
+        <h3></h3>
+        <p>
+          Community Development Funding is loan funding that is regionally available for job creation. Its easy to qualify for but comes a high price because they're taking a risk on your business. Community Development Funding is for hard to fund businesses and projects that will be good for the overall economic welfare of your city, state, or region. Other funding options will be cheaper than Community Development Funding if you have been in business for more than two years or have an "easy to fund" project like an equipment purchase.
+        </p>
+        <blockquote>
+          <p>Community Development Funding is for hard to fund businesses and projects that will be good for the overall economic welfare of your city, state, or region.</p>
+        </blockquote>
+
+        <h3>Local Funds</h3>
+        <p>
+          Community development funds usually serve businesses in a specific geographic location. This could mean there is a regional, country, city, or town development fund which is created to help small business owners acquire loans or grants for their businesses.  There are a handful of national organizations too, so be sure to search locally, regionally, and nationally.
+        </p>
+
+        <h3>A Lot of Different Products</h3>
+        <p>
+         In addition to community development funds often having geographic restrictions, they sometimes are created to help particular industries. These maybe industries that are historically tied to the region but which are struggling, or more commonly, new types of businesses which the community development fund believes to be important sources of jobs in the future.
+        </p>
+
+        <h3>Fringe Benefits to Community Development Funds</h3>
+        <p>
+          Overall community development funding organizations are great resources for small business owners even if you don’t end up receiving a loan or grant. These organizations are great places to learn about other opportunities for you business, a way to share your business idea with experts in your area, and often can help connect you with a chamber of commerce or other business organization.
+        </p>
+      </div>
+
+      <div class="col-sm-5 grades">
+        <h3 class='text-center'><span class='text-muted'>Grade</span> <%= params[:action].underscore.titlecase %></h3>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">A-</h1>
+            <h3 class='text-center'>Approval</h3>
+            <p class='text-muted'></p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge text-center">B+</h1>
+            <h3 class='text-center'>Funding Speed</h3>
+            <p class='text-muted'></p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">B</h1>
+            <h3 class='text-center'>Terms</h3>
+            <p class='text-muted'></p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">B</h1>
+            <h3 class='text-center'>Amount</h3>
+            <p class='text-muted'></p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">C+</h1>
+            <h3 class='text-center'>Cost</h3>
+            <p class='text-muted'></p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">C</h1>
+            <h3 class='text-center'>Exit Ease</h3>
+            <p class='text-muted'></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <%= render partial: 'funders' %>
+  </div>
+</div>

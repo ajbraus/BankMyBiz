@@ -3,6 +3,12 @@ class ProductsController < ApplicationController
   end
 
   # Traditional 
+  def deposits
+    @product = Product.find_by_name(params[:action].underscore.titlecase)
+  end
+  def credit_cards
+    @product = Product.find_by_name(params[:action].underscore.titlecase)
+  end
   def term_loan
     @product = Product.find_by_name(params[:action].underscore.titlecase)
   end

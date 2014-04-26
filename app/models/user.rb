@@ -140,7 +140,7 @@ class User < ActiveRecord::Base
   def set_products
     if !bank? && finished_profile?
       self.products = []
-      if loan_sizes.first.rank < 3
+      if loan_sizes.first.rank < 2
         self.products << Product.find_by_name("Deposits") 
         self.products << Product.find_by_name("Credit Cards") 
       end

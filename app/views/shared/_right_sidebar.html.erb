@@ -26,6 +26,7 @@
 </div>
 
 <div class="col-sm-4 pull-right">  
+  <% if user_signed_in? %>
   <section>
     <% if current_user.has_image? %>
       <%= link_to "Ask For Advice", new_post_path, class:"btn btn-lg btn-success btn-block", rel:"tooltip", title:"+10 Cred" %>
@@ -35,6 +36,7 @@
       </div>
     <% end %>
   </section>
+  <% end %>
   <%= render 'shared/improve_profile' %>
   <%= render 'shared/user_tags' %>
   <%= render 'shared/social_buttons' %>

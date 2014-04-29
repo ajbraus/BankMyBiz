@@ -39,7 +39,7 @@
           <h4>Matched Funding Options</h4>
           <div class="col-sm-10 col-sm-offset-1">
             <% current_user.products.each do |p| %>
-              <%= link_to "/" + p.name.parameterize.underscore, class:"btn btn-default btn-block" do %>
+              <%= link_to "/" + p.name.parameterize, class:"btn btn-default btn-block" do %>
                 <%= p.name %>
               <% end %>
             <% end %>

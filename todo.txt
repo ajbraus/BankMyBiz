@@ -1,15 +1,8 @@
-Build pages for deposits, equipment loans, and credit cards - add to options_nav and application.html
+user bookmark icon for following/favoriting
 
-Setup SSL
-  recreate secret
-  MX records
-  blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
-
-“Become a Certified Banker” - with subscription payments - 70% done
+“Become a Certified Banker” - with subscription payments
   add free 1 month subscription upon user creation
-  do not display certified lender until after a month
-  upgrade on banker sidebar
-Turn back on purchasing more matches - 80% done
+  upgrade to certified lender on banker sidebar
 
 Zip Codes 
   have multiple zip codes, no more than 4.
@@ -18,6 +11,10 @@ Zip Codes
 fix milestones
   add matches, follwers and followed as dropdown
   add loan purpose as dropdown to milestone
+  give cred when milestone completes to both parties
+  notify followers that they hit a milestone
+
+Turn back on purchasing more matches
 
 Products:
   What you will need - documents
@@ -27,6 +24,7 @@ Products:
         4) Business plan
         5) 3 years projections
   Recent questions
+  Build pages for equipment loans & Revenue Based funnding - add to options_nav and application.html
 
 logo from WBA
 make sure followers get emailed
@@ -34,7 +32,6 @@ make sure followers get emailed
 fix user impressions -> unique, know who viewed you
 validate zip-code = 5 digits
 follow 5 tags as part of signup
-
 
 SEO 
   - about page with vision of banks not going away - so making it better - mixture of equity, crowdfunding, and loans.
@@ -766,3 +763,7 @@ User.where(bank:false).each do |u|
   u.save
   u.set_products
 end
+
+Setup SSL
+  DONE MX records for google
+  DONE blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)

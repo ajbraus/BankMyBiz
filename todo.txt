@@ -1,10 +1,21 @@
-user bookmark icon for following/favoriting
+Products:
+  equipment loan, 
+  revenue based, 
+  micro-loan
 
-“Become a Certified Banker” - with subscription payments
-  add free 1 month subscription upon user creation
-  upgrade to certified lender on banker sidebar
+  What you will need - documents
+    SBA 1) Minimum 650 Credit Score for all Board Members
+        2) Personal Financial Statement for all Board Members
+        3) Last 3 years of personal tax returns for all Board Members
+        4) Business plan
+        5) 3 years projections
+        
+  Recent questions
+  Build pages for equipment loans & Revenue Based funnding - add to options_nav and application.html
 
 Zip Codes 
+  users have_many zip_codes
+  add to matching algo
   have multiple zip codes, no more than 4.
   when 53703 new businesses get setup - I get matched with them, but if no new matches in that zip code then in generalizes.
 
@@ -14,17 +25,11 @@ fix milestones
   give cred when milestone completes to both parties
   notify followers that they hit a milestone
 
-Turn back on purchasing more matches
+“Become a Certified Banker” - with subscription payments
+  add free 1 month subscription upon user creation
+  upgrade to certified lender on banker sidebar
 
-Products:
-  What you will need - documents
-    SBA 1) Minimum 650 Credit Score for all Board Members
-        2) Personal Financial Statement for all Board Members
-        3) Last 3 years of personal tax returns for all Board Members
-        4) Business plan
-        5) 3 years projections
-  Recent questions
-  Build pages for equipment loans & Revenue Based funnding - add to options_nav and application.html
+Turn back on purchasing more matches
 
 logo from WBA
 make sure followers get emailed
@@ -767,3 +772,5 @@ end
 Setup SSL
   DONE MX records for google
   DONE blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
+
+DONE user bookmark icon for following/favoriting

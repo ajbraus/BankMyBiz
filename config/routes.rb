@@ -10,8 +10,9 @@ BankMyBiz::Application.routes.draw do
 
   match '/factoring', to: 'products#factoring', as: 'factoring'
   match '/grants', to: 'products#grants', as: 'grants'
+  match '/microloans', to: 'products#microloans', as: 'microloans'
   match '/revenue-based', to: 'products#revenue_based', as: 'revenue_based'
-  match '/asset-based-financing', to: 'products#asset_based', as: 'asset_based'
+  match '/asset-based-loan', to: 'products#asset_based_loan', as: 'asset_based_loan'
   match '/private-equity', to: 'products#private_equity', as: 'private_equity'
   match '/community-development-fund', to: 'products#community_development_fund', as: 'community_development_fund'
   match '/crowd-funding-for-rewards', to: 'products#crowd_funding_for_rewards', as: 'crowd_funding_for_rewards'

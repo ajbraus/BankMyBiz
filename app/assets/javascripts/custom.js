@@ -47,9 +47,9 @@ $(document).ready(function() {
       
   $('.not-interested').hover(
     function() {
-      $( this ).html("<i class='icon ion-person-add'></i> Unfollow")
+      $( this ).html("<i class='icon ion-ios7-bookmarks-outline'></i> Remove from Pipeline")
     }, function() {
-      $( this ).html("<i class='icon ion-person-add green'></i> Following")
+      $( this ).html("<i class='icon ion-ios7-bookmarks green'></i> In Pipeline")
     }
   );
 });

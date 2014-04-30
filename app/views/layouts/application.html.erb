@@ -90,17 +90,15 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
-            <% if false %>
             <li>
-              <%= link_to 'About', about_path, class:"little" %>
-              <% if params[:controller] == "welcome" && params[:action] == "about" %>
+              <%= link_to 'Home', root_path, class:"little" %>
+              <% if params[:controller] == "posts" && params[:action] == "index" %>
                 <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
               <% end %>
             </li>
-            <% end %>
             <li>
-              <%= link_to 'Team', team_path, class:"little" %>
-              <% if params[:controller] == "welcome" && params[:action] == "team" %>
+              <%= link_to 'About', about_path, class:"little" %>
+              <% if params[:controller] == "welcome" && params[:action] == "about" %>
                 <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
               <% end %>
             </li>
@@ -109,9 +107,6 @@
               <% if params[:controller] == "welcome" && params[:action] == "testimonials" %>
                 <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
               <% end %>
-            </li>
-            <li>
-              <%= link_to 'Blog', "http://blog.bankmybiz.com", class:"little", target:"_blank" %>
             </li>
             <li class="dropdown">
               <a data-toggle="dropdown" href="#" class='little'>Funding Options <i class="icon ion-arrow-down-b"></i></a>
@@ -138,7 +133,10 @@
                   <%= link_to 'Factoring', factoring_path %>
                 </li>
                 <li>
-                  <%= link_to 'Asset Based', asset_based_path %>
+                  <%= link_to 'Asset Based Loan', asset_based_loan_path %>
+                </li>
+                <li>
+                  <%= link_to 'Equipment Loan', equipment_loan_path %>
                 </li>
                 <li>
                   <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path %>
@@ -160,10 +158,10 @@
                 </li>
                 <% if false %>
                 <li>
-                  <%= link_to 'Equipment Loan', equipment_loan_path %>
+                  <%= link_to 'Revenue Based', revenue_based_path %>
                 </li>
                 <li>
-                  <%= link_to 'Revenue Based', revenue_based_path %>
+                  <%= link_to 'Microloans', microloans_path %>
                 </li>
                 <% end %>
                 <li class="divider"></li>
@@ -186,14 +184,6 @@
               <strong><i class="icon ion-ios7-telephone"></i> 608 . 284 . 8970 | </strong> 
             </li>
             <% if user_signed_in? %>
-              <li>
-                <%= link_to root_path, rel:"tooltip", title:"News Feed", data: {placement: "bottom"} do %>
-                  <i class="big-icon icon ion-ios7-chatboxes-outline"></i>
-                <% end %>
-                <% if params[:controller] == "posts" && params[:action] == "index" %>
-                  <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
-                <% end %>
-              </li>
               <li>
                 <% if current_user.finished_profile? %>
                   <%= link_to matches_path, rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
@@ -302,22 +292,22 @@
           <div class="col-sm-3">
             <h5>Non-Traditional</h5>
             <div class="list-group">
-                <%= link_to 'Factoring', factoring_path, class:"list-group-item" %>
-                <%= link_to 'Asset Based', asset_based_path, class:"list-group-item" %>
-                <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path, class:"list-group-item" %>
-                <%= link_to 'Grants', grants_path, class:"list-group-item" %>
-                <% if false %>
-                  <%= link_to 'Private Equity', private_equity_path, class:"list-group-item" %>
-                  <%= link_to 'Cash Advance', cash_advance_path, class:"list-group-item" %>
-                  <%= link_to 'Revenue Based', revenue_based_path, class:"list-group-item" %>
-                  <%= link_to 'Community Development', community_development_path, class:"list-group-item" %>
-                  <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item" %>
-                <% end %>
+              <%= link_to 'Factoring', factoring_path, class:"list-group-item" %>
+              <%= link_to 'Asset Based', asset_based_loan_path, class:"list-group-item" %>
+              <%= link_to 'Merchant Cash Advance', merchant_cash_advance_path, class:"list-group-item" %>
+              <%= link_to 'Grants', grants_path, class:"list-group-item" %>
+              <%= link_to 'Private Equity', private_equity_path, class:"list-group-item" %>
+              <%= link_to 'Cash Advance', cash_advance_path, class:"list-group-item" %>
+              <%= link_to 'Revenue Based', revenue_based_path, class:"list-group-item" %>
+              <%= link_to 'Community Development', community_development_fund_path, class:"list-group-item" %>
+              <%= link_to 'Crowd Funding (Rewards)', crowd_funding_for_rewards_path, class:"list-group-item" %>
             </div>
           </div>
           <div class="col-sm-3">
             <h5>Traditional</h5>
             <div class="list-group">
+              <%= link_to 'Deposits', deposits_path, class:"list-group-item" %>
+              <%= link_to 'Credit Cards', credit_cards_path, class:"list-group-item" %>
               <%= link_to 'Term Loan', term_loan_path, class:"list-group-item" %>
               <%= link_to 'Line of Credit', line_of_credit_path, class:"list-group-item" %>
               <%= link_to 'Small Business Admin', sba_path, class:"list-group-item" %>
@@ -332,6 +322,8 @@
           <div class="col-sm-3">
             <h5>About Us</h5>
             <div class="list-group">
+              <%= link_to 'About', about_path, class:"list-group-item" %>
+              <%= link_to 'Blog', "http://blog.bankmybiz.com", class:"list-group-item", target:"_blank" %>
               <%= link_to 'Testimonials', testimonials_path, class:"list-group-item" %>
               <%= link_to "Team", about_path, class:"list-group-item" %>
               <%= link_to "Terms & Conditions", terms_path, class:"list-group-item" %>

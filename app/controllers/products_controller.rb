@@ -23,10 +23,16 @@ class ProductsController < ApplicationController
   def factoring
     @product = Product.find_by_name(params[:action].underscore.titlecase)
   end
+  def microloans
+    @product = Product.find_by_name(params[:action].underscore.titlecase)
+  end
+  def equipment_loan
+    @product = Product.find_by_name(params[:action].underscore.titlecase)
+  end
   def revenue_based
     @product = Product.find_by_name(params[:action].underscore.titlecase)
   end
-  def asset_based
+  def asset_based_loan
     @product = Product.find_by_name(params[:action].underscore.titlecase)
   end
   def private_equity

@@ -1,0 +1,84 @@
+<% 
+  content_for :title, "Deposits - Savings - Sustainable Business | Bankmybiz" 
+  content_for :description, "Deposits and savings can be a safe and steady way to build and grow your small business." 
+  content_for :keywords, "Deposits, Savings, Sustainable Business | Bankmybiz"
+%>
+
+<div class="row">
+  <%= render partial: 'options_nav' %>
+  <div class="col-sm-9">
+    <h1 class='text-center'><%= params[:action].underscore.titlecase.upcase %></h1>
+    <hr>
+    <div class="row">
+      <div class="col-sm-7">
+        <h3>Microloans</h3>
+        <p>
+          Perhaps the "old fashioned" way to grow or start your business, simply saving money can be a good strategy for success. Don't expect to make much on savings accounts interest rates, but just saving up a nest egg to start or grow your business can have a lot of advantages.
+        </p>
+        <blockquote>
+          <p>Perhaps the "old fashioned" way to grow or start your business, simply saving money can be a good strategy for success.</p>
+        </blockquote>
+        
+        <h3>Costly in Time but Cheap in Interest</h3>
+        <p>
+          It will probably take you months to years to save enough money to begin your business, but the cost in time you spend, you will save in not having to pay any banker any interest. You also won't have to give away any equity in your business for funding.
+        </p>
+
+        <h3>Savings Serves as Collateral</h3>
+        <p> 
+          Starting with no money at all and trying to get funding is hard. If you save and have a nest egg of money, you can either spend from that money or you could leverage that nest egg in your savings account as collateral for a loan. That way, savings multiplies the amount of total financing you can receive.
+        </p>
+
+        <h3>Truly Be Your Own Boss</h3>
+        <p>
+          If you are self-funded, you really are your own boss!
+        </p>
+      </div>
+
+      <div class="col-sm-5 grades">
+        <h3 class='text-center'><span class='text-muted'>Grade</span> <%= params[:action].underscore.titlecase %></h3>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">A</h1>
+            <h3 class='text-center'>Approval</h3>
+            <p class='text-muted'></p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">A</h1>
+            <h3 class='text-center'>Terms</h3>
+            <p class='text-muted'></p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">A</h1>
+            <h3 class='text-center'>Cost</h3>
+            <p class='text-muted'>No interest (but takes time)</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge">A</h1>
+            <h3 class='text-center'>Exit Ease</h3>
+            <p class='text-muted'>No exit, but again it takes time to save</p>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-xs-6">
+            <h1 class="huge">D</h1>
+            <h3 class='text-center'>Amount</h3>
+            <p class='text-muted'>Its hard to save up a lot of funds</p>
+          </div>
+          <div class="col-xs-6">
+            <h1 class="huge text-center">D-</h1>
+            <h3 class='text-center'>Funding Speed</h3>
+            <p class='text-muted'>Takes time to save</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr>
+    <%= render partial: 'funders' %>
+  </div>
+</div>

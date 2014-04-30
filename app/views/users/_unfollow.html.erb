@@ -1,6 +1,6 @@
 <%= form_for(current_user.relationships.find_by_followed_id(user),
              html: { method: :delete }) do |f| %>
    <button class="btn btn btn-default not-interested">
-     <i class="icon ion-person-add green"></i> Following
+     <i class="icon ion-ios7-bookmarks green"></i> In Pipeline
    </button>
 <% end %>

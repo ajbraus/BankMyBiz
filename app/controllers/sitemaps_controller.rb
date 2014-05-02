@@ -22,7 +22,6 @@ class SitemapsController < ApplicationController
                      '/deposits',
                      '/credit-cards',
                      '/equipment-loan',
-                     '/how-it-works',
                      '/testimonials',
                      '/terms',
                      '/privacy',

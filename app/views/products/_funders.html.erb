@@ -1,4 +1,4 @@
 <div class="row">
-  <h4 class='text-center'><%= @product.name %> Bankers on Bankmybiz</h4>
+  <h4 class='text-center'><%= @product.name %> Lenders on Bankmybiz</h4>
   <%= render partial: 'matches/match', collection: @product.users.where(bank: true).limit(4).order("RANDOM()"), as: 'match' %>
 </div>

@@ -1,9 +1,9 @@
 <section class="well">
 <% if user_signed_in? %>
   <% if current_user.bank == nil %>    
-    <h4>Banker or Biz Owner?</h4>
+    <h4>Lender or Biz Owner?</h4>
     <p class='text-center'>
-      <%= link_to "Banker", set_bank_path(current_user), class:"btn btn-success btn-lg" %>
+      <%= link_to "Lender", set_bank_path(current_user), class:"btn btn-success btn-lg" %>
       <%= link_to "Business", set_business_path(current_user), class:"btn btn-warning btn-lg" %>
     </p>
     <div class="muted">Answer to Unlock Matches</div>
@@ -16,9 +16,9 @@
             <%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link progress-percent" %>
           </div>
         </div>
-        <h4 class="text-center">to Unlock <%= current_user.bank? ? "Business" : "Banker" %> Matches</h4>
+        <h4 class="text-center">to Unlock <%= current_user.bank? ? "Business" : "Lender" %> Matches</h4>
     <% elsif current_user.todays_match.present? %>
-      <h4><%= current_user.bank? ? "Owner" : "Banker" %> Match</h4>
+      <h4><%= current_user.bank? ? "Owner" : "Lender" %> Match</h4>
       <%= render partial: "users/user", locals: { user: current_user.todays_match } %>
       <% unless current_user.finished_profile? %>
         <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
@@ -29,7 +29,7 @@
           <br>
           <div class="text-center">
             <%= link_to new_subscription_path, class: "btn btn-default" do %> 
-              <i class="icon ion-checkmark-circled gold"></i> Become a Certified Banker
+              <i class="icon ion-checkmark-circled gold"></i> Become a Certified Lender
             <% end %>
           </div>
         <% end %>

@@ -1,5 +1,4 @@
-Products:
-  equipment loan, 
+Products:  
   revenue based, 
   micro-loan
 
@@ -9,7 +8,7 @@ Products:
         3) Last 3 years of personal tax returns for all Board Members
         4) Business plan
         5) 3 years projections
-        
+
   Recent questions
   Build pages for equipment loans & Revenue Based funnding - add to options_nav and application.html
 
@@ -774,3 +773,4 @@ Setup SSL
   DONE blog.bankmybiz.com CNAME domains.tumblr.com (in dnssimple)
 
 DONE user bookmark icon for following/favoriting
+DONE equipment loan, 

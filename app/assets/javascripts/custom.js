@@ -8,6 +8,22 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
+
+  $("#new_post").focusin(function() {
+    $("#questionForm").slideDown();
+    $("#closePost").fadeIn();
+  });
+
+  $("#closePost").click(function() {
+    $("#questionForm").slideUp();
+    $("#closePost").fadeOut();
+  });
+
+  // $("#new_post").blur(function() {
+  //   $("#questionForm").slideUp();
+  // });
+  
+
    $("button").dblclick(function (event) {  
     preventDefault()
    });

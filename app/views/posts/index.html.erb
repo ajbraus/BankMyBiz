@@ -1,20 +1,64 @@
 <% content_for :title, "Bankmybiz | Banking - Start a Business - Advice" %>
 <div class="col-sm-8">
-  <div class="row">
-    <section class="col-sm-12 clearfix">
+  <section class="row well">
+    <div class="col-xs-2">
+      <%= link_to user_path(current_user) do %>
+        <%= profile_picture(current_user) %>
+      <% end %>
+    </div>
+    <div class="col-xs-10">
+      <% if current_user.has_image? %>
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#question" data-toggle="tab">Ask a Question</a></li>
+          <!-- <li><a href="#milestone" data-toggle="tab">Share a Milestone</a></li> -->
+          <a href="#" class="pull-right" id="closePost" style="display:none;">x</a>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <section class="tab-pane active" id="question">
+            <%= form_for(current_user.posts.new) do |f| %>
+              <!-- <div class="pull-right muted"><span id="titleCharCount">0</span>/250</div> -->
+              <p>
+                <%= f.text_field :title, class:"form-control", placeholder:"What's your question?", id:"newPostTitle" %>
+              </p>
+              <div style="display:none;" id="questionForm">
+                <p>
+                  <%= f.text_area :content, class:"form-control post-textarea", placeholder:"Summary and Details of Question. Be as specific as possible." %>
+                </p>
+                <div class="pull-left margin-right" style="width: 72%;">
+                  <%= f.text_field :tag_list, class:"form-control", id: "postTags", placeholder:"Add Topic Keywords" %>
+                </div>
+                <div class="pull-right">
+                  <%= f.submit "Share", class:"btn btn-success btn-lg", id:"submitPost" %>
+                </div>
+              </div>
+            <% end %>
+          </section>
+  <!--         <section class="tab-pane" id="milestone">
+            milestone form
+          </section> -->
+        </div>
+      <% else %>
+        <div class="alert-info" style="padding:10px;" id="fadeInAlert">
+          <p><i class="icon ion-ios7-bell"></i> To post Questions and Milestones to the Bankmybiz Network you must first
+          <%= link_to "Upload a profile picture", edit_profile_path(current_user) %>, or <a href="/auth/linkedin" class="auth_provider">Fetch it through LinkedIn</a> 
+          </p>
+        </div>
+      <% end %>
+    </div>
+  </section>
+  <section class="row">
+    <h4 class="col-xs-12 hidden-xs">Questions & Milestones</h4>
+    <section class="col-sm-12 well clearfix">
       <%= render 'shared/search_form' %>
+      <br>
+      <ul class="nav nav-pills">
+        <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
+        <!-- <li><a href="#unanswered" data-toggle="tab">Unanswered</a></li> -->
+        <li><a href="#newest" data-toggle="tab">Newest</a></li>
+        <li><a href="#unanswered" data-toggle="tab">Unanswered</a></li>
+      </ul>
     </section>
-  </div>
-  <section>
-    <ul class="nav nav-pills">
-      <h4 class="pull-left col-sm-3 hidden-xs">Questions</h4>
-      <li class="active"><a href="#active" data-toggle="tab">Active</a></li>
-      <!-- <li><a href="#unanswered" data-toggle="tab">Unanswered</a></li> -->
-      <li><a href="#newest" data-toggle="tab">Newest</a></li>
-      <li><a href="#unanswered" data-toggle="tab">Unanswered</a></li>
-    </ul>
-    <div class="hr-line"></div>
-
     <!-- Tab panes -->
     <div class="tab-content">
       <div class="tab-pane active" id="active">

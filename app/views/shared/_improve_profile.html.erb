@@ -1,12 +1,11 @@
-<section class="well">
-<% if user_signed_in? %>
+<br>
   <% if current_user.bank == nil %>    
     <h4>Lender or Biz Owner?</h4>
     <p class='text-center'>
       <%= link_to "Lender", set_bank_path(current_user), class:"btn btn-success btn-lg" %>
       <%= link_to "Business", set_business_path(current_user), class:"btn btn-warning btn-lg" %>
     </p>
-    <div class="muted">Answer to Unlock Matches</div>
+    <div class="muted">Answer to Unlock Funding and <%= current_user.bank? ? "Business" : "Lender" %> Matches</div>
   <% else %>
     <% if !current_user.finished_profile? %>
       <h4>Complete Your Profile</h4>
@@ -16,28 +15,12 @@
             <%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link progress-percent" %>
           </div>
         </div>
-        <h4 class="text-center">to Unlock <%= current_user.bank? ? "Business" : "Lender" %> Matches</h4>
+        <h5 class="text-center">to Unlock Funding and <%= current_user.bank? ? "Business" : "Lender" %> Matches</h5>
     <% elsif current_user.todays_match.present? %>
-      <h4><%= current_user.bank? ? "Owner" : "Lender" %> Match</h4>
-      <%= render partial: "users/user", locals: { user: current_user.todays_match } %>
-      <% unless current_user.finished_profile? %>
-        <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
-        <div class=''>For Better Matches</div>
-      <% end %>
-      <% if false %>
-        <% if current_user.bank? && !current_user.has_active_subscription? %>
-          <br>
-          <div class="text-center">
-            <%= link_to new_subscription_path, class: "btn btn-default" do %> 
-              <i class="icon ion-checkmark-circled gold"></i> Become a Certified Lender
-            <% end %>
-          </div>
-        <% end %>
-      <% end %>
       <% if !current_user.bank? && current_user.products.any? %>
         <div class="clearfix">
-          <h4>Matched Funding Options</h4>
-          <div class="col-sm-10 col-sm-offset-1">
+          <h5>My Matched Funding Options</h5>
+          <div class="col-sm-12">
             <% current_user.products.each do |p| %>
               <%= link_to "/" + p.name.parameterize, class:"btn btn-default btn-block" do %>
                 <%= p.name %>
@@ -46,9 +29,12 @@
           </div>
         </div>
       <% end %>
+      <h5>My Newest <%= current_user.bank? ? "Owner" : "Lender" %> Match</h5>
+      <%= render partial: "users/user", locals: { user: current_user.todays_match } %>
+      <% unless current_user.finished_profile? %>
+        <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
+        <div class=''>For Better Matches</div>
+      <% end %>
     <% end %>
   <% end %>
-<% else %>
-  The <strong>Bankmybiz Network</strong> can answer your business questions and match you with local and national sources of capital. <%= link_to "Sign up", new_user_registration_path %> and complete your profile to start receiving matches.
-<% end %>
 </section>

@@ -27,19 +27,13 @@
 
 <div class="col-sm-4 pull-right">  
   <% if user_signed_in? %>
-  <section>
-    <% if current_user.has_image? %>
-      <%= link_to "Ask For Advice", new_post_path, class:"btn btn-lg btn-success btn-block", rel:"tooltip", title:"+10 Cred" %>
-    <% else %>
-      <div class='well alert-warning text-center'>
-        <i class="icon ion-information-circled"></i> Add your <%= link_to "Profile Picture", edit_profile_path(current_user) %> to Get Advice.
-      </div>
-    <% end %>
-  </section>
+    <%= render 'shared/user_profile' %>
+    <%= render 'shared/improve_profile' %>
+  <% else %>
+    The <strong>Bankmybiz Network</strong> can answer your business questions and match you with local and national sources of capital. <%= link_to "Sign up", new_user_registration_path %> and complete your profile to start receiving matches.
   <% end %>
-  <%= render 'shared/improve_profile' %>
-  <%= render 'shared/user_tags' %>
   <%= render 'shared/social_buttons' %>
+  <%= render 'shared/user_tags' %>
   <%= render 'shared/trending_tags' %>
   <%= render 'shared/profile_views' %>
 </div>

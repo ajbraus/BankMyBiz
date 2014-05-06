@@ -552,7 +552,7 @@ class User < ActiveRecord::Base
   end
 
   def set_matches
-    if finished_profile? && (matches.none? || matches.last.created_at < 10.days.ago) && potential_matches.any?
+    if finished_profile? && (matches.none? || matches.first.created_at < 10.days.ago) && potential_matches.any?
       match = potential_matches.first
       matched_users << match
       Notifier.delay.new_match(self, match) if receive_match_messages?
@@ -560,7 +560,7 @@ class User < ActiveRecord::Base
   end
 
   def set_peers
-    if finished_profile? && (peers.none? ||peers.last.created_at < Date.yesterday)
+    if finished_profile? && (peers.none? ||peers.first.created_at < Date.yesterday)
       @available_users = User.all.reject { |r| r == self || r.bank != self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
       @peers = @available_users.select do |s| 
 

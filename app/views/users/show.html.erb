@@ -32,221 +32,221 @@ end
   </div>
 </div>
 
-<section class='profile-picture-position col-sm-4'> 
-  <% if current_user == @user && !current_user.has_image? %>
-    <div class="well">
-      <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
-        <div class="field">
-          <%= f.label :avatar, "Select Profile Picture" %><br />
-          <%= f.file_field :avatar, class:'required' %>
-        </div>
-        <%= f.submit "Upload", class:"btn btn-success" %>
-      <% end %>
-    </div>
-  <% else %>
-  <div class='background' style="background-color:<%= @user.background_color %>;">
-    <%= large_profile_picture(@user) %>
-  </div>
-  <% end %>
-  <section class="clearfix">
-    <% if @user == current_user %>
-      <%= link_to edit_profile_path(@user), class:"btn btn-default btn-block btn-lg" do %>
-        <i class="icon ion-ios7-person-outline"></i> Edit Profile
-      <% end %>
+<div class="row">
+  <section class='col-sm-4'> 
+    <% if current_user == @user && !current_user.has_image? %>
+      <div class="well">
+        <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+          <div class="field">
+            <%= f.label :avatar, "Select Profile Picture" %><br />
+            <%= f.file_field :avatar, class:'required' %>
+          </div>
+          <%= f.submit "Upload", class:"btn btn-success" %>
+        <% end %>
+      </div>
     <% else %>
-      <div class="text-right clearfix">
-        <% if current_user.bank != @user.bank && @user.finished_profile? %>
-          <% if current_user.bank? && current_user.products.any? %>
-            <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
-              <i class="icon ion-pricetags gold"></i> New Milestone
+      <div class='background text-center' style="background-color:<%= @user.background_color %>;">
+        <%= large_profile_picture(@user) %>
+      </div>
+    <% end %>
+    <section class="clearfix">
+      <% if @user == current_user %>
+        <%= link_to edit_profile_path(@user), class:"btn btn-default btn-block btn-lg" do %>
+          <i class="icon ion-ios7-person-outline"></i> Edit Profile
+        <% end %>
+      <% else %>
+        <div class="text-right clearfix">
+          <% if current_user.bank != @user.bank && @user.finished_profile? %>
+            <% if current_user.bank? && current_user.products.any? %>
+              <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
+                <i class="icon ion-pricetags gold"></i> New Milestone
+              <% end %>
+            <% elsif @user.products.any? %>
+              <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
+                <i class="icon ion-pricetags gold"></i> New Milestone
+              <% end %>            
             <% end %>
-          <% elsif @user.products.any? %>
-            <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
-              <i class="icon ion-pricetags gold"></i> New Milestone
-            <% end %>            
+          <% end %>
+          <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
+          <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
+              <a data-toggle="modal" href="#contact-modal" class="btn btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
+          <% end %>
+        </div>
+        <section class="muted large">
+          <%= calls_to_action.sample %>
+        </section>
+      <% end %>
+    </section>
+    <div class='text-left large well'>
+      <br>
+      <div>
+        <strong class=''>Status:</strong>
+        <span class="<%= @user.status_class %>"><%= @user.status %></span>
+      </div>
+      <div>
+        <strong>Name:</strong> 
+        <%= @user.first_name_with_last_initial %> 
+      </div>
+      <div>
+        <strong><%= @user.bank? ? "Bank" : "Business" %>:</strong>
+        <% if @user.website_url.present? %>
+          <%= link_to "http://" + @user.website_url, target:"_blank" do %>
+            <%= @user.org_name.capitalize %>
           <% end %>
         <% end %>
-        <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
-        <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
-            <a data-toggle="modal" href="#contact-modal" class="btn btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
-        <% end %>
       </div>
-      <section class="muted large">
-        <%= calls_to_action.sample %>
-      </section>
+      <div>
+        <strong class=''>Position:</strong>
+        <span class="muted"><%= @user.position %></span>
+      </div>
+      <div>
+        <strong>Cred:</strong> 
+        <span class="muted"> <%= @user.cred_count %></span>
+      </div>
+      <div>
+        <strong class=''>Percent Match:</strong>
+        <span class="muted"><%= current_user.percentage_match(@user) %>% </span>
+      </div>
+    </div>
+    <% if @user.posts.any? %>
+      <div class="well">
+        <h4><%= @user.first_name_with_last_initial %>'s Interests</h4>    
+        <div class="tag-cloud">
+          <% @user.tags.each do |t| %>
+            <%= link_to "#{t.name}", posts_path(search: t.name), class:"tag clickable-tag" %>
+          <% end %>
+        </div>
+      </div>
     <% end %>
-  </section>
-  <div class='text-left large'>
-    <br>
-    <div>
-      <strong class=''>Status:</strong>
-      <span class="<%= @user.status_class %>"><%= @user.status %></span>
-    </div>
-    <div>
-      <strong>Name:</strong> 
-      <%= @user.first_name_with_last_initial %> 
-    </div>
-    <div>
-      <strong><%= @user.bank? ? "Bank" : "Business" %>:</strong>
-      <% if @user.website_url.present? %>
-        <%= link_to "http://" + @user.website_url, target:"_blank" do %>
-          <%= @user.org_name.capitalize %>
-        <% end %>
-      <% end %>
-    </div>
-    <div>
-      <strong class=''>Position:</strong>
-      <span class="muted"><%= @user.position %></span>
-    </div>
-    <div>
-      <strong>Cred:</strong> 
-      <span class="muted"> <%= @user.cred_count %></span>
-    </div>
-    <div>
-      <strong class=''>Percent Match:</strong>
-      <span class="muted"><%= current_user.percentage_match(@user) %>% </span>
-    </div>
-  </div>
-  <% if @user.posts.any? %>
-    <div class="well gray-border-left text-left">
-      <h4><%= @user.first_name_with_last_initial %>'s Interests</h4>    
-      <div class="tag-cloud">
-        <% @user.tags.each do |t| %>
-          <%= link_to "#{t.name}", posts_path(search: t.name), class:"tag clickable-tag" %>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
 
-  <section class="well">
     <%= render 'shared/social_buttons' %>
-  </section>
-  <section class="well">
     <%= render 'shared/trending_tags' %>
   </section>
-</section>
 
-<div class="col-sm-8 large border-left">
-  <div class="row">
-    <div class="col-xs-12">
-      <h3>Personal Profile</h3>
-    </div>
-    <div class="col-sm-6">
-      <h3>About</h3>
-      <p class="muted"><%= @user.bio %></p>
-    </div>
-    <div class="col-sm-6">
-      <h3>Goals</h3>
-      <p class="muted"><%= @user.goals %></p>
-    </div>
-  </div>
-  <% if @user.bank? %>
-    <h3>Preferences</h3>    
-    <div class='row'>
-      <section class="col-xs-12">
-        <strong class=''>Products:</strong>
-        <div class="muted"><%= @user.products.map(&:name).join(", ") %></div>
-      </section>
-    </div>
-  <% end %>
-  <div class='row'>
-    <div class="col-xs-12">
-      <h3>Organization Profile</h3>
-    </div>
-    <section class="col-sm-4">
-      <strong class=''>Business Type:</strong>
-      <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
-    </section>
-    <section class="col-sm-4">
-      <strong class=''>Customers</strong>
-      <div class="muted"><%= @user.customer_types.map(&:description).join(", ") %></div>
-    </section>
-    <section class="col-sm-4">
-      <strong class=''>Business Age:</strong>
-      <div class="muted"><%= @user.ages.map(&:description).join(", ") %> Years</div>
-    </section>
-  </div>
-  <div class="row">
-    <section class="col-sm-4"> 
-      <strong class=''>Employees:</strong>
-      <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
-    </section>
-    <section class="col-sm-4">
-      <strong class=''>AR</strong>
-      <div class="muted"><%= @user.accounts_receivables.map(&:description).join(", ") %></div>
-    </section>
-    <section class="col-sm-4">
-      <strong class=''>Revenue Size:</strong>
-      <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
-    </section>
-  </div>
-  <div class="row">
-    <section class="col-sm-4">
-      <strong class=''>Industry:</strong>
-      <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
-    </section>
-    <section class="col-sm-4">
-      <strong class=''>Does Business in:</strong>
-      <div class="muted"><%= @user.locations.map(&:name).join(", ") %></div>
-    </section>
-    <% if @user.bank? %>
-      <section class="col-sm-4">
-        <strong class=''>Size of Financing</strong>
-        <div class="muted"><%= @user.loan_sizes.map(&:description).join(", ") %></div>
-      </section>
-    <% end %>
-  </div>
-  <% if !@user.bank? %>
-    <hr>  
-    <div class='row'>
+  <div class="col-sm-8">
+    <div class="row well">
       <div class="col-xs-12">
-        <h3>Funding Profile</h3>
+        <h3>Personal Profile</h3>
       </div>
-      <section class="col-sm-4">
-        <strong>Funding Sought:</strong> <br>
-        <%= @user.loan_sizes.first.try(:description) %> 
-      </section>
-      <section class="col-sm-4">
-        <strong>Funding Purpose:</strong> <br>
-        <%= @user.loan_purposes.first.try(:description) %> 
-      </section>
-      <section class="col-sm-4">
-        <strong>Funding Priority:</strong> <br>
-        <%= @user.loan_priorities.first.try(:description) %> 
-      </section>
-    </div>  
-  <% end %>
-  <hr>
-  <div class='row'>
-    <div class="col-xs-12">
-      <h3>Milestones</h3>
+      <div class="col-sm-6">
+        <h3>About</h3>
+        <p class="muted"><%= @user.bio %></p>
+      </div>
+      <div class="col-sm-6">
+        <h3>Goals</h3>
+        <p class="muted"><%= @user.goals %></p>
+      </div>
     </div>
-    <div class="col-xs-12">
-      <% if @user.bank? %>
-        <% if @user.milestones.any? %>
-          <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
-        <% else %>
-          <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
-          <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Lender and seal a deal? Congradulations! Navigate to the Lender's profile to mark the milestone.</p>
+    <% if @user.bank? %>
+      <h3>Preferences</h3>    
+      <div class='row'>
+        <section class="col-xs-12">
+          <strong class=''>Products:</strong>
+          <div class="muted"><%= @user.products.map(&:name).join(", ") %></div>
+        </section>
+      </div>
+    <% end %>
+    <div class='row well'>
+      <div class='row'>
+        <div class="col-xs-12">
+          <h3>Organization Profile</h3>
+        </div>
+        <section class="col-sm-4">
+          <strong class=''>Business Type:</strong>
+          <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
+        </section>
+        <section class="col-sm-4">
+          <strong class=''>Customers</strong>
+          <div class="muted"><%= @user.customer_types.map(&:description).join(", ") %></div>
+        </section>
+        <section class="col-sm-4">
+          <strong class=''>Business Age:</strong>
+          <div class="muted"><%= @user.ages.map(&:description).join(", ") %> Years</div>
+        </section>
+      </div>
+      <div class="row">
+        <section class="col-sm-4"> 
+          <strong class=''>Employees:</strong>
+          <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
+        </section>
+        <section class="col-sm-4">
+          <strong class=''>AR</strong>
+          <div class="muted"><%= @user.accounts_receivables.map(&:description).join(", ") %></div>
+        </section>
+        <section class="col-sm-4">
+          <strong class=''>Revenue Size:</strong>
+          <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
+        </section>
+      </div>
+      <div class="row">
+        <section class="col-sm-4">
+          <strong class=''>Industry:</strong>
+          <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
+        </section>
+        <section class="col-sm-4">
+          <strong class=''>Does Business in:</strong>
+          <div class="muted"><%= @user.locations.map(&:name).join(", ") %></div>
+        </section>
+        <% if @user.bank? %>
+          <section class="col-sm-4">
+            <strong class=''>Size of Financing</strong>
+            <div class="muted"><%= @user.loan_sizes.map(&:description).join(", ") %></div>
+          </section>
         <% end %>
-        <%= render partial: "milestones/milestone", collection: @user.milestones, as: :milestone %>
-      <% else %>
-        <% if @user.biz_milestones.any? %>
-          <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+      </div>
+    </div>
+    <% if !@user.bank? %>
+      <div class='row well'>
+        <div class="col-xs-12">
+          <h3>Funding Profile</h3>
+        </div>
+        <section class="col-sm-4">
+          <strong>Funding Sought:</strong> <br>
+          <%= @user.loan_sizes.first.try(:description) %> 
+        </section>
+        <section class="col-sm-4">
+          <strong>Funding Purpose:</strong> <br>
+          <%= @user.loan_purposes.first.try(:description) %> 
+        </section>
+        <section class="col-sm-4">
+          <strong>Funding Priority:</strong> <br>
+          <%= @user.loan_priorities.first.try(:description) %> 
+        </section>
+      </div>  
+    <% end %>
+    <div class='row well'>
+      <div class="col-xs-12">
+        <h3>Milestones</h3>
+      </div>
+      <div class="col-xs-12">
+        <% if @user.bank? %>
+          <% if @user.milestones.any? %>
+            <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+          <% else %>
+            <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
+            <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Lender and seal a deal? Congradulations! Navigate to the Lender's profile to mark the milestone.</p>
+          <% end %>
+          <%= render partial: "milestones/milestone", collection: @user.milestones, as: :milestone %>
         <% else %>
-          <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
-          <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Business Owner and seal a deal? Congradulations! Navigate to the Business Owner's profile to mark the milestone.</p>
+          <% if @user.biz_milestones.any? %>
+            <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+          <% else %>
+            <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
+            <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Business Owner and seal a deal? Congradulations! Navigate to the Business Owner's profile to mark the milestone.</p>
+          <% end %>
+          <%= render partial: "milestones/milestone", collection: @user.biz_milestones, as: :milestone %>
         <% end %>
-        <%= render partial: "milestones/milestone", collection: @user.biz_milestones, as: :milestone %>
-      <% end %>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+    <% if @user == current_user %>
+      <h4>Your Questions</h4>
+    <% else %>
+      <h4><%= @user.first_name %>'s Recent News & Questions</h4>
+    <% end %>
+      <%= render partial: "posts/post", collection: @posts, as: :post %>
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
     </div>
   </div>
-  <hr>
-  <% if @user == current_user %>
-    <h4>Your News & Questions</h4>
-  <% else %>
-    <h4><%= @user.first_name %>'s Recent News & Questions</h4>
-  <% end %>
-  <%= render partial: "posts/post", collection: @posts, as: :post %>
-  <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>

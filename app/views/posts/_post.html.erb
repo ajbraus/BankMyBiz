@@ -1,4 +1,4 @@
-<div class="post">
+<section class="well">
   <div class="row">
     <div class="col-xs-1 grey larger text-center votes">
       <% if user_signed_in? %>
@@ -15,7 +15,7 @@
       <% end %>
     </div>
     <div class="col-xs-11">
-      <div>
+      <div class="row">
         <% if params[:controller] == "posts" && params[:action] == "show" %>
           <b class="large"><%= post.title %></b>
         <% else %>
@@ -26,52 +26,51 @@
         <section>
           <%= auto_link(post.content, html: { target: '_blank' }) %>
         </section>
+        <section class="text-right post-tags">
+          <% post.tags.each do |t| %>
+            <%= link_to "#{t.name}", posts_path(search: t.normalize), class:"tag clickable-tag" %>
+          <% end %>
+        </section>
       <% end %>
-      <section class="text-right post-tags">
-        <% post.tags.each do |t| %>
-          <%= link_to "#{t.name}", posts_path(search: t.normalize), class:"tag clickable-tag" %>
-        <% end %>
+      <section class="row">
+        <section class="pull-left">
+          <% if user_signed_in? %>
+            <%= link_to post.user, class:'pull-left' do %>
+              <%= small_profile_picture(post.user) %>
+            <% end %>
+          <% end %>
+          <div class="col-xs-8">
+            <%= post.user.first_name_with_last_initial if post.user %> <span class='text-muted small'>(<%= post.user.cred_count %> Cred)</span>
+            <% if user_signed_in? %>
+              <% if post.user.has_active_subscription? %><i class="icon ion-checkmark-circled gold"></i><% end %>
+              <% if (post.user == current_user || current_user.admin?) %>
+                <div class="smaller muted">
+                  <%= link_to "Edit Post", edit_post_path(post) %> |
+                  <%= link_to 'Delete Post', post, method: :delete, data: { confirm: 'Are you sure you would like to delete this post?' } %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </section>
+        <section class='pull-right margin-right text-right'>
+          <div class="row">
+            <div class="col-xs-12">
+              <%= render partial: 'shared/share_email_btn', locals: { post: post } %>
+              <%= render partial: 'shared/share_twitter_btn', locals: { post: post } %>
+              <%= render partial: 'shared/share_fb_btn', locals: { post: post } %>
+              <%= render partial: 'shared/share_linkedin_btn', locals: { post: post } %>
+            </div>
+          </div>
+          <section class="row text-muted small">
+            <div class="col-xs-12">
+              <%= pluralize post.answers.count, "Answer" %> | <%= pluralize post.impressions_count, "View" %>
+            </div>
+          </section>
+        </section>
       </section>
     </div>
   </div>
-  <section class="row">
-    <div class="col-sm-5 col-sm-offset-1">
-      <% if user_signed_in? %>
-        <%= link_to post.user, class:'pull-left' do %>
-          <%= small_profile_picture(post.user) %>
-        <% end %>
-      <% end %>
-      <div class="col-xs-8">
-        <%= post.user.first_name_with_last_initial if post.user %> <span class='text-muted small'>(<%= post.user.cred_count %> Cred)</span>
-        <% if user_signed_in? %>
-          <% if post.user.has_active_subscription? %><i class="icon ion-checkmark-circled gold"></i><% end %>
-          <% if (post.user == current_user || current_user.admin?) %>
-            <div class="smaller muted">
-              <%= link_to "Edit Post", edit_post_path(post) %> |
-              <%= link_to 'Delete Post', post, method: :delete, data: { confirm: 'Are you sure you would like to delete this post?' } %>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-    </div>
-    <div class='col-sm-6 text-right'>
-      <div class="row">
-        <div class="col-xs-12">
-          <%= render partial: 'shared/share_email_btn', locals: { post: post } %>
-          <%= render partial: 'shared/share_twitter_btn', locals: { post: post } %>
-          <%= render partial: 'shared/share_fb_btn', locals: { post: post } %>
-          <%= render partial: 'shared/share_linkedin_btn', locals: { post: post } %>
-        </div>
-      </div>
-      <section class="row text-muted small">
-        <div class="col-xs-12">
-          <%= pluralize post.answers.count, "Answer" %> | <%= pluralize post.impressions_count, "View" %>
-        </div>
-      </section>
-    </div>
-  </section>
   <% if params[:action] == "show" %>
     <%= render partial: 'comments/form', locals: { commentable: post } %>
   <% end %>
-</div>
-<div class="hr-line"></div>
+</section>

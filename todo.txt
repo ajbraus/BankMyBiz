@@ -1,6 +1,30 @@
+make improve profile work if not logged in
+
+Prioritize
+  - personalize home page
+  - reach out to matches
+  - post questions and milestones to newsfeed
+
+post questions/milestones from homepage
+
+----------------------------------------------
+
+Milestones = Brag wall, questions and milestones
+
+
+-------------------------------------------------
+
+sponsor - create ad link
+
+-------------------------------------------------
+
+profile views not correct
+
 Products:  
   revenue based, 
-  micro-loan
+  micro-loan,
+  Peer2Peer loan,
+  link crowdfunder in crowdfunding for equity
 
   What you will need - documents
     SBA 1) Minimum 650 Credit Score for all Board Members
@@ -27,6 +51,17 @@ fix milestones
 “Become a Certified Banker” - with subscription payments
   add free 1 month subscription upon user creation
   upgrade to certified lender on banker sidebar
+
+  <% if false %>
+    <% if current_user.bank? && !current_user.has_active_subscription? %>
+      <br>
+      <div class="text-center">
+        <%= link_to new_subscription_path, class: "btn btn-default" do %> 
+          <i class="icon ion-checkmark-circled gold"></i> Become a Certified Lender
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
 
 Turn back on purchasing more matches
 

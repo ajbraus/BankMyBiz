@@ -1,13 +1,15 @@
-<div class="col-sm-3">
-  <% if user_signed_in? %>
+<div class="col-sm-2">
+  <h5>Matches</h5>
+  <h5>Messages</h5>
+  <h5>Pipeline</h5>
+  <h5>Interests</h5>
+
+  <% if !user_signed_in? %>
     <section class="matches well">
       <h4>Welcome</h4>
       The <strong>Bankmybiz Network</strong> matches you with <%= current_user.bank? ? "owners" : "lenders" %> that are suitable to you. The more complete your profile, the better the matches we can give you.
     </section>
   <% end %>
-  <section class="well hidden-xs">
-    <%= render 'shared/trending_tags' %>
-  </section>
   <section class="well hidden-xs">
     <%= render 'shared/messages' %>
   </section>

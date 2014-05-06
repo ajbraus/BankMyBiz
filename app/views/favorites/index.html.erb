@@ -7,10 +7,12 @@
   <% if @favorites.any? %>
     <%= render partial: 'matches/match', collection: @favorites, as: 'match' %>
   <% else %>
+  <div class="well">
     <h4>You're Relationship Pipeline is empty. Follow more users on Bankmybiz to grow it.</h4>
     <p class="text-muted">
       Find users profiles through Matches and the Bankmybiz Q&A Platform. Follow users by clicking "Follow" on their profile. If you match a user or a user follows you back, then you can send them secure private messages.
     </p>
+  </div>
   <% end %>
 </div>
 

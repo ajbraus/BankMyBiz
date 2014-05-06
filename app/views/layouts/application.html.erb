@@ -97,14 +97,8 @@
               <% end %>
             </li>
             <li>
-              <%= link_to 'About', about_path, class:"little" %>
+              <%= link_to 'What You Need to Know', about_path, class:"little" %>
               <% if params[:controller] == "welcome" && params[:action] == "about" %>
-                <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
-              <% end %>
-            </li>
-            <li>
-              <%= link_to 'Testimonials', testimonials_path, class:"little" %>
-              <% if params[:controller] == "welcome" && params[:action] == "testimonials" %>
                 <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
               <% end %>
             </li>
@@ -181,13 +175,13 @@
 
           <ul class="nav navbar-nav navbar-right">
             <li class="down">
-              <strong><i class="icon ion-ios7-telephone"></i> 608 . 284 . 8970 | </strong> 
+              <strong><i class="icon ion-ios7-telephone"></i> 608 . 284 . 8970 </strong> 
             </li>
             <% if user_signed_in? %>
               <li>
                 <% if current_user.finished_profile? %>
                   <%= link_to matches_path, rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
-                    <div class="pull-left"><%= current_user.matches.count %></div>&nbsp; <i class="big-icon icon ion-ios7-people-outline"></i>
+                    <i class="big-icon icon ion-ios7-people-outline"></i>
                   <% end %>
                 <% else %>
                   <%= link_to edit_profile_path(current_user), rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
@@ -200,7 +194,7 @@
               </li>
               <li>
                 <%= link_to favorites_path, rel:"tooltip", title:"Pipeline", data: {placement: "bottom"} do %>
-                  <div class="pull-left"><%= current_user.followed_users.count %></div>&nbsp; <i class="big-icon icon ion-ios7-bookmarks-outline"></i>
+                  <i class="big-icon icon ion-ios7-bookmarks-outline"></i>
                 <% end %>
                 <% if params[:controller] == "favorites" && params[:action] == "index" %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
@@ -227,7 +221,7 @@
               <% end %>
               <li>
                 <%= link_to user_path(current_user) do %>
-                  <%= current_user.first_name_with_last_initial %> - <span rel="tooltip" title="Bankmybiz Credit" data-placement="bottom"><i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %></span> | <span rel="tooltip" title="Milestones" data-placement="bottom"><i class="icon ion-pricetags gold"></i> <%= current_user.milestones.count %></span>
+                  <%= current_user.first_name_with_last_initial %> <i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %> | <i class="icon ion-pricetags gold"></i> <%= current_user.milestones.count %>
                 <% end %>
                 <% if @user.present? && @user == current_user %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
@@ -326,10 +320,9 @@
           <div class="col-sm-3">
             <h5>About Us</h5>
             <div class="list-group">
-              <%= link_to 'About', about_path, class:"list-group-item" %>
-              <%= link_to 'Blog', "http://blog.bankmybiz.com", class:"list-group-item", target:"_blank" %>
-              <%= link_to 'Testimonials', testimonials_path, class:"list-group-item" %>
+              <%= link_to 'What You Need to Know', about_path, class:"list-group-item" %>
               <%= link_to "Team", about_path, class:"list-group-item" %>
+              <%= link_to 'Blog', "http://blog.bankmybiz.com", class:"list-group-item", target:"_blank" %>
               <%= link_to "Terms & Conditions", terms_path, class:"list-group-item" %>
             </div>
             <h5>Social</h5>

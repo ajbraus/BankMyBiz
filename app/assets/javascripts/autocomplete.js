@@ -24,7 +24,8 @@ $("#postTags").tagit({
                   "Venture Capital",
                   "Angel Investment"                    
                   ],
-    allowSpaces: true
+    allowSpaces: true,
+    placeholderText: "Add Interest Keywords"
 });
 
 $('#followTags').autocomplete({

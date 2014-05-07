@@ -1,5 +1,4 @@
-relationships pipeline
-
+add get free access next to browse and in post#index
 
 Profile views not correct
 Milestones = Brag wall, questions and milestones
@@ -7,6 +6,23 @@ Milestones = Brag wall, questions and milestones
 -------------------------------------------------
 
 sponsor - create ad link
+
+“Become a Certified Banker” - with subscription payments
+  add free 1 month subscription upon user creation
+  upgrade to certified lender on banker sidebar
+
+  <% if false %>
+    <% if current_user.bank? && !current_user.has_active_subscription? %>
+      <br>
+      <div class="text-center">
+        <%= link_to new_subscription_path, class: "btn btn-default" do %> 
+          <i class="icon ion-checkmark-circled gold"></i> Become a Certified Lender
+        <% end %>
+      </div>
+    <% end %>
+  <% end %>
+
+when profile completes, match business with 3 bankers
 
 -------------------------------------------------
 
@@ -37,21 +53,6 @@ fix milestones
   add loan purpose as dropdown to milestone
   give cred when milestone completes to both parties
   notify followers that they hit a milestone
-
-“Become a Certified Banker” - with subscription payments
-  add free 1 month subscription upon user creation
-  upgrade to certified lender on banker sidebar
-
-  <% if false %>
-    <% if current_user.bank? && !current_user.has_active_subscription? %>
-      <br>
-      <div class="text-center">
-        <%= link_to new_subscription_path, class: "btn btn-default" do %> 
-          <i class="icon ion-checkmark-circled gold"></i> Become a Certified Lender
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
 
 Turn back on purchasing more matches
 

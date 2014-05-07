@@ -30,7 +30,25 @@
     <%= render 'shared/user_profile' %>
     <%= render 'shared/improve_profile' %>
   <% else %>
-    The <strong>Bankmybiz Network</strong> can answer your business questions and match you with local and national sources of capital. <%= link_to "Sign up", new_user_registration_path %> and complete your profile to start receiving matches.
+    <h3 class='text-center'>Get Matches Today</h3>
+    <div class="well">
+      The <strong>Bankmybiz Network</strong> can answer your business questions and match you with local and national sources of capital.
+    </div>
+    <h3 class='text-center'>Testimonials</h3>
+    <div class="well">
+      <section>
+        <i>"I messaged my matches and met a lender in Califorina that understood and was passionate about my business. Thanks Bankmybiz!"</i>
+        <p class='text-right'><strong>Alisa T.</strong> Artist/Manufacturer</p>
+      </section>
+      <section>
+        <i>"Wow, Bankmybiz.com is extraordinary. Easy to navigate, engaging interactions and spot-on connections. <strong>This will change everything</strong>."</i>
+        <p class='text-right'><strong>James C.</strong> SVP Business Banker</p>
+      </section>
+      <section>
+        <i>"I started conversations by posting some questions to Bankmybiz.com. I connected with a few helpful lenders and, <strong>EUREKA</strong>, I found a great lender who specialized in my industry. Thank You Bankmybiz.com! I will be singing your praises to every business owner I know."</i>
+        <p class='text-right'><strong>Heather P.</strong> Healthcare</p>
+      </section>
+    </div>
   <% end %>
   <%= render 'shared/social_buttons' %>
   <%= render 'shared/user_tags' %>

@@ -34,11 +34,9 @@
       <% end %>
       <section class="row">
         <section class="pull-left">
-          <% if user_signed_in? %>
             <%= link_to post.user, class:'pull-left' do %>
               <%= small_profile_picture(post.user) %>
             <% end %>
-          <% end %>
           <div class="col-xs-8">
             <%= post.user.first_name_with_last_initial if post.user %> <span class='text-muted small'>(<%= post.user.cred_count %> Cred)</span>
             <% if user_signed_in? %>

@@ -158,7 +158,7 @@ class User < ActiveRecord::Base
         self.products << Product.find_by_name("Revenue Based") 
       end
       if revenue_sizes.first.rank > 2 && (industry_ids & [5,19,17,21,24,27,6,3,4]).any?
-        self.products << Product.find_by_name("Asset Based")
+        self.products << Product.find_by_name("Asset Based Loan")
       end
       if (business_type_ids & [6,9,8]).any?
         self.products << Product.find_by_name("Community Development Fund")

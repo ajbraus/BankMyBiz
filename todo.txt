@@ -1,24 +1,12 @@
-make improve profile work if not logged in
 
-Prioritize
-  - personalize home page
-  - reach out to matches
-  - post questions and milestones to newsfeed
-
-post questions/milestones from homepage
-
-----------------------------------------------
-
+Profile views not correct
 Milestones = Brag wall, questions and milestones
-
 
 -------------------------------------------------
 
 sponsor - create ad link
 
 -------------------------------------------------
-
-profile views not correct
 
 Products:  
   revenue based, 
@@ -809,3 +797,13 @@ Setup SSL
 
 DONE user bookmark icon for following/favoriting
 DONE equipment loan, 
+
+DONE 
+make improve profile work if not logged in
+
+Prioritize
+  - personalize home page
+  - reach out to matches
+  - post questions and milestones to newsfeed
+
+post questions/milestones from homepage

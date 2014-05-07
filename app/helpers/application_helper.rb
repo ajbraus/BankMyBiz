@@ -18,7 +18,7 @@ module ApplicationHelper
         sum += amount
       end
     end
-    num = sum * 3 / 100
+    num = (sum * 3 / 100) * 2
     num = num.round * 100*1000/2 #times 100 to round, times 1000 to get thousands of dollars, divided by 2 for average
     return number_with_delimiter(num, :delimiter => ',')
   end

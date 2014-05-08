@@ -445,14 +445,14 @@ class User < ActiveRecord::Base
     progress += 1 if hq_state.present?
     progress += 1 if zip_code.present?
     progress += 1 if two_years != nil
-    progress += 1 if loan_priorities.any?
-    progress += 1 if loan_purposes.any?
+    #progress += 1 if loan_priorities.any?
+    #progress += 1 if loan_purposes.any?
 
     return progress
   end
 
   def total_profile_elements
-    19
+    17
   end
 
   def profile_progress_percent

@@ -1,13 +1,9 @@
-add get free access next to browse and in post#index
-
-Profile views not correct
-Milestones = Brag wall, questions and milestones
-
--------------------------------------------------
-
-sponsor - create ad link
-
 “Become a Certified Banker” - with subscription payments
+  (but there's a sale on!)
+
+  $229.99/month 1 month
+  $129.99/month 1 Year
+
   add free 1 month subscription upon user creation
   upgrade to certified lender on banker sidebar
 
@@ -23,6 +19,19 @@ sponsor - create ad link
   <% end %>
 
 when profile completes, match business with 3 bankers
+
+sponsor - create ad link
+
+
+matching profile:
+  tell you what you haven't filled out yet
+  only for businesses: #progress += 1 if loan_priorities.any? #progress += 1 if loan_purposes.any?
+
+
+-------------------------------------------------
+
+Profile views not correct
+Milestones = Brag wall, questions and milestones
 
 -------------------------------------------------
 

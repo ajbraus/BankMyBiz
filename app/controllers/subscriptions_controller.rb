@@ -11,7 +11,6 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    binding.pry
     plan = params[:subscription][:plan]
     if plan == "funder_three_months" 
       params[:subscription][:expires_on] = Date.today + 3.months

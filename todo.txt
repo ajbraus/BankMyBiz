@@ -1,32 +1,23 @@
+www.bankmybiz.com
+
 “Become a Certified Banker” - with subscription payments
-  (but there's a sale on!)
 
-  $229.99/month 1 month
-  $129.99/month 1 Year
+  add free 1 week subscription upon user creation
+  add free 1 week subscription to existing users
 
-  add free 1 month subscription upon user creation
-  upgrade to certified lender on banker sidebar
 
-  <% if false %>
-    <% if current_user.bank? && !current_user.has_active_subscription? %>
-      <br>
-      <div class="text-center">
-        <%= link_to new_subscription_path, class: "btn btn-default" do %> 
-          <i class="icon ion-checkmark-circled gold"></i> Become a Certified Lender
-        <% end %>
-      </div>
-    <% end %>
-  <% end %>
+
 
 when profile completes, match business with 3 bankers
+every day, if anyone has not received a match in 10 days, give businesses 3 and bankers 1
+make Matches => Relationships i.e. set reverse matches
+send messages to bankers "from business owner"
 
 sponsor - create ad link
-
 
 matching profile:
   tell you what you haven't filled out yet
   only for businesses: #progress += 1 if loan_priorities.any? #progress += 1 if loan_purposes.any?
-
 
 -------------------------------------------------
 
@@ -35,7 +26,11 @@ Milestones = Brag wall, questions and milestones
 
 -------------------------------------------------
 
+make products restful . . .
+
 Products:  
+  commercial realestate loan,
+  credit union,
   revenue based, 
   micro-loan,
   Peer2Peer loan,
@@ -819,3 +814,5 @@ Prioritize
   - post questions and milestones to newsfeed
 
 post questions/milestones from homepage
+
+DONE upgrade to certified lender on banker sidebar

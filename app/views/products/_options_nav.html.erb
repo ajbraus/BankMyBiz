@@ -35,4 +35,7 @@
     <%= link_to 'Angel Investment', angel_investment_path, class:"list-group-item #{params[:action] == 'angel_investment' ? 'btn-success': ''}" %>
     <%= link_to 'Venture Capital', venture_capital_path, class:"list-group-item #{params[:action] == 'venture_capital' ? 'btn-success': ''}" %>
   </div>
+  <section class='well'>
+    <%= link_to "Put Your Ad Here", new_ad_path %>
+  </section>
 </div>

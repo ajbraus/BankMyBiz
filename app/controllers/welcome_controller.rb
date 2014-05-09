@@ -1,4 +1,7 @@
 class WelcomeController < ApplicationController
+  def new_ad
+    
+  end
 	def index
     @authentications = current_user.authentications if current_user		
 	end

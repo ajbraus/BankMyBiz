@@ -16,25 +16,30 @@
           </div>
         </div>
         <h5 class="text-center">to Unlock Funding and <%= current_user.bank? ? "Business" : "Lender" %> Matches</h5>
-    <% elsif current_user.todays_match.present? %>
-      <% if !current_user.bank? && current_user.products.any? %>
-        <div class="clearfix">
-          <h5>My Matched Funding Options</h5>
-          <div class="col-sm-12">
-            <% current_user.products.each do |p| %>
-              <%= link_to "/" + p.name.parameterize, class:"btn btn-default btn-block" do %>
-                <%= p.name %>
-              <% end %>
+    <% else %>
+      <% if !current_user.bank || (current_user.bank && current_user.has_active_subscription?) %>
+          <% if !current_user.bank? && current_user.products.any? %>
+            <div class="clearfix">
+              <h5>My Matched Funding Options</h5>
+              <div class="col-sm-12">
+                <% current_user.products.each do |p| %>
+                  <%= link_to "/" + p.name.parameterize, class:"btn btn-default btn-block" do %>
+                    <%= p.name %>
+                  <% end %>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+          <h5>My Newest <%= current_user.bank? ? "Owner" : "Lender" %> Match</h5>
+          <%= render partial: "users/user", locals: { user: current_user.todays_match } %>
+        <% else #user is a bank without an active subscription %>
+          <div class="text-center">
+            <%= link_to new_subscription_path, class:"btn btn-lg btn-default" do %>
+              <i class="icon ion-checkmark-circled gold"></i> Become a Certified Lender
             <% end %>
+            <section class='muted text-left'>To Receive Matched Business Leads, and Inbound Product Leads from our <%= link_to "Funding Options", term_loan_path %> </section>
           </div>
-        </div>
-      <% end %>
-      <h5>My Newest <%= current_user.bank? ? "Owner" : "Lender" %> Match</h5>
-      <%= render partial: "users/user", locals: { user: current_user.todays_match } %>
-      <% unless current_user.finished_profile? %>
-        <%= link_to "#{current_user.started_profile? ? 'Improve Profile' : 'Build Profile'}", edit_profile_path(current_user), class:"btn btn-primary" %>
-        <div class=''>For Better Matches</div>
+        <% end %>
       <% end %>
     <% end %>
-  <% end %>
 </section>

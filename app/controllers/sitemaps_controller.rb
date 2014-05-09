@@ -27,7 +27,8 @@ class SitemapsController < ApplicationController
                      '/privacy',
                      '/about-us',
                      '/team',
-                     '/advice']
+                     '/advice',
+                     '/ads/new']
     respond_to do |format|
      format.xml
     end

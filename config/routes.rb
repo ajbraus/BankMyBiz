@@ -2,7 +2,7 @@ BankMyBiz::Application.routes.draw do
   resources :milestones
   resources :products, only: [:show]
 
-  get "/ad/new", to: "welcome#new_ad", as: 'new_ad'
+  get "/ads/new", to: "welcome#new_ad", as: 'new_ad'
 
   match '/deposits', to: 'products#deposits', as: 'deposits'
   match '/credit-cards', to: 'products#credit_cards', as: 'credit_cards'

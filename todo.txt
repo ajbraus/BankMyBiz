@@ -1,26 +1,10 @@
 www.bankmybiz.com
 
-“Become a Certified Banker” - with subscription payments
-
-  DONE test subscription w existing card
-  DONE only match with certified lenders
-
-  DONE only display certified lenders in funders.html
-  call to action to become certified in 'funders.html'
-
-  DONE add free 10 day subscription upon profile completion creation
-  add free 10 day subscription to existing users
-    User.where(bank:true).each do |u|
-      u.subscriptions.create(plan_id: 0, expires_on: Date.today + 10.days, price_in_cents: 0)
-    end
-
 when profile completes, match business with 3 bankers
 every day, if anyone has not received a match in 10 days, give businesses 3 and bankers 1
 make Matches => Relationships i.e. set reverse matches
 send messages to bankers "from business owner"
 No repeats 
-
-sponsor - create ad link
 
 matching profile:
   tell you what you haven't filled out yet
@@ -28,7 +12,6 @@ matching profile:
 
 -------------------------------------------------
 
-Profile views not correct
 Milestones = Brag wall, questions and milestones
 
 -------------------------------------------------
@@ -82,8 +65,9 @@ alert for login is too blank
 ____________________________________________________
 
 
-Track messages back and forth
+Profile views not correct
 
+Track messages back and forth
 
 Infographic to show business and banker's matching profile
   What you match on - industry, customer types, size, etc
@@ -823,3 +807,18 @@ Prioritize
 post questions/milestones from homepage
 
 DONE upgrade to certified lender on banker sidebar
+
+
+DONE “Become a Certified Banker” - with subscription payments
+
+  DONE test subscription w existing card
+  DONE only match with certified lenders
+
+  DONE only display certified lenders in funders.html
+  DONE call to action to become certified in 'funders.html'
+
+  DONE add free 10 day subscription upon profile completion creation
+  add free 10 day subscription to existing users
+    User.where(bank:true).each do |u|
+      u.subscriptions.create(plan_id: 0, expires_on: Date.today + 10.days, price_in_cents: 0)
+    end

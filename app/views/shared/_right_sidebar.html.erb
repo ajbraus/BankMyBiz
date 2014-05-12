@@ -53,7 +53,9 @@
   <%= render 'shared/social_buttons' %>
   <%= render 'shared/user_tags' %>
   <%= render 'shared/trending_tags' %>
-  <%= render 'shared/profile_views' %>
+  <% if false %>
+    <%= render 'shared/profile_views' %>
+  <% end %>
   <section class='well'>
     <%= link_to "Put Your Ad Here", new_ad_path %>
   </section>

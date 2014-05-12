@@ -1,10 +1,9 @@
 <div class="match row">
   <%= link_to user_path(user), class:"col-xs-2" do %><%= small_profile_picture(user) %><% end %></td>
   <div class="col-xs-10">
-    <strong><%= user.first_name_with_last_initial %></strong> - <%= user.position %> at <%= user.org_name %><br>
-      <%= user.status %> 
+    <strong><%= user.first_name_with_last_initial %> <%= certified_badge(user) %></strong> <span class='text-muted'><%= user.position %></span> <br> <%= user.org_name %>
       <br>
-      <%= current_user.percentage_match(user) %>% Match <%= current_user.local?(user) ? "| Local" : "" %>
+      <%= current_user.percentage_match(user) %>% Match <%= current_user.local?(user) ? "| Local" : "" %> | <%= user.status %> 
     </span>
   </div>
 </div>

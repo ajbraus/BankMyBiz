@@ -511,6 +511,10 @@ class User < ActiveRecord::Base
     end 
   end
 
+  def recent_matches
+    return matches.last(3).map { |m| m.user }
+  end
+
   def todays_peers
     if peered_users.last
       return peered_users.last(3)

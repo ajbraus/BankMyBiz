@@ -11,7 +11,6 @@ jQuery ->
       $("#creditCardInputs").slideDown();
     if $('#stripe_card_id_').is(':checked')
       $("#creditCardInputs").slideDown();
-
   
 
 subscription =

@@ -1,4 +1,9 @@
 module UsersHelper
+  def certified_badge(user)
+    if user.bank? && user.has_active_subscription?
+      return raw("<i class='icon ion-checkmark-circled gold'></i> ")
+    end
+  end
   def calls_to_action
    [
     "Strike up a conversation...",

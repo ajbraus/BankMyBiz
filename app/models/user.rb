@@ -269,10 +269,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  # def send_welcome
-  #   Notifier.delay.welcome(self)
-  # end
-
   def set_username
     if self.name.present?
       self.username = self.first_name_with_last_initial.split.join('-')[0..-2]
@@ -377,7 +373,7 @@ class User < ActiveRecord::Base
   end
 
   def has_active_subscription?
-    return subscriptions.any? && subscriptions.first.expires_on > Date.today
+    return subscriptions.any? && subscriptions.last.expires_on > Date.today
   end
 
   def self.send_profile_reminders
@@ -541,13 +537,15 @@ class User < ActiveRecord::Base
   end
 
   def potential_matches
-    matchables = User.where("id != ? AND status != ? AND bank != ? ", self.id, "Just Browsing", self.bank)
-
+    if self.bank?
+      matchables = User.where("id != ? AND status != ? AND bank = ?", self.id, "Just Browsing", false)
+    else # business
+      matchables = User.where("users.id != ? AND users.status != ? AND users.bank = ?", self.id, "Just Browsing", true).joins(:subscriptions).where("subscriptions.expires_on > ?", Date.today)
+    end
     matches = matchables.select { |m| m.bankable?(self) &&
                                       m.in_same_location?(self) &&
-                                      m.percentage_match(self) > 50 &&
+                                      m.percentage_match(self) > 51 &&
                                       !m.in?(self.matched_users) } 
-
     return matches
   end
 
@@ -559,64 +557,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  def set_peers
-    if finished_profile? && (peers.none? ||peers.first.created_at < Date.yesterday)
-      @available_users = User.all.reject { |r| r == self || r.bank != self.bank || r.in?(self.peered_users) || !r.can_be_matched? }
-      @peers = @available_users.select do |s| 
-
-        if s.ages && ages.any?
-          with_age = (s.age_ids & age_ids).present?
-        end
-
-        if s.industries && industries.any?
-          with_industry = (s.industry_ids & industry_ids).present?
-        end
-        if s.locations.any? && locations.any?
-          with_location = s.hq_state == hq_state
-        end
-        if s.employee_sizes.any? && employee_sizes.any?
-          with_employee_size = (s.employee_size_ids & employee_size_ids).present?
-        end
-        if s.revenue_sizes.any? && revenue_sizes.any?
-          with_revenue_size = (s.revenue_size_ids & revenue_size_ids).present?
-        end
-        if s.business_types.any? && business_types.any?
-          with_business_type = (s.business_type_ids & business_type_ids).present?
-        end
-        if s.accounts_receivables.any? && accounts_receivables.any?
-          with_ar = (s.accounts_receivable_ids & accounts_receivable_ids).present?
-        end
-        if s.loan_sizes.any? && loan_sizes.any?
-          with_loan_size = (s.loan_size_ids & loan_size_ids).present?
-        end
-        if s.customer_types.any? && customer_types.any?
-          with_customer_type = (s.customer_type_ids & customer_type_ids).present?
-        end
-
-        with_age == true ||
-        with_industry == true ||
-        with_location == true ||
-        with_employee_size == true ||
-        with_revenue_size == true ||
-        with_business_type == true ||
-        (with_ar == true && with_customer_type == true) ||
-        with_loan_size == true
-      end
-
-      if @peers.count >= 3
-       peered_users << @peers.first(3) 
-      elsif @peers.count == 2
-       peered_users << @peers.first(2) 
-      elsif @peers.count == 1
-       peered_users << @peers.first 
-      end
-    end
-  end
-
   def self.set_peers_and_matches
-    User.all.each do |u|
-      u.set_matches
+    User.where(bank:true).all.each do |u|
+      if u.has_active_subscription?
+        u.set_matches
+      end
       #u.set_peers
+    end
+    User.where(bank:false).all.each do |u|
+      u.set_matches
     end
   end
 

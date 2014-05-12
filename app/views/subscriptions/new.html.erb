@@ -24,7 +24,7 @@
           <div class="text-center"><i class="icon ion-ios7-people green"></i> </div>
           <h5>Business Matches</h5>
           <p class='text-muted'>
-            Receive 52 business matches a year. Matches are business decision makers looking to borrow that are taylored to you're matching profile.
+            Receive 36 business matches a year. Matches are business decision makers looking to borrow that are taylored to you're matching profile.
           </p>
         </div>
         <div class="col-sm-4">
@@ -44,10 +44,10 @@
         <div class="col-xs-7">
           <div class="radio">
             <label>
-              <%= f.radio_button :plan, "lender_three_months" %>
+              <%= f.radio_button :plan_id, 1, checked: true %>
               <div class="muted">3 month package</div>
-              <div class="price"><strong>$199.99</strong> / month</div>
-              <h4>Total: <strong class='muted'>$599.97</strong></h4>
+              <div class="price"><strong>$249.99</strong> / month</div>
+              <h4>Total: <strong class='muted'>$749.97</strong></h4>
             </label>
           </div>
         </div>
@@ -60,10 +60,10 @@
         <div class="col-xs-12">
           <div class="radio">
             <label>
-              <%= f.radio_button :plan, "lender_six_months" %>
+              <%= f.radio_button :plan_id, 2 %>
               <div class="muted">6 month package</div>
-              <div class="price"><strong>$149.99</strong> / month</div>
-              <h4>Total: <strong class='muted'>$899.94</strong> <span class="save">Save 25%</span></h4>
+              <div class="price"><strong>$189.99</strong> / month</div>
+              <h4>Total: <strong class='muted'>$1139.94</strong> <span class="save">Save 24%</span></h4>
             </label>
           </div>
         </div>
@@ -72,10 +72,10 @@
         <div class="col-xs-12">
           <div class="radio">
             <label>
-              <%= f.radio_button :plan, "lender_year" %>
+              <%= f.radio_button :plan_id, 3 %>
               <div class="muted">1 year package</div>
-              <div class="price"><strong>$99.99</strong> / month</div>
-              <h4>Total: <strong class='muted'>$1199.88</strong> <span class="save">Save 50%</span></h4>
+              <div class="price"><strong>$129.99</strong> / month</div>
+              <h4>Total: <strong class='muted'>$1559.88</strong> <span class="save">Save 48%</span></h4>
             </label>
           </div>
         </div>

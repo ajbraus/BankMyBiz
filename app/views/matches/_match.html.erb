@@ -5,7 +5,7 @@
     <% end %>
     <div class="col-xs-9">
       <div class='deets'>
-        <h4><%= match.name %> <span class='text-muted small'><%= match.hq_state %></span></h4>
+        <h4><%= match.name %> <%= certified_badge(match) %> <span class='text-muted small'><%= match.hq_state %></span></h4>
         <div class='text-muted small'><%= match.position %> at <%= match.org_name %></div>
         <% if match.website_url.present? %>
           <%= link_to "http://" + match.website_url do %>

@@ -3,6 +3,9 @@ jQuery ->
   purchase.setupPurchaseForm()
   subscription.setupSubscriptionForm()
 
+  $("#card_number").payment('formatCardNumber');
+  $('#card_code').payment('formatCardCVC');
+
   if $('#stripe_card_id_').is(':checked')
     $("#creditCardInputs").slideToggle();
 

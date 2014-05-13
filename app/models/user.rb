@@ -553,6 +553,17 @@ class User < ActiveRecord::Base
     return matches
   end
 
+  def set_initial_matches
+    if potential_matches.any?
+      if !bank?
+        matches = potential_matches.first(3)
+      else
+        matches = potential_matches.first
+      end
+      matched_users << matches
+    end
+  end
+
   def set_matches
     if finished_profile? && (matches.none? || matches.first.created_at < 10.days.ago) && potential_matches.any?
       match = potential_matches.first

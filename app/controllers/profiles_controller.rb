@@ -11,7 +11,7 @@ class ProfilesController < ApplicationController
       if @user.update_attributes(params[:user])
         if @user.matched_users.empty? && @user.finished_profile?
           @user.subscriptions.create(plan_id: 0, expires_on: Date.today + 10.days, price_in_cents: 0)
-          @user.set_matches
+          @user.set_initial_matches
           @user.delay.add_to_mc_lists
         end
         format.html { redirect_to @user }

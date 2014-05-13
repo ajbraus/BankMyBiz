@@ -1,11 +1,3 @@
-glenn
-
-John McKenzie
-Nick Cannone 
-Steve Goodrich
-Bill Miller
-reece stojanovic
-
 www.bankmybiz.com
 
 when profile completes, match business with 3 bankers

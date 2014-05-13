@@ -124,8 +124,8 @@
                 <td><%= u.email %></td>
                 <td><%= u.nice_created_at %></td>
                 <td>
-                  <%= link_to "Confirm", user_confirm_path(u), class:"btn btn-mini btn-success" %>
-                  <%= link_to "Reject", user_reject_path(u), class:"btn btn-mini btn-warning", confirm: "Are you sure?" %>
+                  <%= link_to "Confirm", user_confirm_path(u.id), class:"btn btn-mini btn-success" %>
+                  <%= link_to "Reject", user_reject_path(u.id), class:"btn btn-mini btn-warning", confirm: "Are you sure?" %>
                 </td>
               </tr>
             <% end %>

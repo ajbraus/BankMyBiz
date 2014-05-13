@@ -1,6 +1,6 @@
 www.bankmybiz.com
 
-when profile completes, match business with 3 bankers
+
 every day, if anyone has not received a match in 10 days, give businesses 3 and bankers 1
 make Matches => Relationships i.e. set reverse matches
 send messages to bankers "from business owner"
@@ -824,3 +824,5 @@ DONE “Become a Certified Banker” - with subscription payments
     User.where(bank:true).each do |u|
       u.subscriptions.create(plan_id: 0, expires_on: Date.today + 10.days, price_in_cents: 0)
     end
+
+DONE when profile completes, match business with 3 bankers

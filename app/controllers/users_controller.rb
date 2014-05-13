@@ -18,6 +18,18 @@ class UsersController < ApplicationController
     end
   end
 
+  def confirm
+    @user = User.find(params[:user_id])
+    @user.confirm!
+    redirect_to users_path
+  end
+
+  def reject
+    @user = User.find(params[:user_id])
+    @user.update_attributes(confirmed: false)
+    redirect_to users_path
+  end
+
   def set_business
     @user = User.find(params[:id])
     @user.bank = false

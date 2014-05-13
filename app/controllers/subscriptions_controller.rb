@@ -2,8 +2,6 @@ class SubscriptionsController < ApplicationController
   before_filter :authenticate_user!
 
   def new
-    @user = current_user
-    @subscription = @user.subscriptions.new(params[:subscription])
     if current_user.stripe_customer_id.present?
       @stripe_customer = Stripe::Customer.retrieve(current_user.stripe_customer_id) 
       @cards = Stripe::Customer.retrieve(current_user.stripe_customer_id).cards.all

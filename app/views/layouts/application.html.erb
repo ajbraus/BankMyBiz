@@ -240,6 +240,12 @@
                     <i class="icon ion-gear-a"></i> Settings
                       <% end %>
                   </li>
+                  <% if current_user.bank? %>
+                  <li><%= link_to new_subscription_path do %>
+                    <i class="icon ion-checkmark-circled"></i> Update Subscription
+                      <% end %>
+                  </li>
+                  <% end %>
                   <% if user_signed_in? %>
                   <li class="divider"></li>
                   <li><%= link_to destroy_user_session_path, method: "delete" do %>

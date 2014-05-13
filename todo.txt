@@ -1,3 +1,11 @@
+glenn
+
+John McKenzie
+Nick Cannone 
+Steve Goodrich
+Bill Miller
+reece stojanovic
+
 www.bankmybiz.com
 
 when profile completes, match business with 3 bankers
@@ -5,6 +13,8 @@ every day, if anyone has not received a match in 10 days, give businesses 3 and 
 make Matches => Relationships i.e. set reverse matches
 send messages to bankers "from business owner"
 No repeats 
+
+post.html user wider (put certification_badge next to name)
 
 matching profile:
   tell you what you haven't filled out yet

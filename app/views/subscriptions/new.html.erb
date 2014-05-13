@@ -1,4 +1,40 @@
-<%= form_for @subscription do |f| %>
+<h2 class='text-center'>Become a Certified Lender</h2>
+<div class="col-xs-8 col-xs-offset-2">
+  <div class="well certification">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="text-center"><i class="icon ion-checkmark-circled gold"></i> </div>
+        <h5>Get Certified!</h5>
+        <p class='text-muted'>
+          Take a priveleged position in our network. Your profile will always be displayed with the "Certified Lender Badge."
+        </p>
+      </div>
+      <div class="col-sm-4">
+        <div class="text-center"><i class="icon ion-ios7-people green"></i> </div>
+        <h5>Business Matches</h5>
+        <p class='text-muted'>
+          Receive 36 business matches a year. Matches are business decision makers looking to borrow that are taylored to you're matching profile.
+        </p>
+      </div>
+      <div class="col-sm-4">
+        <div class="text-center"><i class="icon ion-arrow-down-b blue"></i> </div>
+        <h5>Listed in Funding Options</h5>
+        <p class='text-muted'>
+          Get inbound leads from matching businesses by being listed as a certified Bankmybiz Network funder in our <%= link_to "Funding Options", term_loan_path, target:"_blank" %> pages. 
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<% if user_signed_in? && current_user.subscriptions.any? %>
+  <div class="col-xs-8 col-xs-offset-2">
+    <div class="well alert-info">
+      Your current subscription will expire on <strong><%= current_user.subscriptions.last.expires_on.strftime("%e, %B, %Y") %></strong>
+    </div>
+  </div>
+<% end %>
+
+<%= form_for @subscription = current_user.subscriptions.new do |f| %>
   <% if @subscription.errors.any? %>
     <div class="error_messages">
       <h2><%= pluralize(@subscription.errors.count, "error") %> prohibited this subscription from being saved:</h2>
@@ -9,34 +45,6 @@
       </ul>
     </div>
   <% end %>
-  <h2 class='text-center'>Become a Certified Lender</h2>
-  <div class="col-xs-8 col-xs-offset-2">
-    <div class="well certification">
-      <div class="row">
-        <div class="col-sm-4">
-          <div class="text-center"><i class="icon ion-checkmark-circled gold"></i> </div>
-          <h5>Get Certified!</h5>
-          <p class='text-muted'>
-            Take a priveleged position in our network. Your profile will always be displayed with the "Certified Lender Badge."
-          </p>
-        </div>
-        <div class="col-sm-4">
-          <div class="text-center"><i class="icon ion-ios7-people green"></i> </div>
-          <h5>Business Matches</h5>
-          <p class='text-muted'>
-            Receive 36 business matches a year. Matches are business decision makers looking to borrow that are taylored to you're matching profile.
-          </p>
-        </div>
-        <div class="col-sm-4">
-          <div class="text-center"><i class="icon ion-arrow-down-b blue"></i> </div>
-          <h5>Listed in Funding Options</h5>
-          <p class='text-muted'>
-            Get inbound leads from matching businesses by being listed as a certified Bankmybiz Network funder in our <%= link_to "Funding Options", term_loan_path, target:"_blank" %> pages. 
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
   <div class="col-sm-4 col-sm-offset-2">
     <div class="well">
       <h4>Choose Package</h4>

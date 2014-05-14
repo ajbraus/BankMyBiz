@@ -68,7 +68,7 @@ end
             <% end %>
           <% end %>
           <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
-          <% if @user.following?(current_user) || current_user.is_a_match_with?(@user)%>
+          <% if @user.following?(current_user) || current_user.is_a_match_with?(@user) || current_user.admin? %>
               <a data-toggle="modal" href="#contact-modal" class="btn btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
           <% end %>
         </div>

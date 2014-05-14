@@ -1,6 +1,5 @@
 www.bankmybiz.com
 
-
 every day, if anyone has not received a match in 10 days, give businesses 3 and bankers 1
 make Matches => Relationships i.e. set reverse matches
 send messages to bankers "from business owner"

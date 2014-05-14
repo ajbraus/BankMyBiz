@@ -5,6 +5,9 @@
       <%= profile_picture(current_user) %>
     <% end %>
     <div class="col-xs-10">
+      <p>
+        <%= f.text_field :title, class:"form-control", placeholder:"What's your question?", id:"newPostTitle" %>
+      </p>
       <%= f.text_area :content, class:"form-control post-textarea", placeholder:"Post your challenges and advice to our network of lenders and owners . . ." %>
     </div>
   </div>

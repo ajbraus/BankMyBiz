@@ -7,8 +7,6 @@ Bill Miller
 
 Lower price to $99.99
 
-DONE pictures
-
 create milestone type posts
 send messages to bankers "from business owner"
 
@@ -16,8 +14,6 @@ are matches = relationships?
 
 3 lender matches have been added to your relationships
 Name change: Following & Relationships
-
-post.html user wider (put certification_badge next to name)
 
 -------------------------------------------------
 

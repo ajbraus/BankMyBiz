@@ -47,23 +47,33 @@
   <% end %>
   <div class="col-sm-4 col-sm-offset-2">
     <div class="well">
-      <h4>Choose Package</h4>
+      <h4>Be a Charter Lender</h4>
       <div class="row">
-        <div class="col-xs-7">
+        <div class="col-xs-12">
           <div class="radio">
             <label>
-              <%= f.radio_button :plan_id, 1, checked: true %>
+              <%= f.radio_button :plan_id, 4, checked: true %>
+              <div class="muted">Charter Lender Package</div>
+              <div class="price"><strong>$99.99</strong> / month</div>
+              <h4>Total: <strong class='muted'>$99.99</strong> <span class="save">Save 80%</span></h4>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <% if false %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="radio">
+            <label>
+              <%= f.radio_button :plan_id, 1 %>
               <div class="muted">3 month package</div>
               <div class="price"><strong>$249.99</strong> / month</div>
               <h4>Total: <strong class='muted'>$749.97</strong></h4>
             </label>
           </div>
         </div>
-        <div class="col-xs-5">
-          <div class="save"></div>
-        </div>
       </div>
-        
       <div class="row">
         <div class="col-xs-12">
           <div class="radio">
@@ -88,6 +98,7 @@
           </div>
         </div>
       </div>
+      <% end %>
     </div>
   </div>
   <div class="col-sm-4">

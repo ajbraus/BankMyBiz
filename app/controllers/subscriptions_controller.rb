@@ -18,6 +18,9 @@ class SubscriptionsController < ApplicationController
     elsif params[:subscription][:plan_id] == "3"
       params[:subscription][:expires_on] = Date.today + 1.year
       params[:subscription][:price_in_cents] = 155988
+    elsif params[:subscription][:plan_id] == "4"
+      params[:subscription][:expires_on] = Date.today + 1.month
+      params[:subscription][:price_in_cents] = 9999
     end
 
     if current_user.stripe_customer_id.present? && params[:existing_card_id].length > 5 #existing card

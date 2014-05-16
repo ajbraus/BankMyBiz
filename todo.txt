@@ -21,10 +21,6 @@ post.html user wider (put certification_badge next to name)
 
 -------------------------------------------------
 
-Milestones = Brag wall, questions and milestones
-
--------------------------------------------------
-
 make products restful . . .
 
 Products:  

@@ -37,7 +37,7 @@
             <%= link_to post.user, class:'pull-left' do %>
               <%= small_profile_picture(post.user) %>
             <% end %>
-          <div class="col-xs-8">
+          <div class="pull-left wiggle-room">
             <%= post.user.first_name_with_last_initial if post.user %> <span class='text-muted small'>(<%= post.user.cred_count %> Cred)</span>
             <% if user_signed_in? %>
               <% if post.user.has_active_subscription? %><i class="icon ion-checkmark-circled gold"></i><% end %>

@@ -531,6 +531,7 @@ hr {
   font-weight: 200;
   line-height: 1.3;
   color: inherit;
+  background: white;
 }
 .jumbotron h1 {
   font-size: 72px;
@@ -1125,15 +1126,14 @@ right: 40px;
 top: 20px;
 }
 
-.hero-creds {
-  position: absolute;
-  top: 718px;
+.carousel-caption {
   color: white;
-  right: 0px;
   background: rgba(0, 0, 0, 0.6);
-  width: 190px;
   text-align: left;
-  padding: 5px 25px 0px 25px;
+  padding: 10px 35px 10px 35px;
+  font-size: 17px;
+  margin-bottom: -20px;
+  left: 0;
 }
 
 .btn-favorite {
@@ -1537,4 +1537,9 @@ padding: 8px 12px;
       color:grey;
     }
   }
+}
+
+
+.carousel-inner > .item > img, .carousel-inner > .item > a > img {
+  width: 100%;
 }

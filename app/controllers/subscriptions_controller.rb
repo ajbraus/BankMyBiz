@@ -9,17 +9,19 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
+    @date = current_user.subscriptions.any? ? current_user.subscriptions.last.expires_on : Date.today
+
     if params[:subscription][:plan_id] == "1"
-      params[:subscription][:expires_on] = Date.today + 3.months
+      params[:subscription][:expires_on] = @date + 3.months
       params[:subscription][:price_in_cents] = 74997
     elsif params[:subscription][:plan_id] == "2"
-      params[:subscription][:expires_on] = Date.today + 6.months
+      params[:subscription][:expires_on] = @date + 6.months
       params[:subscription][:price_in_cents] = 113994
     elsif params[:subscription][:plan_id] == "3"
-      params[:subscription][:expires_on] = Date.today + 1.year
+      params[:subscription][:expires_on] = @date + 1.year
       params[:subscription][:price_in_cents] = 155988
     elsif params[:subscription][:plan_id] == "4"
-      params[:subscription][:expires_on] = Date.today + 1.month
+      params[:subscription][:expires_on] = @date + 1.month
       params[:subscription][:price_in_cents] = 9999
     end
 

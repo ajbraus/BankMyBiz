@@ -1,19 +1,21 @@
-DONE give these matches to dan@bluetreenetwork.com
-
-John McKenzie - 156
-Nick Cannone - 
-Steve Goodrich
-Bill Miller
-
-Lower price to $99.99
-
 create milestone type posts
 send messages to bankers "from business owner"
 
-are matches = relationships? 
+setup listen to webhooks
+setup cancelling subscription
+
+matches = relationships? 
 
 3 lender matches have been added to your relationships
 Name change: Following & Relationships
+
+track subscription renewals with stripe webhook
+
+fix milestones
+  add matches, follwers and followed as dropdown
+  add loan purpose as dropdown to milestone
+  give cred when milestone completes to both parties
+  notify followers that they hit a milestone
 
 -------------------------------------------------
 
@@ -42,12 +44,6 @@ Zip Codes
   add to matching algo
   have multiple zip codes, no more than 4.
   when 53703 new businesses get setup - I get matched with them, but if no new matches in that zip code then in generalizes.
-
-fix milestones
-  add matches, follwers and followed as dropdown
-  add loan purpose as dropdown to milestone
-  give cred when milestone completes to both parties
-  notify followers that they hit a milestone
 
 Turn back on purchasing more matches
 
@@ -828,3 +824,12 @@ DONE “Become a Certified Banker” - with subscription payments
     end
 
 DONE when profile completes, match business with 3 bankers
+
+
+DONE Lower price to $99.99
+
+DONE give these matches to dan@bluetreenetwork.com
+John McKenzie - 156
+Nick Cannone - 
+Steve Goodrich
+Bill Miller

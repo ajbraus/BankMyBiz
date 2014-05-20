@@ -5,9 +5,9 @@
     <%= devise_error_messages! %>
 
     <div><%= f.label :email %><br />
-    <%= f.email_field :email, :autofocus => true %></div>
+    <%= f.email_field :email, class:"form-control", :autofocus => true %></div>
 
-    <section class='text-right'><%= f.submit "Send Instructions" %></section>
+    <section class='text-right'><%= f.submit "Send Instructions", class:"btn btn-lg btn-success" %></section>
   <% end %>
 
   <%= render "devise/shared/links" %>

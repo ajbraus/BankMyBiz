@@ -9,7 +9,11 @@
       <h4><%= current_user.name.titleize %> <%= certified_badge(current_user) %></h4>
       <div><i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %> Cred</div>
       <div><i class="icon ion-pricetags gold"></i> <%= current_user.milestones.count %> Milestones</div>
-      <p><%= link_to "Edit Profile", edit_profile_path(current_user) %></p>
+      <p><%= link_to "Edit Profile", edit_profile_path(current_user) %> 
+        <% if current_user.bank? %>
+          | <%= link_to "Update Subscription", new_subscription_path %>
+        <% end %>
+      </p>
     </div>
   </div>
   <div class='user-profile-nav'>

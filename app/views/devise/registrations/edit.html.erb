@@ -1,7 +1,7 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
   <section class="row">
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-8 col-sm-offset-2 well">
       <div class="row">
         <div class="col-sm-5 col-sm-offset-2">
           <h4>Account Settings</h4>
@@ -28,7 +28,7 @@
           <% unless current_user.authentications.any? %>
             <section>
               <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-              <%= f.password_field :password, :autocomplete => "off" %>
+              <%= f.password_field :password, class:"form-control", :autocomplete => "off" %>
             </section>
           <% end %>
         </section>
@@ -47,12 +47,7 @@
           </p>   
         </div>
       </div>
-      
-      <section class="row">
-
-      </section>
       <div class="col-sm-9 col-sm-offset-2 text-center">
-        <br>
         <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
           <div>
             Currently waiting confirmation for: <%= resource.unconfirmed_email %>

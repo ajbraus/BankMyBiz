@@ -63,7 +63,7 @@ $(document).ready(function() {
       
   $('.not-interested').hover(
     function() {
-      $( this ).html("<i class='icon ion-ios7-bookmarks-outline'></i> Remove from Pipeline")
+      $( this ).html("<i class='icon ion-ios7-bookmarks-outline'></i> Remove")
     }, function() {
       $( this ).html("<i class='icon ion-ios7-bookmarks green'></i> In Pipeline")
     }

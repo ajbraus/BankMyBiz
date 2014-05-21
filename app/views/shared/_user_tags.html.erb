@@ -5,9 +5,7 @@
     <%= form_for Tag.new, remote: true do |f| %>
       <div class="input-group">
         <%= f.text_field :name, class:"form-control", id:"followTags", placeholder:"Follow Interests" %>
-        <span class="input-group-btn">
-          <%= f.submit "Follow", class:"btn btn-success" %>
-        </span>
+        <span class="input-group-btn"><%= f.submit "Follow", class:"btn btn-success" %></span>
       </div>
     <% end %>
     <div id="myTags">

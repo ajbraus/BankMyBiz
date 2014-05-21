@@ -14,7 +14,7 @@ class TagsController < ApplicationController
         current_user.tags << @tag
         
         respond_to do |format|
-          format.html
+          format.html { redirect_to :back, "Successfully followed #{@tag.name}" }
           format.js
         end
       else

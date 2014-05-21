@@ -3,7 +3,7 @@
     <h4>Bankmybiz 360&deg;</h4>
     <div class="match">
       <% if false %>
-      <h5><%= pluralize(current_user.karma, "User") %> Gave You Cred!</h5>
+      <h5><%= pluralize(current_user.karma, "User") %> Gave You Bankmybiz Credit!</h5>
         <%= render partial: "users/user", collection: current_user.posts.order('created_at DESC').map { |p| p.voters_who_voted_for }.flatten!.uniq.first(3), as: :user %> 
       <% end %>
       <h5>Who's Viewed Your Profile</h5>

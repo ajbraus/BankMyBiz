@@ -4,10 +4,10 @@
       <span class="vote-count"><%= answer.plusminus %> </span>
       <% if user_signed_in? %>
         <%= link_to vote_up_answer_path(answer), class:"#{current_user.voted_for?(answer) ? 'green disabled' : 'fade-in-green'} vote-up", remote: true do %>
-         <i class="icon ion-plus-circled" rel="tooltip" title="+1 Cred"></i>
+         <i class="icon ion-plus-circled" rel="tooltip" title="+1 Credit"></i>
         <% end %>
         <%= link_to vote_down_answer_path(answer), class:"#{current_user.voted_against?(answer) ? 'orange disabled' : 'fade-in-orange'} vote-down", remote: true do %>
-         <i class="icon ion-minus-circled" rel="tooltip" title="-1 Cred"></i>
+         <i class="icon ion-minus-circled" rel="tooltip" title="-1 Credit"></i>
         <% end %>
       <% end %>
     </div>
@@ -36,7 +36,7 @@
         <% else %>
           <%= f.hidden_field :accepted, value: true %>        
           <button type="submit" class="btn btn-link" style="font-size:220%;">
-            <i class="icon ion-android-checkmark fade-in-green" rel="tooltip" title="Mark Best Advice (+25 Cred)"></i>
+            <i class="icon ion-android-checkmark fade-in-green" rel="tooltip" title="Mark Best Advice (+25 Credit)"></i>
           </button>
         <% end %>
       <% end %>  

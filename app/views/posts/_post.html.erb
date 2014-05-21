@@ -3,11 +3,11 @@
     <div class="col-xs-1 grey larger text-center votes">
       <% if user_signed_in? %>
       <%= link_to vote_up_post_path(post), class:"breathing-room vote-up #{user_signed_in? && current_user.voted_for?(post) ? 'green disabled' : 'fade-in-green'}", remote: true do %>
-        <i class="icon ion-chevron-up"  rel="tooltip" title="+1 Cred"> </i>
+        <i class="icon ion-chevron-up"  rel="tooltip" title="+1 Credit"> </i>
       <% end %>
       <div class="vote-count"><%= post.plusminus %></div>
       <%= link_to vote_down_post_path(post), class:"vote-down #{user_signed_in? && current_user.voted_against?(post) ? 'disabled orange' : 'fade-in-orange'}", remote: true do %>
-       <i class="icon ion-chevron-down" rel="tooltip" title="-1 Cred"></i>
+       <i class="icon ion-chevron-down" rel="tooltip" title="-1 Credit"></i>
       <% end %>
       <% else %>
         <p class="vote-count"><%= post.plusminus %></p>
@@ -38,7 +38,7 @@
               <%= small_profile_picture(post.user) %>
             <% end %>
           <div class="pull-left wiggle-room">
-            <%= post.user.first_name_with_last_initial if post.user %> <% if post.user.has_active_subscription? %><i class="icon ion-checkmark-circled gold"></i><% end %> <span class='text-muted small'>(<%= post.user.cred_count %> Cred)</span>
+            <%= post.user.first_name_with_last_initial if post.user %> <% if post.user.has_active_subscription? %><i class="icon ion-checkmark-circled gold"></i><% end %> <span class='text-muted small'>(<%= post.user.cred_count %> Credit)</span>
             <% if user_signed_in? %>
               <% if (post.user == current_user || current_user.admin?) %>
                 <div class="smaller muted">

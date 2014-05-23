@@ -7,7 +7,7 @@
     </div>
     <div class="pull-left">
       <h4><%= current_user.name.titleize %> <%= certified_badge(current_user) %></h4>
-      <div><i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %> Credit</div>
+      <div><i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %> Bankmybiz Credit</div>
       <div><i class="icon ion-pricetags gold"></i> <%= current_user.milestones.count %> Milestones</div>
       <p><%= link_to "Edit Profile", edit_profile_path(current_user) %> 
         <% if current_user.bank? %>
@@ -21,22 +21,15 @@
     <table>
       <tr>
         <td>
-          <%= link_to matches_path do %>
-          <i class="big-icon icon ion-ios7-people-outline"></i> <%= current_user.matches.count %> <%= current_user.bank? ? "Business" : "Lender" %> Matches
-          <% end %>
-        </td>
-      </tr>
-      <tr>
-        <td>
           <%= link_to favorites_path do %>
-            <i class="big-icon icon ion-ios7-bookmarks-outline"></i> <%= current_user.followed_users.count %> Users in Your Pipeline
+            <i class="big-icon icon ion-ios7-bookmarks-outline"></i> <%= pluralize(current_user.followed_users.count, "User") %> in Your Relationship Pipeline
           <% end %>
         </td>
       </tr>
       <tr>
         <td>
           <%= link_to messages_path do %>
-            <i class="big-icon icon ion-ios7-email-outline"></i> <%= current_user.unread_messages.count %> New Messages
+            <i class="big-icon icon ion-ios7-email-outline"></i> <%= pluralize(current_user.unread_messages.count, "New Message") %> in Your Inbox
           <% end %>
         </td>
       </tr>

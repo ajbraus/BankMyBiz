@@ -384,3 +384,19 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
     <% if false %>
       <h1 class='text-center'>Join over <%= (User.where(bank:false).count / 10).floor * 10 %> Local Businesses and</h1>
     <% end %>
+
+
+    <li>
+      <% if current_user.finished_profile? %>
+        <%= link_to matches_path, rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
+          <i class="big-icon icon ion-ios7-people-outline"></i>
+        <% end %>
+      <% else %>
+        <%= link_to edit_profile_path(current_user), rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
+          <i class="big-icon icon ion-ios7-people-outline"></i>
+        <% end %>
+      <% end %>
+      <% if params[:controller] == "matches" && params[:action] == "index" %>
+        <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
+      <% end %>
+    </li>

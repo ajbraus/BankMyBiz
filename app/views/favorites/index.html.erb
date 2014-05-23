@@ -1,4 +1,4 @@
-<% content_for :title, "Following" %>
+<% content_for :title, "Relationship Pipeline" %>
 
 <div class="col-sm-8 clearfix">
   <div class="col-sm-12 clearfix">
@@ -8,9 +8,9 @@
     <%= render partial: 'matches/match', collection: @favorites, as: 'match' %>
   <% else %>
   <div class="well">
-    <h4>You're Relationship Pipeline is empty. Follow more users on Bankmybiz to grow it.</h4>
+    <h4>You're Relationship Pipeline is empty. Add more users to your pipeline and complete your profile to receive Relationship Recommendations.</h4>
     <p class="text-muted">
-      Find users profiles through Matches and the Bankmybiz Q&A Platform. Follow users by clicking "Follow" on their profile. If you match a user or a user follows you back, then you can send them secure private messages.
+      Find users profiles through Bankmybiz Q&A Platform. Add users to your Relationship Pipeline by clicking "Add to Pipeline" on their profile. If you add someone to your Pipeline they can send you secure private messages.
     </p>
   </div>
   <% end %>

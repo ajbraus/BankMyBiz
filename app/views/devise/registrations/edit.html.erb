@@ -25,6 +25,11 @@
             <%= f.label :email %>
             <%= f.email_field :email, class:'form-control' %>
           </section>
+          <section>
+            <%= f.label :phone_number, "Phone Number (private)" %>
+            <%= f.telephone_field :phone_number, class:"form-control", id:"phone" %>
+          </section>
+
           <% unless current_user.authentications.any? %>
             <section>
               <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />

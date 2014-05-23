@@ -1,6 +1,7 @@
 class Notifier < ActionMailer::Base
   add_template_helper(UsersHelper)
   include UsersHelper
+  include SubscriptionsHelper
   include ActionView::Helpers::AssetTagHelper  
   layout 'email' # use email.(html|text).erb as the layout for emails
   default from: "Bankmybiz"
@@ -9,6 +10,13 @@ class Notifier < ActionMailer::Base
   #   @user = user
   #   mail to: @user.email, subject: "#{post.user.first_name_with_last_initial} just asked about #{@tag.name}. Give them some expert advice."
   # end
+
+  def subscription_receipt(subscription)
+    @user = subscription.user
+    @subscription = subscription
+    @amount = price_in_dollars(@subscription.price_in_cents)
+    mail to: @user.email, subject: "Certified Lender Subscription Confirmation"
+  end
 
   def tag_follower_update(user, tag, post)
     @user = user

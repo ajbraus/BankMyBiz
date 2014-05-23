@@ -179,21 +179,7 @@
             </li>
             <% if user_signed_in? %>
               <li>
-                <% if current_user.finished_profile? %>
-                  <%= link_to matches_path, rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
-                    <i class="big-icon icon ion-ios7-people-outline"></i>
-                  <% end %>
-                <% else %>
-                  <%= link_to edit_profile_path(current_user), rel:"tooltip", title:"Matches", data: {placement: "bottom"} do %>
-                    <i class="big-icon icon ion-ios7-people-outline"></i>
-                  <% end %>
-                <% end %>
-                <% if params[:controller] == "matches" && params[:action] == "index" %>
-                  <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
-                <% end %>
-              </li>
-              <li>
-                <%= link_to favorites_path, rel:"tooltip", title:"Pipeline", data: {placement: "bottom"} do %>
+                <%= link_to favorites_path, rel:"tooltip", title:"Relationship Pipeline", data: {placement: "bottom"} do %>
                   <i class="big-icon icon ion-ios7-bookmarks-outline"></i>
                 <% end %>
                 <% if params[:controller] == "favorites" && params[:action] == "index" %>
@@ -201,7 +187,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to messages_path, rel:"tooltip", title:"Messages", data: {placement: "bottom"} do %>
+                <%= link_to messages_path, rel:"tooltip", title:"Inbox", data: {placement: "bottom"} do %>
                   <% if current_user.unread_messages.any? %>
                     <i class="big-icon icon ion-ios7-email"></i> <span class="message-count"><%= current_user.unread_messages.count %></span> 
                   <% else %>

@@ -21,8 +21,7 @@
   </div>
   <section>
     <% if match.tags.any? %>
-    <div class='text-muted small'>Interests</div>
-    <%= raw match.tags.first(4).map(&:name).map { |t| content_tag(:span, t, style:"background:#009E3B;padding:3px 7px;color:white;font-size:90%;") }.join(' ') %>
+    <div class='text-muted small'>Interests: <%= raw match.tags.first(4).map(&:name).map { |t| content_tag(:span, "#" + t, class:"tag clickable-tag") }.join(' ') %></div>
     <% end %>
   </section>
 </div>

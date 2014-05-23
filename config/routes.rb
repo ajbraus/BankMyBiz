@@ -26,7 +26,8 @@ BankMyBiz::Application.routes.draw do
   match '/venture-capital', to: 'products#venture_capital', as: 'venture_capital'
   match '/crowd-funding-for-equity', to: 'products#crowd_funding_for_equity', as: 'crowd_funding_for_equity'
 
-
+  post '/stripe/webhooks', to: "webhooks#receiver", defaults: { :format => 'json' }
+  
   resources :authentications, only: [:index, :create, :destroy]
 
   resources :sitemaps, :only => :show
@@ -61,7 +62,7 @@ BankMyBiz::Application.routes.draw do
 
   resources :email_unsubscriptions, only: [:new, :create]
 
-  resources :favorites, only: [:index]
+  resources :favorites, path: "pipeline", only: [:index]
 
   resources :tags, only: [:index, :create]
   get 'tags/:tag', to: 'tags#show', as: :tag
@@ -71,8 +72,6 @@ BankMyBiz::Application.routes.draw do
   resources :likes, only: [:create, :destroy]
 
   match '/auth/:provider/callback' => 'authentications#create'
-
-  resources :matches, only: [:index]
 
   match 'user/:id/bank', to: "users#set_bank", as: 'set_bank'
   match 'user/:id/biz', to: "users#set_business", as: 'set_business'

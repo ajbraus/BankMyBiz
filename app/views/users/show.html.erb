@@ -123,7 +123,7 @@ end
     <%= render 'shared/trending_tags' %>
   </section>
 
-  <div class="col-sm-8">
+  <section class="col-sm-8">
     <div class="row well">
       <div class="col-xs-12">
         <h3>Personal Profile</h3>
@@ -137,11 +137,10 @@ end
         <p class="muted"><%= @user.goals %></p>
       </div>
     </div>
-    <% if @user.bank? %>
-      <h3>Preferences</h3>    
-      <div class='row'>
+    <% if @user.bank? %>    
+      <div class='row well'>
+        <h3>Products</h3>
         <section class="col-xs-12">
-          <strong class=''>Products:</strong>
           <div class="muted"><%= @user.products.map(&:name).join(", ") %></div>
         </section>
       </div>
@@ -149,48 +148,84 @@ end
     <div class='row well'>
       <div class='row'>
         <div class="col-xs-12">
-          <h3>Organization Profile</h3>
+          <h3>Recommendation Profile</h3>
         </div>
         <section class="col-sm-4">
           <strong class=''>Business Type:</strong>
-          <div class="muted"><%= @user.business_types.map(&:description).join(", ") %></div>
+          <div class="muted">
+            <% @user.business_types.each do |c| %>
+              <div><%= c.description %></div>
+            <% end %>
+          </div>
         </section>
         <section class="col-sm-4">
           <strong class=''>Customers</strong>
-          <div class="muted"><%= @user.customer_types.map(&:description).join(", ") %></div>
+          <div class="muted">
+            <% @user.customer_types.each do |c| %>
+              <div><%= c.description %><div>
+            <% end %>
+          </div>
         </section>
         <section class="col-sm-4">
-          <strong class=''>Business Age:</strong>
-          <div class="muted"><%= @user.ages.map(&:description).join(", ") %> Years</div>
+          <strong class=''>Business Age (Yrs):</strong>
+          <div class="muted">
+            <% @user.ages.each do |c| %>
+              <div> <%= c.description %></div>
+            <% end %>
+          </div>
         </section>
       </div>
       <div class="row">
         <section class="col-sm-4"> 
           <strong class=''>Employees:</strong>
-          <div class="muted"><%= @user.employee_sizes.map(&:description).join(", ") %></div>
+          <div class="muted">
+            <% @user.employee_sizes.each do |c| %>
+              <div> <%= c.description %></div>
+            <% end %>
+          </div>
         </section>
         <section class="col-sm-4">
           <strong class=''>AR</strong>
-          <div class="muted"><%= @user.accounts_receivables.map(&:description).join(", ") %></div>
+          <div class="muted">
+            <% @user.accounts_receivables.each do |c| %>
+              <div> <%= c.description %></div>
+            <% end %>
+          </div>
         </section>
         <section class="col-sm-4">
           <strong class=''>Revenue Size:</strong>
-          <div class="muted"><%= @user.revenue_sizes.map(&:description).join(", ") %></div>
+          <div class="muted">
+            <% @user.revenue_sizes.each do |c| %>
+              <div> <%= c.description %></div>
+            <% end %>
+          </div>
         </section>
       </div>
       <div class="row">
         <section class="col-sm-4">
           <strong class=''>Industry:</strong>
-          <div class="muted"><%= @user.industries.map(&:description).join(", ") %></div>
+          <div class="muted">
+            <% @user.industries.each do |c| %>
+              <div> <%= c.description %></div>
+            <% end %>
+          </div>
         </section>
         <section class="col-sm-4">
           <strong class=''>Does Business in:</strong>
-          <div class="muted"><%= @user.locations.map(&:name).join(", ") %></div>
+          <div class="muted">
+            <% @user.locations.each do |c| %>
+              <div><%= c.name %></div>
+            <% end %>
+          </div>
         </section>
         <% if @user.bank? %>
           <section class="col-sm-4">
             <strong class=''>Size of Financing</strong>
-            <div class="muted"><%= @user.loan_sizes.map(&:description).join(", ") %></div>
+            <div class="muted">
+              <% @user.loan_sizes.each do |c| %>
+                <div> <%= c.description %></div>
+              <% end %>
+            </div>
           </section>
         <% end %>
       </div>

@@ -1,4 +1,3 @@
-<br>
   <% if current_user.bank == nil %>    
     <h4>Lender or Biz Owner?</h4>
     <p class='text-center'>
@@ -8,14 +7,14 @@
     <div class="muted">Answer to Unlock Funding and <%= current_user.bank? ? "Business" : "Lender" %> Matches</div>
   <% else %>
     <% if !current_user.finished_profile? %>
-      <h4>Complete Your Profile</h4>
-        <%= link_to "#{current_user.profile_elements_left} questions to go", edit_profile_path(current_user) %>
-        <div class="progress progress-striped active">
-          <div class="progress-bar progress-bar-success" style="width: <%= current_user.profile_progress_percent %>%;">
-            <%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link progress-percent" %>
-          </div>
-        </div>
-        <h5 class="text-center">to Unlock Funding and <%= current_user.bank? ? "Business" : "Lender" %> Matches</h5>
+    <br>
+    <h5 class="text-center"><%= link_to "#{current_user.profile_elements_left} Questions Go", edit_profile_path(current_user) %> to Unlock Funding and Relationship Recommendations 
+      </h5>
+    <div class="progress progress-striped active">
+      <div class="progress-bar progress-bar-success" style="width: <%= current_user.profile_progress_percent %>%;">
+        <%= link_to "#{current_user.profile_progress_percent}%", edit_profile_path(current_user), class:"no-link progress-percent" %>
+      </div>
+    </div>
     <% else %>
       <% if !current_user.bank || (current_user.bank && current_user.has_active_subscription?) %>
           <% if !current_user.bank? && current_user.products.any? %>

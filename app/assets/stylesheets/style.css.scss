@@ -129,15 +129,15 @@ border-radius: 0px;
 }
 
 .tag {
-  font-size: 12px;
-  background: #009E3B;
+  font-size: 14px;
   padding: 5px 7px;
-  color: white;
+  color: green;
 }
 
 .clickable-tag {
   &:hover {
     text-decoration:none;
+    background-color:grey;
     color:white;
     opacity:.8;
   }
@@ -1228,7 +1228,7 @@ table.user-stats {
   background-color: white;
   border-bottom: 1px solid #eee;
   padding-top:10px;
-  min-height: 210px;
+  padding-bottom: 15px;
   border-right:1px solid #eee;
   a {
     color:grey;
@@ -1238,7 +1238,8 @@ table.user-stats {
     }
   }
   img {
-    margin-top:20px;
+    margin-top:10px;
+    margin-left:5px;
   }
   p {
 

@@ -1,28 +1,34 @@
-Send confirmation of payment email 
+DONE Send confirmation of payment email 
+DONE make profiles with lists of attributes
+
+Get biz/bank phone number
+"You qualify for a free consultation"
+
+tell bankers that their certified subscription is dying
+
+matches = relationships
+  Give bankers matches if no one has matched with them in 14 days
+  Give new matches to businesses if they haven't had any new matches in 10 days
+  on create match, add user to pipeline both ways
+  update message
+  update documentation -> The Bankmybiz Relationship Recommendation Engine recommends 3 new lender relationships every 10 days.
+
 check all in profile
-"Organization profile" for bankers should be Match Preferences. 
-blog post - Use of funds (businesses are always wrong)
-
-Get biz/bank phone number 
-"You qualify for a free consultation" 
-
 
 create milestone type posts
 send messages to bankers "from business owner"
 
 when creating customer add name of organization to description
 
-setup listen to webhooks
+setup listen to webhooks for new payment
 setup cancelling subscription
 
-matches = relationships? 
+clean up user shield -> contact at one click
 
 "Interested"
 
 3 lender matches have been added to your relationships
 Name change: Following & Relationships
-
-track subscription renewals with stripe webhook
 
 fix milestones
   add matches, follwers and followed as dropdown
@@ -40,6 +46,7 @@ Products:
   revenue based, 
   micro-loan,
   Peer2Peer loan,
+  international export/import financing
   link crowdfunder in crowdfunding for equity
 
   What you will need - documents
@@ -58,7 +65,11 @@ Zip Codes
   have multiple zip codes, no more than 4.
   when 53703 new businesses get setup - I get matched with them, but if no new matches in that zip code then in generalizes.
 
-Turn back on purchasing more matches
+  Improve zipcodes
+    - http://stackoverflow.com/questions/8343673/postgres-find-zip-codes-near-specific-zip-code
+    - http://www.geopostcodes.com/USA $29.99
+    - http://www.getzipcodedata.com/ $5.00
+    - MyModel.where("field LIKE :prefix", prefix: "#{prefix}%")
 
 logo from WBA
 make sure followers get emailed
@@ -260,14 +271,8 @@ follow tags
 
 Control, Moderation
 
+blog post - Use of funds (businesses are always wrong)
 
-Improve zipcodes
-  - http://stackoverflow.com/questions/8343673/postgres-find-zip-codes-near-specific-zip-code
-  - http://www.geopostcodes.com/USA $29.99
-  - http://www.getzipcodedata.com/ $5.00
-  - MyModel.where("field LIKE :prefix", prefix: "#{prefix}%")
-
----------------------------------------
 ---------------------------------------
 
 

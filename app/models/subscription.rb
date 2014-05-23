@@ -8,4 +8,15 @@ class Subscription < ActiveRecord::Base
   def expired?
     return expires_on > Date.today
   end
+  def name
+    if plan_id == "1"
+      "Three Months"
+    elsif plan_id == "2"
+      "Six Months"
+    elsif plan_id == "3"
+      "Year"
+    elsif plan_id == "4"
+      "Charter One Month"
+    end
+  end
 end

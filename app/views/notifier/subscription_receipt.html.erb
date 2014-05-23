@@ -1,0 +1,19 @@
+<h4 class="h4"><%= @user.first_name.titleize %>, </h4>
+<p>
+  Thank you for confirming your <a href="http://www.bankmybiz.com">Bankmybiz</a> Certified Lender Subscription.
+</p>
+
+<table style='width:100%'>
+  <tr style="text-align:left;">
+    <th>Lender</th>
+    <th>Type</th>
+    <th>Next Payment</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td><%= @user.name %></td>
+    <td><%= @subscription.name %></td>
+    <td><%= Date.today + 1.month %></td>
+    <td><%= @amount %></td>
+  </tr>
+</table>

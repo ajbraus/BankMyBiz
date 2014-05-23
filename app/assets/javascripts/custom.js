@@ -8,6 +8,7 @@ String.prototype.supplant = function (o) {
 };
 
 $(document).ready(function() {
+  $('#phone').mask('(999) 999 - 9999');
 
   $("#new_post").focusin(function() {
     $("#questionForm").slideDown();

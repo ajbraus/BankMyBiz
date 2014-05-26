@@ -1,19 +1,20 @@
 DONE Send confirmation of payment email 
 DONE make profiles with lists of attributes
 
+matches = relationships
+  Give new matches to certified businesses and bankers if they haven't had any new matches in 10 days
+  on create match, add user to pipeline both ways
+  update message
+  update documentation -> The Bankmybiz Relationship Recommendation Engine recommends 3 new lender relationships every 10 days.
+
+drip email campaign of people's product matches once a week until they are all done.
+
 Get biz/bank phone number
 "You qualify for a free consultation"
 
 tell bankers that their certified subscription is dying
 
-matches = relationships
-  Give bankers matches if no one has matched with them in 14 days
-  Give new matches to businesses if they haven't had any new matches in 10 days
-  on create match, add user to pipeline both ways
-  update message
-  update documentation -> The Bankmybiz Relationship Recommendation Engine recommends 3 new lender relationships every 10 days.
-
-check all in profile
+check all boxes in banker profile
 
 create milestone type posts
 send messages to bankers "from business owner"

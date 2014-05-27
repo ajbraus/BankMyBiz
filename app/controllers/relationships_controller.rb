@@ -7,7 +7,7 @@ class RelationshipsController < ApplicationController
 
     @follower = current_user
     Message.create(
-      subject: "New Follower:  #{@follower.first_name_with_last_initial} #{@follower.position} at #{@follower.org_name}",
+      subject: "New Follower:  #{@follower.first_name_with_last_initial} #{@follower.position} at #{@follower.org_name}", 
       body: "#{@user.first_name}," + "\n\n" + 
             "#{@follower.first_name_with_last_initial} now follows you on Bankmybiz. They will be updated when you ask questions or post advice or Milestones on Bankmybiz. You can send them private and secure messages." + "\n\n" +
             "#{@follower.first_name_with_last_initial} is #{@follower.position} at #{@follower.org_name}." + "\n\n" +

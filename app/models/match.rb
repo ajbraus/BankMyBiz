@@ -12,7 +12,7 @@ class Match < ActiveRecord::Base
     Message.create(
       subject: "Relationship Recommendation: #{self.match.first_name_with_last_initial}, #{self.match.position} at #{self.match.org_name}",
       body: "#{self.user.first_name}," + "\n\n" + 
-            "Out of our network #{self.match.first_name_with_last_initial}, #{self.match.position} at #{self.match.org_name} and they have been added to your Relationship Pipeline." + "\n\n" +
+            "#{self.match.first_name_with_last_initial}, #{self.match.position} at #{self.match.org_name} has been added to your Relationship Pipeline." + "\n\n" +
             "A little bit about #{self.match.org_name}:" + "\n\n" +
             "#{self.match.bio}" + "\n\n" +
             "Continue the conversation by replying to this secure, private message." + "\n\n" +

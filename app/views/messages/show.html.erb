@@ -30,7 +30,7 @@
   </div>
   <section class="col-sm-8">
     <section class='one-message large'>
-      <p><strong>From:</strong> <%= link_to "#{@message.sender.first_name_with_last_initial}", user_path(@message.sender) %></p>
+      <p><strong>From:</strong> <%= link_to "#{@message.sender.first_name_with_last_initial} #{@message.sender.position} at #{@message.sender.org_name}", user_path(@message.sender) %></p>
       <p class="bigger grey-border-bottom"><strong>Subject:</strong> <%= @message.subject %></p>
       <p><%= simple_format @message.body %></p>
       <div class="text-right btn-reply">

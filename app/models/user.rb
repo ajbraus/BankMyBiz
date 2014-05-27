@@ -544,7 +544,7 @@ class User < ActiveRecord::Base
     if self.bank?
       matchables = User.where("id != ? AND status != ? AND bank = ?", self.id, "Just Browsing", false)
     else # business
-      matchables = User.where("users.id != ? AND users.status != ? AND users.bank = ?", self.id, "Just Browsing", true).joins(:subscriptions).where("subscriptions.expires_on > ?", Date.today)
+      matchables = User.where("users.id != ? AND users.status != ? AND users.bank = ?", self.id, "Just Browsing", true) #.joins(:subscriptions).where("subscriptions.expires_on > ?", Date.today)
     end
     matches = matchables.select { |m| m.bankable?(self) &&
                                       m.in_same_location?(self) &&
@@ -565,17 +565,17 @@ class User < ActiveRecord::Base
   end
 
   def set_matches
-    if finished_profile? && (matches.none? || matches.first.created_at < 10.days.ago) && matching_users.any?
+    if finished_profile? && matching_users.any?#&& (matches.none? || matches.first.created_at < 10.days.ago) 
       if !bank?
         new_matching_users = matching_users.first(3)
       else
-        new_matching_users = matching_users.first
+        new_matching_users = [matching_users.first]
       end
-      matched_users << matches # add matching_users to matches
-      followed_users << matches # follow the matches
-      followers << matches # have the matches follow you
+      matched_users << new_matching_users # add matching_users to matches
+      followed_users << new_matching_users - followed_users # follow the matches
+      followers << new_matching_users - followers # have the matches follow you
       
-      Notifier.delay.new_match(self, match) if receive_match_messages?
+      Notifier.delay.new_match(self, new_matching_users) if receive_match_messages?
     end
   end
 

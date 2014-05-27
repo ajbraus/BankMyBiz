@@ -46,7 +46,8 @@ class User < ActiveRecord::Base
                   :cred_count,
                   :product_ids,
                   :zip_code,
-                  :website_url
+                  :website_url,
+                  :phone_number
 
   is_impressionable :counter_cache => true, :unique => :user_id
 

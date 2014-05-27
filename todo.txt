@@ -9,12 +9,12 @@ matches = relationships recommendations
   DONE do not create a relationship intro message for matches - only for deliberate follows
   DONE send new matches email after match create one for biz one for banker
   
-  update documentation -> The Bankmybiz Relationship Recommendation Engine recommends 3 new lender relationships every 10 days.
+  DONE update documentation -> The Bankmybiz Relationship Recommendation Engine recommends 3 new lender relationships every 10 days.
 
-drip email campaign of people's product matches once a week until they are all done.
+Get biz/bank phone number upon registration and in profile/settings
+"You qualify for a free consultation - update enter phone number"
 
-Get biz/bank phone number
-"You qualify for a free consultation"
+mask zip code like phone number
 
 tell bankers that their certified subscription is dying
 
@@ -22,6 +22,8 @@ check all boxes in banker profile
 
 create milestone type posts
 send messages to bankers "from business owner"
+
+drip email campaign of people's product matches once a week until they are all done.
 
 when creating customer add name of organization to description
 

@@ -1,21 +1,3 @@
-DONE Send confirmation of payment email 
-DONE make profiles with lists of attributes
-DONE Get biz/bank phone number
-
-matches = relationships recommendations
-  DONE Give new matches to certified businesses and bankers if they haven't had any new matches in 10 days
-  DONE on create match, follow each other mutually
-  DONE when follow create one directional relationship, intro message, and email
-  DONE create mutual intro message from bank to biz and biz to bank for each match
-  DONE do not create a relationship intro message for matches - only for deliberate follows
-  DONE send new matches email after match create one for biz one for banker
-  
-  DONE update documentation -> The Bankmybiz Relationship Recommendation Engine recommends 3 new lender relationships every 10 days.
-
-  When you get a match, they follow you from then on. 
-  The pipeline page is split. People you follow, people who follow you. 
-
-Get biz/bank phone number upon registration and in profile/settings
 "You qualify for a free consultation - update enter phone number"
 
 mask zip code like phone number
@@ -866,3 +848,21 @@ Steve Goodrich
 Bill Miller
 
 DONE cred => Credit
+
+
+DONE Send confirmation of payment email 
+DONE make profiles with lists of attributes
+DONE Get biz/bank phone number
+
+matches = relationships recommendations
+  DONE Give new matches to certified businesses and bankers if they haven't had any new matches in 10 days
+  DONE on create match, follow each other mutually
+  DONE when follow create one directional relationship, intro message, and email
+  DONE create mutual intro message from bank to biz and biz to bank for each match
+  DONE do not create a relationship intro message for matches - only for deliberate follows
+  DONE send new matches email after match create one for biz one for banker
+  
+  DONE update documentation -> The Bankmybiz Relationship Recommendation Engine recommends 3 new lender relationships every 10 days.
+
+  DONE When you get a match, they follow you from then on. 
+  DONE The pipeline page is split. People you follow, people who follow you. 

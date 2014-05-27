@@ -566,7 +566,7 @@ class User < ActiveRecord::Base
   end
 
   def set_matches
-    if finished_profile? && matching_users.any?#&& (matches.none? || matches.first.created_at < 10.days.ago) 
+    if finished_profile? && matching_users.any? && (matches.none? || matches.first.created_at < 10.days.ago) 
       if !bank?
         new_matching_users = matching_users.first(3)
       else

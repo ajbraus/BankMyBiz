@@ -4,7 +4,7 @@ class PurchasesController < ApplicationController
   def new
     @user = current_user
     @purchase = @user.purchases.new
-    @first_three_matches = current_user.potential_matches.first(3)
+    @first_three_matches = current_user.matching_users.first(3)
     if current_user.stripe_customer_id.present?
       @stripe_customer = Stripe::Customer.retrieve(current_user.stripe_customer_id) 
       @cards = Stripe::Customer.retrieve(current_user.stripe_customer_id).cards.all
@@ -57,7 +57,7 @@ class PurchasesController < ApplicationController
         redirect_to new_purchase_path, notice: "There was a problem with your purchase. Please try again."
         return
       end
-      current_user.matched_users << current_user.potential_matches.first(3)
+      current_user.matched_users << current_user.matching_users.first(3)
       @purchase.save
       redirect_to matches_path, :notice => "You Successfully Purchased 3 New Matches"
       return

@@ -46,7 +46,8 @@ class User < ActiveRecord::Base
                   :cred_count,
                   :product_ids,
                   :zip_code,
-                  :website_url
+                  :website_url,
+                  :phone_number
 
   is_impressionable :counter_cache => true, :unique => :user_id
 
@@ -234,8 +235,8 @@ class User < ActiveRecord::Base
 
   def reward_a_match
     if self.finished_profile?
-      if potential_matches.any?
-        matched_users << potential_matches.first
+      if matching_users.any?
+        matched_users << matching_users.first
       end
     end
   end
@@ -540,11 +541,11 @@ class User < ActiveRecord::Base
     return false
   end
 
-  def potential_matches
+  def matching_users
     if self.bank?
       matchables = User.where("id != ? AND status != ? AND bank = ?", self.id, "Just Browsing", false)
     else # business
-      matchables = User.where("users.id != ? AND users.status != ? AND users.bank = ?", self.id, "Just Browsing", true).joins(:subscriptions).where("subscriptions.expires_on > ?", Date.today)
+      matchables = User.where("users.id != ? AND users.status != ? AND users.bank = ?", self.id, "Just Browsing", true) #.joins(:subscriptions).where("subscriptions.expires_on > ?", Date.today)
     end
     matches = matchables.select { |m| m.bankable?(self) &&
                                       m.in_same_location?(self) &&
@@ -554,21 +555,28 @@ class User < ActiveRecord::Base
   end
 
   def set_initial_matches
-    if potential_matches.any?
+    if matching_users.any?
       if !bank?
-        matches = potential_matches.first(3)
+        matches = matching_users.first(3)
       else
-        matches = potential_matches.first
+        matches = matching_users.first
       end
       matched_users << matches
     end
   end
 
   def set_matches
-    if finished_profile? && (matches.none? || matches.first.created_at < 10.days.ago) && potential_matches.any?
-      match = potential_matches.first
-      matched_users << match
-      Notifier.delay.new_match(self, match) if receive_match_messages?
+    if finished_profile? && matching_users.any?#&& (matches.none? || matches.first.created_at < 10.days.ago) 
+      if !bank?
+        new_matching_users = matching_users.first(3)
+      else
+        new_matching_users = [matching_users.first]
+      end
+      matched_users << new_matching_users # add matching_users to matches
+      followed_users << new_matching_users - followed_users # follow the matches
+      followers << new_matching_users - followers # have the matches follow you
+      
+      Notifier.delay.new_match(self, new_matching_users) if receive_match_messages?
     end
   end
 

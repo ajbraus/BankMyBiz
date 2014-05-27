@@ -29,7 +29,7 @@
               </div>
             </div>
           <% end %>
-          <h5>Recent <%= current_user.bank? ? "Owner" : "Lender" %> Matches</h5>
+          <h5>Your Recommended <%= current_user.bank? ? "Owners" : "Lenders" %></h5>
           <%= render partial: "users/user", collection: current_user.recent_matches, as: "user" %>
         <% else #user is a bank without an active subscription %>
           <div class="text-center">

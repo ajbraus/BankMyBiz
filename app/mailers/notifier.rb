@@ -67,10 +67,10 @@ class Notifier < ActionMailer::Base
     mail to: @user.email, subject: "You have a new follower"
   end
 
-  def new_match(user, match)
+  def new_match(user, matching_users)
     @user = user
-    @match = match
-    mail to: @user.email, subject: "New Match on Bankmybiz - #{@match.first_name_with_last_initial} with #{@match.org_name}"
+    @matching_users = matching_users
+    mail to: @user.email, subject: "#{pluralize @matching_users, 'New Relationship Recommendation'} - #{@matching_users.first.first_name_with_last_initial} with #{@matching_users.first.org_name}"
   end
 
   def profile_reminder(u)

@@ -25,6 +25,9 @@ class MessagesController < ApplicationController
 
   def show
     @message = Message.find(params[:id])
+    if current_user != @message.receiver && current_user != @message.sender 
+      return redirect_to messages_path
+    end
     @message.is_read = true
     @message.save
     

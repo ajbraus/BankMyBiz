@@ -6,9 +6,9 @@ class Match < ActiveRecord::Base
   validates :user_id, presence: true
   validates :match_id, presence: true
 
-  after_create :send_notifications
+  after_create :new_match_message
 
-  def send_notifications
+  def new_match_message
     Message.create(
       subject: "Relationship Recommendation: #{self.match.first_name_with_last_initial}, #{self.match.position} at #{self.match.org_name}",
       body: "#{self.user.first_name}," + "\n\n" + 

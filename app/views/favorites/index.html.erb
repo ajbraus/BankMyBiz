@@ -1,11 +1,22 @@
 <% content_for :title, "Relationship Pipeline" %>
 
 <div class="col-sm-8 clearfix">
-  <div class="col-sm-12 clearfix">
-    <h3>Your Relationship Pipeline <span class="text-muted smallest">Follow other users to start conversations and get updates on their activity.</span></h3>
+  <h3>Your Relationship Pipeline <span class="text-muted smallest">Follow other users to start conversations and get updates on their activity.</span></h3>
+  <h2>Following</h2>
+  <% if @following.any? %>
+    <%= render partial: 'matches/match', collection: @following, as: 'match' %>
+  <% else %>
+  <div class="well">
+    <h4>You're Relationship Pipeline is empty. Add more users to your pipeline and complete your profile to receive Relationship Recommendations.</h4>
+    <p class="text-muted">
+      Find users profiles through Bankmybiz Q&A Platform. Add users to your Relationship Pipeline by clicking "Add to Pipeline" on their profile. If you add someone to your Pipeline they can send you secure private messages.
+    </p>
   </div>
-  <% if @favorites.any? %>
-    <%= render partial: 'matches/match', collection: @favorites, as: 'match' %>
+  <% end %>
+  <hr>
+  <h2>Followers</h2>
+  <% if @followers.any? %>
+    <%= render partial: 'matches/match', collection: @followers, as: 'match' %>
   <% else %>
   <div class="well">
     <h4>You're Relationship Pipeline is empty. Add more users to your pipeline and complete your profile to receive Relationship Recommendations.</h4>

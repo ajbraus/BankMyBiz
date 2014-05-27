@@ -573,7 +573,7 @@ class User < ActiveRecord::Base
         new_matching_users = [matching_users.first]
       end
       matched_users << new_matching_users # add matching_users to matches
-      followed_users << new_matching_users - followed_users # follow the matches
+      # followed_users << new_matching_users - followed_users # follow the matches
       followers << new_matching_users - followers # have the matches follow you
       
       Notifier.delay.new_match(self, new_matching_users) if receive_match_messages?

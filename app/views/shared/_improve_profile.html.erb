@@ -4,7 +4,7 @@
       <%= link_to "Lender", set_bank_path(current_user), class:"btn btn-success btn-lg" %>
       <%= link_to "Business", set_business_path(current_user), class:"btn btn-warning btn-lg" %>
     </p>
-    <div class="muted">Answer to Unlock Funding and <%= current_user.bank? ? "Business" : "Lender" %> Matches</div>
+    <div class="muted">Answer to Unlock <%= current_user.bank? ? "Business" : "Lender" %> Relationship Recommendations</div>
   <% else %>
     <% if !current_user.finished_profile? %>
     <br>
@@ -19,7 +19,7 @@
       <% if !current_user.bank || (current_user.bank && current_user.has_active_subscription?) %>
           <% if !current_user.bank? && current_user.products.any? %>
             <div class="clearfix">
-              <h5>My Matched Funding Options</h5>
+              <h5>My Recommended Funding Options</h5>
               <div class="col-sm-12">
                 <% current_user.products.each do |p| %>
                   <%= link_to "/" + p.name.parameterize, class:"btn btn-default btn-block" do %>
@@ -36,7 +36,7 @@
             <%= link_to new_subscription_path, class:"btn btn-lg btn-default" do %>
               <i class="icon ion-checkmark-circled gold"></i> Become a Certified Lender
             <% end %>
-            <section class='muted text-left'>To Receive Matched Business Leads, and Inbound Product Leads from our <%= link_to "Funding Options", term_loan_path %> </section>
+            <section class='muted text-left'>To Receive Business Leads, and Inbound Product Leads from our <%= link_to "Funding Options", term_loan_path %> </section>
           </div>
         <% end %>
       <% end %>

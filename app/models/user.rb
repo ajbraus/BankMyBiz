@@ -234,8 +234,8 @@ class User < ActiveRecord::Base
 
   def reward_a_match
     if self.finished_profile?
-      if potential_matches.any?
-        matched_users << potential_matches.first
+      if matching_users.any?
+        matched_users << matching_users.first
       end
     end
   end
@@ -540,7 +540,7 @@ class User < ActiveRecord::Base
     return false
   end
 
-  def potential_matches
+  def matching_users
     if self.bank?
       matchables = User.where("id != ? AND status != ? AND bank = ?", self.id, "Just Browsing", false)
     else # business
@@ -554,20 +554,27 @@ class User < ActiveRecord::Base
   end
 
   def set_initial_matches
-    if potential_matches.any?
+    if matching_users.any?
       if !bank?
-        matches = potential_matches.first(3)
+        matches = matching_users.first(3)
       else
-        matches = potential_matches.first
+        matches = matching_users.first
       end
       matched_users << matches
     end
   end
 
   def set_matches
-    if finished_profile? && (matches.none? || matches.first.created_at < 10.days.ago) && potential_matches.any?
-      match = potential_matches.first
-      matched_users << match
+    if finished_profile? && (matches.none? || matches.first.created_at < 10.days.ago) && matching_users.any?
+      if !bank?
+        new_matching_users = matching_users.first(3)
+      else
+        new_matching_users = matching_users.first
+      end
+      matched_users << matches # add matching_users to matches
+      followed_users << matches # follow the matches
+      followers << matches # have the matches follow you
+      
       Notifier.delay.new_match(self, match) if receive_match_messages?
     end
   end

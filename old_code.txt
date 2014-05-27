@@ -265,7 +265,7 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
         </div>
         <section class="text-right muted">
           <% if @first_three_matches.present? && @first_three_matches.count == 3 %>
-            You have <%= @potential_matches_count %> Potential Matches<br>
+            You have <%= @matching_users_count %> Potential Matches<br>
           <% else %>
             Add 3 Matches for $<%= current_user.bank? ? "74.99" : "24.99" %> <br>
             Not Enough Matches Try <%= link_to "Broadening Your Profile", edit_profile_path(current_user) %>

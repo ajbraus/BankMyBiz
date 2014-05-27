@@ -1,16 +1,19 @@
 <h4 class="h4"><%= @user.first_name.titleize %>, </h4>
 
 <p>
-  <strong>Congradulations!</strong> - You have a new follower on Bankmybiz.com:
+  <%= @follower.first_name_with_last_initial %> now follows you on Bankmybiz. They will be updated when you ask questions or post advice or Milestones on Bankmybiz. You can send them private and secure messages. <% if !@follower.bank? && @user.bank? %> Since they follow you, you can send them <strong>Private Messages</strong>.<% end %>
 </p>
 
 <%= render partial: 'users/email_user', locals: { current_user: @user, other_user: @follower } %>
 
+<p>A little bit about <%= @follower.org_name %>:</p>
+<p> <%= @follower.bio %></p>
+
 <p>
-  Your followers want to stay in contact with you. Followers receive an email every time you post a challenge or status update to the News Feed. You may now also now send them <strong>Private Messages</strong>.
+  To learn more about <%= @follower.name %> visit their profile or send them a private, secure message from your <%= link_to "Bankmybiz inbox", messages_url %>.
 </p>
 
 <p>
-  <strong>Tip</strong> - Post your business challenges to the Bankmybiz Network to get advice, create conversations, and earn Bankmybiz cred. Try posting challenges, interesting links, and conversation starters.
+  <strong>Tip</strong> - Post your business questions to Bankmybiz to get advice, create conversations, and earn Bankmybiz credit. Try posting challenges, interesting links, and conversation starters.
 </p>
 

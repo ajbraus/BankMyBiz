@@ -1,10 +1,14 @@
 DONE Send confirmation of payment email 
 DONE make profiles with lists of attributes
 
-matches = relationships
-  Give new matches to certified businesses and bankers if they haven't had any new matches in 10 days
-  on create match, add user to pipeline both ways
-  update message
+matches = relationships recommendations
+  DONE Give new matches to certified businesses and bankers if they haven't had any new matches in 10 days
+  DONE on create match, follow each other mutually
+  DONE when follow create one directional relationship, intro message, and email
+  DONE create mutual intro message from bank to biz and biz to bank for each match
+  DONE do not create a relationship intro message for matches - only for deliberate follows
+  DONE send new matches email after match create one for biz one for banker
+  
   update documentation -> The Bankmybiz Relationship Recommendation Engine recommends 3 new lender relationships every 10 days.
 
 drip email campaign of people's product matches once a week until they are all done.
@@ -34,7 +38,7 @@ Name change: Following & Relationships
 fix milestones
   add matches, follwers and followed as dropdown
   add loan purpose as dropdown to milestone
-  give cred when milestone completes to both parties
+  give credit when milestone completes to both parties
   notify followers that they hit a milestone
 
 -------------------------------------------------

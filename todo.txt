@@ -1,8 +1,6 @@
 DONE Send confirmation of payment email 
 DONE make profiles with lists of attributes
-
-Get biz/bank phone number
-"You qualify for a free consultation"
+DONE Get biz/bank phone number
 
 tell bankers that their certified subscription is dying
 
@@ -37,6 +35,8 @@ fix milestones
   notify followers that they hit a milestone
 
 -------------------------------------------------
+
+"You qualify for a free consultation"
 
 make products restful . . .
 

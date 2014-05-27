@@ -257,7 +257,7 @@ class User < ActiveRecord::Base
           body: "#{self.first_name}," + "\n\n" + 
                 "Thanks for joining the Bankmybiz Network where members bank on relationships. Complete your profile to begin to receive matches. Questions are a great way to start a business relationship. Use the Bankmybiz's public Q&A platform to ask questions about your biggest challenges or about how to achieve your biggest goals'." + "\n\n" +
                 "The Bankmybiz matching algorithm matches you with people who want to connect with you. Youn can send secure private messages to your matches and followers. You receive one free match a week, but if you want more more, you can purchase matches at a time from your Matches page." + "\n\n" +
-                "Post challenges and advice to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
+                "Post questions and advice to improve your profile and start conversations about your business and expertise. That can lead to lots of valuable connections and relationships." + "\n\n" +
                 "There are a few other bells and whistles we home you use such as following users to get notified about their activity, reading and contributing to our blog 'Banking on Relationships.'" + "\n\n\n" +
                 "Thanks and again, Welcome!" + "\n\n\n" +
                 "Michael Adam, CEO Bankmybiz",

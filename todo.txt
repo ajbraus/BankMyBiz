@@ -1,27 +1,21 @@
+Make all matches follow
+
+Match.all.each do |m|
+  m.user.followed_users << m.match if !m.user.followed_users.include?(m.match)
+end
+
 "You qualify for a free consultation - update enter phone number"
 
 mask zip code like phone number
-
 tell bankers that their certified subscription is dying
-
 check all boxes in banker profile
 
-create milestone type posts
-send messages to bankers "from business owner"
-
 drip email campaign of people's product matches once a week until they are all done.
-
 when creating customer add name of organization to description
-
 setup listen to webhooks for new payment
 setup cancelling subscription
 
 clean up user shield -> contact at one click
-
-"Interested"
-
-3 lender matches have been added to your relationships
-Name change: Following & Relationships
 
 fix milestones
   add matches, follwers and followed as dropdown
@@ -31,16 +25,12 @@ fix milestones
 
 -------------------------------------------------
 
-"You qualify for a free consultation"
-
-make products restful . . .
-
 Products:  
   commercial realestate loan,
-  credit union,
-  revenue based, 
   micro-loan,
   Peer2Peer loan,
+  credit union,
+  revenue based, 
   international export/import financing
   link crowdfunder in crowdfunding for equity
 

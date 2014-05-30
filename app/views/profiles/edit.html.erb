@@ -11,69 +11,6 @@
         </div>
       <% end %>
       <h3 class='text-center'>Your Matching Profile <section class="small muted"> * indicates a field <strong>required</strong> to receive Recommended Products & Matches</section></h3>
-      <div class="row well">
-        <section class="col-sm-3"> 
-          <table>
-            <tr>
-              <%= f.label :avatar, "Profile Picture*" %><br>
-              <td>
-                <%= medium_profile_picture(@user) %> 
-              </td>
-              <td>
-                <div class="form-group">
-                  <%= f.file_field :avatar %>
-                  <p class="help-block">Upload a profile image</p>
-                </div>
-              </td>
-            </tr>
-          </table>
-        </section>
-        <div class="col-sm-3">
-          <section>
-            <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name*" %>
-            <%= f.text_field :org_name, class:"form-control required" %>
-          </section>
-          <section>
-            <%= f.label :position, "Your Position*" %>
-            <%= f.text_field :position, class:"form-control required" %>  
-          </section>
-        </div>
-        <div class='col-sm-1'>
-          <section>
-            <%= f.label :hq_state, "State*" %>
-            <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), { prompt: "State" }, class:'form-control required' %>  
-          </section>
-          <section>
-            <%= f.label :zip_code, "Zip*" %>
-            <%= f.text_field :zip_code, class:"form-control required" %>  
-          </section>
-        </div>
-        <% if !@user.bank? %>
-          <div class="col-sm-5">
-            <section class="clearfix">
-              <div class="col-sm-6">
-                <%= f.label :status, "Your Funding Status*" %>
-                <%= f.select :status, options_for_select(["Actively Looking", "Offers Welcome", "Just Browsing"], @user.status), {}, class:'form-control' %>   
-              </div>
-              <div class="col-sm-6">
-                <%= f.label :loan_size_ids, "Amount Sought*" %>
-                <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}, [@user.loan_sizes.first.try(:description), @user.loan_sizes.first.try(:id)]), { prompt:"Dollar Amount" }, class:'form-control required' %>
-              </div>
-            </section>
-            <section class="clearfix">
-              <div class="col-sm-6">
-                <%= f.label :loan_purpose_ids, "Funding Purpose*" %>
-                <%= f.select :loan_purpose_ids, options_for_select(LoanPurpose.all.collect { |x| [x.description, x.id] }, [@user.loan_purposes.first.try(:description), @user.loan_purposes.first.try(:id)]), { prompt:"Select Purpose" }, class:'form-control required' %>   
-              </div>
-              <div class="col-sm-6">
-                <%= f.label :loan_priority_ids, "Funding Priority*" %>
-                <%= f.select :loan_priority_ids, options_for_select(LoanPriority.all.collect {|x| [x.description, x.id]}, [@user.loan_priorities.first.try(:description), @user.loan_priorities.first.try(:id)]), { prompt:"Select Priority" }, class:'form-control required' %>   
-              </div>
-            </section>
-          </div>
-        <% end %>
-        </div>
-      </div>
       <div class="row">
         <div class="col-sm-3 clearfix">
           <div class="well">
@@ -91,6 +28,69 @@
           </div>
         </div>
         <div class="col-sm-9">
+          <div class="well clearfix">
+            <section class="col-sm-6"> 
+              <table>
+                <tr>
+                  <%= f.label :avatar, "Profile Picture*" %><br>
+                  <td>
+                    <%= medium_profile_picture(@user) %> 
+                  </td>
+                  <td>
+                    <div class="form-group">
+                      <%= f.file_field :avatar %>
+                      <p class="help-block">Upload a profile image</p>
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </section>
+            <div class="col-sm-6">
+              <section>
+                <%= f.label :org_name, "#{current_user.bank? ? 'Bank' : 'Business'} Name*" %>
+                <%= f.text_field :org_name, class:"form-control required" %>
+              </section>
+              <section>
+                <%= f.label :position, "Your Position*" %>
+                <%= f.text_field :position, class:"form-control required" %>  
+              </section>
+            </div>
+            <div class='col-sm-2'>
+              <section>
+                <%= f.label :hq_state, "State*" %>
+                <%= f.select :hq_state, options_for_select(Location.all[1..-1].collect {|l| l.name }, @user.hq_state), { prompt: "State" }, class:'form-control required' %>  
+              </section>
+              <section>
+                <%= f.label :zip_code, "Zip*" %>
+                <%= f.text_field :zip_code, class:"form-control required" %>  
+              </section>
+            </div>
+            <% if !@user.bank? %>
+              <div class="col-sm-10">
+                <section class="clearfix">
+                  <div class="col-sm-6">
+                    <%= f.label :status, "Your Funding Status*" %>
+                    <%= f.select :status, options_for_select(["Actively Looking", "Offers Welcome", "Just Browsing"], @user.status), {}, class:'form-control' %>   
+                  </div>
+                  <div class="col-sm-6">
+                    <%= f.label :loan_size_ids, "Amount Sought*" %>
+                    <%= f.select :loan_size_ids, options_for_select(LoanSize.all.collect {|x| [x.description, x.id]}, [@user.loan_sizes.first.try(:description), @user.loan_sizes.first.try(:id)]), { prompt:"Dollar Amount" }, class:'form-control required' %>
+                  </div>
+                </section>
+                <section class="clearfix">
+                  <div class="col-sm-6">
+                    <%= f.label :loan_purpose_ids, "Funding Purpose*" %>
+                    <%= f.select :loan_purpose_ids, options_for_select(LoanPurpose.all.collect { |x| [x.description, x.id] }, [@user.loan_purposes.first.try(:description), @user.loan_purposes.first.try(:id)]), { prompt:"Select Purpose" }, class:'form-control required' %>   
+                  </div>
+                  <div class="col-sm-6">
+                    <%= f.label :loan_priority_ids, "Funding Priority*" %>
+                    <%= f.select :loan_priority_ids, options_for_select(LoanPriority.all.collect {|x| [x.description, x.id]}, [@user.loan_priorities.first.try(:description), @user.loan_priorities.first.try(:id)]), { prompt:"Select Priority" }, class:'form-control required' %>   
+                  </div>
+                </section>
+              </div>
+            <% end %>
+          </div>
+
           <div class="well">
           <h3><%= @user.bank? ? 'Bank' : 'Business' %> Profile</h3>
           <div class="row">

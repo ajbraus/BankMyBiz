@@ -51,7 +51,7 @@ class SubscriptionsController < ApplicationController
 
       return redirect_to root_path, :notice => "Successfully Certified!"
     else
-     return redirect_to new_subscription_path(plan: params[:subscription][:plan_id]), notice: "There was a problem with your subscription. Please try again."
+     return redirect_to new_subscription_path, notice: "There was a problem with your subscription. Please try again."
     end
   end
 end

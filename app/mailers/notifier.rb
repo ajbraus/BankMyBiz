@@ -11,6 +11,12 @@ class Notifier < ActionMailer::Base
   #   mail to: @user.email, subject: "#{post.user.first_name_with_last_initial} just asked about #{@tag.name}. Give them some expert advice."
   # end
 
+  def subscription_expired(subscription)
+    @user = subscription.user
+    @subscription = subscription
+    mail to: @user.email, subject: "Bankmybiz Certification Expiring"
+  end
+
   def subscription_new(subscription)
     @user = subscription.user
     @subscription = subscription

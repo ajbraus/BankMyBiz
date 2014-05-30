@@ -1,0 +1,13 @@
+<h4 class="h4"><%= @user.first_name.titleize %>, </h4>
+<p>
+  Your <a href="https://www.bankmybiz.com">Bankmybiz</a> Certified Lender <strong>has expired</strong>. Unless you <%= link_to "renew your Certification", new_subscription_url %>, you no longer:
+</p>
+<ul>
+  <li>Receive Business Relationship Recommendations</li>
+  <li>Be Recognized as a Certified Lender</li>
+  <li>Be Listed on Funding Option Information Pages</li>
+</ul>
+
+<p>
+  <%= link_to "Please follow this link to renew your Certified Lender status", new_subscription_url %>
+</p>

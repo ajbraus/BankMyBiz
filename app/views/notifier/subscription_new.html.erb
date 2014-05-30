@@ -1,0 +1,19 @@
+<h4 class="h4">Hey Team,</h4>
+<p>
+  Brand new subscription!
+</p>
+
+<table style='width:100%'>
+  <tr style="text-align:left;">
+    <th>Lender</th>
+    <th>Type</th>
+    <th>Next Payment</th>
+    <th>Price</th>
+  </tr>
+  <tr>
+    <td><%= @user.name %></td>
+    <td><%= @subscription.name %></td>
+    <td><%= Date.today + 1.month %></td>
+    <td><%= @amount %></td>
+  </tr>
+</table>

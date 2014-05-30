@@ -47,6 +47,7 @@ class SubscriptionsController < ApplicationController
       @subscription.stripe_subscription_id = stripe_subscription.id
       @subscription.save
       Notifier.delay.subscription_receipt(@subscription)
+      Notifier.delay.new_subscription(@subscription)
 
       return redirect_to root_path, :notice => "Successfully Certified!"
     else

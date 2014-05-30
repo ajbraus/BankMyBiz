@@ -10,19 +10,19 @@ class WebhooksController < ApplicationController
       stripe_customer_id = object['customer']
       stripe_subscription_id = object['subscription']
       customer = User.find_by_stripe_customer_id(stripe_customer_id)
-      unless customer.subscriptions.none?
+      if customer.subscriptions.any? && customer.subscriptions.last.expires_on <= Date.today
         last_subscription = customer.subscriptions.last
-        customer.subscriptions.create(plan_id: last_subscription.plan_id, 
-                       stripe_subscription_id: stripe_subscription_id, 
-                                   expires_on: last_subscription.expires_on + 1.month, 
-                               price_in_cents: last_subscription.price_in_cents)
+        # renew subscription
+        @subscription = customer.subscriptions.create(plan_id: last_subscription.plan_id, 
+                                       stripe_subscription_id: stripe_subscription_id, 
+                                                   expires_on: Date.today + 1.month, 
+                                               price_in_cents: last_subscription.price_in_cents)
+        Notifier.delay.subscription_renewal(@subscription)
       end
-      # renew subscription
     end
 
     if type == "charge.failed"
       customer = object['customer']
-
 
       # suspend subscription
     end

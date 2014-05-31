@@ -377,6 +377,12 @@ class User < ActiveRecord::Base
     return subscriptions.any? && subscriptions.last.expires_on > Date.today
   end
 
+  def self.send_expired_subscription_reminders
+    Subscription.where(expires_on: Date.today - 2.days).each do |s|
+      Notifier.delay.subscription_expiring(s)
+    end
+  end
+
   def self.send_profile_reminders
     @users = User.select do |u| 
       u.rejected_at.blank? && !u.finished_profile? && ( u.created_at.to_date == (Date.today - 8.days) || u.created_at.to_date == (Date.today - 21.days) )

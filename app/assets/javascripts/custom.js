@@ -9,6 +9,7 @@ String.prototype.supplant = function (o) {
 
 $(document).ready(function() {
   $('#phone').mask('(999) 999 - 9999');
+  $('#user_zip_code').mask('99999');
 
   $("#new_post").focusin(function() {
     $("#questionForm").slideDown();

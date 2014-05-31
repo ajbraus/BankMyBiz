@@ -11,6 +11,26 @@ class Notifier < ActionMailer::Base
   #   mail to: @user.email, subject: "#{post.user.first_name_with_last_initial} just asked about #{@tag.name}. Give them some expert advice."
   # end
 
+  def subscription_expired(subscription)
+    @user = subscription.user
+    @subscription = subscription
+    mail to: @user.email, subject: "Bankmybiz Certification Expiring"
+  end
+
+  def subscription_new(subscription)
+    @user = subscription.user
+    @subscription = subscription
+    @amount = price_in_dollars(@subscription.price_in_cents)
+    mail to: "team@bankmybiz.com", subject: "Brand Spanking New BMB Subscription"
+  end
+
+  def subscription_renewal(subscription)
+    @user = subscription.user
+    @subscription = subscription
+    @amount = price_in_dollars(@subscription.price_in_cents)
+    mail to: "team@bankmybiz.com", subject: "BMB Subscription Renewed"
+  end
+
   def subscription_receipt(subscription)
     @user = subscription.user
     @subscription = subscription

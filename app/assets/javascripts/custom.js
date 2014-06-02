@@ -34,6 +34,9 @@ $(document).ready(function() {
     event.preventDefault();
   });
   
+  $('#new_post').validate();
+  $('#new_milestone_post').validate();
+
   $('#new_user').validate({ 
     errorPlacement: function(error, element) {}
   });

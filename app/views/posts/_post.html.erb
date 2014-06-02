@@ -15,13 +15,29 @@
       <% end %>
     </div>
     <div class="col-xs-11">
-      <div class="row">
-        <% if params[:controller] == "posts" && params[:action] == "show" %>
-          <b class="large"><%= post.title %></b>
+      <div>
+        <% if post.kind.present? %>
+          <i class='icon ion-pricetag gold'></i> <%= post.kind %>
         <% else %>
-          <%= link_to post, class:"title" do %> <b class="large"><%= post.title %></b> <% end %>
+          <i class='icon ion-help'></i> Question
         <% end %>
       </div>
+      <% if params[:controller] == "posts" && params[:action] == "show" %>
+        <b class="large">
+          <%= post.title %>
+          <% if post.kind.present? %>
+            <i class='icon ion-pricetag gold'></i> <%= post.kind %>
+          <% else %>
+            <i class='icon ion-help'></i> Question
+          <% end %>
+        </b>
+      <% else %>
+        <%= link_to post, class:"title" do %> 
+          <b class="large">
+            <%= post.title %>
+          </b> 
+        <% end %>
+      <% end %>
       <% if params[:action] == "show" %>
         <section>
           <%= auto_link(post.content, html: { target: '_blank' }) %>

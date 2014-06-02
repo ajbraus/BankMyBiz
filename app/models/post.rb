@@ -11,7 +11,11 @@ class Post < ActiveRecord::Base
                   :slug,
                   :tag_list,
                   :impressions_count,
-                  :last_touched_at
+                  :last_touched_at,
+                  :kind
+
+  BANK_MILESTONE_KINDS = ["Provided a Loan", "New Partnership", "New Product", "Announcement"]
+  BIZ_MILESTONE_KINDS = ["Found a Loan", "New Partnership", "Product Launch", "Announcement"]
 
   validates :title, :content, :slug, presence: true
 
@@ -89,3 +93,7 @@ class Post < ActiveRecord::Base
     rake fs:rebuild
   end
 end
+
+
+
+

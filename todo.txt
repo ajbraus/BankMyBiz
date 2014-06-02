@@ -1,19 +1,27 @@
-"You qualify for a free consultation - update enter phone number"
+create milestone type posts
+  DONE add kind
+  DONE set kind 
+  autocomplete on banker/biz
+  DONE display if question or milestone
+  DONE add milestones to profile (remove them from questions)
+  DONE remove "Milestones"
+  DONE give credit when milestone completes to both parties
+  notify followers that they hit a milestone
 
-mask zip code like phone number
+
+
+setup admin dash
+
+"You qualify for a free consultation - update enter phone number"
 
 tell bankers that their certified subscription is dying
 
 check all boxes in banker profile
 
-create milestone type posts
-send messages to bankers "from business owner"
-
 drip email campaign of people's product matches once a week until they are all done.
 
 when creating customer add name of organization to description
 
-setup listen to webhooks for new payment
 setup cancelling subscription
 
 clean up user shield -> contact at one click
@@ -21,14 +29,16 @@ clean up user shield -> contact at one click
 "Interested"
 
 3 lender matches have been added to your relationships
-Name change: Following & Relationships
 
-fix milestones
-  add matches, follwers and followed as dropdown
-  add loan purpose as dropdown to milestone
-  give credit when milestone completes to both parties
-  notify followers that they hit a milestone
 
+cache counters
+
+bankers_count
+owners_count
+
+Product.all.each do |p|
+  
+end
 -------------------------------------------------
 
 "You qualify for a free consultation"
@@ -866,3 +876,5 @@ matches = relationships recommendations
 
   DONE When you get a match, they follow you from then on. 
   DONE The pipeline page is split. People you follow, people who follow you. 
+
+DONE setup listen to webhooks for new payment

@@ -56,17 +56,6 @@ end
         <% end %>
       <% else %>
         <div class="text-right clearfix">
-          <% if current_user.bank != @user.bank && @user.finished_profile? %>
-            <% if current_user.bank? && current_user.products.any? %>
-              <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
-                <i class="icon ion-pricetags gold"></i> New Milestone
-              <% end %>
-            <% elsif @user.products.any? %>
-              <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
-                <i class="icon ion-pricetags gold"></i> New Milestone
-              <% end %>            
-            <% end %>
-          <% end %>
           <%= render partial: 'follow_form', locals: { user: @user } if user_signed_in? %>
           <% if !current_user.bank? || @user.following?(current_user) || current_user.is_a_match_with?(@user) || current_user.admin? %>
               <a data-toggle="modal" href="#contact-modal" class="btn btn-default"><i class="ion-ios7-email blue"></i> Contact </a>
@@ -249,36 +238,12 @@ end
         </section>
       </div>  
     <% end %>
-    <div class='row well'>
-      <div class="col-xs-12">
-        <h3>Milestones</h3>
-      </div>
-      <div class="col-xs-12">
-        <% if @user.bank? %>
-          <% if @user.milestones.any? %>
-            <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
-          <% else %>
-            <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
-            <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Lender and seal a deal? Congradulations! Navigate to the Lender's profile to mark the milestone.</p>
-          <% end %>
-          <%= render partial: "milestones/milestone", collection: @user.milestones, as: :milestone %>
-        <% else %>
-          <% if @user.biz_milestones.any? %>
-            <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
-          <% else %>
-            <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
-            <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Business Owner and seal a deal? Congradulations! Navigate to the Business Owner's profile to mark the milestone.</p>
-          <% end %>
-          <%= render partial: "milestones/milestone", collection: @user.biz_milestones, as: :milestone %>
-        <% end %>
-      </div>
-    </div>
     <hr>
     <div class="row">
     <% if @user == current_user %>
-      <h4>Your Questions</h4>
+      <h4>Your Questions + Milestones</h4>
     <% else %>
-      <h4><%= @user.first_name %>'s Recent News & Questions</h4>
+      <h4><%= @user.first_name %>'s Recent Questions & Milestones</h4>
     <% end %>
       <%= render partial: "posts/post", collection: @posts, as: :post %>
       <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>

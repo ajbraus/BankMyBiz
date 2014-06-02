@@ -1,4 +1,4 @@
-<div class="col-sm-4 col-sm-offset-4">
+<div class="col-sm-6 col-sm-offset-3 well">
   <%= form_for(@milestone) do |f| %>
     <% if @milestone.errors.any? %>
       <div id="error_explanation">
@@ -11,7 +11,7 @@
         </ul>
       </div>
     <% end %>
-    <div class="row">
+    <div class="">
       <p class="text-muted">What sort of milestone did you reach with <%= @user.first_name_with_last_initial %>?</p>
       <% if @user.bank? %>
         <label>Lender</label><br>
@@ -21,7 +21,7 @@
       <%= render partial: 'users/user', locals: { user: @user} %>
     </div>
 
-    <div class="row">
+    <div class="">
       <div class="field">
         <%= f.label :products, "Products*" %><br />
         <p class='text-muted'>Select at least one</p>
@@ -52,13 +52,13 @@
         <%= f.select :size, options_for_select(LoanSize.all.collect {|x| x.description}), { prompt: "Milestone Size" }, class:'form-control required' %> 
       </div>
     </div>
-    <div class="row">
+    <div class="">
       <div class="field">
         <%= f.label :purpose %><br />
         <%= f.text_field :purpose, class:"form-control" %>
       </div>
     </div>
-    <div class="row">
+    <div class="">
       <div class="field">
         <%= f.label :details %><br />
         <%= f.text_area :details, class:"form-control" %>

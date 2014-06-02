@@ -612,6 +612,14 @@ h3.matches {
   background: white;
   margin-top: 15px;
   margin-bottom:0;
+  position: relative;
+}
+
+.post-type {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-right: 10px;
 }
 
 .textarea-profile {
@@ -690,7 +698,7 @@ height: 90px;
 }
 
 .post-textarea {
-  height:200px !important;
+  height:160px !important;
 }
 
 .pricing-table .plan {
@@ -1470,8 +1478,6 @@ padding: 30px 0;
 }
 
 .votes {
-  position: relative;
-  top: 17px;
 
 }
 

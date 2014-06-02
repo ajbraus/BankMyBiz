@@ -400,3 +400,43 @@ data-spy="affix" data-offset-top="90" data-offset-bottom="200"
         <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>
       <% end %>
     </li>
+
+
+milestones
+    <% if current_user.bank != @user.bank && @user.finished_profile? %>
+      <% if current_user.bank? && current_user.products.any? %>
+        <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
+          <i class="icon ion-pricetags gold"></i> New Milestone
+        <% end %>
+      <% elsif @user.products.any? %>
+        <%= link_to new_milestone_path(user_id: @user.id), class:'btn btn-default' do %>
+          <i class="icon ion-pricetags gold"></i> New Milestone
+        <% end %>            
+      <% end %>
+    <% end %>
+
+
+        <div class='row well'>
+      <div class="col-xs-12">
+        <h3>Milestones</h3>
+      </div>
+      <div class="col-xs-12">
+        <% if @user.bank? %>
+          <% if @user.milestones.any? %>
+            <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+          <% else %>
+            <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
+            <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Lender and seal a deal? Congradulations! Navigate to the Lender's profile to mark the milestone.</p>
+          <% end %>
+          <%= render partial: "milestones/milestone", collection: @user.milestones, as: :milestone %>
+        <% else %>
+          <% if @user.biz_milestones.any? %>
+            <h4><i class="icon ion-pricetags gold"></i> Milestones</h4>
+          <% else %>
+            <h4><i class="icon ion-pricetags"></i> No Milestones Yet</h4>
+            <p class="text-muted">Milestones are deals that you have accomplished on Bankmybiz. Find a great Business Owner and seal a deal? Congradulations! Navigate to the Business Owner's profile to mark the milestone.</p>
+          <% end %>
+          <%= render partial: "milestones/milestone", collection: @user.biz_milestones, as: :milestone %>
+        <% end %>
+      </div>
+    </div>

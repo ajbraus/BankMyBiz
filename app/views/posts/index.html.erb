@@ -8,19 +8,18 @@
         <% end %>
       <% end %>
     </div>
-    <div class="col-xs-10">
+    <div class="col-xs-9">
       <% if user_signed_in? %>
         <% if current_user.has_image? %>
           <ul class="nav nav-tabs">
             <li class="active"><a href="#question" data-toggle="tab">Ask a Question</a></li>
-            <!-- <li><a href="#milestone" data-toggle="tab">Share a Milestone</a></li> -->
+            <li><a href="#milestone" data-toggle="tab">Share a Milestone</a></li>
             <a href="#" class="pull-right" id="closePost" style="display:none;">x</a>
           </ul>
           <!-- Tab panes -->
           <div class="tab-content">
             <section class="tab-pane active" id="question">
               <%= form_for(current_user.posts.new) do |f| %>
-                <!-- <div class="pull-right muted"><span id="titleCharCount">0</span>/250</div> -->
                 <p>
                   <%= f.text_field :title, class:"form-control", placeholder:"What's your question?", id:"newPostTitle" %>
                 </p>
@@ -32,14 +31,33 @@
                     <%= f.text_field :tag_list, class:"form-control", id: "postTags", placeholder:"Add Topic Keywords" %>
                   </div>
                   <div class="pull-right">
+                    <%= f.submit "Ask", class:"btn btn-success btn-lg", id:"submitPost" %>
+                  </div>
+                </div>
+              <% end %>
+            </section>
+            <section class="tab-pane" id="milestone">
+              <%= form_for current_user.posts.new, html: { id:"new_milestone_post" } do |f| %>
+                <p>
+                  <%= f.text_field :title, class:"form-control require", placeholder:"What's the Buzz?", id:"newPostTitle" %>
+                </p>
+                <p>
+                  <% if current_user.bank? %>
+                    <%= f.select :kind, Post::BANK_MILESTONE_KINDS, {prompt: "Milestone Type"}, class: "form-control required" %>
+                  <% else %>
+                    <%= f.select :kind, Post::BIZ_MILESTONE_KINDS, {prompt: "Milestone Type"}, class: "form-control required" %>
+                  <% end %>
+                </p>
+                <div>
+                  <p>
+                    <%= f.text_area :content, class:"form-control post-textarea require", placeholder:"Tell us the details of your Milestone. Who are you working with? Did you get a loan? Congrats! How much? Include links. Be as specific as possible." %>
+                  </p>
+                  <div class="pull-right">
                     <%= f.submit "Share", class:"btn btn-success btn-lg", id:"submitPost" %>
                   </div>
                 </div>
               <% end %>
             </section>
-    <!--         <section class="tab-pane" id="milestone">
-              milestone form
-            </section> -->
           </div>
         <% else %>
           <div class="alert-info" style="padding:10px;" id="fadeInAlert">

@@ -14,8 +14,7 @@ class Post < ActiveRecord::Base
                   :last_touched_at,
                   :kind
 
-  BANK_MILESTONE_KINDS = ["Provided a Loan", "New Partnership", "New Product", "Announcement"]
-  BIZ_MILESTONE_KINDS = ["Found a Loan", "New Partnership", "Product Launch", "Announcement"]
+  MILESTONE_KINDS = ["Ask a Question", "Mark a Milestone", "Celebrate New Financing", "Announce a New Product or Partnership"]
 
   validates :title, :content, :slug, presence: true
 

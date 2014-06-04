@@ -1,18 +1,29 @@
+milestones 
+  put icons in corner
+  count milestones in user profile
+  question
+
+Interested in contacting
+put in pipeline confirmation -> friends.
+"I would like to add you to my relationship pipeline. Confirm"
+
+make sure relationship emails are going out
+
+click anywhere on question
+
+answers must have some text
+
+relationship pipeline f'ed
+
 setup admin dash
+  create relationships with biz and bankers
+  contact all bankers
+  know our breakdown of businesses and bankers
+make monopolists
+force bankers to pay
 
 "You qualify for a free consultation - update enter phone number"
 
-Make all matches follow
-
-Match.all.each do |m|
-  m.user.followed_users << m.match if !m.user.followed_users.include?(m.match)
-end
-
-"You qualify for a free consultation - update enter phone number"
-
-mask zip code like phone number
-
-tell bankers that their certified subscription is dying
 check all boxes in banker profile
 
 drip email campaign of people's product matches once a week until they are all done.
@@ -22,27 +33,10 @@ setup cancelling subscription
 
 clean up user shield -> contact at one click
 
-<<<<<<< HEAD
-"Interested"
-
 3 lender matches have been added to your relationships
 
-=======
-fix milestones
-  add matches, follwers and followed as dropdown
-  add loan purpose as dropdown to milestone
-  give credit when milestone completes to both parties
-  notify followers that they hit a milestone
->>>>>>> b828570c207bfc4d37baff908bba8afe9cf04002
+Thread messages by subject line
 
-cache counters
-
-bankers_count
-owners_count
-
-Product.all.each do |p|
-  
-end
 -------------------------------------------------
 
 Products:  
@@ -128,49 +122,8 @@ send initial message as email
 unsubscribe without login - 
 
 reverse geocode and set city by zipcode
-
-peers are fucked - rethink
-impressions table is fucked - just use impression counter?
-impressions on posts are not even counting
-use impressionable in user and view_count cache counter in post
-
 newsletter/digest
-
-Q&A
-  - follow tags
-    DONE - add new followed tag with tag-it
-    - delete followed tag
-    - don't receive interests emails
-    - don't receive answers emails
-    - follow 5 tags upon login
-
-Products
-  - Businesses have products (based on their profile)
-  incorporate entity type
-
-     term_loan - in business 2 years, revenue, 
-     line_of_credit - in business 2 years, revenue,
-     sba_loan ???
-
-     factoring - High/Very High AR, B2B customers
-     revenue_based - High Revenue ...???
-     asset_based - in business 2 years, Industries???
-     private_equity - ???
-     community_development_fund - ???
-     merchant_cash_advance - ???
-     cash_advance - ???
-     grants - industry = non-profit/education/healthcare, entity_type = nonprofit, bcorp
-     crowd_funding_for_rewards - industry = Manufacturing/Consumer Products/Arts & Design and few employees, low AR, low revenue, B2C customers
-
-     crowd_funding_for_equity - young business, 
-     angel_investment
-     venture_capital
-
-  - Link users to matches through products
-  - Bankers pay to be matched on products
-
 anonymous questions
-
 
 Money
   - Get verified = Bankers, service providers, and businesses
@@ -186,21 +139,7 @@ Credit Card payment bounced but card was saved and then it worked
   Subscription
     add destroy card
 
-----------------------------------------------------
 
-Database size
-public     | impressions                |       1739
-public     | peers                      |        970
-public     | customer_types_users       |        915
-public     | industries_users           |        641
-public     | loan_sizes_users           |        435
-public     | matches                    |        396
-public     | accounts_receivables_users |        340
-public     | business_types_users       |        320
-
-
-
-Thread messages by subject line
 use newsle to get press for our customers and lenders onto the newsfeed
 
 
@@ -890,3 +829,8 @@ create milestone type posts
   DONE remove "Milestones"
   DONE give credit when milestone completes to both parties
   DONE notify followers that they hit a milestone
+
+
+Match.all.each do |m|
+  m.user.followed_users << m.match if !m.user.followed_users.include?(m.match)
+end

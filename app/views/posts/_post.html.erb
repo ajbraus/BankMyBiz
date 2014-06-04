@@ -25,11 +25,6 @@
       <% if params[:controller] == "posts" && params[:action] == "show" %>
         <b class="large">
           <%= post.title %>
-          <% if post.kind.present? %>
-            <i class='icon ion-pricetag gold'></i> <%= post.kind %>
-          <% else %>
-            <i class='icon ion-help'></i> Question
-          <% end %>
         </b>
       <% else %>
         <%= link_to post, class:"title" do %> 

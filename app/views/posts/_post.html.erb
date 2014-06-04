@@ -14,9 +14,7 @@
         <br>
       <% end %>
     </div>
-    <div class="col-xs-11">
-      <div>
-      </div>
+    <div class="col-xs-10">
       <% if params[:controller] == "posts" && params[:action] == "show" %>
         <b class="large">
           <%= post.title %>
@@ -71,6 +69,15 @@
           </section>
         </section>
       </section>
+    </div>
+    <div class="col-xs-1 text-center">
+      <div rel="tooltip" title="<%= post.kind %>" data-placement="bottom">
+        <% if post.kind == "Ask a Question" %>
+          <i class='icon ion-help'></i>
+        <% else %>
+          <i class='icon ion-pricetag gold'></i> 
+        <% end %>
+      </div>
     </div>
   </div>
   <% if params[:action] == "show" %>

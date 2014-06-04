@@ -8,7 +8,7 @@
     <div class="pull-left">
       <h4><%= current_user.name.titleize %> <%= certified_badge(current_user) %></h4>
       <div><i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %> Bankmybiz Credit</div>
-      <div><i class="icon ion-pricetags gold"></i> <%= current_user.milestones.count %> Milestones</div>
+      <div><i class="icon ion-pricetags gold"></i> <%= current_user.posts.count %> Questions & Milestones</div>
       <p><%= link_to "Edit Profile", edit_profile_path(current_user) %> 
         <% if current_user.bank? %>
           | <%= link_to "Update Subscription", new_subscription_path %>

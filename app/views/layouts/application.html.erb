@@ -207,7 +207,7 @@
               <% end %>
               <li>
                 <%= link_to user_path(current_user) do %>
-                  <%= current_user.first_name_with_last_initial %> <i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %> | <i class="icon ion-pricetags gold"></i> <%= current_user.milestones.count %>
+                  <%= current_user.first_name_with_last_initial %> <i class="icon ion-arrow-up-a green"></i> <%= current_user.cred_count %> | <i class="icon ion-pricetags gold"></i> <%= current_user.posts.count %>
                 <% end %>
                 <% if @user.present? && @user == current_user %>
                   <div class="under text-center"><i class="icon ion-arrow-up-b green"></i></div>

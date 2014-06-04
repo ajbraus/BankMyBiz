@@ -8,28 +8,29 @@
         <% end %>
       <% end %>
     </div>
+    <div id="closePost" class="pull-right col-xs-1" style="display:none;"><i class="icon ion-close"></i></div>
     <div class="col-xs-9">
       <% if user_signed_in? %>
         <% if current_user.has_image? %>
-              <%= form_for(current_user.posts.new) do |f| %>
-                <p>
-                  <%= f.select :kind, Post::MILESTONE_KINDS, {}, class: "form-control required" %>
-                </p>
-                <p>
-                  <%= f.text_field :title, class:"form-control require", placeholder:"Question or Milestone Title", id:"newPostTitle" %>
-                </p>
-                <div style="display:none;" id="questionForm">
-                  <p>
-                    <%= f.text_area :content, class:"form-control post-textarea", placeholder:"Tell us the details of your Question or Milestone. Who are you working with? Did you get a loan? Congrats! How much? Include links. Be as specific as possible." %>
-                  </p>
-                  <div class="pull-left margin-right" style="width: 72%;">
-                    <%= f.text_field :tag_list, class:"form-control", id: "postTags", placeholder:"Add Topic Keywords" %>
-                  </div>
-                  <div class="pull-right">
-                    <%= f.submit "Share", class:"btn btn-success btn-lg", id:"submitPost" %>
-                  </div>
-                </div>
-              <% end %>
+          <%= form_for(current_user.posts.new) do |f| %>
+            <p>
+              <%= f.select :kind, Post::MILESTONE_KINDS, {}, class: "form-control required" %>
+            </p>
+            <p>
+              <%= f.text_field :title, class:"form-control require", placeholder:"Question or Milestone Title", id:"newPostTitle" %>
+            </p>
+            <div style="display:none;" id="questionForm">
+              <p>
+                <%= f.text_area :content, class:"form-control post-textarea", placeholder:"Tell us the details of your Question or Milestone. Who are you working with? Did you get a loan? Congrats! How much? Include links. Be as specific as possible." %>
+              </p>
+              <div class="pull-left margin-right" style="width: 72%;">
+                <%= f.text_field :tag_list, class:"form-control", id: "postTags", placeholder:"Add Topic Keywords" %>
+              </div>
+              <div class="pull-right">
+                <%= f.submit "Share", class:"btn btn-success btn-lg", id:"submitPost" %>
+              </div>
+            </div>
+          <% end %>
         <% else %>
           <div class="alert-info" style="padding:10px;" id="fadeInAlert">
             <p><i class="icon ion-ios7-bell"></i> To post Questions and Milestones to the Bankmybiz Network you must first

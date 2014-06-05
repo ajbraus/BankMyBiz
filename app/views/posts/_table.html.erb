@@ -3,6 +3,6 @@
   <td width='20%'><%= post.user.industries.map(&:description).join(", ") %></td>
   <td class="muted" width="45%"><%= auto_link(post.short_content, html: { target: '_blank' }) %></td>
   <td width="20%">
-  <%= raw post.tags.map(&:name).map { |t| link_to t, tag_path(t), class:"tag small" }.join(' ') %>
+  <%= raw post.tags.map(&:name).map { |t| link_to t, posts_path(search: t.normalize), class:"tag small" }.join(' ') %>
   </td>
 </tr>

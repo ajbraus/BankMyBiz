@@ -1,6 +1,4 @@
-BankMyBiz::Application.routes.draw do
-  resources :milestones
-  resources :products, only: [:show]
+BankMyBiz::Application.routes.draw do  resources :products, only: [:show]
 
   get "/ads/new", to: "welcome#new_ad", as: 'new_ad'
 

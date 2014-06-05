@@ -18,10 +18,10 @@ class TagsController < ApplicationController
           format.js
         end
       else
-        redirect_to root_path, notice: "You Already Follow that Tag"
+        return redirect_to root_path, notice: "You Already Follow that Tag"
       end
     else
-      redirect_to root_path, notice: "No Tag of that Name Exists"
+      return redirect_to root_path, notice: "No Tag of that Name Exists"
     end
   end
 end

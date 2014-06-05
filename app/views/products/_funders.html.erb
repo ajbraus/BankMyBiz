@@ -1,6 +1,6 @@
 <div class="row">
   <h4 class='text-center'><%= @product.name %> Lenders on Bankmybiz</h4>
-  <%= render partial: 'matches/match', collection: @product.users.where(bank: true).joins(:subscriptions).where("subscriptions.expires_on > ?", Date.today).order("RANDOM()").first(4), as: 'match' %>
+  <%= render partial: 'users/user', collection: @product.users.where(bank: true).joins(:subscriptions).where("subscriptions.expires_on > ?", Date.today).uniq.shuffle.first(4), as: 'user' %>
 </div>
 <% if user_signed_in? && current_user.bank? %>
   <section class="text-right">

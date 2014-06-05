@@ -1,5 +1,5 @@
-<div class="col-sm-6 clearfix match-card">
-  <%= link_to user_path(user), class:"pull-left" do %><%= small_profile_picture(user) %><% end %></td>
+<div class="match row">
+  <%= link_to user_path(user), class:"col-xs-2" do %><%= small_profile_picture(user) %><% end %></td>
   <div class="col-xs-10">
     <strong><%= link_to user.first_name_with_last_initial, user_path(user) %> <%= certified_badge(user) %></strong> <span class='text-muted'><%= user.position %></span> <br> <%= user.org_name %>
       <br>

@@ -108,9 +108,6 @@ class User < ActiveRecord::Base
 
   has_many :invitations, :class_name => self.to_s, :as => :invited_by
 
-  has_many :milestones, foreign_key: "funder_id"
-  has_many :biz_milestones, class_name: "Milestone", foreign_key: "owner_id"
-
   has_attached_file :avatar,
          :styles => { 
             :medium => "200x200",

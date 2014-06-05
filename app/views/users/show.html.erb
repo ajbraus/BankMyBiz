@@ -45,9 +45,12 @@ end
         <% end %>
       </div>
     <% else %>
-      <div class='background text-center' style="background-color:<%= @user.background_color %>;">
-        <%= large_profile_picture(@user) %>
-      </div>
+      <%= render partial: 'matches/match', locals: { match: @user } %>
+      <% if false %>
+        <div class='background text-center' style="background-color:<%= @user.background_color %>;">
+          <%= large_profile_picture(@user) %>
+        </div>
+      <% end %>
     <% end %>
     <section class="clearfix">
       <% if @user == current_user %>
@@ -133,6 +136,21 @@ end
           <div class="muted"><%= @user.products.map(&:name).join(", ") %></div>
         </section>
       </div>
+    <% else %>
+      <div class='row well'>
+        <section class="col-sm-4">
+          <strong>Funding Sought:</strong> <br>
+          <%= @user.loan_sizes.first.try(:description) %> 
+        </section>
+        <section class="col-sm-4">
+          <strong>Funding Purpose:</strong> <br>
+          <%= @user.loan_purposes.first.try(:description) %> 
+        </section>
+        <section class="col-sm-4">
+          <strong>Funding Priority:</strong> <br>
+          <%= @user.loan_priorities.first.try(:description) %> 
+        </section>
+      </div>  
     <% end %>
     <div class='row well'>
       <div class='row'>
@@ -219,25 +237,6 @@ end
         <% end %>
       </div>
     </div>
-    <% if !@user.bank? %>
-      <div class='row well'>
-        <div class="col-xs-12">
-          <h3>Funding Profile</h3>
-        </div>
-        <section class="col-sm-4">
-          <strong>Funding Sought:</strong> <br>
-          <%= @user.loan_sizes.first.try(:description) %> 
-        </section>
-        <section class="col-sm-4">
-          <strong>Funding Purpose:</strong> <br>
-          <%= @user.loan_purposes.first.try(:description) %> 
-        </section>
-        <section class="col-sm-4">
-          <strong>Funding Priority:</strong> <br>
-          <%= @user.loan_priorities.first.try(:description) %> 
-        </section>
-      </div>  
-    <% end %>
     <hr>
     <div class="row">
     <% if @user == current_user %>

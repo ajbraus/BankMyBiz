@@ -1,8 +1,3 @@
-milestones 
-  put icons in corner
-  count milestones in user profile
-  question
-
 Interested in contacting
 put in pipeline confirmation -> friends.
 "I would like to add you to my relationship pipeline. Confirm"

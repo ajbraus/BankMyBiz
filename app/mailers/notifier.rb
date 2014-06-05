@@ -3,6 +3,7 @@ class Notifier < ActionMailer::Base
   include UsersHelper
   include SubscriptionsHelper
   include ActionView::Helpers::AssetTagHelper  
+  include ActionView::Helpers::TextHelper
   layout 'email' # use email.(html|text).erb as the layout for emails
   default from: "Bankmybiz"
 
@@ -90,7 +91,7 @@ class Notifier < ActionMailer::Base
   def new_match(user, matching_users)
     @user = user
     @matching_users = matching_users
-    mail to: @user.email, subject: "#{pluralize @matching_users, 'New Relationship Recommendation'} - #{@matching_users.first.first_name_with_last_initial} with #{@matching_users.first.org_name}"
+    mail to: @user.email, subject: "New Relationship #{pluralize @matching_users, 'Recommendation'} - #{@matching_users.first.first_name_with_last_initial} with #{@matching_users.first.org_name}"
   end
 
   def profile_reminder(u)

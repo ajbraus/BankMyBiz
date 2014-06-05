@@ -1,14 +1,24 @@
-<h4 class="h4">Congratulations <%= @user.first_name.titleize %>, </h4>
+<h4 class="h4"><%= @user.first_name.titleize %>, </h4>
 <p>
-  You have <%= pluralize @matching_users, "new Relationship recommendations" %> on Bankmybiz.com!
+  You have <% if @matching_users.count > 1 %> a new Relationship Recommendation <% else %> new Relationship Recommendations <% end %> on Bankmybiz.com!
 </p>
 
 <% @matching_users.each do |match| %>
   <%= render partial: 'users/email_user', locals: { current_user: @user, other_user: match } %>
-  <p>A little bit about <%= match.org_name %>:</p>
-  <p><%= match.bio %></p>
+  <% if match.bio.present? %>
+    <p>A little bit about <%= match.org_name %>:</p>
+    <p><%= match.bio %></p>
+  <% end %>
 <% end %>
 
+<br>
+<hr>
+
 <p>
-  BankMyBiz.com creates one free new match per week. You can accelerate the speed of building lending relationships by posting to the News Feed, starting conversations on News Feed posts, and now <%= link_to "Purchasing Matches", matches_url %>.
+  Bankmybiz.com gives you Relationship Recommendations every week. You can accelerate the speed of building lending relationships by 
+  <ol>
+    <li>Putting people in your Relationship Pipeline</li>
+    <li>Posting Questions and Milestones to the News Feed and</li>
+    <li>Commenting and giving advice on posts on the News Feed.</li>
+  </ol>
 </p>

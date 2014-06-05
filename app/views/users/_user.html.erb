@@ -3,7 +3,9 @@
   <div class="col-xs-10">
     <strong><%= link_to user.first_name_with_last_initial, user_path(user) %> <%= certified_badge(user) %></strong> <span class='text-muted'><%= user.position %></span> <br> <%= user.org_name %>
       <br>
-      <%= current_user.percentage_match(user) %>% Match <%= current_user.local?(user) ? "| Local" : "" %> | <%= user.status %> 
+      <% if user_signed_in? %>
+        <%= current_user.percentage_match(user) %>% Match <%= current_user.local?(user) ? "| Local" : "" %> | <%= user.status %> 
+      <% end %>
     </span>
   </div>
 </div>

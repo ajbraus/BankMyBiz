@@ -91,7 +91,12 @@ class Notifier < ActionMailer::Base
   def new_match(user, matching_users)
     @user = user
     @matching_users = matching_users
-    mail to: @user.email, subject: "New Relationship #{pluralize @matching_users, 'Recommendation'} - #{@matching_users.first.first_name_with_last_initial} with #{@matching_users.first.org_name}"
+    if @matching_users.count == 1
+      recommendation = "Recommendation"
+    else
+      recommendation = "Recommendations"
+    end
+    mail to: @user.email, subject: "New Relationship #{recommendation}- #{@matching_users.first.first_name_with_last_initial} with #{@matching_users.first.org_name}"
   end
 
   def profile_reminder(u)

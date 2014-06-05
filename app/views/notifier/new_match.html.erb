@@ -1,6 +1,6 @@
 <h4 class="h4"><%= @user.first_name.titleize %>, </h4>
 <p>
-  You have <% if @matching_users.count > 1 %> a new Relationship Recommendation <% else %> new Relationship Recommendations <% end %> on Bankmybiz.com!
+  You have <% if @matching_users.count == 1 %> a new Relationship Recommendation <% else %> new Relationship Recommendations <% end %> on Bankmybiz.com!
 </p>
 
 <% @matching_users.each do |match| %>

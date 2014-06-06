@@ -6,7 +6,6 @@ setup admin dash
   "You qualify for a free consultation - update enter phone number"
 make monopolists
 
-
 check all boxes in banker profile
 
 Interested in contacting
@@ -25,6 +24,7 @@ Thread messages by subject line
 
 Products:  
   commercial realestate loan,
+  
   micro-loan,
   Peer2Peer loan,
   credit union,

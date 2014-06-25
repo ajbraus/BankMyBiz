@@ -1,4 +1,3 @@
-force bankers to pay
 setup admin dash
   create relationships with biz and bankers
   contact all bankers

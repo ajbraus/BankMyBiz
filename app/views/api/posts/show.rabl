@@ -1,5 +1,5 @@
 object @post
-attributes :id, :content, :tag_list
+attributes :id, :title, :content, :tag_list
 node(:vote_count) { |p| p.plusminus }
 node(:answers_count) { |p| p.answers.count }
 node(:impressions_count) { |p| p.impressions_count }

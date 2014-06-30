@@ -2,6 +2,7 @@ object @post
 attributes :id, :content, :tag_list
 node(:vote_count) { |p| p.plusminus }
 node(:answers_count) { |p| p.answers.count }
+node(:impressions_count) { |p| p.impressions_count }
 
 child(:user) do 
   attributes :id, :first_name_with_last_initial

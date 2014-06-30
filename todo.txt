@@ -1,3 +1,5 @@
+update db: https://devcenter.heroku.com/articles/upgrade-heroku-postgres-with-pgbackups
+
 setup admin dash
   create relationships with biz and bankers
   contact all bankers

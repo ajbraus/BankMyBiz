@@ -1,9 +1,12 @@
 object @post
 attributes :id, :content, :tag_list
 node(:vote_count) { |p| p.plusminus }
-node(:profile_image_url) { |p| p.user.profile_picture_url }
+node(:answers_count) { |p| p.answers.count }
 
-child(:user) { attributes :id, :first_name_with_last_initial }
+child(:user) do 
+  attributes :id, :first_name_with_last_initial
+  node(:profile_image_url) { |u| u.profile_picture_url }
+end
 
 child(:comments) do 
   attributes :id, :content

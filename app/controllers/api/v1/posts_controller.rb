@@ -1,37 +1,28 @@
 class Api::V1::PostsController < ApplicationController
   #before_filter :authenticate_user!
   
-  def index
+  def index # GET (plural/array)
     @posts = Post.paginate(page: params[:page], per_page: 10, order: "created_at desc")
     render 'api/posts/index'
   end
 
-  def show
+  def show #GET (singular/object)
     @post = Post.find(params[:id])
     render 'api/posts/show'
   end
 
-  def new
-    @post = Post.new
-  end
-
-  def create
+  def create #POST
     current_user.posts.create(params[:post])
     render 'api/posts/create'
   end
 
-  def edit
-    Post.find(params[:id])
-    render 'api/posts/edit'
-  end
-
-  def update
+  def update # PUT
     @post = Post.find(params[:id])
     @post.update_attributes(params[:post])
     render 'api/posts/show'
   end
 
-  def destroy
+  def destroy #DELETE
     @post = Post.find(params[:id])
     @post.destroy
   end

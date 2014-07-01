@@ -81,13 +81,11 @@
 <div class="col-xs-10 col-xs-offset-1">
   <hr>
   <div class="well clearfix">
-    <div class="pull-left email-signin">
-      <iframe class="youtube-player" type="text/html" width="430" height="254" src="http://www.youtube.com/embed/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0" frameborder="0">
+    <div class="pull-left">
+      <br>
+      <br>
+      <iframe class="youtube-player" type="text/html" width="430" height="242" src="http://www.youtube.com/embed/9dxfLmzVeDU?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0" frameborder="0">
       </iframe>
-      <div class="splash-quote">
-        "Wow, Bankmybiz.com is extraordinary. Easy to navigate, engaging interactions and spot-on connections. This will change everything".
-        <div class="muted text-right">James C. - SVP Business Banker</div>
-      </div>
     </div>
     <div>
       <h3 class='text-center'>Bank On Relationships</h3>
@@ -176,9 +174,42 @@
   </div>
   <hr>
   <div class="row">
+    <h2 class="col-sm-12 text-center">Testimonials</h2>
+    <div class="col-sm-10 col-sm-offset-1 well clearfix">
+      <div class="margin-auto">
+        <iframe width="430" height="243" src="//www.youtube.com/embed/oKYDUvKEFEA?version=3&amp;hl=en_US&amp;rel=0;3&amp;autohide=1&amp;showinfo=0" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div>
+        <h3 class='text-center'>What People are Saying. . . </h3>
+        </div>
+        <p class="lead">
+          "I started conversations by posting some questions to Bankmybiz.com. I connected with a few helpful lenders and, <strong>EUREKA</strong>, I found a great lender who specialized in my industry. Thank You Bankmybiz.com! I will be singing your praises to every business owner I know."
+          <div class='muted text-right'><strong>Heather P.</strong> Healthcare</div>
+        </p>
+        <p class="lead">
+         "I sent messages to my Bankmybiz lender matches and within <b>2 mintues</b> was contacted by a lender from California who understood and was passionate about my business. Thanks Bankmybiz!"
+         <div class='muted text-right'><strong>Alisa T.</strong> Artist/Manufacturer</div>
+        </p>
+        <p class="lead">
+          "Wow, Bankmybiz.com is extraordinary. Easy to navigate, engaging interactions and spot-on connections. <b>This will change everything!</b>".
+          <div class="muted text-right"><strong>James C.</strong> - SVP Business Banker</div>
+        </p>
+        <div class="text-center">
+          <a href="/auth/linkedin" class="auth_provider btn btn-linkedin btn-lg">          
+            Find a Loan | <i class="icon ion-social-linkedin"></i>
+          </a>
+          <%= link_to new_registration_path(resource_name), class:'btn btn-default btn-lg' do %>
+            Find a Loan | <i class="icon ion-ios7-email-outline"></i>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="row">
     <h2 class="col-sm-12 text-center">Press</h2>
     <br>
-    <div class="well clearfix">
+    <div class="col-sm-10 col-sm-offset-1 well clearfix">
       <div class="col-sm-8">
         <div class="pull-left press">
           <%= link_to "http://host.madison.com/business/technology/biotech/madison-startup-bankmybiz-gets-spotlight-at-sxsw/article_ea6dd5df-6ddc-557a-98b2-c1e88bd8a57a.html", target:"_blank" do %>

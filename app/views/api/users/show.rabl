@@ -1,6 +1,6 @@
 object @user
 attributes :id, :name, :bio, :impressions_count, :position,
-           :org_name, :position, :goals, :newsletter, :receive_match_messages, :two_years, :hq_state,
+           :org_name, :position, :goals, :newsletter, :receive_match_messages, :two_years, :hq_state
 
 node(:industries) { |u| u.industries.map(&:description).join(', ')}
 node(:locations) { |u| u.locations.map(&:name).join(', ')}

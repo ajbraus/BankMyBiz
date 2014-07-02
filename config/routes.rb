@@ -114,7 +114,7 @@ BankMyBiz::Application.routes.draw do  resources :products, only: [:show]
       resources :messages
       resources :activities, only: [:index]
       match 'user/:id/activities', to: "activities#index"
-      resources :users, only: [:show, :edit, :update, :index]
+      resources :users, only: [:show, :edit, :update]
       resources :matches, only: [:create, :destroy, :index]
       resources :relationships, only: [:create, :destroy, :index]
     end

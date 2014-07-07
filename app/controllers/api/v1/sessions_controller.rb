@@ -5,12 +5,12 @@ class Api::V1::SessionsController < Devise::SessionsController
   
   def create
     # params[:user] = params[:session]
-    @user = User.where('lower(email) = ?', user_params[:email].downcase).first
+    @user = User.where('lower(email) = ?', params[:email].downcase).first
     unless @user
       return render :status => :unprocessable_entity,
              :json => { success: false, :error => "No account exists with that email address." }
     end
-    unless @user.valid_password?(user_params[:password])
+    unless @user.valid_password?(params[:password])
       return render :status => :unprocessable_entity,
                     json: { success: false, :error => "The email or password you entered is incorrect." }
     end

@@ -1,5 +1,5 @@
 class Api::V1::PostsController < ApplicationController
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user_from_token!
   
   def index # GET (plural/array)
     @posts = Post.paginate(page: params[:page], per_page: 10, order: "created_at desc")

@@ -1,5 +1,5 @@
 class Api::V1::MessagesController < ApplicationController
-  #before_filter :authenticate_user!
+  before_filter :authenticate_user_from_token!
 
   def index
     @messages = User.find(4).messages.paginate(:page => params[:page], :per_page => 15)

@@ -1,5 +1,5 @@
 class Api::V1::RelationshipsController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user_from_token!
   
   def index
     @followed_users = current_user.followed_users

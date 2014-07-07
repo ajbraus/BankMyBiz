@@ -4,13 +4,17 @@ class Api::V1::SessionsController < Devise::SessionsController
   include Devise::Controllers::Helpers
   
   def create
-    resource = warden.authenticate(:scope => :user, :store => false, :recall => "#{controller_path}#failure")
-    render :status => 200,
-         :json => { :success => true,
-                    :info => "Signed In",
-                    :id => resource.id,
-                    :auth_token => resource.auth_token,
-                    :name => resource.name}
+    # params[:user] = params[:session]
+    @user = User.where('lower(email) = ?', user_params[:email].downcase).first
+    unless @user
+      return render :status => :unprocessable_entity,
+             :json => { success: false, :error => "No account exists with that email address." }
+    end
+    unless @user.valid_password?(user_params[:password])
+      return render :status => :unprocessable_entity,
+                    json: { success: false, :error => "The email or password you entered is incorrect." }
+    end
+    return render status: 200, json: { success: true, auth_token: @user.auth_token }
   end
 
   def destroy

@@ -3,6 +3,8 @@ class Api::V1::RelationshipsController < ApplicationController
   
   def index
     @followed_users = current_user.followed_users
+    @followers = current_user.followers
+
     render 'api/relationships/index' #refresh
   end
 

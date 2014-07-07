@@ -107,7 +107,7 @@ BankMyBiz::Application.routes.draw do  resources :products, only: [:show]
   #/api/v1/ . . . 
   namespace :api, defaults: {format: 'json'} do 
     namespace :v1 do 
-      devise_for :users, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registrations" }
+      devise_for :users, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registrations", :passwords => "api/v1/passwords", }
       resources :users, only: [:show]
       #resources :tokens, :only => [:create, :destroy]
       resources :posts

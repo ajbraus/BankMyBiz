@@ -18,6 +18,33 @@ class UsersController < ApplicationController
     end
   end
 
+  def data
+    if current_user.admin?
+      @products = Product.all
+
+      @employee_sizes = EmployeeSize.all
+      @industries = Industry.all
+      @business_types = BusinessType.all
+      @revenue_sizes = RevenueSize.all
+      @ages = Age.all
+      @locations = Location.all
+      @accounts_receivables = AccountsReceivable.all
+      @loan_sizes = LoanSize.all
+      @customer_types = CustomerType.all
+      @loan_priorities = LoanPriority.all
+      @loan_purposes = LoanPurpose.all
+
+      #Relationships
+      #Messages
+      #Questions
+      #Answers
+
+      render 'users/data'
+    else 
+      redirect_to root_path, notice: "Oops, here you go!"
+    end
+  end
+
   def confirm
     @user = User.find(params[:user_id])
     @user.confirm!

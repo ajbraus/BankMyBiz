@@ -1,0 +1,975 @@
+{
+  "products": [
+    {
+      "id": 4,
+      "name": "Factoring",
+      "banker_count": 8,
+      "business_count": 0
+    },
+    {
+      "id": 5,
+      "name": "Revenue Based",
+      "banker_count": 8,
+      "business_count": 8
+    },
+    {
+      "id": 7,
+      "name": "Private Equity",
+      "banker_count": 6,
+      "business_count": 0
+    },
+    {
+      "id": 8,
+      "name": "Community Development Fund",
+      "banker_count": 3,
+      "business_count": 1
+    },
+    {
+      "id": 10,
+      "name": "Cash Advance",
+      "banker_count": 2,
+      "business_count": 0
+    },
+    {
+      "id": 11,
+      "name": "Grants",
+      "banker_count": 1,
+      "business_count": 1
+    },
+    {
+      "id": 12,
+      "name": "Crowd Funding for Rewards",
+      "banker_count": 0,
+      "business_count": 12
+    },
+    {
+      "id": 9,
+      "name": "Merchant Cash Advance",
+      "banker_count": 9,
+      "business_count": 10
+    },
+    {
+      "id": 16,
+      "name": "Deposits",
+      "banker_count": 12,
+      "business_count": 22
+    },
+    {
+      "id": 17,
+      "name": "Credit Cards",
+      "banker_count": 11,
+      "business_count": 22
+    },
+    {
+      "id": 18,
+      "name": "Equipment Loan",
+      "banker_count": 16,
+      "business_count": 0
+    },
+    {
+      "id": 1,
+      "name": "Term Loan",
+      "banker_count": 25,
+      "business_count": 2
+    },
+    {
+      "id": 2,
+      "name": "Line of Credit",
+      "banker_count": 25,
+      "business_count": 2
+    },
+    {
+      "id": 3,
+      "name": "SBA Loan",
+      "banker_count": 19,
+      "business_count": 25
+    },
+    {
+      "id": 13,
+      "name": "Crowd Funding for Equity",
+      "banker_count": 4,
+      "business_count": 23
+    },
+    {
+      "id": 14,
+      "name": "Angel Investment",
+      "banker_count": 3,
+      "business_count": 11
+    },
+    {
+      "id": 15,
+      "name": "Venture Capital",
+      "banker_count": 6,
+      "business_count": 0
+    },
+    {
+      "id": 6,
+      "name": "Asset Based Loan",
+      "banker_count": 16,
+      "business_count": 2
+    }
+  ],
+  "employee_sizes": [
+    {
+      "id": 1,
+      "description": "0-6",
+      "banker_count": 46,
+      "business_count": 46
+    },
+    {
+      "id": 2,
+      "description": "7-24",
+      "banker_count": 53,
+      "business_count": 8
+    },
+    {
+      "id": 3,
+      "description": "25-99",
+      "banker_count": 55,
+      "business_count": 3
+    },
+    {
+      "id": 4,
+      "description": "100-499",
+      "banker_count": 32,
+      "business_count": 0
+    },
+    {
+      "id": 5,
+      "description": "500-999",
+      "banker_count": 16,
+      "business_count": 0
+    },
+    {
+      "id": 6,
+      "description": "1000-2999",
+      "banker_count": 10,
+      "business_count": 0
+    },
+    {
+      "id": 7,
+      "description": "3000+",
+      "banker_count": 8,
+      "business_count": 0
+    }
+  ],
+  "industries": [
+    {
+      "id": 17,
+      "description": "Agriculture",
+      "banker_count": 12,
+      "business_count": 2
+    },
+    {
+      "id": 18,
+      "description": "Arts & Design",
+      "banker_count": 13,
+      "business_count": 4
+    },
+    {
+      "id": 19,
+      "description": "Automotive",
+      "banker_count": 25,
+      "business_count": 1
+    },
+    {
+      "id": 5,
+      "description": "Construction",
+      "banker_count": 34,
+      "business_count": 1
+    },
+    {
+      "id": 7,
+      "description": "Consulting",
+      "banker_count": 41,
+      "business_count": 8
+    },
+    {
+      "id": 21,
+      "description": "Consumer Products",
+      "banker_count": 20,
+      "business_count": 4
+    },
+    {
+      "id": 13,
+      "description": "Data & Analytics",
+      "banker_count": 38,
+      "business_count": 7
+    },
+    {
+      "id": 22,
+      "description": "Education",
+      "banker_count": 17,
+      "business_count": 1
+    },
+    {
+      "id": 24,
+      "description": "Electronics",
+      "banker_count": 25,
+      "business_count": 0
+    },
+    {
+      "id": 32,
+      "description": "Emerging Tech",
+      "banker_count": 9,
+      "business_count": 1
+    },
+    {
+      "id": 23,
+      "description": "Energy",
+      "banker_count": 24,
+      "business_count": 1
+    },
+    {
+      "id": 25,
+      "description": "Engineering",
+      "banker_count": 28,
+      "business_count": 1
+    },
+    {
+      "id": 8,
+      "description": "Entertainment & Media",
+      "banker_count": 30,
+      "business_count": 7
+    },
+    {
+      "id": 26,
+      "description": "Events",
+      "banker_count": 14,
+      "business_count": 1
+    },
+    {
+      "id": 27,
+      "description": "Fashion & Apparel",
+      "banker_count": 18,
+      "business_count": 3
+    },
+    {
+      "id": 1,
+      "description": "Financial Services",
+      "banker_count": 47,
+      "business_count": 5
+    },
+    {
+      "id": 6,
+      "description": "Food & Beverage",
+      "banker_count": 31,
+      "business_count": 5
+    },
+    {
+      "id": 28,
+      "description": "Government & Politics",
+      "banker_count": 12,
+      "business_count": 0
+    },
+    {
+      "id": 16,
+      "description": "Health & Wellness",
+      "banker_count": 24,
+      "business_count": 3
+    },
+    {
+      "id": 12,
+      "description": "Healthcare & Pharma",
+      "banker_count": 43,
+      "business_count": 3
+    },
+    {
+      "id": 14,
+      "description": "Internet",
+      "banker_count": 30,
+      "business_count": 7
+    },
+    {
+      "id": 29,
+      "description": "Legal",
+      "banker_count": 22,
+      "business_count": 0
+    },
+    {
+      "id": 3,
+      "description": "Manufacturing",
+      "banker_count": 53,
+      "business_count": 4
+    },
+    {
+      "id": 11,
+      "description": "Nonprofit",
+      "banker_count": 30,
+      "business_count": 3
+    },
+    {
+      "id": 9,
+      "description": "Real Estate (Com)",
+      "banker_count": 41,
+      "business_count": 3
+    },
+    {
+      "id": 10,
+      "description": "Real Estate (Res)",
+      "banker_count": 16,
+      "business_count": 2
+    },
+    {
+      "id": 2,
+      "description": "Retail",
+      "banker_count": 38,
+      "business_count": 7
+    },
+    {
+      "id": 15,
+      "description": "Sales &  Marketing",
+      "banker_count": 32,
+      "business_count": 9
+    },
+    {
+      "id": 20,
+      "description": "Science & Biotech",
+      "banker_count": 25,
+      "business_count": 0
+    },
+    {
+      "id": 30,
+      "description": "Security",
+      "banker_count": 20,
+      "business_count": 0
+    },
+    {
+      "id": 4,
+      "description": "Transportation & Distribution",
+      "banker_count": 47,
+      "business_count": 1
+    },
+    {
+      "id": 31,
+      "description": "Travel & Tourism",
+      "banker_count": 16,
+      "business_count": 4
+    }
+  ],
+  "business_types": [
+    {
+      "id": 1,
+      "description": "LLC",
+      "banker_count": 63,
+      "business_count": 35
+    },
+    {
+      "id": 2,
+      "description": "C-Corp",
+      "banker_count": 57,
+      "business_count": 8
+    },
+    {
+      "id": 3,
+      "description": "Sole Proprietor",
+      "banker_count": 51,
+      "business_count": 6
+    },
+    {
+      "id": 4,
+      "description": "Partnership",
+      "banker_count": 57,
+      "business_count": 1
+    },
+    {
+      "id": 5,
+      "description": "LLP",
+      "banker_count": 49,
+      "business_count": 0
+    },
+    {
+      "id": 6,
+      "description": "Non-Stock",
+      "banker_count": 34,
+      "business_count": 1
+    },
+    {
+      "id": 7,
+      "description": "S-Corp",
+      "banker_count": 56,
+      "business_count": 5
+    },
+    {
+      "id": 8,
+      "description": "Non-Profit",
+      "banker_count": 28,
+      "business_count": 1
+    },
+    {
+      "id": 9,
+      "description": "B-Corp",
+      "banker_count": 6,
+      "business_count": 0
+    }
+  ],
+  "revenue_sizes": [
+    {
+      "id": 6,
+      "description": "Pre-Revenue",
+      "banker_count": 5,
+      "business_count": 5
+    },
+    {
+      "id": 7,
+      "description": "$5k-$25k",
+      "banker_count": 5,
+      "business_count": 3
+    },
+    {
+      "id": 1,
+      "description": "$25-$100k",
+      "banker_count": 26,
+      "business_count": 30
+    },
+    {
+      "id": 2,
+      "description": "$100k-$1m",
+      "banker_count": 41,
+      "business_count": 12
+    },
+    {
+      "id": 3,
+      "description": "$1m-$5m",
+      "banker_count": 50,
+      "business_count": 5
+    },
+    {
+      "id": 4,
+      "description": "$5m-10m",
+      "banker_count": 43,
+      "business_count": 1
+    },
+    {
+      "id": 5,
+      "description": "$10m and Above",
+      "banker_count": 37,
+      "business_count": 0
+    }
+  ],
+  "ages": [
+    {
+      "id": 1,
+      "description": "0-2",
+      "banker_count": 27,
+      "business_count": 36
+    },
+    {
+      "id": 2,
+      "description": "3-4",
+      "banker_count": 51,
+      "business_count": 9
+    },
+    {
+      "id": 3,
+      "description": "5-9",
+      "banker_count": 51,
+      "business_count": 7
+    },
+    {
+      "id": 4,
+      "description": "10-19",
+      "banker_count": 47,
+      "business_count": 2
+    },
+    {
+      "id": 5,
+      "description": "20+",
+      "banker_count": 42,
+      "business_count": 3
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "banker_count": 34,
+      "business_count": 23
+    },
+    {
+      "id": 2,
+      "banker_count": 1,
+      "business_count": 0
+    },
+    {
+      "id": 3,
+      "banker_count": 1,
+      "business_count": 2
+    },
+    {
+      "id": 4,
+      "banker_count": 2,
+      "business_count": 1
+    },
+    {
+      "id": 5,
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 6,
+      "banker_count": 3,
+      "business_count": 3
+    },
+    {
+      "id": 7,
+      "banker_count": 2,
+      "business_count": 1
+    },
+    {
+      "id": 8,
+      "banker_count": 0,
+      "business_count": 2
+    },
+    {
+      "id": 9,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 10,
+      "banker_count": 0,
+      "business_count": 2
+    },
+    {
+      "id": 11,
+      "banker_count": 3,
+      "business_count": 2
+    },
+    {
+      "id": 12,
+      "banker_count": 1,
+      "business_count": 2
+    },
+    {
+      "id": 13,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 14,
+      "banker_count": 1,
+      "business_count": 0
+    },
+    {
+      "id": 15,
+      "banker_count": 9,
+      "business_count": 3
+    },
+    {
+      "id": 16,
+      "banker_count": 3,
+      "business_count": 3
+    },
+    {
+      "id": 17,
+      "banker_count": 2,
+      "business_count": 3
+    },
+    {
+      "id": 18,
+      "banker_count": 1,
+      "business_count": 1
+    },
+    {
+      "id": 19,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 20,
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 21,
+      "banker_count": 0,
+      "business_count": 2
+    },
+    {
+      "id": 22,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 23,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 24,
+      "banker_count": 2,
+      "business_count": 2
+    },
+    {
+      "id": 25,
+      "banker_count": 2,
+      "business_count": 4
+    },
+    {
+      "id": 26,
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 27,
+      "banker_count": 2,
+      "business_count": 1
+    },
+    {
+      "id": 28,
+      "banker_count": 1,
+      "business_count": 0
+    },
+    {
+      "id": 29,
+      "banker_count": 0,
+      "business_count": 2
+    },
+    {
+      "id": 30,
+      "banker_count": 2,
+      "business_count": 0
+    },
+    {
+      "id": 31,
+      "banker_count": 0,
+      "business_count": 2
+    },
+    {
+      "id": 32,
+      "banker_count": 1,
+      "business_count": 1
+    },
+    {
+      "id": 33,
+      "banker_count": 1,
+      "business_count": 0
+    },
+    {
+      "id": 34,
+      "banker_count": 1,
+      "business_count": 3
+    },
+    {
+      "id": 35,
+      "banker_count": 1,
+      "business_count": 1
+    },
+    {
+      "id": 36,
+      "banker_count": 1,
+      "business_count": 1
+    },
+    {
+      "id": 37,
+      "banker_count": 1,
+      "business_count": 1
+    },
+    {
+      "id": 38,
+      "banker_count": 1,
+      "business_count": 0
+    },
+    {
+      "id": 39,
+      "banker_count": 1,
+      "business_count": 0
+    },
+    {
+      "id": 40,
+      "banker_count": 1,
+      "business_count": 2
+    },
+    {
+      "id": 41,
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 42,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 43,
+      "banker_count": 1,
+      "business_count": 2
+    },
+    {
+      "id": 44,
+      "banker_count": 1,
+      "business_count": 0
+    },
+    {
+      "id": 45,
+      "banker_count": 1,
+      "business_count": 1
+    },
+    {
+      "id": 46,
+      "banker_count": 3,
+      "business_count": 2
+    },
+    {
+      "id": 47,
+      "banker_count": 2,
+      "business_count": 0
+    },
+    {
+      "id": 48,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 49,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 50,
+      "banker_count": 1,
+      "business_count": 0
+    },
+    {
+      "id": 51,
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 52,
+      "banker_count": 37,
+      "business_count": 19
+    },
+    {
+      "id": 53,
+      "banker_count": 1,
+      "business_count": 0
+    }
+  ],
+  "accounts_receivables": [
+    {
+      "id": 1,
+      "description": "Low",
+      "banker_count": 67,
+      "business_count": 60
+    },
+    {
+      "id": 2,
+      "description": "Medium",
+      "banker_count": 74,
+      "business_count": 8
+    },
+    {
+      "id": 3,
+      "description": "High",
+      "banker_count": 65,
+      "business_count": 0
+    },
+    {
+      "id": 4,
+      "description": "Very High",
+      "banker_count": 57,
+      "business_count": 1
+    }
+  ],
+  "loan_sizes": [
+    {
+      "id": 7,
+      "description": "$10k - $49k",
+      "banker_count": 9,
+      "business_count": 10
+    },
+    {
+      "id": 1,
+      "description": "$50k - $99k",
+      "banker_count": 57,
+      "business_count": 44
+    },
+    {
+      "id": 2,
+      "description": "$100k - $249k",
+      "banker_count": 62,
+      "business_count": 8
+    },
+    {
+      "id": 3,
+      "description": "$250k - $499k",
+      "banker_count": 63,
+      "business_count": 3
+    },
+    {
+      "id": 4,
+      "description": "$500k - $999k",
+      "banker_count": 64,
+      "business_count": 2
+    },
+    {
+      "id": 5,
+      "description": "$1M - $5M",
+      "banker_count": 66,
+      "business_count": 2
+    },
+    {
+      "id": 6,
+      "description": "$5M +",
+      "banker_count": 57,
+      "business_count": 0
+    }
+  ],
+  "customer_types": [
+    {
+      "id": 3,
+      "description": "Local Consumers",
+      "banker_count": 102,
+      "business_count": 87
+    },
+    {
+      "id": 4,
+      "description": "National Consumers",
+      "banker_count": 97,
+      "business_count": 84
+    },
+    {
+      "id": 5,
+      "description": "International Consumers",
+      "banker_count": 3,
+      "business_count": 4
+    },
+    {
+      "id": 6,
+      "description": "Local Businesses",
+      "banker_count": 88,
+      "business_count": 71
+    },
+    {
+      "id": 7,
+      "description": "National Businesses",
+      "banker_count": 82,
+      "business_count": 68
+    },
+    {
+      "id": 8,
+      "description": "International Businesses",
+      "banker_count": 6,
+      "business_count": 3
+    },
+    {
+      "id": 9,
+      "description": "Government",
+      "banker_count": 4,
+      "business_count": 2
+    },
+    {
+      "id": 10,
+      "description": "Health Systems",
+      "banker_count": 7,
+      "business_count": 0
+    },
+    {
+      "id": 11,
+      "description": "Military",
+      "banker_count": 2,
+      "business_count": 2
+    }
+  ],
+  "loan_priorities": [
+    {
+      "id": 6,
+      "description": "Best Banker Relationship",
+      "banker_count": 1,
+      "business_count": 77
+    },
+    {
+      "id": 1,
+      "description": "Lowest Rate",
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 2,
+      "description": "Simplest Documentation",
+      "banker_count": 0,
+      "business_count": 3
+    },
+    {
+      "id": 3,
+      "description": "Longest Repayment",
+      "banker_count": 0,
+      "business_count": 3
+    },
+    {
+      "id": 4,
+      "description": "Least Turn Around Time",
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 5,
+      "description": "Least Collateral",
+      "banker_count": 0,
+      "business_count": 3
+    }
+  ],
+  "loan_purposes": [
+    {
+      "id": 1,
+      "description": "Expansion",
+      "banker_count": 1,
+      "business_count": 76
+    },
+    {
+      "id": 2,
+      "description": "Buyout A Partner",
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 3,
+      "description": "Marketing\/Advertising",
+      "banker_count": 0,
+      "business_count": 1
+    },
+    {
+      "id": 4,
+      "description": "Starting a Business",
+      "banker_count": 0,
+      "business_count": 6
+    },
+    {
+      "id": 5,
+      "description": "Working Capital",
+      "banker_count": 0,
+      "business_count": 5
+    },
+    {
+      "id": 6,
+      "description": "Refinance \/ Consolidate Debt",
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 7,
+      "description": "Remodel an existing location",
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 8,
+      "description": "Purchase Equipment",
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 9,
+      "description": "Repair Equipment",
+      "banker_count": 0,
+      "business_count": 0
+    },
+    {
+      "id": 10,
+      "description": "Other",
+      "banker_count": 0,
+      "business_count": 0
+    }
+  ]
+}

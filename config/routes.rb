@@ -1,5 +1,4 @@
 BankMyBiz::Application.routes.draw do  resources :products, only: [:show]
-
   get "/ads/new", to: "welcome#new_ad", as: 'new_ad'
 
   match '/deposits', to: 'products#deposits', as: 'deposits'
@@ -99,6 +98,7 @@ BankMyBiz::Application.routes.draw do  resources :products, only: [:show]
   match 'users/:id' => 'users#show'
   match 'users/:id/profile/edit' => 'profiles#edit', as: 'edit_profile'
   match 'users/:id/profiles' => 'profiles#update', as: 'update_profile'
+  match 'data/users' => 'users#data', as: 'users_data'
 
   resources :commitments, only: [:create, :destroy]
 
@@ -112,10 +112,8 @@ BankMyBiz::Application.routes.draw do  resources :products, only: [:show]
       #resources :tokens, :only => [:create, :destroy]
       resources :posts
       resources :messages
-      resources :activities, only: [:index]
       match 'user/:id/activities', to: "activities#index"
       resources :users, only: [:show, :edit, :update]
-      resources :matches, only: [:create, :destroy, :index]
       resources :relationships, only: [:create, :destroy, :index]
     end
   end

@@ -1,5 +1,5 @@
 object @user
-attributes :id, :name, :bio, :impressions_count, :position,
+attributes :id, :name, :bank, :bio, :impressions_count, :position,
            :org_name, :position, :goals, :newsletter, :receive_match_messages, :two_years, :hq_state
 
 node(:industries) { |u| u.industries.map(&:description).join(', ')}

@@ -26,7 +26,9 @@ end
 
 child(:answers) do
   attributes :body, :accepted
+  node(:vote_count) { |a| a.plusminus }
   node(:created_at_ago) { |a| time_ago_in_words(a.created_at) }
+  
   child(:user) do
     attributes :id, :first_name_with_last_initial, :location, :position, :org_name
     node(:profile_image_url) { |u| u.profile_picture_url }

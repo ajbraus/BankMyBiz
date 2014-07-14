@@ -101,8 +101,7 @@ BankMyBiz::Application.routes.draw do  resources :products, only: [:show]
   match 'data/users' => 'users#data', as: 'users_data'
 
   resources :commitments, only: [:create, :destroy]
-
-
+  
 
   #/api/v1/ . . . 
   namespace :api, defaults: {format: 'json'} do 

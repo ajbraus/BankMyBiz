@@ -25,6 +25,7 @@ child(:comments) do
 end
 
 child(:answers) do
+  attributes :body, :accepted
   node(:created_at_ago) { |a| time_ago_in_words(a.created_at) }
   child(:user) do
     attributes :id, :first_name_with_last_initial, :location, :position, :org_name

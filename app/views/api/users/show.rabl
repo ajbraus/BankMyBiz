@@ -19,3 +19,7 @@ node(:milestones_count) { |u| u.posts.count }
 child(:posts) do 
   extends "api/posts/show"
 end
+
+child(:tags) do
+  attributes :id, :name
+end

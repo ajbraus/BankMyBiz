@@ -23,7 +23,10 @@ class Api::V1::PostsController < ApplicationController
       @post.delay.send_update_to_tag_followers(current_user)
       current_user.tags << @post.tags
 
-      render 'api/posts/create'
+      return render status: 200, json: { success: true }
+    else
+      render :status => :unprocessable_entity,
+                        json: { success: false, :errors => @post.errors }
     end
     
   end

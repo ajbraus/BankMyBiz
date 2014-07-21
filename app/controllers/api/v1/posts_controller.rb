@@ -12,8 +12,20 @@ class Api::V1::PostsController < ApplicationController
   end
 
   def create #POST
-    current_user.posts.create(params[:post])
-    render 'api/posts/create'
+    @post = current_user.posts.build(params[:post])
+    @post.last_touched_at = Time.now
+
+    if @post.save
+      current_user.update_attributes(cred_count: current_user.cred_count + 10)
+      current_user.followers.each do |f|
+        Notifier.delay.new_post(f, @post)
+      end
+      @post.delay.send_update_to_tag_followers(current_user)
+      current_user.tags << @post.tags
+
+      render 'api/posts/create'
+    end
+    
   end
 
   def update # PUT

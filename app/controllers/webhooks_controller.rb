@@ -10,7 +10,7 @@ class WebhooksController < ApplicationController
       stripe_customer_id = object['customer']
       stripe_subscription_id = object['subscription']
       customer = User.find_by_stripe_customer_id(stripe_customer_id)
-      if customer.subscriptions.any? && customer.subscriptions.last.expires_on <= Date.today
+      if customer.present? && customer.subscriptions.any? && customer.subscriptions.last.expires_on <= Date.today
         last_subscription = customer.subscriptions.last
         # renew subscription
         @subscription = customer.subscriptions.create(plan_id: last_subscription.plan_id, 

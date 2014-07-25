@@ -1,5 +1,10 @@
-collection @followed_users, :root => "followed_users"
-extends "api/users/mini_show"
+object false
 
-collection @followers, :root => "followers"
-extends "api/users/mini_show"
+child @followers => :followers do 
+  extends "api/users/mini_show"
+end
+ 
+child @followed_users => :followed_users do 
+  extends "api/users/mini_show"
+end
+

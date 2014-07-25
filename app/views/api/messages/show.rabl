@@ -1,4 +1,4 @@
-object @message
+collection @messages
 attributes :id, :subject, :body, :is_read
 
 node(:sender_id) { |m| m.sender_id }

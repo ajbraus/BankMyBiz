@@ -2,11 +2,7 @@ class Api::V1::UsersController < ApplicationController
   before_filter :authenticate_user_from_token!
 
   def show
-    if params[:id].blank?
-      @user = User.find_by_auth_token(params[:auth_token])      
-    else
-      @user = User.find(params[:id])
-    end
+    @user = User.find(params[:id])
 
     render 'api/users/show'
   end

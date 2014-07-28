@@ -1,5 +1,23 @@
 class Api::V1::PostsController < ApplicationController
   before_filter :authenticate_user_from_token!
+
+  def vote_up
+    begin
+      current_user.vote_exclusively_for(@post = Post.find(params[:id]))
+      @post.user.update_attributes(cred_count: @user.cred_count + 1)
+      render nothing: true
+    rescue ActiveRecord::RecordInvalid
+    end
+  end
+
+  def vote_down
+    begin
+      current_user.vote_exclusively_against(@post = Post.find(params[:id]))
+      @post.user.update_attributes(cred_count: @user.cred_count - 1)
+      render nothing: true
+    rescue ActiveRecord::RecordInvalid
+    end
+  end
   
   def index # GET (plural/array)
     @posts = Post.paginate(page: params[:page], per_page: 10, order: "created_at desc")

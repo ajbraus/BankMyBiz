@@ -109,8 +109,25 @@ BankMyBiz::Application.routes.draw do  resources :products, only: [:show]
       devise_for :users, :controllers => { :sessions => "api/v1/sessions", :registrations => "api/v1/registrations", :passwords => "api/v1/passwords", }
       resources :users, only: [:show]
       #resources :tokens, :only => [:create, :destroy]
-      resources :posts
       resources :messages
+      resources :posts do
+        member do
+          get :vote_up
+          get :vote_down
+        end
+      end
+      resources :answers, only: [:create, :destroy, :update] do
+        member do
+          get :vote_up
+          get :vote_down
+        end
+      end
+      resources :comments, only: [:create, :destroy] do
+        member do
+          get :vote_up
+          get :vote_down
+        end
+      end
       match 'user/:id/activities', to: "activities#index"
       resources :users, only: [:show, :edit, :update]
       resources :relationships, only: [:create, :destroy, :index]

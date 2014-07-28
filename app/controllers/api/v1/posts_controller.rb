@@ -4,7 +4,8 @@ class Api::V1::PostsController < ApplicationController
   def vote_up
     begin
       current_user.vote_exclusively_for(@post = Post.find(params[:id]))
-      @post.user.update_attributes(cred_count: @user.cred_count + 1)
+      @user = @post.user
+      @user.update_attributes(cred_count: @user.cred_count + 1)
       render nothing: true
     rescue ActiveRecord::RecordInvalid
     end
@@ -13,7 +14,8 @@ class Api::V1::PostsController < ApplicationController
   def vote_down
     begin
       current_user.vote_exclusively_against(@post = Post.find(params[:id]))
-      @post.user.update_attributes(cred_count: @user.cred_count - 1)
+      @user = @post.user
+      @user.update_attributes(cred_count: @user.cred_count - 1)
       render nothing: true
     rescue ActiveRecord::RecordInvalid
     end

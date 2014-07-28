@@ -4,7 +4,8 @@ class AnswersController < ApplicationController
   def vote_up
     begin
       current_user.vote_exclusively_for(@answer = Answer.find(params[:id]))
-      @answer.user.update_attributes(cred_count: @user.cred_count + 1)
+      @user = @answer.user
+      @user.update_attributes(cred_count: @user.cred_count + 1)
       render nothing: true
     rescue ActiveRecord::RecordInvalid
       redirect_to root_path, notice: "There was an error submitting your vote"
@@ -14,7 +15,8 @@ class AnswersController < ApplicationController
   def vote_down
     begin
       current_user.vote_exclusively_against(@answer = Answer.find(params[:id]))
-      @answer.user.update_attributes(cred_count: @user.cred_count - 1)
+      @user = @answer.user
+      @user.update_attributes(cred_count: @user.cred_count - 1)
       render nothing: true
     rescue ActiveRecord::RecordInvalid
       redirect_to root_path, notice: "There was an error submitting your vote"

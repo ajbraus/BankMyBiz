@@ -25,7 +25,7 @@ child(:comments) do
 end
 
 child(:answers) do
-  attributes :body, :accepted
+  attributes :id, :body, :accepted
   node(:vote_count) { |a| a.plusminus }
   node(:created_at_ago) { |a| time_ago_in_words(a.created_at) }
   

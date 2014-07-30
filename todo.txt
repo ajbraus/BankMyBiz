@@ -1,3 +1,5 @@
+send voted_alread on answer, comment, and post
+
 var dataset = [
   [
     { x: 0, y: 5 },

@@ -4,6 +4,7 @@ node(:vote_count) { |p| p.plusminus }
 node(:answers_count) { |p| p.answers.count }
 node(:impressions_count) { |p| p.impressions_count }
 node(:created_at_ago) { |p| time_ago_in_words(p.created_at) }
+node(:voted_for) { |p| current_user.voted_for?(p) }
 
 child(:user) do 
   attributes :id, :first_name_with_last_initial, :org_name, :position, :hq_state
@@ -15,6 +16,7 @@ child(:comments) do
   attributes :id, :content
   node(:vote_count) { |c| c.plusminus }
   node(:created_at_ago) { |c| time_ago_in_words(c.created_at) }
+  node(:voted_for) { |c| current_user.voted_for?(c) }
 
   child(:user) do
     attributes :id, :first_name_with_last_initial, :location, :position, :org_name
@@ -28,6 +30,7 @@ child(:answers) do
   attributes :id, :body, :accepted
   node(:vote_count) { |a| a.plusminus }
   node(:created_at_ago) { |a| time_ago_in_words(a.created_at) }
+  node(:voted_for) { |a| current_user.voted_for?(a) }
   
   child(:user) do
     attributes :id, :first_name_with_last_initial, :location, :position, :org_name

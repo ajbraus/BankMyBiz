@@ -31,8 +31,8 @@ class Api::V1::AnswersController < ApplicationController
   # POST /comments.json
   def create
     @answer = current_user.answers.build(params[:answer])
-
     if @answer.save
+      @post = @answer.post
       Notifier.delay.new_answer(@post.user, @answer)
       if @post.user != current_user
         current_user.update_attributes(cred_count: current_user.cred_count + 10)

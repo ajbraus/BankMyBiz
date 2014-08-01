@@ -6,8 +6,11 @@ class Api::V1::PostsController < ApplicationController
       current_user.vote_exclusively_for(@post = Post.find(params[:id]))
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
-      render nothing: true
+      
+      return render status: 200, json: { success: true }
     rescue ActiveRecord::RecordInvalid
+      return render :status => :unprocessable_entity,
+             :json => { success: false, :error => "There was a problem casting your vote." }
     end
   end
 
@@ -16,8 +19,12 @@ class Api::V1::PostsController < ApplicationController
       current_user.vote_exclusively_against(@post = Post.find(params[:id]))
       @user = @post.user
       @user.update_attributes(cred_count: @user.cred_count - 1)
-      render nothing: true
+      
+      return render status: 200, json: { success: true }
     rescue ActiveRecord::RecordInvalid
+      return render :status => :unprocessable_entity,
+             :json => { success: false, :error => "There was a problem casting your vote." }
+
     end
   end
   

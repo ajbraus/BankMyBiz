@@ -6,7 +6,8 @@ class Api::V1::AnswersController < ApplicationController
       current_user.vote_exclusively_for(@answer = Answer.find(params[:id]))
       @user = @answer.user
       @user.update_attributes(cred_count: @user.cred_count + 1)
-      render nothing: true
+      
+      return render status: 200, json: { success: true }
     rescue ActiveRecord::RecordInvalid
       return render :status => :unprocessable_entity,
              :json => { success: false, :error => "There was a problem registering your vote." }
@@ -18,7 +19,8 @@ class Api::V1::AnswersController < ApplicationController
       current_user.vote_exclusively_against(@answer = Answer.find(params[:id]))
       @user = @answer.user
       @user.update_attributes(cred_count: @user.cred_count - 1)
-      render nothing: true
+      
+      return render status: 200, json: { success: true }
     rescue ActiveRecord::RecordInvalid
       return render :status => :unprocessable_entity,
              :json => { success: false, :error => "There was a problem registering your vote." }

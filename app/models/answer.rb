@@ -6,7 +6,7 @@ class Answer < ActiveRecord::Base
   attr_accessible :accepted, :body
   acts_as_voteable
 
-  before_save :set_last_touched
+  after_save :set_last_touched
 
   def set_last_touched
     self.post.update_attributes(last_touched_at: Time.now)

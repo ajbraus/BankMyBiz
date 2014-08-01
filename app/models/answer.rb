@@ -3,7 +3,7 @@ class Answer < ActiveRecord::Base
   belongs_to :post
   has_many :comments, as: :commentable, dependent: :destroy
   
-  attr_accessible :accepted, :body
+  attr_accessible :accepted, :body, :post_id
   acts_as_voteable
 
   after_save :set_last_touched

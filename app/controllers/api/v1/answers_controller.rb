@@ -30,7 +30,7 @@ class Api::V1::AnswersController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @answer = current_user.answers.new(params[:answer])
+    @answer = current_user.answers.build(params[:answer])
 
     if @answer.save
       Notifier.delay.new_answer(@post.user, @answer)

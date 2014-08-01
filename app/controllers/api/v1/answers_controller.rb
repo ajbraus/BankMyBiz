@@ -35,9 +35,10 @@ class Api::V1::AnswersController < ApplicationController
       if @post.user != current_user
         current_user.update_attributes(cred_count: current_user.cred_count + 10)
       end
-
+      return render status: 200, json: { success: true }
     else
-      
+      return render :status => :unprocessable_entity,
+             :json => { success: false, :error => "There was a problem posting your advice." }
     end
   end
 

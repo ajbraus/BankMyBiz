@@ -30,12 +30,12 @@
         <section>
           <%= auto_link(post.content, html: { target: '_blank' }) %>
         </section>
-        <section class="text-right post-tags">
-          <% post.tags.each do |t| %>
-            <%= link_to "##{t.name}", posts_path(search: t.normalize), class:"tag clickable-tag" %>
-          <% end %>
-        </section>
       <% end %>
+      <section class="text-right post-tags">
+        <% post.tags.each do |t| %>
+          <%= link_to "##{t.name}", posts_path(search: t.normalize), class:"tag clickable-tag" %>
+        <% end %>
+      </section>
       <section class="row">
         <section class="pull-left">
             <%= link_to post.user, class:'pull-left' do %>

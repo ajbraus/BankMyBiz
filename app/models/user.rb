@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_many :answers
+  has_many :answers, dependent: :destroy
 
   has_many :matches, foreign_key: "match_id", dependent: :destroy
   has_many :matched_users, through: :matches, source: :user
